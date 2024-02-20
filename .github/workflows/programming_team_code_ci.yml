@@ -87,7 +87,7 @@ jobs:
     - name: Check correctness, completeness of doxygen comments
       run: make --directory=tests/ doxygen
 
-  build_hackpack:
+  build_ptc:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -95,30 +95,30 @@ jobs:
       run: |
         sudo apt update
         sudo apt install texlive texlive-latex-extra rename nodejs npm
-    - name: build hackpack
-      run: make --directory=tests/ hackpack
+    - name: build ptc
+      run: make --directory=tests/ ptc
     - uses: actions/upload-artifact@v3
       with:
-        name: hackpack
-        path: tests/hackpack.pdf
+        name: ptc
+        path: tests/ptc.pdf
 
-  publish_hackpack:
+  publish_ptc:
     runs-on: ubuntu-latest
-    needs: [library_checker_aizu, astyle_cppcheck, clangtidy, compile_gcc17, compile_gcc20, files_without_tests, doxygen, build_hackpack]
+    needs: [library_checker_aizu, astyle_cppcheck, clangtidy, compile_gcc17, compile_gcc20, files_without_tests, doxygen, build_ptc]
     if: github.ref == 'refs/heads/dev'
     steps:
     - uses: actions/checkout@v2
     - uses: actions/download-artifact@v3
       with:
-        name: hackpack
-        path: tests/hackpack.pdf
+        name: ptc
+        path: tests/ptc.pdf
     - uses: marvinpinto/action-automatic-releases@latest
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
-        automatic_release_tag: hackpack
+        automatic_release_tag: ptc
         prerelease: false
-        title: hackpack
-        files: tests/hackpack.pdf
+        title: ptc
+        files: tests/ptc.pdf
 
   update_main:
     runs-on: ubuntu-latest

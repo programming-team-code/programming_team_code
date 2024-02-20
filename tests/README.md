@@ -13,7 +13,7 @@ astyle | [.config/.astylerc](.config/.astylerc) | running `make astyle_cppcheck`
 cppcheck | [.config/.cppcheck_suppression_list](.config/.cppcheck_suppression_list), also see flags in cppcheck command in [scripts/astyle_cppcheck.sh](scripts/astyle_cppcheck.sh) | | https://cppcheck.sourceforge.io/
 clang-tidy | [.config/.clang-tidy](.config/.clang-tidy) | checks variables for snake_case | https://clang.llvm.org/extra/clang-tidy/checks/list.html
 doxygen | [.config/Doxyfile](.config/Doxyfile) | <ul><li>Used mainly as a style guide</li><li>Not run on tests (only on headers)</li></ul> | <ul><li>https://www.doxygen.nl/manual/commands.html</li><li>https://www.doxygen.nl/manual/docblocks.html</li></ul>
-notebook-generator | see flags in command in [scripts/hackpack.sh](scripts/hackpack.sh) | creates hackpack.pdf | https://github.com/pin3da/notebook-generator 
+notebook-generator | see flags in command in [scripts/ptc.sh](scripts/ptc.sh) | creates ptc.pdf | https://github.com/pin3da/notebook-generator 
 shellcheck | see flags in [scripts/shellcheck_shfmt.sh](scripts/shellcheck_shfmt.sh) | linter for bash scripts | https://www.shellcheck.net/
 shfmt | see flags in [scripts/shellcheck_shfmt.sh](scripts/shellcheck_shfmt.sh) | formatter for bash scripts | https://github.com/mvdan/sh
 

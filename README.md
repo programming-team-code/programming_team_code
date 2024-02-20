@@ -1,6 +1,6 @@
 # programming_team_code
 
-- [hackpack.pdf](https://github.com/lrvideckis/programming_team_code/releases/download/hackpack/hackpack.pdf)
+- [ptc.pdf](https://github.com/lrvideckis/programming_team_code/releases/download/ptc/ptc.pdf)
 - [template.cpp](contest/template.cpp)
 
 ## License and Attribution
