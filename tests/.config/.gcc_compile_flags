@@ -1,0 +1,14 @@
+-Wall
+-Wextra
+-Wunused
+-Wpedantic
+-Wshadow
+-Wlogical-op
+-Wformat=2
+-Wfloat-equal
+-Wcast-qual
+-Wcast-align
+-Wshift-overflow=2
+-Wduplicated-cond
+-Werror
+-O2
