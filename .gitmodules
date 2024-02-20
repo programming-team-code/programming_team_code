@@ -1,0 +1,9 @@
+[submodule "notebook-generator"]
+	path = notebook-generator
+	url = https://github.com/programming-team-code/notebook-generator
+[submodule "hackpack-cpp"]
+	path = hackpack-cpp
+	url = https://github.com/ucf-programming-team/hackpack-cpp
+[submodule "kactl"]
+	path = kactl
+	url = https://github.com/kth-competitive-programming/kactl
