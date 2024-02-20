@@ -14,8 +14,6 @@ inline int64_t op(int64_t vl, int64_t vr) {
 	return vl + vr;
 }
 /**
- * By default, update: range add, query: range sum
- *
  * root is at tree[1]
  * internal nodes are [1, n)
  * leaf nodes are [n, 2 * n), but rotated such that a[0] is at tree[pw2]

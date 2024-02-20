@@ -17,15 +17,6 @@ notebook-generator | see flags in command in [scripts/hackpack.sh](scripts/hackp
 shellcheck | see flags in [scripts/shellcheck_shfmt.sh](scripts/shellcheck_shfmt.sh) | linter for bash scripts | https://www.shellcheck.net/
 shfmt | see flags in [scripts/shellcheck_shfmt.sh](scripts/shellcheck_shfmt.sh) | formatter for bash scripts | https://github.com/mvdan/sh
 
-## Cron jobs:
-1) [rerun_lib_checker_tests_daily.yml](../.github/workflows/rerun_lib_checker_tests_daily.yml) runs at midnight (PDT) and removes the file [timestamps.remote.json](../.verify-helper/timestamps.remote.json)
-2) [run_tests_scheduled.yml](../.github/workflows/run_tests_scheduled.yml) runs `oj-verify all` every 30 minutes between midnight and 5am.
-3) [check_all_tests_ran.yml](../.github/workflows/check_all_tests_ran.yml) runs at 5am and checks that all tests have run.
-
-- Main reason 1: occasionally Library Checker [adds new tests](https://github.com/yosupo06/library-checker-problems/issues?q=label%3Atestcase). So now the lib will be tested on all newly added tests.
-- Main reason 2: sometimes I do a code-mod style change which affects many files, and thus many tests have to be re-run. But `oj-verify all` only runs 10-20 tests per commit, potentially leaving some un-run tests. Before, I used to make timely-commits which changed effectively nothing, but caused more tests to rerun. Now I don't have to do this.
-- Side reason: Library Checker generates tests randomly, so rerunning tests means the code is tested on more random data.
-
 ## Doxygen
 Let's try to minimize the # of non-doxygen comments.
 
