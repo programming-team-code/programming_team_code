@@ -11,7 +11,7 @@ help:
 	@echo "                                     |"
 	@echo "make doxygen                         | runs doxygen"
 	@echo "                                     |"
-	@echo "make hackpack                        | build hackpack.pdf from .tex file"
+	@echo "make ptc                             | build ptc.pdf from .tex file"
 	@echo "                                     |"
 	@echo "make shellcheck_shfmt                | runs shellcheck and shfmt"
 	@echo "                                     |"
@@ -41,8 +41,8 @@ files_without_tests:
 doxygen:
 	./scripts/doxygen.sh
 
-hackpack:
-	./scripts/hackpack.sh
+ptc:
+	./scripts/ptc.sh
 
 shellcheck_shfmt:
 	./scripts/shellcheck_shfmt.sh
