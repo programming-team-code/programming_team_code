@@ -5,7 +5,7 @@
 
 ## License and Attribution
 
-I've added links to sources when applicable. Everything is under the CC0 license; please use/take anything with no strings attached.
+We've added links to sources when applicable. Everything is under the CC0 license; please use/take anything with no strings attached.
 
 ## Other CP repos
 
