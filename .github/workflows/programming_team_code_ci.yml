@@ -131,7 +131,7 @@ jobs:
     - name: Combine includes and force push to main branch
       run: |
         git config --local user.name github-actions
-        git config --local user.email 33103480+lrvideckis@users.noreply.github.com
+        git config --local user.email 160645609+programming-team-code@users.noreply.github.com
         make --directory=tests/ update_main
         git rm -rf library/ tests/ .verify-helper/ .gitmodules kactl/ hackpack-cpp/ notebook-generator/ .github/
         git add --all
