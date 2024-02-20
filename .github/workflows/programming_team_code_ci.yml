@@ -2,6 +2,9 @@ name: programming team code CI
 
 on: push
 
+permissions:
+  contents: write
+
 jobs:
   library_checker_aizu:
     runs-on: ubuntu-latest
