@@ -1,0 +1,6 @@
+*.out
+html/
+latex/
+hackpack.pdf
+input
+output
