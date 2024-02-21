@@ -1,15 +1,12 @@
 /** @file */
 #pragma once
-const int mx_n = 1001;
-int sieve[mx_n]; /**< for val >= 2, sieve[val] = smallest prime p such that val % p == 0 */
 /**
- * @time O(mx_n * log(log mx_n))
- * @space O(mx_n) for `sieve` vector
+ * @time O(mx * log(log mx))
+ * @space O(mx)
  */
-void calc_sieve() {
-	iota(begin(sieve), end(sieve), 0);
-	for (int i = 2; i * i < mx_n; i++)
-		if (sieve[i] == i)
-			for (int j = i * i; j < mx_n; j += i)
-				sieve[j] = min(sieve[j], i);
-}
+vector<int> sieve(1001); /**< min prime factor */
+iota(begin(sieve), end(sieve), 0);
+for (int i = 2; i * i < ssize(sieve); i++)
+	if (sieve[i] == i)
+		for (int j = i* i; j < ssize(sieve); j += i)
+			sieve[j] = min(sieve[j], i);
