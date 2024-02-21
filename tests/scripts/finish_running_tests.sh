@@ -8,7 +8,7 @@ shopt -s globstar
 echo "pulling dev"
 git pull
 
-while [ ./scripts/print_which_tests_havent_run.sh ];
+while ! make print_which_tests_havent_run
 do
 	echo "not all tests ran; starting CI to run more tests"
 	gh workflow run 'programming team code CI' --ref dev
