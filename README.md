@@ -23,7 +23,7 @@ rust | <ul><li>https://github.com/rust-lang-ja/ac-library-rs</li><li>https://git
 
 ## Contributing
 
-We're open to all feedback. You can submit an issue or email us at:
+We're open to all feedback. You can submit an issue or email us at
 ```
 lrvideckis@gmail.com
 ```
