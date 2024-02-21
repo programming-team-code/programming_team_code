@@ -39,3 +39,7 @@ constParameter:../library/math/matrix_related/row_reduce.hpp:19
 variableScope:../kactl/content/number-theory/Factor.h:47
 ctuOneDefinitionRuleViolation:../library/math/matrix_related/xor_basis_ordered.hpp:13
 syntaxError:../library/math/n_choose_k/pascals_identity.hpp:5
+syntaxError:../library/math/prime_sieve/calc_sieve.hpp:9
+syntaxError:../library/math/prime_sieve/calc_linear_sieve.hpp:9
+syntaxError:../library/math/prime_sieve/get_prime_factors.hpp:3
+unmatchedSuppression:../library/math/prime_sieve/get_prime_factors.hpp:14
