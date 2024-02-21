@@ -9,13 +9,8 @@
  *     - ri_last = n
  *     - ri_i + 1 = le_(i+1)
  *
- * @param n,f number and helper function
+ * @param n int64_t
  * @time O(sqrt(n))
  * @space O(1)
  */
-template <class F> void quotients(int64_t n, F f) {
-	for (int64_t le = 1, ri; le <= n; le = ri + 1) {
-		ri = n / (n / le);
-		f(le, ri);
-	}
-}
+for (int64_t le = 1, ri = 1; le <= n && (ri = n / (n / le)); le = ri + 1)

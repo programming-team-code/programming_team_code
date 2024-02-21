@@ -42,4 +42,8 @@ syntaxError:../library/math/n_choose_k/pascals_identity.hpp:5
 syntaxError:../library/math/prime_sieve/calc_sieve.hpp:9
 syntaxError:../library/math/prime_sieve/calc_linear_sieve.hpp:9
 syntaxError:../library/math/prime_sieve/get_prime_factors.hpp:3
+syntaxError:../library/loops/chooses.hpp:8
+syntaxError:../library/loops/quotients.hpp:16
+syntaxError:../library/loops/submasks.hpp:9
+syntaxError:../library/loops/supermasks.hpp:10
 unmatchedSuppression:../library/math/prime_sieve/get_prime_factors.hpp:14
