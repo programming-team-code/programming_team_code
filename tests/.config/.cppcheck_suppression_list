@@ -46,4 +46,5 @@ syntaxError:../library/loops/chooses.hpp:8
 syntaxError:../library/loops/quotients.hpp:16
 syntaxError:../library/loops/submasks.hpp:9
 syntaxError:../library/loops/supermasks.hpp:10
+syntaxError:../library/math/mobius.hpp:12
 unmatchedSuppression:../library/math/prime_sieve/get_prime_factors.hpp:14

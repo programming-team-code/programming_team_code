@@ -13,8 +13,10 @@ int main() {
 	}
 	cout << 0 << ':' << '\n';
 	vector<int> sb_msks;
+	{
 #include "../../../library/loops/submasks.hpp"
-	sb_msks.push_back(submask);
+		sb_msks.push_back(submask);
+	}
 	reverse(begin(sb_msks), end(sb_msks));
 	for (auto submask : sb_msks) {
 		cout << submask << ':';
