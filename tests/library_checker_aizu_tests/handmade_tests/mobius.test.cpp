@@ -1,13 +1,12 @@
 #define PROBLEM "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A"
 #include "../template.hpp"
-#include "../../../library/math/mobius.hpp"
 
 #include "../../../kactl/content/number-theory/Factor.h"
 
 int main() {
 	cin.tie(0)->sync_with_stdio(0);
-	calc_mobius();
-	for (int i = 1; i < mx_n; i++) {
+#include "../../../library/math/mobius.hpp"
+	for (int i = 1; i < ssize(mobius); i++) {
 		int val = i;
 		map<ull, int> factors;
 		for (auto prime_factor : factor(val))

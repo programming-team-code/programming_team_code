@@ -12,8 +12,10 @@ int main() {
 		mask |= 1 << bit;
 	}
 	vector<int> sup_msks;
+	{
 #include "../../../library/loops/supermasks.hpp"
-	sup_msks.push_back(supermask);
+		sup_msks.push_back(supermask);
+	}
 	for (auto supermask : sup_msks) {
 		cout << supermask << ':';
 		for (int bit = 0; bit < n; bit++) {
