@@ -16,12 +16,14 @@ help:
 	@echo "make shellcheck_shfmt                | runs shellcheck and shfmt"
 	@echo "                                     |"
 	@echo "make update_main                     | 1) copies included files into file"
-	@echo "                                     | 2) pushes to main branch"
+	@echo "                                     | 2) force pushes to main branch"
 	@echo "                                     |"
 	@echo "make files_without_tests             | print list of all .hpp files included by *no* .test.cpp files"
 	@echo "                                     |   - these files are not compiled nor linted as part of ci"
 	@echo "                                     |"
 	@echo "make print_which_tests_havent_run    | mainly to check if all tests have run"
+	@echo "                                     |"
+	@echo "make finish_running_tests            | manually trigger CI every 15 minutes until all tests have run"
 
 compile_gcc17:
 	./scripts/compile_gcc17.sh
@@ -53,5 +55,5 @@ update_main:
 print_which_tests_havent_run:
 	./scripts/print_which_tests_havent_run.sh
 
-remove_randomly_generated_tests:
-	./scripts/remove_randomly_generated_tests.sh
+finish_running_tests:
+	./scripts/finish_running_tests.sh
