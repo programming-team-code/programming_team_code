@@ -1,5 +1,6 @@
 /** @file */
 #pragma once
+#include "calc_sieve.hpp"
 /**
  * @param val an integer
  * @returns 1 iff val is prime

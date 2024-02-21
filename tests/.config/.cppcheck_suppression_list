@@ -10,7 +10,6 @@ unusedScopedObject:library_checker_aizu_tests/graphs/centroid_path_dist.test.cpp
 unusedScopedObject:../library/graphs/edge_centroid_decomp/count_paths_per_length.hpp:15
 unusedScopedObject:library_checker_aizu_tests/graphs/edge_cd_lca.test.cpp:20
 unusedScopedObject:library_checker_aizu_tests/graphs/edge_cd_reroot_dp.test.cpp:50
-arrayIndexOutOfBoundsCond:../library/math/prime_sieve/get_prime_factors.hpp:14
 arrayIndexOutOfBoundsCond:library_checker_aizu_tests/math/linear_prime_sieve.test.cpp:17
 negativeContainerIndex:../library/strings/suffix_array_related/find/find_string_bwt.hpp:50
 useStlAlgorithm:../kactl/content/numerical/FastFourierTransform.h:53
@@ -41,10 +40,8 @@ ctuOneDefinitionRuleViolation:../library/math/matrix_related/xor_basis_ordered.h
 syntaxError:../library/math/n_choose_k/pascals_identity.hpp:5
 syntaxError:../library/math/prime_sieve/calc_sieve.hpp:9
 syntaxError:../library/math/prime_sieve/calc_linear_sieve.hpp:9
-syntaxError:../library/math/prime_sieve/get_prime_factors.hpp:3
-syntaxError:../library/loops/chooses.hpp:8
+syntaxError:../library/loops/chooses.hpp:9
 syntaxError:../library/loops/quotients.hpp:16
 syntaxError:../library/loops/submasks.hpp:9
 syntaxError:../library/loops/supermasks.hpp:10
 syntaxError:../library/math/mobius.hpp:12
-unmatchedSuppression:../library/math/prime_sieve/get_prime_factors.hpp:14
