@@ -13,4 +13,4 @@
  * @time O(sqrt(n))
  * @space O(1)
  */
-for (int64_t le = 1, ri = 1; le <= n && (ri = n / (n / le)); le = ri + 1)
+for (int64_t le = 1, ri; le <= n && (ri = n / (n / le)); le = ri + 1)
