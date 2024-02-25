@@ -1071,7 +1071,7 @@ EXCLUDE_SYMBOLS        = HLD::node \
                          allocate \
                          is_join \
                          lift \
-                         par_head \
+                         head \
                          in_label \
                          ascendant \
                          bit_floor \
