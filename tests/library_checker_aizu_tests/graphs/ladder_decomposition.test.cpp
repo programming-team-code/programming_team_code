@@ -2,6 +2,7 @@
 #include "../template.hpp"
 
 #include "../../../library/graphs/ladder_decomposition.hpp"
+#include "../../../library/graphs/linear_kth_par.hpp"
 
 int main() {
 	cin.tie(0)->sync_with_stdio(0);
@@ -15,6 +16,7 @@ int main() {
 		adj[v].push_back(u);
 	}
 	ladder ld(adj);
+	linear_kth_par lin_ld(adj);
 	vector<vector<int>> adj_rooted(n + n);
 	for (int i = 0; i < n; i++)
 		if (ld.p[i] != i) {
@@ -22,6 +24,7 @@ int main() {
 			adj_rooted[ld.p[i] + n].push_back(i + n);
 		}
 	ladder ld_rooted(adj_rooted);
+	linear_kth_par lin_ld_rooted(adj_rooted);
 	while (q--) {
 		int u, v, k;
 		cin >> u >> v >> k;
@@ -36,6 +39,12 @@ int main() {
 			assert(res == curr_1);
 			auto curr_2 = ld_rooted.kth_par(u + n, k);
 			assert(res == curr_2 - n);
+			auto curr_3 = lin_ld.kth_par(u, k);
+			assert(res == curr_3);
+			auto curr_4 = lin_ld_rooted.kth_par(u, k);
+			assert(res == curr_4);
+			auto curr_5 = lin_ld_rooted.kth_par(u + n, k);
+			assert(res == curr_5 - n);
 			cout << res << '\n';
 		} else {
 			int res = ld.kth_par(v, u_lca + v_lca - k);
@@ -44,6 +53,12 @@ int main() {
 			assert(res == curr_1);
 			auto curr_2 = ld_rooted.kth_par(v + n, u_lca + v_lca - k);
 			assert(res == curr_2 - n);
+			auto curr_3 = lin_ld.kth_par(v, u_lca + v_lca - k);
+			assert(res == curr_3);
+			auto curr_4 = lin_ld_rooted.kth_par(v, u_lca + v_lca - k);
+			assert(res == curr_4);
+			auto curr_5 = lin_ld_rooted.kth_par(v + n, u_lca + v_lca - k);
+			assert(res == curr_5 - n);
 			cout << res << '\n';
 		}
 	}
