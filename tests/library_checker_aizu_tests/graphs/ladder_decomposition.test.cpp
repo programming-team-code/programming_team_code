@@ -1,8 +1,8 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/jump_on_tree"
 #include "../template.hpp"
 
-#include "../../../library/graphs/ladder_decomposition.hpp"
-#include "../../../library/graphs/linear_kth_par.hpp"
+#include "../../../library/graphs/ladder_decomposition/ladder_decomposition.hpp"
+#include "../../../library/graphs/ladder_decomposition/linear_kth_par.hpp"
 
 int main() {
 	cin.tie(0)->sync_with_stdio(0);
