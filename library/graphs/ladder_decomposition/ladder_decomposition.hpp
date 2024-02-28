@@ -1,6 +1,6 @@
 /** @file */
 #pragma once
-#include "../../kactl/content/graph/BinaryLifting.h"
+#include "../../../kactl/content/graph/BinaryLifting.h"
 /**
  * @see https://codeforces.com/blog/entry/71567#comment-559299 https://youtu.be/0rCFkuQS968
  * @code{.cpp}
@@ -29,7 +29,7 @@ struct ladder {
 			if (p[i] == i || dl[p[i]] != dl[i]) {
 				int leaf = dl[i];
 				auto& lad = l_tbl[leaf];
-				lad.resize(min(2 * (d[leaf] - d[i]), d[leaf]) + 1, leaf);
+				lad.resize(min(2 * (d[leaf] - d[i]), d[leaf] + 1), leaf);
 				for (int j = 1; j < ssize(lad); j++)
 					lad[j] = p[lad[j - 1]];
 			}

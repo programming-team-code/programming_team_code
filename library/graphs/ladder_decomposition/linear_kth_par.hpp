@@ -18,7 +18,7 @@ struct linear_kth_par {
 		auto add_j = [&]() -> void {
 			j.push_back(st[0]);
 			int i = ssize(st) - 1 - 2 * (ssize(j) & -ssize(j));
-			if (i >= 0) j.back() = st[i];
+			if (i > 0) j.back() = st[i];
 		};
 		auto dfs = [&](auto&& self, int u) -> void {
 			st.push_back(u);
