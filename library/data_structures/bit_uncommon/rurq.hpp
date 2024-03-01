@@ -51,9 +51,9 @@ template <class T> struct bit_rurq {
 	 * @time O(log n)
 	 * @space O(1)
 	 */
-	inline T sum(int ri) {
+	inline T query(int ri) {
 		assert(0 <= ri && ri <= n);
-		return bit1.sum(ri) * ri - bit2.sum(ri);
+		return bit1.query(ri) * ri - bit2.query(ri);
 	}
 	/**
 	 * @param le,ri defines range [le, ri)
@@ -61,8 +61,8 @@ template <class T> struct bit_rurq {
 	 * @time O(log n)
 	 * @space O(1)
 	 */
-	inline T sum(int le, int ri) {
+	inline T query(int le, int ri) {
 		assert(le <= ri);
-		return sum(ri) - sum(le);
+		return query(ri) - query(le);
 	}
 };
