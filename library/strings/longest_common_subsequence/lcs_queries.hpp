@@ -35,7 +35,7 @@ template <class T> vector<int> lcs_queries(const T& s, const T& t, const vector<
 		sort(begin(qs[i]), end(qs[i]));
 		for (int t_le = 0, j = 0; t_le < m; t_le++) {
 			while (j < ssize(qs[i]) && qs[i][j][0] == t_le)
-				res[qs[i][j][2]] = bit.sum(t_le, qs[i][j][1]), j++;
+				res[qs[i][j][2]] = bit.query(t_le, qs[i][j][1]), j++;
 			if (dp_inv[t_le] != -1) bit.update(dp_inv[t_le], 1);
 		}
 	}

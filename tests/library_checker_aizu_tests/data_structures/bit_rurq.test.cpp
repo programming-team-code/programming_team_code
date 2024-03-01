@@ -23,7 +23,7 @@ int main() {
 			int le, ri;
 			cin >> le >> ri;
 			le--;
-			cout << bit.sum(le, ri) << '\n';
+			cout << bit.query(le, ri) << '\n';
 		}
 	}
 	return 0;
