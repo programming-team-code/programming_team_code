@@ -24,10 +24,10 @@ int main() {
 	partial_sum(rbegin(arr), rend(arr), rbegin(suf_sum));
 	bit_rupq<int64_t> bit_i(suf_sum);
 	for (int i = 0; i < n; i++) {
-		auto curr_1 = bit.sum(i, i + 1);
+		auto curr_1 = bit.query(i, i + 1);
 		assert(arr[i] == curr_1);
 		auto curr_2 = bit_i.get_index(i);
-		auto curr_3 = bit.sum(i, n);
+		auto curr_3 = bit.query(i, n);
 		assert(curr_2 == curr_3);
 		auto curr_4 = bit_i.get_index(i);
 		assert(curr_4 == suf_sum[i]);
@@ -45,13 +45,13 @@ int main() {
 		} else {
 			int l, r;
 			cin >> l >> r;
-			int64_t res = bit.sum(l, r);
+			int64_t res = bit.query(l, r);
 			{
 				int64_t bit_i_result = bit_i.get_index(l);
 				if (r < n) bit_i_result -= bit_i.get_index(r);
 				assert(res == bit_i_result);
 			}
-			auto curr_res = bit_rr.sum(l, r);
+			auto curr_res = bit_rr.query(l, r);
 			assert(res == curr_res);
 			cout << res << '\n';
 		}
