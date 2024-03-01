@@ -43,6 +43,6 @@ template <class T> struct bit_rupq {
 	 */
 	inline T get_index(int i) {
 		assert(0 <= i && i < n);
-		return bit.sum(i + 1);
+		return bit.query(i + 1);
 	}
 };
