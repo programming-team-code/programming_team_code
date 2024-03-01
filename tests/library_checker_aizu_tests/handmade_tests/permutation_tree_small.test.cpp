@@ -10,8 +10,7 @@ int main() {
 		vector<int> a(n);
 		iota(begin(a), end(a), 0);
 		do {
-			perm_tree pt(a);
-			perm_tree_asserts(a, pt);
+			perm_tree pt = perm_tree_asserts(a);
 		} while (next_permutation(begin(a), end(a)));
 	}
 	cout << "Hello World\n";

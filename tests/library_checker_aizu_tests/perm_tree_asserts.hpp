@@ -1,8 +1,26 @@
 #pragma once
 #include "../../library/data_structures/rmq.hpp"
 #include "../../library/data_structures/uncommon/permutation_tree.hpp"
-void perm_tree_asserts(const vector<int>& a, perm_tree& pt) {
+perm_tree perm_tree_asserts(const vector<int>& a) {
 	int n = ssize(a);
+	perm_tree pt(a);
+	{
+		vector<int> a_reverse(rbegin(a), rend(a));
+		perm_tree pt_reverse(a_reverse);
+		queue<pair<int, int>> q;
+		q.push({pt.root, pt_reverse.root});
+		while (!empty(q)) {
+			auto [u, u_reverse] = q.front();
+			q.pop();
+			assert(ssize(pt.adj[u]) == ssize(pt_reverse.adj[u_reverse]));
+			assert(pt.is_join[u] == pt_reverse.is_join[u_reverse]);
+			assert(pt.len[u] == pt_reverse.len[u_reverse]);
+			assert(pt.mn_val[u] == pt_reverse.mn_val[u_reverse]);
+			assert(pt.mn_idx[u] == n - (pt_reverse.mn_idx[u_reverse] + pt_reverse.len[u_reverse]));
+			for (int i = 0; i < ssize(pt.adj[u]); i++)
+				q.push({pt.adj[u][i], pt_reverse.adj[u_reverse][ssize(pt_reverse.adj[u_reverse]) - i - 1]});
+		}
+	}
 	RMQ rmq_min(a, [](int x, int y) {return min(x, y);});
 	RMQ rmq_max(a, [](int x, int y) {return max(x, y);});
 	auto is_join = pt.is_join;
@@ -76,4 +94,5 @@ void perm_tree_asserts(const vector<int>& a, perm_tree& pt) {
 			assert(sum_len_naive == len[u]);
 		}
 	}
+	return pt;
 }

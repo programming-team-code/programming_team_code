@@ -11,8 +11,7 @@ int main() {
 	vector<int> a(n);
 	for (int i = 0; i < n; i++)
 		cin >> a[i];
-	perm_tree pt(a);
-	perm_tree_asserts(a, pt);
+	perm_tree pt = perm_tree_asserts(a);
 	auto is_join = pt.is_join;
 	auto mn_idx = pt.mn_idx;
 	auto mn_val = pt.mn_val;
