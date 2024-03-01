@@ -59,7 +59,7 @@ template <class T> struct contour_range_query {
 			auto& bit = bits[decomp][!side];
 			int my_l = clamp<int>(le - d, 1, ssize(bit.s));
 			int my_r = clamp<int>(ri - d, 1, ssize(bit.s));
-			sum += bit.sum(my_l, my_r);
+			sum += bit.query(my_l, my_r);
 		}
 		return sum;
 	}
