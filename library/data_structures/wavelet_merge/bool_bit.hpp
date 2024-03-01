@@ -33,7 +33,7 @@ struct bool_bit {
 	 */
 	inline int popcount(int i) {
 		assert(0 <= i && i <= n);
-		return presum.sum(i >> 6) + __builtin_popcountll(mask[i >> 6] & ((1ULL << (i & 63)) - 1));
+		return presum.query(i >> 6) + __builtin_popcountll(mask[i >> 6] & ((1ULL << (i & 63)) - 1));
 	}
 	/**
 	 * @param le,ri defines range [le, ri)
