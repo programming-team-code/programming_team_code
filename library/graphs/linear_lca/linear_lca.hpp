@@ -6,34 +6,33 @@ inline int bit_floor(unsigned x) {return x ? 1 << __lg(x) : 0;}
  * by Baruch Schieber, Uzi Vishkin, April 1987
  */
 struct linear_lca {
-	vector<vector<int>> adj;
 	int n;
 	vector<int> d, head, order;
 	vector<unsigned> in_label, ascendant;
 	/**
-	 * @param a_adj forest (rooted or unrooted)
+	 * @param adj forest (rooted or unrooted)
 	 * @time O(n)
 	 * @space O(n)
 	 */
-	linear_lca(const vector<vector<int>>& a_adj) : adj(a_adj), n(size(adj)), d(n), head(n + 1), in_label(n), ascendant(n) {
+	linear_lca(const vector<vector<int>>& adj) : n(size(adj)), d(n), head(n + 1), in_label(n), ascendant(n) {
+		auto dfs = [&](auto&& self, int u, int p) -> void {
+			order.push_back(u);
+			in_label[u] = ssize(order);
+			for (int v : adj[u])
+				if (v != p) {
+					d[v] = 1 + d[u];
+					self(self, v, u);
+					if (__builtin_ctz(in_label[v]) > __builtin_ctz(in_label[u]))
+						in_label[u] = in_label[v];
+				}
+			head[in_label[u]] = p;
+		};
 		for (int i = 0; i < n; i++)
-			if (in_label[i] == 0) dfs(i, i);
+			if (in_label[i] == 0) dfs(dfs, i, i);
 		for (int u : order) {
 			int x = in_label[u];
 			ascendant[u] = (x & -x) | ascendant[head[x]];
 		}
-	}
-	void dfs(int u, int p) {
-		order.push_back(u);
-		in_label[u] = ssize(order);
-		for (int v : adj[u])
-			if (v != p) {
-				d[v] = 1 + d[u];
-				dfs(v, u);
-				if (__builtin_ctz(in_label[v]) > __builtin_ctz(in_label[u]))
-					in_label[u] = in_label[v];
-			}
-		head[in_label[u]] = p;
 	}
 	inline int lift(int u, unsigned j) {
 		auto k = bit_floor(ascendant[u] ^ j);
