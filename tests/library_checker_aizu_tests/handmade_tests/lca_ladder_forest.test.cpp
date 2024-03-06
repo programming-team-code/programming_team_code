@@ -31,7 +31,9 @@ int main() {
 			}
 		}
 		tree_lift tl(adj);
+#define kth_path kth_path_tree_lift
 #include "../../../library/graphs/tree_lift/kth_path.hpp"
+#undef kth_path
 #define dist_edges dist_edges_tree_lift
 #include "../../../library/graphs/tree_lift/dist_edges.hpp"
 #undef dist_edges
@@ -46,9 +48,12 @@ int main() {
 #undef dist_edges
 		ladder lad(adj);
 		linear_kth_par<2> linear_kp_2(adj);
-		linear_kth_par linear_kp_3(adj);
+		linear_kth_par lin_kp(adj);
 		linear_kth_par<4> linear_kp_4(adj);
 		linear_kth_par<5> linear_kp_5(adj);
+#define kth_path kth_path_linear
+#include "../../../library/graphs/linear_kth_path.hpp"
+#undef kth_path
 		for (int i = 0; i < 100; i++) {
 			int u = get_rand<int>(0, n - 1);
 			int v = get_rand<int>(0, n - 1);
@@ -61,14 +66,15 @@ int main() {
 			assert(lca_1 == lca_3);
 			assert(dist_edges_tree_lift(u, v) == dist_edges_lca_rmq(u, v));
 			assert(dist_edges_tree_lift(u, v) == dist_edges_linear_lca(u, v));
-			assert(kth_path(u, v, 1) == next_on_path(u, v));
+			assert(kth_path_tree_lift(u, v, 1) == next_on_path(u, v));
+			assert(kth_path_linear(u, v, 1) == next_on_path(u, v));
 			if (tl.d[u] > tl.d[v]) swap(u, v);
 			auto curr_res = tl.kth_par(v, tl.d[v] - tl.d[u]);
 			auto curr_res1 = lad.kth_par(v, tl.d[v] - tl.d[u]);
 			assert(curr_res == curr_res1);
 			auto curr_res2 = linear_kp_2.kth_par(v, tl.d[v] - tl.d[u]);
 			assert(curr_res == curr_res2);
-			auto curr_res3 = linear_kp_3.kth_par(v, tl.d[v] - tl.d[u]);
+			auto curr_res3 = lin_kp.kth_par(v, tl.d[v] - tl.d[u]);
 			assert(curr_res == curr_res3);
 			auto curr_res4 = linear_kp_4.kth_par(v, tl.d[v] - tl.d[u]);
 			assert(curr_res == curr_res4);
