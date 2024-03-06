@@ -17,10 +17,10 @@ struct tree_lift {
 			if (j[i] == -1) j[i] = i, dfs(adj, i);
 	}
 	void dfs(const vector<vector<int>>& adj, int u) {
-		int jmp = (d[u] + d[j[j[u]]] == 2 * d[j[u]]) ? j[j[u]] : u;
+		int jump = (d[u] + d[j[j[u]]] == 2 * d[j[u]]) ? j[j[u]] : u;
 		for (int v : adj[u])
 			if (v != p[u])
-				d[v] = d[p[v] = u] + 1, j[v] = jmp, dfs(adj, v);
+				d[v] = d[p[v] = u] + 1, j[v] = jump, dfs(adj, v);
 	}
 	/**
 	 * @param u query node
