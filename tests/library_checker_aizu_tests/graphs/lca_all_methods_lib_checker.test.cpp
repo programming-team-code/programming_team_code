@@ -19,7 +19,7 @@ int main() {
 	}
 	tree_lift tl(adj);
 	LCA lca(adj);
-#include "../../../library/graphs/lca_rmq/next_on_path.hpp"
+#include "../../../library/graphs/lca_rmq/in_subtree.hpp"
 	linear_lca lin_lca(adj);
 	for (int i = 0; i < n; i++) {
 		auto curr_1 = tl.get_lca(i, i);

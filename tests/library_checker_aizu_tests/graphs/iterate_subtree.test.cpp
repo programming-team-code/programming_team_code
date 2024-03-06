@@ -14,7 +14,7 @@ int main() {
 		adj[par].push_back(i);
 	}
 	LCA lca(adj);
-#include "../../../library/graphs/lca_rmq/next_on_path.hpp"
+#include "../../../library/graphs/lca_rmq/in_subtree.hpp"
 	{
 		vector<int> cnt_small_iterated(n), cnt_big_iterated(n);
 		for (int i = 0; i < n; i++) {
