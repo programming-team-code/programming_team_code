@@ -4,7 +4,6 @@
 #include "../../../library/data_structures/uncommon/dsu_restorable.hpp"
 
 #include "../../../library/graphs/tree_lift/tree_lift.hpp"
-#include "../../../library/graphs/tree_lift/kth_path.hpp"
 
 #include "../../../library/graphs/lca_rmq/lca_rmq.hpp"
 
@@ -32,6 +31,7 @@ int main() {
 			}
 		}
 		tree_lift tl(adj);
+#include "../../../library/graphs/tree_lift/kth_path.hpp"
 #define dist_edges dist_edges_tree_lift
 #include "../../../library/graphs/tree_lift/dist_edges.hpp"
 #undef dist_edges
@@ -61,7 +61,7 @@ int main() {
 			assert(lca_1 == lca_3);
 			assert(dist_edges_tree_lift(u, v) == dist_edges_lca_rmq(u, v));
 			assert(dist_edges_tree_lift(u, v) == dist_edges_linear_lca(u, v));
-			assert(kth_path(tl, u, v, 1) == next_on_path(u, v));
+			assert(kth_path(u, v, 1) == next_on_path(u, v));
 			if (tl.d[u] > tl.d[v]) swap(u, v);
 			auto curr_res = tl.kth_par(v, tl.d[v] - tl.d[u]);
 			auto curr_res1 = lad.kth_par(v, tl.d[v] - tl.d[u]);
