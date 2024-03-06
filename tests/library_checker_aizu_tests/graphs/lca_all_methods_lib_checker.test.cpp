@@ -18,23 +18,23 @@ int main() {
 		adj[par].push_back(i);
 	}
 	tree_lift tl(adj);
-	LCA lca(adj);
+	LCA lc(adj);
 #include "../../../library/graphs/lca_rmq/in_subtree.hpp"
 	linear_lca lin_lca(adj);
 	for (int i = 0; i < n; i++) {
 		auto curr_1 = tl.get_lca(i, i);
 		assert(curr_1 == i);
-		auto curr_2 = lca.get_lca(i, i);
+		auto curr_2 = lc.get_lca(i, i);
 		assert(curr_2 == i);
 		auto curr_3 = lin_lca.get_lca(i, i);
 		assert(curr_3 == i);
-		assert(lca.in[lca.order[i]] == i && lca.order[lca.in[i]] == i);
+		assert(lc.in[lc.order[i]] == i && lc.order[lc.in[i]] == i);
 	}
 	while (q--) {
 		int u, v;
 		cin >> u >> v;
 		int curr_lca = tl.get_lca(u, v);
-		auto curr_1 = lca.get_lca(u, v);
+		auto curr_1 = lc.get_lca(u, v);
 		assert(curr_lca == curr_1);
 		auto curr_2 = lin_lca.get_lca(u, v);
 		assert(curr_lca == curr_2);

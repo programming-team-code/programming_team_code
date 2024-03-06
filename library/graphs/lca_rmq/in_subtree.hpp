@@ -3,7 +3,7 @@
 #include "lca_rmq.hpp"
 /**
  * @code{.cpp}
-       LCA lca(adj); //required
+       LCA lc(adj); //required
  * @endcode
  * @param u,v 2 nodes
  * @returns 1 iff v is in u's subtree
@@ -11,5 +11,5 @@
  * @space O(1)
  */
 auto in_subtree = [&](int u, int v) -> bool {
-	return lca.in[u] <= lca.in[v] && lca.in[v] < lca.in[u] + lca.sub_sz[u];
+	return lc.in[u] <= lc.in[v] && lc.in[v] < lc.in[u] + lc.sub_sz[u];
 };

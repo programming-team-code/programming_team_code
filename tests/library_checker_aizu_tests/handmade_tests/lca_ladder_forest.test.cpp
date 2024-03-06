@@ -35,7 +35,7 @@ int main() {
 #define dist_edges dist_edges_tree_lift
 #include "../../../library/graphs/tree_lift/dist_edges.hpp"
 #undef dist_edges
-		LCA lca(adj);
+		LCA lc(adj);
 #include "../../../library/graphs/lca_rmq/next_on_path.hpp"
 #define dist_edges dist_edges_lca_rmq
 #include "../../../library/graphs/lca_rmq/dist_edges.hpp"
@@ -55,7 +55,7 @@ int main() {
 			if (u == v || !dsu.same_set(u, v))
 				continue;
 			auto lca_1 = tl.get_lca(u, v);
-			auto lca_2 = lca.get_lca(u, v);
+			auto lca_2 = lc.get_lca(u, v);
 			auto lca_3 = lin_lca.get_lca(u, v);
 			assert(lca_1 == lca_2);
 			assert(lca_1 == lca_3);

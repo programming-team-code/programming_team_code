@@ -23,7 +23,7 @@ int main() {
 #define dist_edges dist_edges_tree_lift
 #include "../../../library/graphs/tree_lift/dist_edges.hpp"
 #undef dist_edges
-	LCA lca(adj);
+	LCA lc(adj);
 #include "../../../library/graphs/lca_rmq/next_on_path.hpp"
 #define dist_edges dist_edges_lca_rmq
 #include "../../../library/graphs/lca_rmq/dist_edges.hpp"
