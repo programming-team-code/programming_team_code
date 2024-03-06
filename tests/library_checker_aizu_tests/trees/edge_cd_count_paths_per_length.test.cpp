@@ -2,7 +2,7 @@
 #include "../template.hpp"
 #include "../edge_cd_asserts.hpp"
 
-#include "../../../library/graphs/edge_centroid_decomp/count_paths_per_length.hpp"
+#include "../../../library/trees/edge_centroid_decomp/count_paths_per_length.hpp"
 
 int main() {
 	cin.tie(0)->sync_with_stdio(0);

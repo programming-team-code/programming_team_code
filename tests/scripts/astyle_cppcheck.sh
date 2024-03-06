@@ -36,19 +36,6 @@ find ../library/ library_checker_aizu_tests/ -name "*[A-Z]*" -or -name "*-*" |
 	grep --invert-match "README" &&
 	exit 1
 
-echo ".hpp files missing pragma once:"
-comm -23 --check-order <(
-	find ../library/ -type f -name "*.hpp" |
-		sort |
-		uniq
-) <(
-	grep --fixed-strings "#pragma once" --recursive ../library/ --files-with-matches |
-		sort |
-		uniq
-) |
-	grep . &&
-	exit 1
-
 astyle --options=.config/.astylerc --recursive "library_checker_aizu_tests/*.hpp" "library_checker_aizu_tests/*.test.cpp" "../library/*.hpp" "../library/*.cpp" |
 	grep "Formatted" && exit 1
 

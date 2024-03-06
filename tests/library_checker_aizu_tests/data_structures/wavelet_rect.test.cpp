@@ -37,8 +37,7 @@ int main() {
 			cout << 0 << '\n';
 		else {
 			int idx = start - 30;
-			auto curr = wt.rect_count(le, ri, idx, idx);
-			assert(curr == 0);
+			assert(wt.rect_count(le, ri, idx, idx) == 0);
 			cout << wt.rect_count(le, ri, idx, idx + 1) << '\n';
 		}
 	}

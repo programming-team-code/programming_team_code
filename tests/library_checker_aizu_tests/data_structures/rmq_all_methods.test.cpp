@@ -33,10 +33,8 @@ int main() {
 		int le, ri;
 		cin >> le >> ri;
 		int idx_min = lin_rmq.query_idx(le, ri - 1);
-		auto curr_1 = rmq.query(le, ri);
-		assert(a[idx_min] == curr_1);
-		auto curr_2 = dis_rmq.query(le, ri);
-		assert(a[idx_min] == curr_2);
+		assert(a[idx_min] == rmq.query(le, ri));
+		assert(a[idx_min] == dis_rmq.query(le, ri));
 		cout << a[idx_min] << '\n';
 	}
 }

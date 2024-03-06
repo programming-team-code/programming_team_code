@@ -15,10 +15,8 @@ void test_all_subarrays(const vector<int>& a) {
 		for (int ri = le + 1; ri <= n; ri++) {
 			int idx_min = lin_rmq.query_idx(le, ri - 1);
 			assert(le <= idx_min && idx_min < ri);
-			auto curr_1 = rmq.query(le, ri);
-			assert(a[idx_min] == curr_1);
-			auto curr_2 = dis_rmq.query(le, ri);
-			assert(a[idx_min] == curr_2);
+			assert(a[idx_min] == rmq.query(le, ri));
+			assert(a[idx_min] == dis_rmq.query(le, ri));
 		}
 	}
 }

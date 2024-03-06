@@ -38,10 +38,8 @@ int main() {
 				}
 				assert(ssize(comps) == dsu.num_sets);
 				for (auto& cc : comps)
-					for (auto node : cc) {
-						auto curr = dsu.size(node);
-						assert(curr == ssize(cc));
-					}
+					for (auto node : cc)
+						assert(dsu.size(node) == ssize(cc));
 			} else if (!empty(edge_st)) {
 				auto [u, v] = edge_st.back();
 				edge_st.pop_back();

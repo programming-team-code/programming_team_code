@@ -20,10 +20,8 @@ int main() {
 			merge_sort_tree mst(arr);
 			merge_sort_tree_updates mstu(arr, vector<bool>(n, 1));
 			for (int i = 0; i < n; i++) {
-				auto curr_1 = mst.kth_smallest(minn, maxn + 1, i + 1);
-				assert(curr_1 == i);
-				auto curr_2 = mstu.kth_smallest(minn, maxn + 1, i + 1);
-				assert(curr_2 == i);
+				assert(mst.kth_smallest(minn, maxn + 1, i + 1) == i);
+				assert(mstu.kth_smallest(minn, maxn + 1, i + 1) == i);
 			}
 			for (int queries = 30; queries--;) {
 				int x = get_rand<int>(-1000, 1000);
@@ -32,10 +30,8 @@ int main() {
 				for (int le = 0; le <= n; le++) {
 					int cnt = 0;
 					for (int ri = le; ri <= n; ri++) {
-						auto curr_1 = mst.rect_count(le, ri, x, y);
-						assert(curr_1 == cnt);
-						auto curr_2 = mstu.rect_count(le, ri, x, y);
-						assert(curr_2 == cnt);
+						assert(mst.rect_count(le, ri, x, y) == cnt);
+						assert(mstu.rect_count(le, ri, x, y) == cnt);
 						if (ri < n && x <= arr[ri] && arr[ri] < y)
 							cnt++;
 					}
@@ -44,15 +40,11 @@ int main() {
 				for (int i = 0; i < n; i++)
 					if (x <= arr[i] && arr[i] < y)
 						vals.push_back(i);
-				auto curr_1 = mst.rect_count(0, n, x, y);
-				assert(ssize(vals) == curr_1);
-				auto curr_2 = mstu.rect_count(0, n, x, y);
-				assert(ssize(vals) == curr_2);
+				assert(ssize(vals) == mst.rect_count(0, n, x, y));
+				assert(ssize(vals) == mstu.rect_count(0, n, x, y));
 				for (int k = 1; k <= ssize(vals); k++) {
-					auto curr_3 = mst.kth_smallest(x, y, k);
-					assert(curr_3 == vals[k - 1]);
-					auto curr_4 = mstu.kth_smallest(x, y, k);
-					assert(curr_4 == vals[k - 1]);
+					assert(mst.kth_smallest(x, y, k) == vals[k - 1]);
+					assert(mstu.kth_smallest(x, y, k) == vals[k - 1]);
 				}
 			}
 		}

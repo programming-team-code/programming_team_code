@@ -37,4 +37,7 @@ struct LCA {
 		auto [x, y] = minmax(in[u], in[v]);
 		return p[rmq.query(x + 1, y + 1)];
 	}
+#include "../dist_edges.hpp"
+#include "in_subtree.hpp"
+#include "next_on_path.hpp"
 };

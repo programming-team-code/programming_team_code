@@ -5,7 +5,7 @@
 #include "../../../kactl/stress-tests/utilities/genTree.h"
 
 #include "../../../library/math/binary_exponentiation_mod.hpp"
-#include "../../../library/graphs/edge_centroid_decomp/edge_cd.hpp"
+#include "../../../library/trees/edge_centroid_decomp/edge_cd.hpp"
 
 int main() {
 	{
