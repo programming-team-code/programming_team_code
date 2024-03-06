@@ -51,6 +51,6 @@ int main() {
 while (q--) {
 	int u, v;
 	cin >> u >> v;
-	cout << lc.get_lca(u, v) << '\n';
+	cout << lc.lca(u, v) << '\n';
 }
 }

@@ -20,14 +20,14 @@ int main() {
 	cd_asserts(adj);
 	cd_lca lca(adj);
 	for (int i = 0; i < n; i++) {
-		int curr_1 = lca.get_lca(i, i);
+		int curr_1 = lca.lca(i, i);
 		assert(curr_1 == i);
-		int curr_2 = lca.get_lca(i, i);
+		int curr_2 = lca.lca(i, i);
 		assert(curr_2 == i);
 	}
 	while (q--) {
 		int u, v;
 		cin >> u >> v;
-		cout << lca.get_lca(u, v) << '\n';
+		cout << lca.lca(u, v) << '\n';
 	}
 }

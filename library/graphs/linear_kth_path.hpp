@@ -14,7 +14,7 @@
  * @space O(1)
  */
 auto kth_path = [&](int u, int v, int k) -> int {
-	int lca_d = tl.d[tl.get_lca(u, v)];
+	int lca_d = tl.d[tl.lca(u, v)];
 	int u_lca = tl.d[u] - lca_d;
 	int v_lca = tl.d[v] - lca_d;
 	return k <= u_lca ? tl.kth_par(u, k) : tl.kth_par(v, u_lca + v_lca - k);

@@ -11,5 +11,5 @@
  * @space O(1)
  */
 auto dist_edges = [&](int u, int v) -> int {
-	return lc.d[u] + lc.d[v] - 2 * lc.d[lc.get_lca(u, v)];
+	return lc.d[u] + lc.d[v] - 2 * lc.d[lc.lca(u, v)];
 };

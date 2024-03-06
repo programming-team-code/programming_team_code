@@ -54,9 +54,9 @@ int main() {
 			int v = get_rand<int>(0, n - 1);
 			if (u == v || !dsu.same_set(u, v))
 				continue;
-			auto lca_1 = tl.get_lca(u, v);
-			auto lca_2 = lc.get_lca(u, v);
-			auto lca_3 = lin_lca.get_lca(u, v);
+			auto lca_1 = tl.lca(u, v);
+			auto lca_2 = lc.lca(u, v);
+			auto lca_3 = lin_lca.lca(u, v);
 			assert(lca_1 == lca_2);
 			assert(lca_1 == lca_3);
 			assert(dist_edges_tree_lift(u, v) == dist_edges_lca_rmq(u, v));

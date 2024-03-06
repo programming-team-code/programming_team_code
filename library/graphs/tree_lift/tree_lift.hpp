@@ -41,7 +41,7 @@ struct tree_lift {
 	 * @time O(log(path length(u, v)))
 	 * @space O(1)
 	 */
-	inline int get_lca(int u, int v) {
+	inline int lca(int u, int v) {
 		if (d[u] < d[v]) swap(u, v);
 		u = kth_par(u, d[u] - d[v]);
 		while (u != v)
