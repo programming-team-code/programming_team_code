@@ -36,7 +36,7 @@ struct cd_lca {
 	 * @time O(log(n))
 	 * @space O(1)
 	 */
-	int get_lca(int u, int v) {
+	int lca(int u, int v) {
 		for (int i = min(ssize(mn_d[u]), ssize(mn_d[v])) - 1;; i--)
 			if (to_cent[u][i] == to_cent[v][i])
 				return cmp(mn_d[u][i], mn_d[v][i]);

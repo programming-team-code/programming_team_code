@@ -45,3 +45,4 @@ syntaxError:../library/loops/quotients.hpp:16
 syntaxError:../library/loops/submasks.hpp:9
 syntaxError:../library/loops/supermasks.hpp:10
 syntaxError:../library/math/mobius.hpp:12
+syntaxError:../library/graphs/lca_rmq/iterate_subtree.hpp:13

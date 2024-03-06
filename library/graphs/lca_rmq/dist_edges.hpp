@@ -2,12 +2,14 @@
 #pragma once
 #include "lca_rmq.hpp"
 /**
- * @param lca lca via rmq
+ * @code{.cpp}
+       LCA lc(adj); //required
+ * @endcode
  * @param u,v endpoint nodes of path
  * @returns number of edges on path
  * @time O(1)
  * @space O(1)
  */
-inline int dist_edges(LCA& lca, int u, int v) {
-	return lca.d[u] + lca.d[v] - 2 * lca.d[lca.get_lca(u, v)];
-}
+auto dist_edges = [&](int u, int v) -> int {
+	return lc.d[u] + lc.d[v] - 2 * lc.d[lc.lca(u, v)];
+};

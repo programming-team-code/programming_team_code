@@ -6,6 +6,8 @@
 #define mn mn_other
 #define max_val max_val_other
 #include "../../../library/strings/suffix_array_related/lcp_interval_tree/find_string_lcpt.hpp"
+#undef mn
+#undef max_val
 
 int main() {
 	cin.tie(0)->sync_with_stdio(0);
