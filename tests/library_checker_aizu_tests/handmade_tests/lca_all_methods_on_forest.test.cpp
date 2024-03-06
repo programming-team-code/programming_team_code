@@ -11,6 +11,12 @@
 
 #include "../../../library/graphs/linear_lca/dist_edges.hpp"
 
+#include "../../../library/graphs/ladder_decomposition/ladder_decomposition.hpp"
+
+#define bit_floor bit_floor_2
+#include "../../../library/graphs/ladder_decomposition/linear_kth_par.hpp"
+#undef bit_floor
+
 int main() {
 	cin.tie(0)->sync_with_stdio(0);
 	for (int n = 1; n <= 100; n++) {
@@ -29,6 +35,11 @@ int main() {
 		tree_lift tl(adj);
 		LCA lca(adj);
 		linear_lca lin_lca(adj);
+		ladder lad(adj);
+		linear_kth_par<2> linear_kp_2(adj);
+		linear_kth_par linear_kp_3(adj);
+		linear_kth_par<4> linear_kp_4(adj);
+		linear_kth_par<5> linear_kp_5(adj);
 		for (int i = 0; i < 100; i++) {
 			int u = get_rand<int>(0, n - 1);
 			int v = get_rand<int>(0, n - 1);
@@ -44,6 +55,16 @@ int main() {
 			assert(kth_path(tl, u, v, 1) == next_on_path(lca, u, v));
 			if (tl.d[u] > tl.d[v]) swap(u, v);
 			auto curr_res = tl.kth_par(v, tl.d[v] - tl.d[u]);
+			auto curr_res1 = lad.kth_par(v, tl.d[v] - tl.d[u]);
+			assert(curr_res == curr_res1);
+			auto curr_res2 = linear_kp_2.kth_par(v, tl.d[v] - tl.d[u]);
+			assert(curr_res == curr_res2);
+			auto curr_res3 = linear_kp_3.kth_par(v, tl.d[v] - tl.d[u]);
+			assert(curr_res == curr_res3);
+			auto curr_res4 = linear_kp_4.kth_par(v, tl.d[v] - tl.d[u]);
+			assert(curr_res == curr_res4);
+			auto curr_res5 = linear_kp_5.kth_par(v, tl.d[v] - tl.d[u]);
+			assert(curr_res == curr_res5);
 			assert((u == curr_res) == in_subtree(lca, u, v));
 		}
 	}
