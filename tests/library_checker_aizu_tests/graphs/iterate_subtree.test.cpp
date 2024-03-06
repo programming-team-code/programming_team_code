@@ -2,7 +2,6 @@
 #include "../template.hpp"
 
 #include "../../../library/graphs/lca_rmq/lca_rmq.hpp"
-#include "../../../library/graphs/lca_rmq/iterate_subtree.hpp"
 #include "../../../library/graphs/lca_rmq/next_on_path.hpp"
 
 int main() {
@@ -31,11 +30,11 @@ int main() {
 					if (ri < n) cnt_big_iterated[ri]--;
 					continue;
 				}
-				iterate_subtree(lca, u, [&](int v) {
+#include "../../../library/graphs/lca_rmq/iterate_subtree.hpp"
 					assert(lca.d[u] <= lca.d[v]);
 					assert(in_subtree(lca, u, v));
 					cnt_small_iterated[v]++;
-				});
+				}
 			}
 		}
 		partial_sum(begin(cnt_big_iterated), end(cnt_big_iterated), begin(cnt_big_iterated));
