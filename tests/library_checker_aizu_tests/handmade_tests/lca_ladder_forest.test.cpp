@@ -3,13 +3,13 @@
 #include "../../../library/contest/random.hpp"
 #include "../../../library/data_structures/uncommon/dsu_restorable.hpp"
 
-#include "../../../library/graphs/tree_lift/dist_edges.hpp"
+#include "../../../library/graphs/tree_lift/tree_lift.hpp"
 #include "../../../library/graphs/tree_lift/kth_path.hpp"
 
-#include "../../../library/graphs/lca_rmq/dist_edges.hpp"
+#include "../../../library/graphs/lca_rmq/lca_rmq.hpp"
 #include "../../../library/graphs/lca_rmq/next_on_path.hpp"
 
-#include "../../../library/graphs/linear_lca/dist_edges.hpp"
+#include "../../../library/graphs/linear_lca/linear_lca.hpp"
 
 #include "../../../library/graphs/ladder_decomposition/ladder_decomposition.hpp"
 
@@ -33,8 +33,17 @@ int main() {
 			}
 		}
 		tree_lift tl(adj);
+#define dist_edges dist_edges_tree_lift
+#include "../../../library/graphs/tree_lift/dist_edges.hpp"
+#undef dist_edges
 		LCA lca(adj);
+#define dist_edges dist_edges_lca_rmq
+#include "../../../library/graphs/lca_rmq/dist_edges.hpp"
+#undef dist_edges
 		linear_lca lin_lca(adj);
+#define dist_edges dist_edges_linear_lca
+#include "../../../library/graphs/linear_lca/dist_edges.hpp"
+#undef dist_edges
 		ladder lad(adj);
 		linear_kth_par<2> linear_kp_2(adj);
 		linear_kth_par linear_kp_3(adj);
@@ -50,8 +59,8 @@ int main() {
 			auto lca_3 = lin_lca.get_lca(u, v);
 			assert(lca_1 == lca_2);
 			assert(lca_1 == lca_3);
-			assert(dist_edges(tl, u, v) == dist_edges(lca, u, v));
-			assert(dist_edges(tl, u, v) == dist_edges(lin_lca, u, v));
+			assert(dist_edges_tree_lift(u, v) == dist_edges_lca_rmq(u, v));
+			assert(dist_edges_tree_lift(u, v) == dist_edges_linear_lca(u, v));
 			assert(kth_path(tl, u, v, 1) == next_on_path(lca, u, v));
 			if (tl.d[u] > tl.d[v]) swap(u, v);
 			auto curr_res = tl.kth_par(v, tl.d[v] - tl.d[u]);
