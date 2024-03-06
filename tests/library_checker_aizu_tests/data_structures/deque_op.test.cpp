@@ -47,8 +47,7 @@ int main() {
 				cout << (1LL * curr.first * x + curr.second) % mod << '\n';
 			}
 		}
-		auto curr_1 = dq.siz();
-		assert(ssize(stl_dq) == curr_1);
+		assert(ssize(stl_dq) == dq.siz());
 		if (dq.siz()) {
 			for (int index_tests = 10; index_tests--;) {
 				int idx = get_rand<int>(0, dq.siz() - 1);

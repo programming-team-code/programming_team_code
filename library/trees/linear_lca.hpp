@@ -49,4 +49,5 @@ struct linear_lca {
 		auto j = ascendant[u] & ascendant[v] & -bit_floor((x - 1) ^ y);
 		return d[u = lift(u, j)] < d[v = lift(v, j)] ? u : v;
 	}
+#include "dist_edges.hpp"
 };

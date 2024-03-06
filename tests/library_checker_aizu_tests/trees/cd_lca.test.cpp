@@ -4,7 +4,7 @@
 #include "../template.hpp"
 #include "../cd_asserts.hpp"
 
-#include "../../../library/graphs/centroid_decomp/lca.hpp"
+#include "../../../library/trees/centroid_decomp/lca.hpp"
 
 int main() {
 	cin.tie(0)->sync_with_stdio(0);
@@ -20,10 +20,8 @@ int main() {
 	cd_asserts(adj);
 	cd_lca lca(adj);
 	for (int i = 0; i < n; i++) {
-		int curr_1 = lca.lca(i, i);
-		assert(curr_1 == i);
-		int curr_2 = lca.lca(i, i);
-		assert(curr_2 == i);
+		assert(lca.lca(i, i) == i);
+		assert(lca.lca(i, i) == i);
 	}
 	while (q--) {
 		int u, v;

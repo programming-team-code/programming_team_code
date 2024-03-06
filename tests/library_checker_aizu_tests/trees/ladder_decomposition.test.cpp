@@ -1,8 +1,8 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/jump_on_tree"
 #include "../template.hpp"
 
-#include "../../../library/graphs/ladder_decomposition/ladder_decomposition.hpp"
-#include "../../../library/graphs/ladder_decomposition/linear_kth_par.hpp"
+#include "../../../library/trees/ladder_decomposition/ladder_decomposition.hpp"
+#include "../../../library/trees/ladder_decomposition/linear_kth_par.hpp"
 
 int main() {
 	cin.tie(0)->sync_with_stdio(0);
@@ -45,38 +45,24 @@ int main() {
 		else if (k <= u_lca) {
 			int res = ld.kth_par(u, k);
 			assert(res == jmp(ld.b_tbl, u, k));
-			auto curr_1 = ld_rooted.kth_par(u, k);
-			assert(res == curr_1);
-			auto curr_2 = ld_rooted.kth_par(u + n, k);
-			assert(res == curr_2 - n);
-			auto curr_3_2 = lin_ld_2.kth_par(u, k);
-			assert(res == curr_3_2);
-			auto curr_3_3 = lin_ld_3.kth_par(u, k);
-			assert(res == curr_3_3);
-			auto curr_3_4 = lin_ld_4.kth_par(u, k);
-			assert(res == curr_3_4);
-			auto curr_4 = lin_ld_rooted.kth_par(u, k);
-			assert(res == curr_4);
-			auto curr_5 = lin_ld_rooted.kth_par(u + n, k);
-			assert(res == curr_5 - n);
+			assert(res == ld_rooted.kth_par(u, k));
+			assert(res == ld_rooted.kth_par(u + n, k) - n);
+			assert(res == lin_ld_2.kth_par(u, k));
+			assert(res == lin_ld_3.kth_par(u, k));
+			assert(res == lin_ld_4.kth_par(u, k));
+			assert(res == lin_ld_rooted.kth_par(u, k));
+			assert(res == lin_ld_rooted.kth_par(u + n, k) - n);
 			cout << res << '\n';
 		} else {
 			int res = ld.kth_par(v, u_lca + v_lca - k);
 			assert(res == jmp(ld.b_tbl, v, u_lca + v_lca - k));
-			auto curr_1 = ld_rooted.kth_par(v, u_lca + v_lca - k);
-			assert(res == curr_1);
-			auto curr_2 = ld_rooted.kth_par(v + n, u_lca + v_lca - k);
-			assert(res == curr_2 - n);
-			auto curr_3_2 = lin_ld_2.kth_par(v, u_lca + v_lca - k);
-			assert(res == curr_3_2);
-			auto curr_3_3 = lin_ld_3.kth_par(v, u_lca + v_lca - k);
-			assert(res == curr_3_3);
-			auto curr_3_4 = lin_ld_4.kth_par(v, u_lca + v_lca - k);
-			assert(res == curr_3_4);
-			auto curr_4 = lin_ld_rooted.kth_par(v, u_lca + v_lca - k);
-			assert(res == curr_4);
-			auto curr_5 = lin_ld_rooted.kth_par(v + n, u_lca + v_lca - k);
-			assert(res == curr_5 - n);
+			assert(res == ld_rooted.kth_par(v, u_lca + v_lca - k));
+			assert(res == ld_rooted.kth_par(v + n, u_lca + v_lca - k) - n);
+			assert(res == lin_ld_2.kth_par(v, u_lca + v_lca - k));
+			assert(res == lin_ld_3.kth_par(v, u_lca + v_lca - k));
+			assert(res == lin_ld_4.kth_par(v, u_lca + v_lca - k));
+			assert(res == lin_ld_rooted.kth_par(v, u_lca + v_lca - k));
+			assert(res == lin_ld_rooted.kth_par(v + n, u_lca + v_lca - k) - n);
 			cout << res << '\n';
 		}
 	}

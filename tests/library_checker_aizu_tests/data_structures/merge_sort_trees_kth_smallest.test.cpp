@@ -30,8 +30,7 @@ int main() {
 		int le, ri, k;
 		cin >> le >> ri >> k;
 		int res = mst.kth_smallest(le, ri, k + 1);
-		auto curr = mstu.kth_smallest(le, ri, k + 1);
-		assert(res == curr);
+		assert(res == mstu.kth_smallest(le, ri, k + 1));
 		cout << sorted[res] << '\n';
 	}
 	return 0;

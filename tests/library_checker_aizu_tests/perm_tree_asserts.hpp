@@ -58,8 +58,7 @@ perm_tree perm_tree_asserts(const vector<int>& a) {
 			for (int i = 1; i < ssize(adj[u]); i++) {
 				int prev = adj[u][i - 1], curr = adj[u][i];
 				assert(mn_idx[prev] + len[prev] == mn_idx[curr]);
-				bool curr_touches = pt.touches(prev, curr);
-				assert(is_join[u] == curr_touches);
+				assert(is_join[u] == pt.touches(prev, curr));
 			}
 			if (ssize(adj[u]) <= 10) {
 				for (int i = 0; i < ssize(adj[u]); i++) {

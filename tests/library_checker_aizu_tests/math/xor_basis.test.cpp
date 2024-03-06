@@ -72,10 +72,8 @@ int main() {
 					assert(ordered_bitset.b[j][j] == ordered_bitset.b[j].any());
 					assert(((ordered_ll.b[j] >> j) & 1) == (!!ordered_ll.b[j]));
 					assert(ordered_bitset.b[j] == bitset<lg>(ordered_ll.b[j]));
-					if (ordered_bitset.b[j][j]) {
-						int64_t curr_shrink_val = unordered.shrink(ordered_bitset.b[j].to_ullong());
-						assert(curr_shrink_val == 0);
-					}
+					if (ordered_bitset.b[j][j])
+						assert(unordered.shrink(ordered_bitset.b[j].to_ullong()) == 0);
 				}
 				for (int i1 = 0; i1 < ssize(unordered.b); i1++) {
 					for (int i2 = i1 + 1; i2 < ssize(unordered.b); i2++) {
@@ -100,10 +98,8 @@ int main() {
 			for (int64_t vec : u.b) v_u_union.insert(vec);
 			assert(ssize(u_v_union.b) == ssize(v_u_union.b));
 			for (int64_t vec : basises[mask].b) {
-				int64_t curr = u.shrink(vec);
-				assert(curr == 0);
-				curr = v.shrink(vec);
-				assert(curr == 0);
+				assert(u.shrink(vec) == 0);
+				assert(v.shrink(vec) == 0);
 			}
 		}
 		if (__builtin_popcount(mask) % 2 == 1) res += 1LL << ssize(basises[mask].b);

@@ -48,8 +48,7 @@ int main() {
 			for (int len = 1; len <= n; len++) {
 				for (int le = 0; le + len <= n; le++) {
 					int ri = le + len;
-					auto curr = pcq.count_pals(le, ri);
-					assert(curr == count_pals_naive[le][ri]);
+					assert(pcq.count_pals(le, ri) == count_pals_naive[le][ri]);
 				}
 			}
 			vector<vector<int>> longest_pal(n + 1, vector<int>(n + 1, 0));

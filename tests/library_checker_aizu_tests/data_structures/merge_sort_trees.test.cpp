@@ -21,13 +21,10 @@ int main() {
 	while (q--) {
 		int le, ri, x;
 		cin >> le >> ri >> x;
-		auto curr_1 = mst.rect_count(le, ri, x, x);
-		assert(curr_1 == 0);
-		auto curr_2 = mstu.rect_count(le, ri, x, x);
-		assert(curr_2 == 0);
+		assert(mst.rect_count(le, ri, x, x) == 0);
+		assert(mstu.rect_count(le, ri, x, x) == 0);
 		int res = mst.rect_count(le, ri, x, x + 1);
-		auto curr_3 = mstu.rect_count(le, ri, x, x + 1);
-		assert(res == curr_3);
+		assert(res == mstu.rect_count(le, ri, x, x + 1));
 		cout << res << '\n';
 	}
 	return 0;

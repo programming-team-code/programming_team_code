@@ -28,8 +28,7 @@ int main() {
 			cin >> idx;
 			idx--;
 			int64_t res = bit_i_1.get_index(idx);
-			auto curr = bit_i_2.get_index(idx);
-			assert(res == curr - 50);
+			assert(res == bit_i_2.get_index(idx) - 50);
 			cout << res << '\n';
 		}
 	}

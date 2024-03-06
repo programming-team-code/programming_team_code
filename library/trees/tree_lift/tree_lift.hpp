@@ -49,4 +49,6 @@ struct tree_lift {
 			else u = p[u], v = p[v];
 		return u;
 	}
+#include "../dist_edges.hpp"
+#include "kth_path.hpp"
 };
