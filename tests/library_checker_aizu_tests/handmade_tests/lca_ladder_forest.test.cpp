@@ -7,7 +7,6 @@
 #include "../../../library/graphs/tree_lift/kth_path.hpp"
 
 #include "../../../library/graphs/lca_rmq/lca_rmq.hpp"
-#include "../../../library/graphs/lca_rmq/next_on_path.hpp"
 
 #include "../../../library/graphs/linear_lca/linear_lca.hpp"
 
@@ -37,6 +36,7 @@ int main() {
 #include "../../../library/graphs/tree_lift/dist_edges.hpp"
 #undef dist_edges
 		LCA lca(adj);
+#include "../../../library/graphs/lca_rmq/next_on_path.hpp"
 #define dist_edges dist_edges_lca_rmq
 #include "../../../library/graphs/lca_rmq/dist_edges.hpp"
 #undef dist_edges
@@ -61,7 +61,7 @@ int main() {
 			assert(lca_1 == lca_3);
 			assert(dist_edges_tree_lift(u, v) == dist_edges_lca_rmq(u, v));
 			assert(dist_edges_tree_lift(u, v) == dist_edges_linear_lca(u, v));
-			assert(kth_path(tl, u, v, 1) == next_on_path(lca, u, v));
+			assert(kth_path(tl, u, v, 1) == next_on_path(u, v));
 			if (tl.d[u] > tl.d[v]) swap(u, v);
 			auto curr_res = tl.kth_par(v, tl.d[v] - tl.d[u]);
 			auto curr_res1 = lad.kth_par(v, tl.d[v] - tl.d[u]);
@@ -74,7 +74,7 @@ int main() {
 			assert(curr_res == curr_res4);
 			auto curr_res5 = linear_kp_5.kth_par(v, tl.d[v] - tl.d[u]);
 			assert(curr_res == curr_res5);
-			assert((u == curr_res) == in_subtree(lca, u, v));
+			assert((u == curr_res) == in_subtree(u, v));
 		}
 	}
 	cout << "Hello World\n";

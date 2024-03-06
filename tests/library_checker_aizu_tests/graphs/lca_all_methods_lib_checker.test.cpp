@@ -6,7 +6,6 @@
 #include "../../../library/graphs/linear_lca/linear_lca.hpp"
 
 #include "../../../library/graphs/lca_rmq/lca_rmq.hpp"
-#include "../../../library/graphs/lca_rmq/next_on_path.hpp"
 
 int main() {
 	cin.tie(0)->sync_with_stdio(0);
@@ -20,6 +19,7 @@ int main() {
 	}
 	tree_lift tl(adj);
 	LCA lca(adj);
+#include "../../../library/graphs/lca_rmq/next_on_path.hpp"
 	linear_lca lin_lca(adj);
 	for (int i = 0; i < n; i++) {
 		auto curr_1 = tl.get_lca(i, i);
@@ -38,8 +38,8 @@ int main() {
 		assert(curr_lca == curr_1);
 		auto curr_2 = lin_lca.get_lca(u, v);
 		assert(curr_lca == curr_2);
-		assert((curr_lca == u) == in_subtree(lca, u, v));
-		assert((curr_lca == v) == in_subtree(lca, v, u));
+		assert((curr_lca == u) == in_subtree(u, v));
+		assert((curr_lca == v) == in_subtree(v, u));
 		cout << curr_lca << '\n';
 	}
 }

@@ -2,7 +2,6 @@
 #include "../template.hpp"
 
 #include "../../../library/graphs/lca_rmq/lca_rmq.hpp"
-#include "../../../library/graphs/lca_rmq/next_on_path.hpp"
 
 int main() {
 	cin.tie(0)->sync_with_stdio(0);
@@ -15,6 +14,7 @@ int main() {
 		adj[par].push_back(i);
 	}
 	LCA lca(adj);
+#include "../../../library/graphs/lca_rmq/next_on_path.hpp"
 	{
 		vector<int> cnt_small_iterated(n), cnt_big_iterated(n);
 		for (int i = 0; i < n; i++) {
@@ -32,7 +32,7 @@ int main() {
 				}
 #include "../../../library/graphs/lca_rmq/iterate_subtree.hpp"
 					assert(lca.d[u] <= lca.d[v]);
-					assert(in_subtree(lca, u, v));
+					assert(in_subtree(u, v));
 					cnt_small_iterated[v]++;
 				}
 			}
