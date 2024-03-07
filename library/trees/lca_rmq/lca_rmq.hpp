@@ -15,16 +15,16 @@ struct LCA {
 	 * @space O(n log n) for rmq, all other vectors are O(n)
 	 */
 	LCA(const vector<vector<int>>& adj) : n(ssize(adj)), in(n), sub_sz(n, 1), d(n), p(n, -1) {
+		auto dfs = [&](auto&& self, int u) -> void {
+			in[u] = ssize(order), order.push_back(u);
+			for (int v : adj[u])
+				if (v != p[u])
+					d[v] = d[p[v] = u] + 1, self(self, v), sub_sz[u] += sub_sz[v];
+		};
 		order.reserve(n);
 		for (int i = 0; i < n; i++)
-			if (p[i] == -1) dfs(adj, i);
+			if (p[i] == -1) dfs(dfs, i);
 		rmq = {order, [&](int u, int v) {return d[u] < d[v] ? u : v;}};
-	}
-	void dfs(const vector<vector<int>>& adj, int u) {
-		in[u] = ssize(order), order.push_back(u);
-		for (int v : adj[u])
-			if (v != p[u])
-				d[v] = d[p[v] = u] + 1, dfs(adj, v), sub_sz[u] += sub_sz[v];
 	}
 	/**
 	 * @param u,v 2 nodes in the same component

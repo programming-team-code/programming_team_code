@@ -13,14 +13,14 @@ struct tree_lift {
 	 * @space O(n) for d, p, j vectors
 	 */
 	tree_lift(const vector<vector<int>>& adj): n(ssize(adj)), d(n), p(n, -1), j(n, -1) {
+		auto dfs = [&](auto&& self, int u) -> void {
+			int jump = (d[u] + d[j[j[u]]] == 2 * d[j[u]]) ? j[j[u]] : u;
+			for (int v : adj[u])
+				if (v != p[u])
+					d[v] = d[p[v] = u] + 1, j[v] = jump, self(self, v);
+		};
 		for (int i = 0; i < n; i++)
-			if (j[i] == -1) j[i] = i, dfs(adj, i);
-	}
-	void dfs(const vector<vector<int>>& adj, int u) {
-		int jump = (d[u] + d[j[j[u]]] == 2 * d[j[u]]) ? j[j[u]] : u;
-		for (int v : adj[u])
-			if (v != p[u])
-				d[v] = d[p[v] = u] + 1, j[v] = jump, dfs(adj, v);
+			if (j[i] == -1) j[i] = i, dfs(dfs, i);
 	}
 	/**
 	 * @param u query node
