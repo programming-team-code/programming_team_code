@@ -20,10 +20,17 @@ struct ladder {
 	 * @space O(n log n) for b_tbl. Everything else is O(n)
 	 */
 	ladder(const vector<vector<int>>& adj) : n(ssize(adj)), l_tbl(n), dl(n), d(n), p(n, -1) {
-		iota(begin(dl), end(dl), 0);
+		auto dfs = [&](auto&& self, int u) -> void {
+			dl[u] = u;
+			for (int v : adj[u])
+				if (v != p[u]) {
+					d[v] = d[p[v] = u] + 1;
+					self(self, v);
+					if (d[dl[v]] > d[dl[u]]) dl[u] = dl[v];
+				}
+		};
 		for (int i = 0; i < n; i++)
-			if (p[i] == -1)
-				p[i] = i, dfs(adj, i);
+			if (p[i] == -1) p[i] = i, dfs(dfs, i);
 		b_tbl = treeJump(p);
 		for (int i = 0; i < n; i++)
 			if (p[i] == i || dl[p[i]] != dl[i]) {
@@ -32,14 +39,6 @@ struct ladder {
 				lad.resize(min(2 * (d[leaf] - d[i]), d[leaf] + 1), leaf);
 				for (int j = 1; j < ssize(lad); j++)
 					lad[j] = p[lad[j - 1]];
-			}
-	}
-	void dfs(const vector<vector<int>>& adj, int u) {
-		for (int v : adj[u])
-			if (v != p[u]) {
-				d[v] = d[p[v] = u] + 1;
-				dfs(adj, v);
-				if (d[dl[v]] > d[dl[u]]) dl[u] = dl[v];
 			}
 	}
 	/**

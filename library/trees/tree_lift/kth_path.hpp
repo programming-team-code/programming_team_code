@@ -15,4 +15,4 @@ inline int kth_path(int u, int v, int k) {
 	if (k <= u_lca) return kth_par(u, k);
 	if (k <= u_lca + v_lca) return kth_par(v, u_lca + v_lca - k);
 	return -1;
-};
+}

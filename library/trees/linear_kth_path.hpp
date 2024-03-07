@@ -18,4 +18,4 @@ template <int X> int kth_path(linear_lca& lin_lca, linear_kth_par<X>& lin_kp, in
 	if (k <= u_lca) return lin_kp.kth_par(u, k);
 	if (k <= u_lca + v_lca) return lin_kp.kth_par(v, u_lca + v_lca - k);
 	return -1;
-};
+}
