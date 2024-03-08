@@ -21,6 +21,6 @@ int main() {
 		arr.push_back(val);
 	}
 	suffix_array lq(arr, 1001);
-	cout << (lq.substr_cmp(0, n, n, n + m) < 0) << '\n';
+	cout << (lq.cmp_substrs(0, n, n, n + m) < 0) << '\n';
 	return 0;
 }

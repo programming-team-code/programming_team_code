@@ -23,13 +23,13 @@ int main() {
 	suffix_array sa(arr, shift + 100);
 	{
 		for (int i = 1; i < 100; i++)
-			assert(sa.suf_cmp(i - 1, i) < 0);
+			assert(sa.cmp_sufs(i - 1, i) < 0);
 		for (int i = 0; i < 100; i++) {
-			assert(sa.suf_cmp(100, i) < 0);
-			assert(sa.suf_cmp(i, 100) > 0);
-			assert(sa.suf_cmp(i, i) == 0);
+			assert(sa.cmp_sufs(100, i) < 0);
+			assert(sa.cmp_sufs(i, 100) > 0);
+			assert(sa.cmp_sufs(i, i) == 0);
 		}
-		assert(sa.suf_cmp(100, 100) == 0);
+		assert(sa.cmp_sufs(100, 100) == 0);
 	}
 	vector<int> t;
 	t.reserve(10);
@@ -52,13 +52,13 @@ int main() {
 		auto [sa_le, sa_ri, str_le, str_ri] = sa.find_substrs_concated({});
 		assert(sa_le == 0 && sa_ri == ssize(arr));
 		assert(str_le == str_ri);
-		assert(sa.substr_cmp(0, 0, 100, 100) == 0);
-		assert(sa.substr_cmp(5, 5, 47, 47) == 0);
-		assert(sa.substr_cmp(50, 50, 99, 100) < 0);
-		assert(sa.substr_cmp(50, 51, 20, 20) > 0);
-		assert(sa.substr_cmp(0, 100, 0, 100) == 0);
-		assert(sa.substr_cmp(1, 100, 0, 100) > 0);
-		assert(sa.substr_cmp(0, 100, 1, 100) < 0);
+		assert(sa.cmp_substrs(0, 0, 100, 100) == 0);
+		assert(sa.cmp_substrs(5, 5, 47, 47) == 0);
+		assert(sa.cmp_substrs(50, 50, 99, 100) < 0);
+		assert(sa.cmp_substrs(50, 51, 20, 20) > 0);
+		assert(sa.cmp_substrs(0, 100, 0, 100) == 0);
+		assert(sa.cmp_substrs(1, 100, 0, 100) > 0);
+		assert(sa.cmp_substrs(0, 100, 1, 100) < 0);
 	}
 	{
 		KMP kmp(t);
