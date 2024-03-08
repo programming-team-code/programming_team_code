@@ -2,7 +2,7 @@
 #include "../template.hpp"
 #include "compress_char.hpp"
 
-#include "../../../library/strings/suffix_array_related/lcp_interval_tree/find_string_lcpt.hpp"
+#include "../../../library/strings/suffix_array_related/lcp_interval_tree/lcp_interval_tree.hpp"
 
 int main() {
 	cin.tie(0)->sync_with_stdio(0);
@@ -12,13 +12,13 @@ int main() {
 	int n = ssize(s);
 	lcp_tree lt(s);
 	{
-		auto [le, ri] = find_str(s, lt, string(""));
+		auto [le, ri] = lt.find_str(string(""));
 		assert(le == 0 && ri == n);
-		assert(ssize(lt.sa) == n);
-		assert(ssize(lt.sa_inv) == n);
-		assert(ssize(lt.lcp) == n - 1);
+		assert(ssize(lt.sf_a.sa) == n);
+		assert(ssize(lt.sf_a.sa_inv) == n);
+		assert(ssize(lt.sf_a.lcp) == n - 1);
 	}
-	for (auto val : lt.sa)
+	for (auto val : lt.sf_a.sa)
 		cout << val << " ";
 	cout << '\n';
 }

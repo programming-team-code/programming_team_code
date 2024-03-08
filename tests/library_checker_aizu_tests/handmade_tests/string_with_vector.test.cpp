@@ -3,16 +3,6 @@
 
 #include "../../../library/strings/suffix_array_related/suffix_array.hpp"
 
-#include "../../../library/strings/suffix_array_related/compare/compare_suffixes.hpp"
-#include "../../../library/strings/suffix_array_related/compare/compare_substrings.hpp"
-
-#include "../../../library/strings/suffix_array_related/find/find_string_bs.hpp"
-
-#include "../../../library/strings/suffix_array_related/lcp_array.hpp"
-
-#include "../../../library/strings/suffix_array_related/lcp_query.hpp"
-#include "../../../library/strings/suffix_array_related/find/find_substrings_concatenated.hpp"
-
 #include "../../../library/strings/knuth_morris_pratt.hpp"
 
 #include "../../../library/strings/manacher/longest_from_index.hpp"
@@ -30,49 +20,45 @@ int main() {
 	arr.reserve(100);
 	for (int i = 0; i < 100; i++)
 		arr.push_back(shift + i);
-	auto [sa, sa_inv] = get_sa(arr, shift + 100);
+	suffix_array sa(arr, shift + 100);
 	{
 		for (int i = 1; i < 100; i++)
-			assert(suf_cmp(sa_inv, i - 1, i) < 0);
+			assert(sa.suf_cmp(i - 1, i) < 0);
 		for (int i = 0; i < 100; i++) {
-			assert(suf_cmp(sa_inv, 100, i) < 0);
-			assert(suf_cmp(sa_inv, i, 100) > 0);
-			assert(suf_cmp(sa_inv, i, i) == 0);
+			assert(sa.suf_cmp(100, i) < 0);
+			assert(sa.suf_cmp(i, 100) > 0);
+			assert(sa.suf_cmp(i, i) == 0);
 		}
-		assert(suf_cmp(sa_inv, 100, 100) == 0);
+		assert(sa.suf_cmp(100, 100) == 0);
 	}
 	vector<int> t;
 	t.reserve(10);
 	for (int i = 50; i < 60; i++)
 		t.push_back(shift + i);
 	{
-		auto [sa_le, sa_ri, str_le, str_ri] = find_str(arr, sa, t);
+		auto [sa_le, sa_ri, str_le, str_ri] = sa.find_str(t);
 		assert(sa_le == 50 && sa_ri == 51);
 		assert(str_le == 50 && str_ri == 60);
 	}
+	for (int val : sa.lcp) assert(val == 0);
 	{
-		vector<int> lcp = get_lcp_array(sa, sa_inv, arr);
-		for (int val : lcp) assert(val == 0);
-	}
-	{
-		lcp_query lq(arr, shift + 100);
-		assert(lq.get_lcp(0, 99) == 0);
-		assert(lq.get_lcp(0, 100) == 0);
+		assert(sa.len_lcp(0, 99) == 0);
+		assert(sa.len_lcp(0, 100) == 0);
 		for (int i = 0; i < 100; i++) {
-			auto [sa_le, sa_ri, str_le, str_ri] = find_substrs_concated(lq, {{i, i + 1}});
+			auto [sa_le, sa_ri, str_le, str_ri] = sa.find_substrs_concated({{i, i + 1}});
 			assert(sa_le == i && sa_ri == i + 1);
 			assert(str_le == i && str_ri == i + 1);
 		}
-		auto [sa_le, sa_ri, str_le, str_ri] = find_substrs_concated(lq, {});
+		auto [sa_le, sa_ri, str_le, str_ri] = sa.find_substrs_concated({});
 		assert(sa_le == 0 && sa_ri == ssize(arr));
 		assert(str_le == str_ri);
-		assert(substr_cmp(lq, 0, 0, 100, 100) == 0);
-		assert(substr_cmp(lq, 5, 5, 47, 47) == 0);
-		assert(substr_cmp(lq, 50, 50, 99, 100) < 0);
-		assert(substr_cmp(lq, 50, 51, 20, 20) > 0);
-		assert(substr_cmp(lq, 0, 100, 0, 100) == 0);
-		assert(substr_cmp(lq, 1, 100, 0, 100) > 0);
-		assert(substr_cmp(lq, 0, 100, 1, 100) < 0);
+		assert(sa.substr_cmp(0, 0, 100, 100) == 0);
+		assert(sa.substr_cmp(5, 5, 47, 47) == 0);
+		assert(sa.substr_cmp(50, 50, 99, 100) < 0);
+		assert(sa.substr_cmp(50, 51, 20, 20) > 0);
+		assert(sa.substr_cmp(0, 100, 0, 100) == 0);
+		assert(sa.substr_cmp(1, 100, 0, 100) > 0);
+		assert(sa.substr_cmp(0, 100, 1, 100) < 0);
 	}
 	{
 		KMP kmp(t);

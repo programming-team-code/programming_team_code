@@ -2,9 +2,7 @@
 #include "../template.hpp"
 #include "../../../library/contest/random.hpp"
 
-#include "../../../library/strings/suffix_array_related/find/find_substrings_concatenated.hpp"
-#include "../../../library/strings/suffix_array_related/compare/compare_substrings.hpp"
-#include "../../../library/strings/suffix_array_related/compare/compare_suffixes.hpp"
+#include "../../../library/strings/suffix_array_related/suffix_array.hpp"
 
 int main() {
 	cin.tie(0)->sync_with_stdio(0);
@@ -13,10 +11,10 @@ int main() {
 			string s(n, 'a');
 			int mx_char = get_rand<int>(0, 5);
 			generate(begin(s), end(s), [&]() {return char('a' + get_rand<int>(0, mx_char));});
-			lcp_query lq(s, 256);
+			suffix_array lq(s, 256);
 			for (int i = 0; i <= n; i++) {
 				for (int j = i; j <= n; j++) {
-					auto [sa_le, sa_ri, str_le, str_ri] = find_substrs_concated(lq, {{i, j}});
+					auto [sa_le, sa_ri, str_le, str_ri] = lq.find_substrs_concated({{i, j}});
 					assert(s.substr(i, j - i) == s.substr(str_le, str_ri - str_le));
 					if (i == j) {
 						assert(sa_le == 0 && sa_ri == n);
@@ -34,7 +32,7 @@ int main() {
 				for (int k = 0; k <= n; k++) {
 					for (int j = i; j <= n; j++) {
 						for (int l = k; l <= n; l++) {
-							int cmp_val = substr_cmp(lq, i, j, k, l);
+							int cmp_val = lq.substr_cmp(i, j, k, l);
 							string sub1 = s.substr(i, j - i);
 							string sub2 = s.substr(k, l - k);
 							if (cmp_val < 0) assert(sub1 < sub2);
@@ -44,7 +42,7 @@ int main() {
 					}
 					string suf1 = s.substr(i);
 					string suf2 = s.substr(k);
-					int cmp_val = suf_cmp(lq.sa_inv, i, k);
+					int cmp_val = lq.suf_cmp(i, k);
 					if (cmp_val < 0) assert(suf1 < suf2);
 					if (cmp_val == 0) assert(suf1 == suf2);
 					if (cmp_val > 0) assert(suf1 > suf2);

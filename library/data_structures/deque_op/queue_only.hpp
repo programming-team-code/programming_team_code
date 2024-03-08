@@ -50,24 +50,6 @@ template <class T, class F> struct deq {
 	 */
 	inline int siz() {return ssize(le) + ssize(ri);}
 	/**
-	 * @param i index
-	 * @returns deq[i]
-	 * @time O(1)
-	 * @space O(1)
-	 */
-	inline T operator[](int i) {
-		assert(0 <= i && i < siz());
-		return (i < ssize(le) ? le[ssize(le) - i - 1] : ri[i - ssize(le)])[0];
-	}
-	/**
-	 * @param elem element to insert at beginning
-	 * @time O(1)
-	 * @space O(1)
-	 */
-	inline void push_front(T elem) {
-		le.push_back({elem, empty(le) ? elem : op(elem, le.back()[1])});
-	}
-	/**
 	 * @param elem element to insert at end
 	 * @time O(1)
 	 * @space O(1)
@@ -89,20 +71,6 @@ template <class T, class F> struct deq {
 		}
 		le.pop_back();
 	}
-	/**
-	 * remove deq.back()
-	 * @time O(1) ammortized
-	 * @space O(1) ammortized
-	 */
-	inline void pop_back() {
-		assert(siz());
-		if (empty(ri)) {
-			vector<T> a(ssize(le));
-			transform(begin(le), end(le), rbegin(a), [](dt & x) {return x[0];});
-			rebuild(a, ssize(a) / 2);
-		}
-		ri.pop_back();
-	}
 	void rebuild(const vector<T>& a, int sz_le) {
 		vector<T> presum(ssize(a));
 		partial_sum(rend(a) - sz_le, rend(a), rend(presum) - sz_le, [&](T x, T y) {return op(y, x);});
@@ -112,4 +80,8 @@ template <class T, class F> struct deq {
 		transform(begin(a), begin(a) + sz_le, begin(presum), rbegin(le), [](T x, T y) {return dt{x, y};});
 		transform(begin(a) + sz_le, end(a), begin(presum) + sz_le, begin(ri), [](T x, T y) {return dt{x, y};});
 	}
+#include "deque.hpp"
+#include "index.hpp"
+#include "front.hpp"
+#include "back.hpp"
 };

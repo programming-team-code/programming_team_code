@@ -957,7 +957,7 @@ EXCLUDE_SYMBOLS        = HLD::node \
                          PST::node \
                          mcmf::edge \
                          mx_n \
-                         max_val \
+                         cnt_let \
                          mn \
                          dfs \
                          dfs1 \
@@ -1006,8 +1006,6 @@ EXCLUDE_SYMBOLS        = HLD::node \
                          sub_sz \
                          s \
                          info \
-                         rmq_lcp \
-                         rmq_sa \
                          ds \
                          upd_st \
                          is \
@@ -1037,9 +1035,6 @@ EXCLUDE_SYMBOLS        = HLD::node \
                          node \
                          root \
                          child \
-                         sa \
-                         sa_inv \
-                         lcp \
                          mx_bit \
                          sf \
                          man \
@@ -1089,6 +1084,7 @@ EXCLUDE_SYMBOLS        = HLD::node \
                          primes \
                          sieve \
                          mobius \
+                         sf_a \
 
 # The EXAMPLE_PATH tag can be used to specify one or more files or directories
 # that contain example code fragments that are included (see the \include

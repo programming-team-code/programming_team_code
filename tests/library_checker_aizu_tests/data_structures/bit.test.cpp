@@ -4,7 +4,6 @@
 
 #include "../../../library/data_structures/bit_uncommon/rupq.hpp"
 #include "../../../library/data_structures/bit_uncommon/rurq.hpp"
-#include "../../../library/data_structures/bit_uncommon/lower_bound.hpp"
 #include "../../../library/data_structures/seg_tree_uncommon/lower_bound.hpp"
 
 int main() {
@@ -51,9 +50,8 @@ int main() {
 			cout << res << '\n';
 		}
 		auto sum = get_rand<int64_t>(0LL, (int64_t)(1e12));
-		int pos_bit = lower_bound(bit, sum);
 		int pos_st = lower_bound(st, sum);
-		assert(pos_bit == pos_st);
+		assert(bit.lower_bound(sum) == pos_st);
 	}
 	return 0;
 }

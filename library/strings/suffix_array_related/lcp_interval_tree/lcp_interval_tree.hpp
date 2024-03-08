@@ -3,8 +3,7 @@
 #include "../../../monotonic_stack/monotonic_range.hpp"
 #include "../../../monotonic_stack/cartesian_k_ary_tree.hpp"
 #include "../suffix_array.hpp"
-#include "../lcp_array.hpp"
-const int mn = '0', max_val = 36; // mn <= s[i] < mn + max_val; for lowercase letters: mn = 'a', max_val = 26
+const int mn = '0', cnt_let = 36; // mn <= s[i] < mn + cnt_let; for lowercase letters: mn = 'a', cnt_let = 26
 /**
  * @see Replacing suffix trees with enhanced suffix arrays by Mohamed Ibrahim
  * Abouelhoda, Stefan Kurtz, Enno Ohlebusch
@@ -48,65 +47,35 @@ const int mn = '0', max_val = 36; // mn <= s[i] < mn + max_val; for lowercase le
  *     - a single suffix
  */
 struct lcp_tree {
-	int n, root;
-	vector<int> sa, sa_inv, lcp, le, ri;
+	suffix_array<string> sf_a;
+	vector<int> ri, le;
+	int root;
 	vector<vector<int>> adj;
 	/**
 	 * @param s non-empty string/array
-	 * @time O((n log n) + (n * max_val))
-	 * @space adj is O(n * max_val)
+	 * @time O((n log n) + (mn + cnt_let) + (n * cnt_let))
+	 * @space adj is O(n * cnt_let)
 	 */
-	lcp_tree(const string& s) : n(ssize(s)), adj(max(n - 1, 0), vector(max_val, -1)) {
-		assert(n > 0);
-		auto ret = get_sa(s, mn + max_val);
-		sa = ret[0], sa_inv = ret[1];
-		lcp = get_lcp_array(sa, sa_inv, s);
-		ri = mono_st(lcp, less_equal());
-		le = mono_range(ri);
-		auto p = cart_k_ary_tree(lcp, ri);
+	lcp_tree(const string& s) : sf_a(s, mn + cnt_let), ri(mono_st(sf_a.lcp, less_equal())), le(mono_range(ri)), adj(max(sf_a.n - 1, 0), vector(cnt_let, -1)) {
+		assert(sf_a.n > 0);
+		auto p = cart_k_ary_tree(sf_a.lcp, ri);
 		root = find(begin(p), end(p), ssize(p)) - begin(p);
 		auto node = [&](int i) -> int {
-			return p[i] > i || lcp[i] != lcp[p[i]] ? i : p[i];
+			return p[i] > i || sf_a.lcp[i] != sf_a.lcp[p[i]] ? i : p[i];
 		};
 		for (int i = 0; i < ssize(p); i++)
-			if (node(i) == i && i != root) adj[p[i]][s[sa[i] + lcp[p[i]]] - mn] = i;
-		for (int i = 0; i < n; i++) {
-			int prev_lcp = (i ? lcp[i - 1] : -1);
-			int next_lcp = (i < ssize(lcp) ? lcp[i] : 0);
+			if (node(i) == i && i != root) adj[p[i]][s[sf_a.sa[i] + sf_a.lcp[p[i]]] - mn] = i;
+		for (int i = 0; i < sf_a.n; i++) {
+			int prev_lcp = (i ? sf_a.lcp[i - 1] : -1);
+			int next_lcp = (i < ssize(sf_a.lcp) ? sf_a.lcp[i] : 0);
 			int u = (prev_lcp < next_lcp ? i : node(i - 1));
-			int idx = sa[i] + max(prev_lcp, next_lcp);
-			if (u == ssize(adj) || idx == n) continue;
-			adj[u][s[idx] - mn] = ssize(lcp) + i;
+			int idx = sf_a.sa[i] + max(prev_lcp, next_lcp);
+			if (u == ssize(adj) || idx == sf_a.n) continue;
+			adj[u][s[idx] - mn] = ssize(sf_a.lcp) + i;
 		}
 	}
-	/**
-	 * @param u node
-	 * @returns range [le, ri) such that the following (ri - le) substrings are equal:
-	 *     - for all i in [le, ri): s.substr(sa[i], lcp_len(u))
-	 * @time O(1)
-	 * @space O(1)
-	 */
-	inline array<int, 2> sa_range(int u) {
-		if (u < n - 1) return {le[u] + 1, ri[u] + 1};
-		return {u - n + 1, u - n + 2};
-	}
-	/**
-	 * @param u node
-	 * @returns length of longest common prefix of u's interval
-	 * @time O(1)
-	 * @space O(1)
-	 */
-	inline int lcp_len(int u) {
-		return u < n - 1 ? lcp[u] : n - sa[u - n + 1];
-	}
-	/**
-	 * @param u node
-	 * @param c letter (don't subtract mn)
-	 * @returns child of u following edge with label c, -1 means child doesn't exist
-	 * @time O(1)
-	 * @space O(1)
-	 */
-	inline int get_child(int u, char c) {
-		return u < n - 1 ? adj[u][c - mn] : -1;
-	}
+#include "sa_range.hpp"
+#include "len_lcp.hpp"
+#include "get_child.hpp"
+#include "find_string.hpp"
 };

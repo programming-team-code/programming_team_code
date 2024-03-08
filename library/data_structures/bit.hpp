@@ -56,4 +56,5 @@ template <class T> struct BIT {
 		assert(le <= ri);
 		return query(ri) - query(le);
 	}
+#include "bit_uncommon/lower_bound.hpp"
 };

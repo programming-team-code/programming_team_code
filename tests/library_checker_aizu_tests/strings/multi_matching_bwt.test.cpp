@@ -2,26 +2,25 @@
 #include "../template.hpp"
 #include "../mono_st_asserts.hpp"
 #include "compress_char.hpp"
-#include "../../../library/strings/suffix_array_related/find/find_string_bwt.hpp"
-#include "../../../library/strings/suffix_array_related/lcp_array.hpp"
+#include "../../../library/strings/suffix_array_related/burrows_wheeler.hpp"
+#include "../../../library/strings/suffix_array_related/suffix_array.hpp"
 
 int main() {
 	cin.tie(0)->sync_with_stdio(0);
 	{
-		find_bwt fb(string(""), vector<int>());
-		auto [le, ri] = fb.find_str(string(""));
+		bwt bw(string(""), vector<int>());
+		auto [le, ri] = bw.find_str(string(""));
 		assert(ssize(le) == 1 && ssize(ri) == 1);
 		assert(le[0] == 0 && ri[0] == 0);
 	}
 	string s;
 	cin >> s;
 	transform(begin(s), end(s), begin(s), compress_char);
-	auto [sa, sa_inv] = get_sa(s, 256);
-	vector<int> lcp = get_lcp_array(sa, sa_inv, s);
-	find_bwt fb(s, sa);
-	mono_st_asserts(lcp);
+	suffix_array sf_a(s, 256);
+	bwt bw(s, sf_a.sa);
+	mono_st_asserts(sf_a.lcp);
 	{
-		auto [le, ri] = fb.find_str("");
+		auto [le, ri] = bw.find_str("");
 		assert(ssize(le) == 1 && ssize(ri) == 1);
 		assert(le[0] == 0 && ri[0] == ssize(s));
 	}
@@ -31,7 +30,7 @@ int main() {
 		string t;
 		cin >> t;
 		transform(begin(t), end(t), begin(t), compress_char);
-		auto [le, ri] = fb.find_str(compress_char('a') + t);
+		auto [le, ri] = bw.find_str(compress_char('a') + t);
 		assert(ssize(le) == 2 + ssize(t) && ssize(ri) == 2 + ssize(t) && le.back() == 0 && ri.back() == ssize(s));
 		for (int i = ssize(le) - 2; i >= 0; i--)
 			assert(ri[i] - le[i] <= ri[i + 1] - le[i + 1]);

@@ -2,7 +2,7 @@
 #include "../template.hpp"
 
 #include "../../../library/contest/random.hpp"
-#include "../../../library/data_structures/uncommon/deque_with_op.hpp"
+#include "../../../library/data_structures/deque_op/queue_only.hpp"
 
 int main() {
 	cin.tie(0)->sync_with_stdio(0);
@@ -49,6 +49,8 @@ int main() {
 		}
 		assert(ssize(stl_dq) == dq.siz());
 		if (dq.siz()) {
+			assert(stl_dq.front() == dq.front());
+			assert(stl_dq.back() == dq.back());
 			for (int index_tests = 10; index_tests--;) {
 				int idx = get_rand<int>(0, dq.siz() - 1);
 				assert(stl_dq[idx] == dq[idx]);
