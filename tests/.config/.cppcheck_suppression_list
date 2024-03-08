@@ -3,7 +3,7 @@ missingIncludeSystem
 functionConst
 assertWithSideEffect
 unusedStructMember:../library/flow/min_cost_max_flow.hpp
-unusedStructMember:../library/strings/suffix_array_related/find/match.hpp:22
+unusedStructMember:../library/strings/suffix_array/find/match.hpp:22
 unusedScopedObject:../library/trees/centroid_decomp/count_paths_per_length.hpp:14
 unusedScopedObject:library_checker_aizu_tests/cd_asserts.hpp:5
 unusedScopedObject:../library/trees/centroid_decomp/count_paths_per_node.hpp:14
@@ -12,7 +12,7 @@ unusedScopedObject:../library/trees/edge_centroid_decomp/count_paths_per_length.
 unusedScopedObject:library_checker_aizu_tests/trees/edge_cd_lca.test.cpp:20
 unusedScopedObject:library_checker_aizu_tests/trees/edge_cd_reroot_dp.test.cpp:50
 arrayIndexOutOfBoundsCond:library_checker_aizu_tests/math/linear_prime_sieve.test.cpp:17
-negativeContainerIndex:../library/strings/suffix_array_related/burrows_wheeler.hpp:46
+negativeContainerIndex:../library/strings/suffix_array/burrows_wheeler.hpp:46
 useStlAlgorithm:../kactl/content/numerical/FastFourierTransform.h:53
 useStlAlgorithm:../library/graphs/strongly_connected_components/add_edges_strongly_connected.hpp:60
 useStlAlgorithm:../library/math/matrix_related/row_reduce.hpp:30
