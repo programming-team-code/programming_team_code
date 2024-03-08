@@ -10,7 +10,7 @@
  *     s.substr(substrs.back()[0], substrs.back()[1] - substrs.back()[0])
  * @returns see match
  * @time O(ssize(substrs) * log(|s|))
- * @space O(1)
+ * @space O(1) space used during query, but with O(nlogn) precomp
  */
 inline match find_substrs_concated(const vector<array<int, 2>>& substrs) {
 	using dt = array<int, 3>;
