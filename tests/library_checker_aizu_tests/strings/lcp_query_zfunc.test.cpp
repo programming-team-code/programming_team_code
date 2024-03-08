@@ -16,7 +16,7 @@ int main() {
 			auto ri = get_rand<int>(0, ssize(s));
 			if (get_rand(0, 30) == 0) le = ssize(s);
 			if (get_rand(0, 30) == 0) ri = ssize(s);
-			int cmp_val = lq.suf_cmp(le, ri);
+			int cmp_val = lq.cmp_sufs(le, ri);
 			if (cmp_val < 0) assert(s.substr(le) < s.substr(ri));
 			if (cmp_val == 0) assert(s.substr(le) == s.substr(ri));
 			if (cmp_val > 0) assert(s.substr(le) > s.substr(ri));
@@ -34,7 +34,7 @@ int main() {
 				ri2 = get_rand<int>(0, ssize(s));
 				if (le2 > ri2) swap(le2, ri2);
 			}
-			int cmp_result = lq.substr_cmp(le1, ri1, le2, ri2);
+			int cmp_result = lq.cmp_substrs(le1, ri1, le2, ri2);
 			string sub1 = s.substr(le1, ri1 - le1);
 			string sub2 = s.substr(le2, ri2 - le2);
 			if (cmp_result < 0) assert(sub1 < sub2);

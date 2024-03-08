@@ -32,7 +32,7 @@ int main() {
 				for (int k = 0; k <= n; k++) {
 					for (int j = i; j <= n; j++) {
 						for (int l = k; l <= n; l++) {
-							int cmp_val = lq.substr_cmp(i, j, k, l);
+							int cmp_val = lq.cmp_substrs(i, j, k, l);
 							string sub1 = s.substr(i, j - i);
 							string sub2 = s.substr(k, l - k);
 							if (cmp_val < 0) assert(sub1 < sub2);
@@ -42,7 +42,7 @@ int main() {
 					}
 					string suf1 = s.substr(i);
 					string suf2 = s.substr(k);
-					int cmp_val = lq.suf_cmp(i, k);
+					int cmp_val = lq.cmp_sufs(i, k);
 					if (cmp_val < 0) assert(suf1 < suf2);
 					if (cmp_val == 0) assert(suf1 == suf2);
 					if (cmp_val > 0) assert(suf1 > suf2);

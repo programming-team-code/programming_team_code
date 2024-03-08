@@ -1,7 +1,7 @@
 /** @file */
 #pragma once
 /**
- * Range of matches, and example of longest matching prefix of t in s
+ * subarray of matches in `sa`, and example of longest matching prefix of t in s
  */
 struct match {
 	/**

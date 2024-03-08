@@ -10,7 +10,7 @@
  * @time O(1)
  * @space O(1)
  */
-inline int suf_cmp(int le1, int le2) {
+inline int cmp_sufs(int le1, int le2) {
 	assert(0 <= min(le1, le2) && max(le1, le2) <= n);
 	return max(le1, le2) == n ? le2 - le1 : sa_inv[le1] - sa_inv[le2];
 }
