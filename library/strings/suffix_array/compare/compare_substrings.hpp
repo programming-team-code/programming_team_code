@@ -1,6 +1,6 @@
 /** @file */
 #pragma once
-#include "../lcp_query.hpp"
+#include "../len_lcp.hpp"
 /**
  * @param le1,ri1 first substring [le1, ri1)
  * @param le2,ri2 second substring [le2, ri2)

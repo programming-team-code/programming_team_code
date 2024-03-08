@@ -3,16 +3,16 @@
 /**
  * s = "baaba"
  *
- * even centers  1 3 5 7
- * string       b a a b a
- * odd centers  0 2 4 6 8
+ * index   1 3 5 7
+ * string b a a b a
+ * index  0 2 4 6 8
  *
  * @see https://codeforces.com/blog/entry/12143#comment-324162
  * @param s string/vector
- * @returns vector `man` where for center `i`:
+ * @returns man[i] = index of beginning of longest palindrome centered at `i`
+ *     - substring [man[i], i - man[i] + 1) is longest palindrome centered at `i`
+ *     - longest palindrome centered at `i` has length = i - 2 * man[i] + 1
  *     - substring [le, ri) has center (le + ri - 1)
- *     - substring [man[i], i - man[i] + 1) is longest palindrome around center
- *     - center i's longest palindrome has length = i - 2 * man[i] + 1
  * @time O(n)
  * @space a O(n) vector is allocated and returned
  */
