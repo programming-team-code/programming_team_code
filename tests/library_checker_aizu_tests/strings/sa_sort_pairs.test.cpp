@@ -1,7 +1,7 @@
 #define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/lesson/8/ITP2/all/ITP2_5_A"
 #include "../template.hpp"
 
-#include "../../../library/strings/suffix_array_related/compare/compare_substrings.hpp"
+#include "../../../library/strings/suffix_array_related/suffix_array.hpp"
 
 int main() {
 	cin.tie(0)->sync_with_stdio(0);
@@ -22,11 +22,11 @@ int main() {
 		assert(0 <= ri && ri < ssize(compress) && compress[ri] == x);
 		x = ri;
 	}
-	lcp_query lq(arr, int(ssize(compress)));
+	suffix_array lq(arr, int(ssize(compress)));
 	vector<int> idxs(n);
 	iota(begin(idxs), end(idxs), 0);
 	sort(begin(idxs), end(idxs), [&](int i, int j) -> bool {
-		return substr_cmp(lq, 2 * i, 2 * (i + 1), 2 * j, 2 * (j + 1)) < 0;
+		return lq.substr_cmp(2 * i, 2 * (i + 1), 2 * j, 2 * (j + 1)) < 0;
 	});
 	for (int idx : idxs)
 		cout << compress[arr[2 * idx]] << " " << compress[arr[2 * idx + 1]] << '\n';

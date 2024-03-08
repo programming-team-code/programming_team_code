@@ -1,27 +1,27 @@
 /** @file */
 #pragma once
-#include "../suffix_array.hpp"
-const int mn = '0', max_val = 36; // mn <= s[i] < mn + max_val; for lowercase letters: mn = 'a', max_val = 26
+#include "suffix_array.hpp"
+const int mn = '0', cnt_let = 36; // mn <= s[i] < mn + cnt_let; for lowercase letters: mn = 'a', cnt_let = 26
 /**
  * Burrows Wheeler transform
  */
-struct find_bwt {
+struct bwt {
 	int n;
 	char last;
-	vector<array<int, max_val>> occ;
-	array < int, max_val + 1 > cnt{};
+	vector<array<int, cnt_let>> occ;
+	array < int, cnt_let + 1 > cnt{};
 	/**
 	 * @code{.cpp}
 	       string s;
-	       auto [sa, sa_inv] = get_sa(s, 256);
-	       find_bwt fb(s, sa);
+	       auto [_, __, sa, sa_inv, lcp, ___] = suffix_array(s, 256);
+	       bwt bw(s, sa);
 	 * @endcode
 	 * @param s,sa a string and its suffix array
-	 * @time O(n * max_val)
-	 * @space O(n * max_val) for `occ` vector; it's possible to improve this
-	 *     to O(n * max_val / 64) https://codeforces.com/contest/963/submission/217802614
+	 * @time O(n * cnt_let)
+	 * @space O(n * cnt_let) for `occ` vector; it's possible to improve this
+	 *     to O(n * cnt_let / 64) https://codeforces.com/contest/963/submission/217802614
 	 */
-	find_bwt(const string& s, const vector<int>& sa) : n(ssize(s)), last(empty(s) ? -1 : s.back() - mn), occ(n + 1) {
+	bwt(const string& s, const vector<int>& sa) : n(ssize(s)), last(empty(s) ? -1 : s.back() - mn), occ(n + 1) {
 		for (int i = 0; i < n; i++) {
 			cnt[s[i] + 1 - mn]++;
 			occ[i + 1] = occ[i];
@@ -31,10 +31,6 @@ struct find_bwt {
 		partial_sum(begin(cnt), end(cnt), begin(cnt));
 	}
 	/**
-	 * @code{.cpp}
-	       string t;
-	       auto [le, ri] = fb.find_str(t);
-	 * @endcode
 	 * @param t query string
 	 * @returns vectors `le`, `ri` where given `t_le` (0 <= t_le <= |t|) defines a suffix [t_le, |t|) of t:
 	 *     - for all i in [le[t_le], ri[t_le]): t.substr(t_le) == s.substr(sa[i], ssize(t) - t_le)

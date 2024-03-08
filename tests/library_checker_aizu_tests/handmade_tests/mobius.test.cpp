@@ -5,7 +5,7 @@
 
 int main() {
 	cin.tie(0)->sync_with_stdio(0);
-#include "../../../library/math/mobius.hpp"
+#include "../../../library/math/prime_sieve/mobius.hpp"
 #include "../../../library/math/prime_sieve/calc_sieve.hpp"
 #include "../../../library/math/prime_sieve/is_prime.hpp"
 	assert(is_prime(2));

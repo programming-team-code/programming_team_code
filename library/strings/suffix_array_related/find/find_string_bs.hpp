@@ -1,16 +1,14 @@
 /** @file */
 #pragma once
-#include "../suffix_array.hpp"
 #include "match.hpp"
 /**
  * @see https://github.com/yosupo06/Algorithm/blob /master/src/string/suffixarray.hpp
- * @param s,sa string/array and its suffix array
  * @param t query string
  * @returns see match
  * @time O(|t| * log(|s|))
  * @space O(1)
  */
-template <class T> inline match find_str(const T& s, const vector<int>& sa, const T& t) {
+inline match find_str(const T& t) {
 	int str_le = 0, str_ri = 0;
 	auto cmp = [&](int i, int cmp_val) -> bool {
 		auto [it_s, it_t] = mismatch(begin(s) + i, end(s), begin(t), end(t));

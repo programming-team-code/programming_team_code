@@ -1,7 +1,7 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/predecessor_problem"
 #include "../template.hpp"
 
-#include "../../../library/data_structures/bit_uncommon/lower_bound.hpp"
+#include "../../../library/data_structures/bit.hpp"
 #include "../../../library/data_structures/seg_tree_uncommon/lower_bound.hpp"
 
 int main() {
@@ -38,9 +38,8 @@ int main() {
 				continue;
 			}
 			int order = bit.query(k);
-			int res = lower_bound(bit, order + 1);
-			auto res_st = lower_bound(st, order + 1);
-			assert(res == res_st);
+			int res = bit.lower_bound(order + 1);
+			assert(res == lower_bound(st, order + 1));
 			if (res == n + 1)
 				res = 0;
 			cout << res - 1 << '\n';
@@ -50,9 +49,8 @@ int main() {
 				continue;
 			}
 			int order = bit.query(k);
-			int res = lower_bound(bit, order);
-			auto res_st = lower_bound(st, order);
-			assert(res == res_st);
+			int res = bit.lower_bound(order);
+			assert(res == lower_bound(st, order));
 			cout << res - 1 << '\n';
 		}
 	}

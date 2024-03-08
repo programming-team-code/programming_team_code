@@ -12,7 +12,7 @@ unusedScopedObject:../library/trees/edge_centroid_decomp/count_paths_per_length.
 unusedScopedObject:library_checker_aizu_tests/trees/edge_cd_lca.test.cpp:20
 unusedScopedObject:library_checker_aizu_tests/trees/edge_cd_reroot_dp.test.cpp:50
 arrayIndexOutOfBoundsCond:library_checker_aizu_tests/math/linear_prime_sieve.test.cpp:17
-negativeContainerIndex:../library/strings/suffix_array_related/find/find_string_bwt.hpp:50
+negativeContainerIndex:../library/strings/suffix_array_related/burrows_wheeler.hpp:46
 useStlAlgorithm:../kactl/content/numerical/FastFourierTransform.h:53
 useStlAlgorithm:../library/graphs/strongly_connected_components/add_edges_strongly_connected.hpp:60
 useStlAlgorithm:../library/math/matrix_related/row_reduce.hpp:30
@@ -26,8 +26,8 @@ constParameter:../library/data_structures/wavelet_merge/merge_sort_tree_updates.
 constParameter:../library/data_structures/wavelet_merge/wavelet_tree_updates.hpp:46
 constParameter:../library/data_structures/wavelet_merge/wavelet_tree_updates.hpp:50
 constParameter:../hackpack-cpp/content/number-theory/ModInt.h:45
-constParameter:../library/data_structures/uncommon/deque_with_op.hpp:87
-constParameter:../library/data_structures/uncommon/deque_with_op.hpp:101
+constParameter:../library/data_structures/deque_op/deque.hpp:20
+constParameter:../library/data_structures/deque_op/queue_only.hpp:69
 constParameter:../library/data_structures/uncommon/priority_queue_of_updates.hpp:42
 constParameter:../library/math/matrix_related/row_reduce.hpp:19
 variableScope:../kactl/content/number-theory/Factor.h:47
@@ -39,5 +39,5 @@ syntaxError:../library/loops/chooses.hpp:9
 syntaxError:../library/loops/quotients.hpp:16
 syntaxError:../library/loops/submasks.hpp:9
 syntaxError:../library/loops/supermasks.hpp:10
-syntaxError:../library/math/mobius.hpp:12
+syntaxError:../library/math/prime_sieve/mobius.hpp:12
 syntaxError:../library/trees/lca_rmq/iterate_subtree.hpp:13
