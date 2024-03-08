@@ -2,7 +2,7 @@
 #include "../template.hpp"
 #include "compress_char.hpp"
 
-#include "../../../library/strings/suffix_array_related/lcp_interval_tree/lcp_interval_tree.hpp"
+#include "../../../library/strings/suffix_array/lcp_interval_tree/lcp_interval_tree.hpp"
 
 int main() {
 	cin.tie(0)->sync_with_stdio(0);

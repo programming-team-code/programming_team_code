@@ -2,8 +2,8 @@
 #include "../template.hpp"
 #include "../mono_st_asserts.hpp"
 #include "compress_char.hpp"
-#include "../../../library/strings/suffix_array_related/burrows_wheeler.hpp"
-#include "../../../library/strings/suffix_array_related/suffix_array.hpp"
+#include "../../../library/strings/suffix_array/burrows_wheeler.hpp"
+#include "../../../library/strings/suffix_array/suffix_array.hpp"
 
 int main() {
 	cin.tie(0)->sync_with_stdio(0);

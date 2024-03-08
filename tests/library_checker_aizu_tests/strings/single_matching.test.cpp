@@ -2,10 +2,10 @@
 #include "../template.hpp"
 #include "compress_char.hpp"
 
-#include "../../../library/strings/suffix_array_related/burrows_wheeler.hpp"
+#include "../../../library/strings/suffix_array/burrows_wheeler.hpp"
 #define mn mn_other
 #define cnt_let cnt_let_other
-#include "../../../library/strings/suffix_array_related/lcp_interval_tree/lcp_interval_tree.hpp"
+#include "../../../library/strings/suffix_array/lcp_interval_tree/lcp_interval_tree.hpp"
 #undef mn
 #undef cnt_let
 
