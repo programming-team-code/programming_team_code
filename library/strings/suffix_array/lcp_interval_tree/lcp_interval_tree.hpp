@@ -75,7 +75,7 @@ struct lcp_tree {
 		}
 	}
 #include "sa_range.hpp"
-#include "len_lcp.hpp"
+#include "len_lcp_range.hpp"
 #include "get_child.hpp"
 #include "find_string.hpp"
 };

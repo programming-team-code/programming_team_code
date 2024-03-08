@@ -15,7 +15,7 @@
  * @param man manacher array
  * @returns longest where:
  *      - s.substr(i, i + longest[i]) is a palindrome
- *      - s.substr(i, i + j) is not a palindrome, if j > longest[i]
+ *      - s.substr(i, i + len) is not a palindrome, if len > longest[i]
  * @time O(n)
  * @space an O(n) vector is allocated and returned
  */

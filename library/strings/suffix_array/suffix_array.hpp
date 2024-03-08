@@ -1,6 +1,6 @@
 /** @file */
 #pragma once
-#include "../../data_structures/rmq.hpp" /**< only needed for lcp_query */
+#include "../../data_structures/rmq.hpp" /**< only needed for len_lcp */
 #include "find/match.hpp" /**< only needed for find functions */
 /**
  * @see https://github.com/kth-competitive-programming/kactl /blob/main/content/strings/SuffixArray.h
@@ -76,7 +76,7 @@ template <class T> struct suffix_array {
 			lcp[sa_inv[i] - 1] = sz;
 		}
 	}
-#include "lcp_query.hpp"
+#include "len_lcp.hpp"
 #include "compare/compare_substrings.hpp"
 #include "compare/compare_suffixes.hpp"
 #include "find/find_string_bs.hpp"
