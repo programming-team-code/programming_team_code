@@ -1,7 +1,7 @@
 /** @file */
 #pragma once
 #include "../../data_structures/rmq.hpp" /**< only needed for len_lcp */
-#include "find/match.hpp" /**< only needed for find functions */
+#include "find/match.hpp" /**< only needed for certain find functions */
 /**
  * @see https://github.com/kth-competitive-programming/kactl /blob/main/content/strings/SuffixArray.h
  */
@@ -77,8 +77,8 @@ template <class T> struct suffix_array {
 		}
 	}
 #include "len_lcp.hpp"
-#include "compare/compare_substrings.hpp"
 #include "compare/compare_suffixes.hpp"
+#include "compare/compare_substrings.hpp"
 #include "find/find_string_bs.hpp"
 #include "find/find_string_bs_long.hpp"
 #include "find/find_substring.hpp"
