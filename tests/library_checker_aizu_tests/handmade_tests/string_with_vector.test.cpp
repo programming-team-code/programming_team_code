@@ -20,45 +20,56 @@ int main() {
 	arr.reserve(100);
 	for (int i = 0; i < 100; i++)
 		arr.push_back(shift + i);
-	suffix_array sa(arr, shift + 100);
+	suffix_array sf_a(arr, shift + 100);
 	{
 		for (int i = 1; i < 100; i++)
-			assert(sa.cmp_sufs(i - 1, i) < 0);
+			assert(sf_a.cmp_sufs(i - 1, i) < 0);
 		for (int i = 0; i < 100; i++) {
-			assert(sa.cmp_sufs(100, i) < 0);
-			assert(sa.cmp_sufs(i, 100) > 0);
-			assert(sa.cmp_sufs(i, i) == 0);
+			assert(sf_a.cmp_sufs(100, i) < 0);
+			assert(sf_a.cmp_sufs(i, 100) > 0);
+			assert(sf_a.cmp_sufs(i, i) == 0);
 		}
-		assert(sa.cmp_sufs(100, 100) == 0);
+		assert(sf_a.cmp_sufs(100, 100) == 0);
 	}
 	vector<int> t;
 	t.reserve(10);
 	for (int i = 50; i < 60; i++)
 		t.push_back(shift + i);
 	{
-		auto [sa_le, sa_ri, str_le, str_ri] = sa.find_str(t);
+		auto [sa_le, sa_ri] = sf_a.find_str(t);
 		assert(sa_le == 50 && sa_ri == 51);
-		assert(str_le == 50 && str_ri == 60);
 	}
-	for (int val : sa.lcp) assert(val == 0);
 	{
-		assert(sa.len_lcp(0, 99) == 0);
-		assert(sa.len_lcp(0, 100) == 0);
+		auto [sa_le, sa_ri, s_le, s_ri] = sf_a.find_str_long(t);
+		assert(sa_le == 50 && sa_ri == 51);
+		assert(s_le == 50 && s_ri == 60);
+	}
+	for (int val : sf_a.lcp) assert(val == 0);
+	{
+		assert(sf_a.len_lcp(0, 99) == 0);
+		assert(sf_a.len_lcp(0, 100) == 0);
 		for (int i = 0; i < 100; i++) {
-			auto [sa_le, sa_ri, str_le, str_ri] = sa.find_substrs_concated({{i, i + 1}});
+			auto [sa_le, sa_ri, s_le, s_ri] = sf_a.find_substrs_concated({{i, i + 1}});
+			array<int, 2> short_res = sf_a.find_substr(i, i + 1);
+			assert(sa_le == short_res[0] && sa_ri == short_res[1]);
 			assert(sa_le == i && sa_ri == i + 1);
-			assert(str_le == i && str_ri == i + 1);
+			assert(s_le == i && s_ri == i + 1);
 		}
-		auto [sa_le, sa_ri, str_le, str_ri] = sa.find_substrs_concated({});
+		for (int i = 0; i <= 100; i++) {
+			auto [sa_le, sa_ri, s_le, s_ri] = sf_a.find_substrs_concated({{i, i}, {i, i}});
+			array<int, 2> short_res = sf_a.find_substr(i, i);
+			assert(sa_le == short_res[0] && sa_ri == short_res[1]);
+		}
+		auto [sa_le, sa_ri, s_le, s_ri] = sf_a.find_substrs_concated({});
 		assert(sa_le == 0 && sa_ri == ssize(arr));
-		assert(str_le == str_ri);
-		assert(sa.cmp_substrs(0, 0, 100, 100) == 0);
-		assert(sa.cmp_substrs(5, 5, 47, 47) == 0);
-		assert(sa.cmp_substrs(50, 50, 99, 100) < 0);
-		assert(sa.cmp_substrs(50, 51, 20, 20) > 0);
-		assert(sa.cmp_substrs(0, 100, 0, 100) == 0);
-		assert(sa.cmp_substrs(1, 100, 0, 100) > 0);
-		assert(sa.cmp_substrs(0, 100, 1, 100) < 0);
+		assert(s_le == s_ri);
+		assert(sf_a.cmp_substrs(0, 0, 100, 100) == 0);
+		assert(sf_a.cmp_substrs(5, 5, 47, 47) == 0);
+		assert(sf_a.cmp_substrs(50, 50, 99, 100) < 0);
+		assert(sf_a.cmp_substrs(50, 51, 20, 20) > 0);
+		assert(sf_a.cmp_substrs(0, 100, 0, 100) == 0);
+		assert(sf_a.cmp_substrs(1, 100, 0, 100) > 0);
+		assert(sf_a.cmp_substrs(0, 100, 1, 100) < 0);
 	}
 	{
 		KMP kmp(t);

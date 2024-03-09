@@ -8,7 +8,7 @@ RMQ<int, function<int(int, int)>> rmq;
  *        it's the same as z algorithm
  * @returns max integer k such that s.substr(i1, k) == s.substr(i2, k)
  * @time O(1)
- * @space O(1) space used during query, but with O(nlogn) precomp
+ * @space O(1)
  */
 inline int len_lcp(int i1, int i2) {
 	if (i1 > i2) swap(i1, i2);

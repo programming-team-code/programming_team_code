@@ -10,27 +10,33 @@ int main() {
 	cin.tie(0)->sync_with_stdio(0);
 	{
 		suffix_array sf_a(string(""), 256);
-		auto [sa_le, sa_ri, str_le, str_ri] = sf_a.find_str(string(""));
-		assert(sa_le == 0 && sa_ri == 0 && str_le == 0 && str_ri == 0);
+		auto [sa_le, sa_ri, s_le, s_ri] = sf_a.find_str_long(string(""));
+		array<int, 2> short_res = sf_a.find_str(string(""));
+		assert(sa_le == short_res[0] && sa_ri == short_res[1]);
+		assert(sa_le == 0 && sa_ri == 0 && s_le == 0 && s_ri == 0);
 	}
 	string s;
 	cin >> s;
 	suffix_array sf_a(s, 256);
 	{
-		auto [sa_le, sa_ri, str_le, str_ri] = sf_a.find_str(string(""));
+		auto [sa_le, sa_ri, s_le, s_ri] = sf_a.find_str_long(string(""));
+		array<int, 2> short_res = sf_a.find_str(string(""));
+		assert(sa_le == short_res[0] && sa_ri == short_res[1]);
 		assert(sa_le == 0 && sa_ri == ssize(s));
-		assert(str_ri - str_le == 0);
+		assert(s_ri - s_le == 0);
 	}
 	int q;
 	cin >> q;
 	while (q--) {
 		string t;
 		cin >> t;
-		auto [sa_le, sa_ri, str_le, str_ri] = sf_a.find_str(t);
-		int str_len = str_ri - str_le;
+		auto [sa_le, sa_ri, s_le, s_ri] = sf_a.find_str_long(t);
+		array<int, 2> short_res = sf_a.find_str(t);
+		assert(sa_le == short_res[0] && sa_ri == short_res[1]);
+		int str_len = s_ri - s_le;
 		assert(str_len <= ssize(t));
-		assert(s.substr(str_le, str_len) == t.substr(0, str_len));
-		assert(str_len == ssize(t) || str_ri == ssize(s) || t[str_len] != s[str_ri]);
+		assert(s.substr(s_le, str_len) == t.substr(0, str_len));
+		assert(str_len == ssize(t) || s_ri == ssize(s) || t[str_len] != s[s_ri]);
 		assert((sa_le < sa_ri) == (str_len == ssize(t)));
 		cout << (!!(sa_ri - sa_le > 0)) << '\n';
 	}
