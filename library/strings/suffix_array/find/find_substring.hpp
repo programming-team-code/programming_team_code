@@ -5,8 +5,6 @@
  * @returns a range [le, ri) such that:
  *     - for all i in [le, ri): s.substr(s_le, s_ri - s_le) == s.substr(sa[i], s_ri - s_le)
  *     - `ri - le` is the # of matches of s.substr(s_le, s_ri - s_le) in s.
- * note find_substr(i, i) returns [0, ssize(s))
- * note le < ri except when ssize(s) == 0
  * @time O(log(|s|))
  * @space O(1)
  */
