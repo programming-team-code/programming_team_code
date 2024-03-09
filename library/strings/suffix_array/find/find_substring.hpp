@@ -1,5 +1,6 @@
 /** @file */
 #pragma once
+#include "../len_lcp.hpp"
 /**
  * @param s_le,s_ri defines a substring [s_le, s_ri) of s
  * @returns a range [le, ri) such that:
