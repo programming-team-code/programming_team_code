@@ -6,24 +6,13 @@
 //NOLINTNEXTLINE(readability-identifier-naming)
 template <class T> struct BIT {
 	vector<T> s;
-	BIT() {}
 	/**
 	 * @param n initial size
 	 * @time O(n)
 	 * @space O(n) for `s` vector
 	 */
 	BIT(int n) : s(n) {}
-	/**
-	 * @param a initial array
-	 * @time O(n)
-	 * @space O(n) for `s` vector
-	 */
-	BIT(const vector<T>& a) : s(a) {
-		for (int i = 0; i < ssize(a); i++) {
-			int j = i | (i + 1);
-			if (j < ssize(a)) s[j] += s[i];
-		}
-	}
+#include "bit_uncommon/vector_constructor.hpp"
 	/**
 	 * @param i index
 	 * @param d delta
