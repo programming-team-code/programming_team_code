@@ -25,29 +25,37 @@ int main() {
 	assert(ssize(sf_a.sa_inv) == n);
 	assert(ssize(sf_a.lcp) == n - 1);
 	{
-		auto [sa_le, sa_ri, str_le, str_ri] = sf_a.find_str(string(""));
+		auto [sa_le, sa_ri, s_le, s_ri] = sf_a.find_str_long(string(""));
 		assert(sa_le == 0 && sa_ri == n);
-		assert(str_ri - str_le == 0);
+		array<int, 2> short_res = sf_a.find_str(string(""));
+		assert(sa_le == short_res[0] && sa_ri == short_res[1]);
+		assert(s_ri - s_le == 0);
 	}
 	{
-		auto [sa_le, sa_ri, str_le, str_ri] = sf_a.find_substrs_concated({});
+		auto [sa_le, sa_ri, s_le, s_ri] = sf_a.find_substrs_concated({});
 		assert(sa_le == 0 && sa_ri == n);
-		assert(str_ri - str_le == 0);
+		assert(s_ri - s_le == 0);
 	}
 	{
-		auto [sa_le, sa_ri, str_le, str_ri] = sf_a.find_substrs_concated({{0, 0}});
+		auto [sa_le, sa_ri, s_le, s_ri] = sf_a.find_substrs_concated({{0, 0}});
+		array<int, 2> short_res = sf_a.find_substr(0, 0);
+		assert(sa_le == short_res[0] && sa_ri == short_res[1]);
 		assert(sa_le == 0 && sa_ri == n);
-		assert(str_ri - str_le == 0);
+		assert(s_ri - s_le == 0);
 	}
 	{
-		auto [sa_le, sa_ri, str_le, str_ri] = sf_a.find_substrs_concated({{0, 0}, {n, n}});
+		auto [sa_le, sa_ri, s_le, s_ri] = sf_a.find_substrs_concated({{0, 0}, {n, n}});
+		array<int, 2> short_res = sf_a.find_substr(n, n);
+		assert(sa_le == short_res[0] && sa_ri == short_res[1]);
 		assert(sa_le == 0 && sa_ri == n);
-		assert(str_ri - str_le == 0);
+		assert(s_ri - s_le == 0);
 	}
 	{
-		auto [sa_le, sa_ri, str_le, str_ri] = sf_a.find_substrs_concated({{0, 0}, {n / 2, n / 2}, {n, n}});
+		auto [sa_le, sa_ri, s_le, s_ri] = sf_a.find_substrs_concated({{0, 0}, {n / 2, n / 2}, {n, n}});
+		array<int, 2> short_res = sf_a.find_substr(n / 2, n / 2);
+		assert(sa_le == short_res[0] && sa_ri == short_res[1]);
 		assert(sa_le == 0 && sa_ri == n);
-		assert(str_ri - str_le == 0);
+		assert(s_ri - s_le == 0);
 	}
 	for (int i = 0; i < n; i++) {
 		assert(sf_a.sa[sf_a.sa_inv[i]] == i);

@@ -9,7 +9,7 @@
  *     - cmp = 0 iff s.substr(le1, ri1 - le1) = s.substr(le2, ri2 - le2)
  *     - cmp > 0 iff s.substr(le1, ri1 - le1) > s.substr(le2, ri2 - le2)
  * @time O(1)
- * @space O(1) space used during query, but with O(nlogn) precomp
+ * @space O(1)
  */
 inline int cmp_substrs(int le1, int ri1, int le2, int ri2) {
 	assert(0 <= le1 && le1 <= ri1 && ri1 <= n);

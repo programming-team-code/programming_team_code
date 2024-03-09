@@ -11,14 +11,14 @@ struct match {
 	 * - for all i in [sa_le, sa_ri): t == s.substr(sa[i], ssize(t))
 	 * - `sa_ri - sa_le` is the # of matches of t in s.
 	 *
-	 * [str_le, str_ri) defines a substring of s such that:
-	 * - s.substr(str_le, str_ri - str_le) == t.substr(0, str_ri - str_le)
-	 * - (str_ri - str_le) is maximized, if there are multiple answers, str_le is arbitrary
+	 * [s_le, s_ri) defines a substring of s such that:
+	 * - s.substr(s_le, s_ri - s_le) == t.substr(0, s_ri - s_le)
+	 * - (s_ri - s_le) is maximized, if there are multiple answers, s_le is arbitrary
 	 *
-	 * - note if sa_le < sa_ri, i.e. at least one match, then str_ri - str_le == ssize(t)
-	 * - note if sa_le == sa_ri, i.e. no matches, then str_ri - str_le < ssize(t)
+	 * - note if sa_le < sa_ri, i.e. at least one match, then s_ri - s_le == ssize(t)
+	 * - note if sa_le == sa_ri, i.e. no matches, then s_ri - s_le < ssize(t)
 	 * @{
 	 */
-	int sa_le, sa_ri, str_le, str_ri;
+	int sa_le, sa_ri, s_le, s_ri;
 	/** @} */
 };

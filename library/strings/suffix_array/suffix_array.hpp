@@ -47,8 +47,8 @@ template <class T> struct suffix_array {
 	 * @endcode
 	 * @param a_s,max_val string/array with 0 <= a_s[i] < max_val
 	 * @time O((n log n) + max_val)
-	 * @space vectors `sa`, `sa_inv`, `lcp` are O(n); vector `freq` is
-	 * O(max_val) and is allocated temporarily
+	 * @space vectors `sa`, `sa_inv`, `lcp` are O(n); `rmq` is O(nlogn), vector
+	 * `freq` is O(max_val) and is allocated temporarily
 	 */
 	suffix_array(const T& a_s, int max_val) : s(a_s), n(ssize(s)), sa(n), sa_inv(begin(s), end(s)), lcp(max(0, n - 1)) {
 		vector<int> tmp(n);
@@ -80,5 +80,7 @@ template <class T> struct suffix_array {
 #include "compare/compare_substrings.hpp"
 #include "compare/compare_suffixes.hpp"
 #include "find/find_string_bs.hpp"
+#include "find/find_string_bs_long.hpp"
+#include "find/find_substring.hpp"
 #include "find/find_substrings_concatenated.hpp"
 };
