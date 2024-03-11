@@ -15,7 +15,6 @@ int main() {
 		adj[par].push_back(i);
 	}
 	LCA lc(adj);
-	linear_lca lin_lca(adj);
 	{
 		vector<int> cnt_small_iterated(n), cnt_big_iterated(n);
 		for (int i = 0; i < n; i++) {
@@ -34,7 +33,6 @@ int main() {
 #include "../../../library/trees/lca_rmq/iterate_subtree.hpp"
 				assert(lc.d[u] <= lc.d[v]);
 				assert(lc.in_subtree(u, v));
-				assert(lin_lca.in_subtree(u, v));
 				cnt_small_iterated[v]++;
 			}
 		}

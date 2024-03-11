@@ -34,6 +34,8 @@ int main() {
 	while (q--) {
 		int u, v;
 		cin >> u >> v;
+		assert(lc.next_on_path(u, v) == lin_lca.next_on_path(u, v));
+		assert(lc.next_on_path(v, u) == lin_lca.next_on_path(v, u));
 		assert(lc.in_subtree(u, v) == lin_lca.in_subtree(u, v));
 		assert(lc.in_subtree(v, u) == lin_lca.in_subtree(v, u));
 		int lca = tl.lca(u, v);
