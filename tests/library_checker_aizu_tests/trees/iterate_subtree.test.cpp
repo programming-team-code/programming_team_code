@@ -2,7 +2,6 @@
 #include "../template.hpp"
 
 #include "../../../library/trees/lca_rmq/lca_rmq.hpp"
-#include "../../../library/trees/linear_lca/linear_lca.hpp"
 
 int main() {
 	cin.tie(0)->sync_with_stdio(0);
