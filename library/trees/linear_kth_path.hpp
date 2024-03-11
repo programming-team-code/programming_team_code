@@ -1,6 +1,6 @@
 /** @file */
 #pragma once
-#include "linear_lca.hpp"
+#include "linear_lca/linear_lca.hpp"
 #include "ladder_decomposition/linear_kth_par.hpp"
 /**
  * @param lin_lca,lin_kp linear lca and kth parent

@@ -7,7 +7,7 @@
 
 #include "../../../library/trees/lca_rmq/lca_rmq.hpp"
 
-#include "../../../library/trees/linear_lca.hpp"
+#include "../../../library/trees/linear_lca/linear_lca.hpp"
 
 #include "../../../library/trees/ladder_decomposition/ladder_decomposition.hpp"
 
@@ -53,6 +53,8 @@ int main() {
 			assert(tl.dist_edges(u, v) == lc.dist_edges(u, v));
 			assert(tl.dist_edges(u, v) == lin_lca.dist_edges(u, v));
 			assert(tl.kth_path(u, v, 1) == lc.next_on_path(u, v));
+			assert(lin_lca.next_on_path(u, v) == lc.next_on_path(u, v));
+			assert(lin_lca.next_on_path(v, u) == lc.next_on_path(v, u));
 			assert(kth_path(lin_lca, lin_kp, u, v, 1) == lc.next_on_path(u, v));
 			if (tl.d[u] > tl.d[v]) swap(u, v);
 			auto res = tl.kth_par(v, tl.d[v] - tl.d[u]);
@@ -61,6 +63,8 @@ int main() {
 			assert(res == lin_kp.kth_par(v, tl.d[v] - tl.d[u]));
 			assert(res == linear_kp_4.kth_par(v, tl.d[v] - tl.d[u]));
 			assert(res == linear_kp_5.kth_par(v, tl.d[v] - tl.d[u]));
+			assert(lin_lca.in_subtree(u, v) == lc.in_subtree(u, v));
+			assert(lin_lca.in_subtree(v, u) == lc.in_subtree(v, u));
 			assert((u == res) == lc.in_subtree(u, v));
 		}
 	}
