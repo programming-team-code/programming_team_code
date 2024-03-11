@@ -17,7 +17,7 @@ vector<vector<int>> count_rectangles(const vector<vector<bool>>& grid) {
 		transform(begin(h), end(h), begin(row), begin(h), [](int a, bool g) {
 			return g * (a + 1);
 		});
-		auto ri = mono_st(h, less()), le = mono_range(ri);
+		auto le(mono_st(h, less())), ri(mono_range(le));
 		for (int j = 0; j < m; j++) {
 			int cnt_l = j - le[j] - 1, cnt_r = ri[j] - j - 1;
 			cnt[h[j]][cnt_l + cnt_r + 1]++;

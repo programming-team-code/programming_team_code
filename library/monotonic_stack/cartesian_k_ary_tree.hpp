@@ -1,6 +1,6 @@
 /** @file */
 #pragma once
-#include "monotonic_stack.hpp"
+#include "monotonic_range.hpp"
 /**
  *   when cmp is less_equal():
  *   a = {2, 1, 3, 1, 1, 0, 2, 2, 1, 0, 2}
@@ -22,12 +22,12 @@
  * p[9] = 5
  *
  * @code{.cpp}
-       auto ri = mono_st(a, less_equal()), p = cart_k_ary_tree(a, ri); // min cart tree
-       auto ri = mono_st(a, greater_equal()), p = cart_k_ary_tree(a, ri); // max cart tree
+       auto le = mono_st(a, less_equal()), ri = mono_range(le), p = cart_k_ary_tree(a, ri); // min cart tree
+       auto le = mono_st(a, greater_equal()), ri = mono_range(le), p = cart_k_ary_tree(a, ri); // max cart tree
        bool is_node = (p[i] > i || a[i] != a[p[i]]);
  * @endcode
  *
- * @param a,ri array and its monotonic stack
+ * @param a,ri array and its right-monotonic stack
  * @returns parent array
  * @time O(n)
  * @space a O(n) vector is allocated and returned

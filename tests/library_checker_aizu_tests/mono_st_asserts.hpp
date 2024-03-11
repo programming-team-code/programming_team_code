@@ -36,11 +36,11 @@ void mono_st_asserts(const vector<int>& a) {
 		iota(begin(init), end(init), 0);
 		RMQ rmq(init, [&](int x, int y) -> int { return cmp(a[x], a[y]) ? x : y; });
 		linear_rmq lin_rmq(a, cmp);
-		auto ri = mono_st(a, cmp), le = mono_range(ri), p = cart_binary_tree(ri);
+		auto le = mono_st(a, cmp), ri = mono_range(le), p = cart_binary_tree(le);
 		{
 			int iterations = 0;
 			queue<array<int, 3>> q;
-			q.push({0, n, n}); // node_le, node_ri, parent
+			q.push({0, n, -1}); // node_le, node_ri, parent
 			while (!empty(q)) {
 				auto [node_le, node_ri, node_par] = q.front();
 				q.pop();
@@ -59,10 +59,10 @@ void mono_st_asserts(const vector<int>& a) {
 			assert(iterations == n);
 		}
 		{
-			vector old_way_le = mono_st<int>({rbegin(a), rend(a)}, [&](int x, int y) {return !cmp(y, x);});
-			reverse(begin(old_way_le), end(old_way_le));
-			transform(begin(old_way_le), end(old_way_le), begin(old_way_le), [&](int i) {return ssize(a) - i - 1;});
-			assert(le == old_way_le);
+			vector old_way_ri = mono_st<int>({rbegin(a), rend(a)}, [&](int x, int y) {return !cmp(y, x);});
+			reverse(begin(old_way_ri), end(old_way_ri));
+			transform(begin(old_way_ri), end(old_way_ri), begin(old_way_ri), [&](int i) {return ssize(a) - i - 1;});
+			assert(ri == old_way_ri);
 		}
 		int iterations = 0;
 		for (int i = n - 1; i >= 0; i--) {
@@ -85,7 +85,7 @@ void mono_st_asserts(const vector<int>& a) {
 		assert(iterations == n);
 	}
 	// test cartesian tree against old method
-	auto ri = mono_st(a, less_equal()), le = mono_range(ri), p = cart_k_ary_tree(a, ri);
+	auto le = mono_st(a, less_equal()), ri = mono_range(le), p = cart_k_ary_tree(a, ri);
 	assert(count(begin(p), end(p), n) == !empty(a));
 	for (int i = 0; i < n; i++)
 		assert(0 <= p[i] && p[i] <= n && p[i] != i);

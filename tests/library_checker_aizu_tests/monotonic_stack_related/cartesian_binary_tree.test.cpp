@@ -9,8 +9,8 @@ int main() {
 	cin >> n;
 	vector<int> a(n);
 	for (int i = 0; i < n; i++) cin >> a[i];
-	auto ri = mono_st(a, less()), p = cart_binary_tree(ri);
+	auto le = mono_st(a, less()), p = cart_binary_tree(le);
 	for (int i = 0; i < n; i++)
-		cout << (p[i] == n ? i : p[i]) << " ";
+		cout << (p[i] == -1 ? i : p[i]) << " ";
 	return 0;
 }

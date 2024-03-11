@@ -14,20 +14,20 @@
  * index: 0  1  2  3  4  5  6  7  8  9  10
  *
  * @code{.cpp}
-       auto ri = mono_st(a, less()), p = cart_binary_tree(ri); // right-most min is root
-       auto ri = mono_st(a, less_equal()), p = cart_binary_tree(ri); // left-most min is root
-       auto ri = mono_st(a, greater()), p = cart_binary_tree(ri); // right-most max is root
-       auto ri = mono_st(a, greater_equal()), p = cart_binary_tree(ri); // left-most max is root
+       auto le = mono_st(a, less()), p = cart_binary_tree(le); // right-most min is root
+       auto le = mono_st(a, less_equal()), p = cart_binary_tree(le); // left-most min is root
+       auto le = mono_st(a, greater()), p = cart_binary_tree(le); // right-most max is root
+       auto le = mono_st(a, greater_equal()), p = cart_binary_tree(le); // left-most max is root
  * @endcode
- * @param ri monotonic stack of array `a`
+ * @param le monotonic stack of array `a`
  * @returns parent array
  * @time O(n)
  * @space a O(n) vector is allocated and returned
  */
-vector<int> cart_binary_tree(const vector<int>& ri) {
-	vector<int> p(ri);
+vector<int> cart_binary_tree(const vector<int>& le) {
+	vector<int> p(le);
 	for (int i = 0; i < ssize(p); i++)
-		for (int j = i + 1; j != ri[i]; j = ri[j])
-			if (ri[j] == ri[i]) p[j] = i;
+		for (int j = i - 1; j != le[i]; j = le[j])
+			if (le[j] == le[i]) p[j] = i;
 	return p;
 }
