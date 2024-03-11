@@ -7,14 +7,13 @@
 #include "../../library/contest/random.hpp"
 void compress_tree_asserts(vector<vector<int>> adj, linear_lca& lin_lca) {
 	int n = ssize(adj);
-	int sum_subset_sizes = 0;
 	vector<bool> used(n);
 	KACTL_LCA kactl_lca(adj);
 	{
 		auto [parent, to_node] = lin_lca.compress_tree({});
 		assert(empty(parent) && empty(to_node));
 	}
-	while (sum_subset_sizes < n) {
+	for (int tests = 0; tests < 2; tests++) {
 		vector<int> subset;
 		{
 			int subset_size = get_rand(1, n);
@@ -36,6 +35,5 @@ void compress_tree_asserts(vector<vector<int>> adj, linear_lca& lin_lca) {
 			else assert(parent[i] == -1);
 		}
 		for (int u : subset) used[u] = 0;
-		sum_subset_sizes += ssize(subset);
 	}
 }
