@@ -41,3 +41,4 @@ syntaxError:../library/loops/submasks.hpp:9
 syntaxError:../library/loops/supermasks.hpp:10
 syntaxError:../library/math/prime_sieve/mobius.hpp:12
 syntaxError:../library/trees/lca_rmq/iterate_subtree.hpp:13
+constVariable:../kactl/content/graph/CompressTree.h:20

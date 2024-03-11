@@ -5,11 +5,13 @@
 
 #include "../../../library/trees/lca_rmq/lca_rmq.hpp"
 
-#include "../../../library/trees/linear_lca.hpp"
+#include "../../../library/trees/linear_lca/linear_lca.hpp"
 
 #define bit_floor bit_floor_linear
 #include "../../../library/trees/linear_kth_path.hpp"
 #undef bit_floor
+
+#include "../compress_tree_asserts.hpp"
 
 int main() {
 	cin.tie(0)->sync_with_stdio(0);
@@ -25,6 +27,7 @@ int main() {
 	tree_lift tl(adj);
 	LCA lc(adj);
 	linear_lca lin_lca(adj);
+	compress_tree_asserts(adj, lin_lca);
 	linear_kth_par lin_kp(adj);
 	while (q--) {
 		int u, v, k;
@@ -42,6 +45,8 @@ int main() {
 			assert(kth_path(lin_lca, lin_kp, u, v, 1) == lc.next_on_path(u, v));
 			assert(tl.kth_path(u, v, dist_in_edges - 1) == lc.next_on_path(v, u));
 			assert(kth_path(lin_lca, lin_kp, u, v, dist_in_edges - 1) == lc.next_on_path(v, u));
+			assert(lin_lca.next_on_path(u, v) == lc.next_on_path(u, v));
+			assert(lin_lca.next_on_path(v, u) == lc.next_on_path(v, u));
 			assert(tl.kth_path(u, v, dist_in_edges) == v);
 			assert(kth_path(lin_lca, lin_kp, u, v, dist_in_edges) == v);
 			assert(tl.kth_path(u, v, dist_in_edges + 1) == -1);

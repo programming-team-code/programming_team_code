@@ -2,6 +2,9 @@
 #include "../template.hpp"
 
 #include "../../../library/trees/lca_rmq/lca_rmq.hpp"
+#include "../../../library/trees/linear_lca/linear_lca.hpp"
+
+#include "../compress_tree_asserts.hpp"
 
 int main() {
 	cin.tie(0)->sync_with_stdio(0);
@@ -14,6 +17,8 @@ int main() {
 		adj[par].push_back(i);
 	}
 	LCA lc(adj);
+	linear_lca lin_lca(adj);
+	compress_tree_asserts(adj, lin_lca);
 	{
 		vector<int> cnt_small_iterated(n), cnt_big_iterated(n);
 		for (int i = 0; i < n; i++) {
@@ -32,6 +37,7 @@ int main() {
 #include "../../../library/trees/lca_rmq/iterate_subtree.hpp"
 				assert(lc.d[u] <= lc.d[v]);
 				assert(lc.in_subtree(u, v));
+				assert(lin_lca.in_subtree(u, v));
 				cnt_small_iterated[v]++;
 			}
 		}

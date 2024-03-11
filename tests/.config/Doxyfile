@@ -1067,8 +1067,9 @@ EXCLUDE_SYMBOLS        = HLD::node \
                          is_join \
                          lift \
                          head \
-                         in_label \
-                         ascendant \
+                         label \
+                         asc \
+                         big_ch \
                          bit_floor \
                          timer \
                          b \
@@ -1085,6 +1086,7 @@ EXCLUDE_SYMBOLS        = HLD::node \
                          sieve \
                          mobius \
                          sf_a \
+                         lsb \
 
 # The EXAMPLE_PATH tag can be used to specify one or more files or directories
 # that contain example code fragments that are included (see the \include
