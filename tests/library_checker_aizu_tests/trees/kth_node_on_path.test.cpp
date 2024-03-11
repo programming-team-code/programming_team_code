@@ -47,6 +47,8 @@ int main() {
 			assert(kth_path(lin_lca, lin_kp, u, v, dist_in_edges - 1) == lc.next_on_path(v, u));
 			assert(lin_lca.next_on_path(u, v) == lc.next_on_path(u, v));
 			assert(lin_lca.next_on_path(v, u) == lc.next_on_path(v, u));
+			assert(lin_lca.in_subtree(u, v) == lc.in_subtree(u, v));
+			assert(lin_lca.in_subtree(v, u) == lc.in_subtree(v, u));
 			assert(tl.kth_path(u, v, dist_in_edges) == v);
 			assert(kth_path(lin_lca, lin_kp, u, v, dist_in_edges) == v);
 			assert(tl.kth_path(u, v, dist_in_edges + 1) == -1);
