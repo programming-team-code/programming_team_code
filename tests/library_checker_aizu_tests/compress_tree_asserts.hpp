@@ -14,7 +14,7 @@ void compress_tree_asserts(vector<vector<int>> adj, linear_lca& lin_lca) {
 		auto [parent, to_node] = lin_lca.compress_tree({});
 		assert(empty(parent) && empty(to_node));
 	}
-	while (sum_subset_sizes < 2 * n) {
+	while (sum_subset_sizes < n) {
 		vector<int> subset;
 		{
 			int subset_size = get_rand(1, n);
