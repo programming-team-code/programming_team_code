@@ -26,11 +26,11 @@ template <class T, class F> struct linear_rmq {
 	 * @space O(n)
 	 */
 	linear_rmq(const vector<T>& a_a, F a_cmp) : n(ssize(a_a)), cmp(a_cmp), a(a_a), head(n + 1), in_label(n), ascendant(n) {
-		vector<int> ri(mono_st(a, cmp)), le(mono_range(ri)), p(cart_binary_tree(ri));
+		vector<int> le(mono_st(a, cmp)), ri(mono_range(le)), p(cart_binary_tree(le));
 		for (int i = 0; i < n; i++)
 			in_label[i] = ri[i] & -bit_floor(unsigned((le[i] + 1) ^ ri[i]));
 		for (int i = 0; i < n; i++)
-			if (p[i] == n || in_label[p[i]] != in_label[i]) {
+			if (p[i] == -1 || in_label[p[i]] != in_label[i]) {
 				head[in_label[i]] = p[i];
 				int to_add = in_label[i] & -in_label[i];
 				ascendant[le[i] + 1] += to_add;

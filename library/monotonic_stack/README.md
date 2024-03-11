@@ -1,6 +1,10 @@
-all images are when you pass in `less` for `cmp`:
+`vector<int> le = mono_st(a, less());`
 
-![](mono_stack.png)
+![](mono_stack_le.png)
+
+`vector<int> ri = mono_range(le);`
+
+![](mono_stack_ri.png)
 
 For cartesian binary tree, if you reverse the direction of the outer `i`-loop,
     then it can be thought of as building the cartesian tree for each suffix.

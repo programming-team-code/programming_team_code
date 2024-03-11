@@ -48,7 +48,7 @@ const int mn = '0', cnt_let = 36; // mn <= s[i] < mn + cnt_let; for lowercase le
  */
 struct lcp_tree {
 	suffix_array<string> sf_a;
-	vector<int> ri, le;
+	vector<int> le, ri;
 	int root;
 	vector<vector<int>> adj;
 	/**
@@ -56,7 +56,7 @@ struct lcp_tree {
 	 * @time O((n log n) + (mn + cnt_let) + (n * cnt_let))
 	 * @space adj is O(n * cnt_let)
 	 */
-	lcp_tree(const string& s) : sf_a(s, mn + cnt_let), ri(mono_st(sf_a.lcp, less_equal())), le(mono_range(ri)), adj(max(sf_a.n - 1, 0), vector(cnt_let, -1)) {
+	lcp_tree(const string& s) : sf_a(s, mn + cnt_let), le(mono_st(sf_a.lcp, less_equal())), ri(mono_range(le)), adj(max(sf_a.n - 1, 0), vector(cnt_let, -1)) {
 		assert(sf_a.n > 0);
 		auto p = cart_k_ary_tree(sf_a.lcp, ri);
 		root = find(begin(p), end(p), ssize(p)) - begin(p);
