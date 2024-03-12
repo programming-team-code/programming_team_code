@@ -2,19 +2,20 @@
 #pragma once
 /**
  * @param le,ri defines range [le, ri)
- * @param f defines a function(tree[u], tl, tr) that returns true if the subtree
- * contains an element that satisfies the condition
+ * @param f defines a function that returns true if the subtree contains an
+ * element that satisfies the condition
  * @returns the index of the last element in the range that satisfies the
  * condition described in `f`, if no such element exists then (le - 1) is
  * returned
  * @time O(log(n))
  * @space O(log(n)) for recursion stack; no new nodes are allocated
  */
-int find_last(int le, int ri, const function<bool(int64_t, int, int)>& f) {
+template <class F>
+int find_last(int le, int ri, const F& f) {
 	return find_last_impl(le, ri, f, 0, n, 1);
 }
-int find_last_impl(int le, int ri, const function<bool(int64_t, int, int)>& f,
-                   int tl, int tr, int u) {
+template <class F>
+int find_last_impl(int le, int ri, const F& f, int tl, int tr, int u) {
 	if (ri <= tl || tr <= le) return le - 1;
 	if (tr - tl == 1) {
 		if (f(tree[u], tl, tr)) return tl;
