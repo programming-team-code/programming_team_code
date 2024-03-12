@@ -9,7 +9,7 @@
  * @time O(log(n))
  * @space O(log(n)) for recursion stack; no new nodes are allocated
  */
-int find_first(int le, int ri, function<bool(int64_t, int, int)> f) {
+int find_first(int le, int ri, const function<bool(int64_t, int, int)>& f) {
 	return find_first_impl(le, ri, f, 0, n, 1);
 }
 int find_first_impl(int le, int ri, const function<bool(int64_t, int, int)>& f,
