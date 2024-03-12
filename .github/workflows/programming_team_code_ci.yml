@@ -32,6 +32,8 @@ jobs:
         git submodule init
         git submodule update
         rm -rf hackpack-cpp/tests/
+        # fixes RTE related to `-fsanitize=address` https://github.com/google/sanitizers/issues/856#issuecomment-1764667808
+        sudo sysctl -w kernel.randomize_va_space=0
     - name: Run tests
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
