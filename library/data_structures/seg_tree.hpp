@@ -10,9 +10,7 @@ inline int split(int tl, int tr) {
 	int pw2 = 1 << __lg(tr - tl);
 	return min(tl + pw2, tr - pw2 / 2);
 }
-inline int64_t op(int64_t vl, int64_t vr) {
-	return vl + vr;
-}
+inline int64_t op(int64_t vl, int64_t vr) { return vl + vr; }
 /**
  * root is at tree[1]
  * internal nodes are [1, n)
@@ -43,7 +41,9 @@ struct seg_tree {
 	/**
 	 * @param le,ri defines range [le, ri)
 	 */
-	void update(int le, int ri, int64_t change) {update(le, ri, change, 0, n, 1);}
+	void update(int le, int ri, int64_t change) {
+		update(le, ri, change, 0, n, 1);
+	}
 	void update(int le, int ri, int64_t change, int tl, int tr, int u) {
 		if (ri <= tl || tr <= le) return;
 		if (le <= tl && tr <= ri) return apply(change, tl, tr, u);
@@ -56,13 +56,15 @@ struct seg_tree {
 	/**
 	 * @param le,ri defines range [le, ri)
 	 */
-	int64_t query(int le, int ri) {return query(le, ri, 0, n, 1);}
+	int64_t query(int le, int ri) { return query(le, ri, 0, n, 1); }
 	int64_t query(int le, int ri, int tl, int tr, int u) {
 		if (ri <= tl || tr <= le) return 0;
 		if (le <= tl && tr <= ri) return tree[u];
 		int tm = split(tl, tr);
 		push(tl, tm, tr, u);
-		return op(query(le, ri, tl, tm, 2 * u),
-		          query(le, ri, tm, tr, 2 * u + 1));
+		return op(query(le, ri, tl, tm, 2 * u), query(le, ri, tm, tr, 2 * u + 1));
 	}
+#include "seg_tree_uncommon/find_first.hpp"
+#include "seg_tree_uncommon/find_last.hpp"
+#include "seg_tree_uncommon/lower_bound.hpp"
 };

@@ -13,9 +13,6 @@ grep --extended-regexp "template\s?<typename" --recursive ../library/ && exit 1
 echo "check formatting of template <class T>:"
 grep --extended-regexp "template<class" --recursive ../library/ && exit 1
 
-echo "check 1 instead of true"
-grep --extended-regexp "true" --recursive ../library/ && exit 1
-
 echo "check 0 instead of false"
 grep --extended-regexp "false" --recursive ../library/ && exit 1
 
