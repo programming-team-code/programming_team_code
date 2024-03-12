@@ -2,7 +2,7 @@
 #pragma once
 /**
  * @param le,ri defines range [le, ri)
- * @param f(tree[u], tl, tr) defines a function that returns true if the subtree
+ * @param f defines a function(tree[u], tl, tr) that returns true if the subtree
  * contains an element that satisfies the condition
  * @returns the index of the first element in the range that satisfies the
  * condition described in `f`, if no such element exists then `ri` is returned
@@ -23,7 +23,8 @@ int find_first_impl(int le, int ri, const function<bool(int64_t, int, int)>& f,
 	push(tl, tm, tr, u);
 	if (le <= tl && tr <= ri) {
 		if (!f(tree[u], tl, tr)) return ri;
-		if (f(tree[2 * u], tl, tm)) return find_first_impl(le, ri, f, tl, tm, 2 * u);
+		if (f(tree[2 * u], tl, tm))
+			return find_first_impl(le, ri, f, tl, tm, 2 * u);
 		return find_first_impl(le, ri, f, tm, tr, 2 * u + 1);
 	}
 	return min(find_first_impl(le, ri, f, tl, tm, 2 * u),
