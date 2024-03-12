@@ -1,7 +1,7 @@
 #define PROBLEM "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A"
 #include "../template.hpp"
-#include "../../../library/contest/random.hpp"
 
+#include "../../../library/contest/random.hpp"
 #include "../../../library/data_structures/uncommon/dsu_restorable.hpp"
 
 int main() {
@@ -38,8 +38,7 @@ int main() {
 				}
 				assert(ssize(comps) == dsu.num_sets);
 				for (auto& cc : comps)
-					for (auto node : cc)
-						assert(dsu.size(node) == ssize(cc));
+					for (auto node : cc) assert(dsu.size(node) == ssize(cc));
 			} else if (!empty(edge_st)) {
 				auto [u, v] = edge_st.back();
 				edge_st.pop_back();

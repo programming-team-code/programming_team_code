@@ -1,10 +1,10 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/point_add_range_sum"
 #include "../template.hpp"
-#include "../../../library/contest/random.hpp"
 
+#include "../../../library/contest/random.hpp"
 #include "../../../library/data_structures/bit_uncommon/rupq.hpp"
 #include "../../../library/data_structures/bit_uncommon/rurq.hpp"
-#include "../../../library/data_structures/seg_tree_uncommon/lower_bound.hpp"
+#include "../../../library/data_structures/seg_tree.hpp"
 
 int main() {
 	cin.tie(0)->sync_with_stdio(0);
@@ -50,8 +50,7 @@ int main() {
 			cout << res << '\n';
 		}
 		auto sum = get_rand<int64_t>(0LL, (int64_t)(1e12));
-		int pos_st = lower_bound(st, sum);
-		assert(bit.lower_bound(sum) == pos_st);
+		assert(bit.lower_bound(sum) == st.lower_bound(sum));
 	}
 	return 0;
 }
