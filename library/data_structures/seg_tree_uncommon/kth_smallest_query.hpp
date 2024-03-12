@@ -2,7 +2,8 @@
 #pragma once
 #include "persistent.hpp"
 /**
- * @see https://cp-algorithms.com/data_structures/segment_tree.html# preserving-the-history-of-its-values-persistent-segment-tree
+ * @see https://cp-algorithms.com/data_structures/segment_tree.html#
+ * preserving-the-history-of-its-values-persistent-segment-tree
  */
 struct kth_smallest {
 	PST pst;
@@ -12,8 +13,7 @@ struct kth_smallest {
 	 * @space O(n log(maxv - minv)) nodes are pushed back onto PST::tree
 	 */
 	kth_smallest(const vector<int>& a, int minv, int maxv) : pst(minv, maxv) {
-		for (int i = 0; i < ssize(a); i++)
-			pst.update(a[i], 1, i);
+		for (int i = 0; i < ssize(a); i++) pst.update(a[i], 1, i);
 	}
 	/**
 	 * @param le,ri defines range [le, ri)
@@ -32,8 +32,11 @@ struct kth_smallest {
 	int query_impl(int k, int tl, int tr, int vl, int vr) {
 		if (tr - tl == 1) return tl;
 		int tm = tl + (tr - tl) / 2;
-		int left_count = pst.tree[pst.tree[vr].lch].sum - pst.tree[pst.tree[vl].lch].sum;
-		if (left_count >= k) return query_impl(k, tl, tm, pst.tree[vl].lch, pst.tree[vr].lch);
-		return query_impl(k - left_count, tm, tr, pst.tree[vl].rch, pst.tree[vr].rch);
+		int left_count =
+		    pst.tree[pst.tree[vr].lch].sum - pst.tree[pst.tree[vl].lch].sum;
+		if (left_count >= k)
+			return query_impl(k, tl, tm, pst.tree[vl].lch, pst.tree[vr].lch);
+		return query_impl(k - left_count, tm, tr, pst.tree[vl].rch,
+		                  pst.tree[vr].rch);
 	}
 };
