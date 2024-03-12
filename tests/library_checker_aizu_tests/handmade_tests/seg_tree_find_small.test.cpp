@@ -24,7 +24,7 @@ int main() {
 					last_zero = max(last_zero, pos);
 				}
 			}
-			auto f = [](int64_t x, int le, int ri) { return x < ri - le; };
+			auto f = [](int64_t x, int tl, int tr) { return x < tr - tl; };
 			assert(first_zero == seg.find_first(le, ri, f));
 			assert(last_zero == seg.find_last(le, ri, f));
 		}
