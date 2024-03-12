@@ -1089,6 +1089,7 @@ EXCLUDE_SYMBOLS        = HLD::node \
                          lsb \
                          find_first_impl \
                          find_last_impl \
+                         is_bipartite \
 
 # The EXAMPLE_PATH tag can be used to specify one or more files or directories
 # that contain example code fragments that are included (see the \include
