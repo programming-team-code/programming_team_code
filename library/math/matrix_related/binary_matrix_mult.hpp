@@ -7,8 +7,8 @@
  * @returns a*b mod 2
  * @time O(n * m * k / w) where w is the machine word size (usually 32 or
  * 64)
- * @space besides the O(n * inner) and O(inner * m) params, this function
- * allocates and returns a O(n * m) vector
+ * @space O(N * K / w + N * M / w + M * K / w) where w is the machine word size
+ * (usually 32 or 64)
  */
 template <unsigned long int N, unsigned long int M, unsigned long int K>
 array<bitset<K>, N> operator*(const array<bitset<M>, N>& a,
