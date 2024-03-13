@@ -66,6 +66,7 @@
 "tests/library_checker_aizu_tests/loops/submasks.test.cpp": "2024-03-12 13:32:08 -0400",
 "tests/library_checker_aizu_tests/loops/supermasks.test.cpp": "2024-03-12 13:32:08 -0400",
 "tests/library_checker_aizu_tests/math/binary_exponentiation_mod.test.cpp": "2024-03-12 13:32:08 -0400",
+"tests/library_checker_aizu_tests/math/binary_matrix_mult.test.cpp": "2024-03-12 20:23:58 -0400",
 "tests/library_checker_aizu_tests/math/derangement.test.cpp": "2024-03-12 13:32:08 -0400",
 "tests/library_checker_aizu_tests/math/matrix_determinant.test.cpp": "2024-03-12 13:32:08 -0400",
 "tests/library_checker_aizu_tests/math/matrix_mult.test.cpp": "2024-03-12 13:32:08 -0400",
@@ -99,5 +100,4 @@
 "tests/library_checker_aizu_tests/strings/sa_sort_pairs.test.cpp": "2024-03-12 13:32:08 -0400",
 "tests/library_checker_aizu_tests/strings/single_matching.test.cpp": "2024-03-12 13:32:08 -0400",
 "tests/library_checker_aizu_tests/strings/single_matching_bs.test.cpp": "2024-03-12 13:32:08 -0400",
-"tests/library_checker_aizu_tests/strings/suffix_array.test.cpp": "2024-03-12 13:32:08 -0400"
 }
