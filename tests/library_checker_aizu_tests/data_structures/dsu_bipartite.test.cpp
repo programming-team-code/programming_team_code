@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/unionfind"
 #include "../template.hpp"
-// no reorder
+
 #include "../../../library/contest/random.hpp"
 #include "../../../library/data_structures/uncommon/dsu_bipartite.hpp"
 

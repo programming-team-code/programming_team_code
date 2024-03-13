@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/minimum_spanning_tree"
 #include "../template.hpp"
-// don't re-order
+
 #include "../../../library/graphs/mst.hpp"
 
 int main() {
