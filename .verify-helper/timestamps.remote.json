@@ -99,5 +99,11 @@
 "tests/library_checker_aizu_tests/strings/prefix_function.test.cpp": "2024-03-14 01:05:18 -0600",
 "tests/library_checker_aizu_tests/strings/sa_cmp.test.cpp": "2024-03-14 01:05:18 -0600",
 "tests/library_checker_aizu_tests/strings/sa_sort_pairs.test.cpp": "2024-03-14 01:05:18 -0600",
-"tests/library_checker_aizu_tests/strings/single_matching.test.cpp": "2024-03-14 01:05:18 -0600"
+"tests/library_checker_aizu_tests/strings/single_matching.test.cpp": "2024-03-14 01:05:18 -0600",
+"tests/library_checker_aizu_tests/strings/single_matching_bs.test.cpp": "2024-03-14 01:05:18 -0600",
+"tests/library_checker_aizu_tests/strings/suffix_array.test.cpp": "2024-03-14 01:05:18 -0600",
+"tests/library_checker_aizu_tests/strings/trie.test.cpp": "2024-03-14 01:05:18 -0600",
+"tests/library_checker_aizu_tests/trees/cd_lca.test.cpp": "2024-03-14 01:05:18 -0600",
+"tests/library_checker_aizu_tests/trees/count_paths_per_length.test.cpp": "2024-03-14 01:05:18 -0600",
+"tests/library_checker_aizu_tests/trees/edge_cd_contour_range_query.test.cpp": "2024-03-14 01:05:18 -0600"
 }
