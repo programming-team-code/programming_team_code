@@ -10,10 +10,10 @@ const int mod = 998'244'353;
  * @space O(1)
  */
 int64_t bin_exp(int64_t b, int64_t e) {
-	assert(0 <= e);
-	auto res = 1LL;
-	if ((b %= mod) < 0) b += mod;
-	for (; e; b = b * b % mod, e /= 2)
-		if (e & 1) res = res * b % mod;
-	return res;
+  assert(0 <= e);
+  auto res = 1LL;
+  if ((b %= mod) < 0) b += mod;
+  for (; e; b = b * b % mod, e /= 2)
+    if (e & 1) res = res * b % mod;
+  return res;
 }

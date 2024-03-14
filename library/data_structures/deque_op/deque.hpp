@@ -6,7 +6,7 @@
  * @space O(1)
  */
 inline void push_front(T elem) {
-	le.push_back({elem, empty(le) ? elem : op(elem, le.back()[1])});
+  le.push_back({elem, empty(le) ? elem : op(elem, le.back()[1])});
 }
 /**
  * remove deq.back()
@@ -14,11 +14,11 @@ inline void push_front(T elem) {
  * @space O(1) ammortized
  */
 inline void pop_back() {
-	assert(siz());
-	if (empty(ri)) {
-		vector<T> a(ssize(le));
-		transform(begin(le), end(le), rbegin(a), [](dt & x) {return x[0];});
-		rebuild(a, ssize(a) / 2);
-	}
-	ri.pop_back();
+  assert(siz());
+  if (empty(ri)) {
+    vector<T> a(ssize(le));
+    transform(begin(le), end(le), rbegin(a), [](dt& x) { return x[0]; });
+    rebuild(a, ssize(a) / 2);
+  }
+  ri.pop_back();
 }

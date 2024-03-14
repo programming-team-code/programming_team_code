@@ -4,17 +4,17 @@
 #include "../../../library/strings/trie.hpp"
 
 int main() {
-	cin.tie(0)->sync_with_stdio(0);
-	int n;
-	cin >> n;
-	trie tr;
-	for (int i = 0; i < n; i++) {
-		string type, s;
-		cin >> type >> s;
-		if (type == "insert")
-			tr.insert(s);
-		else
-			cout << (tr.find(s) ? "yes" : "no") << '\n';
-	}
-	return 0;
+  cin.tie(0)->sync_with_stdio(0);
+  int n;
+  cin >> n;
+  trie tr;
+  for (int i = 0; i < n; i++) {
+    string type, s;
+    cin >> type >> s;
+    if (type == "insert")
+      tr.insert(s);
+    else
+      cout << (tr.find(s) ? "yes" : "no") << '\n';
+  }
+  return 0;
 }

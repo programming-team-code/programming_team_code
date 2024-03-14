@@ -7,9 +7,9 @@
  * @time O(1) amortized
  * @space O(1) amortized
  */
-//NOLINTNEXTLINE(readability-identifier-naming)
+// NOLINTNEXTLINE(readability-identifier-naming)
 inline int64_t C(int n, int k) {
-	if (k < 0 || n < k) return 0;
-	grow(n);
-	return fact[n] * inv_fact[k] % mod * inv_fact[n - k] % mod;
+  if (k < 0 || n < k) return 0;
+  grow(n);
+  return fact[n] * inv_fact[k] % mod * inv_fact[n - k] % mod;
 }

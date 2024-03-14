@@ -4,17 +4,17 @@
 #include "../../../library/loops/next_subset.hpp"
 
 int main() {
-	cin.tie(0)->sync_with_stdio(0);
-	int n, k;
-	cin >> n >> k;
+  cin.tie(0)->sync_with_stdio(0);
+  int n, k;
+  cin >> n >> k;
 #include "../../../library/loops/chooses.hpp"
-	{
-		cout << mask << ':';
-		for (int bit = 0; bit < n; bit++) {
-			if ((mask >> bit) & 1)
-				cout << ' ' << bit;
-		}
-		cout << '\n';
-	}
-	return 0;
+  {
+    cout << mask << ':';
+    for (int bit = 0; bit < n; bit++) {
+      if ((mask >> bit) & 1)
+        cout << ' ' << bit;
+    }
+    cout << '\n';
+  }
+  return 0;
 }

@@ -13,19 +13,19 @@
  * @space O(1)
  */
 inline match find_substrs_concated(const vector<array<int, 2>>& substrs) {
-	using dt = array<int, 3>;
-	int sa_le = 0, sa_ri = n, s_le = 0, s_ri = 0, sum_len = 0;
-	auto cmp = [&](int i, const dt & x) -> bool {
-		int j = i + sum_len, lcp_len = min(len_lcp(j, x[0]), x[1]);
-		if (lcp_len + sum_len > s_ri - s_le) s_le = i, s_ri = j + lcp_len;
-		if (lcp_len < min(n - j, x[1])) return sa_inv[j] - sa_inv[x[0]] < x[2];
-		return x[2] ^ (n - j < x[1]);
-	};
-	for (auto [le, ri] : substrs) {
-		assert(0 <= le && le <= ri && ri <= n);
-		sa_le = lower_bound(begin(sa) + sa_le, begin(sa) + sa_ri, dt{le, ri - le, 0}, cmp) - begin(sa);
-		sa_ri = lower_bound(begin(sa) + sa_le, begin(sa) + sa_ri, dt{le, ri - le, 1}, cmp) - begin(sa);
-		sum_len += ri - le;
-	}
-	return {sa_le, sa_ri, s_le, s_ri};
+  using dt = array<int, 3>;
+  int sa_le = 0, sa_ri = n, s_le = 0, s_ri = 0, sum_len = 0;
+  auto cmp = [&](int i, const dt& x) -> bool {
+    int j = i + sum_len, lcp_len = min(len_lcp(j, x[0]), x[1]);
+    if (lcp_len + sum_len > s_ri - s_le) s_le = i, s_ri = j + lcp_len;
+    if (lcp_len < min(n - j, x[1])) return sa_inv[j] - sa_inv[x[0]] < x[2];
+    return x[2] ^ (n - j < x[1]);
+  };
+  for (auto [le, ri] : substrs) {
+    assert(0 <= le && le <= ri && ri <= n);
+    sa_le = lower_bound(begin(sa) + sa_le, begin(sa) + sa_ri, dt{le, ri - le, 0}, cmp) - begin(sa);
+    sa_ri = lower_bound(begin(sa) + sa_le, begin(sa) + sa_ri, dt{le, ri - le, 1}, cmp) - begin(sa);
+    sum_len += ri - le;
+  }
+  return {sa_le, sa_ri, s_le, s_ri};
 }

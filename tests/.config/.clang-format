@@ -1,0 +1,12 @@
+---
+Language: Cpp
+BasedOnStyle: Google
+ColumnLimit: 0
+Standard: c++17
+SortIncludes: Never
+AllowShortIfStatementsOnASingleLine: AllIfsAndElse
+AlwaysBreakTemplateDeclarations: No
+AllowShortBlocksOnASingleLine: Always
+AllowShortCaseLabelsOnASingleLine: true
+AlignTrailingComments: false
+...

@@ -5,7 +5,9 @@ help:
 	@echo "                                     |"
 	@echo "make compile_gcc20                   | compile all tests with -std=c++20 without ssize macro for warnings"
 	@echo "                                     |"
-	@echo "make astyle_cppcheck                 | runs astyle, cppcheck"
+	@echo "make check_format_lint               | checks format with clang-format, then cppcheck"
+	@echo "                                     |"
+	@echo "make do_format                       | format with clang-format"
 	@echo "                                     |"
 	@echo "make clangtidy                       | runs clang-tidy (mainly to verify snake_case)"
 	@echo "                                     |"
@@ -31,8 +33,11 @@ compile_gcc17:
 compile_gcc20:
 	./scripts/compile_gcc20.sh
 
-astyle_cppcheck:
-	./scripts/astyle_cppcheck.sh
+check_format_lint:
+	./scripts/check_format_lint.sh
+
+do_format:
+	./scripts/do_format.sh
 
 clangtidy:
 	./scripts/clangtidy.sh

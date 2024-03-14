@@ -27,4 +27,4 @@ done
 # the cpp preprocessor sometimes leaves blank empty lines
 sed --in-place '/^[[:space:]]*$/d' ../**/*.hpp
 # cpp command messes up formatting
-astyle --options=.config/.astylerc --recursive "../*.hpp"
+make do_format

@@ -12,31 +12,31 @@
  * @space besides the O(n * m) `mat` param, this function uses O(1) space
  */
 pair<int, int64_t> row_reduce(vector<vector<int64_t>>& mat, int cols) {
-	int n = ssize(mat), m = ssize(mat[0]), rank = 0;
-	auto det = 1LL;
-	assert(cols <= m);
-	for (int col = 0; col < cols && rank < n; col++) {
-		auto it = find_if(begin(mat) + rank, end(mat), [&](auto & v) {return v[col];});
-		if (it == end(mat)) {
-			det = 0;
-			continue;
-		}
-		if (it != begin(mat) + rank) {
-			det = det == 0 ? 0 : mod - det;
-			iter_swap(begin(mat) + rank, it);
-		}
-		det = det * mat[rank][col] % mod;
-		auto a_inv = bin_exp(mat[rank][col], mod - 2);
-		for (auto& val : mat[rank]) val = val * a_inv % mod;
-		for (int i = 0; i < n; i++)
-			if (i != rank && mat[i][col] != 0) {
-				auto val = mat[i][col];
-				for (int j = 0; j < m; j++) {
-					mat[i][j] -= mat[rank][j] * val % mod;
-					if (mat[i][j] < 0) mat[i][j] += mod;
-				}
-			}
-		rank++;
-	}
-	return {rank, det};
+  int n = ssize(mat), m = ssize(mat[0]), rank = 0;
+  auto det = 1LL;
+  assert(cols <= m);
+  for (int col = 0; col < cols && rank < n; col++) {
+    auto it = find_if(begin(mat) + rank, end(mat), [&](auto& v) { return v[col]; });
+    if (it == end(mat)) {
+      det = 0;
+      continue;
+    }
+    if (it != begin(mat) + rank) {
+      det = det == 0 ? 0 : mod - det;
+      iter_swap(begin(mat) + rank, it);
+    }
+    det = det * mat[rank][col] % mod;
+    auto a_inv = bin_exp(mat[rank][col], mod - 2);
+    for (auto& val : mat[rank]) val = val * a_inv % mod;
+    for (int i = 0; i < n; i++)
+      if (i != rank && mat[i][col] != 0) {
+        auto val = mat[i][col];
+        for (int j = 0; j < m; j++) {
+          mat[i][j] -= mat[rank][j] * val % mod;
+          if (mat[i][j] < 0) mat[i][j] += mod;
+        }
+      }
+    rank++;
+  }
+  return {rank, det};
 }

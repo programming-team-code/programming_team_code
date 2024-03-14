@@ -33,8 +33,7 @@ find ../library/ library_checker_aizu_tests/ -name "*[A-Z]*" -or -name "*-*" |
 	grep --invert-match "README" &&
 	exit 1
 
-astyle --options=.config/.astylerc --recursive "library_checker_aizu_tests/*.hpp" "library_checker_aizu_tests/*.test.cpp" "../library/*.hpp" "../library/*.cpp" |
-	grep "Formatted" && exit 1
+clang-format --dry-run --Werror --style=file:.config/.clang-format library_checker_aizu_tests/**/*.hpp library_checker_aizu_tests/**/*.test.cpp ../library/**/*.hpp ../library/**/*.cpp || exit 1
 
 git submodule init
 git submodule update

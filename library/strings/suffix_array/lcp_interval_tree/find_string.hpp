@@ -13,14 +13,14 @@
  * @space O(1)
  */
 array<int, 2> find_str(const string& t) {
-	int u = root;
-	for (int i = 0; i < ssize(t); i++) {
-		if (i == len_lcp_range(u)) {
-			u = get_child(u, t[i]);
-			if (u == -1) return {0, 0};
-		}
-		int sa_le = sa_range(u)[0];
-		if (sf_a.s[sf_a.sa[sa_le] + i] != t[i]) return {0, 0};
-	}
-	return sa_range(u);
+  int u = root;
+  for (int i = 0; i < ssize(t); i++) {
+    if (i == len_lcp_range(u)) {
+      u = get_child(u, t[i]);
+      if (u == -1) return {0, 0};
+    }
+    int sa_le = sa_range(u)[0];
+    if (sf_a.s[sf_a.sa[sa_le] + i] != t[i]) return {0, 0};
+  }
+  return sa_range(u);
 }

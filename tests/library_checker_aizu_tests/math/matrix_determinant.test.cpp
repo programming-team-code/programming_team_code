@@ -4,14 +4,14 @@
 #include "../../../library/math/matrix_related/row_reduce.hpp"
 
 int main() {
-	cin.tie(0)->sync_with_stdio(0);
-	int n;
-	cin >> n;
-	vector<vector<int64_t>> matrix(n, vector<int64_t>(n));
-	for (int i = 0; i < n; i++)
-		for (int j = 0; j < n; j++)
-			cin >> matrix[i][j];
-	auto [rank, det] = row_reduce(matrix, n);
-	cout << det << '\n';
-	return 0;
+  cin.tie(0)->sync_with_stdio(0);
+  int n;
+  cin >> n;
+  vector<vector<int64_t>> matrix(n, vector<int64_t>(n));
+  for (int i = 0; i < n; i++)
+    for (int j = 0; j < n; j++)
+      cin >> matrix[i][j];
+  auto [rank, det] = row_reduce(matrix, n);
+  cout << det << '\n';
+  return 0;
 }

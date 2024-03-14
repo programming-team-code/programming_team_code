@@ -10,6 +10,6 @@
  * @space O(1)
  */
 inline int next_subset(int mask) {
-	int c = mask & -mask, r = mask + c;
-	return r | (((r ^ mask) >> 2) / c);
+  int c = mask & -mask, r = mask + c;
+  return r | (((r ^ mask) >> 2) / c);
 }
