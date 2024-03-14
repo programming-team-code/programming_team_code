@@ -41,14 +41,14 @@ jobs:
         GH_PAT: ${{ secrets.GH_PAT }}
       run: oj-verify all --tle 20
 
-  astyle_cppcheck:
+  check_format_lint:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - name: Install dependencies
-      run: sudo apt install astyle cppcheck
-    - name: Astyle, cppcheck
-      run: make --directory=tests/ astyle_cppcheck
+      run: sudo apt install clang-format cppcheck
+    - name: checks format then lints
+      run: make --directory=tests/ check_format_lint
 
   clangtidy:
     runs-on: ubuntu-latest
@@ -106,7 +106,7 @@ jobs:
 
   publish_ptc:
     runs-on: ubuntu-latest
-    needs: [library_checker_aizu, astyle_cppcheck, clangtidy, compile_gcc17, compile_gcc20, files_without_tests, doxygen, build_ptc]
+    needs: [library_checker_aizu, check_format_lint, clangtidy, compile_gcc17, compile_gcc20, files_without_tests, doxygen, build_ptc]
     if: github.ref == 'refs/heads/dev' && github.event_name == 'push'
     steps:
     - uses: actions/checkout@v2
@@ -124,12 +124,12 @@ jobs:
 
   update_main:
     runs-on: ubuntu-latest
-    needs: [library_checker_aizu, astyle_cppcheck, clangtidy, compile_gcc17, compile_gcc20, files_without_tests, doxygen]
+    needs: [library_checker_aizu, check_format_lint, clangtidy, compile_gcc17, compile_gcc20, files_without_tests, doxygen]
     if: github.ref == 'refs/heads/dev' && github.event_name == 'push'
     steps:
     - uses: actions/checkout@v2
     - name: Install dependencies
-      run: sudo apt install astyle
+      run: sudo apt install clang-format
     - name: Combine includes and force push to main branch
       run: |
         git config --local user.name github-actions

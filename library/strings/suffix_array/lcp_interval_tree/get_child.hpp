@@ -8,5 +8,5 @@
  * @space O(1)
  */
 inline int get_child(int u, char c) {
-	return u < sf_a.n - 1 ? adj[u][c - mn] : -1;
+  return u < sf_a.n - 1 ? adj[u][c - mn] : -1;
 }

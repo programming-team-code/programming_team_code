@@ -9,9 +9,9 @@
  * @space O(1) ammortized
  */
 inline int64_t c_small_k(int64_t n, int k) {
-	if (k < 0 || n < k || (n %= mod) < k) return 0;
-	grow(k);
-	auto res = inv_fact[k];
-	for (int i = n; i > n - k; i--) res = res * i % mod;
-	return res;
+  if (k < 0 || n < k || (n %= mod) < k) return 0;
+  grow(k);
+  auto res = inv_fact[k];
+  for (int i = n; i > n - k; i--) res = res * i % mod;
+  return res;
 }

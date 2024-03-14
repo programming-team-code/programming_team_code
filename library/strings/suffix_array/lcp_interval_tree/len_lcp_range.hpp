@@ -7,5 +7,5 @@
  * @space O(1)
  */
 inline int len_lcp_range(int u) {
-	return u < sf_a.n - 1 ? sf_a.lcp[u] : sf_a.n - sf_a.sa[u - sf_a.n + 1];
+  return u < sf_a.n - 1 ? sf_a.lcp[u] : sf_a.n - sf_a.sa[u - sf_a.n + 1];
 }

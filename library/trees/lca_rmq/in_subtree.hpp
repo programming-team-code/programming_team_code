@@ -7,5 +7,5 @@
  * @space O(1)
  */
 inline bool in_subtree(int u, int v) {
-	return in[u] <= in[v] && in[v] < in[u] + sub_sz[u];
+  return in[u] <= in[v] && in[v] < in[u] + sub_sz[u];
 }

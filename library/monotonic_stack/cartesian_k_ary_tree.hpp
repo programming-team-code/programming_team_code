@@ -33,10 +33,10 @@
  * @space a O(n) vector is allocated and returned
  */
 template <class T> vector<int> cart_k_ary_tree(const vector<T>& a, const vector<int>& ri) {
-	vector<int> p(ri);
-	for (int i = 0; i < ssize(a); i++)
-		for (int j = i + 1; j != ri[i]; j = ri[j])
-			if (ri[j] == ri[i] || a[i] == a[ri[j]])
-				p[j] = (p[i] > i || a[i] != a[p[i]] ? i : p[i]);
-	return p;
+  vector<int> p(ri);
+  for (int i = 0; i < ssize(a); i++)
+    for (int j = i + 1; j != ri[i]; j = ri[j])
+      if (ri[j] == ri[i] || a[i] == a[ri[j]])
+        p[j] = (p[i] > i || a[i] != a[p[i]] ? i : p[i]);
+  return p;
 }

@@ -20,11 +20,11 @@
  * @space O(k) vectors are allocated and returned
  */
 array<vector<int>, 2> compress_tree(vector<int> subset) {
-	auto cmp = [&](int u, int v) {return in[u] < in[v];};
-	sort(begin(subset), end(subset), cmp);
-	for (int i = 1, siz = ssize(subset); i < siz; i++)
-		subset.push_back(lca(subset[i - 1], subset[i]));
-	sort(begin(subset), end(subset), cmp);
-	subset.erase(unique(begin(subset), end(subset)), end(subset));
-	return {mono_st(subset, [&](int u, int v) {return in_subtree(u, v);}), subset};
+  auto cmp = [&](int u, int v) { return in[u] < in[v]; };
+  sort(begin(subset), end(subset), cmp);
+  for (int i = 1, siz = ssize(subset); i < siz; i++)
+    subset.push_back(lca(subset[i - 1], subset[i]));
+  sort(begin(subset), end(subset), cmp);
+  subset.erase(unique(begin(subset), end(subset)), end(subset));
+  return {mono_st(subset, [&](int u, int v) { return in_subtree(u, v); }), subset};
 }

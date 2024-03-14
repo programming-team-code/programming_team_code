@@ -16,19 +16,19 @@
  * @space O(n + m)
  */
 pair<int64_t, vector<int>> mst(const vector<array<int, 3>>& eds, int n) {
-	vector<int> order(ssize(eds));
-	iota(begin(order), end(order), 0);
-	sort(begin(order), end(order),
-	[&](int i, int j) { return eds[i][2] < eds[j][2]; });
-	UF uf(n);
-	vector<int> ids;
-	int64_t cost = 0;
-	for (int it : order) {
-		auto [u, v, w] = eds[it];
-		if (uf.join(u, v)) {
-			cost += w;
-			ids.push_back(it);
-		}
-	}
-	return {cost, ids};
+  vector<int> order(ssize(eds));
+  iota(begin(order), end(order), 0);
+  sort(begin(order), end(order),
+       [&](int i, int j) { return eds[i][2] < eds[j][2]; });
+  UF uf(n);
+  vector<int> ids;
+  int64_t cost = 0;
+  for (int it : order) {
+    auto [u, v, w] = eds[it];
+    if (uf.join(u, v)) {
+      cost += w;
+      ids.push_back(it);
+    }
+  }
+  return {cost, ids};
 }

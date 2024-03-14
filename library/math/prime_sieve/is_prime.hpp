@@ -8,5 +8,5 @@
  * @space O(1)
  */
 auto is_prime = [&](int val) -> bool {
-	return val >= 2 && sieve[val] == val;
+  return val >= 2 && sieve[val] == val;
 };

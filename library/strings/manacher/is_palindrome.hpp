@@ -19,6 +19,6 @@
  * @space O(1)
  */
 inline bool is_pal(const vector<int>& man, int le, int ri) {
-	assert(0 <= le && le <= ri && ri <= (ssize(man) + 1) / 2);
-	return le == ri || man[le + ri - 1] <= le;
+  assert(0 <= le && le <= ri && ri <= (ssize(man) + 1) / 2);
+  return le == ri || man[le + ri - 1] <= le;
 }

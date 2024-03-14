@@ -18,9 +18,9 @@ const int mod = 998'244'353;
  * @space O(log n) for recursion stack
  */
 array<int64_t, 2> fib(int64_t n) {
-	if (n == 0) return {0LL, 1LL};
-	auto [x, y] = fib(n >> 1);
-	auto c = x * (2 * y - x + mod) % mod, d = (x * x + y * y) % mod;
-	if (n & 1) return {d, (c + d) % mod};
-	return {c, d};
+  if (n == 0) return {0LL, 1LL};
+  auto [x, y] = fib(n >> 1);
+  auto c = x * (2 * y - x + mod) % mod, d = (x * x + y * y) % mod;
+  if (n & 1) return {d, (c + d) % mod};
+  return {c, d};
 }

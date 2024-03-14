@@ -7,50 +7,50 @@
 #include "../../../library/data_structures/seg_tree.hpp"
 
 int main() {
-	cin.tie(0)->sync_with_stdio(0);
-	int n, q;
-	cin >> n >> q;
-	vector<int64_t> arr(n);
-	vector<int> arr_int(n);
-	for (int i = 0; i < n; i++) {
-		cin >> arr[i];
-		arr_int[i] = int(arr[i]);
-	}
-	BIT<int64_t> bit(arr);
-	seg_tree st(arr_int);
-	bit_rurq<int64_t> bit_rr(arr);
-	vector<int64_t> suf_sum(n);
-	partial_sum(rbegin(arr), rend(arr), rbegin(suf_sum));
-	bit_rupq<int64_t> bit_i(suf_sum);
-	for (int i = 0; i < n; i++) {
-		assert(arr[i] == bit.query(i, i + 1));
-		assert(bit_i.get_index(i) == bit.query(i, n));
-		assert(bit_i.get_index(i) == suf_sum[i]);
-	}
-	while (q--) {
-		int type;
-		cin >> type;
-		if (type == 0) {
-			int p, x;
-			cin >> p >> x;
-			bit.update(p, x);
-			st.update(p, p + 1, x);
-			bit_rr.update(p, p + 1, x);
-			bit_i.update(0, p + 1, x);
-		} else {
-			int l, r;
-			cin >> l >> r;
-			int64_t res = bit.query(l, r);
-			{
-				int64_t bit_i_result = bit_i.get_index(l);
-				if (r < n) bit_i_result -= bit_i.get_index(r);
-				assert(res == bit_i_result);
-			}
-			assert(res == bit_rr.query(l, r));
-			cout << res << '\n';
-		}
-		auto sum = get_rand<int64_t>(0LL, (int64_t)(1e12));
-		assert(bit.lower_bound(sum) == st.lower_bound(sum));
-	}
-	return 0;
+  cin.tie(0)->sync_with_stdio(0);
+  int n, q;
+  cin >> n >> q;
+  vector<int64_t> arr(n);
+  vector<int> arr_int(n);
+  for (int i = 0; i < n; i++) {
+    cin >> arr[i];
+    arr_int[i] = int(arr[i]);
+  }
+  BIT<int64_t> bit(arr);
+  seg_tree st(arr_int);
+  bit_rurq<int64_t> bit_rr(arr);
+  vector<int64_t> suf_sum(n);
+  partial_sum(rbegin(arr), rend(arr), rbegin(suf_sum));
+  bit_rupq<int64_t> bit_i(suf_sum);
+  for (int i = 0; i < n; i++) {
+    assert(arr[i] == bit.query(i, i + 1));
+    assert(bit_i.get_index(i) == bit.query(i, n));
+    assert(bit_i.get_index(i) == suf_sum[i]);
+  }
+  while (q--) {
+    int type;
+    cin >> type;
+    if (type == 0) {
+      int p, x;
+      cin >> p >> x;
+      bit.update(p, x);
+      st.update(p, p + 1, x);
+      bit_rr.update(p, p + 1, x);
+      bit_i.update(0, p + 1, x);
+    } else {
+      int l, r;
+      cin >> l >> r;
+      int64_t res = bit.query(l, r);
+      {
+        int64_t bit_i_result = bit_i.get_index(l);
+        if (r < n) bit_i_result -= bit_i.get_index(r);
+        assert(res == bit_i_result);
+      }
+      assert(res == bit_rr.query(l, r));
+      cout << res << '\n';
+    }
+    auto sum = get_rand<int64_t>(0LL, (int64_t)(1e12));
+    assert(bit.lower_bound(sum) == st.lower_bound(sum));
+  }
+  return 0;
 }

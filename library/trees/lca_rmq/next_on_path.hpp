@@ -14,6 +14,6 @@
  * @space O(1)
  */
 inline int next_on_path(int u, int v) {
-	assert(u != v);
-	return in_subtree(u, v) ? rmq.query(in[u] + 1, in[v] + 1) : p[u];
+  assert(u != v);
+  return in_subtree(u, v) ? rmq.query(in[u] + 1, in[v] + 1) : p[u];
 }

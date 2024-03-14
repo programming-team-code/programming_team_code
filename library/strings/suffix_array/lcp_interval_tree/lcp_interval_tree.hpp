@@ -3,7 +3,7 @@
 #include "../../../monotonic_stack/monotonic_range.hpp"
 #include "../../../monotonic_stack/cartesian_k_ary_tree.hpp"
 #include "../suffix_array.hpp"
-const int mn = '0', cnt_let = 36; // mn <= s[i] < mn + cnt_let; for lowercase letters: mn = 'a', cnt_let = 26
+const int mn = '0', cnt_let = 36;  // mn <= s[i] < mn + cnt_let; for lowercase letters: mn = 'a', cnt_let = 26
 /**
  * @see Replacing suffix trees with enhanced suffix arrays by Mohamed Ibrahim
  * Abouelhoda, Stefan Kurtz, Enno Ohlebusch
@@ -47,33 +47,33 @@ const int mn = '0', cnt_let = 36; // mn <= s[i] < mn + cnt_let; for lowercase le
  *     - a single suffix
  */
 struct lcp_tree {
-	suffix_array<string> sf_a;
-	vector<int> le, ri;
-	int root;
-	vector<vector<int>> adj;
-	/**
-	 * @param s non-empty string/array
-	 * @time O((n log n) + (mn + cnt_let) + (n * cnt_let))
-	 * @space adj is O(n * cnt_let)
-	 */
-	lcp_tree(const string& s) : sf_a(s, mn + cnt_let), le(mono_st(sf_a.lcp, less_equal())), ri(mono_range(le)), adj(max(sf_a.n - 1, 0), vector(cnt_let, -1)) {
-		assert(sf_a.n > 0);
-		auto p = cart_k_ary_tree(sf_a.lcp, ri);
-		root = find(begin(p), end(p), ssize(p)) - begin(p);
-		auto node = [&](int i) -> int {
-			return p[i] > i || sf_a.lcp[i] != sf_a.lcp[p[i]] ? i : p[i];
-		};
-		for (int i = 0; i < ssize(p); i++)
-			if (node(i) == i && i != root) adj[p[i]][s[sf_a.sa[i] + sf_a.lcp[p[i]]] - mn] = i;
-		for (int i = 0; i < sf_a.n; i++) {
-			int prev_lcp = (i ? sf_a.lcp[i - 1] : -1);
-			int next_lcp = (i < ssize(sf_a.lcp) ? sf_a.lcp[i] : 0);
-			int u = (prev_lcp < next_lcp ? i : node(i - 1));
-			int idx = sf_a.sa[i] + max(prev_lcp, next_lcp);
-			if (u == ssize(adj) || idx == sf_a.n) continue;
-			adj[u][s[idx] - mn] = ssize(sf_a.lcp) + i;
-		}
-	}
+  suffix_array<string> sf_a;
+  vector<int> le, ri;
+  int root;
+  vector<vector<int>> adj;
+  /**
+   * @param s non-empty string/array
+   * @time O((n log n) + (mn + cnt_let) + (n * cnt_let))
+   * @space adj is O(n * cnt_let)
+   */
+  lcp_tree(const string& s) : sf_a(s, mn + cnt_let), le(mono_st(sf_a.lcp, less_equal())), ri(mono_range(le)), adj(max(sf_a.n - 1, 0), vector(cnt_let, -1)) {
+    assert(sf_a.n > 0);
+    auto p = cart_k_ary_tree(sf_a.lcp, ri);
+    root = find(begin(p), end(p), ssize(p)) - begin(p);
+    auto node = [&](int i) -> int {
+      return p[i] > i || sf_a.lcp[i] != sf_a.lcp[p[i]] ? i : p[i];
+    };
+    for (int i = 0; i < ssize(p); i++)
+      if (node(i) == i && i != root) adj[p[i]][s[sf_a.sa[i] + sf_a.lcp[p[i]]] - mn] = i;
+    for (int i = 0; i < sf_a.n; i++) {
+      int prev_lcp = (i ? sf_a.lcp[i - 1] : -1);
+      int next_lcp = (i < ssize(sf_a.lcp) ? sf_a.lcp[i] : 0);
+      int u = (prev_lcp < next_lcp ? i : node(i - 1));
+      int idx = sf_a.sa[i] + max(prev_lcp, next_lcp);
+      if (u == ssize(adj) || idx == sf_a.n) continue;
+      adj[u][s[idx] - mn] = ssize(sf_a.lcp) + i;
+    }
+  }
 #include "sa_range.hpp"
 #include "len_lcp_range.hpp"
 #include "get_child.hpp"

@@ -8,6 +8,6 @@
  * @space O(1)
  */
 inline array<int, 2> sa_range(int u) {
-	if (u < sf_a.n - 1) return {le[u] + 1, ri[u] + 1};
-	return {u - sf_a.n + 1, u - sf_a.n + 2};
+  if (u < sf_a.n - 1) return {le[u] + 1, ri[u] + 1};
+  return {u - sf_a.n + 1, u - sf_a.n + 2};
 }
