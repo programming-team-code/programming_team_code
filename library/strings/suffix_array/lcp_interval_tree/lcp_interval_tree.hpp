@@ -26,8 +26,8 @@ const int mn = '0', cnt_let = 36;  // mn <= s[i] < mn + cnt_let; for lowercase l
  *  a   b | b | b   c   a   c | c       a | a | a
  *  a | a | a | a | a   b | b | b   c | c | c | c
  *    1   2   3   1   0   1   2   0   1   2   3   <- LCP
- * (------------------R--------------------------)
- * (--a--------------) (--b------) (--c----------)
+ * (------------------------------R--------------)
+ * (--------------a--) (--b------) (--c----------)
  * (a) (--b------) (c) (a) (--c--)     (--a------)
  *     (a) (--c--)             (a)     (a) (--b--)
  *             (a)                         (a) (c)
@@ -56,22 +56,22 @@ struct lcp_tree {
    * @time O((n log n) + (mn + cnt_let) + (n * cnt_let))
    * @space adj is O(n * cnt_let)
    */
-  lcp_tree(const string& s) : sf_a(s, mn + cnt_let), le(mono_st(sf_a.lcp, less_equal())), ri(mono_range(le)), adj(max(sf_a.n - 1, 0), vector(cnt_let, -1)) {
+  lcp_tree(const string& s) : sf_a(s, mn + cnt_let), le(mono_st(sf_a.lcp, less())), ri(mono_range(le)), adj(max(sf_a.n - 1, 0), vector(cnt_let, -1)) {
     assert(sf_a.n > 0);
-    auto p = cart_k_ary_tree(sf_a.lcp, ri);
-    root = find(begin(p), end(p), ssize(p)) - begin(p);
+    auto p = cart_k_ary_tree(sf_a.lcp, le);
+    root = find(begin(p), end(p), -1) - begin(p);
     auto node = [&](int i) -> int {
-      return p[i] > i || sf_a.lcp[i] != sf_a.lcp[p[i]] ? i : p[i];
+      return p[i] < i || sf_a.lcp[i] != sf_a.lcp[p[i]] ? i : p[i];
     };
     for (int i = 0; i < ssize(p); i++)
       if (node(i) == i && i != root) adj[p[i]][s[sf_a.sa[i] + sf_a.lcp[p[i]]] - mn] = i;
     for (int i = 0; i < sf_a.n; i++) {
-      int prev_lcp = (i ? sf_a.lcp[i - 1] : -1);
-      int next_lcp = (i < ssize(sf_a.lcp) ? sf_a.lcp[i] : 0);
-      int u = (prev_lcp < next_lcp ? i : node(i - 1));
+      int prev_lcp = (i ? sf_a.lcp[i - 1] : 0);
+      int next_lcp = (i < ssize(sf_a.lcp) ? sf_a.lcp[i] : -1);
+      int u = (prev_lcp > next_lcp) ? i - 1 : node(i);
       int idx = sf_a.sa[i] + max(prev_lcp, next_lcp);
-      if (u == ssize(adj) || idx == sf_a.n) continue;
-      adj[u][s[idx] - mn] = ssize(sf_a.lcp) + i;
+      if (u == -1 || idx == sf_a.n) continue;
+      adj[u][s[idx] - mn] = sf_a.n - 1 + i;
     }
   }
 #include "sa_range.hpp"
