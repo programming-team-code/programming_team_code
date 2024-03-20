@@ -8,7 +8,7 @@
  * condition described in `f`, if no such element exists then (le - 1) is
  * returned
  * @time O(log(n))
- * @space O(log(n)) for recursion stack; no new nodes are allocated
+ * @space O(log(n)) for recursion stack
  */
 template <class F>
 int find_last(int le, int ri, const F& f) {
@@ -24,10 +24,10 @@ int find_last_impl(int le, int ri, const F& f, int tl, int tr, int u) {
   int tm = split(tl, tr);
   push(tl, tm, tr, u);
   if (le <= tl && tr <= ri) {
-    if (!f(tree[u], tl, tr)) return le - 1;
     if (f(tree[2 * u + 1], tm, tr))
       return find_last_impl(le, ri, f, tm, tr, 2 * u + 1);
-    return find_last_impl(le, ri, f, tl, tm, 2 * u);
+    if (f(tree[2 * u], tl, tm)) return find_last_impl(le, ri, f, tl, tm, 2 * u);
+    return le - 1;
   }
   int res = find_last_impl(le, ri, f, tm, tr, 2 * u + 1);
   if (res >= le) return res;
