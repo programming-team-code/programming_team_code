@@ -27,7 +27,7 @@ int main() {
   tree_lift tl(adj);
   LCA lc(adj);
   linear_kth_path lin_kth_path(adj);
-  compress_tree_asserts(adj, lin_kth_path.lin_lca);
+  compress_tree_asserts(adj, lin_kth_path.lin_lca, lc);
   while (q--) {
     int u, v, k;
     cin >> u >> v >> k;

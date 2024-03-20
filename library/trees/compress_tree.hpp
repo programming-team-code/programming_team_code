@@ -1,6 +1,4 @@
 /** @file */
-#pragma once
-#include "in_subtree.hpp"
 /**
  * @see https://github.com/kth-competitive-programming /kactl/blob/main/content/graph/CompressTree.h
  *
