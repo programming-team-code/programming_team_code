@@ -50,7 +50,16 @@ int main() {
       cout << res << '\n';
     }
     auto sum = get_rand<int64_t>(0LL, (int64_t)(1e12));
-    assert(bit.lower_bound(sum) == st.lower_bound(sum));
+    auto need = sum;
+    auto f = [&](int64_t x, int tl, int tr) -> bool {
+      assert(tl <= tr);
+      if (x < need) {
+        need -= x;
+        return 0;
+      }
+      return 1;
+    };
+    assert(bit.lower_bound(sum) - 1 == st.find_first(0, n, f));
   }
   return 0;
 }
