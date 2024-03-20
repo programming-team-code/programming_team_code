@@ -37,8 +37,17 @@ int main() {
         continue;
       }
       int order = bit.query(k);
+      int need = order + 1;
+      auto f = [&](int64_t x, int tl, int tr) -> bool {
+        assert(tl <= tr);
+        if (x < need) {
+          need -= x;
+          return 0;
+        }
+        return 1;
+      };
       int res = bit.lower_bound(order + 1);
-      assert(res == st.lower_bound(order + 1));
+      assert(res - 1 == st.find_first(0, n, f));
       if (res == n + 1) res = 0;
       cout << res - 1 << '\n';
     } else {
@@ -47,8 +56,17 @@ int main() {
         continue;
       }
       int order = bit.query(k);
+      int need = order;
+      auto f = [&](int64_t x, int tl, int tr) -> bool {
+        assert(tl <= tr);
+        if (x < need) {
+          need -= x;
+          return 0;
+        }
+        return 1;
+      };
       int res = bit.lower_bound(order);
-      assert(res == st.lower_bound(order));
+      assert(max(res - 1, 0) == st.find_first(0, n, f));
       cout << res - 1 << '\n';
     }
   }
