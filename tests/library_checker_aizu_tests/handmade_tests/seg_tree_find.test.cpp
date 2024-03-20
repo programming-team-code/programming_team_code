@@ -1,7 +1,7 @@
 #define PROBLEM \
   "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A"
 #include "../template.hpp"
-// no reorder (delete)
+
 #include "../../../library/contest/random.hpp"
 #include "../../../library/data_structures/bit.hpp"
 #include "../../../library/data_structures/seg_tree.hpp"
@@ -24,7 +24,7 @@ int main() {
     int le = get_rand(0, mx_n - 1);
     int ri = get_rand(le + 1, mx_n);
     int64_t in_tree = seg.query(le, ri);
-    int64_t sum = get_rand<int64_t>(1, in_tree);
+    auto sum = get_rand<int64_t>(1, in_tree);
     int64_t need;
     vector<array<int, 3>> rngs;
     auto reset = [&] {
