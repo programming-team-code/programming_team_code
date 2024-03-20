@@ -1088,8 +1088,10 @@ EXCLUDE_SYMBOLS        = HLD::node \
                          mobius \
                          sf_a \
                          lsb \
-                         find_first_impl \
-                         find_last_impl \
+                         find_first_in_range \
+                         find_first_in_subtree \
+                         find_last_in_range \
+                         find_last_in_subtree \
                          linear_kth_path \
                          pal_query \
 

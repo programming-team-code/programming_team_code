@@ -66,7 +66,7 @@ int main() {
         return 1;
       };
       int res = bit.lower_bound(order);
-      assert(res - 1 == st.find_first(0, n, f));
+      assert(max(res - 1, 0) == st.find_first(0, n, f));
       cout << res - 1 << '\n';
     }
   }

@@ -26,19 +26,56 @@ int main() {
     int64_t in_tree = seg.query(le, ri);
     int64_t sum = get_rand<int64_t>(1, in_tree);
     int64_t need;
+    vector<array<int, 3>> rngs;
+    auto reset = [&] {
+      need = sum;
+      rngs = {};
+    };
     auto f = [&](int64_t x, int tl, int tr) -> bool {
-      assert(tl <= tr);
       if (x < need) {
+        rngs.push_back({tl, tr, 0});
         need -= x;
         return 0;
       }
+      rngs.push_back({tl, tr, 1});
       return 1;
     };
     int pos = min(bit.lower_bound(bit.query(le) + sum) - 1, ri);
-    need = sum;
+
+    reset();
     assert(pos == seg.find_first(le, ri, f));
-    need = sum;
+    assert(!empty(rngs));
+    assert(rngs[0][0] == le);
+    for (auto [tl, tr, _] : rngs) assert(le <= tl && tl < tr && tr <= ri);
+    for (int it = 1; it < ssize(rngs); it++) {
+      auto [prv_le, prv_ri, prv] = rngs[it - 1];
+      auto [cur_le, cur_ri, cur] = rngs[it];
+      if (prv) {
+        assert(cur_le == prv_le && cur_ri < prv_ri);
+      } else {
+        assert(cur_le == prv_ri);
+      }
+    }
+    sort(begin(rngs), end(rngs));
+    assert(unique(begin(rngs), end(rngs)) == end(rngs));
+
+    reset();
     assert(pos == rv(rev.find_last(rv(ri - 1), rv(le) + 1, f)));
+    assert(!empty(rngs));
+    assert(rngs[0][1] == rv(le) + 1);
+    for (auto [tl, tr, _] : rngs)
+      assert(rv(ri - 1) <= tl && tl < tr && tr <= rv(le) + 1);
+    for (int it = 1; it < ssize(rngs); it++) {
+      auto [prv_le, prv_ri, prv] = rngs[it - 1];
+      auto [cur_le, cur_ri, cur] = rngs[it];
+      if (prv) {
+        assert(cur_ri == prv_ri && cur_le > prv_le);
+      } else {
+        assert(prv_le == cur_ri);
+      }
+    }
+    sort(begin(rngs), end(rngs));
+    assert(unique(begin(rngs), end(rngs)) == end(rngs));
   }
   cout << "Hello World\n";
   return 0;
