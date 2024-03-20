@@ -18,22 +18,28 @@ int main() {
         for (int i = 5; i--;)
           s[get_rand<int>(0, n - 1)] = 'b';
       }
-      vector<int> man = manacher(s);
+
+      pal_query pq(s);
       vector<vector<bool>> is_pal_naive(n + 1, vector<bool>(n + 1, 1));
       for (int len = 0; len <= n; len++) {
         for (int le = 0; le + len <= n; le++) {
           int ri = le + len;
           if (len >= 2)
             is_pal_naive[le][ri] = (s[le] == s[ri - 1] && is_pal_naive[le + 1][ri - 1]);
-          assert(is_pal(man, le, ri) == is_pal_naive[le][ri]);
         }
       }
-      vector<int> longest(longest_from_index(man));
+      for (int i = 0; i < n; i++) {
+        for (int j = i; j < n; j++) {
+          assert(pq.is_pal(i, j) == is_pal_naive[i][j + 1]);
+        }
+      }
+
+      vector<int> longest(longest_from_index(pq));
       for (int le = 0; le < n; le++) {
         bool seen_pal = 0;
         for (int ri = n; ri >= le; ri--) {
           seen_pal |= is_pal_naive[le][ri];
-          assert((le + longest[le] >= ri) == seen_pal);
+          assert((longest[le] + 1 >= ri) == seen_pal);
         }
       }
       vector<vector<int>> count_pals_naive(n + 1, vector<int>(n + 1, 0));
@@ -41,7 +47,7 @@ int main() {
       for (int len = 2; len <= n; len++) {
         for (int le = 0; le + len <= n; le++) {
           int ri = le + len;
-          count_pals_naive[le][ri] = is_pal(man, le, ri) + count_pals_naive[le + 1][ri] + count_pals_naive[le][ri - 1] - count_pals_naive[le + 1][ri - 1];
+          count_pals_naive[le][ri] = pq.is_pal(le, ri - 1) + count_pals_naive[le + 1][ri] + count_pals_naive[le][ri - 1] - count_pals_naive[le + 1][ri - 1];
         }
       }
       count_pal_query pcq(s);
@@ -62,7 +68,7 @@ int main() {
             longest_pal[le][ri] = max(longest_pal[le + 1][ri], longest_pal[le][ri - 1]);
           auto [curr_idx, curr_len] = lp.longest_pal(le, ri);
           assert(curr_len == longest_pal[le][ri]);
-          assert(is_pal(man, curr_idx, curr_idx + curr_len));
+          assert(pq.is_pal(curr_idx, curr_idx + curr_len - 1));
           assert(le <= curr_idx);
           assert(curr_idx + curr_len <= ri);
         }
