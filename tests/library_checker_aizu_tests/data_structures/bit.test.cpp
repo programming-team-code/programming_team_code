@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/point_add_range_sum"
 #include "../template.hpp"
-// don't reorder (delete this)
+
 #include "../../../library/contest/random.hpp"
 #include "../../../library/data_structures/bit_uncommon/rupq.hpp"
 #include "../../../library/data_structures/bit_uncommon/rurq.hpp"

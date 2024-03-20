@@ -1,7 +1,7 @@
 #define PROBLEM \
   "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A"
 #include "../template.hpp"
-// don't reorder (delete this)
+
 #include "../../../library/contest/random.hpp"
 #include "../../../library/data_structures/seg_tree.hpp"
 

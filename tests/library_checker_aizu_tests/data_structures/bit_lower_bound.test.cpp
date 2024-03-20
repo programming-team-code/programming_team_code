@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/predecessor_problem"
 #include "../template.hpp"
-// don't reorder (delete this)
+
 #include "../../../library/data_structures/bit.hpp"
 #include "../../../library/data_structures/seg_tree.hpp"
 
