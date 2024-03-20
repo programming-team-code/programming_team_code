@@ -17,7 +17,7 @@ int find_last(int le, int ri, const F& f) {
 template <class F>
 int find_last_impl(int le, int ri, const F& f, int tl, int tr, int u) {
   if (ri <= tl || tr <= le) return le - 1;
-  if (tr - tl == 1) {
+  if (u >= n) {
     if (f(tree[u], tl, tr)) return tl;
     return le - 1;
   }
@@ -29,6 +29,7 @@ int find_last_impl(int le, int ri, const F& f, int tl, int tr, int u) {
       return find_last_impl(le, ri, f, tm, tr, 2 * u + 1);
     return find_last_impl(le, ri, f, tl, tm, 2 * u);
   }
-  return max(find_last_impl(le, ri, f, tl, tm, 2 * u),
-             find_last_impl(le, ri, f, tm, tr, 2 * u + 1));
+  int res = find_last_impl(le, ri, f, tm, tr, 2 * u + 1);
+  if (res >= le) return res;
+  return find_last_impl(le, ri, f, tl, tm, 2 * u);
 }

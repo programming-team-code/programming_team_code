@@ -16,7 +16,7 @@ int find_first(int le, int ri, const F& f) {
 template <class F>
 int find_first_impl(int le, int ri, const F& f, int tl, int tr, int u) {
   if (ri <= tl || tr <= le) return ri;
-  if (tr - tl == 1) {
+  if (u >= n) {
     if (f(tree[u], tl, tr)) return tl;
     return ri;
   }
@@ -28,6 +28,7 @@ int find_first_impl(int le, int ri, const F& f, int tl, int tr, int u) {
       return find_first_impl(le, ri, f, tl, tm, 2 * u);
     return find_first_impl(le, ri, f, tm, tr, 2 * u + 1);
   }
-  return min(find_first_impl(le, ri, f, tl, tm, 2 * u),
-             find_first_impl(le, ri, f, tm, tr, 2 * u + 1));
+  int res = find_first_impl(le, ri, f, tl, tm, 2 * u);
+  if (res < ri) return res;
+  return find_first_impl(le, ri, f, tm, tr, 2 * u + 1);
 }
