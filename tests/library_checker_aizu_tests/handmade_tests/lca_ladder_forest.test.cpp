@@ -37,7 +37,7 @@ int main() {
     linear_lca lin_lca(adj);
     ladder lad(adj);
     linear_kth_par<2> linear_kp_2(adj);
-    linear_kth_par lin_kp(adj);
+    linear_kth_path lin_kth_path(adj);
     linear_kth_par<4> linear_kp_4(adj);
     linear_kth_par<5> linear_kp_5(adj);
     for (int i = 0; i < 100; i++) {
@@ -55,12 +55,12 @@ int main() {
       assert(tl.kth_path(u, v, 1) == lc.next_on_path(u, v));
       assert(lin_lca.next_on_path(u, v) == lc.next_on_path(u, v));
       assert(lin_lca.next_on_path(v, u) == lc.next_on_path(v, u));
-      assert(kth_path(lin_lca, lin_kp, u, v, 1) == lc.next_on_path(u, v));
+      assert(lin_kth_path.kth_path(u, v, 1) == lc.next_on_path(u, v));
       if (tl.d[u] > tl.d[v]) swap(u, v);
       auto res = tl.kth_par(v, tl.d[v] - tl.d[u]);
       assert(res == lad.kth_par(v, tl.d[v] - tl.d[u]));
       assert(res == linear_kp_2.kth_par(v, tl.d[v] - tl.d[u]));
-      assert(res == lin_kp.kth_par(v, tl.d[v] - tl.d[u]));
+      assert(res == lin_kth_path.lin_kp.kth_par(v, tl.d[v] - tl.d[u]));
       assert(res == linear_kp_4.kth_par(v, tl.d[v] - tl.d[u]));
       assert(res == linear_kp_5.kth_par(v, tl.d[v] - tl.d[u]));
       assert(lin_lca.in_subtree(u, v) == lc.in_subtree(u, v));

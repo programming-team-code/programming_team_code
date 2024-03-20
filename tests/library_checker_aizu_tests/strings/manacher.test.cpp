@@ -9,40 +9,40 @@ int main() {
   string s;
   cin >> s;
   int n = ssize(s);
-  vector<int> man(manacher(s)), longest(longest_from_index(man));
+  pal_query pq(s);
+  vector<int> longest(longest_from_index(pq));
   {
     vector<pair<int, int>> tests;
     for (int i = 0; i < n; i++) {
-      for (int j = i; j <= min(n, i + int(10'000'000 / max(n, 1))); j++)
+      for (int j = i; j < min(n, i + 10); j++)
         tests.emplace_back(i, j);
     }
-    for (int i = 0; i < int(10'000'000 / max(n, 1)); i++) {
+    for (int i = 0; i < 30; i++) {
       int l = get_rand(0, n - 1), r = get_rand(0, n - 1);
       if (l > r) swap(l, r);
       tests.emplace_back(l, r);
     }
     for (auto [l, r] : tests) {
-      string substr = s.substr(l, r - l);
-      assert(is_pal(man, l, r) == (substr == string(rbegin(substr), rend(substr))));
+      string substr = s.substr(l, r - l + 1);
+      assert(pq.is_pal(l, r) == (substr == string(rbegin(substr), rend(substr))));
     }
   }
   for (int i = 0; i < n; i++) {
-    assert(i + longest[i] <= n);
-    assert(is_pal(man, i, i + longest[i]));
-    if (i + longest[i] < n) {
-      assert(!is_pal(man, i, n));
+    assert(longest[i] < n);
+    assert(pq.is_pal(i, longest[i]));
+    if (longest[i] + 1 < n) {
+      assert(!pq.is_pal(i, n - 1));
       for (int tests = 10; tests--;) {
-        int ri = get_rand(i + longest[i] + 1, n);
-        assert(!is_pal(man, i, ri));
+        int ri = get_rand(longest[i] + 1, n - 1);
+        assert(!pq.is_pal(i, ri));
       }
     }
   }
-  for (int i = 0; i < ssize(man); i++) {
-    int ri = i - man[i] + 1;
-    assert(man[i] <= ri);
-    assert(is_pal(man, man[i], ri));
-    assert(man[i] == 0 || ri == n || !is_pal(man, man[i] - 1, ri + 1));
-    cout << i - 2 * man[i] + 1 << " ";
+  for (int i = 0; i < ssize(pq.man); i++) {
+    int ri = i - pq.man[i];
+    assert(ri + 1 == pq.man[i] || pq.is_pal(pq.man[i], ri));
+    assert(pq.man[i] == 0 || ri == n - 1 || !pq.is_pal(pq.man[i] - 1, ri + 1));
+    cout << i - 2 * pq.man[i] + 1 << " ";
   }
   return 0;
 }

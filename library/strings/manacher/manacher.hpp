@@ -1,18 +1,20 @@
 /** @file */
 #pragma once
 /**
- * s = "baaba"
- *
- * index   1 3 5 7
- * string b a a b a
- * index  0 2 4 6 8
- *
  * @see https://codeforces.com/blog/entry/12143#comment-324162
+ *
+ * subarray [le, ri] has "center" i = le + ri
+ *
+ * center 0 2 4 6 8
+ * string b a a b a
+ * center  1 3 5 7
+ *
+ * man = {0, 1, 1, 0, 2, 3, 2, 4, 4}
+ *
+ * for "center" `i`, man[i] stores minimum index `le` such that [le, i - le] is a palindrome
+ *
  * @param s string/vector
- * @returns man[i] = index of beginning of longest palindrome centered at `i`
- *     - substring [man[i], i - man[i] + 1) is longest palindrome centered at `i`
- *     - longest palindrome centered at `i` has length = i - 2 * man[i] + 1
- *     - substring [le, ri) has center (le + ri - 1)
+ * @returns see above
  * @time O(n)
  * @space a O(n) vector is allocated and returned
  */

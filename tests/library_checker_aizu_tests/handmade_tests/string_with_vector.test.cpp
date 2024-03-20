@@ -77,18 +77,19 @@ int main() {
     assert(matches == vector<int>({50}));
   }
   {
-    vector<int> man(manacher(arr)), longest(longest_from_index(man));
+    pal_query pq(arr);
+    vector<int> man(manacher(arr)), longest(longest_from_index(pq));
     for (int i = 0; i < ssize(man); i++) {
       int sz = i - 2 * man[i] + 1;
       assert(sz == (1 ^ (i & 1)));
     }
     for (int i = 0; i < 100; i++) {
-      assert(longest[i] == 1);
-      assert(is_pal(man, i, i + 1));
+      assert(longest[i] == i);
+      assert(pq.is_pal(i, i));
       if (i + 2 <= 100) {
-        assert(!is_pal(man, i, i + 2));
+        assert(!pq.is_pal(i, i + 1));
         if (i)
-          assert(!is_pal(man, i - 1, i + 2));
+          assert(!pq.is_pal(i - 1, i + 1));
       }
     }
     count_pal_query cpq(arr);
