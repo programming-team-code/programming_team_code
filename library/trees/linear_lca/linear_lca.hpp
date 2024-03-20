@@ -51,5 +51,5 @@ struct linear_lca {
 #include "../dist_edges.hpp"
 #include "in_subtree.hpp"
 #include "next_on_path.hpp"
-#include "compress_tree.hpp"
+#include "../compress_tree.hpp"
 };
