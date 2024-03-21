@@ -41,9 +41,7 @@ struct seg_tree {
   /**
    * @param le,ri defines range [le, ri)
    */
-  void update(int le, int ri, int64_t change) {
-    update_impl(le, ri, change, 0, n, 1);
-  }
+  void update(int le, int ri, int64_t change) { update_impl(le, ri, change, 0, n, 1); }
   void update_impl(int le, int ri, int64_t change, int tl, int tr, int u) {
     if (ri <= tl || tr <= le) return;
     if (le <= tl && tr <= ri) return apply(change, tl, tr, u);
