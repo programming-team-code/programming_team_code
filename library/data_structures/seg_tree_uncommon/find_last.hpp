@@ -1,6 +1,10 @@
 /** @file */
 #pragma once
 /**
+ * @code{.cpp}
+       st.find_last(le, ri, [&](int64_t x, int tl, int tr) -> bool {
+       });
+ * @endcode
  * @param le,ri defines range [le, ri)
  * @param f defines a function that returns true if the subtree contains an
  * element that satisfies the condition

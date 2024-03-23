@@ -12,22 +12,46 @@ int main() {
     seg_tree seg(n);
     vector<int> a(n);
     for (int q = 0; q < 1'000; q++) {
-      int i = get_rand(0, n - 1);
-      seg.update(i, i + 1, -a[i]);
-      a[i] ^= 1;
-      seg.update(i, i + 1, a[i]);
-      int le = get_rand(0, n - 1);
-      int ri = get_rand(le + 1, n);
-      int first_zero = ri, last_zero = le - 1;
-      for (int pos = le; pos < ri; pos++) {
-        if (a[pos] == 0) {
-          first_zero = min(first_zero, pos);
-          last_zero = max(last_zero, pos);
+      if (get_rand(0, 1) == 0) {
+        int le = get_rand(0, n - 1);
+        int ri = get_rand(le + 1, n);
+        int diff = get_rand(0, 10);
+        seg.update(le, ri, diff);
+        for (int i = le; i < ri; i++)
+          a[i] += diff;
+      } else {
+        int le = get_rand(0, n - 1);
+        int ri = get_rand(le + 1, n);
+        int target_sum = get_rand(0, 100);
+        int smallest_index_greater_sum = ri;
+        for (int pos = le, sum = 0; pos < ri; pos++) {
+          sum += a[pos];
+          if (sum > target_sum) {
+            smallest_index_greater_sum = pos;
+            break;
+          }
         }
+        int largest_index_greater_sum = le - 1;
+        for (int pos = ri - 1, sum = 0; pos >= le; pos--) {
+          sum += a[pos];
+          if (sum > target_sum) {
+            largest_index_greater_sum = pos;
+            break;
+          }
+        }
+        int st_walk_sum;
+        auto f = [&](int64_t x, int, int) -> bool {
+          if (st_walk_sum + x <= target_sum) {
+            st_walk_sum += x;
+            return 0;
+          }
+          return 1;
+        };
+        st_walk_sum = 0;
+        assert(smallest_index_greater_sum == seg.find_first(le, ri, f));
+        st_walk_sum = 0;
+        assert(largest_index_greater_sum == seg.find_last(le, ri, f));
       }
-      auto f = [](int64_t x, int tl, int tr) { return x < tr - tl; };
-      assert(first_zero == seg.find_first(le, ri, f));
-      assert(last_zero == seg.find_last(le, ri, f));
     }
   }
   cout << "Hello World\n";
