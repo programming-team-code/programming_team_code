@@ -18,12 +18,12 @@ int main() {
   }
   string s;
   cin >> s;
-  int n = ssize(s);
+  int n = sz(s);
   suffix_array sf_a(s, 256);
   mono_st_asserts(sf_a.lcp);
-  assert(ssize(sf_a.sa) == n);
-  assert(ssize(sf_a.sa_inv) == n);
-  assert(ssize(sf_a.lcp) == n - 1);
+  assert(sz(sf_a.sa) == n);
+  assert(sz(sf_a.sa_inv) == n);
+  assert(sz(sf_a.lcp) == n - 1);
   {
     auto [sa_le, sa_ri, s_le, s_ri] = sf_a.find_str_long(string(""));
     assert(sa_le == 0 && sa_ri == n);

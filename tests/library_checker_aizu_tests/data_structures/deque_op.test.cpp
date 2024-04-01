@@ -47,7 +47,7 @@ int main() {
         cout << (1LL * curr.first * x + curr.second) % mod << '\n';
       }
     }
-    assert(ssize(stl_dq) == dq.siz());
+    assert(sz(stl_dq) == dq.siz());
     if (dq.siz()) {
       assert(stl_dq.front() == dq.front());
       assert(stl_dq.back() == dq.back());

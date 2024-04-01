@@ -22,7 +22,7 @@ int main() {
     auto [sa_le, sa_ri, s_le, s_ri] = sf_a.find_str_long(string(""));
     array<int, 2> short_res = sf_a.find_str(string(""));
     assert(sa_le == short_res[0] && sa_ri == short_res[1]);
-    assert(sa_le == 0 && sa_ri == ssize(s));
+    assert(sa_le == 0 && sa_ri == sz(s));
     assert(s_ri - s_le == 0);
   }
   int q;
@@ -34,10 +34,10 @@ int main() {
     array<int, 2> short_res = sf_a.find_str(t);
     assert(sa_le == short_res[0] && sa_ri == short_res[1]);
     int str_len = s_ri - s_le;
-    assert(str_len <= ssize(t));
+    assert(str_len <= sz(t));
     assert(s.substr(s_le, str_len) == t.substr(0, str_len));
-    assert(str_len == ssize(t) || s_ri == ssize(s) || t[str_len] != s[s_ri]);
-    assert((sa_le < sa_ri) == (str_len == ssize(t)));
+    assert(str_len == sz(t) || s_ri == sz(s) || t[str_len] != s[s_ri]);
+    assert((sa_le < sa_ri) == (str_len == sz(t)));
     cout << (!!(sa_ri - sa_le > 0)) << '\n';
   }
   return 0;

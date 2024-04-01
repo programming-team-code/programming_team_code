@@ -21,13 +21,13 @@ int main() {
   assert(find(begin(cc.two_edge_ccid), end(cc.two_edge_ccid), -1) == end(cc.two_edge_ccid));
   // check correctness of bridge tree
   {
-    assert(ssize(bt) == cc.num_2_edge_ccs);
+    assert(sz(bt) == cc.num_2_edge_ccs);
     for (int v = 0; v < cc.num_2_edge_ccs; v++) {
       for (auto to : bt[v])
         assert(to != v);  // didn't add any non-bridge
     }
     int sum_deg = accumulate(begin(bt), end(bt), 0, [](int sum, const auto& neighbors) -> int {
-      return sum + ssize(neighbors);
+      return sum + sz(neighbors);
     });
     int cnt_bridges = accumulate(begin(cc.is_bridge), end(cc.is_bridge), 0);
     assert(sum_deg % 2 == 0 && sum_deg / 2 == cnt_bridges);
@@ -40,7 +40,7 @@ int main() {
       num_sets_dsu -= dsu.join(u, v);
     }
   }
-  assert(num_sets_dsu == ssize(bt));
+  assert(num_sets_dsu == sz(bt));
   for (int i = 0; i < m; i++) {
     if (cc.is_bridge[i]) {
       auto [u, v] = edges[i];
@@ -62,7 +62,7 @@ int main() {
     ccs[cc.two_edge_ccid[i]].push_back(i);
   cout << cc.num_2_edge_ccs << '\n';
   for (const auto& curr_cc : ccs) {
-    cout << ssize(curr_cc) << " ";
+    cout << sz(curr_cc) << " ";
     for (auto node : curr_cc)
       cout << node << " ";
     cout << '\n';

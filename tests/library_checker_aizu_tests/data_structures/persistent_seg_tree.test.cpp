@@ -19,7 +19,7 @@ int main() {
   sort(begin(points), end(points));
   PST pst(-5, 1'000'000'000);
   for (const auto& point : points)
-    pst.update(point[1], point[2], ssize(pst.roots) - 1);
+    pst.update(point[1], point[2], sz(pst.roots) - 1);
   while (q--) {
     int le, down, ri, up;
     cin >> le >> down >> ri >> up;

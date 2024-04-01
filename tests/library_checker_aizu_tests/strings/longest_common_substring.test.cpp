@@ -10,17 +10,17 @@ int main() {
   string both = s + '$' + t;
   suffix_array sf_a(both, 256);
   array<int, 2> substr_s = {0, 0}, substr_t = {0, 0};
-  for (int i = 0; i < ssize(sf_a.lcp); i++) {
+  for (int i = 0; i < sz(sf_a.lcp); i++) {
     if (both[sf_a.sa[i]] == '$' || both[sf_a.sa[i + 1]] == '$') continue;
-    bool before_in_s = (sf_a.sa[i] < ssize(s));
-    bool after_in_s = (sf_a.sa[i + 1] < ssize(s));
+    bool before_in_s = (sf_a.sa[i] < sz(s));
+    bool after_in_s = (sf_a.sa[i + 1] < sz(s));
     if (before_in_s ^ after_in_s) {
       if (sf_a.lcp[i] > substr_s[1] - substr_s[0]) {
         substr_s = {sf_a.sa[i], sf_a.sa[i] + sf_a.lcp[i]};
         substr_t = {sf_a.sa[i + 1], sf_a.sa[i + 1] + sf_a.lcp[i]};
         if (after_in_s) swap(substr_s, substr_t);
-        substr_t[0] -= int(ssize(s)) + 1;
-        substr_t[1] -= int(ssize(s)) + 1;
+        substr_t[0] -= int(sz(s)) + 1;
+        substr_t[1] -= int(sz(s)) + 1;
       }
     }
   }

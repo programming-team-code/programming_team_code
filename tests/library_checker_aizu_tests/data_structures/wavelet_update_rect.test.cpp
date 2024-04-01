@@ -14,26 +14,26 @@ int main() {
   sort(begin(sorted), end(sorted));
   sorted.erase(unique(begin(sorted), end(sorted)), end(sorted));
   for (int& val : arr) {
-    int le = 0, ri = ssize(sorted);
+    int le = 0, ri = sz(sorted);
     while (ri - le > 1) {
       int mi = le + (ri - le) / 2;
       if (sorted[mi] <= val) le = mi;
       else ri = mi;
     }
-    assert(le < ssize(arr) && sorted[le] == val);
+    assert(le < sz(arr) && sorted[le] == val);
     val = le - 30;
   }
-  wavelet_tree_updates wtu(arr, -30, max(1, int(ssize(sorted))) - 30, vector<bool>(n, 1));
+  wavelet_tree_updates wtu(arr, -30, max(1, int(sz(sorted))) - 30, vector<bool>(n, 1));
   while (q--) {
     int le, ri, x;
     cin >> le >> ri >> x;
-    int start = 0, end = ssize(sorted);
+    int start = 0, end = sz(sorted);
     while (end - start > 1) {
       int mi = start + (end - start) / 2;
       if (sorted[mi] <= x) start = mi;
       else end = mi;
     }
-    if (start == ssize(sorted) || sorted[start] != x)
+    if (start == sz(sorted) || sorted[start] != x)
       cout << 0 << '\n';
     else {
       int idx = start - 30;

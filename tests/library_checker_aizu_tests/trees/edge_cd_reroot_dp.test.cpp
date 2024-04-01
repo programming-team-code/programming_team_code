@@ -66,7 +66,7 @@ int main() {
         self(self, v, u, curr_forw, curr_backw, side);
       }
     };
-    for (int i = 0; i < ssize(cd_adj[cent]); i++) {
+    for (int i = 0; i < sz(cd_adj[cent]); i++) {
       int e_id = edge_id(cent, cd_adj[cent][i]);
       dfs(dfs, cd_adj[cent][i], cent, {b[e_id], c[e_id]}, {b[e_id], c[e_id]}, i < split);
     }

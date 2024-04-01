@@ -10,7 +10,7 @@
 
 vector<vector<int64_t>> naive(const vector<vector<int>>& adj, dsu_restorable& dsu) {
   tree_lift tl(adj);
-  int n = ssize(adj);
+  int n = sz(adj);
   vector<vector<int64_t>> cnts_naive(n + 1, vector<int64_t>(n, 0));
   for (int u = 0; u < n; u++) {
     for (int v = u; v < n; v++) {

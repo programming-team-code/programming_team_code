@@ -37,8 +37,8 @@ int main() {
           res.push_back(curr_edge_id);
           if (curr_node == v) break;
         }
-        cout << ssize(res) << '\n';
-        for (int i = ssize(res) - 1; i >= 0; i--)
+        cout << sz(res) << '\n';
+        for (int i = sz(res) - 1; i >= 0; i--)
           cout << res[i] << '\n';
         exit(0);
       }

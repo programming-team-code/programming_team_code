@@ -99,7 +99,7 @@ int main() {
       self(self, tl, tm, 2 * v);
       self(self, tm, tr, 2 * v + 1);
     }
-    for (int i = 0; i < ssize(tree[v]); i++) dsu.undo();
+    for (int i = 0; i < sz(tree[v]); i++) dsu.undo();
   };
   dfs(dfs, 0, q, 1);
   return 0;

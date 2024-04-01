@@ -61,7 +61,7 @@ int main() {
       assert(sa_le == short_res[0] && sa_ri == short_res[1]);
     }
     auto [sa_le, sa_ri, s_le, s_ri] = sf_a.find_substrs_concated({});
-    assert(sa_le == 0 && sa_ri == ssize(arr));
+    assert(sa_le == 0 && sa_ri == sz(arr));
     assert(s_le == s_ri);
     assert(sf_a.cmp_substrs(0, 0, 100, 100) == 0);
     assert(sf_a.cmp_substrs(5, 5, 47, 47) == 0);
@@ -79,7 +79,7 @@ int main() {
   {
     pal_query pq(arr);
     vector<int> man(manacher(arr)), longest(longest_from_index(pq));
-    for (int i = 0; i < ssize(man); i++) {
+    for (int i = 0; i < sz(man); i++) {
       int sz = i - 2 * man[i] + 1;
       assert(sz == (1 ^ (i & 1)));
     }

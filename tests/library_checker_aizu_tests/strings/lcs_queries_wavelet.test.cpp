@@ -12,12 +12,12 @@ int main() {
   vector<wavelet_tree> wts;
   {
     lcs_dp lcs(t);
-    wts.emplace_back(lcs.dp, -1, ssize(t));
+    wts.emplace_back(lcs.dp, -1, sz(t));
     for (char c : s) {
       lcs.push_onto_s(c);
       {
-        vector<bool> seen(ssize(t));
-        for (int i = 0; i < ssize(t); i++) {
+        vector<bool> seen(sz(t));
+        for (int i = 0; i < sz(t); i++) {
           int val = lcs.dp[i];
           assert(val <= i);
           if (val == -1) continue;
@@ -25,7 +25,7 @@ int main() {
           seen[val] = 1;
         }
       }
-      wts.emplace_back(lcs.dp, -1, ssize(t));
+      wts.emplace_back(lcs.dp, -1, sz(t));
     }
   }
   for (int i = 0; i < q; i++) {
