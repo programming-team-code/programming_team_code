@@ -14,7 +14,7 @@ int main() {
   suffix_array sf_a(s, 256);
   auto [sa_le, sa_ri, s_le, s_ri] = sf_a.find_str_long(t);
   pair<int, int> short_res = sf_a.find_str(t);
-  assert(sa_le == short_res[0] && sa_ri == short_res[1]);
+  assert(sa_le == short_res.first && sa_ri == short_res.second);
   int str_len = s_ri - s_le;
   assert(s.substr(s_le, str_len) == t.substr(0, str_len));
   assert(str_len <= sz(t));
@@ -37,7 +37,7 @@ int main() {
     assert(!empty(subs));
     auto [sa_le2, sa_ri2, s_le2, s_ri2] = lq_both.find_substrs_concated(subs);
     pair<int, int> short_res2 = lq_both.find_substr(t_start, sz(both));
-    assert(sa_le2 == short_res2[0] && sa_ri2 == short_res2[1]);
+    assert(sa_le2 == short_res2.first && sa_ri2 == short_res2.second);
     assert(both.substr(s_le2, s_ri2 - s_le2) == t);
     assert(sa_ri2 - sa_le2 == 1 + sa_ri - sa_le);
     vector<int> matches_other(begin(lq_both.sa) + sa_le2, begin(lq_both.sa) + sa_ri2);
