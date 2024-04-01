@@ -34,15 +34,15 @@ int main() {
     }
     auto dfs = [&](auto&& self, int u) -> void {
       for (auto [v, e_id] : adj_with_id[u])
-        if (v != par[u][0]) par[v] = {u, e_id}, self(self, v);
+        if (v != par[u].first) par[v] = {u, e_id}, self(self, v);
     };
     dfs(dfs, 0);
   }
   auto edge_id = [&](int u, int v) -> int {
-    bool u_low = (par[u][0] == v);
-    bool v_low = (par[v][0] == u);
+    bool u_low = (par[u].first == v);
+    bool v_low = (par[v].first == u);
     assert(u_low ^ v_low);
-    return u_low ? par[u][1] : par[v][1];
+    return u_low ? par[u].second : par[v].second;
   };
   {
     edge_cd(adj, edge_cd_asserts);
