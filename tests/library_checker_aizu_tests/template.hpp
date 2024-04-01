@@ -26,9 +26,12 @@ using namespace std;
 // https://github.com/kth-competitive-programming/kactl/blob/main/content/contest/template.cpp
 // compile all tests with KACTL macros mainly to avoid naming collisions when
 // combining code from both repos
-#define rep(i, a, b) for (int i = a; i < (b); ++i)
+//
+// also defines are used here instead of typedef/using's (even though it's more sketchier)
+// so that they can be expanded before pushing to main
+#define rep(i, a, b) for (int i = a; i < (b); i++)
 #define all(x) begin(x), end(x)
 #define sz(x) (int)(x).size()
-typedef int64_t ll;
-typedef pair<int, int> pii;
-typedef vector<int> vi;
+#define ll int64_t
+#define pii pair<int, int>
+#define vi vector<int>
