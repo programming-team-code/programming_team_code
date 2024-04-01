@@ -4,7 +4,6 @@
  * @see https://e-maxx.ru/algo/min_cost_flow
  */
 struct mcmf {
-  using ll = int64_t;
   struct edge {
     int u, v;
     ll cap, cost, flow;
