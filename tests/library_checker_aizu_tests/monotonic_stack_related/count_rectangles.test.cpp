@@ -33,7 +33,7 @@ int main() {
       for (int j = 0; j < m; j++)
         temp_grid[i][j] = grid[i][j];
     SubMatrix<int> sm(temp_grid);
-    vector<array<int, 2>> tests;
+    vector<pair<int, int>> tests;
     {
       for (int i = 1; i <= min(5, n); i++)
         for (int j = 1; j <= min(5, m); j++)

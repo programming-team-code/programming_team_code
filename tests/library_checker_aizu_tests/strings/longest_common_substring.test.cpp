@@ -9,7 +9,7 @@ int main() {
   cin >> s >> t;
   string both = s + '$' + t;
   suffix_array sf_a(both, 256);
-  array<int, 2> substr_s = {0, 0}, substr_t = {0, 0};
+  pair<int, int> substr_s = {0, 0}, substr_t = {0, 0};
   for (int i = 0; i < sz(sf_a.lcp); i++) {
     if (both[sf_a.sa[i]] == '$' || both[sf_a.sa[i + 1]] == '$') continue;
     bool before_in_s = (sf_a.sa[i] < sz(s));

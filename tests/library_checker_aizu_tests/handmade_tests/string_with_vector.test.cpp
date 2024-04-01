@@ -50,14 +50,14 @@ int main() {
     assert(sf_a.len_lcp(0, 100) == 0);
     for (int i = 0; i < 100; i++) {
       auto [sa_le, sa_ri, s_le, s_ri] = sf_a.find_substrs_concated({{i, i + 1}});
-      array<int, 2> short_res = sf_a.find_substr(i, i + 1);
+      pair<int, int> short_res = sf_a.find_substr(i, i + 1);
       assert(sa_le == short_res[0] && sa_ri == short_res[1]);
       assert(sa_le == i && sa_ri == i + 1);
       assert(s_le == i && s_ri == i + 1);
     }
     for (int i = 0; i <= 100; i++) {
       auto [sa_le, sa_ri, s_le, s_ri] = sf_a.find_substrs_concated({{i, i}, {i, i}});
-      array<int, 2> short_res = sf_a.find_substr(i, i);
+      pair<int, int> short_res = sf_a.find_substr(i, i);
       assert(sa_le == short_res[0] && sa_ri == short_res[1]);
     }
     auto [sa_le, sa_ri, s_le, s_ri] = sf_a.find_substrs_concated({});

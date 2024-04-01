@@ -10,7 +10,7 @@ int main() {
   for (int i = 0; i < q; i++) {
     string s, t;
     cin >> s >> t;
-    array<int, 2> res;
+    pair<int, int> res;
     for (int j = 0; j < 2; j++) {
       lcs_dp lcs(t);
       for (char c : s) lcs.push_onto_s(c);

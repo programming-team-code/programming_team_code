@@ -16,10 +16,10 @@ int main() {
   }
   vector<vector<int>> adj(n);
   vector<int> b(n - 1), c(n - 1);
-  vector<array<int, 2>> par(n, {-1, -1});
+  vector<pair<int, int>> par(n, {-1, -1});
   const int mod = 998'244'353;
   {
-    vector<vector<array<int, 2>>> adj_with_id(n);
+    vector<vector<pair<int, int>>> adj_with_id(n);
     for (int i = 0; i < n - 1; i++) {
       int u, v;
       cin >> u >> v >> b[i] >> c[i];

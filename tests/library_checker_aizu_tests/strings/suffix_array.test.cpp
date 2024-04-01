@@ -27,7 +27,7 @@ int main() {
   {
     auto [sa_le, sa_ri, s_le, s_ri] = sf_a.find_str_long(string(""));
     assert(sa_le == 0 && sa_ri == n);
-    array<int, 2> short_res = sf_a.find_str(string(""));
+    pair<int, int> short_res = sf_a.find_str(string(""));
     assert(sa_le == short_res[0] && sa_ri == short_res[1]);
     assert(s_ri - s_le == 0);
   }
@@ -38,21 +38,21 @@ int main() {
   }
   {
     auto [sa_le, sa_ri, s_le, s_ri] = sf_a.find_substrs_concated({{0, 0}});
-    array<int, 2> short_res = sf_a.find_substr(0, 0);
+    pair<int, int> short_res = sf_a.find_substr(0, 0);
     assert(sa_le == short_res[0] && sa_ri == short_res[1]);
     assert(sa_le == 0 && sa_ri == n);
     assert(s_ri - s_le == 0);
   }
   {
     auto [sa_le, sa_ri, s_le, s_ri] = sf_a.find_substrs_concated({{0, 0}, {n, n}});
-    array<int, 2> short_res = sf_a.find_substr(n, n);
+    pair<int, int> short_res = sf_a.find_substr(n, n);
     assert(sa_le == short_res[0] && sa_ri == short_res[1]);
     assert(sa_le == 0 && sa_ri == n);
     assert(s_ri - s_le == 0);
   }
   {
     auto [sa_le, sa_ri, s_le, s_ri] = sf_a.find_substrs_concated({{0, 0}, {n / 2, n / 2}, {n, n}});
-    array<int, 2> short_res = sf_a.find_substr(n / 2, n / 2);
+    pair<int, int> short_res = sf_a.find_substr(n / 2, n / 2);
     assert(sa_le == short_res[0] && sa_ri == short_res[1]);
     assert(sa_le == 0 && sa_ri == n);
     assert(s_ri - s_le == 0);

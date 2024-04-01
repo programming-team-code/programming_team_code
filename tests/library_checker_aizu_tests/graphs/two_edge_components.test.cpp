@@ -7,7 +7,7 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n, m;
   cin >> n >> m;
-  vector<vector<array<int, 2>>> adj(n);
+  vector<vector<pair<int, int>>> adj(n);
   vector<pair<int, int>> edges(m);
   for (int i = 0; i < m; i++) {
     int u, v;

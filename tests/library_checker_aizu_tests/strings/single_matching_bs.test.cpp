@@ -13,7 +13,7 @@ int main() {
   cin >> s >> t;
   suffix_array sf_a(s, 256);
   auto [sa_le, sa_ri, s_le, s_ri] = sf_a.find_str_long(t);
-  array<int, 2> short_res = sf_a.find_str(t);
+  pair<int, int> short_res = sf_a.find_str(t);
   assert(sa_le == short_res[0] && sa_ri == short_res[1]);
   int str_len = s_ri - s_le;
   assert(s.substr(s_le, str_len) == t.substr(0, str_len));
@@ -31,12 +31,12 @@ int main() {
     for (int num_splits = get_rand(0, 4); num_splits--;)
       splits.push_back(get_rand<int>(0, sz(t)));
     sort(begin(splits), end(splits));
-    vector<array<int, 2>> subs;
+    vector<pair<int, int>> subs;
     for (int i = 1; i < sz(splits); i++)
       subs.push_back({splits[i - 1] + t_start, splits[i] + t_start});
     assert(!empty(subs));
     auto [sa_le2, sa_ri2, s_le2, s_ri2] = lq_both.find_substrs_concated(subs);
-    array<int, 2> short_res2 = lq_both.find_substr(t_start, sz(both));
+    pair<int, int> short_res2 = lq_both.find_substr(t_start, sz(both));
     assert(sa_le2 == short_res2[0] && sa_ri2 == short_res2[1]);
     assert(both.substr(s_le2, s_ri2 - s_le2) == t);
     assert(sa_ri2 - sa_le2 == 1 + sa_ri - sa_le);
