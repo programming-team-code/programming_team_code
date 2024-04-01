@@ -12,7 +12,7 @@
  * @time O(|t|)
  * @space O(1)
  */
-array<int, 2> find_str(const string& t) {
+pii find_str(const string& t) {
   int u = root;
   for (int i = 0; i < sz(t); i++) {
     if (i == len_lcp_range(u)) {

@@ -3,7 +3,7 @@
 /**
  * @see https://cp-algorithms.com/graph/bridge-searching.html
  * @code{.cpp}
-       vector<vector<array<int, 2>>> adj(n);
+       vector<vector<pii>> adj(n);
        for (int i = 0; i < m; i++) {
            int u, v;
            cin >> u >> v;
@@ -24,7 +24,7 @@ struct bridges {
    * @time O(n + m)
    * @space this allocates member vectors which are O(n + m)
    */
-  bridges(const vector<vector<array<int, 2>>>& adj, int m) : is_bridge(m), two_edge_ccid(sz(adj), -1) {
+  bridges(const vector<vector<pii>>& adj, int m) : is_bridge(m), two_edge_ccid(sz(adj), -1) {
     int n = sz(adj), timer = 1;
     vi tin(n), st;
     auto dfs = [&](auto&& self, int u, int p_id) -> int {

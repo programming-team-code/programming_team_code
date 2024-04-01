@@ -7,7 +7,7 @@ template <class T> struct binary_trie {
   int mx_bit;
   struct node {
     int sub_sz = 0;
-    array<int, 2> next = {-1, -1};
+    pii next = {-1, -1};
   };
   vector<node> t;
   /**

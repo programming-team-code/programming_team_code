@@ -9,7 +9,7 @@
  * @time O(|t| * log(|s|))
  * @space O(1)
  */
-inline array<int, 2> find_str(const T& t) {
+inline pii find_str(const T& t) {
   int le = lower_bound(begin(sa), end(sa), 0,
                        [&](int i, int) -> bool { return lexicographical_compare(begin(s) + i, end(s), begin(t), end(t)); }) -
            begin(sa);

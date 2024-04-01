@@ -43,7 +43,7 @@ template <class T> struct longest_pal_query {
    * @time O(log n)
    * @space O(1)
    */
-  inline array<int, 2> longest_pal(int le, int ri) {
+  inline pii longest_pal(int le, int ri) {
     assert(0 <= le && le < ri && ri <= sz(idx));
     int pal_len = lower_bound(begin(idx), begin(idx) + (ri - le), 0,
                               [&](int mid, int) { return len(rmq.query(2 * le + mid - 1, 2 * ri - mid)) >= mid; }) -

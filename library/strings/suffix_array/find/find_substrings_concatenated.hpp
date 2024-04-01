@@ -12,7 +12,7 @@
  * @time O(sz(substrs) * log(|s|))
  * @space O(1)
  */
-inline match find_substrs_concated(const vector<array<int, 2>>& substrs) {
+inline match find_substrs_concated(const vector<pii>& substrs) {
   using dt = array<int, 3>;
   int sa_le = 0, sa_ri = n, s_le = 0, s_ri = 0, sum_len = 0;
   auto cmp = [&](int i, const dt& x) -> bool {

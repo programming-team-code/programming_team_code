@@ -10,7 +10,7 @@
  *
  * @code{.cpp}
        auto [num_sccs, scc_id] = sccs(adj);
-       vector<array<int, 2>> edges = extra_edges(adj, num_sccs, scc_id);
+       vector<pii> edges = extra_edges(adj, num_sccs, scc_id);
  * @endcode
  * @param adj,num_sccs,scc_id directed graph and its SCCs
  * @returns directed edge list: edges[i][0] -> edges[i][1]
@@ -18,7 +18,7 @@
  * @space An O(n) edge list is allocated and returned, but multiple O(n + m)
  * vectors are allocated temporarily
  */
-vector<array<int, 2>> extra_edges(const vector<vi>& adj, int num_sccs, const vi& scc_id) {
+vector<pii> extra_edges(const vector<vi>& adj, int num_sccs, const vi& scc_id) {
   if (num_sccs == 1) return {};
   int n = sz(adj);
   vector<vi> scc_adj(num_sccs);
@@ -40,7 +40,7 @@ vector<array<int, 2>> extra_edges(const vector<vi>& adj, int num_sccs, const vi&
       }
     return -1;
   };
-  vector<array<int, 2>> edges;
+  vector<pii> edges;
   vi in_unused;
   for (int i = 0; i < num_sccs; i++)
     if (zero_in[i]) {

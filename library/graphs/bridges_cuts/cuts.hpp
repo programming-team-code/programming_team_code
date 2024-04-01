@@ -3,7 +3,7 @@
 /**
  * @see https://cp-algorithms.com/graph/cutpoints.html
  * @code{.cpp}
-       vector<vector<array<int, 2>>> adj(n);
+       vector<vector<pii>> adj(n);
        for (int i = 0; i < m; i++) {
            int u, v;
            cin >> u >> v;
@@ -24,7 +24,7 @@ struct cuts {
    * @time O(n + m)
    * @space this allocates member vectors which are O(n + m)
    */
-  cuts(const vector<vector<array<int, 2>>>& adj, int m) : is_cut(sz(adj)), bcc_id(m, -1) {
+  cuts(const vector<vector<pii>>& adj, int m) : is_cut(sz(adj)), bcc_id(m, -1) {
     int n = sz(adj), timer = 1;
     vi tin(n), st;
     auto dfs = [&](auto&& self, int u, int p_id) -> int {

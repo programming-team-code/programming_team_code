@@ -23,7 +23,7 @@
  * @space besides the O(n + m) sized params, this function allocates and
  * returns `bvt` vector which is O(n)
  */
-vector<vi> block_vertex_tree(const vector<vector<array<int, 2>>>& adj, const cuts& cc) {
+vector<vi> block_vertex_tree(const vector<vector<pii>>& adj, const cuts& cc) {
   int n = sz(adj);
   vector<vi> bvt(n + cc.num_bccs);
   vector<bool> vis(cc.num_bccs);
