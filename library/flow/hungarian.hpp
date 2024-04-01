@@ -11,7 +11,7 @@
  */
 struct hungarian {
   ll min_weight; /**< sum of edge weights in matching */
-  vector<int> l_to_r; /**< edge v <=> l_to_r[v] is in the matching, 1<=v<=n; 1<=l_to_r[v]<=m */
+  vi l_to_r; /**< edge v <=> l_to_r[v] is in the matching, 1<=v<=n; 1<=l_to_r[v]<=m */
   /**
    * @param cost (n+1)-by-(m+1) array: cost[u][v] = weight (can be negative) of
    * the edge u <=> v, 1<=u<=n; 1<=v<=m, n<=m
@@ -22,7 +22,7 @@ struct hungarian {
   hungarian(const vector<vector<ll>>& cost) : l_to_r(sz(cost)) {
     int n = sz(cost) - 1, m = sz(cost[0]) - 1;
     assert(n <= m);
-    vector<int> p(m + 1), way(m + 1);
+    vi p(m + 1), way(m + 1);
     vector u(n + 1, 0LL), v(m + 1, 0LL);
     for (int i = 1; i <= n; i++) {
       p[0] = i;

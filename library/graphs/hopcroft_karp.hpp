@@ -17,7 +17,7 @@ struct hopcroft_karp {
    * ditto r_to_l[node_right] <=> node_right
    * @{
    */
-  vector<int> l_to_r, r_to_l;
+  vi l_to_r, r_to_l;
   /** @} */
   /**
    * mvc_l[node_left] = 1 iff node_left is in the min vertex cover; ditto mvc_r[node_right]
@@ -32,7 +32,7 @@ struct hopcroft_karp {
    * @time O(n + m * sqrt(n)) n = lsz + rsz
    * @space this allocates member vectors which are O(lsz + rsz)
    */
-  hopcroft_karp(const vector<vector<int>>& adj, int rsz) : l_to_r(sz(adj), -1), r_to_l(rsz, -1) {
+  hopcroft_karp(const vector<vi>& adj, int rsz) : l_to_r(sz(adj), -1), r_to_l(rsz, -1) {
     int lsz = sz(adj);
     while (1) {
       queue<int> q;

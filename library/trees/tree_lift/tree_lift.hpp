@@ -6,13 +6,13 @@
  */
 struct tree_lift {
   int n;
-  vector<int> d, p, j;
+  vi d, p, j;
   /**
    * @param adj forest (rooted or unrooted)
    * @time O(n)
    * @space O(n) for d, p, j vectors
    */
-  tree_lift(const vector<vector<int>>& adj) : n(sz(adj)), d(n), p(n, -1), j(n, -1) {
+  tree_lift(const vector<vi>& adj) : n(sz(adj)), d(n), p(n, -1), j(n, -1) {
     auto dfs = [&](auto&& self, int u) -> void {
       int jump = (d[u] + d[j[j[u]]] == 2 * d[j[u]]) ? j[j[u]] : u;
       for (int v : adj[u])

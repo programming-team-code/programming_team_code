@@ -8,7 +8,7 @@ const int mod = 998'244'353;
  * @time O(2^n * n)
  * @space a size O(2^n) vector is allocated and returned
  */
-vector<int> and_convolution(vector<int> a, vector<int> b) {
+vi and_convolution(vi a, vi b) {
   int n = __lg(sz(a));
   assert(sz(a) == sz(b) && (1 << n) == sz(a));
   for (int i = 0; i < n; i++)
@@ -17,7 +17,7 @@ vector<int> and_convolution(vector<int> a, vector<int> b) {
         a[j] = (a[j] + a[j ^ (1 << i)]) % mod;
         b[j] = (b[j] + b[j ^ (1 << i)]) % mod;
       }
-  vector<int> c(1 << n);
+  vi c(1 << n);
   for (int i = 0; i < (1 << n); i++)
     c[i] = 1LL * a[i] * b[i] % mod;
   for (int i = 0; i < n; i++)

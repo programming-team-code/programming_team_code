@@ -13,9 +13,9 @@
  * @space besides the O(m) `edges` param, this function allocates a O(n + m) vector temporarily
  */
 template <class F> void enumerate_triangles(const vector<array<int, 2>>& edges, int n, F f) {
-  vector<int> deg(n);
+  vi deg(n);
   for (auto [u, v] : edges) deg[u]++, deg[v]++;
-  vector<vector<int>> adj(n);
+  vector<vi> adj(n);
   for (auto [u, v] : edges) {
     if (tie(deg[u], u) > tie(deg[v], v)) swap(u, v);
     adj[u].push_back(v);

@@ -16,7 +16,7 @@ inline ll sum_consecutive(int le, int ri) {
  */
 template <class T> struct count_pal_query {
   int n;
-  vector<int> man;
+  vi man;
   wavelet_tree wt_le, wt_ri;
   /**
    * @param s string/vector
@@ -25,7 +25,7 @@ template <class T> struct count_pal_query {
    */
   count_pal_query(const T& s) : n(sz(s)), man(manacher(s)), wt_le(man, 0, n), wt_ri(init()) {}
   wavelet_tree init() {
-    vector<int> right(sz(man));
+    vi right(sz(man));
     for (int i = 0; i < sz(man); i++)
       right[i] = i - man[i] + 1;
     return {right, 1, n + 1};

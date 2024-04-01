@@ -15,13 +15,13 @@
  * @time O(n α(n) + m log m)
  * @space O(n + m)
  */
-pair<ll, vector<int>> mst(const vector<array<int, 3>>& eds, int n) {
-  vector<int> order(sz(eds));
+pair<ll, vi> mst(const vector<array<int, 3>>& eds, int n) {
+  vi order(sz(eds));
   iota(begin(order), end(order), 0);
   sort(begin(order), end(order),
        [&](int i, int j) { return eds[i][2] < eds[j][2]; });
   UF uf(n);
-  vector<int> ids;
+  vi ids;
   ll cost = 0;
   for (int it : order) {
     auto [u, v, w] = eds[it];

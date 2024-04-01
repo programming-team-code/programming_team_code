@@ -10,7 +10,7 @@ mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
        mt19937 rng;
        unsigned x = rng();
        //
-       vector<int> a(n);
+       vi a(n);
        shuffle(begin(a), end(a), rng);
        //
        int x = get_rand(0, 1);

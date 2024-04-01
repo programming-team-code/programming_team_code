@@ -8,7 +8,7 @@
  * @time O(n)
  * @space besides O(n) param `a`, O(n) extra space is allocated temporarily
  */
-ll max_rect_histogram(const vector<int>& a) {
+ll max_rect_histogram(const vi& a) {
   auto le(mono_st(a, less())), ri(mono_range(le));
   auto max_area = 0LL;
   for (int i = 0; i < sz(a); i++)

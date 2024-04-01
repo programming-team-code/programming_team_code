@@ -7,7 +7,7 @@
  */
 struct dsu_restorable {
   int num_sets;
-  vector<int> p;
+  vi p;
   vector<ll> subtree;
   vector<optional<array<int, 3>>> st;
   dsu_restorable(int n) : num_sets(n), p(n, -1), subtree(n) {}

@@ -21,9 +21,9 @@ struct wavelet_tree {
   vector<vector<ll>> presums;
   /**
    * @code{.cpp}
-         vector<int> a;
+         vi a;
          ...
-         vector<int> sorted(a);
+         vi sorted(a);
          sort(begin(sorted), end(sorted));
          sorted.erase(unique(begin(sorted), end(sorted)), end(sorted));
          for (int& val : a) val = lower_bound(begin(sorted), end(sorted), val) - begin(sorted);
@@ -34,10 +34,10 @@ struct wavelet_tree {
    * @space O((maxv - minv) + n * log(maxv - minv) / 64) for `bool_presums`
    *        O((maxv - minv) + n * log(maxv - minv))      for `presums`
    */
-  wavelet_tree(vector<int> a, int a_minv, int a_maxv) : n(sz(a)), minv(a_minv), maxv(a_maxv), bool_presums(maxv - minv, vector<bool>()), presums(maxv - minv) {
+  wavelet_tree(vi a, int a_minv, int a_maxv) : n(sz(a)), minv(a_minv), maxv(a_maxv), bool_presums(maxv - minv, vector<bool>()), presums(maxv - minv) {
     build(a, 0, n, minv, maxv, 1);
   }
-  void build(vector<int>& a, int le, int ri, int tl, int tr, int u) {
+  void build(vi& a, int le, int ri, int tl, int tr, int u) {
     if (tr - tl <= 1) return;
     int tm = split(tl, tr);
     auto low = [&](int val) { return val < tm; };

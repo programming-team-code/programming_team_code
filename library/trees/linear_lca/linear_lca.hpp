@@ -9,14 +9,14 @@ inline int lsb(int x) { return x & -x; }
  */
 struct linear_lca {
   int n;
-  vector<int> d, p, head, in, order, big_ch;
+  vi d, p, head, in, order, big_ch;
   vector<unsigned> label, asc;
   /**
    * @param adj forest (rooted or unrooted)
    * @time O(n)
    * @space O(n)
    */
-  linear_lca(const vector<vector<int>>& adj) : n(size(adj)), d(n), p(n), head(n + 1), in(n), big_ch(n), label(n), asc(n) {
+  linear_lca(const vector<vi>& adj) : n(size(adj)), d(n), p(n), head(n + 1), in(n), big_ch(n), label(n), asc(n) {
     auto dfs = [&](auto&& self, int u) -> void {
       order.push_back(u);
       in[u] = label[u] = sz(order);

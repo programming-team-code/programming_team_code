@@ -10,7 +10,7 @@
 struct bool_presum {
   int n;
   vector<uint64_t> mask;
-  vector<int> presum;
+  vi presum;
   /**
    * @param a boolean array
    * @time O(n)

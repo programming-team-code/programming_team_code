@@ -9,10 +9,10 @@
  * @time O(n * m)
  * @space this function allocates/returns a O(n * m) vector
  */
-vector<vector<int>> count_rectangles(const vector<vector<bool>>& grid) {
+vector<vi> count_rectangles(const vector<vector<bool>>& grid) {
   int n = sz(grid), m = sz(grid[0]);
   vector cnt(n + 1, vector(m + 1, 0));
-  vector<int> h(m);
+  vi h(m);
   for (const auto& row : grid) {
     transform(begin(h), end(h), begin(row), begin(h), [](int a, bool g) {
       return g * (a + 1);

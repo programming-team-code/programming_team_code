@@ -24,8 +24,8 @@
  * @time O(n)
  * @space a O(n) vector is allocated and returned
  */
-vector<int> cart_binary_tree(const vector<int>& le) {
-  vector<int> p(le);
+vi cart_binary_tree(const vi& le) {
+  vi p(le);
   for (int i = 0; i < sz(p); i++)
     for (int j = i - 1; j != le[i]; j = le[j])
       if (le[j] == le[i]) p[j] = i;

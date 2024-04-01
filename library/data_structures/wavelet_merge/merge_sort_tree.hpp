@@ -16,14 +16,14 @@ inline int split(int tl, int tr) {
  */
 struct merge_sort_tree {
   int n;
-  vector<int> sorted;
+  vi sorted;
   vector<bool_presum> bool_presums;
   /**
    * @param a array
    * @time O(n log n)
    * @space O(n + (n log n) / 64) for `bool_presums` vector
    */
-  merge_sort_tree(const vector<int>& a) : n(sz(a)), sorted(n), bool_presums(n, vector<bool>()) {
+  merge_sort_tree(const vi& a) : n(sz(a)), sorted(n), bool_presums(n, vector<bool>()) {
     vector<pair<int, bool>> cpy(n);
     transform(begin(a), end(a), begin(cpy), [](int val) { return pair(val, 0); });
     build(cpy, 0, n, 1);

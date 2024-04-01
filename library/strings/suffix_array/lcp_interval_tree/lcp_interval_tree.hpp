@@ -48,9 +48,9 @@ const int mn = '0', cnt_let = 36;  // mn <= s[i] < mn + cnt_let; for lowercase l
  */
 struct lcp_tree {
   suffix_array<string> sf_a;
-  vector<int> le, ri;
+  vi le, ri;
   int root;
-  vector<vector<int>> adj;
+  vector<vi> adj;
   /**
    * @param s non-empty string/array
    * @time O((n log n) + (mn + cnt_let) + (n * cnt_let))

@@ -14,14 +14,14 @@ struct perm_tree {
    * [mn_val[u], mn_val[u] + len[u]) is range of values
    * @{
    */
-  vector<int> mn_idx, mn_val, len;
+  vi mn_idx, mn_val, len;
   /** @} */
   int root;
-  vector<vector<int>> adj; /**< [0, n) are leaves, [n, sz(adj)) are internal nodes */
+  vector<vi> adj; /**< [0, n) are leaves, [n, sz(adj)) are internal nodes */
   bool touches(int u, int v) {
     return mn_val[u] == mn_val[v] + len[v] || mn_val[v] == mn_val[u] + len[u];
   }
-  int allocate(bool join, int mn_i, int mn_v, int ln, const vector<int>& ch) {
+  int allocate(bool join, int mn_i, int mn_v, int ln, const vi& ch) {
     is_join.push_back(join);
     mn_idx.push_back(mn_i);
     mn_val.push_back(mn_v);
@@ -34,11 +34,11 @@ struct perm_tree {
    * @time O(n)
    * @space O(n)
    */
-  perm_tree(const vector<int>& a) {
+  perm_tree(const vi& a) {
     int n = sz(a);
-    vector<int> mn_i(n), mx_i(n);
+    vi mn_i(n), mx_i(n);
     {
-      vector<int> a_inv(n, -1);
+      vi a_inv(n, -1);
       for (int i = 0; i < n; i++) {
         assert(0 <= a[i] && a[i] < n && a_inv[a[i]] == -1);
         a_inv[a[i]] = i;
@@ -77,7 +77,7 @@ struct perm_tree {
           break;
         }
         int min_val = mn_val[u];
-        vector<int> ch(1 + sz(st) - idx, u);
+        vi ch(1 + sz(st) - idx, u);
         for (int j = idx; j < sz(st); j++)
           min_val = min(min_val, mn_val[ch[j - idx] = st[j][0]]);
         u = allocate(0, le, min_val, i - le + 1, ch);

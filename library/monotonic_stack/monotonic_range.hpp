@@ -12,8 +12,8 @@
  * @time O(n)
  * @space a O(n) vector is allocated and returned
  */
-vector<int> mono_range(const vector<int>& le) {
-  vector<int> ri(sz(le), sz(le));
+vi mono_range(const vi& le) {
+  vi ri(sz(le), sz(le));
   for (int i = 0; i < sz(le); i++)
     for (int j = i - 1; j != le[i]; j = le[j]) ri[j] = i;
   return ri;

@@ -18,10 +18,10 @@
  * @space An O(n) edge list is allocated and returned, but multiple O(n + m)
  * vectors are allocated temporarily
  */
-vector<array<int, 2>> extra_edges(const vector<vector<int>>& adj, int num_sccs, const vector<int>& scc_id) {
+vector<array<int, 2>> extra_edges(const vector<vi>& adj, int num_sccs, const vi& scc_id) {
   if (num_sccs == 1) return {};
   int n = sz(adj);
-  vector<vector<int>> scc_adj(num_sccs);
+  vector<vi> scc_adj(num_sccs);
   vector<bool> zero_in(num_sccs, 1);
   for (int i = 0; i < n; i++)
     for (int v : adj[i]) {
@@ -41,7 +41,7 @@ vector<array<int, 2>> extra_edges(const vector<vector<int>>& adj, int num_sccs, 
     return -1;
   };
   vector<array<int, 2>> edges;
-  vector<int> in_unused;
+  vi in_unused;
   for (int i = 0; i < num_sccs; i++)
     if (zero_in[i]) {
       vis[i] = 1;
@@ -58,7 +58,7 @@ vector<array<int, 2>> extra_edges(const vector<vector<int>>& adj, int num_sccs, 
       } else edges.push_back({i, num_sccs - 1});
     }
   for (int u : in_unused) edges.push_back({0, u});
-  vector<int> to_node(num_sccs);
+  vi to_node(num_sccs);
   for (int i = 0; i < n; i++) to_node[scc_id[i]] = i;
   for (auto& [u, v] : edges) u = to_node[u], v = to_node[v];
   return edges;

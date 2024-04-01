@@ -9,23 +9,23 @@
  *     (except for single-edge paths, so handle these separately)
  *
  * @code{.cpp}
-       edge_cd(adj, [&](const vector<vector<int>>& adj, int cent, int split) {
+       edge_cd(adj, [&](const vector<vi>& adj, int cent, int split) {
            // subtrees of prefix [0, split) of adj[cent] are the first edge-set
            // subtrees of suffix [split, sz(adj[cent])) of adj[cent] are the second edge-set
        });
  * @endcode
  */
 template <class F> struct edge_cd {
-  vector<vector<int>> adj;
+  vector<vi> adj;
   F f;
-  vector<int> sub_sz;
+  vi sub_sz;
   /**
    * @param a_adj,a_f unrooted tree and callback
    * @time O(n * log1.5(n))
    * @space `adj` and `sub_sz` arrays take O(n); recursion stack for `dfs` is
    * O(log1.5 n); recursion stack for `find_cent` is O(n)
    */
-  edge_cd(const vector<vector<int>>& a_adj, F a_f) : adj(a_adj), f(a_f), sub_sz(sz(adj)) {
+  edge_cd(const vector<vi>& a_adj, F a_f) : adj(a_adj), f(a_f), sub_sz(sz(adj)) {
     dfs(0, sz(adj));
   }
   int find_cent(int u, int p, int siz) {
@@ -49,7 +49,7 @@ template <class F> struct edge_cd {
       return ret;
     });
     f(adj, u, it - begin(adj[u]));
-    vector<int> oth(it, end(adj[u]));
+    vi oth(it, end(adj[u]));
     adj[u].erase(it, end(adj[u]));
     dfs(u, sum + 1);
     swap(adj[u], oth);

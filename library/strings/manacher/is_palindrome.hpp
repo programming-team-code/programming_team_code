@@ -3,7 +3,7 @@
 #include "manacher.hpp"
 template <class T> struct pal_query {
   int n;
-  vector<int> man;
+  vi man;
   pal_query(const T& s) : n(sz(s)), man(manacher(s)){};
   /**
    * @param le,ri defines substring [le,ri]

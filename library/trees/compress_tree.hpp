@@ -17,7 +17,7 @@
  * @time O(k log k); k = sz(subset)
  * @space O(k) vectors are allocated and returned
  */
-array<vector<int>, 2> compress_tree(vector<int> subset) {
+array<vi, 2> compress_tree(vi subset) {
   auto cmp = [&](int u, int v) { return in[u] < in[v]; };
   sort(begin(subset), end(subset), cmp);
   for (int i = 1, siz = sz(subset); i < siz; i++)

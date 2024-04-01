@@ -17,7 +17,7 @@
 struct cuts {
   int num_bccs = 0; /**< number of bi-connected components */
   vector<bool> is_cut; /**< is_cut[node] = 1 iff cut node */
-  vector<int> bcc_id; /**< bcc_id[edge id] = id of bcc (which are labeled 0, 1, ..., `num_bccs`-1) */
+  vi bcc_id; /**< bcc_id[edge id] = id of bcc (which are labeled 0, 1, ..., `num_bccs`-1) */
   /**
    * @param adj undirected graph; possibly with multiple edges; self edges not allowed
    * @param m number of edges
@@ -26,7 +26,7 @@ struct cuts {
    */
   cuts(const vector<vector<array<int, 2>>>& adj, int m) : is_cut(sz(adj)), bcc_id(m, -1) {
     int n = sz(adj), timer = 1;
-    vector<int> tin(n), st;
+    vi tin(n), st;
     auto dfs = [&](auto&& self, int u, int p_id) -> int {
       int low = tin[u] = timer++, deg = 0;
       for (auto [v, e_id] : adj[u]) {

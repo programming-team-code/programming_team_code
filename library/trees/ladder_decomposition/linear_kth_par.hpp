@@ -6,8 +6,8 @@ inline int bit_floor(unsigned x) { return x ? 1 << __lg(x) : 0; }
  */
 template <int X = 3> struct linear_kth_par {
   int n;
-  vector<int> d, p, j, dl /*deepest leaf*/, idx;
-  vector<vector<int>> l_tbl;
+  vi d, p, j, dl /*deepest leaf*/, idx;
+  vector<vi> l_tbl;
   /**
    * @code{.cpp}
              linear_kth_par kp(adj);
@@ -17,9 +17,9 @@ template <int X = 3> struct linear_kth_par {
    * @time O(n * (2 * X + 1) / (X - 1))
    * @space O(n * (2 * X + 1) / (X - 1))
    */
-  linear_kth_par(const vector<vector<int>>& adj) : n(sz(adj)), d(n), p(n, -1), dl(n), idx(n), l_tbl(n) {
+  linear_kth_par(const vector<vi>& adj) : n(sz(adj)), d(n), p(n, -1), dl(n), idx(n), l_tbl(n) {
     static_assert(X >= 2);
-    vector<int> st;
+    vi st;
     auto add_j = [&]() -> void {
       j.push_back(st[0]);
       int i = sz(st) - 1 - (X - 1) * (sz(j) & -sz(j));

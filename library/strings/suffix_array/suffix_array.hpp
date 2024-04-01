@@ -34,7 +34,7 @@ template <class T> struct suffix_array {
    * lcp = {1, 3, 0, 0, 2}
    * @{
    */
-  vector<int> sa, sa_inv, lcp;
+  vi sa, sa_inv, lcp;
   /** @} */
   /**
    * @code{.cpp}
@@ -42,7 +42,7 @@ template <class T> struct suffix_array {
          suffix_array sf_a(s, 256);
          auto [_, __, sa, sa_inv, lcp, ___] = suffix_array(s, 256);
          // or
-         vector<int> a;
+         vi a;
          suffix_array sf_a(a, 100'005);
    * @endcode
    * @param a_s,max_val string/array with 0 <= a_s[i] < max_val
@@ -51,12 +51,12 @@ template <class T> struct suffix_array {
    * `freq` is O(max_val) and is allocated temporarily
    */
   suffix_array(const T& a_s, int max_val) : s(a_s), n(sz(s)), sa(n), sa_inv(begin(s), end(s)), lcp(max(0, n - 1)) {
-    vector<int> tmp(n);
+    vi tmp(n);
     iota(begin(sa), end(sa), 0);
     for (int ln = 0; ln < n; ln = max(1, 2 * ln)) {
       iota(begin(tmp), begin(tmp) + ln, n - ln);
       copy_if(begin(sa), end(sa), begin(tmp) + ln, [&](int& val) { return (val -= ln) >= 0; });
-      vector<int> freq(max_val);
+      vi freq(max_val);
       for (int val : sa_inv) freq[val]++;
       partial_sum(begin(freq), end(freq), begin(freq));
       for_each(rbegin(tmp), rend(tmp), [&](int t) { sa[--freq[sa_inv[t]]] = t; });

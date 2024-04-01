@@ -18,8 +18,8 @@ template <class T> struct contour_range_update {
    * @time O(n log1.5 n)
    * @space O(n log1.5 n) for `info` and `bits`
    */
-  contour_range_update(const vector<vector<int>>& adj, const vector<T>& a_a) : n(sz(a_a)), a(a_a), sum_a(adj, vector<T>(n)), info(n) {
-    edge_cd(adj, [&](const vector<vector<int>>& cd_adj, int cent, int split) {
+  contour_range_update(const vector<vi>& adj, const vector<T>& a_a) : n(sz(a_a)), a(a_a), sum_a(adj, vector<T>(n)), info(n) {
+    edge_cd(adj, [&](const vector<vi>& cd_adj, int cent, int split) {
       array<int, 2> mx_d{};
       auto dfs = [&](auto&& self, int u, int p, int d, int side) -> void {
         mx_d[side] = max(mx_d[side], d);

@@ -3,7 +3,7 @@
 /**
  * @code{.cpp}
        vector<ll> a;
-       vector<int> le = mono_st(a, less()); // greater(), less_equal(), greater_equal()
+       vi le = mono_st(a, less()); // greater(), less_equal(), greater_equal()
  * @endcode
  * @param a array
  * @param cmp transitive compare operator
@@ -12,8 +12,8 @@
  * @time O(n)
  * @space a O(n) vector is allocated and returned
  */
-template <class T, class F> vector<int> mono_st(const vector<T>& a, F cmp) {
-  vector<int> le(sz(a));
+template <class T, class F> vi mono_st(const vector<T>& a, F cmp) {
+  vi le(sz(a));
   for (int i = 0; i < sz(a); i++)
     for (le[i] = i - 1; le[i] >= 0 && !cmp(a[le[i]], a[i]);) le[i] = le[le[i]];
   return le;

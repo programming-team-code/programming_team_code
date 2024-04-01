@@ -7,8 +7,8 @@
  * @time O(n)
  * @space this function allocates/returns a O(n) vector
  */
-template <class T> vector<int> prefix_function(const T& s) {
-  vector<int> pi(sz(s));
+template <class T> vi prefix_function(const T& s) {
+  vi pi(sz(s));
   for (int i = 1; i < sz(s); i++) {
     int j = pi[i - 1];
     while (j > 0 && s[i] != s[j]) j = pi[j - 1];

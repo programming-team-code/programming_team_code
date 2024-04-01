@@ -21,7 +21,7 @@ struct bwt {
    * @space O(n * cnt_let) for `occ` vector; it's possible to improve this
    *     to O(n * cnt_let / 64) https://codeforces.com/contest/963/submission/217802614
    */
-  bwt(const string& s, const vector<int>& sa) : n(sz(s)), last(empty(s) ? -1 : s.back() - mn), occ(n + 1) {
+  bwt(const string& s, const vi& sa) : n(sz(s)), last(empty(s) ? -1 : s.back() - mn), occ(n + 1) {
     for (int i = 0; i < n; i++) {
       cnt[s[i] + 1 - mn]++;
       occ[i + 1] = occ[i];
@@ -39,8 +39,8 @@ struct bwt {
    * @time O(|t|)
    * @space 2 O(|t|) vectors are allocated and returned
    */
-  array<vector<int>, 2> find_str(const string& t) {
-    vector<int> le(sz(t) + 1, 0), ri(sz(t) + 1, n);
+  array<vi, 2> find_str(const string& t) {
+    vi le(sz(t) + 1, 0), ri(sz(t) + 1, n);
     for (int i = sz(t) - 1; i >= 0; i--) {
       char c = t[i] - mn;
       le[i] = cnt[c] + occ[le[i + 1]][c] + (c == last && i < sz(t) - 1);

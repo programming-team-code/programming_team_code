@@ -5,7 +5,7 @@
  * @code{.cpp}
        string s;
        KMP kmp(s);
-       vector<int> a;
+       vi a;
        KMP kmp(a);
  * @endcode
  * KMP doubling trick: to check if 2 arrays are rotationally equivalent: run
@@ -16,7 +16,7 @@
 // NOLINTNEXTLINE(readability-identifier-naming)
 template <class T> struct KMP {
   T needle;
-  vector<int> pi;
+  vi pi;
   /**
    * @param a_needle string to be searched for inside haystack
    * @time O(|needle|)
@@ -31,8 +31,8 @@ template <class T> struct KMP {
    * @space besides O(|haystack|) param, this function allocates/returns an
    * array of size (# matches), at worst O(|haystack|)
    */
-  vector<int> find_str(const T& haystack) {
-    vector<int> matches;
+  vi find_str(const T& haystack) {
+    vi matches;
     for (int i = 0, j = 0; i < sz(haystack); i++) {
       while (j > 0 && needle[j] != haystack[i]) j = pi[j - 1];
       j += (needle[j] == haystack[i]);

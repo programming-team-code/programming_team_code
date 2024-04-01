@@ -5,22 +5,22 @@
  * @see https://codeforces.com/blog/entry/81661#comment-686024
  */
 struct cd_lca {
-  vector<int> d;
-  vector<vector<int>> mn_d, to_cent;
+  vi d;
+  vector<vi> mn_d, to_cent;
   int cmp(int u, int v) { return d[u] < d[v] ? u : v; }
   /**
    * @param adj unrooted, undirected tree
    * @time O(n log n)
    * @space O(n log n) for `mn_d` and `to_cent` vectors
    */
-  cd_lca(const vector<vector<int>>& adj) : d(sz(adj)), mn_d(sz(adj)), to_cent(sz(adj)) {
+  cd_lca(const vector<vi>& adj) : d(sz(adj)), mn_d(sz(adj)), to_cent(sz(adj)) {
     auto dfs_d = [&](auto&& self, int u, int p) -> void {
       for (int v : adj[u])
         if (v != p)
           d[v] = 1 + d[u], self(self, v, u);
     };
     dfs_d(dfs_d, 0, -1);
-    centroid(adj, [&](const vector<vector<int>>& cd_adj, int cent) {
+    centroid(adj, [&](const vector<vi>& cd_adj, int cent) {
       auto dfs = [&](auto&& self, int u, int p) -> void {
         mn_d[u].push_back(p == -1 ? u : cmp(mn_d[p].back(), u));
         to_cent[u].push_back(cent);

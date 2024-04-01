@@ -17,7 +17,7 @@ inline int split(int tl, int tr) {
  */
 struct merge_sort_tree_updates {
   int n;
-  vector<int> sorted, perm;
+  vi sorted, perm;
   vector<bool_presum> bool_presums;
   vector<bool_bit> bool_bits;
   /**
@@ -27,7 +27,7 @@ struct merge_sort_tree_updates {
    * @space O(n + (n log n) / 64) for `bool_presums` vector
    *        O(n + (n log n) / 64) for `bool_bits` vector
    */
-  merge_sort_tree_updates(const vector<int>& a, const vector<bool>& active) : n(sz(a)), sorted(n), perm(n), bool_presums(n, vector<bool>()), bool_bits(2 * n, vector<bool>()) {
+  merge_sort_tree_updates(const vi& a, const vector<bool>& active) : n(sz(a)), sorted(n), perm(n), bool_presums(n, vector<bool>()), bool_bits(2 * n, vector<bool>()) {
     assert(sz(active) == n);
     if (!n) return;
     vector<pair<int, bool>> cpy(n);
@@ -38,7 +38,7 @@ struct merge_sort_tree_updates {
       sorted[i] = a[cpy[i].first];
     }
   }
-  void build(const vector<int>& a, const vector<bool>& active, vector<pair<int, bool>>& cpy, int tl, int tr, int u) {
+  void build(const vi& a, const vector<bool>& active, vector<pair<int, bool>>& cpy, int tl, int tr, int u) {
     if (tr - tl == 1) {
       bool_bits[u] = bool_bit(vector<bool>(1, active[tl]));
       return;

@@ -11,7 +11,7 @@ struct mcmf {
   };
   int n;
   vector<edge> e;
-  vector<vector<int>> adj;
+  vector<vi> adj;
   /**
    * @param a_n number of nodes.
    */
@@ -37,7 +37,7 @@ struct mcmf {
     ll flow = 0, cost = 0;
     while (flow < total_flow) {
       vector d(n, LLONG_MAX);
-      vector<int> p_edge(n), id(n), q(n), p(n);
+      vi p_edge(n), id(n), q(n), p(n);
       int qh = 0, qt = 0;
       q[qt++] = s;
       d[s] = 0;

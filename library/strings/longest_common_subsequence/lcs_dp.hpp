@@ -19,7 +19,7 @@
  */
 template <class T> struct lcs_dp {
   T t;
-  vector<int> dp;
+  vi dp;
   lcs_dp(const T& a_t) : t(a_t), dp(sz(t)) {
     iota(begin(dp), end(dp), 0);
   }

@@ -11,16 +11,16 @@ struct subtree_iso {
    * - 0 <= iso_id[u] < num_distinct_subtrees
    * - iso_id[u] == iso_id[v] iff subtree u is isomorphic to subtree v
    */
-  vector<int> iso_id;
+  vi iso_id;
   /**
    * @param adj rooted forest (rooted or unrooted)
    * @time O(n log n)
    * @space `iso_id` and `hashes` both are O(n)
    */
-  subtree_iso(const vector<vector<int>>& adj) : iso_id(sz(adj), -1) {
-    map<vector<int>, int> hashes;
+  subtree_iso(const vector<vi>& adj) : iso_id(sz(adj), -1) {
+    map<vi, int> hashes;
     auto dfs = [&](auto&& self, int u, int p) -> int {
-      vector<int> ch_ids;
+      vi ch_ids;
       ch_ids.reserve(sz(adj[u]));
       for (int v : adj[u])
         if (v != p) ch_ids.push_back(self(self, v, u));

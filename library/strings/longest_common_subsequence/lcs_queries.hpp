@@ -13,7 +13,7 @@
  * @space this allocates/returns a O(q) vector, and various vectors are
  * allocated temporarily which are O(n + m + q)
  */
-template <class T> vector<int> lcs_queries(const T& s, const T& t, const vector<array<int, 3>>& queries) {
+template <class T> vi lcs_queries(const T& s, const T& t, const vector<array<int, 3>>& queries) {
   int n = sz(s), m = sz(t), q = sz(queries);
   vector<vector<array<int, 3>>> qs(n);
   for (int i = 0; i < q; i++) {
@@ -24,10 +24,10 @@ template <class T> vector<int> lcs_queries(const T& s, const T& t, const vector<
     qs[s_ri - 1].push_back({t_le, t_ri, i});
   }
   lcs_dp lcs(t);
-  vector<int> res(q);
+  vi res(q);
   for (int i = 0; i < n; i++) {
     lcs.push_onto_s(s[i]);
-    vector<int> init(m), dp_inv(m, -1);
+    vi init(m), dp_inv(m, -1);
     for (int j = 0; j < m; j++)
       if (lcs.dp[j] == -1) init[j] = 1;
       else dp_inv[lcs.dp[j]] = j;

@@ -17,7 +17,7 @@
 struct bridges {
   int num_2_edge_ccs = 0; /**< number of components in bridge tree */
   vector<bool> is_bridge; /**< is_bridge[edge id] = 1 iff bridge edge */
-  vector<int> two_edge_ccid; /**< two_edge_ccid[node] = id of 2 edge component (labeled 0, 1, ..., `num_2_edge_ccs`-1) */
+  vi two_edge_ccid; /**< two_edge_ccid[node] = id of 2 edge component (labeled 0, 1, ..., `num_2_edge_ccs`-1) */
   /**
    * @param adj undirected graph; possibly with multiple edges
    * @param m number of edges
@@ -26,7 +26,7 @@ struct bridges {
    */
   bridges(const vector<vector<array<int, 2>>>& adj, int m) : is_bridge(m), two_edge_ccid(sz(adj), -1) {
     int n = sz(adj), timer = 1;
-    vector<int> tin(n), st;
+    vi tin(n), st;
     auto dfs = [&](auto&& self, int u, int p_id) -> int {
       int low = tin[u] = timer++, siz = sz(st);
       st.push_back(u);

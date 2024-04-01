@@ -4,7 +4,7 @@
  * @time O(mx)
  * @space O(mx)
  */
-vector<int> sieve(1001) /**< min prime factor */, primes;
+vi sieve(1001) /**< min prime factor */, primes;
 iota(begin(sieve), end(sieve), 0);
 for (int i = 2; i < sz(sieve); i++) {
   if (sieve[i] == i) primes.push_back(i);

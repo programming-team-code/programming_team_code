@@ -8,14 +8,14 @@
 // NOLINTNEXTLINE(readability-identifier-naming)
 struct LCA {
   int n;
-  vector<int> in, sub_sz, d, p, order;
+  vi in, sub_sz, d, p, order;
   RMQ<int, function<int(int, int)>> rmq;
   /**
    * @param adj forest (rooted or unrooted)
    * @time O(n log n)
    * @space O(n log n) for rmq, all other vectors are O(n)
    */
-  LCA(const vector<vector<int>>& adj) : n(sz(adj)), in(n), sub_sz(n, 1), d(n), p(n, -1) {
+  LCA(const vector<vi>& adj) : n(sz(adj)), in(n), sub_sz(n, 1), d(n), p(n, -1) {
     auto dfs = [&](auto&& self, int u) -> void {
       in[u] = sz(order), order.push_back(u);
       for (int v : adj[u])

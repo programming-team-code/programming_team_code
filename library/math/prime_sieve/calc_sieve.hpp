@@ -4,7 +4,7 @@
  * @time O(mx * log(log mx))
  * @space O(mx)
  */
-vector<int> sieve(1001); /**< min prime factor */
+vi sieve(1001); /**< min prime factor */
 iota(begin(sieve), end(sieve), 0);
 for (int i = 2; i * i < sz(sieve); i++)
   if (sieve[i] == i)
