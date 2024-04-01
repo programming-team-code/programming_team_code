@@ -23,8 +23,6 @@
 #include <random>
 using namespace std;
 
-#define ssize(x) (int)(x).size()
-
 // https://github.com/kth-competitive-programming/kactl/blob/main/content/contest/template.cpp
 // compile all tests with KACTL macros mainly to avoid naming collisions when
 // combining code from both repos
