@@ -13,9 +13,9 @@ template <class T> struct longest_pal_query {
    * @time O(n log n)
    * @space O(n log n) for rmq, everything else is O(n)
    */
-  longest_pal_query(const T& s) : man(manacher(s)), idx(ssize(s)) {
+  longest_pal_query(const T& s) : man(manacher(s)), idx(sz(s)) {
     iota(begin(idx), end(idx), 1);
-    vector<int> init(ssize(man));
+    vector<int> init(sz(man));
     iota(begin(init), end(init), 0);
     rmq = {init, [&](int i1, int i2) { return len(i1) < len(i2) ? i2 : i1; }};
   }
@@ -44,7 +44,7 @@ template <class T> struct longest_pal_query {
    * @space O(1)
    */
   inline array<int, 2> longest_pal(int le, int ri) {
-    assert(0 <= le && le < ri && ri <= ssize(idx));
+    assert(0 <= le && le < ri && ri <= sz(idx));
     int pal_len = lower_bound(begin(idx), begin(idx) + (ri - le), 0,
                               [&](int mid, int) { return len(rmq.query(2 * le + mid - 1, 2 * ri - mid)) >= mid; }) -
                   begin(idx);

@@ -13,7 +13,7 @@ inline match find_str_long(const T& t) {
     auto [it_t, it_s] = mismatch(begin(t), end(t), begin(s) + i, end(s));
     if (it_s - begin(s) - i > s_ri - s_le) s_le = i, s_ri = it_s - begin(s);
     if (it_s != end(s) && it_t != end(t)) return (*it_s) - (*it_t) < cmp_val;
-    return cmp_val ^ (ssize(s) - i < ssize(t));
+    return cmp_val ^ (sz(s) - i < sz(t));
   };
   int sa_le = lower_bound(begin(sa), end(sa), 0, cmp) - begin(sa);
   int sa_ri = lower_bound(begin(sa) + sa_le, end(sa), 1, cmp) - begin(sa);

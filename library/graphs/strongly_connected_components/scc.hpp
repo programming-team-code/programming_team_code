@@ -19,18 +19,18 @@ struct sccs {
    * @time O(n + m)
    * @space this allocates member `scc_id` which is O(n)
    */
-  sccs(const vector<vector<int>>& adj) : scc_id(ssize(adj), -1) {
-    int n = ssize(adj), timer = 1;
+  sccs(const vector<vector<int>>& adj) : scc_id(sz(adj), -1) {
+    int n = sz(adj), timer = 1;
     vector<int> tin(n), st;
     st.reserve(n);
     auto dfs = [&](auto&& self, int u) -> int {
-      int low = tin[u] = timer++, siz = ssize(st);
+      int low = tin[u] = timer++, siz = sz(st);
       st.push_back(u);
       for (int v : adj[u])
         if (scc_id[v] < 0)
           low = min(low, tin[v] ? tin[v] : self(self, v));
       if (tin[u] == low) {
-        for (int i = siz; i < ssize(st); i++)
+        for (int i = siz; i < sz(st); i++)
           scc_id[st[i]] = num_sccs;
         st.resize(siz);
         num_sccs++;

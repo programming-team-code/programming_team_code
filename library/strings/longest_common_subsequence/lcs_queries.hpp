@@ -14,7 +14,7 @@
  * allocated temporarily which are O(n + m + q)
  */
 template <class T> vector<int> lcs_queries(const T& s, const T& t, const vector<array<int, 3>>& queries) {
-  int n = ssize(s), m = ssize(t), q = ssize(queries);
+  int n = sz(s), m = sz(t), q = sz(queries);
   vector<vector<array<int, 3>>> qs(n);
   for (int i = 0; i < q; i++) {
     auto [s_ri, t_le, t_ri] = queries[i];
@@ -34,7 +34,7 @@ template <class T> vector<int> lcs_queries(const T& s, const T& t, const vector<
     BIT<int> bit(init);
     sort(begin(qs[i]), end(qs[i]));
     for (int t_le = 0, j = 0; t_le < m; t_le++) {
-      while (j < ssize(qs[i]) && qs[i][j][0] == t_le)
+      while (j < sz(qs[i]) && qs[i][j][0] == t_le)
         res[qs[i][j][2]] = bit.query(t_le, qs[i][j][1]), j++;
       if (dp_inv[t_le] != -1) bit.update(dp_inv[t_le], 1);
     }

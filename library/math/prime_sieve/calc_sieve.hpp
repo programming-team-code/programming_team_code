@@ -6,7 +6,7 @@
  */
 vector<int> sieve(1001); /**< min prime factor */
 iota(begin(sieve), end(sieve), 0);
-for (int i = 2; i * i < ssize(sieve); i++)
+for (int i = 2; i * i < sz(sieve); i++)
   if (sieve[i] == i)
-    for (int j = i * i; j < ssize(sieve); j += i)
+    for (int j = i * i; j < sz(sieve); j += i)
       sieve[j] = min(sieve[j], i);

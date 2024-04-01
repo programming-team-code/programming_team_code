@@ -18,11 +18,11 @@ struct mcmf {
    */
   mcmf(int a_n) : n(a_n), adj(n) {}
   void add_edge(int u, int v, ll cap, ll cost) {
-    edge e1 = {u, v, cap, cost, 0, ssize(adj[v])};
-    edge e2 = {v, u, 0, -cost, 0, ssize(adj[u])};
-    adj[u].push_back(ssize(e));
+    edge e1 = {u, v, cap, cost, 0, sz(adj[v])};
+    edge e2 = {v, u, 0, -cost, 0, sz(adj[u])};
+    adj[u].push_back(sz(e));
     e.push_back(e1);
-    adj[v].push_back(ssize(e));
+    adj[v].push_back(sz(e));
     e.push_back(e2);
   }
   /**
@@ -46,7 +46,7 @@ struct mcmf {
         int u = q[qh++];
         id[u] = 2;
         if (qh == n) qh = 0;
-        for (int i = 0; i < ssize(adj[u]); i++) {
+        for (int i = 0; i < sz(adj[u]); i++) {
           edge& r = e[adj[u][i]];
           if (r.flow < r.cap && d[u] + r.cost < d[r.v]) {
             d[r.v] = d[u] + r.cost;

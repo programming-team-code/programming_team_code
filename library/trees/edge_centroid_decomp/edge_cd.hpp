@@ -4,14 +4,14 @@
  * @see https://codeforces.com/blog/entry/104997 https://codeforces.com/blog/entry/120446
  *
  * only handle paths with >=1 edge in each edge-set
- *     (it is guaranteed the edge-sets are non-empty i.e. 0 < split < ssize(adj[cent]))
+ *     (it is guaranteed the edge-sets are non-empty i.e. 0 < split < sz(adj[cent]))
  * don't handle cent<->u paths as these will be handled in some smaller decomposition
  *     (except for single-edge paths, so handle these separately)
  *
  * @code{.cpp}
        edge_cd(adj, [&](const vector<vector<int>>& adj, int cent, int split) {
            // subtrees of prefix [0, split) of adj[cent] are the first edge-set
-           // subtrees of suffix [split, ssize(adj[cent])) of adj[cent] are the second edge-set
+           // subtrees of suffix [split, sz(adj[cent])) of adj[cent] are the second edge-set
        });
  * @endcode
  */
@@ -25,8 +25,8 @@ template <class F> struct edge_cd {
    * @space `adj` and `sub_sz` arrays take O(n); recursion stack for `dfs` is
    * O(log1.5 n); recursion stack for `find_cent` is O(n)
    */
-  edge_cd(const vector<vector<int>>& a_adj, F a_f) : adj(a_adj), f(a_f), sub_sz(ssize(adj)) {
-    dfs(0, ssize(adj));
+  edge_cd(const vector<vector<int>>& a_adj, F a_f) : adj(a_adj), f(a_f), sub_sz(sz(adj)) {
+    dfs(0, sz(adj));
   }
   int find_cent(int u, int p, int siz) {
     sub_sz[u] = 1;

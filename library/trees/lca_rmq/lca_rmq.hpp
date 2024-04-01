@@ -15,9 +15,9 @@ struct LCA {
    * @time O(n log n)
    * @space O(n log n) for rmq, all other vectors are O(n)
    */
-  LCA(const vector<vector<int>>& adj) : n(ssize(adj)), in(n), sub_sz(n, 1), d(n), p(n, -1) {
+  LCA(const vector<vector<int>>& adj) : n(sz(adj)), in(n), sub_sz(n, 1), d(n), p(n, -1) {
     auto dfs = [&](auto&& self, int u) -> void {
-      in[u] = ssize(order), order.push_back(u);
+      in[u] = sz(order), order.push_back(u);
       for (int v : adj[u])
         if (v != p[u])
           d[v] = d[p[v] = u] + 1, self(self, v), sub_sz[u] += sub_sz[v];

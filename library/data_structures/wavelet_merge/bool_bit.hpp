@@ -17,7 +17,7 @@ struct bool_bit {
    * @time O(n)
    * @space O(n / 64)
    */
-  bool_bit(const vector<bool>& a) : n(ssize(a)), mask(n / 64 + 1) {
+  bool_bit(const vector<bool>& a) : n(sz(a)), mask(n / 64 + 1) {
     vector<int> init((n + 63) / 64);
     for (int i = 0; i < n; i++) {
       mask[i >> 6] |= (uint64_t(a[i]) << (i & 63));

@@ -3,7 +3,7 @@
 #include "../binary_exponentiation_mod.hpp"
 /**
  * @code{.cpp}
-       auto [rank, det] = row_reduce(mat, ssize(mat[0]));
+       auto [rank, det] = row_reduce(mat, sz(mat[0]));
  * @endcode
  * @param mat,cols columns [0,cols) of mat represent a matrix, columns [cols,m)
  * are also affected by row operations.
@@ -12,7 +12,7 @@
  * @space besides the O(n * m) `mat` param, this function uses O(1) space
  */
 pair<int, int64_t> row_reduce(vector<vector<int64_t>>& mat, int cols) {
-  int n = ssize(mat), m = ssize(mat[0]), rank = 0;
+  int n = sz(mat), m = sz(mat[0]), rank = 0;
   auto det = 1LL;
   assert(cols <= m);
   for (int col = 0; col < cols && rank < n; col++) {

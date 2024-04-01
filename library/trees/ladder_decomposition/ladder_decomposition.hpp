@@ -19,7 +19,7 @@ struct ladder {
    * @time O(n log n)
    * @space O(n log n) for b_tbl. Everything else is O(n)
    */
-  ladder(const vector<vector<int>>& adj) : n(ssize(adj)), l_tbl(n), dl(n), d(n), p(n, -1) {
+  ladder(const vector<vector<int>>& adj) : n(sz(adj)), l_tbl(n), dl(n), d(n), p(n, -1) {
     auto dfs = [&](auto&& self, int u) -> void {
       dl[u] = u;
       for (int v : adj[u])
@@ -37,7 +37,7 @@ struct ladder {
         int leaf = dl[i];
         auto& lad = l_tbl[leaf];
         lad.resize(min(2 * (d[leaf] - d[i]), d[leaf] + 1), leaf);
-        for (int j = 1; j < ssize(lad); j++)
+        for (int j = 1; j < sz(lad); j++)
           lad[j] = p[lad[j - 1]];
       }
   }

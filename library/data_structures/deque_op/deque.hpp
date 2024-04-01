@@ -16,9 +16,9 @@ inline void push_front(T elem) {
 inline void pop_back() {
   assert(siz());
   if (empty(ri)) {
-    vector<T> a(ssize(le));
+    vector<T> a(sz(le));
     transform(begin(le), end(le), rbegin(a), [](dt& x) { return x[0]; });
-    rebuild(a, ssize(a) / 2);
+    rebuild(a, sz(a) / 2);
   }
   ri.pop_back();
 }

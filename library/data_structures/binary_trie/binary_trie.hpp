@@ -28,7 +28,7 @@ template <class T> struct binary_trie {
     for (int u = 0, bit = mx_bit; bit >= 0; bit--) {
       bool b = (val >> bit) & 1;
       if (t[u].next[b] == -1) {
-        t[u].next[b] = ssize(t);
+        t[u].next[b] = sz(t);
         t.emplace_back();
       }
       u = t[u].next[b];

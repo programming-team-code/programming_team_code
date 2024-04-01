@@ -24,7 +24,7 @@
  * returns `bvt` vector which is O(n)
  */
 vector<vector<int>> block_vertex_tree(const vector<vector<array<int, 2>>>& adj, const cuts& cc) {
-  int n = ssize(adj);
+  int n = sz(adj);
   vector<vector<int>> bvt(n + cc.num_bccs);
   vector<bool> vis(cc.num_bccs);
   for (int i = 0; i < n; i++) {

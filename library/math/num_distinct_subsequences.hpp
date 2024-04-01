@@ -8,9 +8,9 @@
  * @space besides O(n) `a` param, O(n) extra space is allocated temporarily
  */
 int num_subsequences(const vector<int>& a, int mod) {
-  vector dp(ssize(a) + 1, 1);
+  vector dp(sz(a) + 1, 1);
   map<int, int> last;
-  for (int i = 0; i < ssize(a); i++) {
+  for (int i = 0; i < sz(a); i++) {
     int& curr = dp[i + 1] = 2 * dp[i];
     if (curr >= mod) curr -= mod;
     auto it = last.find(a[i]);

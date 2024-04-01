@@ -13,7 +13,7 @@ template <class T> struct sum_adj {
    * @time O(n)
    * @space various O(n) vectors are allocated; recursion stack for dfs is O(n)
    */
-  sum_adj(const vector<vector<int>>& adj, const vector<T>& a_sum) : n(ssize(a_sum)), sum(a_sum), sum_ch(n), p(n, -1) {
+  sum_adj(const vector<vector<int>>& adj, const vector<T>& a_sum) : n(sz(a_sum)), sum(a_sum), sum_ch(n), p(n, -1) {
     auto dfs = [&](auto&& self, int u) -> void {
       for (int v : adj[u])
         if (v != p[u])

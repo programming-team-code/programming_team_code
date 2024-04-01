@@ -32,8 +32,8 @@ struct hopcroft_karp {
    * @time O(n + m * sqrt(n)) n = lsz + rsz
    * @space this allocates member vectors which are O(lsz + rsz)
    */
-  hopcroft_karp(const vector<vector<int>>& adj, int rsz) : l_to_r(ssize(adj), -1), r_to_l(rsz, -1) {
-    int lsz = ssize(adj);
+  hopcroft_karp(const vector<vector<int>>& adj, int rsz) : l_to_r(sz(adj), -1), r_to_l(rsz, -1) {
+    int lsz = sz(adj);
     while (1) {
       queue<int> q;
       vector level(lsz, -1);

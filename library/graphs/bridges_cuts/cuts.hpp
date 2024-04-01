@@ -24,8 +24,8 @@ struct cuts {
    * @time O(n + m)
    * @space this allocates member vectors which are O(n + m)
    */
-  cuts(const vector<vector<array<int, 2>>>& adj, int m) : is_cut(ssize(adj)), bcc_id(m, -1) {
-    int n = ssize(adj), timer = 1;
+  cuts(const vector<vector<array<int, 2>>>& adj, int m) : is_cut(sz(adj)), bcc_id(m, -1) {
+    int n = sz(adj), timer = 1;
     vector<int> tin(n), st;
     auto dfs = [&](auto&& self, int u, int p_id) -> int {
       int low = tin[u] = timer++, deg = 0;
@@ -33,12 +33,12 @@ struct cuts {
         assert(u != v);
         if (e_id == p_id) continue;
         if (!tin[v]) {
-          int siz = ssize(st);
+          int siz = sz(st);
           st.push_back(e_id);
           int low_ch = self(self, v, e_id);
           if (low_ch >= tin[u]) {
             is_cut[u] = 1;
-            for (int i = siz; i < ssize(st); i++)
+            for (int i = siz; i < sz(st); i++)
               bcc_id[st[i]] = num_bccs;
             st.resize(siz);
             num_bccs++;

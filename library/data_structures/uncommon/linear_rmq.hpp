@@ -25,7 +25,7 @@ template <class T, class F> struct linear_rmq {
    * @time O(n)
    * @space O(n)
    */
-  linear_rmq(const vector<T>& a_a, F a_cmp) : n(ssize(a_a)), cmp(a_cmp), a(a_a), head(n + 1), label(n), asc(n) {
+  linear_rmq(const vector<T>& a_a, F a_cmp) : n(sz(a_a)), cmp(a_cmp), a(a_a), head(n + 1), label(n), asc(n) {
     vector<int> le(mono_st(a, cmp)), ri(mono_range(le)), p(cart_binary_tree(le));
     for (int i = 0; i < n; i++)
       label[i] = ri[i] & -bit_floor(unsigned((le[i] + 1) ^ ri[i]));

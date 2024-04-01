@@ -8,5 +8,5 @@
  */
 inline T operator[](int i) {
   assert(0 <= i && i < siz());
-  return (i < ssize(le) ? le[ssize(le) - i - 1] : ri[i - ssize(le)])[0];
+  return (i < sz(le) ? le[sz(le) - i - 1] : ri[i - sz(le)])[0];
 }

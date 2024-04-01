@@ -13,7 +13,7 @@ struct cd_lca {
    * @time O(n log n)
    * @space O(n log n) for `mn_d` and `to_cent` vectors
    */
-  cd_lca(const vector<vector<int>>& adj) : d(ssize(adj)), mn_d(ssize(adj)), to_cent(ssize(adj)) {
+  cd_lca(const vector<vector<int>>& adj) : d(sz(adj)), mn_d(sz(adj)), to_cent(sz(adj)) {
     auto dfs_d = [&](auto&& self, int u, int p) -> void {
       for (int v : adj[u])
         if (v != p)
@@ -37,7 +37,7 @@ struct cd_lca {
    * @space O(1)
    */
   int lca(int u, int v) {
-    for (int i = min(ssize(mn_d[u]), ssize(mn_d[v])) - 1;; i--)
+    for (int i = min(sz(mn_d[u]), sz(mn_d[v])) - 1;; i--)
       if (to_cent[u][i] == to_cent[v][i])
         return cmp(mn_d[u][i], mn_d[v][i]);
   }

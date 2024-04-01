@@ -13,8 +13,8 @@
  * @space a O(n) vector is allocated and returned
  */
 template <class T, class F> vector<int> mono_st(const vector<T>& a, F cmp) {
-  vector<int> le(ssize(a));
-  for (int i = 0; i < ssize(a); i++)
+  vector<int> le(sz(a));
+  for (int i = 0; i < sz(a); i++)
     for (le[i] = i - 1; le[i] >= 0 && !cmp(a[le[i]], a[i]);) le[i] = le[le[i]];
   return le;
 }

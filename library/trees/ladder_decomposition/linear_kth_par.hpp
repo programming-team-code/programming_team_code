@@ -17,18 +17,18 @@ template <int X = 3> struct linear_kth_par {
    * @time O(n * (2 * X + 1) / (X - 1))
    * @space O(n * (2 * X + 1) / (X - 1))
    */
-  linear_kth_par(const vector<vector<int>>& adj) : n(ssize(adj)), d(n), p(n, -1), dl(n), idx(n), l_tbl(n) {
+  linear_kth_par(const vector<vector<int>>& adj) : n(sz(adj)), d(n), p(n, -1), dl(n), idx(n), l_tbl(n) {
     static_assert(X >= 2);
     vector<int> st;
     auto add_j = [&]() -> void {
       j.push_back(st[0]);
-      int i = ssize(st) - 1 - (X - 1) * (ssize(j) & -ssize(j));
+      int i = sz(st) - 1 - (X - 1) * (sz(j) & -sz(j));
       if (i > 0) j.back() = st[i];
     };
     auto dfs = [&](auto&& self, int u) -> void {
       st.push_back(u);
       add_j();
-      idx[u] = ssize(j);
+      idx[u] = sz(j);
       dl[u] = u;
       for (int v : adj[u])
         if (v != p[u]) {
@@ -46,7 +46,7 @@ template <int X = 3> struct linear_kth_par {
         int leaf = dl[i];
         auto& lad = l_tbl[leaf];
         lad.resize(min((d[leaf] - d[i]) * (2 * X + 1) / (X - 1), d[leaf] + 1), leaf);
-        for (int k = 1; k < ssize(lad); k++)
+        for (int k = 1; k < sz(lad); k++)
           lad[k] = p[lad[k - 1]];
       }
   }

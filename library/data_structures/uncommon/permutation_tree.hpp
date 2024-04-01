@@ -17,7 +17,7 @@ struct perm_tree {
   vector<int> mn_idx, mn_val, len;
   /** @} */
   int root;
-  vector<vector<int>> adj; /**< [0, n) are leaves, [n, ssize(adj)) are internal nodes */
+  vector<vector<int>> adj; /**< [0, n) are leaves, [n, sz(adj)) are internal nodes */
   bool touches(int u, int v) {
     return mn_val[u] == mn_val[v] + len[v] || mn_val[v] == mn_val[u] + len[u];
   }
@@ -27,7 +27,7 @@ struct perm_tree {
     mn_val.push_back(mn_v);
     len.push_back(ln);
     adj.push_back(ch);
-    return ssize(adj) - 1;
+    return sz(adj) - 1;
   }
   /**
    * @param a permutation
@@ -35,7 +35,7 @@ struct perm_tree {
    * @space O(n)
    */
   perm_tree(const vector<int>& a) {
-    int n = ssize(a);
+    int n = sz(a);
     vector<int> mn_i(n), mx_i(n);
     {
       vector<int> a_inv(n, -1);
@@ -69,7 +69,7 @@ struct perm_tree {
           st.pop_back();
           continue;
         }
-        int le = min(mn_idx[v], mn_i[mn_idx[u]]), ri = max(i, mx_i[mn_idx[u]]), idx = ssize(st) - 1;
+        int le = min(mn_idx[v], mn_i[mn_idx[u]]), ri = max(i, mx_i[mn_idx[u]]), idx = sz(st) - 1;
         while (ri == i && le != mn_idx[st[idx][0]])
           le = min(le, st[idx][1]), ri = max(ri, st[idx][2]), idx = st[idx][3];
         if (ri > i) {
@@ -77,15 +77,15 @@ struct perm_tree {
           break;
         }
         int min_val = mn_val[u];
-        vector<int> ch(1 + ssize(st) - idx, u);
-        for (int j = idx; j < ssize(st); j++)
+        vector<int> ch(1 + sz(st) - idx, u);
+        for (int j = idx; j < sz(st); j++)
           min_val = min(min_val, mn_val[ch[j - idx] = st[j][0]]);
         u = allocate(0, le, min_val, i - le + 1, ch);
         st.resize(idx);
       }
       if (empty(st)) st.push_back({u, -1, -1, -1});
     }
-    assert(ssize(st) == 1);
+    assert(sz(st) == 1);
     root = st[0][0];
   }
 };

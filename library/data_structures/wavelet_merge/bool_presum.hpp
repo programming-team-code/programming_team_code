@@ -16,10 +16,10 @@ struct bool_presum {
    * @time O(n)
    * @space O(n / 64)
    */
-  bool_presum(const vector<bool>& a) : n(ssize(a)), mask(n / 64 + 1), presum(ssize(mask)) {
+  bool_presum(const vector<bool>& a) : n(sz(a)), mask(n / 64 + 1), presum(sz(mask)) {
     for (int i = 0; i < n; i++)
       mask[i >> 6] |= (uint64_t(a[i]) << (i & 63));
-    for (int i = 0; i < ssize(mask) - 1; i++)
+    for (int i = 0; i < sz(mask) - 1; i++)
       presum[i + 1] = __builtin_popcountll(mask[i]) + presum[i];
   }
   /**

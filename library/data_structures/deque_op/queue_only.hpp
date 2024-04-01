@@ -31,7 +31,7 @@ template <class T, class F> struct deq {
    * @time O(1)
    * @space O(1)
    */
-  deq(const vector<T>& a, F a_op) : op(a_op) { rebuild(a, ssize(a) / 2); }
+  deq(const vector<T>& a, F a_op) : op(a_op) { rebuild(a, sz(a) / 2); }
   /**
    * @returns deq[0] op deq[1] op ... op deq.back()
    * @time O(1)
@@ -48,7 +48,7 @@ template <class T, class F> struct deq {
    * @time O(1)
    * @space O(1)
    */
-  inline int siz() { return ssize(le) + ssize(ri); }
+  inline int siz() { return sz(le) + sz(ri); }
   /**
    * @param elem element to insert at end
    * @time O(1)
@@ -65,18 +65,18 @@ template <class T, class F> struct deq {
   inline void pop_front() {
     assert(siz());
     if (empty(le)) {
-      vector<T> a(ssize(ri));
+      vector<T> a(sz(ri));
       transform(begin(ri), end(ri), begin(a), [](dt& x) { return x[0]; });
-      rebuild(a, (ssize(a) + 1) / 2);
+      rebuild(a, (sz(a) + 1) / 2);
     }
     le.pop_back();
   }
   void rebuild(const vector<T>& a, int sz_le) {
-    vector<T> presum(ssize(a));
+    vector<T> presum(sz(a));
     partial_sum(rend(a) - sz_le, rend(a), rend(presum) - sz_le, [&](T x, T y) { return op(y, x); });
     partial_sum(begin(a) + sz_le, end(a), begin(presum) + sz_le, op);
     le.resize(sz_le);
-    ri.resize(ssize(a) - sz_le);
+    ri.resize(sz(a) - sz_le);
     transform(begin(a), begin(a) + sz_le, begin(presum), rbegin(le), [](T x, T y) { return dt{x, y}; });
     transform(begin(a) + sz_le, end(a), begin(presum) + sz_le, begin(ri), [](T x, T y) { return dt{x, y}; });
   }

@@ -22,8 +22,8 @@ struct solve_linear_mod {
    * O(m) solution vector
    */
   solve_linear_mod(vector<vector<int64_t>>& mat, const vector<int64_t>& b) {
-    assert(ssize(mat) == ssize(b));
-    int n = ssize(mat), m = ssize(mat[0]);
+    assert(sz(mat) == sz(b));
+    int n = sz(mat), m = sz(mat[0]);
     for (int i = 0; i < n; i++)
       mat[i].push_back(b[i]);
     tie(rank, det) = row_reduce(mat, m);

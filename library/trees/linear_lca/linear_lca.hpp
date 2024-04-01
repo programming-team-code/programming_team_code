@@ -19,7 +19,7 @@ struct linear_lca {
   linear_lca(const vector<vector<int>>& adj) : n(size(adj)), d(n), p(n), head(n + 1), in(n), big_ch(n), label(n), asc(n) {
     auto dfs = [&](auto&& self, int u) -> void {
       order.push_back(u);
-      in[u] = label[u] = ssize(order);
+      in[u] = label[u] = sz(order);
       for (int v : adj[u])
         if (v != p[u]) {
           d[v] = 1 + d[p[v] = u];

@@ -19,8 +19,8 @@ struct hungarian {
    * @space besides the O(n * m) `cost` param, this allocates `l_to_r`
    * which is O(n), and various O(m) arrays are also allocated temporarily
    */
-  hungarian(const vector<vector<int64_t>>& cost) : l_to_r(ssize(cost)) {
-    int n = ssize(cost) - 1, m = ssize(cost[0]) - 1;
+  hungarian(const vector<vector<int64_t>>& cost) : l_to_r(sz(cost)) {
+    int n = sz(cost) - 1, m = sz(cost[0]) - 1;
     assert(n <= m);
     vector<int> p(m + 1), way(m + 1);
     vector u(n + 1, 0LL), v(m + 1, 0LL);

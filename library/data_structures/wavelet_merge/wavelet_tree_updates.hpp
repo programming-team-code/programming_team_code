@@ -28,15 +28,15 @@ struct wavelet_tree_updates {
          sort(begin(sorted), end(sorted));
          sorted.erase(unique(begin(sorted), end(sorted)), end(sorted));
          for (int& val : a) val = lower_bound(begin(sorted), end(sorted), val) - begin(sorted);
-         wavelet_tree_updates wtu(a, 0, ssize(sorted), vector<bool>(ssize(a), 1));
+         wavelet_tree_updates wtu(a, 0, sz(sorted), vector<bool>(sz(a), 1));
    * @endcode
    * @param a,a_minv,a_maxv must satisfy minv <= a[i] < maxv
    * @param active active[i] == 1 iff index i is initially active
    * @time O((maxv - minv) + n * log(maxv - minv))
    * @space O((maxv - minv) + n * log(maxv - minv) / 64) for `bool_presums` and for `bool_bits`
    */
-  wavelet_tree_updates(const vector<int>& a, int a_minv, int a_maxv, const vector<bool>& active) : n(ssize(a)), minv(a_minv), maxv(a_maxv), bool_presums(maxv - minv, vector<bool>()), bool_bits(2 * (maxv - minv), vector<bool>()) {
-    assert(minv < maxv && ssize(active) == n);
+  wavelet_tree_updates(const vector<int>& a, int a_minv, int a_maxv, const vector<bool>& active) : n(sz(a)), minv(a_minv), maxv(a_maxv), bool_presums(maxv - minv, vector<bool>()), bool_bits(2 * (maxv - minv), vector<bool>()) {
+    assert(minv < maxv && sz(active) == n);
     vector<pair<int, bool>> cpy(n);
     transform(begin(a), end(a), begin(active), begin(cpy), [](int x, bool y) { return pair(x, y); });
     build(cpy, 0, n, minv, maxv, 1);

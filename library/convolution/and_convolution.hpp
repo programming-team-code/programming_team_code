@@ -9,8 +9,8 @@ const int mod = 998'244'353;
  * @space a size O(2^n) vector is allocated and returned
  */
 vector<int> and_convolution(vector<int> a, vector<int> b) {
-  int n = __lg(ssize(a));
-  assert(ssize(a) == ssize(b) && (1 << n) == ssize(a));
+  int n = __lg(sz(a));
+  assert(sz(a) == sz(b) && (1 << n) == sz(a));
   for (int i = 0; i < n; i++)
     for (int j = 0; j < (1 << n); j++)
       if (!((j >> i) & 1)) {

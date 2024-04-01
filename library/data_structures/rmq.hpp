@@ -19,8 +19,8 @@ template <class T, class F> struct RMQ {
    * @space O(n log n) for `dp` vector
    */
   RMQ(const vector<T>& a, F a_op) : dp(1, a), op(a_op) {
-    for (int i = 0; (2 << i) <= ssize(a); i++) {
-      dp.emplace_back(ssize(a) - (2 << i) + 1);
+    for (int i = 0; (2 << i) <= sz(a); i++) {
+      dp.emplace_back(sz(a) - (2 << i) + 1);
       transform(begin(dp[i]), end(dp[i]) - (1 << i), begin(dp[i]) + (1 << i), begin(dp[i + 1]), op);
     }
   }
@@ -31,7 +31,7 @@ template <class T, class F> struct RMQ {
    * @space O(1)
    */
   inline T query(int le, int ri) {
-    assert(0 <= le && le < ri && ri <= ssize(dp[0]));
+    assert(0 <= le && le < ri && ri <= sz(dp[0]));
     int lg = __lg(ri - le);
     return op(dp[lg][le], dp[lg][ri - (1 << lg)]);
   }

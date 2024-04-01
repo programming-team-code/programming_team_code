@@ -4,7 +4,7 @@
 template <class T> struct pal_query {
   int n;
   vector<int> man;
-  pal_query(const T& s) : n(ssize(s)), man(manacher(s)){};
+  pal_query(const T& s) : n(sz(s)), man(manacher(s)){};
   /**
    * @param le,ri defines substring [le,ri]
    * @returns 1 iff s.substr(le, ri - le + 1) is a palindrome

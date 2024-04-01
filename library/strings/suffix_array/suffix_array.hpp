@@ -50,7 +50,7 @@ template <class T> struct suffix_array {
    * @space vectors `sa`, `sa_inv`, `lcp` are O(n); `rmq` is O(nlogn), vector
    * `freq` is O(max_val) and is allocated temporarily
    */
-  suffix_array(const T& a_s, int max_val) : s(a_s), n(ssize(s)), sa(n), sa_inv(begin(s), end(s)), lcp(max(0, n - 1)) {
+  suffix_array(const T& a_s, int max_val) : s(a_s), n(sz(s)), sa(n), sa_inv(begin(s), end(s)), lcp(max(0, n - 1)) {
     vector<int> tmp(n);
     iota(begin(sa), end(sa), 0);
     for (int ln = 0; ln < n; ln = max(1, 2 * ln)) {

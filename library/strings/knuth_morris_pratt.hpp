@@ -26,18 +26,18 @@ template <class T> struct KMP {
   /**
    * @param haystack usually |needle| <= |haystack|
    * @returns array `matches` where:
-   * haystack.substr(matches[i], ssize(needle)) == needle
+   * haystack.substr(matches[i], sz(needle)) == needle
    * @time O(|haystack|)
    * @space besides O(|haystack|) param, this function allocates/returns an
    * array of size (# matches), at worst O(|haystack|)
    */
   vector<int> find_str(const T& haystack) {
     vector<int> matches;
-    for (int i = 0, j = 0; i < ssize(haystack); i++) {
+    for (int i = 0, j = 0; i < sz(haystack); i++) {
       while (j > 0 && needle[j] != haystack[i]) j = pi[j - 1];
       j += (needle[j] == haystack[i]);
-      if (j == ssize(needle)) {
-        matches.push_back(i - ssize(needle) + 1);
+      if (j == sz(needle)) {
+        matches.push_back(i - sz(needle) + 1);
         j = pi[j - 1];
       }
     }

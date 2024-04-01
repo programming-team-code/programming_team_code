@@ -10,8 +10,8 @@
  * notes:
  *     - shrink(v) == shrink(shrink(v))
  *     - for each vector x in b: (bit_floor(x) & shrink(v)) == 0
- *     - for 0 <= i < j < ssize(b): (bit_floor(b[i]) & b[j]) == 0
- *     - for 0 <= i < j < ssize(b): bit_floor(b[i]) != bit_floor(b[j])
+ *     - for 0 <= i < j < sz(b): (bit_floor(b[i]) & b[j]) == 0
+ *     - for 0 <= i < j < sz(b): bit_floor(b[i]) != bit_floor(b[j])
  */
 template <class T> struct basis {
   vector<T> b;

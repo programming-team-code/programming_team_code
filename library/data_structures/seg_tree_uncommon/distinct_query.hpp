@@ -12,7 +12,7 @@ struct distinct_query {
    * @time O(n log n)
    * @space O(n log n) for PST::tree vector
    */
-  distinct_query(const vector<int>& a) : n(ssize(a)), pst(0, n + 1) {
+  distinct_query(const vector<int>& a) : n(sz(a)), pst(0, n + 1) {
     map<int, int> last_idx;
     for (int i = 0; i < n; i++) {
       int& idx = last_idx[a[i]];

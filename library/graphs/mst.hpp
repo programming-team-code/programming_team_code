@@ -16,7 +16,7 @@
  * @space O(n + m)
  */
 pair<int64_t, vector<int>> mst(const vector<array<int, 3>>& eds, int n) {
-  vector<int> order(ssize(eds));
+  vector<int> order(sz(eds));
   iota(begin(order), end(order), 0);
   sort(begin(order), end(order),
        [&](int i, int j) { return eds[i][2] < eds[j][2]; });
