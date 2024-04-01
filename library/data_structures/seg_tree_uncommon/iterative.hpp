@@ -43,7 +43,7 @@ struct iter_seg_tree {
   /**
    * @param le,ri defines range [le, ri)
    */
-  void update_iter(int le, int ri, int64_t change) {
+  void update_iter(int le, int ri, ll change) {
     assert(0 <= le && le <= ri && ri <= st.n);
     if (le == ri) return;
     le = to_leaf(le), ri = to_leaf(ri);
@@ -65,7 +65,7 @@ struct iter_seg_tree {
   /**
    * @param le,ri defines range [le, ri)
    */
-  int64_t query_iter(int le, int ri) {
+  ll query_iter(int le, int ri) {
     assert(0 <= le && le <= ri && ri <= st.n);
     if (le == ri) return 0;
     le = to_leaf(le), ri = to_leaf(ri);

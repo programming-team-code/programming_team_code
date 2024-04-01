@@ -2,7 +2,7 @@
 #pragma once
 /**
  * @code{.cpp}
-       vector<int64_t> a;
+       vector<ll> a;
        vector<int> le = mono_st(a, less()); // greater(), less_equal(), greater_equal()
  * @endcode
  * @param a array

@@ -8,7 +8,7 @@
  * @time O(k)
  * @space O(1) ammortized
  */
-inline int64_t c_small_k(int64_t n, int k) {
+inline ll c_small_k(ll n, int k) {
   if (k < 0 || n < k || (n %= mod) < k) return 0;
   grow(k);
   auto res = inv_fact[k];

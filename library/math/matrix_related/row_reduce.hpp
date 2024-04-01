@@ -11,7 +11,7 @@
  * @time O(n * m * min(cols, n))
  * @space besides the O(n * m) `mat` param, this function uses O(1) space
  */
-pair<int, int64_t> row_reduce(vector<vector<int64_t>>& mat, int cols) {
+pair<int, ll> row_reduce(vector<vector<ll>>& mat, int cols) {
   int n = sz(mat), m = sz(mat[0]), rank = 0;
   auto det = 1LL;
   assert(cols <= m);

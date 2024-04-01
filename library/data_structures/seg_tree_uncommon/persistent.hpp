@@ -6,9 +6,9 @@
 // NOLINTNEXTLINE(readability-identifier-naming)
 struct PST {
   struct node {
-    int64_t sum;
+    ll sum;
     int lch, rch;
-    node(int64_t a_sum, int a_lch, int a_rch) : sum(a_sum), lch(a_lch), rch(a_rch) {}
+    node(ll a_sum, int a_lch, int a_rch) : sum(a_sum), lch(a_lch), rch(a_rch) {}
   };
   int root_l, root_r;
   vector<int> roots; /**< tree[roots[i]] = root node at version i */
@@ -27,12 +27,12 @@ struct PST {
    * @time O(log(root_r - root_l))
    * @space O(log(root_r - root_l)) new nodes are pushed back onto `tree`; (and for recursion stack)
    */
-  void update(int idx, int64_t change, int version) {
+  void update(int idx, ll change, int version) {
     assert(root_l <= idx && idx < root_r);
     assert(0 <= version && version < sz(roots));
     roots.push_back(update_impl(idx, change, root_l, root_r, roots[version]));
   }
-  int update_impl(int idx, int64_t change, int tl, int tr, int u) {
+  int update_impl(int idx, ll change, int tl, int tr, int u) {
     if (tr - tl == 1) {
       tree.emplace_back(tree[u].sum + change, 0, 0);
       return sz(tree) - 1;
@@ -54,12 +54,12 @@ struct PST {
    * @time O(log(root_r - root_l))
    * @space O(log(root_r - root_l)) for recursion stack, no new nodes are allocated
    */
-  inline int64_t query(int le, int ri, int version) {
+  inline ll query(int le, int ri, int version) {
     assert(root_l <= le && ri <= root_r);
     assert(0 <= version && version < sz(roots));
     return query_impl(le, ri, root_l, root_r, roots[version]);
   }
-  int64_t query_impl(int le, int ri, int tl, int tr, int u) {
+  ll query_impl(int le, int ri, int tl, int tr, int u) {
     if (u == 0 || ri <= tl || tr <= le) return 0;
     if (le <= tl && tr <= ri) return tree[u].sum;
     int tm = tl + (tr - tl) / 2;

@@ -14,7 +14,7 @@ mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
        shuffle(begin(a), end(a), rng);
        //
        int x = get_rand(0, 1);
-       int64_t x = get_rand<int64_t>(1, 1e18);
+       ll x = get_rand<ll>(1, 1e18);
  * @endcode
  * @param le,ri defines range [le, ri]
  * @returns random number in range, chosen with probability 1/(ri - le + 1)

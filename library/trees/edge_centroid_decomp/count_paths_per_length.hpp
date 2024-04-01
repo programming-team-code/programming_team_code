@@ -9,8 +9,8 @@
  * @time O(n * log1.5(n) * log2(n))
  * @space this function allocates/returns various vectors which are each O(n)
  */
-vector<int64_t> count_paths_per_length(const vector<vector<int>>& adj) {
-  vector<int64_t> num_paths(sz(adj));
+vector<ll> count_paths_per_length(const vector<vector<int>>& adj) {
+  vector<ll> num_paths(sz(adj));
   num_paths[1] = sz(adj) - 1;
   edge_cd(adj, [&](const vector<vector<int>>& cd_adj, int cent, int split) {
     vector<vector<double>> cnt(2, vector<double>(1));

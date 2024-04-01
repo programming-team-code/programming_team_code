@@ -10,9 +10,9 @@
  * @space besides the O(n + m) param `adj`, this function allocates/returns a
  * O(n) distance array. The (temporary) priority queue can grow to size O(n+m)
  */
-vector<int64_t> dijkstra(const vector<vector<pair<int, int64_t>>>& adj, int s) {
-  using node = pair<int64_t, int>;
-  vector<int64_t> d(sz(adj), LLONG_MAX);
+vector<ll> dijkstra(const vector<vector<pair<int, ll>>>& adj, int s) {
+  using node = pair<ll, int>;
+  vector<ll> d(sz(adj), LLONG_MAX);
   d[s] = 0;
   priority_queue<node, vector<node>, greater<node>> pq;
   pq.emplace(0, s);

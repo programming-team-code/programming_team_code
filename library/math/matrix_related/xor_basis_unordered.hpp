@@ -4,7 +4,7 @@
  * @see https://codeforces.com/blog/entry/68953 https://codeforces.com/blog/entry/100066?#comment-887897
  * @code{.cpp}
        basis<int> b;
-       basis<int64_t> b;
+       basis<ll> b;
        sort(rbegin(b.b), rend(b.b)); //needed for kth smallest walk
  * @endcode
  * notes:

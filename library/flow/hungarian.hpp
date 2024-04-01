@@ -10,7 +10,7 @@
  * all ways to do this, sum of edge weights is minimized.
  */
 struct hungarian {
-  int64_t min_weight; /**< sum of edge weights in matching */
+  ll min_weight; /**< sum of edge weights in matching */
   vector<int> l_to_r; /**< edge v <=> l_to_r[v] is in the matching, 1<=v<=n; 1<=l_to_r[v]<=m */
   /**
    * @param cost (n+1)-by-(m+1) array: cost[u][v] = weight (can be negative) of
@@ -19,7 +19,7 @@ struct hungarian {
    * @space besides the O(n * m) `cost` param, this allocates `l_to_r`
    * which is O(n), and various O(m) arrays are also allocated temporarily
    */
-  hungarian(const vector<vector<int64_t>>& cost) : l_to_r(sz(cost)) {
+  hungarian(const vector<vector<ll>>& cost) : l_to_r(sz(cost)) {
     int n = sz(cost) - 1, m = sz(cost[0]) - 1;
     assert(n <= m);
     vector<int> p(m + 1), way(m + 1);
