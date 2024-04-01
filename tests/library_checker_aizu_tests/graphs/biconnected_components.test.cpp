@@ -23,7 +23,7 @@ int main() {
     // cut node if there exists a pair of adjacent edges belonging to different BCCs
     bool is_cut = 0;
     for (int j = 0; j < sz(adj[i]); j++) {
-      if (cc.bcc_id[adj[i][0][1]] != cc.bcc_id[adj[i][j][1]])
+      if (cc.bcc_id[adj[i][0].second] != cc.bcc_id[adj[i][j].second])
         is_cut = 1;
     }
     assert(is_cut == cc.is_cut[i]);
