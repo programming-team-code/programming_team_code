@@ -49,7 +49,7 @@ vector<pii> extra_edges(const vector<vi>& adj, int num_sccs, const vi& scc_id) {
       if (zero_out != -1) edges.push_back({zero_out, i});
       else in_unused.push_back(i);
     }
-  for (int i = 1; i < sz(edges); i++) swap(edges[i][0], edges[i - 1][0]);
+  for (int i = 1; i < sz(edges); i++) swap(edges[i].first, edges[i - 1].second);
   for (int i = 0; i < num_sccs; i++)
     if (empty(scc_adj[i]) && !vis[i]) {
       if (!empty(in_unused)) {

@@ -12,7 +12,7 @@ int main() {
     suffix_array sf_a(string(""), 256);
     auto [sa_le, sa_ri, s_le, s_ri] = sf_a.find_str_long(string(""));
     pair<int, int> short_res = sf_a.find_str(string(""));
-    assert(sa_le == short_res[0] && sa_ri == short_res[1]);
+    assert(sa_le == short_res.first && sa_ri == short_res.second);
     assert(sa_le == 0 && sa_ri == 0 && s_le == 0 && s_ri == 0);
   }
   string s;
@@ -21,7 +21,7 @@ int main() {
   {
     auto [sa_le, sa_ri, s_le, s_ri] = sf_a.find_str_long(string(""));
     pair<int, int> short_res = sf_a.find_str(string(""));
-    assert(sa_le == short_res[0] && sa_ri == short_res[1]);
+    assert(sa_le == short_res.first && sa_ri == short_res.second);
     assert(sa_le == 0 && sa_ri == sz(s));
     assert(s_ri - s_le == 0);
   }
@@ -32,7 +32,7 @@ int main() {
     cin >> t;
     auto [sa_le, sa_ri, s_le, s_ri] = sf_a.find_str_long(t);
     pair<int, int> short_res = sf_a.find_str(t);
-    assert(sa_le == short_res[0] && sa_ri == short_res[1]);
+    assert(sa_le == short_res.first && sa_ri == short_res.second);
     int str_len = s_ri - s_le;
     assert(str_len <= sz(t));
     assert(s.substr(s_le, str_len) == t.substr(0, str_len));
