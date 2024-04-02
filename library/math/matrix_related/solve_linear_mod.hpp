@@ -27,7 +27,7 @@ struct solve_linear_mod {
     for (int i = 0; i < n; i++)
       mat[i].push_back(b[i]);
     tie(rank, det) = row_reduce(mat, m);
-    if (any_of(begin(mat) + rank, end(mat), [](auto& v) { return v.back(); })) {
+    if (any_of(rank + all(mat), [](auto& v) { return v.back(); })) {
       return;  // no solution exists
     }
     x.resize(m);
