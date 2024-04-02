@@ -33,7 +33,7 @@ int main() {
     sort(begin(splits), end(splits));
     vector<pair<int, int>> subs;
     for (int i = 1; i < sz(splits); i++)
-      subs.push_back({splits[i - 1] + t_start, splits[i] + t_start});
+      subs.emplace_back(splits[i - 1] + t_start, splits[i] + t_start);
     assert(!empty(subs));
     auto [sa_le2, sa_ri2, s_le2, s_ri2] = lq_both.find_substrs_concated(subs);
     pair<int, int> short_res2 = lq_both.find_substr(t_start, sz(both));
