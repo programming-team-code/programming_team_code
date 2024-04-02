@@ -1,6 +1,6 @@
 #pragma once
 void edge_cd_asserts(const vector<vector<int>>& adj, int cent, int split) {
-  assert(0 < split && split < ssize(adj[cent]));
+  assert(0 < split && split < sz(adj[cent]));
   auto dfs = [&](auto&& self, int u, int p) -> int {
     int siz = 1;
     for (int v : adj[u])
@@ -10,7 +10,7 @@ void edge_cd_asserts(const vector<vector<int>>& adj, int cent, int split) {
   int sz_all = dfs(dfs, cent, -1);
   assert(sz_all >= 3);
   array<int, 2> cnts = {0, 0};
-  for (int i = 0; i < ssize(adj[cent]); i++) {
+  for (int i = 0; i < sz(adj[cent]); i++) {
     int sz_subtree = dfs(dfs, adj[cent][i], cent);
     assert(2 * sz_subtree <= sz_all);
     cnts[i < split] += sz_subtree;

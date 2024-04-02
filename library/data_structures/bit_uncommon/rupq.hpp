@@ -18,8 +18,8 @@ template <class T> struct bit_rupq {
    * @time O(n)
    * @space O(n)
    */
-  bit_rupq(vector<T> a) : n(ssize(a)) {
-    adjacent_difference(begin(a), end(a), begin(a));
+  bit_rupq(vector<T> a) : n(sz(a)) {
+    adjacent_difference(all(a), begin(a));
     bit = {a};
   }
   /**

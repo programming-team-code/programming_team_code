@@ -8,7 +8,7 @@
  */
 struct dsu_bipartite {
   int num_sets;
-  vector<int> p, is_bi, parity;
+  vi p, is_bi, parity;
   dsu_bipartite(int n) : num_sets(n), p(n, -1), is_bi(n, 1), parity(n) {}
   int find(int u) {
     if (p[u] < 0) return u;

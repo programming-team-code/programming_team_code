@@ -4,7 +4,7 @@
 #include "../../../library/convolution/gcd_convolution.hpp"
 
 istream& operator>>(istream& is, vector<int>& v) {
-  for (int i = 1; i < ssize(v); i++)
+  for (int i = 1; i < sz(v); i++)
     is >> v[i];
   return is;
 }

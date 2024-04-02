@@ -33,13 +33,13 @@ int main() {
       for (int j = 0; j < m; j++)
         temp_grid[i][j] = grid[i][j];
     SubMatrix<int> sm(temp_grid);
-    vector<array<int, 2>> tests;
+    vector<pair<int, int>> tests;
     {
       for (int i = 1; i <= min(5, n); i++)
         for (int j = 1; j <= min(5, m); j++)
-          tests.push_back({i, j});
+          tests.emplace_back(i, j);
       int iter = 20;
-      while (iter--) tests.push_back({get_rand(1, n), get_rand(1, m)});
+      while (iter--) tests.emplace_back(get_rand(1, n), get_rand(1, m));
     }
     for (auto [rows, cols] : tests) {
       int cnt = 0;

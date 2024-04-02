@@ -20,8 +20,8 @@ template <class T> struct BIT {
    * @space O(1)
    */
   inline void update(int i, T d) {
-    assert(0 <= i && i < ssize(s));
-    for (; i < ssize(s); i |= i + 1) s[i] += d;
+    assert(0 <= i && i < sz(s));
+    for (; i < sz(s); i |= i + 1) s[i] += d;
   }
   /**
    * @param ri defines range [0, ri)
@@ -30,7 +30,7 @@ template <class T> struct BIT {
    * @space O(1)
    */
   inline T query(int ri) {
-    assert(0 <= ri && ri <= ssize(s));
+    assert(0 <= ri && ri <= sz(s));
     T ret = 0;
     for (; ri > 0; ri &= ri - 1) ret += s[ri - 1];
     return ret;

@@ -10,12 +10,12 @@
  * allocates and returns a O(n * m) vector
  */
 template <class T> vector<vector<T>> operator*(const vector<vector<T>>& a, const vector<vector<T>>& b) {
-  assert(ssize(a[0]) == ssize(b));
-  int n = ssize(a), m = ssize(b[0]), inner = ssize(b);
+  assert(sz(a[0]) == sz(b));
+  int n = sz(a), m = sz(b[0]), inner = sz(b);
   vector<vector<T>> c(n, vector<T>(m));
-  for (int i = 0; i < n; i++)
-    for (int k = 0; k < inner; k++)
-      for (int j = 0; j < m; j++)
-        c[i][j] += a[i][k] * b[k][j];
+  rep(i, 0, n)
+      rep(k, 0, inner)
+          rep(j, 0, m)
+              c[i][j] += a[i][k] * b[k][j];
   return c;
 }

@@ -7,8 +7,8 @@
  */
 struct dsu_restorable {
   int num_sets;
-  vector<int> p;
-  vector<int64_t> subtree;
+  vi p;
+  vector<ll> subtree;
   vector<optional<array<int, 3>>> st;
   dsu_restorable(int n) : num_sets(n), p(n, -1), subtree(n) {}
   inline int find(int u) {
@@ -33,7 +33,7 @@ struct dsu_restorable {
   }
   inline int size(int u) { return -p[find(u)]; }
   inline bool same_set(int u, int v) { return find(u) == find(v); }
-  inline int64_t sum(int u) { return subtree[find(u)]; }
+  inline ll sum(int u) { return subtree[find(u)]; }
   inline void add(int u, int d) {
     while (u >= 0) subtree[u] += d, u = p[u];
   }

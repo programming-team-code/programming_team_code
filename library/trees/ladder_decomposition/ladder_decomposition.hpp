@@ -12,14 +12,14 @@
  */
 struct ladder {
   int n;
-  vector<vector<int>> b_tbl, l_tbl;
-  vector<int> dl /*deepest leaf*/, d, p;
+  vector<vi> b_tbl, l_tbl;
+  vi dl /*deepest leaf*/, d, p;
   /**
    * @param adj forest (rooted or unrooted)
    * @time O(n log n)
    * @space O(n log n) for b_tbl. Everything else is O(n)
    */
-  ladder(const vector<vector<int>>& adj) : n(ssize(adj)), l_tbl(n), dl(n), d(n), p(n, -1) {
+  ladder(const vector<vi>& adj) : n(sz(adj)), l_tbl(n), dl(n), d(n), p(n, -1) {
     auto dfs = [&](auto&& self, int u) -> void {
       dl[u] = u;
       for (int v : adj[u])
@@ -29,17 +29,15 @@ struct ladder {
           if (d[dl[v]] > d[dl[u]]) dl[u] = dl[v];
         }
     };
-    for (int i = 0; i < n; i++)
-      if (p[i] == -1) p[i] = i, dfs(dfs, i);
+    rep(i, 0, n) if (p[i] == -1) p[i] = i, dfs(dfs, i);
     b_tbl = treeJump(p);
-    for (int i = 0; i < n; i++)
-      if (p[i] == i || dl[p[i]] != dl[i]) {
-        int leaf = dl[i];
-        auto& lad = l_tbl[leaf];
-        lad.resize(min(2 * (d[leaf] - d[i]), d[leaf] + 1), leaf);
-        for (int j = 1; j < ssize(lad); j++)
+    rep(i, 0, n) if (p[i] == i || dl[p[i]] != dl[i]) {
+      int leaf = dl[i];
+      auto& lad = l_tbl[leaf];
+      lad.resize(min(2 * (d[leaf] - d[i]), d[leaf] + 1), leaf);
+      rep(j, 1, sz(lad))
           lad[j] = p[lad[j - 1]];
-      }
+    }
   }
   /**
    * @param u query node

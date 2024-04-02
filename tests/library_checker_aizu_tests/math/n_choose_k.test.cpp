@@ -24,9 +24,9 @@ int main() {
       assert(C(n, -k) == 0);
       assert(C(-k, n) == 0);
     }
-    assert(ssize(inv) == ssize(fact) && ssize(inv_fact) == ssize(fact));
+    assert(sz(inv) == sz(fact) && sz(inv_fact) == sz(fact));
   }
-  for (int i = 0; i < ssize(inv); i++) {
+  for (int i = 0; i < sz(inv); i++) {
     if (i) assert(i * inv[i] % mod == 1);
     assert(fact[i] * inv_fact[i] % mod == 1);
   }

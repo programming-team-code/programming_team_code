@@ -13,7 +13,7 @@ template <class T> struct binary_trie {
   /**
    * @code{.cpp}
          binary_trie<int> bt; //mx_bit = 30
-         binary_trie<int64_t> bt; //mx_bit = 62
+         binary_trie<ll> bt; //mx_bit = 62
    * @endcode
    */
   binary_trie() : mx_bit(8 * sizeof(T) - 2), t(1) {}
@@ -28,7 +28,7 @@ template <class T> struct binary_trie {
     for (int u = 0, bit = mx_bit; bit >= 0; bit--) {
       bool b = (val >> bit) & 1;
       if (t[u].next[b] == -1) {
-        t[u].next[b] = ssize(t);
+        t[u].next[b] = sz(t);
         t.emplace_back();
       }
       u = t[u].next[b];

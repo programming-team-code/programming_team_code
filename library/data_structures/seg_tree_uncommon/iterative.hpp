@@ -22,7 +22,7 @@ struct iter_seg_tree {
   /**
    * @see https://github.com/ecnerwala/cp-book /blob/master/src/seg_tree.hpp
    */
-  inline array<int, 2> get_node_bounds(int a) {
+  inline pii get_node_bounds(int a) {
     assert(1 <= a && a < 2 * st.n);
     int l = __builtin_clz(a) - __builtin_clz(2 * st.n - 1);
     int x = a << l, y = (a + 1) << l;
@@ -43,7 +43,7 @@ struct iter_seg_tree {
   /**
    * @param le,ri defines range [le, ri)
    */
-  void update_iter(int le, int ri, int64_t change) {
+  void update_iter(int le, int ri, ll change) {
     assert(0 <= le && le <= ri && ri <= st.n);
     if (le == ri) return;
     le = to_leaf(le), ri = to_leaf(ri);
@@ -59,13 +59,13 @@ struct iter_seg_tree {
       }
     }
     int lca_l_r = __lg((le - 1) ^ ri);
-    for (int lg = __builtin_ctz(ri) + 1; lg <= lca_l_r; lg++) pull(ri >> lg);
-    for (int lg = __builtin_ctz(le) + 1; lg <= __lg(le); lg++) pull(le >> lg);
+    rep(lg, __builtin_ctz(ri) + 1, lca_l_r + 1) pull(ri >> lg);
+    rep(lg, __builtin_ctz(le) + 1, __lg(le) + 1) pull(le >> lg);
   }
   /**
    * @param le,ri defines range [le, ri)
    */
-  int64_t query_iter(int le, int ri) {
+  ll query_iter(int le, int ri) {
     assert(0 <= le && le <= ri && ri <= st.n);
     if (le == ri) return 0;
     le = to_leaf(le), ri = to_leaf(ri);

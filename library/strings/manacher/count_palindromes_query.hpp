@@ -8,7 +8,7 @@
  * @time O(1)
  * @space O(1)
  */
-inline int64_t sum_consecutive(int le, int ri) {
+inline ll sum_consecutive(int le, int ri) {
   return 1LL * (ri - le) * (le + ri - 1) / 2;
 }
 /**
@@ -16,18 +16,18 @@ inline int64_t sum_consecutive(int le, int ri) {
  */
 template <class T> struct count_pal_query {
   int n;
-  vector<int> man;
+  vi man;
   wavelet_tree wt_le, wt_ri;
   /**
    * @param s string/vector
    * @time O(n log n)
    * @space O(n log n) for wavelet trees
    */
-  count_pal_query(const T& s) : n(ssize(s)), man(manacher(s)), wt_le(man, 0, n), wt_ri(init()) {}
+  count_pal_query(const T& s) : n(sz(s)), man(manacher(s)), wt_le(man, 0, n), wt_ri(init()) {}
   wavelet_tree init() {
-    vector<int> right(ssize(man));
-    for (int i = 0; i < ssize(man); i++)
-      right[i] = i - man[i] + 1;
+    vi right(sz(man));
+    rep(i, 0, sz(man))
+        right[i] = i - man[i] + 1;
     return {right, 1, n + 1};
   }
   /**
@@ -36,7 +36,7 @@ template <class T> struct count_pal_query {
    * @time O(log n)
    * @space O(1)
    */
-  inline int64_t count_pals(int le, int ri) {
+  inline ll count_pals(int le, int ri) {
     assert(0 <= le && le < ri && ri <= n);
     int man_le = 2 * le, man_ri = 2 * ri - 1, man_mi = (man_le + man_ri) / 2;
     // sum over range [man_le, man_mi) of:

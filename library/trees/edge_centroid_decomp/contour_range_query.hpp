@@ -17,18 +17,18 @@ template <class T> struct contour_range_query {
    * @time O(n log1.5 n)
    * @space O(n log1.5 n) for `info` and `bits`
    */
-  contour_range_query(const vector<vector<int>>& adj, const vector<T>& a) : n(ssize(a)), sum_a(adj, a), info(n) {
-    edge_cd(adj, [&](const vector<vector<int>>& cd_adj, int cent, int split) {
+  contour_range_query(const vector<vi>& adj, const vector<T>& a) : n(sz(a)), sum_a(adj, a), info(n) {
+    edge_cd(adj, [&](const vector<vi>& cd_adj, int cent, int split) {
       vector<vector<T>> sum_val(2, vector<T>(1));
       auto dfs = [&](auto&& self, int u, int p, int d, int side) -> void {
-        info[u].push_back({ssize(bits), d, side});
-        if (ssize(sum_val[side]) == d) sum_val[side].push_back(0);
+        info[u].push_back({sz(bits), d, side});
+        if (sz(sum_val[side]) == d) sum_val[side].push_back(0);
         sum_val[side][d] += a[u];
         for (int v : cd_adj[u])
           if (v != p) self(self, v, u, 1 + d, side);
       };
-      for (int i = 0; i < ssize(cd_adj[cent]); i++)
-        dfs(dfs, cd_adj[cent][i], cent, 1, i < split);
+      rep(i, 0, sz(cd_adj[cent]))
+          dfs(dfs, cd_adj[cent][i], cent, 1, i < split);
       bits.push_back({BIT<T>(sum_val[0]), BIT<T>(sum_val[1])});
     });
   }
@@ -57,8 +57,8 @@ template <class T> struct contour_range_query {
     if (le <= 1 && 1 < ri) sum += sum_a.query(u);
     for (auto [decomp, d, side] : info[u]) {
       auto& bit = bits[decomp][!side];
-      int my_l = clamp<int>(le - d, 1, ssize(bit.s));
-      int my_r = clamp<int>(ri - d, 1, ssize(bit.s));
+      int my_l = clamp<int>(le - d, 1, sz(bit.s));
+      int my_r = clamp<int>(ri - d, 1, sz(bit.s));
       sum += bit.query(my_l, my_r);
     }
     return sum;

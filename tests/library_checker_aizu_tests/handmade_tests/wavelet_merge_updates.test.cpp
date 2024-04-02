@@ -42,7 +42,7 @@ int main() {
           for (int i = le; i < ri; i++)
             if (active[i]) sorted.push_back(arr[i]);
           sort(begin(sorted), end(sorted));
-          for (int k = 1; k <= ssize(sorted); k++)
+          for (int k = 1; k <= sz(sorted); k++)
             assert(wtu.kth_smallest(le, ri, k) == sorted[k - 1]);
         } else if (operations % 4 == 2) {
           int x = get_rand<int>(-100, 100);
@@ -52,7 +52,7 @@ int main() {
           for (int i = 0; i < n; i++)
             if (active[i] && x <= arr[i] && arr[i] < y)
               idxs.push_back(i);
-          for (int k = 1; k <= ssize(idxs); k++)
+          for (int k = 1; k <= sz(idxs); k++)
             assert(mstu.kth_smallest(x, y, k) == idxs[k - 1]);
         } else {  // update active status
           assert(operations % 4 == 3);

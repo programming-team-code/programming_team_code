@@ -12,8 +12,8 @@ struct kth_smallest {
    * @time O(n log(maxv - minv))
    * @space O(n log(maxv - minv)) nodes are pushed back onto PST::tree
    */
-  kth_smallest(const vector<int>& a, int minv, int maxv) : pst(minv, maxv) {
-    for (int i = 0; i < ssize(a); i++) pst.update(a[i], 1, i);
+  kth_smallest(const vi& a, int minv, int maxv) : pst(minv, maxv) {
+    rep(i, 0, sz(a)) pst.update(a[i], 1, i);
   }
   /**
    * @param le,ri defines range [le, ri)
@@ -25,7 +25,7 @@ struct kth_smallest {
    * @space O(log(maxv - minv)) for recursion stack; no new nodes are allocated
    */
   inline int query(int le, int ri, int k) {
-    assert(0 <= le && ri < ssize(pst.roots));
+    assert(0 <= le && ri < sz(pst.roots));
     assert(1 <= k && k <= ri - le);
     return query_impl(k, pst.root_l, pst.root_r, pst.roots[le], pst.roots[ri]);
   }

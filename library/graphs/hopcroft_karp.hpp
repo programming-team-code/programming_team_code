@@ -17,7 +17,7 @@ struct hopcroft_karp {
    * ditto r_to_l[node_right] <=> node_right
    * @{
    */
-  vector<int> l_to_r, r_to_l;
+  vi l_to_r, r_to_l;
   /** @} */
   /**
    * mvc_l[node_left] = 1 iff node_left is in the min vertex cover; ditto mvc_r[node_right]
@@ -32,13 +32,12 @@ struct hopcroft_karp {
    * @time O(n + m * sqrt(n)) n = lsz + rsz
    * @space this allocates member vectors which are O(lsz + rsz)
    */
-  hopcroft_karp(const vector<vector<int>>& adj, int rsz) : l_to_r(ssize(adj), -1), r_to_l(rsz, -1) {
-    int lsz = ssize(adj);
+  hopcroft_karp(const vector<vi>& adj, int rsz) : l_to_r(sz(adj), -1), r_to_l(rsz, -1) {
+    int lsz = sz(adj);
     while (1) {
       queue<int> q;
       vector level(lsz, -1);
-      for (int i = 0; i < lsz; i++)
-        if (l_to_r[i] == -1) level[i] = 0, q.push(i);
+      rep(i, 0, lsz) if (l_to_r[i] == -1) level[i] = 0, q.push(i);
       bool found = 0;
       mvc_l.assign(lsz, 1);
       mvc_r.assign(rsz, 0);
@@ -69,8 +68,8 @@ struct hopcroft_karp {
         level[u] = INT_MAX;
         return 0;
       };
-      for (int i = 0; i < lsz; i++)
-        size_of_matching += (l_to_r[i] == -1 && dfs(dfs, i));
+      rep(i, 0, lsz)
+          size_of_matching += (l_to_r[i] == -1 && dfs(dfs, i));
     }
   }
 };

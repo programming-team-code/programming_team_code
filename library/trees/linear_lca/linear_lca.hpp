@@ -9,17 +9,17 @@ inline int lsb(int x) { return x & -x; }
  */
 struct linear_lca {
   int n;
-  vector<int> d, p, head, in, order, big_ch;
+  vi d, p, head, in, order, big_ch;
   vector<unsigned> label, asc;
   /**
    * @param adj forest (rooted or unrooted)
    * @time O(n)
    * @space O(n)
    */
-  linear_lca(const vector<vector<int>>& adj) : n(size(adj)), d(n), p(n), head(n + 1), in(n), big_ch(n), label(n), asc(n) {
+  linear_lca(const vector<vi>& adj) : n(size(adj)), d(n), p(n), head(n + 1), in(n), big_ch(n), label(n), asc(n) {
     auto dfs = [&](auto&& self, int u) -> void {
       order.push_back(u);
-      in[u] = label[u] = ssize(order);
+      in[u] = label[u] = sz(order);
       for (int v : adj[u])
         if (v != p[u]) {
           d[v] = 1 + d[p[v] = u];
@@ -29,8 +29,7 @@ struct linear_lca {
         }
       head[label[u]] = u;
     };
-    for (int i = 0; i < n; i++)
-      if (in[i] == 0) p[i] = i, dfs(dfs, i);
+    rep(i, 0, n) if (in[i] == 0) p[i] = i, dfs(dfs, i);
     for (int u : order) asc[u] = lsb(label[u]) | asc[p[u]];
   }
   inline int lift(int u, unsigned j) {

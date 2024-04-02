@@ -10,7 +10,7 @@ inline int split(int tl, int tr) {
   int pw2 = 1 << __lg(tr - tl);
   return min(tl + pw2, tr - pw2 / 2);
 }
-inline int64_t op(int64_t vl, int64_t vr) { return vl + vr; }
+inline ll op(ll vl, ll vr) { return vl + vr; }
 /**
  * root is at tree[1]
  * internal nodes are [1, n)
@@ -19,15 +19,15 @@ inline int64_t op(int64_t vl, int64_t vr) { return vl + vr; }
  */
 struct seg_tree {
   int n;
-  vector<int64_t> tree, lazy;
+  vector<ll> tree, lazy;
   seg_tree(int a_n) : n(a_n), tree(2 * n), lazy(n) {}
-  seg_tree(const vector<int>& a) : n(ssize(a)), tree(2 * n), lazy(n) {
+  seg_tree(const vi& a) : n(sz(a)), tree(2 * n), lazy(n) {
     int pw2 = 1;
     while (pw2 < n) pw2 *= 2;
-    for (int i = 0; i < n; i++) tree[(i + pw2) % n + n] = a[i];
+    rep(i, 0, n) tree[(i + pw2) % n + n] = a[i];
     for (int i = n - 1; i >= 1; i--) tree[i] = op(tree[2 * i], tree[2 * i + 1]);
   }
-  inline void apply(int64_t change, int tl, int tr, int u) {
+  inline void apply(ll change, int tl, int tr, int u) {
     tree[u] += (tr - tl) * change;
     if (u < n) lazy[u] += change;
   }
@@ -41,8 +41,8 @@ struct seg_tree {
   /**
    * @param le,ri defines range [le, ri)
    */
-  void update(int le, int ri, int64_t change) { update_impl(le, ri, change, 0, n, 1); }
-  void update_impl(int le, int ri, int64_t change, int tl, int tr, int u) {
+  void update(int le, int ri, ll change) { update_impl(le, ri, change, 0, n, 1); }
+  void update_impl(int le, int ri, ll change, int tl, int tr, int u) {
     if (ri <= tl || tr <= le) return;
     if (le <= tl && tr <= ri) return apply(change, tl, tr, u);
     int tm = split(tl, tr);
@@ -54,8 +54,8 @@ struct seg_tree {
   /**
    * @param le,ri defines range [le, ri)
    */
-  int64_t query(int le, int ri) { return query_impl(le, ri, 0, n, 1); }
-  int64_t query_impl(int le, int ri, int tl, int tr, int u) {
+  ll query(int le, int ri) { return query_impl(le, ri, 0, n, 1); }
+  ll query_impl(int le, int ri, int tl, int tr, int u) {
     if (ri <= tl || tr <= le) return 0;
     if (le <= tl && tr <= ri) return tree[u];
     int tm = split(tl, tr);

@@ -10,17 +10,17 @@
 struct bool_presum {
   int n;
   vector<uint64_t> mask;
-  vector<int> presum;
+  vi presum;
   /**
    * @param a boolean array
    * @time O(n)
    * @space O(n / 64)
    */
-  bool_presum(const vector<bool>& a) : n(ssize(a)), mask(n / 64 + 1), presum(ssize(mask)) {
-    for (int i = 0; i < n; i++)
-      mask[i >> 6] |= (uint64_t(a[i]) << (i & 63));
-    for (int i = 0; i < ssize(mask) - 1; i++)
-      presum[i + 1] = __builtin_popcountll(mask[i]) + presum[i];
+  bool_presum(const vector<bool>& a) : n(sz(a)), mask(n / 64 + 1), presum(sz(mask)) {
+    rep(i, 0, n)
+        mask[i >> 6] |= (uint64_t(a[i]) << (i & 63));
+    rep(i, 0, sz(mask) - 1)
+        presum[i + 1] = __builtin_popcountll(mask[i]) + presum[i];
   }
   /**
    * @param i defines range [0, i)

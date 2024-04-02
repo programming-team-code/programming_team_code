@@ -10,7 +10,7 @@ int main() {
   {
     bwt bw(string(""), vector<int>());
     auto [le, ri] = bw.find_str(string(""));
-    assert(ssize(le) == 1 && ssize(ri) == 1);
+    assert(sz(le) == 1 && sz(ri) == 1);
     assert(le[0] == 0 && ri[0] == 0);
   }
   string s;
@@ -21,8 +21,8 @@ int main() {
   mono_st_asserts(sf_a.lcp);
   {
     auto [le, ri] = bw.find_str("");
-    assert(ssize(le) == 1 && ssize(ri) == 1);
-    assert(le[0] == 0 && ri[0] == ssize(s));
+    assert(sz(le) == 1 && sz(ri) == 1);
+    assert(le[0] == 0 && ri[0] == sz(s));
   }
   int q;
   cin >> q;
@@ -31,8 +31,8 @@ int main() {
     cin >> t;
     transform(begin(t), end(t), begin(t), compress_char);
     auto [le, ri] = bw.find_str(compress_char('a') + t);
-    assert(ssize(le) == 2 + ssize(t) && ssize(ri) == 2 + ssize(t) && le.back() == 0 && ri.back() == ssize(s));
-    for (int i = ssize(le) - 2; i >= 0; i--)
+    assert(sz(le) == 2 + sz(t) && sz(ri) == 2 + sz(t) && le.back() == 0 && ri.back() == sz(s));
+    for (int i = sz(le) - 2; i >= 0; i--)
       assert(ri[i] - le[i] <= ri[i + 1] - le[i + 1]);
     cout << (!!(ri[1] - le[1] > 0)) << '\n';
   }

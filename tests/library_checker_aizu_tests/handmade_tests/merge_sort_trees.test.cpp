@@ -40,9 +40,9 @@ int main() {
         for (int i = 0; i < n; i++)
           if (x <= arr[i] && arr[i] < y)
             vals.push_back(i);
-        assert(ssize(vals) == mst.rect_count(0, n, x, y));
-        assert(ssize(vals) == mstu.rect_count(0, n, x, y));
-        for (int k = 1; k <= ssize(vals); k++) {
+        assert(sz(vals) == mst.rect_count(0, n, x, y));
+        assert(sz(vals) == mstu.rect_count(0, n, x, y));
+        for (int k = 1; k <= sz(vals); k++) {
           assert(mst.kth_smallest(x, y, k) == vals[k - 1]);
           assert(mstu.kth_smallest(x, y, k) == vals[k - 1]);
         }

@@ -16,10 +16,10 @@ int main() {
   }
   vector<vector<int>> adj(n);
   vector<int> b(n - 1), c(n - 1);
-  vector<array<int, 2>> par(n, {-1, -1});
+  vector<pair<int, int>> par(n, {-1, -1});
   const int mod = 998'244'353;
   {
-    vector<vector<array<int, 2>>> adj_with_id(n);
+    vector<vector<pair<int, int>>> adj_with_id(n);
     for (int i = 0; i < n - 1; i++) {
       int u, v;
       cin >> u >> v >> b[i] >> c[i];
@@ -34,15 +34,15 @@ int main() {
     }
     auto dfs = [&](auto&& self, int u) -> void {
       for (auto [v, e_id] : adj_with_id[u])
-        if (v != par[u][0]) par[v] = {u, e_id}, self(self, v);
+        if (v != par[u].first) par[v] = {u, e_id}, self(self, v);
     };
     dfs(dfs, 0);
   }
   auto edge_id = [&](int u, int v) -> int {
-    bool u_low = (par[u][0] == v);
-    bool v_low = (par[v][0] == u);
+    bool u_low = (par[u].first == v);
+    bool v_low = (par[v].first == u);
     assert(u_low ^ v_low);
-    return u_low ? par[u][1] : par[v][1];
+    return u_low ? par[u].second : par[v].second;
   };
   {
     edge_cd(adj, edge_cd_asserts);
@@ -66,7 +66,7 @@ int main() {
         self(self, v, u, curr_forw, curr_backw, side);
       }
     };
-    for (int i = 0; i < ssize(cd_adj[cent]); i++) {
+    for (int i = 0; i < sz(cd_adj[cent]); i++) {
       int e_id = edge_id(cent, cd_adj[cent][i]);
       dfs(dfs, cd_adj[cent][i], cent, {b[e_id], c[e_id]}, {b[e_id], c[e_id]}, i < split);
     }

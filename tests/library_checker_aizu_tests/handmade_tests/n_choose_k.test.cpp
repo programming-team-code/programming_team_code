@@ -21,7 +21,7 @@ int main() {
     assert(lucas(i, i - 1) == i % mod);
     if (i - 1 < mod)
       assert(c_small_k(i, i - 1) == i % mod);
-    for (int j = 0; j < ssize(choose[i]); j++) {
+    for (int j = 0; j < sz(choose[i]); j++) {
       assert(lucas(i, j) == choose[i][j]);
       if (j < mod)
         assert(c_small_k(i, j) == choose[i][j]);

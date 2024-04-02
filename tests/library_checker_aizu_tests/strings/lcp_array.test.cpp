@@ -15,8 +15,8 @@ int main() {
   }
   string s;
   cin >> s;
-  int n = ssize(s);
+  int n = sz(s);
   suffix_array sf_a(s, 256);
-  assert(ssize(sf_a.lcp) == n - 1);
+  assert(sz(sf_a.lcp) == n - 1);
   cout << 1LL * n * (n + 1) / 2 - accumulate(begin(sf_a.lcp), end(sf_a.lcp), 0LL) << '\n';
 }
