@@ -54,7 +54,7 @@ template <class T> struct suffix_array {
     vi tmp(n);
     iota(all(sa), 0);
     for (int ln = 0; ln < n; ln = max(1, 2 * ln)) {
-      iota(all(tmp) + ln, n - ln);
+      iota(begin(tmp), begin(tmp) + ln, n - ln);
       copy_if(all(sa), begin(tmp) + ln, [&](int& val) { return (val -= ln) >= 0; });
       vi freq(max_val);
       for (int val : sa_inv) freq[val]++;
