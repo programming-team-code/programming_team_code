@@ -7,7 +7,7 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
   string s;
   cin >> s;
-  int n = ssize(s);
+  int n = sz(s);
   vector<int> pi = prefix_function(s);
   // prefix -> z func conversion
   // source: https://codeforces.com/blog/entry/9612#comment-217621

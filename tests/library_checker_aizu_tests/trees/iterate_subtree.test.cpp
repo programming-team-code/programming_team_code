@@ -19,7 +19,7 @@ int main() {
     for (int i = 0; i < n; i++) {
       if (empty(adj[i])) continue;
       int big_ch_idx = int(max_element(begin(adj[i]), end(adj[i]), [&](int x, int y) { return lc.sub_sz[x] < lc.sub_sz[y]; }) - begin(adj[i]));
-      for (int j = 0; j < ssize(adj[i]); j++) {
+      for (int j = 0; j < sz(adj[i]); j++) {
         int u = adj[i][j];
         assert(lc.sub_sz[u] <= lc.sub_sz[adj[i][big_ch_idx]]);
         if (j == big_ch_idx) {

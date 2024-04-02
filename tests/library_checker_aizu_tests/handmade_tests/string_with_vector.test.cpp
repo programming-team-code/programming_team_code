@@ -50,18 +50,18 @@ int main() {
     assert(sf_a.len_lcp(0, 100) == 0);
     for (int i = 0; i < 100; i++) {
       auto [sa_le, sa_ri, s_le, s_ri] = sf_a.find_substrs_concated({{i, i + 1}});
-      array<int, 2> short_res = sf_a.find_substr(i, i + 1);
-      assert(sa_le == short_res[0] && sa_ri == short_res[1]);
+      pair<int, int> short_res = sf_a.find_substr(i, i + 1);
+      assert(sa_le == short_res.first && sa_ri == short_res.second);
       assert(sa_le == i && sa_ri == i + 1);
       assert(s_le == i && s_ri == i + 1);
     }
     for (int i = 0; i <= 100; i++) {
       auto [sa_le, sa_ri, s_le, s_ri] = sf_a.find_substrs_concated({{i, i}, {i, i}});
-      array<int, 2> short_res = sf_a.find_substr(i, i);
-      assert(sa_le == short_res[0] && sa_ri == short_res[1]);
+      pair<int, int> short_res = sf_a.find_substr(i, i);
+      assert(sa_le == short_res.first && sa_ri == short_res.second);
     }
     auto [sa_le, sa_ri, s_le, s_ri] = sf_a.find_substrs_concated({});
-    assert(sa_le == 0 && sa_ri == ssize(arr));
+    assert(sa_le == 0 && sa_ri == sz(arr));
     assert(s_le == s_ri);
     assert(sf_a.cmp_substrs(0, 0, 100, 100) == 0);
     assert(sf_a.cmp_substrs(5, 5, 47, 47) == 0);
@@ -79,7 +79,7 @@ int main() {
   {
     pal_query pq(arr);
     vector<int> man(manacher(arr)), longest(longest_from_index(pq));
-    for (int i = 0; i < ssize(man); i++) {
+    for (int i = 0; i < sz(man); i++) {
       int sz = i - 2 * man[i] + 1;
       assert(sz == (1 ^ (i & 1)));
     }

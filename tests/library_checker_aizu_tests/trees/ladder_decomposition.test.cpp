@@ -21,9 +21,9 @@ int main() {
   linear_kth_par<4> lin_ld_4(adj);
   {
     array<int, 3> sum_ladder_lengths = {0, 0, 0};
-    for (auto& lad : lin_ld_2.l_tbl) sum_ladder_lengths[0] += ssize(lad);
-    for (auto& lad : lin_ld_3.l_tbl) sum_ladder_lengths[1] += ssize(lad);
-    for (auto& lad : lin_ld_4.l_tbl) sum_ladder_lengths[2] += ssize(lad);
+    for (auto& lad : lin_ld_2.l_tbl) sum_ladder_lengths[0] += sz(lad);
+    for (auto& lad : lin_ld_3.l_tbl) sum_ladder_lengths[1] += sz(lad);
+    for (auto& lad : lin_ld_4.l_tbl) sum_ladder_lengths[2] += sz(lad);
     for (int kappa = 2; kappa < 5; kappa++)
       assert(sum_ladder_lengths[kappa - 2] <= n * (2 * kappa + 1) / (kappa - 1));
   }

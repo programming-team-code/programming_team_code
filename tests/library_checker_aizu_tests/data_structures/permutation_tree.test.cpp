@@ -18,9 +18,9 @@ int main() {
   auto len = pt.len;
   auto root = pt.root;
   auto adj = pt.adj;
-  cout << ssize(adj) << '\n';
+  cout << sz(adj) << '\n';
   int curr_time = 0;
-  vector<int> node_to_time(ssize(adj), -1);
+  vector<int> node_to_time(sz(adj), -1);
   auto dfs = [&](auto&& self, int u, int p) -> void {
     node_to_time[u] = curr_time++;
     cout << (p == -1 ? p : node_to_time[p]) << " " << mn_idx[u] << " " << mn_idx[u] + len[u] - 1 << " " << (is_join[u] || empty(adj[u]) ? "linear" : "prime") << '\n';

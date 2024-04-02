@@ -6,17 +6,17 @@
  * queries for longest palindromic substring of a given substring
  */
 template <class T> struct longest_pal_query {
-  vector<int> man, idx;
+  vi man, idx;
   RMQ<int, function<int(int, int)>> rmq;
   /**
    * @param s string/vector
    * @time O(n log n)
    * @space O(n log n) for rmq, everything else is O(n)
    */
-  longest_pal_query(const T& s) : man(manacher(s)), idx(ssize(s)) {
-    iota(begin(idx), end(idx), 1);
-    vector<int> init(ssize(man));
-    iota(begin(init), end(init), 0);
+  longest_pal_query(const T& s) : man(manacher(s)), idx(sz(s)) {
+    iota(all(idx), 1);
+    vi init(sz(man));
+    iota(all(init), 0);
     rmq = {init, [&](int i1, int i2) { return len(i1) < len(i2) ? i2 : i1; }};
   }
   /**
@@ -43,8 +43,8 @@ template <class T> struct longest_pal_query {
    * @time O(log n)
    * @space O(1)
    */
-  inline array<int, 2> longest_pal(int le, int ri) {
-    assert(0 <= le && le < ri && ri <= ssize(idx));
+  inline pii longest_pal(int le, int ri) {
+    assert(0 <= le && le < ri && ri <= sz(idx));
     int pal_len = lower_bound(begin(idx), begin(idx) + (ri - le), 0,
                               [&](int mid, int) { return len(rmq.query(2 * le + mid - 1, 2 * ri - mid)) >= mid; }) -
                   begin(idx);

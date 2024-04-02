@@ -57,9 +57,9 @@ int main() {
       assert(inserted_unordered == inserted_ordered_bitset);
       assert(inserted_unordered == inserted_ordered_ll);
       naive_size += inserted_unordered;
-      assert(naive_size == ssize(unordered.b));
-      assert(ssize(unordered.b) == ordered_bitset.siz);
-      assert(ssize(unordered.b) == ordered_ll.siz);
+      assert(naive_size == sz(unordered.b));
+      assert(sz(unordered.b) == ordered_bitset.siz);
+      assert(sz(unordered.b) == ordered_ll.siz);
       if (inserted_unordered) {
         for (int64_t v : unordered.b) {
           bitset<lg> curr_elem(v);
@@ -75,8 +75,8 @@ int main() {
           if (ordered_bitset.b[j][j])
             assert(unordered.shrink(ordered_bitset.b[j].to_ullong()) == 0);
         }
-        for (int i1 = 0; i1 < ssize(unordered.b); i1++) {
-          for (int i2 = i1 + 1; i2 < ssize(unordered.b); i2++) {
+        for (int i1 = 0; i1 < sz(unordered.b); i1++) {
+          for (int i2 = i1 + 1; i2 < sz(unordered.b); i2++) {
             assert(__lg(unordered.b[i1]) != __lg(unordered.b[i2]));
             assert(((1LL << __lg(unordered.b[i1])) & unordered.b[i2]) == 0);
           }
@@ -93,17 +93,17 @@ int main() {
       basises[mask] = intersection(u, v);
       basis u_v_union = u;
       for (int64_t vec : v.b) u_v_union.insert(vec);
-      assert(ssize(basises[mask].b) + ssize(u_v_union.b) == ssize(u.b) + ssize(v.b));
+      assert(sz(basises[mask].b) + sz(u_v_union.b) == sz(u.b) + sz(v.b));
       basis v_u_union = v;
       for (int64_t vec : u.b) v_u_union.insert(vec);
-      assert(ssize(u_v_union.b) == ssize(v_u_union.b));
+      assert(sz(u_v_union.b) == sz(v_u_union.b));
       for (int64_t vec : basises[mask].b) {
         assert(u.shrink(vec) == 0);
         assert(v.shrink(vec) == 0);
       }
     }
-    if (__builtin_popcount(mask) % 2 == 1) res += 1LL << ssize(basises[mask].b);
-    else res -= 1LL << ssize(basises[mask].b);
+    if (__builtin_popcount(mask) % 2 == 1) res += 1LL << sz(basises[mask].b);
+    else res -= 1LL << sz(basises[mask].b);
   }
   cout << res << '\n';
   return 0;

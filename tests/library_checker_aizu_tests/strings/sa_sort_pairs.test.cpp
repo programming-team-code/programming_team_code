@@ -13,16 +13,16 @@ int main() {
   sort(begin(compress), end(compress));
   compress.erase(unique(begin(compress), end(compress)), end(compress));
   for (int& x : arr) {
-    int le = -1, ri = int(ssize(compress));
+    int le = -1, ri = int(sz(compress));
     while (ri - le > 1) {
       int mi = le + (ri - le) / 2;
       if (compress[mi] >= x) ri = mi;
       else le = mi;
     }
-    assert(0 <= ri && ri < ssize(compress) && compress[ri] == x);
+    assert(0 <= ri && ri < sz(compress) && compress[ri] == x);
     x = ri;
   }
-  suffix_array lq(arr, int(ssize(compress)));
+  suffix_array lq(arr, int(sz(compress)));
   vector<int> idxs(n);
   iota(begin(idxs), end(idxs), 0);
   sort(begin(idxs), end(idxs), [&](int i, int j) -> bool {

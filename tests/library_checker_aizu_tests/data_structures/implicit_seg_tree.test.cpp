@@ -24,7 +24,7 @@ int main() {
   implicit_seg_tree<500'000 * 31 * 2 * 2 + 100> ist(mn, mx);
   int64_t area = 0;
   // sweepline
-  for (int i = 0; i < ssize(edges);) {
+  for (int i = 0; i < sz(edges);) {
     if (i) {
       auto [curr_mn, cnt_mn] = ist.query(mn, mx);
       int64_t num_pos = mx - mn;
@@ -33,7 +33,7 @@ int main() {
       area += (edges[i].x - edges[i - 1].x) * num_pos;
     }
     int j = i;
-    while (j < ssize(edges) && edges[i].x == edges[j].x) {
+    while (j < sz(edges) && edges[i].x == edges[j].x) {
       ist.update(edges[j].y1, edges[j].y2, edges[j].add);
       j++;
     }

@@ -9,7 +9,7 @@ int main() {
 #include "../../../library/math/prime_sieve/calc_sieve.hpp"
 #include "../../../library/math/prime_sieve/is_prime.hpp"
   assert(is_prime(2));
-  for (int i = 1; i < ssize(mobius); i++) {
+  for (int i = 1; i < sz(mobius); i++) {
     int val = i;
     map<ull, int> factors;
     for (auto prime_factor : factor(val))
@@ -26,7 +26,7 @@ int main() {
       if (found_square)
         continue;
     }
-    assert(1 - 2 * (ssize(factors) % 2) == mobius[i]);
+    assert(1 - 2 * (sz(factors) % 2) == mobius[i]);
   }
   cout << "Hello World\n";
   return 0;

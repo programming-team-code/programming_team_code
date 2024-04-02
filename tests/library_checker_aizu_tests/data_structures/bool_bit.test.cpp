@@ -6,7 +6,7 @@
 const int max_bit = 51;
 
 vector<bool_bit> init_prebools(const vector<int64_t>& arr) {
-  const int mx_n = ssize(arr);
+  const int mx_n = sz(arr);
   vector<bool_bit> prebools;
   for (int bit = 0; bit < max_bit; bit++) {
     vector<bool> curr(mx_n);
@@ -31,7 +31,7 @@ int main() {
   for (int i = 0; i < n; i++)
     cin >> arr[i];
   vector<bool_bit> prebools = init_prebools(arr);
-  assert(ssize(prebools) == max_bit);
+  assert(sz(prebools) == max_bit);
   while (q--) {
     int type;
     cin >> type;

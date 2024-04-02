@@ -2,7 +2,7 @@
 #pragma once
 /**
  * @code{.cpp}
-       st.find_first(le, ri, [&](int64_t x, int tl, int tr) -> bool {
+       st.find_first(le, ri, [&](ll x, int tl, int tr) -> bool {
        });
  * @endcode
  * @param le,ri defines range [le, ri)

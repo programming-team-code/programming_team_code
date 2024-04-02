@@ -8,7 +8,7 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
   string s;
   cin >> s;
-  int n = ssize(s);
+  int n = sz(s);
   pal_query pq(s);
   vector<int> longest(longest_from_index(pq));
   {
@@ -38,7 +38,7 @@ int main() {
       }
     }
   }
-  for (int i = 0; i < ssize(pq.man); i++) {
+  for (int i = 0; i < sz(pq.man); i++) {
     int ri = i - pq.man[i];
     assert(ri + 1 == pq.man[i] || pq.is_pal(pq.man[i], ri));
     assert(pq.man[i] == 0 || ri == n - 1 || !pq.is_pal(pq.man[i] - 1, ri + 1));

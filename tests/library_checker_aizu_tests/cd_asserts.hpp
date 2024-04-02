@@ -1,7 +1,7 @@
 #pragma once
 #include "../../library/trees/centroid_decomp/centroid_decomp.hpp"
 void cd_asserts(const vector<vector<int>>& adj) {
-  vector<bool> seen_cent(ssize(adj));
+  vector<bool> seen_cent(sz(adj));
   centroid(adj, [&](const vector<vector<int>>& cd_adj, int cent) -> void {
     assert(!seen_cent[cent]);
     seen_cent[cent] = 1;

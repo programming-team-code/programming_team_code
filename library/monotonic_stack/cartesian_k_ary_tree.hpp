@@ -32,9 +32,9 @@
  * @time O(n)
  * @space a O(n) vector is allocated and returned
  */
-template <class T> vector<int> cart_k_ary_tree(const vector<T>& a, const vector<int>& le) {
-  vector<int> p(le);
-  for (int i = ssize(a) - 1; i >= 0; i--)
+template <class T> vi cart_k_ary_tree(const vector<T>& a, const vi& le) {
+  vi p(le);
+  for (int i = sz(a) - 1; i >= 0; i--)
     for (int j = i - 1; j != le[i]; j = le[j])
       if (le[j] == le[i] || a[i] == a[le[j]])
         p[j] = (p[i] < i || a[i] != a[p[i]] ? i : p[i]);

@@ -33,7 +33,7 @@ int main() {
     }
     for (vector<int>& code : pruf_codes) {
       auto edges = pruferCodeToTree(code);
-      assert(ssize(edges) == n - 1);
+      assert(sz(edges) == n - 1);
       vector<vector<int>> adj(n);
       for (auto [u, v] : edges) {
         u--, v--;

@@ -7,7 +7,7 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
   string s;
   cin >> s;
-  int n = ssize(s);
+  int n = sz(s);
   s = s + '$' + string(rbegin(s), rend(s));
   suffix_array lq(s, 256);
   for (int i = 0; i < n; i++) {

@@ -9,16 +9,16 @@
  * @time O(n log n)
  * @space this function allocates/returns various vectors which are all O(n)
  */
-vector<int64_t> count_paths_per_node(const vector<vector<int>>& adj, int k) {
-  vector<int64_t> num_paths(ssize(adj));
-  centroid(adj, [&](const vector<vector<int>>& cd_adj, int cent) {
+vector<ll> count_paths_per_node(const vector<vi>& adj, int k) {
+  vector<ll> num_paths(sz(adj));
+  centroid(adj, [&](const vector<vi>& cd_adj, int cent) {
     vector pre_d{1}, cur_d{0};
     auto dfs = [&](auto&& self, int u, int p, int d) {
       if (d > k) return 0LL;
-      if (ssize(cur_d) <= d) cur_d.push_back(0);
+      if (sz(cur_d) <= d) cur_d.push_back(0);
       cur_d[d]++;
       auto cnt = 0LL;
-      if (k - d < ssize(pre_d)) cnt += pre_d[k - d];
+      if (k - d < sz(pre_d)) cnt += pre_d[k - d];
       for (int v : cd_adj[u])
         if (v != p)
           cnt += self(self, v, u, d + 1);
@@ -27,8 +27,8 @@ vector<int64_t> count_paths_per_node(const vector<vector<int>>& adj, int k) {
     };
     auto dfs_child = [&](int child) {
       auto cnt = dfs(dfs, child, cent, 1);
-      pre_d.resize(ssize(cur_d));
-      for (int i = 1; i < ssize(cur_d) && cur_d[i]; i++)
+      pre_d.resize(sz(cur_d));
+      for (int i = 1; i < sz(cur_d) && cur_d[i]; i++)
         pre_d[i] += cur_d[i], cur_d[i] = 0;
       return cnt;
     };

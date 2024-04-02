@@ -6,8 +6,8 @@ inline int bit_floor(unsigned x) { return x ? 1 << __lg(x) : 0; }
  */
 template <int X = 3> struct linear_kth_par {
   int n;
-  vector<int> d, p, j, dl /*deepest leaf*/, idx;
-  vector<vector<int>> l_tbl;
+  vi d, p, j, dl /*deepest leaf*/, idx;
+  vector<vi> l_tbl;
   /**
    * @code{.cpp}
              linear_kth_par kp(adj);
@@ -17,18 +17,18 @@ template <int X = 3> struct linear_kth_par {
    * @time O(n * (2 * X + 1) / (X - 1))
    * @space O(n * (2 * X + 1) / (X - 1))
    */
-  linear_kth_par(const vector<vector<int>>& adj) : n(ssize(adj)), d(n), p(n, -1), dl(n), idx(n), l_tbl(n) {
+  linear_kth_par(const vector<vi>& adj) : n(sz(adj)), d(n), p(n, -1), dl(n), idx(n), l_tbl(n) {
     static_assert(X >= 2);
-    vector<int> st;
+    vi st;
     auto add_j = [&]() -> void {
       j.push_back(st[0]);
-      int i = ssize(st) - 1 - (X - 1) * (ssize(j) & -ssize(j));
+      int i = sz(st) - 1 - (X - 1) * (sz(j) & -sz(j));
       if (i > 0) j.back() = st[i];
     };
     auto dfs = [&](auto&& self, int u) -> void {
       st.push_back(u);
       add_j();
-      idx[u] = ssize(j);
+      idx[u] = sz(j);
       dl[u] = u;
       for (int v : adj[u])
         if (v != p[u]) {
@@ -39,16 +39,14 @@ template <int X = 3> struct linear_kth_par {
         }
       st.pop_back();
     };
-    for (int i = 0; i < n; i++)
-      if (p[i] == -1) p[i] = i, dfs(dfs, i);
-    for (int i = 0; i < n; i++)
-      if (p[i] == i || dl[p[i]] != dl[i]) {
-        int leaf = dl[i];
-        auto& lad = l_tbl[leaf];
-        lad.resize(min((d[leaf] - d[i]) * (2 * X + 1) / (X - 1), d[leaf] + 1), leaf);
-        for (int k = 1; k < ssize(lad); k++)
+    rep(i, 0, n) if (p[i] == -1) p[i] = i, dfs(dfs, i);
+    rep(i, 0, n) if (p[i] == i || dl[p[i]] != dl[i]) {
+      int leaf = dl[i];
+      auto& lad = l_tbl[leaf];
+      lad.resize(min((d[leaf] - d[i]) * (2 * X + 1) / (X - 1), d[leaf] + 1), leaf);
+      rep(k, 1, sz(lad))
           lad[k] = p[lad[k - 1]];
-      }
+    }
   }
   /**
    * @param u query node

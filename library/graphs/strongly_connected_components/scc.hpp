@@ -13,31 +13,30 @@ struct sccs {
    * - 0 <= scc_id[u] < num_sccs
    * - for each edge u -> v: scc_id[u] >= scc_id[v]
    */
-  vector<int> scc_id;
+  vi scc_id;
   /**
    * @param adj directed, unweighted graph
    * @time O(n + m)
    * @space this allocates member `scc_id` which is O(n)
    */
-  sccs(const vector<vector<int>>& adj) : scc_id(ssize(adj), -1) {
-    int n = ssize(adj), timer = 1;
-    vector<int> tin(n), st;
+  sccs(const vector<vi>& adj) : scc_id(sz(adj), -1) {
+    int n = sz(adj), timer = 1;
+    vi tin(n), st;
     st.reserve(n);
     auto dfs = [&](auto&& self, int u) -> int {
-      int low = tin[u] = timer++, siz = ssize(st);
+      int low = tin[u] = timer++, siz = sz(st);
       st.push_back(u);
       for (int v : adj[u])
         if (scc_id[v] < 0)
           low = min(low, tin[v] ? tin[v] : self(self, v));
       if (tin[u] == low) {
-        for (int i = siz; i < ssize(st); i++)
-          scc_id[st[i]] = num_sccs;
+        rep(i, siz, sz(st))
+            scc_id[st[i]] = num_sccs;
         st.resize(siz);
         num_sccs++;
       }
       return low;
     };
-    for (int i = 0; i < n; i++)
-      if (!tin[i]) dfs(dfs, i);
+    rep(i, 0, n) if (!tin[i]) dfs(dfs, i);
   }
 };

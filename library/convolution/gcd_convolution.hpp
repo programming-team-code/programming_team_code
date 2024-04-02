@@ -8,10 +8,10 @@ const int mod = 998'244'353;
  * @time O(n log n)
  * @space a size O(n) vector is allocated and returned
  */
-vector<int> gcd_convolution(const vector<int>& a, const vector<int>& b) {
-  assert(ssize(a) == ssize(b));
-  int n = ssize(a);
-  vector<int> c(n);
+vi gcd_convolution(const vi& a, const vi& b) {
+  assert(sz(a) == sz(b));
+  int n = sz(a);
+  vi c(n);
   for (int g = n - 1; g >= 1; g--) {
     auto sum_a = 0LL, sum_b = 0LL;
     for (int i = g; i < n; i += g) {

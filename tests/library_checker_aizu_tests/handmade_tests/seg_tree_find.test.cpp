@@ -47,7 +47,7 @@ int main() {
     assert(!empty(rngs));
     assert(rngs[0][0] == le);
     for (auto [tl, tr, _] : rngs) assert(le <= tl && tl < tr && tr <= ri);
-    for (int it = 1; it < ssize(rngs); it++) {
+    for (int it = 1; it < sz(rngs); it++) {
       auto [prv_le, prv_ri, prv] = rngs[it - 1];
       auto [cur_le, cur_ri, cur] = rngs[it];
       if (prv) {
@@ -65,7 +65,7 @@ int main() {
     assert(rngs[0][1] == rv(le) + 1);
     for (auto [tl, tr, _] : rngs)
       assert(rv(ri - 1) <= tl && tl < tr && tr <= rv(le) + 1);
-    for (int it = 1; it < ssize(rngs); it++) {
+    for (int it = 1; it < sz(rngs); it++) {
       auto [prv_le, prv_ri, prv] = rngs[it - 1];
       auto [cur_le, cur_ri, cur] = rngs[it];
       if (prv) {

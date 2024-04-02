@@ -15,8 +15,8 @@ int main() {
       for (int i = 0; i <= n; i++) {
         for (int j = i; j <= n; j++) {
           auto [sa_le, sa_ri, s_le, s_ri] = lq.find_substrs_concated({{i, j}});
-          array<int, 2> short_res = lq.find_substr(i, j);
-          assert(sa_le == short_res[0] && sa_ri == short_res[1]);
+          pair<int, int> short_res = lq.find_substr(i, j);
+          assert(sa_le == short_res.first && sa_ri == short_res.second);
           assert(s.substr(i, j - i) == s.substr(s_le, s_ri - s_le));
           if (i == j) {
             assert(sa_le == 0 && sa_ri == n);

@@ -8,9 +8,9 @@ const int mod = 998'244'353;
  * @time O(n sqrt n) note there does exist a O(n log n) solution as well
  * @space O(n) for `dp` vector
  */
-vector<int64_t> partitions(int n) {
-  vector<int64_t> dp(n, 1);
-  for (int i = 1; i < n; i++) {
+vector<ll> partitions(int n) {
+  vector<ll> dp(n, 1);
+  rep(i, 1, n) {
     auto sum = 0LL;
     for (int j = 1, pent = 1, sign = 1; pent <= i; j++, pent += 3 * j - 2, sign = -sign) {
       if (pent + j <= i) sum += dp[i - pent - j] * sign + mod;

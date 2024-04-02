@@ -18,17 +18,17 @@ template <class T> struct contour_range_update {
    * @time O(n log1.5 n)
    * @space O(n log1.5 n) for `info` and `bits`
    */
-  contour_range_update(const vector<vector<int>>& adj, const vector<T>& a_a) : n(ssize(a_a)), a(a_a), sum_a(adj, vector<T>(n)), info(n) {
-    edge_cd(adj, [&](const vector<vector<int>>& cd_adj, int cent, int split) {
-      array<int, 2> mx_d{};
+  contour_range_update(const vector<vi>& adj, const vector<T>& a_a) : n(sz(a_a)), a(a_a), sum_a(adj, vector<T>(n)), info(n) {
+    edge_cd(adj, [&](const vector<vi>& cd_adj, int cent, int split) {
+      array<int, 2> mx_d = {0, 0};
       auto dfs = [&](auto&& self, int u, int p, int d, int side) -> void {
         mx_d[side] = max(mx_d[side], d);
-        info[u].push_back({ssize(bits), d, side});
+        info[u].push_back({sz(bits), d, side});
         for (int v : cd_adj[u])
           if (v != p) self(self, v, u, 1 + d, side);
       };
-      for (int i = 0; i < ssize(cd_adj[cent]); i++)
-        dfs(dfs, cd_adj[cent][i], cent, 1, i < split);
+      rep(i, 0, sz(cd_adj[cent]))
+          dfs(dfs, cd_adj[cent][i], cent, 1, i < split);
       bits.push_back({bit_rupq<T>(mx_d[0] + 1), bit_rupq<T>(mx_d[1] + 1)});
     });
   }

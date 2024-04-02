@@ -9,15 +9,15 @@
  * @time O(n log^2 n)
  * @space this function allocates/returns various vectors which are each O(n)
  */
-vector<int64_t> count_paths_per_length(const vector<vector<int>>& adj) {
-  vector<int64_t> num_paths(ssize(adj));
-  centroid(adj, [&](const vector<vector<int>>& cd_adj, int cent) {
+vector<ll> count_paths_per_length(const vector<vi>& adj) {
+  vector<ll> num_paths(sz(adj));
+  centroid(adj, [&](const vector<vi>& cd_adj, int cent) {
     vector<vector<double>> child_depths;
     for (int u : cd_adj[cent]) {
       child_depths.emplace_back(1, 0.0);
-      for (queue<array<int, 2>> q({{u, cent}}); !empty(q);) {
-        child_depths.back().push_back(ssize(q));
-        queue<array<int, 2>> new_q;
+      for (queue<pii> q({{u, cent}}); !empty(q);) {
+        child_depths.back().push_back(sz(q));
+        queue<pii> new_q;
         while (!empty(q)) {
           auto [v, p] = q.front();
           q.pop();
@@ -29,17 +29,17 @@ vector<int64_t> count_paths_per_length(const vector<vector<int>>& adj) {
         swap(q, new_q);
       }
     }
-    sort(begin(child_depths), end(child_depths), [&](auto& x, auto& y) {
-      return ssize(x) < ssize(y);
+    sort(all(child_depths), [&](auto& x, auto& y) {
+      return sz(x) < sz(y);
     });
     vector total_depth(1, 1.0);
     for (auto& cnt_depth : child_depths) {
       auto prod = conv(total_depth, cnt_depth);
-      for (int i = 1; i < ssize(prod); i++)
-        num_paths[i] += llround(prod[i]);
-      total_depth.resize(ssize(cnt_depth));
-      for (int i = 1; i < ssize(cnt_depth); i++)
-        total_depth[i] += cnt_depth[i];
+      rep(i, 1, sz(prod))
+          num_paths[i] += llround(prod[i]);
+      total_depth.resize(sz(cnt_depth));
+      rep(i, 1, sz(cnt_depth))
+          total_depth[i] += cnt_depth[i];
     }
   });
   return num_paths;

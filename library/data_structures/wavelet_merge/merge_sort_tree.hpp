@@ -16,25 +16,25 @@ inline int split(int tl, int tr) {
  */
 struct merge_sort_tree {
   int n;
-  vector<int> sorted;
+  vi sorted;
   vector<bool_presum> bool_presums;
   /**
    * @param a array
    * @time O(n log n)
    * @space O(n + (n log n) / 64) for `bool_presums` vector
    */
-  merge_sort_tree(const vector<int>& a) : n(ssize(a)), sorted(n), bool_presums(n, vector<bool>()) {
+  merge_sort_tree(const vi& a) : n(sz(a)), sorted(n), bool_presums(n, vector<bool>()) {
     vector<pair<int, bool>> cpy(n);
-    transform(begin(a), end(a), begin(cpy), [](int val) { return pair(val, 0); });
+    transform(all(a), begin(cpy), [](int val) { return pair(val, 0); });
     build(cpy, 0, n, 1);
-    transform(begin(cpy), end(cpy), begin(sorted), [](auto& val) { return val.first; });
+    transform(all(cpy), begin(sorted), [](auto& val) { return val.first; });
   }
   void build(vector<pair<int, bool>>& cpy, int tl, int tr, int u) {
     if (tr - tl <= 1) return;
     int tm = split(tl, tr);
     build(cpy, tl, tm, 2 * u);
     build(cpy, tm, tr, 2 * u + 1);
-    for (int i = tl; i < tr; i++) cpy[i].second = i < tm;
+    rep(i, tl, tr) cpy[i].second = i < tm;
     inplace_merge(begin(cpy) + tl, begin(cpy) + tm, begin(cpy) + tr);
     vector<bool> bools(tr - tl);
     transform(begin(cpy) + tl, begin(cpy) + tr, begin(bools), [](auto& val) { return val.second; });
@@ -48,8 +48,8 @@ struct merge_sort_tree {
    */
   int rect_count(int le, int ri, int x, int y) {
     assert(0 <= le && le <= ri && ri <= n && x <= y);
-    int xi = lower_bound(begin(sorted), end(sorted), x) - begin(sorted);
-    int yi = lower_bound(begin(sorted), end(sorted), y) - begin(sorted);
+    int xi = lower_bound(all(sorted), x) - begin(sorted);
+    int yi = lower_bound(all(sorted), y) - begin(sorted);
     return rect_count_impl(le, ri, xi, yi, 0, n, 1);
   }
   int rect_count_impl(int le, int ri, int xi, int yi, int tl, int tr, int u) {
@@ -70,8 +70,8 @@ struct merge_sort_tree {
    * @space O(log(n)) for recursive stack
    */
   int kth_smallest(int x, int y, int k) {
-    int xi = lower_bound(begin(sorted), end(sorted), x) - begin(sorted);
-    int yi = lower_bound(begin(sorted), end(sorted), y) - begin(sorted);
+    int xi = lower_bound(all(sorted), x) - begin(sorted);
+    int yi = lower_bound(all(sorted), y) - begin(sorted);
     assert(1 <= k && k <= yi - xi);
     return kth_smallest_impl(xi, yi, k, 0, n, 1);
   }

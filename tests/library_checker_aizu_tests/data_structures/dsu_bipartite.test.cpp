@@ -5,7 +5,7 @@
 #include "../../../library/data_structures/uncommon/dsu_bipartite.hpp"
 
 vector<bool> bipartite_check(const vector<vector<int>>& adj) {
-  int n = ssize(adj);
+  int n = sz(adj);
   vector<bool> is_bi(n);
   vector<int> color(n, -1);
   for (int s = 0; s < n; s++) {
@@ -13,7 +13,7 @@ vector<bool> bipartite_check(const vector<vector<int>>& adj) {
     color[s] = 0;
     vector<int> q{s};
     bool is_bipartite = 1;
-    for (int fr = 0; fr < ssize(q); fr++) {
+    for (int fr = 0; fr < sz(q); fr++) {
       int u = q[fr];
       for (int v : adj[u]) {
         if (color[v] == -1) {

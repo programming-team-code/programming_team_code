@@ -5,7 +5,7 @@
  * @code{.cpp}
        dsu_restorable dsu_r(n);
        pq_updates<dsu_restorable, int, int> pq(dsu_r);
-       for (int i = 0; i < n; i++) pq.ds.add(i, initial_values[i]);
+       rep (i, 0, n) pq.ds.add(i, initial_values[i]);
        //or
        pq.ds.subtree = initial_values;
        pq.push_update(u, v, curr_pri);
@@ -33,20 +33,20 @@ template <class DS, class... ARGS> struct pq_updates {
   void pop_update() {
     assert(!empty(upd_st));
     vector<upd> extra;
-    int idx = ssize(upd_st) - 1, lowest_pri = INT_MAX;
-    for (auto it = rbegin(mp); 2 * ssize(extra) < ssize(upd_st) - idx; it++) {
+    int idx = sz(upd_st) - 1, lowest_pri = INT_MAX;
+    for (auto it = rbegin(mp); 2 * sz(extra) < sz(upd_st) - idx; it++) {
       auto [pri, idx_sk] = *it;
       extra.push_back(upd_st[idx_sk]);
       idx = min(idx, idx_sk), lowest_pri = pri;
     }
-    auto it = remove_if(begin(upd_st) + idx, end(upd_st), [&](auto& curr) {
+    auto it = remove_if(idx + all(upd_st), [&](auto& curr) {
       return curr.second->first >= lowest_pri;
     });
-    reverse_copy(begin(extra), end(extra), it);
-    for (int i = idx; i < ssize(upd_st); i++) ds.undo();
+    reverse_copy(all(extra), it);
+    rep(i, idx, sz(upd_st)) ds.undo();
     upd_st.pop_back();
     mp.erase(prev(end(mp)));
-    for (int i = idx; i < ssize(upd_st); i++) {
+    rep(i, idx, sz(upd_st)) {
       apply(&DS::join, tuple_cat(make_tuple(&ds), upd_st[i].first));
       upd_st[i].second->second = i;
     }
@@ -59,7 +59,7 @@ template <class DS, class... ARGS> struct pq_updates {
    */
   void push_update(ARGS... args, int priority) {
     ds.join(args...);
-    auto [it, ins] = mp.emplace(priority, ssize(upd_st));
+    auto [it, ins] = mp.emplace(priority, sz(upd_st));
     assert(ins);
     upd_st.emplace_back(make_tuple(args...), it);
   }

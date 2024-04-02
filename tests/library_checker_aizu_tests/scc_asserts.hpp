@@ -1,7 +1,7 @@
 #pragma once
 #include "../../library/graphs/strongly_connected_components/add_edges_strongly_connected.hpp"
 void scc_asserts(const vector<vector<int>>& adj) {
-  int n = ssize(adj);
+  int n = sz(adj);
   auto [num_sccs, scc_id] = sccs(adj);
   {
     // sanity check for reverse topo order of SCCs
@@ -21,9 +21,9 @@ void scc_asserts(const vector<vector<int>>& adj) {
   assert(is_zero_in[num_sccs - 1] && is_zero_out[0]);
   int num_zero_in = int(count(begin(is_zero_in), end(is_zero_in), 1));
   int num_zero_out = int(count(begin(is_zero_out), end(is_zero_out), 1));
-  vector<array<int, 2>> edges = extra_edges(adj, num_sccs, scc_id);
-  if (num_sccs == 1) assert(ssize(edges) == 0);
-  else assert(ssize(edges) == max(num_zero_in, num_zero_out));
+  vector<pair<int, int>> edges = extra_edges(adj, num_sccs, scc_id);
+  if (num_sccs == 1) assert(sz(edges) == 0);
+  else assert(sz(edges) == max(num_zero_in, num_zero_out));
   vector<vector<int>> adj_copy(adj);
   for (auto [u, v] : edges) {
     assert(u != v);

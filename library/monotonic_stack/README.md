@@ -1,8 +1,8 @@
-`vector<int> le = mono_st(a, less());`
+`vi le = mono_st(a, less());`
 
 ![](mono_stack_le.png)
 
-`vector<int> ri = mono_range(le);`
+`vi ri = mono_range(le);`
 
 ![](mono_stack_ri.png)
 

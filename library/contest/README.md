@@ -1,6 +1,17 @@
 ## Tips and Tricks
 
-`#include <bits/extc++.h>` instead of `#include <bits/stdc++.h>` for policy based DS
+If you changed something for debugging, add a `cout << "don't submit" << endl;`
+or `assert(0);` at the end of the code
+
+for policy base DS:
+```
+#include <bits/extc++.h>
+```
+
+for -std=c++17
+```
+#define ssize(x) (int)(x).size()
+```
 
 don't use cin for doubles/floats, it's slow, read into string, then convert to double/float
 - [C++ tips and tricks](https://codeforces.com/blog/entry/74684)

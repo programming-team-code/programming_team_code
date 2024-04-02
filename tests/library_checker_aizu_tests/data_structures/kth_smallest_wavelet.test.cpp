@@ -14,7 +14,7 @@ int main() {
   sort(begin(sorted), end(sorted));
   sorted.erase(unique(begin(sorted), end(sorted)), end(sorted));
   for (int& val : arr) {
-    int start = 0, end = ssize(sorted);
+    int start = 0, end = sz(sorted);
     while (start + 1 < end) {
       int mid = (start + end) / 2;
       if (sorted[mid] <= val) start = mid;
@@ -23,7 +23,7 @@ int main() {
     assert(sorted[start] == val);
     val = start - 50;
   }
-  wavelet_tree wt(arr, -50, ssize(sorted) - 50);
+  wavelet_tree wt(arr, -50, sz(sorted) - 50);
   for (int i = 0; i < n; i++) {
     int mx = arr[i];
     for (int j = i + 1; j <= min(i + 5, n); j++) {

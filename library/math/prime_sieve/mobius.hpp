@@ -7,8 +7,7 @@
  * @time O(mx log mx)
  * @space O(mx)
  */
-vector<int> mobius(1'000'005);
+vi mobius(1'000'005);
 mobius[1] = 1;
-for (int i = 1; i < ssize(mobius); i++)
-  for (int j = i + i; j < ssize(mobius); j += i)
+rep(i, 1, sz(mobius)) for (int j = i + i; j < sz(mobius); j += i)
     mobius[j] -= mobius[i];

@@ -37,9 +37,9 @@ int main() {
             dfs(dfs, i);
           }
         }
-        assert(ssize(comps) == dsu.num_sets);
+        assert(sz(comps) == dsu.num_sets);
         for (auto& cc : comps)
-          for (auto node : cc) assert(dsu.size(node) == ssize(cc));
+          for (auto node : cc) assert(dsu.size(node) == sz(cc));
       } else if (!empty(edge_st)) {
         auto [u, v] = edge_st.back();
         edge_st.pop_back();

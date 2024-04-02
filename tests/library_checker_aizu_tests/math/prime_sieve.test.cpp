@@ -7,7 +7,7 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
 #include "../../../library/math/prime_sieve/calc_sieve.hpp"
 #include "../../../library/math/prime_sieve/is_prime.hpp"
-  for (int i = 1; i < ssize(sieve); i++)
+  for (int i = 1; i < sz(sieve); i++)
     assert(isPrime(i) == is_prime(i));
   {
 #define sieve linear_sieve

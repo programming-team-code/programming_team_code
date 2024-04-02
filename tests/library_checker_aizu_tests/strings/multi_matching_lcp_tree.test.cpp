@@ -12,7 +12,7 @@ int main() {
   lcp_tree lt(s);
   {
     auto [le, ri] = lt.find_str(string(""));
-    assert(le == 0 && ri == ssize(s));
+    assert(le == 0 && ri == sz(s));
   }
   int q;
   cin >> q;

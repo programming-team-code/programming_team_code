@@ -6,7 +6,7 @@
        for (int i = u; i != v; i = lin_lca.next_on_path(i, v)) {}
  * @endcode
  * @param u,v endpoint nodes of path
- * @returns the node vector<int>({u,p[u],..,lca(u,v),..,p[v],v})[1]
+ * @returns the node vi({u,p[u],..,lca(u,v),..,p[v],v})[1]
  * @time O(1)
  * @space O(1)
  */

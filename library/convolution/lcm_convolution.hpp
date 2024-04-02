@@ -8,12 +8,12 @@ const int mod = 998'244'353;
  * @time O(n log n)
  * @space this function allocates/returns various O(n) vectors
  */
-vector<int> lcm_convolution(const vector<int>& a, const vector<int>& b) {
-  assert(ssize(a) == ssize(b));
-  int n = ssize(a);
+vi lcm_convolution(const vi& a, const vi& b) {
+  assert(sz(a) == sz(b));
+  int n = sz(a);
   vector sum_a(n, 0LL), sum_b(n, 0LL);
-  vector<int> c(n);
-  for (int i = 1; i < n; i++) {
+  vi c(n);
+  rep(i, 1, n) {
     for (int j = i; j < n; j += i)
       sum_a[j] += a[i], sum_b[j] += b[i];
     sum_a[i] %= mod, sum_b[i] %= mod;
