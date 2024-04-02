@@ -24,7 +24,7 @@ struct subtree_iso {
       ch_ids.reserve(sz(adj[u]));
       for (int v : adj[u])
         if (v != p) ch_ids.push_back(self(self, v, u));
-      sort(begin(ch_ids), end(ch_ids));
+      sort(all(ch_ids));
       return iso_id[u] = hashes.try_emplace(ch_ids, sz(hashes)).first->second;
     };
     for (int i = 0; i < sz(adj); i++)

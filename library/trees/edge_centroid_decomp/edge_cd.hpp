@@ -43,7 +43,7 @@ template <class F> struct edge_cd {
     if (siz <= 2) return;
     u = find_cent(u, -1, siz);
     int sum = 0;
-    auto it = partition(begin(adj[u]), end(adj[u]), [&](int v) {
+    auto it = partition(all(adj[u]), [&](int v) {
       bool ret = 2 * sum + sub_sz[v] < siz - 1 && 3 * (sum + sub_sz[v]) <= 2 * (siz - 1);
       if (ret) sum += sub_sz[v];
       return ret;

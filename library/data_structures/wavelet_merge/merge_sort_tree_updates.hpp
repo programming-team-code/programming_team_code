@@ -80,8 +80,8 @@ struct merge_sort_tree_updates {
    */
   int rect_count(int le, int ri, int x, int y) {
     assert(0 <= le && le <= ri && ri <= n && x <= y);
-    int xi = lower_bound(begin(sorted), end(sorted), x) - begin(sorted);
-    int yi = lower_bound(begin(sorted), end(sorted), y) - begin(sorted);
+    int xi = lower_bound(all(sorted), x) - begin(sorted);
+    int yi = lower_bound(all(sorted), y) - begin(sorted);
     return rect_count_impl(le, ri, xi, yi, 0, n, 1);
   }
   int rect_count_impl(int le, int ri, int xi, int yi, int tl, int tr, int u) {
@@ -101,8 +101,8 @@ struct merge_sort_tree_updates {
    * @space O(log(n)) for recursive stack
    */
   int kth_smallest(int x, int y, int k) {
-    int xi = lower_bound(begin(sorted), end(sorted), x) - begin(sorted);
-    int yi = lower_bound(begin(sorted), end(sorted), y) - begin(sorted);
+    int xi = lower_bound(all(sorted), x) - begin(sorted);
+    int yi = lower_bound(all(sorted), y) - begin(sorted);
     assert(1 <= k && k <= bool_bits[1].popcount(xi, yi));
     return kth_smallest_impl(xi, yi, k, 0, n, 1);
   }

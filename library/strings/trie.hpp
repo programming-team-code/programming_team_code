@@ -10,7 +10,7 @@ struct trie {
     int cnt_words = 0, par = -1;
     char ch;
     node(int a_par = -1, char a_ch = '#') : par(a_par), ch(a_ch) {
-      fill(begin(next), end(next), -1);
+      fill(all(next), -1);
     }
   };
   vector<node> t;

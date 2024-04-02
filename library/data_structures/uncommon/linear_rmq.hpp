@@ -36,7 +36,7 @@ template <class T, class F> struct linear_rmq {
         asc[le[i] + 1] += to_add;
         if (ri[i] < n) asc[ri[i]] -= to_add;
       }
-    partial_sum(begin(asc), end(asc), begin(asc));
+    partial_sum(all(asc), begin(asc));
   }
   inline int lift(int u, unsigned j) {
     auto k = bit_floor(asc[u] ^ j);

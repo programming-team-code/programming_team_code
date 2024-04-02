@@ -25,9 +25,9 @@ struct wavelet_tree_updates {
          vi a;
          ...
          vi sorted(a);
-         sort(begin(sorted), end(sorted));
-         sorted.erase(unique(begin(sorted), end(sorted)), end(sorted));
-         for (int& val : a) val = lower_bound(begin(sorted), end(sorted), val) - begin(sorted);
+         sort(all(sorted));
+         sorted.erase(unique(all(sorted)), end(sorted));
+         for (int& val : a) val = lower_bound(all(sorted), val) - begin(sorted);
          wavelet_tree_updates wtu(a, 0, sz(sorted), vector<bool>(sz(a), 1));
    * @endcode
    * @param a,a_minv,a_maxv must satisfy minv <= a[i] < maxv
@@ -38,7 +38,7 @@ struct wavelet_tree_updates {
   wavelet_tree_updates(const vi& a, int a_minv, int a_maxv, const vector<bool>& active) : n(sz(a)), minv(a_minv), maxv(a_maxv), bool_presums(maxv - minv, vector<bool>()), bool_bits(2 * (maxv - minv), vector<bool>()) {
     assert(minv < maxv && sz(active) == n);
     vector<pair<int, bool>> cpy(n);
-    transform(begin(a), end(a), begin(active), begin(cpy), [](int x, bool y) { return pair(x, y); });
+    transform(all(a), begin(active), begin(cpy), [](int x, bool y) { return pair(x, y); });
     build(cpy, 0, n, minv, maxv, 1);
   }
   void build(vector<pair<int, bool>>& cpy, int le, int ri, int tl, int tr, int u) {

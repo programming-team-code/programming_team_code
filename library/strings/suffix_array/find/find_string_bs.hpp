@@ -10,11 +10,7 @@
  * @space O(1)
  */
 inline pii find_str(const T& t) {
-  int le = lower_bound(begin(sa), end(sa), 0,
-                       [&](int i, int) -> bool { return lexicographical_compare(begin(s) + i, end(s), begin(t), end(t)); }) -
-           begin(sa);
-  int ri = lower_bound(begin(sa) + le, end(sa), 0,
-                       [&](int i, int) -> bool { return mismatch(begin(t), end(t), begin(s) + i, end(s)).first == end(t); }) -
-           begin(sa);
+  int le = lower_bound(all(sa), 0, [&](int i, int) -> bool { return lexicographical_compare(i + all(s), all(t)); }) - begin(sa);
+  int ri = lower_bound(le + all(sa), 0, [&](int i, int) -> bool { return mismatch(all(t), i + all(s)).first == end(t); }) - begin(sa);
   return {le, ri};
 }

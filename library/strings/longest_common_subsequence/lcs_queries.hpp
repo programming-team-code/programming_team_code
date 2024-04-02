@@ -32,7 +32,7 @@ template <class T> vi lcs_queries(const T& s, const T& t, const vector<array<int
       if (lcs.dp[j] == -1) init[j] = 1;
       else dp_inv[lcs.dp[j]] = j;
     BIT<int> bit(init);
-    sort(begin(qs[i]), end(qs[i]));
+    sort(all(qs[i]));
     for (int t_le = 0, j = 0; t_le < m; t_le++) {
       while (j < sz(qs[i]) && qs[i][j][0] == t_le)
         res[qs[i][j][2]] = bit.query(t_le, qs[i][j][1]), j++;

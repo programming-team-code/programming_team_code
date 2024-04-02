@@ -39,10 +39,10 @@ template <class DS, class... ARGS> struct pq_updates {
       extra.push_back(upd_st[idx_sk]);
       idx = min(idx, idx_sk), lowest_pri = pri;
     }
-    auto it = remove_if(begin(upd_st) + idx, end(upd_st), [&](auto& curr) {
+    auto it = remove_if(idx + all(upd_st), [&](auto& curr) {
       return curr.second->first >= lowest_pri;
     });
-    reverse_copy(begin(extra), end(extra), it);
+    reverse_copy(all(extra), it);
     for (int i = idx; i < sz(upd_st); i++) ds.undo();
     upd_st.pop_back();
     mp.erase(prev(end(mp)));

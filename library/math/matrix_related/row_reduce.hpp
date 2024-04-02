@@ -16,7 +16,7 @@ pair<int, ll> row_reduce(vector<vector<ll>>& mat, int cols) {
   auto det = 1LL;
   assert(cols <= m);
   for (int col = 0; col < cols && rank < n; col++) {
-    auto it = find_if(begin(mat) + rank, end(mat), [&](auto& v) { return v[col]; });
+    auto it = find_if(rank + all(mat), [&](auto& v) { return v[col]; });
     if (it == end(mat)) {
       det = 0;
       continue;

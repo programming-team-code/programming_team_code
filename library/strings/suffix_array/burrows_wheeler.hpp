@@ -28,7 +28,7 @@ struct bwt {
       if (sa[i] == 0) continue;
       occ[i + 1][s[sa[i] - 1] - mn]++;
     }
-    partial_sum(begin(cnt), end(cnt), begin(cnt));
+    partial_sum(all(cnt), begin(cnt));
   }
   /**
    * @param t query string

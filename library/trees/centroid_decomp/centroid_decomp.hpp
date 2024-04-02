@@ -30,7 +30,7 @@ template <class F> struct centroid {
   void dfs(int u) {
     calc_sz(u, -1);
     for (int p = -1, sz_root = sub_sz[u];;) {
-      auto big_ch = find_if(begin(adj[u]), end(adj[u]), [&](int v) {
+      auto big_ch = find_if(all(adj[u]), [&](int v) {
         return v != p && 2 * sub_sz[v] > sz_root;
       });
       if (big_ch == end(adj[u])) break;
@@ -38,7 +38,7 @@ template <class F> struct centroid {
     }
     f(adj, u);
     for (int v : adj[u]) {
-      iter_swap(find(begin(adj[v]), end(adj[v]), u), rbegin(adj[v]));
+      iter_swap(find(all(adj[v]), u), rbegin(adj[v]));
       adj[v].pop_back();
       dfs(v);
     }

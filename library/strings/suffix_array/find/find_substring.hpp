@@ -15,7 +15,7 @@ inline pii find_substr(int s_le, int s_ri) {
   auto cmp = [&](int i, bool flip) -> bool {
     return flip ^ (len_lcp(i, s_le) < s_ri - s_le);
   };
-  int le = lower_bound(begin(sa), begin(sa) + sa_inv[s_le], 0, cmp) - begin(sa);
-  int ri = lower_bound(begin(sa) + sa_inv[s_le] + 1, end(sa), 1, cmp) - begin(sa);
+  int le = lower_bound(all(sa) + sa_inv[s_le], 0, cmp) - begin(sa);
+  int ri = lower_bound(sa_inv[s_le] + 1 + all(sa), 1, cmp) - begin(sa);
   return {le, ri};
 }

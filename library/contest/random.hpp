@@ -11,7 +11,7 @@ mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
        unsigned x = rng();
        //
        vi a(n);
-       shuffle(begin(a), end(a), rng);
+       shuffle(all(a), rng);
        //
        int x = get_rand(0, 1);
        ll x = get_rand<ll>(1, 1e18);

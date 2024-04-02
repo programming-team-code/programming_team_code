@@ -21,7 +21,7 @@ template <class T, class F> struct RMQ {
   RMQ(const vector<T>& a, F a_op) : dp(1, a), op(a_op) {
     for (int i = 0; (2 << i) <= sz(a); i++) {
       dp.emplace_back(sz(a) - (2 << i) + 1);
-      transform(begin(dp[i]), end(dp[i]) - (1 << i), begin(dp[i]) + (1 << i), begin(dp[i + 1]), op);
+      transform(all(dp[i]) - (1 << i), begin(dp[i]) + (1 << i), begin(dp[i + 1]), op);
     }
   }
   /**

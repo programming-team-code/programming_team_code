@@ -21,7 +21,7 @@ template <class T> struct bit_rurq {
    * @space O(n) for both bits
    */
   bit_rurq(vector<T> a) : n(sz(a)) {
-    adjacent_difference(begin(a), end(a), begin(a));
+    adjacent_difference(all(a), begin(a));
     bit1 = {a};
     for (int i = 0; i < n; i++) a[i] *= i;
     bit2 = {a};

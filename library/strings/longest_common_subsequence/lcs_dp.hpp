@@ -21,7 +21,7 @@ template <class T> struct lcs_dp {
   T t;
   vi dp;
   lcs_dp(const T& a_t) : t(a_t), dp(sz(t)) {
-    iota(begin(dp), end(dp), 0);
+    iota(all(dp), 0);
   }
   void push_onto_s(int c) {
     for (int i = 0, v = -1; i < sz(t); i++)

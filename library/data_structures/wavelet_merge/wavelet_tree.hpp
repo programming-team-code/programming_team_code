@@ -24,9 +24,9 @@ struct wavelet_tree {
          vi a;
          ...
          vi sorted(a);
-         sort(begin(sorted), end(sorted));
-         sorted.erase(unique(begin(sorted), end(sorted)), end(sorted));
-         for (int& val : a) val = lower_bound(begin(sorted), end(sorted), val) - begin(sorted);
+         sort(all(sorted));
+         sorted.erase(unique(all(sorted)), end(sorted));
+         for (int& val : a) val = lower_bound(all(sorted), val) - begin(sorted);
          wavelet_tree wt(a, 0, sz(sorted));
    * @endcode
    * @param a,a_minv,a_maxv must satisfy minv <= a[i] < maxv

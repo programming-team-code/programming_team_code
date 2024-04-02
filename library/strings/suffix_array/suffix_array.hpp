@@ -50,15 +50,15 @@ template <class T> struct suffix_array {
    * @space vectors `sa`, `sa_inv`, `lcp` are O(n); `rmq` is O(nlogn), vector
    * `freq` is O(max_val) and is allocated temporarily
    */
-  suffix_array(const T& a_s, int max_val) : s(a_s), n(sz(s)), sa(n), sa_inv(begin(s), end(s)), lcp(max(0, n - 1)) {
+  suffix_array(const T& a_s, int max_val) : s(a_s), n(sz(s)), sa(n), sa_inv(all(s)), lcp(max(0, n - 1)) {
     vi tmp(n);
-    iota(begin(sa), end(sa), 0);
+    iota(all(sa), 0);
     for (int ln = 0; ln < n; ln = max(1, 2 * ln)) {
-      iota(begin(tmp), begin(tmp) + ln, n - ln);
-      copy_if(begin(sa), end(sa), begin(tmp) + ln, [&](int& val) { return (val -= ln) >= 0; });
+      iota(all(tmp) + ln, n - ln);
+      copy_if(all(sa), begin(tmp) + ln, [&](int& val) { return (val -= ln) >= 0; });
       vi freq(max_val);
       for (int val : sa_inv) freq[val]++;
-      partial_sum(begin(freq), end(freq), begin(freq));
+      partial_sum(all(freq), begin(freq));
       for_each(rbegin(tmp), rend(tmp), [&](int t) { sa[--freq[sa_inv[t]]] = t; });
       swap(sa_inv, tmp);
       max_val = 1, sa_inv[sa[0]] = 0;
