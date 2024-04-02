@@ -17,7 +17,7 @@ sed --in-place '/^\/\*\* @file \*\/$/d' ../library/**/*.hpp
 sed --in-place '/^\/\/ NOLINTNEXTLINE(readability-identifier-naming)$/d' ../library/**/*.hpp
 # in order to expand the kactl macros, you need to copy-paste the macros into
 # the beginning of each .hpp file
-sed --in-place "1r library_checker_aizu_tests/kactl_macros.hpp" ../library/**/*.hpp
+sed --in-place "0r library_checker_aizu_tests/kactl_macros.hpp" ../library/**/*.hpp
 
 # to copy files like template.cpp, *.sh, *.png, *.md to root directory; so they exist in main branch
 # also to create all directories (cpp command below fails if destination path isn't created)
