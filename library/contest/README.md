@@ -1,5 +1,8 @@
 ## Tips and Tricks
 
+If you changed something for debugging, add a `cout << "don't submit" << endl;`
+or `assert(0);` at the end of the code
+
 for policy base DS:
 ```
 #include <bits/extc++.h>
