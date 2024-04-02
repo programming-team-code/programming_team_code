@@ -38,8 +38,10 @@ struct hungarian {
           if (cur < minv[j]) minv[j] = cur, way[j] = j0;
           if (minv[j] < delta) delta = minv[j], j1 = j;
         }
-        rep(j, 0, m + 1) if (used[j]) u[p[j]] += delta, v[j] -= delta;
-        else minv[j] -= delta;
+        rep(j, 0, m + 1) {
+          if (used[j]) u[p[j]] += delta, v[j] -= delta;
+          else minv[j] -= delta;
+        }
         j0 = j1;
       } while (p[j0] != 0);
       do {
