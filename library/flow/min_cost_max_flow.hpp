@@ -45,7 +45,7 @@ struct mcmf {
         int u = q[qh++];
         id[u] = 2;
         if (qh == n) qh = 0;
-        for (int i = 0; i < sz(adj[u]); i++) {
+        rep(i,0,sz(adj[u])) {
           edge& r = e[adj[u][i]];
           if (r.flow < r.cap && d[u] + r.cost < d[r.v]) {
             d[r.v] = d[u] + r.cost;
