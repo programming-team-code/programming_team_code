@@ -27,7 +27,7 @@ vector<vi> block_vertex_tree(const vector<vector<pii>>& adj, const cuts& cc) {
   int n = sz(adj);
   vector<vi> bvt(n + cc.num_bccs);
   vector<bool> vis(cc.num_bccs);
-  for (int i = 0; i < n; i++) {
+  rep (i, 0, n) {
     for (auto [_, e_id] : adj[i]) {
       int bccid = cc.bcc_id[e_id];
       if (!vis[bccid]) {

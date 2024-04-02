@@ -23,7 +23,7 @@ struct LCA {
           d[v] = d[p[v] = u] + 1, self(self, v), sub_sz[u] += sub_sz[v];
     };
     order.reserve(n);
-    for (int i = 0; i < n; i++)
+    rep (i, 0, n)
       if (p[i] == -1) dfs(dfs, i);
     rmq = {order, [&](int u, int v) { return d[u] < d[v] ? u : v; }};
   }

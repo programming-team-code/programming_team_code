@@ -14,8 +14,8 @@ template <unsigned long int N, unsigned long int M, unsigned long int K>
 array<bitset<K>, N> operator*(const array<bitset<M>, N>& a,
                               const array<bitset<K>, M>& b) {
   array<bitset<K>, N> c;
-  for (unsigned long int i = 0; i < N; i++)
-    for (unsigned long int j = 0; j < M; j++)
+  rep (i, 0, N)
+    rep (j, 0, M)
       if (a[i][j]) c[i] ^= b[j];
   return c;
 }

@@ -35,10 +35,10 @@ vector<ll> count_paths_per_length(const vector<vi>& adj) {
     vector total_depth(1, 1.0);
     for (auto& cnt_depth : child_depths) {
       auto prod = conv(total_depth, cnt_depth);
-      for (int i = 1; i < sz(prod); i++)
+      rep (i, 1, sz(prod))
         num_paths[i] += llround(prod[i]);
       total_depth.resize(sz(cnt_depth));
-      for (int i = 1; i < sz(cnt_depth); i++)
+      rep (i, 1, sz(cnt_depth))
         total_depth[i] += cnt_depth[i];
     }
   });

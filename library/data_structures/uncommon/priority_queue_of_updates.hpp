@@ -5,7 +5,7 @@
  * @code{.cpp}
        dsu_restorable dsu_r(n);
        pq_updates<dsu_restorable, int, int> pq(dsu_r);
-       for (int i = 0; i < n; i++) pq.ds.add(i, initial_values[i]);
+       rep (i, 0, n) pq.ds.add(i, initial_values[i]);
        //or
        pq.ds.subtree = initial_values;
        pq.push_update(u, v, curr_pri);
@@ -43,10 +43,10 @@ template <class DS, class... ARGS> struct pq_updates {
       return curr.second->first >= lowest_pri;
     });
     reverse_copy(all(extra), it);
-    for (int i = idx; i < sz(upd_st); i++) ds.undo();
+    rep (i, idx, sz(upd_st)) ds.undo();
     upd_st.pop_back();
     mp.erase(prev(end(mp)));
-    for (int i = idx; i < sz(upd_st); i++) {
+    rep (i, idx, sz(upd_st)) {
       apply(&DS::join, tuple_cat(make_tuple(&ds), upd_st[i].first));
       upd_st[i].second->second = i;
     }

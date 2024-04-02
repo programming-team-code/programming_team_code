@@ -29,15 +29,15 @@ struct ladder {
           if (d[dl[v]] > d[dl[u]]) dl[u] = dl[v];
         }
     };
-    for (int i = 0; i < n; i++)
+    rep (i, 0, n)
       if (p[i] == -1) p[i] = i, dfs(dfs, i);
     b_tbl = treeJump(p);
-    for (int i = 0; i < n; i++)
+    rep (i, 0, n)
       if (p[i] == i || dl[p[i]] != dl[i]) {
         int leaf = dl[i];
         auto& lad = l_tbl[leaf];
         lad.resize(min(2 * (d[leaf] - d[i]), d[leaf] + 1), leaf);
-        for (int j = 1; j < sz(lad); j++)
+        rep (j, 1, sz(lad))
           lad[j] = p[lad[j - 1]];
       }
   }

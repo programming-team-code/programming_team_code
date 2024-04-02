@@ -11,17 +11,17 @@ const int mod = 998'244'353;
 vi and_convolution(vi a, vi b) {
   int n = __lg(sz(a));
   assert(sz(a) == sz(b) && (1 << n) == sz(a));
-  for (int i = 0; i < n; i++)
-    for (int j = 0; j < (1 << n); j++)
+  rep (i, 0, n)
+    rep (j, 0, (1 << n))
       if (!((j >> i) & 1)) {
         a[j] = (a[j] + a[j ^ (1 << i)]) % mod;
         b[j] = (b[j] + b[j ^ (1 << i)]) % mod;
       }
   vi c(1 << n);
-  for (int i = 0; i < (1 << n); i++)
+  rep (i, 0, (1 << n))
     c[i] = 1LL * a[i] * b[i] % mod;
-  for (int i = 0; i < n; i++)
-    for (int j = 0; j < (1 << n); j++)
+  rep (i, 0, n)
+    rep (j, 0, (1 << n))
       if (!((j >> i) & 1))
         c[j] = (c[j] - c[j ^ (1 << i)] + mod) % mod;
   return c;

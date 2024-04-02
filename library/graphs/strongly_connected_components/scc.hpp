@@ -30,14 +30,14 @@ struct sccs {
         if (scc_id[v] < 0)
           low = min(low, tin[v] ? tin[v] : self(self, v));
       if (tin[u] == low) {
-        for (int i = siz; i < sz(st); i++)
+        rep (i, siz, sz(st))
           scc_id[st[i]] = num_sccs;
         st.resize(siz);
         num_sccs++;
       }
       return low;
     };
-    for (int i = 0; i < n; i++)
+    rep (i, 0, n)
       if (!tin[i]) dfs(dfs, i);
   }
 };

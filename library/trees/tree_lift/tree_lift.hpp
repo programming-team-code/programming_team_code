@@ -19,7 +19,7 @@ struct tree_lift {
         if (v != p[u])
           d[v] = d[p[v] = u] + 1, j[v] = jump, self(self, v);
     };
-    for (int i = 0; i < n; i++)
+    rep (i, 0, n)
       if (j[i] == -1) j[i] = i, dfs(dfs, i);
   }
   /**

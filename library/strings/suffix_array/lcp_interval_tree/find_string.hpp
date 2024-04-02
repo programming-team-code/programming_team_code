@@ -14,7 +14,7 @@
  */
 pii find_str(const string& t) {
   int u = root;
-  for (int i = 0; i < sz(t); i++) {
+  rep (i, 0, sz(t)) {
     if (i == len_lcp_range(u)) {
       u = get_child(u, t[i]);
       if (u == -1) return {0, 0};

@@ -39,14 +39,14 @@ template <int X = 3> struct linear_kth_par {
         }
       st.pop_back();
     };
-    for (int i = 0; i < n; i++)
+    rep (i, 0, n)
       if (p[i] == -1) p[i] = i, dfs(dfs, i);
-    for (int i = 0; i < n; i++)
+    rep (i, 0, n)
       if (p[i] == i || dl[p[i]] != dl[i]) {
         int leaf = dl[i];
         auto& lad = l_tbl[leaf];
         lad.resize(min((d[leaf] - d[i]) * (2 * X + 1) / (X - 1), d[leaf] + 1), leaf);
-        for (int k = 1; k < sz(lad); k++)
+        rep (k, 1, sz(lad))
           lad[k] = p[lad[k - 1]];
       }
   }

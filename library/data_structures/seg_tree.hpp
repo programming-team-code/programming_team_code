@@ -24,7 +24,7 @@ struct seg_tree {
   seg_tree(const vi& a) : n(sz(a)), tree(2 * n), lazy(n) {
     int pw2 = 1;
     while (pw2 < n) pw2 *= 2;
-    for (int i = 0; i < n; i++) tree[(i + pw2) % n + n] = a[i];
+    rep (i, 0, n) tree[(i + pw2) % n + n] = a[i];
     for (int i = n - 1; i >= 1; i--) tree[i] = op(tree[2 * i], tree[2 * i + 1]);
   }
   inline void apply(ll change, int tl, int tr, int u) {

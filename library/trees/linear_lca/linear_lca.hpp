@@ -29,7 +29,7 @@ struct linear_lca {
         }
       head[label[u]] = u;
     };
-    for (int i = 0; i < n; i++)
+    rep (i, 0, n)
       if (in[i] == 0) p[i] = i, dfs(dfs, i);
     for (int u : order) asc[u] = lsb(label[u]) | asc[p[u]];
   }

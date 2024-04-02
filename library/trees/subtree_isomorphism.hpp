@@ -27,7 +27,7 @@ struct subtree_iso {
       sort(all(ch_ids));
       return iso_id[u] = hashes.try_emplace(ch_ids, sz(hashes)).first->second;
     };
-    for (int i = 0; i < sz(adj); i++)
+    rep (i, 0, sz(adj))
       if (iso_id[i] == -1) dfs(dfs, i, i);
     num_distinct_subtrees = sz(hashes);
   }

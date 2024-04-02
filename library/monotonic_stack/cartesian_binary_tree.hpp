@@ -26,7 +26,7 @@
  */
 vi cart_binary_tree(const vi& le) {
   vi p(le);
-  for (int i = 0; i < sz(p); i++)
+  rep (i, 0, sz(p))
     for (int j = i - 1; j != le[i]; j = le[j])
       if (le[j] == le[i]) p[j] = i;
   return p;

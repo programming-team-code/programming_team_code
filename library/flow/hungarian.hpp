@@ -24,7 +24,7 @@ struct hungarian {
     assert(n <= m);
     vi p(m + 1), way(m + 1);
     vector u(n + 1, 0LL), v(m + 1, 0LL);
-    for (int i = 1; i <= n; i++) {
+    rep (i, 1, n + 1) {
       p[0] = i;
       int j0 = 0;
       vector minv(m + 1, LLONG_MAX);
@@ -33,13 +33,13 @@ struct hungarian {
         used[j0] = 1;
         int i0 = p[j0], j1 = 0;
         auto delta = LLONG_MAX;
-        for (int j = 1; j <= m; j++)
+        rep (j, 1, m + 1)
           if (!used[j]) {
             auto cur = cost[i0][j] - u[i0] - v[j];
             if (cur < minv[j]) minv[j] = cur, way[j] = j0;
             if (minv[j] < delta) delta = minv[j], j1 = j;
           }
-        for (int j = 0; j <= m; j++)
+        rep (j, 0, m + 1)
           if (used[j]) u[p[j]] += delta, v[j] -= delta;
           else minv[j] -= delta;
         j0 = j1;
@@ -50,7 +50,7 @@ struct hungarian {
         j0 = j1;
       } while (j0);
     }
-    for (int j = 1; j <= m; j++) l_to_r[p[j]] = j;
+    rep (j, 1, m + 1) l_to_r[p[j]] = j;
     min_weight = -v[0];
   }
 };

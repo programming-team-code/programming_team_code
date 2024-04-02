@@ -4,7 +4,7 @@
  * @see https://cp-algorithms.com/graph/bridge-searching.html
  * @code{.cpp}
        vector<vector<pii>> adj(n);
-       for (int i = 0; i < m; i++) {
+       rep (i, 0, m) {
            int u, v;
            cin >> u >> v;
            u--, v--;
@@ -37,14 +37,14 @@ struct bridges {
       }
       if (tin[u] == low) {
         if (p_id != -1) is_bridge[p_id] = 1;
-        for (int i = siz; i < sz(st); i++)
+        rep (i, siz, sz(st))
           two_edge_ccid[st[i]] = num_2_edge_ccs;
         st.resize(siz);
         num_2_edge_ccs++;
       }
       return low;
     };
-    for (int i = 0; i < n; i++)
+    rep (i, 0, n)
       if (!tin[i]) dfs(dfs, i, -1);
   }
 };

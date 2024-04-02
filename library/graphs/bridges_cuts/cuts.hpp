@@ -4,7 +4,7 @@
  * @see https://cp-algorithms.com/graph/cutpoints.html
  * @code{.cpp}
        vector<vector<pii>> adj(n);
-       for (int i = 0; i < m; i++) {
+       rep (i, 0, m) {
            int u, v;
            cin >> u >> v;
            u--, v--;
@@ -38,7 +38,7 @@ struct cuts {
           int low_ch = self(self, v, e_id);
           if (low_ch >= tin[u]) {
             is_cut[u] = 1;
-            for (int i = siz; i < sz(st); i++)
+            rep (i, siz, sz(st))
               bcc_id[st[i]] = num_bccs;
             st.resize(siz);
             num_bccs++;
@@ -53,7 +53,7 @@ struct cuts {
       if (p_id == -1) is_cut[u] = (deg > 1);
       return low;
     };
-    for (int i = 0; i < n; i++)
+    rep (i, 0, n)
       if (!tin[i]) dfs(dfs, i, -1);
   }
 };

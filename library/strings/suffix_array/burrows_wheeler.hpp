@@ -22,7 +22,7 @@ struct bwt {
    *     to O(n * cnt_let / 64) https://codeforces.com/contest/963/submission/217802614
    */
   bwt(const string& s, const vi& sa) : n(sz(s)), last(empty(s) ? -1 : s.back() - mn), occ(n + 1) {
-    for (int i = 0; i < n; i++) {
+    rep (i, 0, n) {
       cnt[s[i] + 1 - mn]++;
       occ[i + 1] = occ[i];
       if (sa[i] == 0) continue;

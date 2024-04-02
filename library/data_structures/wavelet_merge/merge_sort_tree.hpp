@@ -34,7 +34,7 @@ struct merge_sort_tree {
     int tm = split(tl, tr);
     build(cpy, tl, tm, 2 * u);
     build(cpy, tm, tr, 2 * u + 1);
-    for (int i = tl; i < tr; i++) cpy[i].second = i < tm;
+    rep (i, tl, tr) cpy[i].second = i < tm;
     inplace_merge(begin(cpy) + tl, begin(cpy) + tm, begin(cpy) + tr);
     vector<bool> bools(tr - tl);
     transform(begin(cpy) + tl, begin(cpy) + tr, begin(bools), [](auto& val) { return val.second; });

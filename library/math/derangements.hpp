@@ -11,7 +11,7 @@
 vector<ll> derangements(int n, int mod) {
   vector<ll> dp(n);
   dp[0] = 1;
-  for (int i = 2; i < n; i++)
+  rep (i, 2, n)
     dp[i] = (i - 1) * (dp[i - 1] + dp[i - 2]) % mod;
   return dp;
 }

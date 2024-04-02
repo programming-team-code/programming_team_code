@@ -63,9 +63,9 @@ struct lcp_tree {
     auto node = [&](int i) -> int {
       return p[i] < i || sf_a.lcp[i] != sf_a.lcp[p[i]] ? i : p[i];
     };
-    for (int i = 0; i < sz(p); i++)
+    rep (i, 0, sz(p))
       if (node(i) == i && i != root) adj[p[i]][s[sf_a.sa[i] + sf_a.lcp[p[i]]] - mn] = i;
-    for (int i = 0; i < sf_a.n; i++) {
+    rep (i, 0, sf_a.n) {
       int prev_lcp = (i ? sf_a.lcp[i - 1] : 0);
       int next_lcp = (i < sz(sf_a.lcp) ? sf_a.lcp[i] : -1);
       int u = (prev_lcp > next_lcp) ? i - 1 : node(i);

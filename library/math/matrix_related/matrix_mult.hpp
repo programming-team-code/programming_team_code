@@ -13,9 +13,9 @@ template <class T> vector<vector<T>> operator*(const vector<vector<T>>& a, const
   assert(sz(a[0]) == sz(b));
   int n = sz(a), m = sz(b[0]), inner = sz(b);
   vector<vector<T>> c(n, vector<T>(m));
-  for (int i = 0; i < n; i++)
-    for (int k = 0; k < inner; k++)
-      for (int j = 0; j < m; j++)
+  rep (i, 0, n)
+    rep (k, 0, inner)
+      rep (j, 0, m)
         c[i][j] += a[i][k] * b[k][j];
   return c;
 }

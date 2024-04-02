@@ -24,7 +24,8 @@ template <class T> struct lcs_dp {
     iota(all(dp), 0);
   }
   void push_onto_s(int c) {
-    for (int i = 0, v = -1; i < sz(t); i++)
+    int v = -1;
+    rep (i, 0, sz(t))
       if (c == t[i] || dp[i] < v) swap(dp[i], v);
   }
 };

@@ -23,7 +23,7 @@ vector<pii> extra_edges(const vector<vi>& adj, int num_sccs, const vi& scc_id) {
   int n = sz(adj);
   vector<vi> scc_adj(num_sccs);
   vector<bool> zero_in(num_sccs, 1);
-  for (int i = 0; i < n; i++)
+  rep (i, 0, n)
     for (int v : adj[i]) {
       if (scc_id[i] == scc_id[v]) continue;
       scc_adj[scc_id[i]].push_back(scc_id[v]);
@@ -42,15 +42,15 @@ vector<pii> extra_edges(const vector<vi>& adj, int num_sccs, const vi& scc_id) {
   };
   vector<pii> edges;
   vi in_unused;
-  for (int i = 0; i < num_sccs; i++)
+  rep (i, 0, num_sccs)
     if (zero_in[i]) {
       vis[i] = 1;
       int zero_out = dfs(dfs, i);
       if (zero_out != -1) edges.emplace_back(zero_out, i);
       else in_unused.push_back(i);
     }
-  for (int i = 1; i < sz(edges); i++) swap(edges[i].first, edges[i - 1].second);
-  for (int i = 0; i < num_sccs; i++)
+  rep (i, 1, sz(edges)) swap(edges[i].first, edges[i - 1].second);
+  rep (i, 0, num_sccs)
     if (empty(scc_adj[i]) && !vis[i]) {
       if (!empty(in_unused)) {
         edges.emplace_back(i, in_unused.back());
@@ -59,7 +59,7 @@ vector<pii> extra_edges(const vector<vi>& adj, int num_sccs, const vi& scc_id) {
     }
   for (int u : in_unused) edges.emplace_back(0, u);
   vi to_node(num_sccs);
-  for (int i = 0; i < n; i++) to_node[scc_id[i]] = i;
+  rep (i, 0, n) to_node[scc_id[i]] = i;
   for (auto& [u, v] : edges) u = to_node[u], v = to_node[v];
   return edges;
 }

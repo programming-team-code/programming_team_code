@@ -28,10 +28,10 @@ pair<int, ll> row_reduce(vector<vector<ll>>& mat, int cols) {
     det = det * mat[rank][col] % mod;
     auto a_inv = bin_exp(mat[rank][col], mod - 2);
     for (auto& val : mat[rank]) val = val * a_inv % mod;
-    for (int i = 0; i < n; i++)
+    rep (i, 0, n)
       if (i != rank && mat[i][col] != 0) {
         auto val = mat[i][col];
-        for (int j = 0; j < m; j++) {
+        rep (j, 0, m) {
           mat[i][j] -= mat[rank][j] * val % mod;
           if (mat[i][j] < 0) mat[i][j] += mod;
         }
