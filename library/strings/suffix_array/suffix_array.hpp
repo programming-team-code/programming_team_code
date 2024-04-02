@@ -63,14 +63,14 @@ template <class T> struct suffix_array {
       swap(sa_inv, tmp);
       max_val = 1, sa_inv[sa[0]] = 0;
       auto prev_inv = [&](int i) { return pair(tmp[i], i + ln < n ? tmp[i + ln] : -1); };
-      rep (i, 1, n) {
+      rep(i, 1, n) {
         max_val += prev_inv(sa[i - 1]) != prev_inv(sa[i]);
         sa_inv[sa[i]] = max_val - 1;
       }
       if (max_val == n) break;
     }
     int sz = 0;
-    rep (i, 0, n) {
+    rep(i, 0, n) {
       if (sz > 0) sz--;
       if (sa_inv[i] == 0) continue;
       for (int j = sa[sa_inv[i] - 1]; max(i, j) + sz < n && s[i + sz] == s[j + sz];) sz++;

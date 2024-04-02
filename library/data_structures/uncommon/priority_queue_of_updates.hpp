@@ -43,10 +43,10 @@ template <class DS, class... ARGS> struct pq_updates {
       return curr.second->first >= lowest_pri;
     });
     reverse_copy(all(extra), it);
-    rep (i, idx, sz(upd_st)) ds.undo();
+    rep(i, idx, sz(upd_st)) ds.undo();
     upd_st.pop_back();
     mp.erase(prev(end(mp)));
-    rep (i, idx, sz(upd_st)) {
+    rep(i, idx, sz(upd_st)) {
       apply(&DS::join, tuple_cat(make_tuple(&ds), upd_st[i].first));
       upd_st[i].second->second = i;
     }

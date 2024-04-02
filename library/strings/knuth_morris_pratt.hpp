@@ -34,7 +34,7 @@ template <class T> struct KMP {
   vi find_str(const T& haystack) {
     vi matches;
     int j = 0;
-    rep (i, 0, sz(haystack)) {
+    rep(i, 0, sz(haystack)) {
       while (j > 0 && needle[j] != haystack[i]) j = pi[j - 1];
       j += (needle[j] == haystack[i]);
       if (j == sz(needle)) {

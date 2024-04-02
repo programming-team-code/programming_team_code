@@ -10,5 +10,5 @@
  * @time O(size of u's subtree)
  * @space O(1)
  */
-rep (t, lc.in[u], lc.in[u] + lc.sub_sz[u]) {
+rep(t, lc.in[u], lc.in[u] + lc.sub_sz[u]) {
   int v = lc.order[t];

@@ -24,8 +24,9 @@ struct solve_linear_mod {
   solve_linear_mod(vector<vector<ll>>& mat, const vector<ll>& b) {
     assert(sz(mat) == sz(b));
     int n = sz(mat), m = sz(mat[0]);
-    rep (i, 0, n)
-      mat[i].push_back(b[i]);
+    rep(i, 0, n)
+        mat[i]
+            .push_back(b[i]);
     tie(rank, det) = row_reduce(mat, m);
     if (any_of(rank + all(mat), [](auto& v) { return v.back(); })) {
       return;  // no solution exists

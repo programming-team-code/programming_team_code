@@ -13,7 +13,7 @@ struct kth_smallest {
    * @space O(n log(maxv - minv)) nodes are pushed back onto PST::tree
    */
   kth_smallest(const vi& a, int minv, int maxv) : pst(minv, maxv) {
-    rep (i, 0, sz(a)) pst.update(a[i], 1, i);
+    rep(i, 0, sz(a)) pst.update(a[i], 1, i);
   }
   /**
    * @param le,ri defines range [le, ri)

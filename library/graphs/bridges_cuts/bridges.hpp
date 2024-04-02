@@ -37,14 +37,13 @@ struct bridges {
       }
       if (tin[u] == low) {
         if (p_id != -1) is_bridge[p_id] = 1;
-        rep (i, siz, sz(st))
-          two_edge_ccid[st[i]] = num_2_edge_ccs;
+        rep(i, siz, sz(st))
+            two_edge_ccid[st[i]] = num_2_edge_ccs;
         st.resize(siz);
         num_2_edge_ccs++;
       }
       return low;
     };
-    rep (i, 0, n)
-      if (!tin[i]) dfs(dfs, i, -1);
+    rep(i, 0, n) if (!tin[i]) dfs(dfs, i, -1);
   }
 };

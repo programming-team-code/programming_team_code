@@ -39,16 +39,14 @@ template <int X = 3> struct linear_kth_par {
         }
       st.pop_back();
     };
-    rep (i, 0, n)
-      if (p[i] == -1) p[i] = i, dfs(dfs, i);
-    rep (i, 0, n)
-      if (p[i] == i || dl[p[i]] != dl[i]) {
-        int leaf = dl[i];
-        auto& lad = l_tbl[leaf];
-        lad.resize(min((d[leaf] - d[i]) * (2 * X + 1) / (X - 1), d[leaf] + 1), leaf);
-        rep (k, 1, sz(lad))
+    rep(i, 0, n) if (p[i] == -1) p[i] = i, dfs(dfs, i);
+    rep(i, 0, n) if (p[i] == i || dl[p[i]] != dl[i]) {
+      int leaf = dl[i];
+      auto& lad = l_tbl[leaf];
+      lad.resize(min((d[leaf] - d[i]) * (2 * X + 1) / (X - 1), d[leaf] + 1), leaf);
+      rep(k, 1, sz(lad))
           lad[k] = p[lad[k - 1]];
-      }
+    }
   }
   /**
    * @param u query node

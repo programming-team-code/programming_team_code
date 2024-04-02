@@ -27,8 +27,8 @@ template <class T> struct contour_range_update {
         for (int v : cd_adj[u])
           if (v != p) self(self, v, u, 1 + d, side);
       };
-      rep (i, 0, sz(cd_adj[cent]))
-        dfs(dfs, cd_adj[cent][i], cent, 1, i < split);
+      rep(i, 0, sz(cd_adj[cent]))
+          dfs(dfs, cd_adj[cent][i], cent, 1, i < split);
       bits.push_back({bit_rupq<T>(mx_d[0] + 1), bit_rupq<T>(mx_d[1] + 1)});
     });
   }

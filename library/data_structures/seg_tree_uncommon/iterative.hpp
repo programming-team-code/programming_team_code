@@ -59,8 +59,8 @@ struct iter_seg_tree {
       }
     }
     int lca_l_r = __lg((le - 1) ^ ri);
-    rep (lg, __builtin_ctz(ri) + 1, lca_l_r + 1) pull(ri >> lg);
-    rep (lg, __builtin_ctz(le) + 1, __lg(le) + 1) pull(le >> lg);
+    rep(lg, __builtin_ctz(ri) + 1, lca_l_r + 1) pull(ri >> lg);
+    rep(lg, __builtin_ctz(le) + 1, __lg(le) + 1) pull(le >> lg);
   }
   /**
    * @param le,ri defines range [le, ri)

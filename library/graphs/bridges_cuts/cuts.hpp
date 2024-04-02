@@ -38,8 +38,8 @@ struct cuts {
           int low_ch = self(self, v, e_id);
           if (low_ch >= tin[u]) {
             is_cut[u] = 1;
-            rep (i, siz, sz(st))
-              bcc_id[st[i]] = num_bccs;
+            rep(i, siz, sz(st))
+                bcc_id[st[i]] = num_bccs;
             st.resize(siz);
             num_bccs++;
           }
@@ -53,7 +53,6 @@ struct cuts {
       if (p_id == -1) is_cut[u] = (deg > 1);
       return low;
     };
-    rep (i, 0, n)
-      if (!tin[i]) dfs(dfs, i, -1);
+    rep(i, 0, n) if (!tin[i]) dfs(dfs, i, -1);
   }
 };

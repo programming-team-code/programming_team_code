@@ -13,7 +13,7 @@ vi lcm_convolution(const vi& a, const vi& b) {
   int n = sz(a);
   vector sum_a(n, 0LL), sum_b(n, 0LL);
   vi c(n);
-  rep (i, 1, n) {
+  rep(i, 1, n) {
     for (int j = i; j < n; j += i)
       sum_a[j] += a[i], sum_b[j] += b[i];
     sum_a[i] %= mod, sum_b[i] %= mod;

@@ -39,20 +39,20 @@ struct perm_tree {
     vi mn_i(n), mx_i(n);
     {
       vi a_inv(n, -1);
-      rep (i, 0, n) {
+      rep(i, 0, n) {
         assert(0 <= a[i] && a[i] < n && a_inv[a[i]] == -1);
         a_inv[a[i]] = i;
       }
       linear_rmq rmq_min(a_inv, less());
       linear_rmq rmq_max(a_inv, greater());
-      rep (i, 1, n) {
+      rep(i, 1, n) {
         mn_i[i] = a_inv[rmq_min.query_idx(a[i - 1], a[i])];
         mx_i[i] = a_inv[rmq_max.query_idx(a[i - 1], a[i])];
       }
     }
-    rep (i, 0, n) allocate(0, i, a[i], 1, {});
+    rep(i, 0, n) allocate(0, i, a[i], 1, {});
     vector<array<int, 4>> st;
-    rep (i, 0, n) {
+    rep(i, 0, n) {
       int u = i;
       while (!empty(st)) {
         int v = st.back()[0];
@@ -78,8 +78,8 @@ struct perm_tree {
         }
         int min_val = mn_val[u];
         vi ch(1 + sz(st) - idx, u);
-        rep (j, idx, sz(st))
-          min_val = min(min_val, mn_val[ch[j - idx] = st[j][0]]);
+        rep(j, idx, sz(st))
+            min_val = min(min_val, mn_val[ch[j - idx] = st[j][0]]);
         u = allocate(0, le, min_val, i - le + 1, ch);
         st.resize(idx);
       }

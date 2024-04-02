@@ -18,8 +18,7 @@ template <class F> struct centroid {
    */
   centroid(const vector<vi>& a_adj, F a_f)
       : adj(a_adj), f(a_f), sub_sz(sz(adj), -1) {
-    rep (i, 0, sz(adj))
-      if (sub_sz[i] == -1) dfs(i);
+    rep(i, 0, sz(adj)) if (sub_sz[i] == -1) dfs(i);
   }
   void calc_sz(int u, int p) {
     sub_sz[u] = 1;

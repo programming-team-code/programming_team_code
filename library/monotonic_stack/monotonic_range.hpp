@@ -14,7 +14,6 @@
  */
 vi mono_range(const vi& le) {
   vi ri(sz(le), sz(le));
-  rep (i, 0, sz(le))
-    for (int j = i - 1; j != le[i]; j = le[j]) ri[j] = i;
+  rep(i, 0, sz(le)) for (int j = i - 1; j != le[i]; j = le[j]) ri[j] = i;
   return ri;
 }

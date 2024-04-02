@@ -17,10 +17,10 @@ struct bool_presum {
    * @space O(n / 64)
    */
   bool_presum(const vector<bool>& a) : n(sz(a)), mask(n / 64 + 1), presum(sz(mask)) {
-    rep (i, 0, n)
-      mask[i >> 6] |= (uint64_t(a[i]) << (i & 63));
-    rep (i, 0, sz(mask) - 1)
-      presum[i + 1] = __builtin_popcountll(mask[i]) + presum[i];
+    rep(i, 0, n)
+        mask[i >> 6] |= (uint64_t(a[i]) << (i & 63));
+    rep(i, 0, sz(mask) - 1)
+        presum[i + 1] = __builtin_popcountll(mask[i]) + presum[i];
   }
   /**
    * @param i defines range [0, i)

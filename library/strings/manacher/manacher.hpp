@@ -21,7 +21,7 @@
 template <class T> vi manacher(const T& s) {
   int n = sz(s), p = 0;
   vi man(max(0, 2 * n - 1));
-  rep (i, 0, 2 * n - 1) {
+  rep(i, 0, 2 * n - 1) {
     int ri = i <= 2 * (p - man[p]) ? p - max(man[2 * p - i], man[p]) : i / 2;
     man[i] = i - ri;
     while (man[i] > 0 && ri + 1 < n && s[man[i] - 1] == s[ri + 1])

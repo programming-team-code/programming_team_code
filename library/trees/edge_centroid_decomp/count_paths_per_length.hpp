@@ -20,11 +20,11 @@ vector<ll> count_paths_per_length(const vector<vi>& adj) {
       for (int v : cd_adj[u])
         if (v != p) self(self, v, u, 1 + d, side);
     };
-    rep (i, 0, sz(cd_adj[cent]))
-      dfs(dfs, cd_adj[cent][i], cent, 1, i < split);
+    rep(i, 0, sz(cd_adj[cent]))
+        dfs(dfs, cd_adj[cent][i], cent, 1, i < split);
     vector<double> prod = conv(cnt[0], cnt[1]);
-    rep (i, 0, sz(prod))
-      num_paths[i] += llround(prod[i]);
+    rep(i, 0, sz(prod))
+        num_paths[i] += llround(prod[i]);
   });
   return num_paths;
 }

@@ -21,8 +21,8 @@ array<vi, 2> compress_tree(vi subset) {
   auto cmp = [&](int u, int v) { return in[u] < in[v]; };
   sort(all(subset), cmp);
   int siz = sz(subset);
-  rep (i, 1, siz)
-    subset.push_back(lca(subset[i - 1], subset[i]));
+  rep(i, 1, siz)
+      subset.push_back(lca(subset[i - 1], subset[i]));
   sort(all(subset), cmp);
   subset.erase(unique(all(subset)), end(subset));
   return {mono_st(subset, [&](int u, int v) { return in_subtree(u, v); }), subset};

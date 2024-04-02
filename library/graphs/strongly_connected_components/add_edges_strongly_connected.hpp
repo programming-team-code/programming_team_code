@@ -23,12 +23,11 @@ vector<pii> extra_edges(const vector<vi>& adj, int num_sccs, const vi& scc_id) {
   int n = sz(adj);
   vector<vi> scc_adj(num_sccs);
   vector<bool> zero_in(num_sccs, 1);
-  rep (i, 0, n)
-    for (int v : adj[i]) {
-      if (scc_id[i] == scc_id[v]) continue;
-      scc_adj[scc_id[i]].push_back(scc_id[v]);
-      zero_in[scc_id[v]] = 0;
-    }
+  rep(i, 0, n) for (int v : adj[i]) {
+    if (scc_id[i] == scc_id[v]) continue;
+    scc_adj[scc_id[i]].push_back(scc_id[v]);
+    zero_in[scc_id[v]] = 0;
+  }
   vector<bool> vis(num_sccs);
   auto dfs = [&](auto&& self, int u) {
     if (empty(scc_adj[u])) return u;
@@ -42,24 +41,22 @@ vector<pii> extra_edges(const vector<vi>& adj, int num_sccs, const vi& scc_id) {
   };
   vector<pii> edges;
   vi in_unused;
-  rep (i, 0, num_sccs)
-    if (zero_in[i]) {
-      vis[i] = 1;
-      int zero_out = dfs(dfs, i);
-      if (zero_out != -1) edges.emplace_back(zero_out, i);
-      else in_unused.push_back(i);
-    }
-  rep (i, 1, sz(edges)) swap(edges[i].first, edges[i - 1].first);
-  rep (i, 0, num_sccs)
-    if (empty(scc_adj[i]) && !vis[i]) {
-      if (!empty(in_unused)) {
-        edges.emplace_back(i, in_unused.back());
-        in_unused.pop_back();
-      } else edges.emplace_back(i, num_sccs - 1);
-    }
+  rep(i, 0, num_sccs) if (zero_in[i]) {
+    vis[i] = 1;
+    int zero_out = dfs(dfs, i);
+    if (zero_out != -1) edges.emplace_back(zero_out, i);
+    else in_unused.push_back(i);
+  }
+  rep(i, 1, sz(edges)) swap(edges[i].first, edges[i - 1].first);
+  rep(i, 0, num_sccs) if (empty(scc_adj[i]) && !vis[i]) {
+    if (!empty(in_unused)) {
+      edges.emplace_back(i, in_unused.back());
+      in_unused.pop_back();
+    } else edges.emplace_back(i, num_sccs - 1);
+  }
   for (int u : in_unused) edges.emplace_back(0, u);
   vi to_node(num_sccs);
-  rep (i, 0, n) to_node[scc_id[i]] = i;
+  rep(i, 0, n) to_node[scc_id[i]] = i;
   for (auto& [u, v] : edges) u = to_node[u], v = to_node[v];
   return edges;
 }

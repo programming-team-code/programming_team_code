@@ -23,7 +23,7 @@ template <class T> struct bit_rurq {
   bit_rurq(vector<T> a) : n(sz(a)) {
     adjacent_difference(all(a), begin(a));
     bit1 = {a};
-    rep (i, 0, n) a[i] *= i;
+    rep(i, 0, n) a[i] *= i;
     bit2 = {a};
   }
   /**

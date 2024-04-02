@@ -27,15 +27,14 @@ template <class T, class F> struct linear_rmq {
    */
   linear_rmq(const vector<T>& a_a, F a_cmp) : n(sz(a_a)), cmp(a_cmp), a(a_a), head(n + 1), label(n), asc(n) {
     vi le(mono_st(a, cmp)), ri(mono_range(le)), p(cart_binary_tree(le));
-    rep (i, 0, n)
-      label[i] = ri[i] & -bit_floor(unsigned((le[i] + 1) ^ ri[i]));
-    rep (i, 0, n)
-      if (p[i] == -1 || label[p[i]] != label[i]) {
-        head[label[i]] = p[i];
-        int to_add = label[i] & -label[i];
-        asc[le[i] + 1] += to_add;
-        if (ri[i] < n) asc[ri[i]] -= to_add;
-      }
+    rep(i, 0, n)
+        label[i] = ri[i] & -bit_floor(unsigned((le[i] + 1) ^ ri[i]));
+    rep(i, 0, n) if (p[i] == -1 || label[p[i]] != label[i]) {
+      head[label[i]] = p[i];
+      int to_add = label[i] & -label[i];
+      asc[le[i] + 1] += to_add;
+      if (ri[i] < n) asc[ri[i]] -= to_add;
+    }
     partial_sum(all(asc), begin(asc));
   }
   inline int lift(int u, unsigned j) {

@@ -31,9 +31,9 @@ struct merge_sort_tree_updates {
     assert(sz(active) == n);
     if (!n) return;
     vector<pair<int, bool>> cpy(n);
-    rep (i, 0, n) cpy[i].first = i;
+    rep(i, 0, n) cpy[i].first = i;
     build(a, active, cpy, 0, n, 1);
-    rep (i, 0, n) {
+    rep(i, 0, n) {
       perm[cpy[i].first] = i;
       sorted[i] = a[cpy[i].first];
     }
@@ -46,7 +46,7 @@ struct merge_sort_tree_updates {
     int tm = split(tl, tr);
     build(a, active, cpy, tl, tm, 2 * u);
     build(a, active, cpy, tm, tr, 2 * u + 1);
-    rep (i, tl, tr) cpy[i].second = i < tm;
+    rep(i, tl, tr) cpy[i].second = i < tm;
     inplace_merge(begin(cpy) + tl, begin(cpy) + tm, begin(cpy) + tr, [&](auto& i, auto& j) { return a[i.first] < a[j.first]; });
     vector<bool> bools(tr - tl);
     transform(begin(cpy) + tl, begin(cpy) + tr, begin(bools), [](auto& val) { return val.second; });

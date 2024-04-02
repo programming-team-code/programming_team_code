@@ -25,7 +25,6 @@ template <class T> struct lcs_dp {
   }
   void push_onto_s(int c) {
     int v = -1;
-    rep (i, 0, sz(t))
-      if (c == t[i] || dp[i] < v) swap(dp[i], v);
+    rep(i, 0, sz(t)) if (c == t[i] || dp[i] < v) swap(dp[i], v);
   }
 };

@@ -16,7 +16,7 @@
 template <class T> vi lcs_queries(const T& s, const T& t, const vector<array<int, 3>>& queries) {
   int n = sz(s), m = sz(t), q = sz(queries);
   vector<vector<array<int, 3>>> qs(n);
-  rep (i, 0, q) {
+  rep(i, 0, q) {
     auto [s_ri, t_le, t_ri] = queries[i];
     assert(0 <= s_ri && s_ri <= n);
     assert(0 <= t_le && t_le <= t_ri && t_ri <= m);
@@ -25,16 +25,15 @@ template <class T> vi lcs_queries(const T& s, const T& t, const vector<array<int
   }
   lcs_dp lcs(t);
   vi res(q);
-  rep (i, 0, n) {
+  rep(i, 0, n) {
     lcs.push_onto_s(s[i]);
     vi init(m), dp_inv(m, -1);
-    rep (j, 0, m)
-      if (lcs.dp[j] == -1) init[j] = 1;
-      else dp_inv[lcs.dp[j]] = j;
+    rep(j, 0, m) if (lcs.dp[j] == -1) init[j] = 1;
+    else dp_inv[lcs.dp[j]] = j;
     BIT<int> bit(init);
     sort(all(qs[i]));
     int j = 0;
-    rep (t_le, 0, m) {
+    rep(t_le, 0, m) {
       while (j < sz(qs[i]) && qs[i][j][0] == t_le)
         res[qs[i][j][2]] = bit.query(t_le, qs[i][j][1]), j++;
       if (dp_inv[t_le] != -1) bit.update(dp_inv[t_le], 1);

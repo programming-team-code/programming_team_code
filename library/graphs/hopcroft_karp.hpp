@@ -37,8 +37,7 @@ struct hopcroft_karp {
     while (1) {
       queue<int> q;
       vector level(lsz, -1);
-      rep (i, 0, lsz)
-        if (l_to_r[i] == -1) level[i] = 0, q.push(i);
+      rep(i, 0, lsz) if (l_to_r[i] == -1) level[i] = 0, q.push(i);
       bool found = 0;
       mvc_l.assign(lsz, 1);
       mvc_r.assign(rsz, 0);
@@ -69,8 +68,8 @@ struct hopcroft_karp {
         level[u] = INT_MAX;
         return 0;
       };
-      rep (i, 0, lsz)
-        size_of_matching += (l_to_r[i] == -1 && dfs(dfs, i));
+      rep(i, 0, lsz)
+          size_of_matching += (l_to_r[i] == -1 && dfs(dfs, i));
     }
   }
 };
