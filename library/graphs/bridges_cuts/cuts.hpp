@@ -8,8 +8,8 @@
            int u, v;
            cin >> u >> v;
            u--, v--;
-           adj[u].push_back({v, i});
-           adj[v].push_back({u, i});
+           adj[u].emplace_back(v, i);
+           adj[v].emplace_back(u, i);
        }
        auto [num_bccs, is_cut, bcc_id] = cuts(adj, m);
  * @endcode
