@@ -50,19 +50,19 @@ struct mode_query {
       return {mode, cnt_mode};
     }
     pii res = mode_blocks[le / b + 1][(ri - 1) / b - 1];
-    rep(i, (ri - 1) / b * b, ri)
-        cnt[a[i]]++;
-    rep(i, (ri - 1) / b * b, ri) {
-      int idx = index_into_index[i];
-      if (idx >= res.second && index[a[i]][idx - res.second] >= le)
-        res = {a[i], cnt[a[i]] + res.second};
-      cnt[a[i]]--;
-    }
     for (int i = le / b * b + b - 1; i >= le; i--)
       cnt[a[i]]++;
     for (int i = le / b * b + b - 1; i >= le; i--) {
       int idx = index_into_index[i];
       if (idx + res.second < sz(index[a[i]]) && index[a[i]][idx + res.second] < ri)
+        res = {a[i], cnt[a[i]] + res.second};
+      cnt[a[i]]--;
+    }
+    rep(i, (ri - 1) / b * b, ri)
+        cnt[a[i]]++;
+    rep(i, (ri - 1) / b * b, ri) {
+      int idx = index_into_index[i];
+      if (idx >= res.second && index[a[i]][idx - res.second] >= le)
         res = {a[i], cnt[a[i]] + res.second};
       cnt[a[i]]--;
     }
