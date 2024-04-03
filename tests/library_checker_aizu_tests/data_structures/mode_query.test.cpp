@@ -1,6 +1,4 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/static_range_mode_query"
-// it TLE's in debug mode currently :(
-#undef _GLIBCXX_DEBUG
 #include "../template.hpp"
 
 #include "../../../library/data_structures/uncommon/mode_query.hpp"
@@ -17,7 +15,14 @@ int main() {
   sort(begin(comp), end(comp));
   comp.erase(unique(begin(comp), end(comp)), end(comp));
   for (int& val : a) {
-    val = lower_bound(begin(comp), end(comp), val) - begin(comp);
+    int start = 0, end = sz(comp);
+    while (start + 1 < end) {
+      int mid = (start + end) / 2;
+      if (comp[mid] <= val) start = mid;
+      else end = mid;
+    }
+    assert(0 <= start && start < sz(comp) && comp[start] == val);
+    val = start;
   }
   mode_query mq(a);
   while (q--) {

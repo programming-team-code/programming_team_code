@@ -6,30 +6,29 @@ const int b = 318; /**< sqrt(1e5) */
  */
 struct mode_query {
   int n;
-  vector<int> a, cnt, index_into_index;
-  vector<vector<int>> index;
+  vi a, cnt, index_into_index;
+  vector<vi> index;
   vector<vector<pii>> mode_blocks; /**< {mode, cnt} of range of blocks */
   /**
    * @param a_a compressed array: 0 <= a_a[i] < n
    * @time O(n * sqrt(n))
    * @space O(n)
    */
-  mode_query(const vector<int>& a_a) : n(sz(a_a)), a(a_a), cnt(n), index_into_index(n), index(n), mode_blocks((n + b - 1) / b, vector<pii>((n + b - 1) / b)) {
-    for (int i = 0; i < n; i++) {
+  mode_query(const vi& a_a) : n(sz(a_a)), a(a_a), cnt(n), index_into_index(n), index(n), mode_blocks((n + b - 1) / b, vector<pii>((n + b - 1) / b)) {
+    rep(i, 0, n) {
       assert(0 <= a[i] && a[i] < n);
       index_into_index[i] = sz(index[a[i]]);
       index[a[i]].push_back(i);
     }
     for (int start = 0; start < n; start += b) {
       int mode = a[start];
-      for (int i = start; i < n; i++) {
+      rep(i, start, n) {
         cnt[a[i]]++;
         if (cnt[a[i]] > cnt[mode]) mode = a[i];
         if (mode_blocks[start / b][i / b].second < cnt[mode])
           mode_blocks[start / b][i / b] = {mode, cnt[mode]};
       }
-      for (int i = start; i < n; i++)
-        cnt[a[i]]--;
+      rep(i, start, n) cnt[a[i]]--;
     }
   }
   /**
@@ -42,19 +41,18 @@ struct mode_query {
     assert(0 <= le && le < ri && ri <= n);
     if (le / b >= (ri - 1) / b - 1) {
       int mode = a[le];
-      for (int i = le; i < ri; i++) {
+      rep(i, le, ri) {
         cnt[a[i]]++;
         if (cnt[a[i]] > cnt[mode]) mode = a[i];
       }
       int cnt_mode = cnt[mode];
-      for (int i = le; i < ri; i++)
-        cnt[a[i]]--;
+      rep(i, le, ri) cnt[a[i]]--;
       return {mode, cnt_mode};
     }
     pii res = mode_blocks[le / b + 1][(ri - 1) / b - 1];
-    for (int i = (ri - 1) / b * b; i < ri; i++)
-      cnt[a[i]]++;
-    for (int i = (ri - 1) / b * b; i < ri; i++) {
+    rep(i, (ri - 1) / b * b, ri)
+        cnt[a[i]]++;
+    rep(i, (ri - 1) / b * b, ri) {
       int idx = index_into_index[i];
       if (idx >= res.second && index[a[i]][idx - res.second] >= le)
         res = {a[i], cnt[a[i]] + res.second};
