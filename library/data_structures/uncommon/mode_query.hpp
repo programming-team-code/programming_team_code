@@ -25,9 +25,8 @@ struct mode_query {
       for (int i = start; i < n; i++) {
         cnt[a[i]]++;
         if (cnt[a[i]] > cnt[mode]) mode = a[i];
-        if (mode_blocks[start / b][i / b].second < cnt[mode]) {
+        if (mode_blocks[start / b][i / b].second < cnt[mode])
           mode_blocks[start / b][i / b] = {mode, cnt[mode]};
-        }
       }
       for (int i = start; i < n; i++)
         cnt[a[i]]--;
@@ -48,9 +47,8 @@ struct mode_query {
         if (cnt[a[i]] > cnt[mode]) mode = a[i];
       }
       int cnt_mode = cnt[mode];
-      for (int i = le; i < ri; i++) {
+      for (int i = le; i < ri; i++)
         cnt[a[i]]--;
-      }
       return {mode, cnt_mode};
     }
     pii res = mode_blocks[le / b + 1][(ri - 1) / b - 1];
@@ -58,18 +56,16 @@ struct mode_query {
       cnt[a[i]]++;
     for (int i = (ri - 1) / b * b; i < ri; i++) {
       int idx = index_into_index[i];
-      if (idx >= res.second && index[a[i]][idx - res.second] >= le) {
+      if (idx >= res.second && index[a[i]][idx - res.second] >= le)
         res = {a[i], cnt[a[i]] + res.second};
-      }
       cnt[a[i]]--;
     }
     for (int i = le / b * b + b - 1; i >= le; i--)
       cnt[a[i]]++;
     for (int i = le / b * b + b - 1; i >= le; i--) {
       int idx = index_into_index[i];
-      if (idx + res.second < sz(index[a[i]]) && index[a[i]][idx + res.second] < ri) {
+      if (idx + res.second < sz(index[a[i]]) && index[a[i]][idx + res.second] < ri)
         res = {a[i], cnt[a[i]] + res.second};
-      }
       cnt[a[i]]--;
     }
     return res;
