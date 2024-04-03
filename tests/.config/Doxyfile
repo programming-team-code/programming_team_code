@@ -1095,6 +1095,8 @@ EXCLUDE_SYMBOLS        = HLD::node \
                          linear_kth_path \
                          pal_query \
                          rep \
+                         index \
+                         index_into_index \
 
 # The EXAMPLE_PATH tag can be used to specify one or more files or directories
 # that contain example code fragments that are included (see the \include
