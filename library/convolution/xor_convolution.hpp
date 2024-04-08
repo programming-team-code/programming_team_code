@@ -23,10 +23,8 @@ vi xor_convolution(vi a, vi b) {
     }
   }
   vi c(1 << n);
-  for (int i = 0; i < (1 << n); i++) {
-    c[i] = 1LL * a[i] * b[i] % mod;
-  }
-  for (int pw = 0; pw < n; pw++) {
+  rep(i, 0, 1 << n) { c[i] = 1LL * a[i] * b[i] % mod; }
+  rep(pw, 0, n) {
     for (int i = 0; i < (1 << n); i += 1 << (pw + 1)) {
       rep(j, i, i + (1 << pw)) {
         int k = j + (1 << pw);
