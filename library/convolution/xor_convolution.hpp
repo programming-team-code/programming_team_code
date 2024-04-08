@@ -3,6 +3,9 @@
 const int mod = 998'244'353;
 /**
  * @param a,b arrays of the same length, where the length is a power of 2
+ *
+ * if the input arrays are empty then `__lg(sz(a))` is undefined behavior
+ *
  * @returns array `c` where `c[k]` = the sum of (a[i] * b[j]) for all pairs
  * (i,j) where i ^ j == k
  * @time O(2^n * n)
