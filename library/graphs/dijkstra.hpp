@@ -20,11 +20,8 @@ vector<ll> dijkstra(const vector<vector<pair<int, ll>>>& adj, int s) {
     auto [d_u, u] = pq.top();
     pq.pop();
     if (d[u] < d_u) continue;  // important check: O(n*m) without it
-    for (auto [v, w] : adj[u])
-      if (d[v] > w + d[u]) {
-        d[v] = w + d[u];
-        pq.emplace(d[v], v);
-      }
+    d[u] = d_u;
+    for (auto [v, w] : adj[u]) pq.emplace(w + d[u], v);
   }
   return d;
 }
