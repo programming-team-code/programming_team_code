@@ -1,10 +1,6 @@
 /** @file */
 #pragma once
 const int mod = 998'244'353;
-// change this
-int inverse(int x) {
-  return x == 1 ? 1 : mod - mod / x * inverse(mod % x) % mod;
-}
 /**
  * @param a,b arrays of the same length, where the length is a power of 2
  * @returns array `c` where `c[k]` = the sum of (a[i] * b[j]) for all pairs
@@ -39,7 +35,11 @@ vector<int> xor_convolution(vector<int> a, vector<int> b) {
       }
     }
   }
-  const int inv = inverse(1 << n);
+  const int inv2 = (mod + 1) / 2;
+  int inv = 1;
+  for (int pw = 0; pw < n; pw++) {
+    inv = 1LL * inv * inv2 % mod;
+  }
   for (int i = 0; i < (1 << n); i++) {
     c[i] = 1LL * c[i] * inv % mod;
   }
