@@ -24,10 +24,10 @@ cp -r ../kactl/content/. ../kactl_expanded_macros/
 # in order to expand the kactl macros, you need to copy-paste the macros into
 # the beginning of each .hpp file
 for header in ../library/**/*.hpp; do
-  cpp -std=c17 -nostdinc -C -P <(cat library_checker_aizu_tests/kactl_macros.hpp "$header") "${header/\/library/}"
+	cpp -std=c17 -nostdinc -C -P <(cat library_checker_aizu_tests/kactl_macros.hpp "$header") "${header/\/library/}"
 done
 for header in ../kactl/content/**/*.h; do
-  cpp -std=c17 -nostdinc -C -P <(cat library_checker_aizu_tests/kactl_macros.hpp "$header") "${header/kactl\/content/kactl_expanded_macros}"
+	cpp -std=c17 -nostdinc -C -P <(cat library_checker_aizu_tests/kactl_macros.hpp "$header") "${header/kactl\/content/kactl_expanded_macros}"
 done
 
 # the cpp preprocessor sometimes leaves blank empty lines
