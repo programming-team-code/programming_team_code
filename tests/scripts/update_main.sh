@@ -11,9 +11,6 @@ git submodule update
 
 echo "DON'T PUSH ANY OF THESE CHANGES TO THE REPO!!!!!!!!"
 
-# in order to expand the kactl macros, you need to copy-paste the macros into
-# the beginning of each .hpp file
-sed --in-place "1r library_checker_aizu_tests/kactl_macros.hpp" ../library/**/*.hpp
 # remove `/** @file */` comments
 sed --in-place '/^\/\*\* @file \*\/$/d' ../library/**/*.hpp
 # remove NOLINTNEXTLINE comments
@@ -24,7 +21,8 @@ sed --in-place '/^\/\/ NOLINTNEXTLINE(readability-identifier-naming)$/d' ../libr
 cp -r ../library/. ../
 
 for header in ../library/**/*.hpp; do
-	cpp -std=c17 -nostdinc -C -P "$header" "${header/\/library/}"
+	# see https://github.com/programming-team-code/kactl_no_macros/blob/main/remove_macros.sh
+	cpp -std=c17 -nostdinc -C -P "$header" | cat library_checker_aizu_tests/kactl_macros.hpp - | cpp -std=c17 -nostdinc -C -P - -o "${header/\/library/}"
 done
 
 # the cpp preprocessor sometimes leaves blank empty lines
