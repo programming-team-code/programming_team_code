@@ -44,3 +44,4 @@ syntaxError:../library/math/prime_sieve/mobius.hpp:12
 syntaxError:../library/trees/lca_rmq/iterate_subtree.hpp:13
 constVariable:../kactl/content/graph/CompressTree.h:20
 knownConditionTrueFalse:../library/strings/suffix_array/suffix_array.hpp:74
+shadowVariable:../library/math/n_choose_k/large_n_choose_small_k.hpp:13

@@ -2,8 +2,10 @@
 #include "../template.hpp"
 #include "../../../library/contest/random.hpp"
 
-#include "../../../library/math/n_choose_k/lucas_theorem.hpp"
+#define mod mod_1
 #include "../../../library/math/n_choose_k/large_n_choose_small_k.hpp"
+#undef mod
+#include "../../../library/math/n_choose_k/lucas_theorem.hpp"
 
 int main() {
   cin.tie(0)->sync_with_stdio(0);
@@ -11,7 +13,7 @@ int main() {
 #include "../../../library/math/n_choose_k/pascals_identity.hpp"
 #undef mod
   for (int i = 0; i < mx; i++) {
-    assert(choose[i][0] == 1 && end(choose[i])[-1] == 0 && end(choose[i])[-2] == 1);
+    assert(choose[i][0] == 1 && end(choose[i])[-1] == 1);
     assert(lucas(i, -1) == 0);
     assert(c_small_k(i, -1) == 0);
     assert(lucas(i, i + 1) == 0);
