@@ -5,26 +5,7 @@
 #include "../../../library/math/matrix_related/xor_basis_ordered.hpp"
 #undef basis
 
-#include "../../../library/math/matrix_related/xor_basis_unordered.hpp"
-
-// https://github.com/suisen-cp/cp-library-cpp/blob/main/library/linear_algebra/xor_base.hpp
-template <class T> basis<T> intersection(const basis<T>& u, const basis<T>& v) {
-  vector<array<T, 2>> c;
-  transform(begin(u.b), end(u.b), back_inserter(c), [](T e) -> array<T, 2> {
-    return {e, e};
-  });
-  basis<T> res;
-  for (T e : v.b) {
-    T s = 0;
-    for (auto [x, t] : c) {
-      T w = e ^ x;
-      if (w < e) e = w, s ^= t;
-    }
-    if (e) c.push_back({e, s});
-    else assert(res.insert(s));
-  }
-  return res;
-}
+#include "../../../library/math/matrix_related/xor_basis_unordered_intersection.hpp"
 
 int main() {
   cin.tie(0)->sync_with_stdio(0);
