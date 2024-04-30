@@ -42,7 +42,7 @@ const int mn = '0', cnt_let = 36;  // mn <= s[i] < mn + cnt_let; for lowercase l
  * internal nodes are a subset of [0, n - 1), each internal node represents:
  *     - a prefix of some suffix; in the suffix tree, each edge has some substring. This prefix of suffix corresponds to this substring
  *     - a range in the suffix array
- *     - a lcp value of this range of suffixes representing length of prefix of these suffixes
+ *     - a lcp number of this range of suffixes representing length of prefix of these suffixes
  * leaf nodes are a subset of [n - 1, 2 * n - 1), each leaf represents:
  *     - a single suffix
  */

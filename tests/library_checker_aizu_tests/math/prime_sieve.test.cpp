@@ -19,8 +19,8 @@ int main() {
   cin >> n;
   map<int, int> prime_to_max_exponent;
   while (n--) {
-    int val;
-    cin >> val;
+    int num;
+    cin >> num;
     map<int, int> curr;
     {
       int prev_prime = -1;

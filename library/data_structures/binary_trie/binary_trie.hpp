@@ -18,15 +18,15 @@ template <class T> struct binary_trie {
    */
   binary_trie() : mx_bit(8 * sizeof(T) - 2), t(1) {}
   /**
-   * @param val integer
-   * @param delta 1 to insert val, -1 to remove val
+   * @param num integer
+   * @param delta 1 to insert num, -1 to remove num
    * @time O(mx_bit)
    * @space O(mx_bit) new nodes are pushed back onto `t`
    */
-  void update(T val, int delta) {
+  void update(T num, int delta) {
     t[0].sub_sz += delta;
     for (int u = 0, bit = mx_bit; bit >= 0; bit--) {
-      bool b = (val >> bit) & 1;
+      bool b = (num >> bit) & 1;
       if (t[u].next[b] == -1) {
         t[u].next[b] = sz(t);
         t.emplace_back();

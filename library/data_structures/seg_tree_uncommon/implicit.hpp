@@ -13,25 +13,25 @@ template <int N> struct implicit_seg_tree {
   }
   static constexpr dt unit{LLONG_MAX, 0LL};
   struct node {
-    dt val;
+    dt num;
     ll lazy = 0;
     int lch = -1, rch = -1;
   } tree[N];
   int ptr = 0, root_l, root_r; /**< [root_l, root_r) defines range of root node; handles negatives */
   implicit_seg_tree(int le, int ri) : root_l(le), root_r(ri) {
-    tree[ptr++].val = {0, ri - le};
+    tree[ptr++].num = {0, ri - le};
   }
   inline void apply(ll add, int u) {
-    tree[u].val[0] += add;
+    tree[u].num[0] += add;
     tree[u].lazy += add;
   }
   inline void push(int tl, int tm, int tr, int u) {
     if (tr - tl > 1 && tree[u].lch == -1) {
       assert(ptr + 1 < N);
       tree[u].lch = ptr;
-      tree[ptr++].val = {0, tm - tl};
+      tree[ptr++].num = {0, tm - tl};
       tree[u].rch = ptr;
-      tree[ptr++].val = {0, tr - tm};
+      tree[ptr++].num = {0, tr - tm};
     }
     if (tree[u].lazy) {
       apply(tree[u].lazy, tree[u].lch);
@@ -52,8 +52,8 @@ template <int N> struct implicit_seg_tree {
     push(tl, tm, tr, u);
     update(le, ri, add, tl, tm, tree[u].lch);
     update(le, ri, add, tm, tr, tree[u].rch);
-    tree[u].val = op(tree[tree[u].lch].val,
-                     tree[tree[u].rch].val);
+    tree[u].num = op(tree[tree[u].lch].num,
+                     tree[tree[u].rch].num);
   }
   /**
    * @param le,ri defines range [le, ri)
@@ -63,7 +63,7 @@ template <int N> struct implicit_seg_tree {
     if (ri <= tl || tr <= le)
       return unit;
     if (le <= tl && tr <= ri)
-      return tree[u].val;
+      return tree[u].num;
     int tm = tl + (tr - tl) / 2;
     push(tl, tm, tr, u);
     return op(query(le, ri, tl, tm, tree[u].lch),

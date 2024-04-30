@@ -14,7 +14,7 @@ template <class T> struct contour_range_update {
   vector<array<bit_rupq<T>, 2>> bits;
   /**
    * @param adj unrooted, undirected tree
-   * @param a_a a_a[u] = initial value for node u
+   * @param a_a a_a[u] = initial number for node u
    * @time O(n log1.5 n)
    * @space O(n log1.5 n) for `info` and `bits`
    */
@@ -50,7 +50,7 @@ template <class T> struct contour_range_update {
   }
   /**
    * @param u node
-   * @returns value of node u
+   * @returns number of node u
    * @time O(log1.5(n) * log2(n))
    * @space O(1)
    */

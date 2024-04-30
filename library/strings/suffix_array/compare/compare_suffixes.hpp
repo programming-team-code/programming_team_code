@@ -3,7 +3,7 @@
 /**
  * @param le1,le2 defines suffixes [le1, n), [le2, n)
  *      - passing le1,le2 = n is okay
- * @returns a value `cmp` where:
+ * @returns a number `cmp` where:
  *     - cmp < 0 iff s.substr(le1) < s.substr(le2)
  *     - cmp = 0 iff s.substr(le1) = s.substr(le2)
  *     - cmp > 0 iff s.substr(le1) > s.substr(le2)

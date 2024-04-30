@@ -1,7 +1,7 @@
 /** @file */
 #pragma once
 /**
- * helper for edge CD: given tree, update node's value, find sum of neighbors' values
+ * helper for edge CD: given tree, update node's number, find sum of neighbors' numbers
  */
 template <class T> struct sum_adj {
   int n;
@@ -9,7 +9,7 @@ template <class T> struct sum_adj {
   vi p;
   /**
    * @param adj undirected, unrooted tree
-   * @param a_sum a_sum[u] = initial value for node u
+   * @param a_sum a_sum[u] = initial number for node u
    * @time O(n)
    * @space various O(n) vectors are allocated; recursion stack for dfs is O(n)
    */
@@ -23,7 +23,7 @@ template <class T> struct sum_adj {
   }
   /**
    * @param u node
-   * @param delta value to add
+   * @param delta number to add
    * @time O(1)
    * @space O(1)
    */
@@ -33,7 +33,7 @@ template <class T> struct sum_adj {
   }
   /**
    * @param u node
-   * @returns sum of u's neighbors values
+   * @returns sum of u's neighbors numbers
    * @time O(1)
    * @space O(1)
    */

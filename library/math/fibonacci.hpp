@@ -4,13 +4,13 @@ const int mod = 998'244'353;
 /**
  * @see https://codeforces.com/blog/entry/14516 https://cp-algorithms.com/algebra /fibonacci-numbers.html#fast-doubling-method
  * @code{.cpp}
-       auto val = fib(n)[0];
-       //n=0 -> val=0
-       //n=1 -> val=1
-       //n=2 -> val=1
-       //n=3 -> val=2
-       //n=4 -> val=3
-       //n=5 -> val=5
+       auto num = fib(n)[0];
+       //n=0 -> num=0
+       //n=1 -> num=1
+       //n=2 -> num=1
+       //n=3 -> num=2
+       //n=4 -> num=3
+       //n=5 -> num=5
  * @endcode
  * @param n an integer
  * @returns a array of {nth fibonacci number, (n+1)th fibonacci number}

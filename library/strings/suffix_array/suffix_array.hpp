@@ -45,29 +45,29 @@ template <class T> struct suffix_array {
          vi a;
          suffix_array sf_a(a, 100'005);
    * @endcode
-   * @param a_s,max_val string/array with 0 <= a_s[i] < max_val
-   * @time O((n log n) + max_val)
+   * @param a_s,max_num string/array with 0 <= a_s[i] < max_num
+   * @time O((n log n) + max_num)
    * @space vectors `sa`, `sa_inv`, `lcp` are O(n); `rmq` is O(nlogn), vector
-   * `freq` is O(max_val) and is allocated temporarily
+   * `freq` is O(max_num) and is allocated temporarily
    */
-  suffix_array(const T& a_s, int max_val) : s(a_s), n(sz(s)), sa(n), sa_inv(all(s)), lcp(max(0, n - 1)) {
+  suffix_array(const T& a_s, int max_num) : s(a_s), n(sz(s)), sa(n), sa_inv(all(s)), lcp(max(0, n - 1)) {
     vi tmp(n);
     iota(all(sa), 0);
     for (int ln = 0; ln < n; ln = max(1, 2 * ln)) {
       iota(begin(tmp), begin(tmp) + ln, n - ln);
-      copy_if(all(sa), begin(tmp) + ln, [&](int& val) { return (val -= ln) >= 0; });
-      vi freq(max_val);
-      for (int val : sa_inv) freq[val]++;
+      copy_if(all(sa), begin(tmp) + ln, [&](int& num) { return (num -= ln) >= 0; });
+      vi freq(max_num);
+      for (int num : sa_inv) freq[num]++;
       partial_sum(all(freq), begin(freq));
       for_each(rbegin(tmp), rend(tmp), [&](int t) { sa[--freq[sa_inv[t]]] = t; });
       swap(sa_inv, tmp);
-      max_val = 1, sa_inv[sa[0]] = 0;
+      max_num = 1, sa_inv[sa[0]] = 0;
       auto prev_inv = [&](int i) { return pair(tmp[i], i + ln < n ? tmp[i + ln] : -1); };
       rep(i, 1, n) {
-        max_val += prev_inv(sa[i - 1]) != prev_inv(sa[i]);
-        sa_inv[sa[i]] = max_val - 1;
+        max_num += prev_inv(sa[i - 1]) != prev_inv(sa[i]);
+        sa_inv[sa[i]] = max_num - 1;
       }
-      if (max_val == n) break;
+      if (max_num == n) break;
     }
     int sz = 0;
     rep(i, 0, n) {
