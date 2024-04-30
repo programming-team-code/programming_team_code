@@ -13,7 +13,7 @@ vi gcd_convolution(const vi& a, const vi& b) {
   int n = sz(a);
   vi c(n);
   for (int g = n - 1; g >= 1; g--) {
-    auto sum_a = 0LL, sum_b = 0LL;
+    ll sum_a = 0, sum_b = 0;
     for (int i = g; i < n; i += g) {
       sum_a += a[i], sum_b += b[i];
       if ((c[g] -= c[i]) < 0) c[g] += mod;

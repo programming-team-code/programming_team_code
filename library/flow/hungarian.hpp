@@ -23,7 +23,7 @@ struct hungarian {
     int n = sz(cost) - 1, m = sz(cost[0]) - 1;
     assert(n <= m);
     vi p(m + 1), way(m + 1);
-    vector u(n + 1, 0LL), v(m + 1, 0LL);
+    vector<ll> u(n + 1), v(m + 1);
     rep(i, 1, n + 1) {
       p[0] = i;
       int j0 = 0;
@@ -32,9 +32,9 @@ struct hungarian {
       do {
         used[j0] = 1;
         int i0 = p[j0], j1 = 0;
-        auto delta = LLONG_MAX;
+        ll delta = LLONG_MAX;
         rep(j, 1, m + 1) if (!used[j]) {
-          auto cur = cost[i0][j] - u[i0] - v[j];
+          ll cur = cost[i0][j] - u[i0] - v[j];
           if (cur < minv[j]) minv[j] = cur, way[j] = j0;
           if (minv[j] < delta) delta = minv[j], j1 = j;
         }

@@ -11,7 +11,7 @@ const int mod = 998'244'353;
 vi lcm_convolution(const vi& a, const vi& b) {
   assert(sz(a) == sz(b));
   int n = sz(a);
-  vector sum_a(n, 0LL), sum_b(n, 0LL);
+  vector<ll> sum_a(n), sum_b(n);
   vi c(n);
   rep(i, 1, n) {
     for (int j = i; j < n; j += i)

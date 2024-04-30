@@ -11,7 +11,7 @@ const int mod = 998'244'353;
 vector<ll> partitions(int n) {
   vector<ll> dp(n, 1);
   rep(i, 1, n) {
-    auto sum = 0LL;
+    ll sum = 0;
     for (int j = 1, pent = 1, sign = 1; pent <= i; j++, pent += 3 * j - 2, sign = -sign) {
       if (pent + j <= i) sum += dp[i - pent - j] * sign + mod;
       sum += dp[i - pent] * sign + mod;
