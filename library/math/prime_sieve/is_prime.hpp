@@ -2,11 +2,11 @@
 #pragma once
 #include "calc_sieve.hpp"
 /**
- * @param val an integer
- * @returns 1 iff val is prime
+ * @param num an integer
+ * @returns 1 iff num is prime
  * @time O(1)
  * @space O(1)
  */
-auto is_prime = [&](int val) -> bool {
-  return val >= 2 && sieve[val] == val;
+auto is_prime = [&](int num) -> bool {
+  return num >= 2 && sieve[num] == num;
 };

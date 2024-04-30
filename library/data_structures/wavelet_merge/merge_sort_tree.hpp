@@ -25,9 +25,9 @@ struct merge_sort_tree {
    */
   merge_sort_tree(const vi& a) : n(sz(a)), sorted(n), bool_presums(n, vector<bool>()) {
     vector<pair<int, bool>> cpy(n);
-    transform(all(a), begin(cpy), [](int val) { return pair(val, 0); });
+    transform(all(a), begin(cpy), [](int num) { return pair(num, 0); });
     build(cpy, 0, n, 1);
-    transform(all(cpy), begin(sorted), [](auto& val) { return val.first; });
+    transform(all(cpy), begin(sorted), [](auto& num) { return num.first; });
   }
   void build(vector<pair<int, bool>>& cpy, int tl, int tr, int u) {
     if (tr - tl <= 1) return;
@@ -37,11 +37,11 @@ struct merge_sort_tree {
     rep(i, tl, tr) cpy[i].second = i < tm;
     inplace_merge(begin(cpy) + tl, begin(cpy) + tm, begin(cpy) + tr);
     vector<bool> bools(tr - tl);
-    transform(begin(cpy) + tl, begin(cpy) + tr, begin(bools), [](auto& val) { return val.second; });
+    transform(begin(cpy) + tl, begin(cpy) + tr, begin(bools), [](auto& num) { return num.second; });
     bool_presums[u] = bool_presum(bools);
   }
   /**
-   * @param le,ri,x,y defines rectangle: indexes in [le, ri), values in [x, y)
+   * @param le,ri,x,y defines rectangle: indexes in [le, ri), numbers in [x, y)
    * @returns number of indexes i such that le <= i < ri and x <= a[i] < y
    * @time O(log(n))
    * @space O(log(n)) for recursive stack
@@ -60,7 +60,7 @@ struct merge_sort_tree {
            rect_count_impl(le, ri, xi - pl, yi - pr, tm, tr, 2 * u + 1);
   }
   /**
-   * @param x,y defines range of values [x, y)
+   * @param x,y defines range of numbers [x, y)
    * @param k must satisfy 1 <= k <= number of indexes i such that x <= a[i] < y
    * @returns the kth smallest index i such that x <= a[i] < y
    *     - kth_smallest(x,y,1) returns the smallest index i such that x <= a[i] < y

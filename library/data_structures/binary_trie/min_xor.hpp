@@ -1,17 +1,17 @@
 /** @file */
 #pragma once
 /**
- * @param val integer
- * @returns integer x such that x is in this multiset, and the value of
- * (x^val) is minimum.
+ * @param num integer
+ * @returns integer x such that x is in this multiset, and the number of
+ * (x^num) is minimum.
  * @time O(mx_bit)
  * @space O(1)
  */
-T min_xor(T val) {
+T min_xor(T num) {
   assert(t[0].sub_sz > 0);
   T res = 0;
   for (int u = 0, bit = mx_bit; bit >= 0; bit--) {
-    bool b = (val >> bit) & 1;
+    bool b = (num >> bit) & 1;
     int v = t[u].next[b];
     if (v != -1 && t[v].sub_sz > 0)
       u = v, res |= T(b) << bit;

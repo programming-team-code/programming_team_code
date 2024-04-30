@@ -27,7 +27,7 @@ struct wavelet_tree_updates {
          vi sorted(a);
          sort(all(sorted));
          sorted.erase(unique(all(sorted)), end(sorted));
-         for (int& val : a) val = lower_bound(all(sorted), val) - begin(sorted);
+         for (int& num : a) num = lower_bound(all(sorted), num) - begin(sorted);
          wavelet_tree_updates wtu(a, 0, sz(sorted), vector<bool>(sz(a), 1));
    * @endcode
    * @param a,a_minv,a_maxv must satisfy minv <= a[i] < maxv
@@ -73,7 +73,7 @@ struct wavelet_tree_updates {
     set_active_impl(i - pi, is_active, tm, tr, 2 * u + 1);
   }
   /**
-   * @param le,ri,x,y defines rectangle: indexes in [le, ri), values in [x, y)
+   * @param le,ri,x,y defines rectangle: indexes in [le, ri), numbers in [x, y)
    * @returns number of active indexes i such that le <= i < ri and x <= a[i] < y
    * @time O(log(maxv - minv) * log(n / 64))
    * @space O(log(maxv - minv)) for recursive stack

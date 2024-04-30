@@ -9,11 +9,11 @@
  */
 inline match find_str_long(const T& t) {
   int s_le = 0, s_ri = 0;
-  auto cmp = [&](int i, int cmp_val) -> bool {
+  auto cmp = [&](int i, int cmp_num) -> bool {
     auto [it_t, it_s] = mismatch(all(t), i + all(s));
     if (it_s - begin(s) - i > s_ri - s_le) s_le = i, s_ri = it_s - begin(s);
-    if (it_s != end(s) && it_t != end(t)) return (*it_s) - (*it_t) < cmp_val;
-    return cmp_val ^ (sz(s) - i < sz(t));
+    if (it_s != end(s) && it_t != end(t)) return (*it_s) - (*it_t) < cmp_num;
+    return cmp_num ^ (sz(s) - i < sz(t));
   };
   int sa_le = lower_bound(all(sa), 0, cmp) - begin(sa);
   int sa_ri = lower_bound(sa_le + all(sa), 1, cmp) - begin(sa);

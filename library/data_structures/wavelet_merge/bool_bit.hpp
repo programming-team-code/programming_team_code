@@ -57,15 +57,15 @@ struct bool_bit {
   }
   /**
    * @param i index
-   * @param new_val we want to set a[i] = new_val
+   * @param new_num we want to set a[i] = new_num
    * @time O(log(n / 64))
    * @space O(1)
    */
-  void set(int i, bool new_val) {
+  void set(int i, bool new_num) {
     assert(0 <= i && i < n);
-    if (on(i) != new_val) {
+    if (on(i) != new_num) {
       mask[i >> 6] ^= 1ULL << (i & 63);
-      presum.update(i >> 6, new_val ? 1 : -1);
+      presum.update(i >> 6, new_num ? 1 : -1);
     }
   }
 };

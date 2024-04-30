@@ -13,28 +13,28 @@ template <class T> struct contour_range_query {
   vector<array<BIT<T>, 2>> bits;
   /**
    * @param adj unrooted, undirected tree
-   * @param a a[u] = initial value for node u
+   * @param a a[u] = initial number for node u
    * @time O(n log1.5 n)
    * @space O(n log1.5 n) for `info` and `bits`
    */
   contour_range_query(const vector<vi>& adj, const vector<T>& a) : n(sz(a)), sum_a(adj, a), info(n) {
     edge_cd(adj, [&](const vector<vi>& cd_adj, int cent, int split) {
-      vector<vector<T>> sum_val(2, vector<T>(1));
+      vector<vector<T>> sum_num(2, vector<T>(1));
       auto dfs = [&](auto&& self, int u, int p, int d, int side) -> void {
         info[u].push_back({sz(bits), d, side});
-        if (sz(sum_val[side]) == d) sum_val[side].push_back(0);
-        sum_val[side][d] += a[u];
+        if (sz(sum_num[side]) == d) sum_num[side].push_back(0);
+        sum_num[side][d] += a[u];
         for (int v : cd_adj[u])
           if (v != p) self(self, v, u, 1 + d, side);
       };
       rep(i, 0, sz(cd_adj[cent]))
           dfs(dfs, cd_adj[cent][i], cent, 1, i < split);
-      bits.push_back({BIT<T>(sum_val[0]), BIT<T>(sum_val[1])});
+      bits.push_back({BIT<T>(sum_num[0]), BIT<T>(sum_num[1])});
     });
   }
   /**
    * @param u node
-   * @param delta value to add to node u's value
+   * @param delta number to add to node u's number
    * @time O(log1.5(n) * log2(n))
    * @space O(1)
    */
@@ -46,7 +46,7 @@ template <class T> struct contour_range_query {
   /**
    * @param u node
    * @param le,ri defines range [le, ri)
-   * @returns sum of node v's value over all v such that le <= dist_edges(u, v) < ri
+   * @returns sum of node v's number over all v such that le <= dist_edges(u, v) < ri
    * @time O(log1.5(n) * log2(n))
    * @space O(1)
    */

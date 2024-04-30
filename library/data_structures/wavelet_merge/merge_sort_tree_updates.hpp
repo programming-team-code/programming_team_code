@@ -49,9 +49,9 @@ struct merge_sort_tree_updates {
     rep(i, tl, tr) cpy[i].second = i < tm;
     inplace_merge(begin(cpy) + tl, begin(cpy) + tm, begin(cpy) + tr, [&](auto& i, auto& j) { return a[i.first] < a[j.first]; });
     vector<bool> bools(tr - tl);
-    transform(begin(cpy) + tl, begin(cpy) + tr, begin(bools), [](auto& val) { return val.second; });
+    transform(begin(cpy) + tl, begin(cpy) + tr, begin(bools), [](auto& num) { return num.second; });
     bool_presums[u] = bool_presum(bools);
-    transform(begin(cpy) + tl, begin(cpy) + tr, begin(bools), [&](auto& val) { return active[val.first]; });
+    transform(begin(cpy) + tl, begin(cpy) + tr, begin(bools), [&](auto& num) { return active[num.first]; });
     bool_bits[u] = bool_bit(bools);
   }
   /**
@@ -73,7 +73,7 @@ struct merge_sort_tree_updates {
     set_active_impl(i - pi, is_active, tm, tr, 2 * u + 1);
   }
   /**
-   * @param le,ri,x,y defines rectangle: indexes in [le, ri), values in [x, y)
+   * @param le,ri,x,y defines rectangle: indexes in [le, ri), numbers in [x, y)
    * @returns number of active indexes i such that le <= i < ri and x <= a[i] < y
    * @time O(log(n))
    * @space O(log(n)) for recursive stack
@@ -92,7 +92,7 @@ struct merge_sort_tree_updates {
            rect_count_impl(le, ri, xi - pl, yi - pr, tm, tr, 2 * u + 1);
   }
   /**
-   * @param x,y defines range of values [x, y)
+   * @param x,y defines range of numbers [x, y)
    * @param k must satisfy 1 <= k <= number of active indexes i such that x <= a[i] < y
    * @returns the kth smallest active index i such that x <= a[i] < y
    *     - kth_smallest(x,y,1) returns the smallest active index i such that x <= a[i] < y

@@ -26,7 +26,7 @@ struct wavelet_tree {
          vi sorted(a);
          sort(all(sorted));
          sorted.erase(unique(all(sorted)), end(sorted));
-         for (int& val : a) val = lower_bound(all(sorted), val) - begin(sorted);
+         for (int& num : a) num = lower_bound(all(sorted), num) - begin(sorted);
          wavelet_tree wt(a, 0, sz(sorted));
    * @endcode
    * @param a,a_minv,a_maxv must satisfy minv <= a[i] < maxv
@@ -40,7 +40,7 @@ struct wavelet_tree {
   void build(vi& a, int le, int ri, int tl, int tr, int u) {
     if (tr - tl <= 1) return;
     int tm = split(tl, tr);
-    auto low = [&](int val) { return val < tm; };
+    auto low = [&](int num) { return num < tm; };
     vector<bool> bools(ri - le);
     transform(begin(a) + le, begin(a) + ri, begin(bools), low);
     bool_presums[u] = bool_presum(bools);
@@ -51,7 +51,7 @@ struct wavelet_tree {
     build(a, mi, ri, tm, tr, 2 * u + 1);
   }
   /**
-   * @param le,ri,x,y defines rectangle: indexes in [le, ri), values in [x, y)
+   * @param le,ri,x,y defines rectangle: indexes in [le, ri), numbers in [x, y)
    * @returns number of indexes i such that le <= i < ri and x <= a[i] < y
    * @time O(log(maxv - minv))
    * @space O(log(maxv - minv)) for recursive stack
@@ -68,8 +68,8 @@ struct wavelet_tree {
            rect_count_impl(le - pl, ri - pr, x, y, tm, tr, 2 * u + 1);
   }
   /**
-   * @param le,ri,x,y defines rectangle: indexes in [le, ri), values in [x, y)
-   * @returns sum of values a[i] such that le <= i < ri and x <= a[i] < y
+   * @param le,ri,x,y defines rectangle: indexes in [le, ri), numbers in [x, y)
+   * @returns sum of numbers a[i] such that le <= i < ri and x <= a[i] < y
    * @time O(log(maxv - minv))
    * @space O(log(maxv - minv)) for recursive stack
    */

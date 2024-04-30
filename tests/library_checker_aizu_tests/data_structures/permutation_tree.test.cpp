@@ -14,7 +14,7 @@ int main() {
   perm_tree pt = perm_tree_asserts(a);
   auto is_join = pt.is_join;
   auto mn_idx = pt.mn_idx;
-  auto mn_val = pt.mn_val;
+  auto mn_num = pt.mn_num;
   auto len = pt.len;
   auto root = pt.root;
   auto adj = pt.adj;

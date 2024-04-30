@@ -4,27 +4,27 @@
 /**
  * @see https://codeforces.com/blog/entry/78898
  * @code{.cpp}
-       auto [is_join, mn_idx, mn_val, len, root, adj] = perm_tree(a);
+       auto [is_join, mn_idx, mn_num, len, root, adj] = perm_tree(a);
  * @endcode
  */
 struct perm_tree {
   vector<bool> is_join;
   /**
    * [mn_idx[u], mn_idx[u] + len[u]) is range of indexes
-   * [mn_val[u], mn_val[u] + len[u]) is range of values
+   * [mn_num[u], mn_num[u] + len[u]) is range of numbers
    * @{
    */
-  vi mn_idx, mn_val, len;
+  vi mn_idx, mn_num, len;
   /** @} */
   int root;
   vector<vi> adj; /**< [0, n) are leaves, [n, sz(adj)) are internal nodes */
   bool touches(int u, int v) {
-    return mn_val[u] == mn_val[v] + len[v] || mn_val[v] == mn_val[u] + len[u];
+    return mn_num[u] == mn_num[v] + len[v] || mn_num[v] == mn_num[u] + len[u];
   }
   int allocate(bool join, int mn_i, int mn_v, int ln, const vi& ch) {
     is_join.push_back(join);
     mn_idx.push_back(mn_i);
-    mn_val.push_back(mn_v);
+    mn_num.push_back(mn_v);
     len.push_back(ln);
     adj.push_back(ch);
     return sz(adj) - 1;
@@ -57,7 +57,7 @@ struct perm_tree {
       while (!empty(st)) {
         int v = st.back()[0];
         if (!empty(adj[v]) && touches(adj[v].back(), u)) {
-          mn_val[v] = min(mn_val[v], mn_val[u]);
+          mn_num[v] = min(mn_num[v], mn_num[u]);
           len[v] += len[u];
           adj[v].push_back(u);
           u = v;
@@ -65,7 +65,7 @@ struct perm_tree {
           continue;
         }
         if (touches(u, v)) {
-          u = allocate(1, mn_idx[v], min(mn_val[u], mn_val[v]), len[u] + len[v], {v, u});
+          u = allocate(1, mn_idx[v], min(mn_num[u], mn_num[v]), len[u] + len[v], {v, u});
           st.pop_back();
           continue;
         }
@@ -76,11 +76,11 @@ struct perm_tree {
           st.push_back({u, le, ri, idx});
           break;
         }
-        int min_val = mn_val[u];
+        int min_num = mn_num[u];
         vi ch(1 + sz(st) - idx, u);
         rep(j, idx, sz(st))
-            min_val = min(min_val, mn_val[ch[j - idx] = st[j][0]]);
-        u = allocate(0, le, min_val, i - le + 1, ch);
+            min_num = min(min_num, mn_num[ch[j - idx] = st[j][0]]);
+        u = allocate(0, le, min_num, i - le + 1, ch);
         st.resize(idx);
       }
       if (empty(st)) st.push_back({u, -1, -1, -1});
