@@ -12,7 +12,7 @@
  */
 ll bin_exp(ll b, ll e, int mod) {
   assert(0 <= e);
-  auto res = 1LL;
+  ll res = 1;
   if ((b %= mod) < 0) b += mod;
   for (; e; b = b * b % mod, e /= 2)
     if (e & 1) res = res * b % mod;
@@ -40,6 +40,6 @@ ll tetration(ll b, ll e, int mod) {
   if (b == 2 && e == 3) return 16 % mod;
   if (b == 3 && e == 2) return 27 % mod;
   int t = totient(mod);
-  auto exp = tetration(b, e - 1, t);
+  ll exp = tetration(b, e - 1, t);
   return bin_exp(b, exp + t, mod);
 }

@@ -11,7 +11,7 @@ const int mod = 998'244'353;
  */
 ll bin_exp(ll b, ll e) {
   assert(0 <= e);
-  auto res = 1LL;
+  ll res = 1;
   if ((b %= mod) < 0) b += mod;
   for (; e; b = b * b % mod, e /= 2)
     if (e & 1) res = res * b % mod;

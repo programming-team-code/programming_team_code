@@ -13,7 +13,7 @@
  */
 pair<int, ll> row_reduce(vector<vector<ll>>& mat, int cols) {
   int n = sz(mat), m = sz(mat[0]), rank = 0;
-  auto det = 1LL;
+  ll det = 1;
   assert(cols <= m);
   for (int col = 0; col < cols && rank < n; col++) {
     auto it = find_if(rank + all(mat), [&](auto& v) { return v[col]; });
@@ -26,10 +26,10 @@ pair<int, ll> row_reduce(vector<vector<ll>>& mat, int cols) {
       iter_swap(begin(mat) + rank, it);
     }
     det = det * mat[rank][col] % mod;
-    auto a_inv = bin_exp(mat[rank][col], mod - 2);
-    for (auto& num : mat[rank]) num = num * a_inv % mod;
+    ll a_inv = bin_exp(mat[rank][col], mod - 2);
+    for (ll& num : mat[rank]) num = num * a_inv % mod;
     rep(i, 0, n) if (i != rank && mat[i][col] != 0) {
-      auto num = mat[i][col];
+      ll num = mat[i][col];
       rep(j, 0, m) {
         mat[i][j] -= mat[rank][j] * num % mod;
         if (mat[i][j] < 0) mat[i][j] += mod;

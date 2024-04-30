@@ -79,7 +79,7 @@ struct wavelet_tree {
   }
   ll rect_sum_impl(int le, int ri, int x, int y, int tl, int tr, int u) {
     if (y <= tl || tr <= x) return 0;
-    if (x <= tl && tr <= y) return (tr - tl == 1 ? 1LL * tl * (ri - le) : presums[u][ri] - presums[u][le]);
+    if (x <= tl && tr <= y) return (tr - tl == 1 ? ll(tl) * (ri - le) : presums[u][ri] - presums[u][le]);
     int tm = split(tl, tr), pl = bool_presums[u].popcount(le), pr = bool_presums[u].popcount(ri);
     return rect_sum_impl(pl, pr, x, y, tl, tm, 2 * u) +
            rect_sum_impl(le - pl, ri - pr, x, y, tm, tr, 2 * u + 1);
@@ -120,10 +120,10 @@ struct wavelet_tree {
     return kth_sum_impl(le, ri, k, minv, maxv, 1);
   }
   ll kth_sum_impl(int le, int ri, int k, int tl, int tr, int u) {
-    if (tr - tl == 1) return 1LL * k * tl;
+    if (tr - tl == 1) return ll(k) * tl;
     int tm = split(tl, tr), pl = bool_presums[u].popcount(le), pr = bool_presums[u].popcount(ri);
     if (k <= pr - pl) return kth_sum_impl(pl, pr, k, tl, tm, 2 * u);
-    auto sum_left = (tm - tl == 1 ? 1LL * tl * (pr - pl) : presums[2 * u][pr] - presums[2 * u][pl]);
+    ll sum_left = (tm - tl == 1 ? ll(tl) * (pr - pl) : presums[2 * u][pr] - presums[2 * u][pl]);
     return sum_left + kth_sum_impl(le - pl, ri - pr, k - (pr - pl), tm, tr, 2 * u + 1);
   }
 };

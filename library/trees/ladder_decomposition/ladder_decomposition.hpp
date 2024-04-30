@@ -33,7 +33,7 @@ struct ladder {
     b_tbl = treeJump(p);
     rep(i, 0, n) if (p[i] == i || dl[p[i]] != dl[i]) {
       int leaf = dl[i];
-      auto& lad = l_tbl[leaf];
+      vi& lad = l_tbl[leaf];
       lad.resize(min(2 * (d[leaf] - d[i]), d[leaf] + 1), leaf);
       rep(j, 1, sz(lad))
           lad[j] = p[lad[j - 1]];
