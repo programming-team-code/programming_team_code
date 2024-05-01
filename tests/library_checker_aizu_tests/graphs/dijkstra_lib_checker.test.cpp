@@ -18,7 +18,7 @@ int main() {
     adj_inv[v].emplace_back(u, w);
   }
   vector<int64_t> len = dijkstra(adj, s);
-  if (len[t] == inf) {
+  if (len[t] == LLONG_MAX) {
     cout << -1 << '\n';
     return 0;
   }
@@ -29,7 +29,7 @@ int main() {
   auto dfs = [&](auto&& self, int u) -> bool {
     if (u == s) return 1;
     for (auto [v, w] : adj_inv[u]) {
-      if (!vis[v] && len[v] + w == len[u]) {
+      if (!vis[v] && len[v] != LLONG_MAX && len[v] + w == len[u]) {
         vis[v] = 1;
         if (self(self, v)) {
           path.push_back({v, u});
