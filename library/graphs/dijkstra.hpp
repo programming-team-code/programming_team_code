@@ -1,5 +1,6 @@
 /** @file */
 #pragma once
+const ll inf = 1LL << 62;
 /**
  * @param adj directed or undirected, weighted graph
  * @param s a node
@@ -12,13 +13,14 @@
  */
 vector<ll> dijkstra(const vector<vector<pair<int, ll>>>& adj, int s) {
   using node = pair<ll, int>;
-  vector<ll> d(sz(adj), LLONG_MAX);
+  vector<ll> d(sz(adj), inf);
   priority_queue<node, vector<node>, greater<node>> pq;
   pq.emplace(0, s);
   while (!empty(pq)) {
     auto [d_u, u] = pq.top();
     pq.pop();
-    if (d[u] < d_u) continue;  // important check: O(n*m) without it
+    assert(d_u != inf);  // TODO: remove
+    if (d[u] <= d_u) continue;  // important check: O(n*m) without it
     d[u] = d_u;
     for (auto [v, w] : adj[u]) pq.emplace(w + d[u], v);
   }
