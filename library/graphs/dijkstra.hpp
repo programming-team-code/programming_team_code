@@ -19,7 +19,6 @@ vector<ll> dijkstra(const vector<vector<pair<int, ll>>>& adj, int s) {
   while (!empty(pq)) {
     auto [d_u, u] = pq.top();
     pq.pop();
-    assert(d_u != inf);  // TODO: remove
     if (d[u] <= d_u) continue;  // important check: O(n*m) without it
     d[u] = d_u;
     for (auto [v, w] : adj[u]) pq.emplace(w + d[u], v);
