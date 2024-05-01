@@ -18,7 +18,7 @@ int main() {
   }
   vector<int64_t> len = dijkstra(adj, s);
   for (int i = 0; i < n; i++) {
-    if (len[i] == inf)
+    if (len[i] == LLONG_MAX)
       cout << "INF\n";
     else
       cout << len[i] << '\n';
