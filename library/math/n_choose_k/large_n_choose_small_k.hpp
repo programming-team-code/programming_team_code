@@ -1,6 +1,6 @@
 /** @file */
 #pragma once
-const int mod = 17; /**< must be prime */
+const ll mod = 17; /**< must be prime */
 /**
  * @param n arbitrarily large integer
  * @param k integer with k < mod

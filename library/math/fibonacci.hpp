@@ -1,6 +1,6 @@
 /** @file */
 #pragma once
-const int mod = 998'244'353;
+const ll mod = 998'244'353;
 /**
  * @see https://codeforces.com/blog/entry/14516 https://cp-algorithms.com/algebra /fibonacci-numbers.html#fast-doubling-method
  * @code{.cpp}
