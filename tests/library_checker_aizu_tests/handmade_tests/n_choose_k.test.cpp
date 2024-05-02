@@ -2,9 +2,7 @@
 #include "../template.hpp"
 #include "../../../library/contest/random.hpp"
 
-#define mod mod_1
 #include "../../../library/math/n_choose_k/large_n_choose_small_k.hpp"
-#undef mod
 #include "../../../library/math/n_choose_k/lucas_theorem.hpp"
 
 int main() {
