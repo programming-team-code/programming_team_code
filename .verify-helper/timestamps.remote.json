@@ -105,5 +105,12 @@
 "tests/library_checker_aizu_tests/strings/single_matching_bs.test.cpp": "2024-05-02 14:36:32 -0600",
 "tests/library_checker_aizu_tests/strings/suffix_array.test.cpp": "2024-05-02 14:36:32 -0600",
 "tests/library_checker_aizu_tests/strings/trie.test.cpp": "2024-05-02 14:36:32 -0600",
-"tests/library_checker_aizu_tests/trees/cd_lca.test.cpp": "2024-05-02 14:36:32 -0600"
+"tests/library_checker_aizu_tests/trees/cd_lca.test.cpp": "2024-05-02 14:36:32 -0600",
+"tests/library_checker_aizu_tests/trees/count_paths_per_length.test.cpp": "2024-05-02 14:36:32 -0600",
+"tests/library_checker_aizu_tests/trees/edge_cd_contour_range_query.test.cpp": "2024-05-02 14:36:32 -0600",
+"tests/library_checker_aizu_tests/trees/edge_cd_contour_range_update.test.cpp": "2024-05-02 14:36:32 -0600",
+"tests/library_checker_aizu_tests/trees/edge_cd_count_paths_per_length.test.cpp": "2024-05-02 14:36:32 -0600",
+"tests/library_checker_aizu_tests/trees/edge_cd_reroot_dp.test.cpp": "2024-05-02 14:36:32 -0600",
+"tests/library_checker_aizu_tests/trees/iterate_subtree.test.cpp": "2024-05-02 14:36:32 -0600",
+"tests/library_checker_aizu_tests/trees/kth_node_on_path.test.cpp": "2024-05-02 14:36:32 -0600"
 }
