@@ -1,6 +1,6 @@
 /** @file */
 #pragma once
-const int mod = 998'244'353;
+const ll mod = 998'244'353;
 /**
  * @param a,b arrays of the same length
  * @returns array `c` where `c[k]` = the sum of (a[i] * b[j]) for all pairs

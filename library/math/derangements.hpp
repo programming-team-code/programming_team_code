@@ -8,7 +8,7 @@
  * @time O(n)
  * @space O(n) for `dp` vector
  */
-vector<ll> derangements(int n, int mod) {
+vector<ll> derangements(int n, ll mod) {
   vector<ll> dp(n);
   dp[0] = 1;
   rep(i, 2, n)
