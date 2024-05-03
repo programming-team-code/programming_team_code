@@ -18,8 +18,10 @@ int main() {
   inv_fact.back() = mint(1) / fact.back();
   for (int i = mx_n - 2; i >= 1; i--)
     inv_fact[i] = inv_fact[i + 1] * (i + 1);
-  for (int i = 0; i < mx_n; i++)
+  for (int i = 0; i < mx_n; i++) {
     assert((fact[i] * inv_fact[i]).x == 1);
+    assert(inv_fact[i].x == (mint(1) / fact[i]).x);
+  }
   while (t--) {
     int n, k;
     cin >> n >> k;
