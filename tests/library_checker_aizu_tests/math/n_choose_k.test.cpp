@@ -2,7 +2,7 @@
 #include "../template.hpp"
 
 // trick to remove const so I can use arbitrary prime mode here
-#define const long
+#define const ;
 #include "../../../library/math/n_choose_k/n_choose_k.hpp"
 #undef const
 
