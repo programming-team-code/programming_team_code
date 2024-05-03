@@ -1,6 +1,6 @@
 /** @file */
 #pragma once
-const int mod = 998'244'353;
+#include "mod_int.hpp"
 /**
  * @see https://github.com/kth-competitive-programming/kactl /blob/main/content/number-theory/ModPow.h
  * @param b base
@@ -9,11 +9,10 @@ const int mod = 998'244'353;
  * @time O(log e)
  * @space O(1)
  */
-ll bin_exp(ll b, ll e) {
-  assert(0 <= e);
-  ll res = 1;
-  if ((b %= mod) < 0) b += mod;
-  for (; e; b = b * b % mod, e /= 2)
-    if (e & 1) res = res * b % mod;
+mint mpow(mint b, ll e) {
+  assert(e >= 0);
+  mint res = 1;
+  for (; e; e /= 2, b = b * b)
+    if (e & 1) res = res * b;
   return res;
 }

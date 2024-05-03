@@ -4,7 +4,7 @@
 
 #include "../../../kactl/stress-tests/utilities/genTree.h"
 
-#include "../../../library/math/binary_exponentiation_mod.hpp"
+#include "../../../library/math/mod_int_pow.hpp"
 #include "../../../library/trees/edge_centroid_decomp/edge_cd.hpp"
 
 int main() {
@@ -21,7 +21,7 @@ int main() {
     });
   }
   for (int n = 2; n <= 8; n++) {
-    int num_codes = int(bin_exp(n, n - 2));
+    int num_codes = mpow(n, n - 2).x;
     vector<vector<int>> pruf_codes(num_codes, vector<int>(n - 2));
     for (int i = 0; i < num_codes; i++) {
       int val = i;
