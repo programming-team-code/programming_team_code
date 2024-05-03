@@ -5,7 +5,7 @@
 
 // trick to remove const so I can use arbitrary prime mode here
 #define const ;
-#include "../../../library/math/mod_int.hpp"
+#include "../../../library/math/mod_int_pow.hpp"
 #undef const
 
 int mod_int_tetration(int b, int e, int local_mod) {
@@ -20,7 +20,7 @@ int mod_int_tetration(int b, int e, int local_mod) {
   int exp = mod_int_tetration(b, e - 1, t);
   mod = local_mod;
   assert(mod != 0);
-  return (mint(b) ^ (exp + t)).x;
+  return mpow(b, exp + t).x;
 }
 
 int main() {

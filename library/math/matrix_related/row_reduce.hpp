@@ -1,6 +1,6 @@
 /** @file */
 #pragma once
-#include "../binary_exponentiation_mod.hpp"
+#include "../mod_int.hpp"
 /**
  * @code{.cpp}
        auto [rank, det] = row_reduce(mat, sz(mat[0]));
@@ -11,29 +11,26 @@
  * @time O(n * m * min(cols, n))
  * @space besides the O(n * m) `mat` param, this function uses O(1) space
  */
-pair<int, ll> row_reduce(vector<vector<ll>>& mat, int cols) {
+pair<int, mint> row_reduce(vector<vector<mint>>& mat, int cols) {
   int n = sz(mat), m = sz(mat[0]), rank = 0;
-  ll det = 1;
+  mint det = 1;
   assert(cols <= m);
   for (int col = 0; col < cols && rank < n; col++) {
-    auto it = find_if(rank + all(mat), [&](auto& v) { return v[col]; });
+    auto it = find_if(rank + all(mat), [&](auto& v) { return v[col].x; });
     if (it == end(mat)) {
       det = 0;
       continue;
     }
     if (it != begin(mat) + rank) {
-      det = det == 0 ? 0 : mod - det;
+      det = mint(0) - det;
       iter_swap(begin(mat) + rank, it);
     }
-    det = det * mat[rank][col] % mod;
-    ll a_inv = bin_exp(mat[rank][col], mod - 2);
-    for (ll& num : mat[rank]) num = num * a_inv % mod;
-    rep(i, 0, n) if (i != rank && mat[i][col] != 0) {
-      ll num = mat[i][col];
-      rep(j, 0, m) {
-        mat[i][j] -= mat[rank][j] * num % mod;
-        if (mat[i][j] < 0) mat[i][j] += mod;
-      }
+    det = det * mat[rank][col];
+    mint a_inv = mint(1) / mat[rank][col];
+    for (mint& num : mat[rank]) num = num * a_inv;
+    rep(i, 0, n) if (i != rank && mat[i][col].x != 0) {
+      mint num = mat[i][col];
+      rep(j, 0, m) mat[i][j] = mat[i][j] - mat[rank][j] * num;
     }
     rank++;
   }

@@ -17,11 +17,4 @@ struct mint {
     assert(b.x == 1);
     return *this * u;
   }
-  mint operator^(ll e) {
-    assert(e >= 0);
-    mint res = 1, r = x;
-    for (; e; e /= 2, r = r * r)
-      if (e & 1) res = res * r;
-    return res;
-  }
 };

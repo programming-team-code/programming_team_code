@@ -7,11 +7,11 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n;
   cin >> n;
-  vector<vector<int64_t>> matrix(n, vector<int64_t>(n));
+  vector<vector<mint>> matrix(n, vector<mint>(n));
   for (int i = 0; i < n; i++)
     for (int j = 0; j < n; j++)
-      cin >> matrix[i][j];
+      cin >> matrix[i][j].x;
   auto [rank, det] = row_reduce(matrix, n);
-  cout << det << '\n';
+  cout << det.x << '\n';
   return 0;
 }
