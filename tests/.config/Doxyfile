@@ -1079,7 +1079,7 @@ EXCLUDE_SYMBOLS        = HLD::node \
                          siz \
                          on \
                          grow \
-                         ch \
+                         choose \
                          for \
                          iota \
                          primes \
