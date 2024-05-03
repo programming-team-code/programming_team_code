@@ -19,6 +19,7 @@ int mod_int_tetration(int b, int e, int local_mod) {
   int t = totient(local_mod);
   int exp = mod_int_tetration(b, e - 1, t);
   mod = local_mod;
+  assert(mod != 0);
   return (mint(b) ^ (exp + t)).x;
 }
 
