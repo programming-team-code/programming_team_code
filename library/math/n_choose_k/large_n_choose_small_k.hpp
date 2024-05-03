@@ -1,7 +1,6 @@
 /** @file */
 #pragma once
 #include "n_choose_k.hpp"
-const int mod = 17; /**< must be prime */
 /**
  * @param n arbitrarily large integer
  * @param k integer with k < mod
