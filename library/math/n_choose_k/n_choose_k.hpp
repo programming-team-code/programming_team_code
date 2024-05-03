@@ -1,6 +1,6 @@
 /** @file */
 #pragma once
-const ll mod = 17; /**< must be prime */
+const int mod = 17; /**< must be prime */
 vector<ll> inv(2, 1), fact(inv), inv_fact(inv);
 /**
  * @param n,k integers with n < mod

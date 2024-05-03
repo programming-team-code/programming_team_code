@@ -7,7 +7,7 @@
  * @time O(n log n)
  * @space besides O(n) `a` param, O(n) extra space is allocated temporarily
  */
-int num_subsequences(const vi& a, ll mod) {
+int num_subsequences(const vi& a, int mod) {
   vector dp(sz(a) + 1, 1);
   map<int, int> last;
   rep(i, 0, sz(a)) {

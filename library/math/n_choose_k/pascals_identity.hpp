@@ -1,8 +1,9 @@
 /** @file */
 #pragma once
-const ll mod = 17; /**< composite is ok */
-vector<vector<ll>> ch(1010); /**< ch[n][k] = n choose k; sz(ch) > mod is ok */
-rep(i, 0, sz(ch)) {
-  ch[i].resize(i + 1, 1);
-  rep(j, 1, i) ch[i][j] = (ch[i - 1][j] + ch[i - 1][j - 1]) % mod;
+const int mx = 1010 /**< mx > mod is ok */, mod = 17; /**< composite ok */
+vector<vector<ll>> choose(mx); /**< choose[n][k] = n choose k */
+rep(i, 0, mx) {
+  choose[i].resize(i + 1, 1);
+  rep(j, 1, i)
+      choose[i][j] = (choose[i - 1][j] + choose[i - 1][j - 1]) % mod;
 }

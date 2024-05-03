@@ -1,6 +1,6 @@
 /** @file */
 #pragma once
-const ll mod = 998'244'353;
+const int mod = 998'244'353;
 /**
  * @see https://oeis.org/A000041
  * @param n an integer
