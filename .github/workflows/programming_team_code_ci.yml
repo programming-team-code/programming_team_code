@@ -32,15 +32,6 @@ jobs:
         GH_PAT: ${{ secrets.GH_PAT }}
       run: oj-verify all --tle 20
 
-
-
-
-
-
-
-
-      
-
   check_format_lint:
     runs-on: ubuntu-latest
     steps:
