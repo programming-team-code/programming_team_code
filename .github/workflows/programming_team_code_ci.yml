@@ -27,7 +27,7 @@ jobs:
         rm -rf hackpack-cpp/tests/
     - name: Run tests
       env:
-        GH_PAT: ${{ secrets.GH_PAT }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: oj-verify all --tle 20
 
   check_format_lint:
