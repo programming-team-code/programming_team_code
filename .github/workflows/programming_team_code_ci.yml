@@ -27,7 +27,6 @@ jobs:
         rm -rf hackpack-cpp/tests/
     - name: Run tests
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         GH_PAT: ${{ secrets.GH_PAT }}
       run: oj-verify all --tle 20
 
