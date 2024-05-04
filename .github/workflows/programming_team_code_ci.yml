@@ -9,37 +9,37 @@ jobs:
   library_checker_aizu:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v3
     - name: Set up Python
-      uses: actions/setup-python@v1
+      uses: actions/setup-python@v4
     - name: Install dependencies
       run: pip3 install -U online-judge-verify-helper
-    - name: Set up Rust (1.42.0)
-      uses: actions-rs/toolchain@v1
-      with:
-        toolchain: 1.42.0-x86_64-unknown-linux-gnu
-        default: true
-        profile: minimal
     # required by cargo-udeps
     - name: Set up Rust (nightly)
-      uses: actions-rs/toolchain@v1
-      with:
-        toolchain: nightly-x86_64-unknown-linux-gnu
-        default: true
-        profile: minimal
+      run: |
+        rustup set profile minimal
+        rustup install nightly
+        rustup override set nightly
     - name: Set up git submodules
       run: |
         git submodule init
         git submodule update
         rm -rf hackpack-cpp/tests/
-        # fixes RTE related to `-fsanitize=address` https://github.com/google/sanitizers/issues/856#issuecomment-1764667808
-        sudo sysctl -w kernel.randomize_va_space=0
     - name: Run tests
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         YUKICODER_TOKEN: ${{ secrets.YUKICODER_TOKEN }}
         GH_PAT: ${{ secrets.GH_PAT }}
       run: oj-verify all --tle 20
+
+
+
+
+
+
+
+
+      
 
   check_format_lint:
     runs-on: ubuntu-latest
