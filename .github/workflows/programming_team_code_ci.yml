@@ -9,12 +9,11 @@ jobs:
   library_checker_aizu:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v1
     - name: Set up Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v1
     - name: Install dependencies
       run: pip3 install -U online-judge-verify-helper
-    # required by cargo-udeps
     - name: Set up Rust (nightly)
       run: |
         rustup set profile minimal
@@ -28,8 +27,6 @@ jobs:
     - name: Run tests
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        YUKICODER_TOKEN: ${{ secrets.YUKICODER_TOKEN }}
-        GH_PAT: ${{ secrets.GH_PAT }}
       run: oj-verify all --tle 20
 
   check_format_lint:
