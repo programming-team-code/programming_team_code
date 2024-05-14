@@ -11,7 +11,7 @@ vector<T> make_powers(const T& v) {
   }
   return pws;
 }
-/*
+/**
  * @brief wildcard pattern matching
  * @note the cumulative values for comparision will be on the order of
  * (max element)^4
