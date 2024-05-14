@@ -2,7 +2,7 @@
 
 #include "../template.hpp"
 #include "../../../library/strings/wildcard_pattern_matching.hpp"
-typedef vector<ll> vl;
+using vl = vector<ll>;
 namespace ignore {
 #include "../../../kactl/content/number-theory/ModPow.h"
 }
