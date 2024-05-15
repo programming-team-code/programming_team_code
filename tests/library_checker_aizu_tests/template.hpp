@@ -30,4 +30,6 @@ using namespace std;
 //
 // also defines are used here instead of typedef/using's (even though it's sketchier)
 // so that they can be expanded before pushing to main
+//
+// modifying kactl_macros.hpp will also re-run all library checker tests
 #include "kactl_macros.hpp"
