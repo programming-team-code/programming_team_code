@@ -79,5 +79,15 @@
 "tests/library_checker_aizu_tests/math/mod_int_n_choose_k.test.cpp": "2024-05-15 15:16:07 -0600",
 "tests/library_checker_aizu_tests/math/mod_int_tetration.test.cpp": "2024-05-15 15:16:07 -0600",
 "tests/library_checker_aizu_tests/math/n_choose_k.test.cpp": "2024-05-15 15:16:07 -0600",
-"tests/library_checker_aizu_tests/math/num_subsequences.test.cpp": "2024-05-15 15:16:07 -0600"
+"tests/library_checker_aizu_tests/math/num_subsequences.test.cpp": "2024-05-15 15:16:07 -0600",
+"tests/library_checker_aizu_tests/math/partitions.test.cpp": "2024-05-15 15:16:07 -0600",
+"tests/library_checker_aizu_tests/math/prime_sieve.test.cpp": "2024-05-15 15:16:07 -0600",
+"tests/library_checker_aizu_tests/math/solve_linear_mod.test.cpp": "2024-05-15 15:16:07 -0600",
+"tests/library_checker_aizu_tests/math/tetration.test.cpp": "2024-05-15 15:16:07 -0600",
+"tests/library_checker_aizu_tests/math/totient.test.cpp": "2024-05-15 15:16:07 -0600",
+"tests/library_checker_aizu_tests/math/xor_basis.test.cpp": "2024-05-15 15:16:07 -0600",
+"tests/library_checker_aizu_tests/math/xor_basis_intersection.test.cpp": "2024-05-15 15:16:07 -0600",
+"tests/library_checker_aizu_tests/monotonic_stack_related/cartesian_binary_tree.test.cpp": "2024-05-15 15:16:07 -0600",
+"tests/library_checker_aizu_tests/monotonic_stack_related/cartesian_k_ary_tree.test.cpp": "2024-05-15 15:16:07 -0600",
+"tests/library_checker_aizu_tests/monotonic_stack_related/count_rectangles.test.cpp": "2024-05-15 15:16:07 -0600"
 }
