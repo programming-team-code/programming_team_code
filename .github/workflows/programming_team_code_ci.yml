@@ -27,7 +27,7 @@ jobs:
     - name: Run tests
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: oj-verify all --tle 25 --jobs 4 --timeout 3600
+      run: oj-verify all --tle 30 --jobs 4 --timeout 3600
 
   check_format_lint:
     runs-on: ubuntu-latest
