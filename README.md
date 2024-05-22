@@ -19,13 +19,3 @@ extensive | <ul><li>https://github.com/koosaga/olympiad/tree/master/Library/code
 clean | <ul><li>https://github.com/demidenko/olymp-cpp-lib</li><li>https://github.com/brunomaletta/Biblioteca</li></ul>
 lgm | <ul><li>https://github.com/ecnerwala/cp-book</li><li>https://github.com/the-tourist/algo</li><li>https://github.com/nealwu/competitive-programming</li><li>https://github.com/bqi343/cp-notebook</li><li>https://github.com/suisen-cp/cp-library-cpp</li></ul>
 python | <ul><li>https://github.com/cheran-senthil/PyRival</li></ul>
-
-## Contributing
-
-We're open to all feedback. You can submit an issue or email us at
-```
-lrvideckis@gmail.com
-```
-```
-custer.cameron@gmail.com
-```
