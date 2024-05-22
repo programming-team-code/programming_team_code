@@ -14,7 +14,7 @@ template <class T, class F> struct RMQ {
   RMQ() {}
   /**
    * @param a static array
-   * @param a_op any associative, communative, idempotent operation
+   * @param a_op any associative, commutative, idempotent operation
    * @time O(n log n)
    * @space O(n log n) for `dp` vector
    */
