@@ -102,6 +102,7 @@
 "tests/library_checker_aizu_tests/strings/longest_common_substring.test.cpp": "2024-05-22 12:38:32 -0400",
 "tests/library_checker_aizu_tests/strings/manacher.test.cpp": "2024-05-15 15:16:07 -0600",
 "tests/library_checker_aizu_tests/strings/multi_matching_bs.test.cpp": "2024-05-22 12:38:32 -0400",
+"tests/library_checker_aizu_tests/strings/multi_matching_bwt.test.cpp": "2024-05-22 12:38:32 -0400",
 "tests/library_checker_aizu_tests/strings/multi_matching_lcp_tree.test.cpp": "2024-05-22 12:38:32 -0400",
 "tests/library_checker_aizu_tests/strings/prefix_function.test.cpp": "2024-05-15 15:16:07 -0600",
 "tests/library_checker_aizu_tests/strings/sa_cmp.test.cpp": "2024-05-22 12:38:32 -0400",
