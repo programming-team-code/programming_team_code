@@ -21,7 +21,6 @@ int main() {
   cd_lca lca(adj);
   for (int i = 0; i < n; i++) {
     assert(lca.lca(i, i) == i);
-    assert(lca.lca(i, i) == i);
   }
   while (q--) {
     int u, v;
