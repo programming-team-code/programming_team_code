@@ -1,5 +1,4 @@
-#define PROBLEM \
-  "https://judge.yosupo.jp/problem/connected_components_of_complement_graph"
+#define PROBLEM "https://judge.yosupo.jp/problem/connected_components_of_complement_graph"
 
 #include "../template.hpp"
 #include "../../../library/graphs/complement_graph_ccs.hpp"
@@ -16,7 +15,7 @@ int main() {
     adj[v].push_back(u);
   }
   auto cc_id = get_complement_graph_ccs(adj);
-  int num_ccs = *max_element(begin(cc_id), end(cc_id));
+  int num_ccs = *max_element(begin(cc_id), end(cc_id)) + 1;
   vector<vector<int>> ccs(num_ccs);
   for (int u = 0; u < n; u++) {
     ccs[cc_id[u]].push_back(u);
