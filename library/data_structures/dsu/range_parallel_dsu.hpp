@@ -38,11 +38,11 @@ struct range_parallel_dsu {
   template <class F>
   void join_impl(int lvl, int u, int v, const F& f) {
     if (lvl == 0) {
-      int a = ufs[0].find(u), b = ufs[0].find(v);
-      if (a == b) return;
-      ufs[0].join(a, b);
-      int c = ufs[0].find(a);
-      return f(c, a ^ b ^ c);
+      u = ufs[0].find(u);
+      v = ufs[0].find(v);
+      if (!ufs[0].join(v, u)) return;
+      int w = ufs[0].find(u);
+      return f(w, u ^ v ^ w);
     }
     if (!ufs[lvl].join(u, v)) return;
     join_impl(lvl - 1, u, v, f);
