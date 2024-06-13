@@ -1,16 +1,15 @@
 /** @file */
 #pragma once
+#include "../../../kactl/content/data-structures/UnionFind.h"
 /**
  * DSU with support for joining two parallel ranges [l1, l1 + len) and [l2, l2 +
  * len) such that edges of the form (l1 + i, l2 + i) are joined. for all `i` in
- * [0, len). The complexity of a single query is O(n), but the total complexity
- * across all queries is O(n log n), so O(log n) amortized per query.
+ * [0, len).
  *
- * @time O(n log n) amortized across all queries
+ * @time O(n * log n * inverse ack n) amortized across all queries
  * @space O(n log n)
  */
 struct range_parallel_dsu {
-#include "../../../kactl/content/data-structures/UnionFind.h"
   vector<UF> ufs;
   /*
    * constructs a range_parallel_dsu with n elements.
@@ -19,11 +18,14 @@ struct range_parallel_dsu {
   /*
    * joins the ranges [l1, l1 + len) and [l2, l2 + len) such that edges of the
    * form (l1 + i, l2 + i) are joined. for all `i` in [0, len). The function `f`
-   * is called for each connected component of the resulting graph, with the
-   * first argument being the representative of the component and the second
-   * argument being the parent of the component which is being joined.
+   * is called for each connected component of the resulting graph which will
+   * change in this update, with the first argument being the representative of
+   * the component and the second argument being the parent of the component
+   * which is being joined.
    *
-   * @time O(log n) amortized
+   * @guarantee the function `f` is called at most `n - 1` times
+   *
+   * @time O(n * log n * inverse ack) amortized across all queries
    * @space O(log n) due to the recursive stack
    */
   template <typename F>
@@ -36,7 +38,7 @@ struct range_parallel_dsu {
   template <typename F>
   void join_impl(int lvl, int u, int v, const F& f) {
     if (lvl == 0) {
-      int a = ufs[lvl].find(u), b = ufs[lvl].find(v);
+      int a = ufs[0].find(u), b = ufs[0].find(v);
       if (a == b) return;
       ufs[0].join(a, b);
       int c = ufs[0].find(a);
