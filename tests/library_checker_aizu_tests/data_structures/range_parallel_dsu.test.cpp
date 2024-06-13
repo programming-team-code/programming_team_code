@@ -31,12 +31,13 @@ int main() {
     queries.push_back({a, b, k});
     cout << ans.x << '\n';
     if (qq <= 10 || abs(q - qq) <= 10 || get_rand(0, 50'000) == 0) {
-      vector<int> ids = get_range_parallel_equivalence_classes(queries, n);
+      auto uf = get_range_parallel_equivalence_classes(queries, n);
       vector<mint> sums(n);
       mint offline_ans = 0;
       for (int i = 0; i < n; i++) {
-        offline_ans = offline_ans + sums[ids[i]] * y[i];
-        sums[ids[i]] = sums[ids[i]] + y[i];
+        int id = uf.find(i);
+        offline_ans = offline_ans + sums[id] * y[i];
+        sums[id] = sums[id] + y[i];
       }
       assert(ans.x == offline_ans.x);
     }

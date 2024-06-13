@@ -2,21 +2,19 @@
 #pragma once
 #include "../../../kactl/content/data-structures/UnionFind.h"
 /**
- * Given a set of queries (l1, l2, len) such that for each query, we want to
- * join the ranges [l1, l1 + len) and [l2, l2 + len) such that edges of the form
- * (l1 + i, l2 + i) are joined for all `i` in [0, len).
+ * Given a set of restrictions (l1, l2, len) such that for each query, we want
+ * to join the ranges [l1, l1 + len) and [l2, l2 + len) such that edges of the
+ * form (l1 + i, l2 + i) are joined for all `i` in [0, len).
  *
- * @param queries a vector of queries of the form (l1, l2, len) which defines
- * the ranges [l1, l1 + len) and [l2, l2 + len)
+ * @param rest the vector of restrictions of the form (l1, l2, len)
  * @param n the number of elements
  *
- * @returns an array `ids` such that `0 <= ids[i] < n` and `ids[i] == ids[j]` if
- * `i` and `j` belong to the same equivalence class
+ * @returns a dsu satisfying the equivalences classes
  *
  * @time O((n + q) inverse ack n) amortized across all queries
  * @space O(n + q)
  */
-vi get_range_parallel_equivalence_classes(const vector<array<int, 3>>& queries,
+UF get_range_parallel_equivalence_classes(const vector<array<int, 3>>& rest,
                                           int n) {
   vector<vector<array<int, 2>>> queries_by_len(n + 1);
   for (auto [l1, l2, len] : queries) queries_by_len[len].push_back({l1, l2});
@@ -24,7 +22,5 @@ vi get_range_parallel_equivalence_classes(const vector<array<int, 3>>& queries,
   for (int len = n; len > 0; len--)
     for (auto [l1, l2] : queries_by_len[len])
       if (uf.join(l1, l2)) queries_by_len[len - 1].push_back({l1 + 1, l2 + 1});
-  vi ids(n);
-  rep(i, 0, n) ids[i] = uf.find(i);
-  return ids;
+  return uf;
 }
