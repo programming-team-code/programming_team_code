@@ -3,7 +3,7 @@
 #include "../template.hpp"
 
 #include "../../../library/contest/random.hpp"
-#include "../../../library/data_structures/uncommon/dsu_restorable.hpp"
+#include "../../../library/data_structures/dsu/dsu_restorable.hpp"
 
 int main() {
   cin.tie(0)->sync_with_stdio(0);
