@@ -25,6 +25,6 @@ vi get_range_parallel_equivalence_classes(const vector<array<int, 3>>& queries,
     for (auto [l1, l2] : queries_by_len[len])
       if (uf.join(l1, l2)) queries_by_len[len - 1].push_back({l1 + 1, l2 + 1});
   vi ids(n);
-  for (int i = 0; i < n; i++) ids[i] = uf.find(i);
+  rep(i, 0, n) ids[i] = uf.find(i);
   return ids;
 }
