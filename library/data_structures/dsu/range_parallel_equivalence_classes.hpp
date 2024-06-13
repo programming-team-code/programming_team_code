@@ -17,8 +17,7 @@
 vi get_range_parallel_equivalence_classes(const vector<array<int, 3>>& queries,
                                           int n) {
   vector<vector<array<int, 2>>> queries_by_len(n + 1);
-  for (const auto& [l1, l2, len] : queries)
-    queries_by_len[len].push_back({l1, l2});
+  for (auto [l1, l2, len] : queries) queries_by_len[len].push_back({l1, l2});
   UF uf(n);
   for (int len = n; len > 0; len--)
     for (auto [l1, l2] : queries_by_len[len])
