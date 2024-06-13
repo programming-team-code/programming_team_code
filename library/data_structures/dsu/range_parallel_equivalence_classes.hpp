@@ -4,9 +4,11 @@
 /**
  * Given a set of queries (l1, l2, len) such that for each query, we want to
  * join the ranges [l1, l1 + len) and [l2, l2 + len) such that edges of the form
- * (l1 + i, l2 + i) are joined. This data structure allows us to answer these
- * queries in O(n + q) time where n is the number of elements and q is the
- * number of queries.
+ * (l1 + i, l2 + i) are joined for all `i` in [0, len).
+ *
+ * @param queries a vector of queries of the form (l1, l2, len) which defines
+ * the ranges [l1, l1 + len) and [l2, l2 + len)
+ * @param n the number of elements
  *
  * @returns an array `ids` such that `0 <= ids[i] < n` and `ids[i] == ids[j]` if
  * `i` and `j` belong to the same equivalence class
