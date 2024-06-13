@@ -1,7 +1,8 @@
-#define PROBLEM "https://judge.yosupo.jp/problem/dynamic_graph_vertex_add_component_sum"
-#include "../template.hpp"
+#define PROBLEM \
+  "https://judge.yosupo.jp/problem/dynamic_graph_vertex_add_component_sum"
 
-#include "../../../library/data_structures/uncommon/dsu_restorable.hpp"
+#include "../template.hpp"
+#include "../../../library/data_structures/dsu/dsu_restorable.hpp"
 #include "../../../library/data_structures/seg_tree.hpp"
 
 int main() {
@@ -11,7 +12,8 @@ int main() {
   dsu_restorable dsu(n);
   for (int i = 0; i < n; i++) cin >> dsu.subtree[i];
   vector<vector<pair<int, int>>> tree(2 * q);
-  auto add_edge = [&](auto&& self, int le, int ri, int node_u, int node_v, int tl, int tr, int v) -> void {
+  auto add_edge = [&](auto&& self, int le, int ri, int node_u, int node_v,
+                      int tl, int tr, int v) -> void {
     if (ri <= tl || tr <= le) return;
     if (le <= tl && tr <= ri) {
       tree[v].emplace_back(node_u, node_v);
@@ -75,17 +77,22 @@ int main() {
         cout << dsu.sum(queries[tl].v) << '\n';
     } else {
       assert(1 <= v && v < q);
-      if (((tr - tl) & (tr - tl - 1)) == 0) assert(split(tl, tr) == (tl + tr) / 2);
+      if (((tr - tl) & (tr - tl - 1)) == 0)
+        assert(split(tl, tr) == (tl + tr) / 2);
       {
         int pow_2 = 1 << __lg(tr - tl);
         if (tl + pow_2 < tr - pow_2 / 2) {
           assert(pow_2 != tr - tl);
           assert(pow_2 / 2 < tr - tl - pow_2 && tr - tl - pow_2 < pow_2);
-          assert(pow_2 <= 2 * (tr - tl - pow_2) - 1 && 2 * (tr - tl - pow_2) - 1 < 2 * pow_2 - 1);
-          assert(__lg(pow_2) == __lg(2 * ((tr - tl) - pow_2) - 1) && __lg(pow_2) == __lg(2 * pow_2 - 1));
+          assert(pow_2 <= 2 * (tr - tl - pow_2) - 1 &&
+                 2 * (tr - tl - pow_2) - 1 < 2 * pow_2 - 1);
+          assert(__lg(pow_2) == __lg(2 * ((tr - tl) - pow_2) - 1) &&
+                 __lg(pow_2) == __lg(2 * pow_2 - 1));
         } else if (pow_2 < tr - tl) {
-          assert(pow_2 / 2 < tr - tl - pow_2 / 2 && tr - tl - pow_2 / 2 <= pow_2);
-          assert(pow_2 <= 2 * ((tr - tl) - pow_2 / 2) - 1 && 2 * ((tr - tl) - pow_2 / 2) - 1 <= 2 * pow_2 - 1);
+          assert(pow_2 / 2 < tr - tl - pow_2 / 2 &&
+                 tr - tl - pow_2 / 2 <= pow_2);
+          assert(pow_2 <= 2 * ((tr - tl) - pow_2 / 2) - 1 &&
+                 2 * ((tr - tl) - pow_2 / 2) - 1 <= 2 * pow_2 - 1);
           assert(__lg(2 * (tr - tl - pow_2 / 2) - 1) == __lg(2 * pow_2 - 1));
           assert(__lg(2 * ((tr - tl) - pow_2 / 2) - 1) == __lg(pow_2));
           assert(__lg(pow_2) == 1 + __lg(2 * (pow_2 / 2) - 1));
