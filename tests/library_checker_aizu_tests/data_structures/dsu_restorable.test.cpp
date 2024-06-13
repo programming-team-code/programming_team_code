@@ -1,7 +1,7 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/persistent_unionfind"
-#include "../template.hpp"
 
-#include "../../../library/data_structures/uncommon/dsu_restorable.hpp"
+#include "../template.hpp"
+#include "../../../library/data_structures/dsu/dsu_restorable.hpp"
 
 int main() {
   cin.tie(0)->sync_with_stdio(0);
@@ -24,7 +24,8 @@ int main() {
   {
     dsu_restorable dsu(n);
     auto dfs = [&](auto&& self, int u) -> void {
-      for (auto idx : queries[u]) res[idx] = dsu.same_set(query_u[idx], query_v[idx]);
+      for (auto idx : queries[u])
+        res[idx] = dsu.same_set(query_u[idx], query_v[idx]);
       for (auto child : childs[u]) {
         dsu.join(query_u[child], query_v[child]);
         self(self, child);
@@ -34,7 +35,6 @@ int main() {
     dfs(dfs, 0);
   }
   for (int i = 1; i <= q; i++)
-    if (res[i] != -1)
-      cout << res[i] << "\n";
+    if (res[i] != -1) cout << res[i] << "\n";
   return 0;
 }

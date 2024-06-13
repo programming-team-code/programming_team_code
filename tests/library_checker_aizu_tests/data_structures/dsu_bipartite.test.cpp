@@ -1,8 +1,8 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/unionfind"
-#include "../template.hpp"
 
+#include "../template.hpp"
+#include "../../../library/data_structures/dsu/dsu_bipartite.hpp"
 #include "../../../library/contest/random.hpp"
-#include "../../../library/data_structures/uncommon/dsu_bipartite.hpp"
 
 vector<bool> bipartite_check(const vector<vector<int>>& adj) {
   int n = sz(adj);

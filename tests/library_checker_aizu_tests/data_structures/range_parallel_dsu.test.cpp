@@ -1,9 +1,8 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/range_parallel_unionfind"
 
 #include "../template.hpp"
-// don't reorder
-#include "../../../library/contest/random.hpp"
 #include "../../../library/data_structures/dsu/range_parallel_dsu.hpp"
+#include "../../../library/contest/random.hpp"
 #include "../../../library/data_structures/dsu/range_parallel_equivalence_classes.hpp"
 #include "../../../library/math/mod_int.hpp"
 
