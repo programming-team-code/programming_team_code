@@ -62,6 +62,6 @@ vi offline_incremental_scc(vector<array<int, 2>> edge_updates, int n) {
     self(self, el, split, tl, mid);
     self(self, split, er, mid, tr);
   };
-  divide_and_conquer(divide_and_conquer, begin(eds), end(eds), 0, m);
+  divide_and_conquer(divide_and_conquer, all(eds), 0, m);
   return joins;
 }
