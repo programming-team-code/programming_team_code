@@ -6,7 +6,7 @@
  *
  * @note does not support self loops (e.a. edges of the form {u, u})
  *
- * @param eds directed edges {u, v} where u -> v
+ * @param edge_updates directed edges {u, v} where u -> v
  * @param n number of vertices
  *
  * @returns a vec joins where joins[i] = minimum prefix of edges [0, joins[i]]
