@@ -20,11 +20,11 @@ vi offline_incremental_scc(vector<array<int, 2>> edge_updates, int n) {
   int m = sz(edge_updates);
   vi ids(n, -1);
   vi joins(m, m);
-  vector<array<int, 5>> eds(m);
+  vector<array<int, 3>> eds(m);
   rep(t, 0, m) {
     auto [u, v] = edge_updates[t];
     assert(u != v);
-    eds[t] = {u, v, u, v, t};
+    eds[t] = {u, v, t};
   }
   auto divide_and_conquer = [&](auto&& self, auto el, auto er, int tl, int tr) {
     if (tl >= tr || el >= er) return;
@@ -32,7 +32,7 @@ vi offline_incremental_scc(vector<array<int, 2>> edge_updates, int n) {
     vi vs;
     vector<vi> adj;
     for (auto it = el; it != er; it++) {
-      auto& [u, v, _u, _v, t] = *it;
+      auto& [u, v, t] = *it;
       for (int w : {u, v}) {
         if (ids[w] != -1) continue;
         ids[w] = sz(vs);
@@ -52,7 +52,7 @@ vi offline_incremental_scc(vector<array<int, 2>> edge_updates, int n) {
     }
     if (tr - tl == 1) return;
     for (auto it = split; it != er; it++) {
-      auto& [u, v, _u, _v, t] = *it;
+      auto& [u, v, t] = *it;
       u = scc_id[u], v = scc_id[v];
     }
     // deallocate to avoid O(m log m) memory
