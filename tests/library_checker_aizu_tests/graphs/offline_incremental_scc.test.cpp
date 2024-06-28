@@ -1,6 +1,9 @@
 #define PROBLEM \
   "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_3_C"
 
+// code is 30,000^2, it was nearly 50x slower in DEBUG mode
+#undef _GLIBCXX_DEBUG
+
 #include "../template.hpp"
 #include "../../../library/graphs/strongly_connected_components/scc.hpp"
 #include "../../../library/graphs/strongly_connected_components/offline_incremental_scc.hpp"
