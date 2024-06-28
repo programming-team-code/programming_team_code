@@ -18,8 +18,7 @@
  */
 vi offline_incremental_scc(vector<array<int, 2>> edge_updates, int n) {
   int m = sz(edge_updates);
-  vi ids(n, -1);
-  vi joins(m, m);
+  vi ids(n, -1), joins(m, m);
   vector<array<int, 3>> eds(m);
   rep(t, 0, m) {
     auto [u, v] = edge_updates[t];
