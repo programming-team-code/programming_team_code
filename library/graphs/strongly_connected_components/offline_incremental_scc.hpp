@@ -26,8 +26,7 @@ vi offline_incremental_scc(vector<array<int, 2>> edge_updates, int n) {
     eds[t] = {u, v, t};
   }
   auto divide_and_conquer = [&](auto&& self, auto el, auto er, int tl, int tr) {
-    if (tl >= tr || el >= er) return;
-    int mid = (tl + tr + 1) / 2;
+    int mid = (tl + tr) / 2;
     vi vs;
     vector<vi> adj;
     for (auto it = el; it != er; it++) {
@@ -39,7 +38,7 @@ vi offline_incremental_scc(vector<array<int, 2>> edge_updates, int n) {
         adj.emplace_back();
       }
       u = ids[u], v = ids[v];
-      if (t < mid) adj[u].push_back(v);
+      if (t <= mid) adj[u].push_back(v);
     }
     for (int v : vs) ids[v] = -1;
     auto scc_id = sccs(adj).scc_id;
@@ -47,7 +46,7 @@ vi offline_incremental_scc(vector<array<int, 2>> edge_updates, int n) {
         el, er, [&](const auto& ed) { return scc_id[ed[0]] == scc_id[ed[1]]; });
     for (auto it = el; it != split; it++) {
       int t = it->back();
-      joins[t] = min(joins[t], mid - 1);
+      joins[t] = min(joins[t], mid);
     }
     if (tr - tl == 1) return;
     for (auto it = split; it != er; it++) {
