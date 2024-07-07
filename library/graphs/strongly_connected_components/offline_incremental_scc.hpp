@@ -46,7 +46,7 @@ vi offline_incremental_scc(vector<array<int, 2>> edge_updates, int n) {
         el, er, [&](const auto& ed) { return scc_id[ed[0]] == scc_id[ed[1]]; });
     for (auto it = el; it != split; it++) {
       int t = it->back();
-      joins[t] = min(joins[t], mid);
+      joins[t] = mid;
     }
     if (tr - tl == 1) return;
     for (auto it = split; it != er; it++) {
