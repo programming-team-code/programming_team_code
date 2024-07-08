@@ -4,8 +4,6 @@
 /**
  * @see [Radecki Algorithm!](https://codeforces.com/blog/entry/91608)
  *
- * @note does not support self loops (e.a. edges of the form {u, u})
- *
  * @param edge_updates directed edges {u, v} where u -> v
  * @param n number of vertices
  *
@@ -22,7 +20,6 @@ vi offline_incremental_scc(vector<array<int, 2>> edge_updates, int n) {
   vector<array<int, 3>> eds(m);
   rep(t, 0, m) {
     auto [u, v] = edge_updates[t];
-    assert(u != v);
     eds[t] = {u, v, t};
   }
   auto divide_and_conquer = [&](auto&& self, auto el, auto er, int tl, int tr) {
