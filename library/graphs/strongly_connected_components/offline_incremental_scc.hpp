@@ -11,6 +11,8 @@
  * for eds[i][0] and eds[i][1] to be in the same SCC; iff eds[i][0] and
  * eds[i][1] are never in the same SCC then joins[i] = m
  *
+ * @note for self-edges (u, u), joins[i] = -1
+ *
  * @time O((n + m) log m)
  * @space O(n + m)
  */
@@ -55,5 +57,6 @@ vi offline_incremental_scc(vector<array<int, 2>> edge_updates, int n) {
     self(self, split, er, mid, tr);
   };
   divide_and_conquer(divide_and_conquer, all(eds), 0, m);
+  rep(i, 0, m) if (edge_updates[i][0] == edge_updates[i][1]) joins[i] = -1;
   return joins;
 }
