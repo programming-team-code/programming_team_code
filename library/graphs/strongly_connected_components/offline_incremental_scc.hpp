@@ -25,7 +25,7 @@ vi offline_incremental_scc(vector<array<int, 2>> edge_updates, int n) {
     eds[t] = {u, v, t};
   }
   auto divide_and_conquer = [&](auto&& self, auto el, auto er, int tl, int tr) {
-    int mid = (tl + tr) / 2;
+    int mid = tl + (tr - tl) / 2;
     vi vs;
     vector<vi> adj;
     for (auto it = el; it != er; it++) {
@@ -56,7 +56,7 @@ vi offline_incremental_scc(vector<array<int, 2>> edge_updates, int n) {
     self(self, el, split, tl, mid);
     self(self, split, er, mid, tr);
   };
-  divide_and_conquer(divide_and_conquer, all(eds), 0, m);
-  rep(i, 0, m) if (edge_updates[i][0] == edge_updates[i][1]) joins[i] = -1;
+  // uses -1 as the lower bound to correctly handle self-edges
+  divide_and_conquer(divide_and_conquer, all(eds), -1, m);
   return joins;
 }
