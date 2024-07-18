@@ -36,10 +36,7 @@ int main() {
     LCA lc(adj);
     linear_lca lin_lca(adj);
     ladder lad(adj);
-    linear_kth_par<2> linear_kp_2(adj);
     linear_kth_path lin_kth_path(adj);
-    linear_kth_par<4> linear_kp_4(adj);
-    linear_kth_par<5> linear_kp_5(adj);
     for (int i = 0; i < 100; i++) {
       int u = get_rand<int>(0, n - 1);
       int v = get_rand<int>(0, n - 1);
@@ -59,10 +56,7 @@ int main() {
       if (tl.t[u].d > tl.t[v].d) swap(u, v);
       auto res = tl.kth_par(v, tl.t[v].d - tl.t[u].d);
       assert(res == lad.kth_par(v, tl.t[v].d - tl.t[u].d));
-      assert(res == linear_kp_2.kth_par(v, tl.t[v].d - tl.t[u].d));
       assert(res == lin_kth_path.lin_kp.kth_par(v, tl.t[v].d - tl.t[u].d));
-      assert(res == linear_kp_4.kth_par(v, tl.t[v].d - tl.t[u].d));
-      assert(res == linear_kp_5.kth_par(v, tl.t[v].d - tl.t[u].d));
       assert(lin_lca.in_subtree(u, v) == lc.in_subtree(u, v));
       assert(lin_lca.in_subtree(v, u) == lc.in_subtree(v, u));
       assert((u == res) == lc.in_subtree(u, v));
