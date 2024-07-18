@@ -15,7 +15,7 @@ int main() {
     assert(cnt == 5);
     cnt = bt_ll.count(54289162783746217LL);
     assert(cnt == 0);
-    int64_t res = bt_ll.min_xor(54289162783746217LL);
+    int64_t res = bt_ll.walk(54289162783746217LL);
     assert(res == 61238612412983LL);
   }
   binary_trie<int> bt_int;
@@ -31,7 +31,7 @@ int main() {
         bt_int.update(x, -1);
     } else {
       assert(type == 2);
-      int val = bt_int.min_xor(x);
+      int val = bt_int.walk(x);
       cout << (val ^ x) << '\n';
     }
   }

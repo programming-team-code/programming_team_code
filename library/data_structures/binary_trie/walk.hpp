@@ -7,7 +7,7 @@
  * @time O(mx_bit)
  * @space O(1)
  */
-T min_xor(T num) {
+T walk(T num) {
   assert(t[0].sub_sz > 0);
   T res = 0;
   for (int u = 0, bit = mx_bit; bit >= 0; bit--) {
