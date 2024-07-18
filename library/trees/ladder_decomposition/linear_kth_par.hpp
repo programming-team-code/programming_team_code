@@ -56,10 +56,13 @@ struct linear_kth_par {
    */
   inline int kth_par(int u, int k) {
     assert(0 <= k && k <= d[u]);
-    if (k == 0) return u;
-    if (k == 1) return p[u];
-    if (k == 2) return p[p[u]];
-    int i = bit_floor(unsigned(k / 3)), leaf = dl[j[((idx[u] & -i) | i) - 1]];
-    return l_tbl[leaf][k + d[leaf] - d[u]];
+    switch (k) {
+      case 0: return u;
+      case 1: return p[u];
+      case 2: return p[p[u]];
+      default:
+        int i = bit_floor(unsigned(k / 3)), leaf = dl[j[((idx[u] & -i) | i) - 1]];
+        return l_tbl[leaf][k + d[leaf] - d[u]];
+    }
   }
 };
