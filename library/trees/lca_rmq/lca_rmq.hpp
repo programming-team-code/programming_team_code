@@ -8,23 +8,28 @@
 // NOLINTNEXTLINE(readability-identifier-naming)
 struct LCA {
   int n;
-  vi in, sub_sz, d, p, order;
+  struct node {
+    int in, sub_sz = 1, d, p = -1, order;
+  };
+  vector<node> t;
   RMQ<int, function<int(int, int)>> rmq;
   /**
    * @param adj forest (rooted or unrooted)
    * @time O(n log n)
    * @space O(n log n) for rmq, all other vectors are O(n)
    */
-  LCA(const vector<vi>& adj) : n(sz(adj)), in(n), sub_sz(n, 1), d(n), p(n, -1) {
+  LCA(const vector<vi>& adj) : n(sz(adj)), t(n) {
+    int timer = 0;
     auto dfs = [&](auto&& self, int u) -> void {
-      in[u] = sz(order), order.push_back(u);
+      t[u].in = timer, t[timer++].order = u;
       for (int v : adj[u])
-        if (v != p[u])
-          d[v] = d[p[v] = u] + 1, self(self, v), sub_sz[u] += sub_sz[v];
+        if (v != t[u].p)
+          t[v].d = t[t[v].p = u].d + 1, self(self, v), t[u].sub_sz += t[v].sub_sz;
     };
-    order.reserve(n);
-    rep(i, 0, n) if (p[i] == -1) dfs(dfs, i);
-    rmq = {order, [&](int u, int v) { return d[u] < d[v] ? u : v; }};
+    rep(i, 0, n) if (t[i].p == -1) dfs(dfs, i);
+    vi order(n);
+    rep(i, 0, n) order[i] = t[i].order;
+    rmq = {order, [&](int u, int v) { return t[u].d < t[v].d ? u : v; }};
   }
   /**
    * @param u,v 2 nodes in the same component
@@ -34,8 +39,8 @@ struct LCA {
    */
   inline int lca(int u, int v) {
     if (u == v) return u;
-    auto [x, y] = minmax(in[u], in[v]);
-    return p[rmq.query(x + 1, y + 1)];
+    auto [x, y] = minmax(t[u].in, t[v].in);
+    return t[rmq.query(x + 1, y + 1)].p;
   }
 #include "../dist_edges.hpp"
 #include "in_subtree.hpp"
