@@ -36,5 +36,5 @@ template <class T> struct binary_trie {
     }
   }
 #include "count.hpp"
-#include "min_xor.hpp"
+#include "walk.hpp"
 };
