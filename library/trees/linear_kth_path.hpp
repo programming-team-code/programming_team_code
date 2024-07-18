@@ -2,9 +2,9 @@
 #pragma once
 #include "linear_lca/linear_lca.hpp"
 #include "ladder_decomposition/linear_kth_par.hpp"
-template <int X = 3> struct linear_kth_path {
+struct linear_kth_path {
   linear_lca lin_lca;
-  linear_kth_par<X> lin_kp;
+  linear_kth_par lin_kp;
   linear_kth_path(const vector<vi>& adj) : lin_lca(adj), lin_kp(adj) {}
   /**
    * @param u,v endpoint nodes of path

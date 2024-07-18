@@ -4,7 +4,7 @@ inline int bit_floor(unsigned x) { return x ? 1 << __lg(x) : 0; }
 /**
  * @see Still Simpler Static Level Ancestors by Torben Hagerup, May 2020; https://codeforces.com/blog/entry/126580
  */
-template <int X = 3> struct linear_kth_par {
+struct linear_kth_par {
   int n;
   vi d, p, j, dl /*deepest leaf*/, idx;
   vector<vi> l_tbl;
@@ -14,15 +14,14 @@ template <int X = 3> struct linear_kth_par {
              linear_kth_par<5> kp(adj);
    * @endcode
    * @param adj forest (rooted or unrooted)
-   * @time O(n * (2 * X + 1) / (X - 1))
-   * @space O(n * (2 * X + 1) / (X - 1))
+   * @time O(n)
+   * @space O(n)
    */
   linear_kth_par(const vector<vi>& adj) : n(sz(adj)), d(n), p(n, -1), dl(n), idx(n), l_tbl(n) {
-    static_assert(X >= 2);
     vi st;
     auto add_j = [&]() -> void {
       j.push_back(st[0]);
-      int i = sz(st) - 1 - (X - 1) * (sz(j) & -sz(j));
+      int i = sz(st) - 1 - 2 * (sz(j) & -sz(j));
       if (i > 0) j.back() = st[i];
     };
     auto dfs = [&](auto&& self, int u) -> void {
@@ -43,7 +42,7 @@ template <int X = 3> struct linear_kth_par {
     rep(i, 0, n) if (p[i] == i || dl[p[i]] != dl[i]) {
       int leaf = dl[i];
       vi& lad = l_tbl[leaf];
-      lad.resize(min((d[leaf] - d[i]) * (2 * X + 1) / (X - 1), d[leaf] + 1), leaf);
+      lad.resize(min((d[leaf] - d[i]) * 7 / 2, d[leaf] + 1), leaf);
       rep(k, 1, sz(lad))
           lad[k] = p[lad[k - 1]];
     }
@@ -52,16 +51,18 @@ template <int X = 3> struct linear_kth_par {
    * @param u query node
    * @param k number of edges
    * @returns a node k edges up from u
-   * @time O(X)
-   * @space O(X)
+   * @time O(1)
+   * @space O(1)
    */
   inline int kth_par(int u, int k) {
     assert(0 <= k && k <= d[u]);
-    if (k < X) {
-      while (k--) u = p[u];
-      return u;
+    switch (k) {
+      case 0: return u;
+      case 1: return p[u];
+      case 2: return p[p[u]];
+      default:
+        int i = bit_floor(unsigned(k / 3)), leaf = dl[j[((idx[u] & -i) | i) - 1]];
+        return l_tbl[leaf][k + d[leaf] - d[u]];
     }
-    int i = bit_floor(unsigned(k / X)), leaf = dl[j[((idx[u] & -i) | i) - 1]];
-    return l_tbl[leaf][k + d[leaf] - d[u]];
   }
 };
