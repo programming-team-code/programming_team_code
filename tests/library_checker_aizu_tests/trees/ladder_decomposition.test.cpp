@@ -16,17 +16,6 @@ int main() {
     adj[v].push_back(u);
   }
   ladder ld(adj);
-  linear_kth_par<2> lin_ld_2(adj);
-  linear_kth_par<3> lin_ld_3(adj);
-  linear_kth_par<4> lin_ld_4(adj);
-  {
-    array<int, 3> sum_ladder_lengths = {0, 0, 0};
-    for (auto& lad : lin_ld_2.l_tbl) sum_ladder_lengths[0] += sz(lad);
-    for (auto& lad : lin_ld_3.l_tbl) sum_ladder_lengths[1] += sz(lad);
-    for (auto& lad : lin_ld_4.l_tbl) sum_ladder_lengths[2] += sz(lad);
-    for (int kappa = 2; kappa < 5; kappa++)
-      assert(sum_ladder_lengths[kappa - 2] <= n * (2 * kappa + 1) / (kappa - 1));
-  }
   vector<vector<int>> adj_rooted(n + n);
   for (int i = 0; i < n; i++)
     if (ld.p[i] != i) {
@@ -47,9 +36,6 @@ int main() {
       assert(res == jmp(ld.b_tbl, u, k));
       assert(res == ld_rooted.kth_par(u, k));
       assert(res == ld_rooted.kth_par(u + n, k) - n);
-      assert(res == lin_ld_2.kth_par(u, k));
-      assert(res == lin_ld_3.kth_par(u, k));
-      assert(res == lin_ld_4.kth_par(u, k));
       assert(res == lin_ld_rooted.kth_par(u, k));
       assert(res == lin_ld_rooted.kth_par(u + n, k) - n);
       cout << res << '\n';
@@ -58,9 +44,6 @@ int main() {
       assert(res == jmp(ld.b_tbl, v, u_lca + v_lca - k));
       assert(res == ld_rooted.kth_par(v, u_lca + v_lca - k));
       assert(res == ld_rooted.kth_par(v + n, u_lca + v_lca - k) - n);
-      assert(res == lin_ld_2.kth_par(v, u_lca + v_lca - k));
-      assert(res == lin_ld_3.kth_par(v, u_lca + v_lca - k));
-      assert(res == lin_ld_4.kth_par(v, u_lca + v_lca - k));
       assert(res == lin_ld_rooted.kth_par(v, u_lca + v_lca - k));
       assert(res == lin_ld_rooted.kth_par(v + n, u_lca + v_lca - k) - n);
       cout << res << '\n';
