@@ -1,7 +1,10 @@
 /** @file */
 #pragma once
 const int mod = 17; /**< must be prime */
-vector<ll> inv(2, 1), fact(inv), inv_fact(inv);
+struct comb {
+  ll inv = 1, fact = 1, inv_fact = 1;
+};
+vector<comb> t(2);
 /**
  * @param n,k integers with n < mod
  * @returns number of ways to choose k objects out of n
@@ -12,11 +15,10 @@ vector<ll> inv(2, 1), fact(inv), inv_fact(inv);
 inline ll C(int n, int k) {
   assert(n < mod);
   if (k < 0 || n < k) return 0;
-  while (sz(inv) <= n) {
-    int i = sz(inv);
-    inv.push_back(mod - (mod / i) * inv[mod % i] % mod);
-    fact.push_back(i * fact[i - 1] % mod);
-    inv_fact.push_back(inv[i] * inv_fact[i - 1] % mod);
+  while (sz(t) <= n) {
+    int i = sz(t);
+    ll inv = mod - (mod / i) * t[mod % i].inv % mod;
+    t.push_back({inv, i * t[i - 1].fact % mod, inv * t[i - 1].inv_fact % mod});
   }
-  return fact[n] * inv_fact[k] % mod * inv_fact[n - k] % mod;
+  return t[n].fact * t[k].inv_fact % mod * t[n - k].inv_fact % mod;
 }

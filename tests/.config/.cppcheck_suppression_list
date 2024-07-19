@@ -6,6 +6,7 @@ unknownMacro
 unusedStructMember:../library/flow/min_cost_max_flow.hpp
 unusedStructMember:../library/strings/suffix_array/find/match.hpp:22
 unusedStructMember:../library/trees/tree_lift/tree_lift.hpp:10
+unusedStructMember:../library/trees/ladder_decomposition/linear_kth_par.hpp:10
 unusedScopedObject:../library/trees/centroid_decomp/count_paths_per_length.hpp:14
 unusedScopedObject:library_checker_aizu_tests/cd_asserts.hpp:5
 unusedScopedObject:../library/trees/centroid_decomp/count_paths_per_node.hpp:14

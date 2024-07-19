@@ -8,9 +8,9 @@
 
 int main() {
   cin.tie(0)->sync_with_stdio(0);
-  int t;
-  cin >> t >> mod;
-  while (t--) {
+  int num_tests;
+  cin >> num_tests >> mod;
+  while (num_tests--) {
     int n, k;
     cin >> n >> k;
     cout << C(n, k) << '\n';
@@ -24,11 +24,10 @@ int main() {
       assert(C(n, -k) == 0);
       assert(C(-k, n) == 0);
     }
-    assert(sz(inv) == sz(fact) && sz(inv_fact) == sz(fact));
   }
-  for (int i = 0; i < sz(inv); i++) {
-    if (i) assert(i * inv[i] % mod == 1);
-    assert(fact[i] * inv_fact[i] % mod == 1);
+  for (int i = 0; i < sz(t); i++) {
+    if (i) assert(i * t[i].inv % mod == 1);
+    assert(t[i].fact * t[i].inv_fact % mod == 1);
   }
   return 0;
 }
