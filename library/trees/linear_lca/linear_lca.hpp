@@ -13,13 +13,12 @@ struct linear_lca {
     unsigned label, asc;
   };
   vector<node> t;
-  vi head;
   /**
    * @param adj forest (rooted or unrooted)
    * @time O(n)
    * @space O(n)
    */
-  linear_lca(const vector<vi>& adj) : t(sz(adj)), head(sz(t) + 1) {
+  linear_lca(const vector<vi>& adj) : t(sz(adj)) {
     int timer = 0;
     auto dfs = [&](auto&& self, int u) -> void {
       t[timer++].order = u;
@@ -31,14 +30,14 @@ struct linear_lca {
           if (lsb(t[v].label) > lsb(t[u].label))
             t[u].label = t[t[u].big_ch = v].label;
         }
-      head[t[u].label] = u;
+      t[t[u].label - 1].head = u;
     };
     rep(i, 0, sz(t)) if (t[i].in == 0) t[i].p = i, dfs(dfs, i);
     rep(i, 0, sz(t)) t[t[i].order].asc = lsb(t[t[i].order].label) | t[t[t[i].order].p].asc;
   }
   inline int lift(int u, unsigned j) {
     auto k = bit_floor(t[u].asc ^ j);
-    return k == 0 ? u : t[head[(t[u].label & -k) | k]].p;
+    return k == 0 ? u : t[t[((t[u].label & -k) | k) - 1].head].p;
   }
   /**
    * @param u,v nodes
