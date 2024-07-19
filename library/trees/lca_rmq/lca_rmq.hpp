@@ -9,7 +9,7 @@
 struct LCA {
   int n;
   struct node {
-    int in, sub_sz = 1, d, p = -1, order;
+    int in, sub_sz = 1, d, p = -1;
   };
   vector<node> t;
   RMQ<int, function<int(int, int)>> rmq;
@@ -19,16 +19,14 @@ struct LCA {
    * @space O(n log n) for rmq, all other vectors are O(n)
    */
   LCA(const vector<vi>& adj) : n(sz(adj)), t(n) {
-    int timer = 0;
+    vi order;
     auto dfs = [&](auto&& self, int u) -> void {
-      t[u].in = timer, t[timer++].order = u;
+      t[u].in = sz(order), order.push_back(u);
       for (int v : adj[u])
         if (v != t[u].p)
           t[v].d = t[t[v].p = u].d + 1, self(self, v), t[u].sub_sz += t[v].sub_sz;
     };
     rep(i, 0, n) if (t[i].p == -1) dfs(dfs, i);
-    vi order(n);
-    rep(i, 0, n) order[i] = t[i].order;
     rmq = {order, [&](int u, int v) { return t[u].d < t[v].d ? u : v; }};
   }
   /**
