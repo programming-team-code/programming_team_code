@@ -125,17 +125,5 @@
 "tests/library_checker_aizu_tests/trees/edge_cd_contour_range_update.test.cpp": "2024-05-15 15:16:07 -0600",
 "tests/library_checker_aizu_tests/trees/edge_cd_count_paths_per_length.test.cpp": "2024-05-15 15:16:07 -0600",
 "tests/library_checker_aizu_tests/trees/edge_cd_reroot_dp.test.cpp": "2024-05-15 15:16:07 -0600",
-<<<<<<< HEAD
-"tests/library_checker_aizu_tests/trees/iterate_subtree.test.cpp": "2024-07-18 17:52:10 -0400",
-"tests/library_checker_aizu_tests/trees/kth_node_on_path.test.cpp": "2024-07-18 17:37:17 -0400",
-"tests/library_checker_aizu_tests/trees/ladder_decomposition.test.cpp": "2024-05-15 15:16:07 -0600",
-"tests/library_checker_aizu_tests/trees/lca_all_methods_aizu.test.cpp": "2024-07-18 17:37:17 -0400",
-"tests/library_checker_aizu_tests/trees/lca_all_methods_lib_checker.test.cpp": "2024-07-18 17:39:51 -0400",
-=======
-"tests/library_checker_aizu_tests/trees/iterate_subtree.test.cpp": "2024-05-22 12:38:32 -0400",
-"tests/library_checker_aizu_tests/trees/ladder_decomposition.test.cpp": "2024-07-18 18:17:29 -0400",
-"tests/library_checker_aizu_tests/trees/lca_all_methods_aizu.test.cpp": "2024-05-22 12:38:32 -0400",
-"tests/library_checker_aizu_tests/trees/lca_all_methods_lib_checker.test.cpp": "2024-05-22 12:38:32 -0400",
->>>>>>> dev
 "tests/library_checker_aizu_tests/trees/subtree_isomorphism.test.cpp": "2024-05-15 15:16:07 -0600"
 }
