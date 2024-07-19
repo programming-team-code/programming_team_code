@@ -7,7 +7,6 @@
  */
 // NOLINTNEXTLINE(readability-identifier-naming)
 struct LCA {
-  int n;
   struct node {
     int in, sub_sz = 1, d, p = -1;
   };
@@ -18,7 +17,7 @@ struct LCA {
    * @time O(n log n)
    * @space O(n log n) for rmq, all other vectors are O(n)
    */
-  LCA(const vector<vi>& adj) : n(sz(adj)), t(n) {
+  LCA(const vector<vi>& adj) : t(sz(adj)) {
     vi order;
     auto dfs = [&](auto&& self, int u) -> void {
       t[u].in = sz(order), order.push_back(u);
@@ -26,7 +25,7 @@ struct LCA {
         if (v != t[u].p)
           t[v].d = t[t[v].p = u].d + 1, self(self, v), t[u].sub_sz += t[v].sub_sz;
     };
-    rep(i, 0, n) if (t[i].p == -1) dfs(dfs, i);
+    rep(i, 0, sz(t)) if (t[i].p == -1) dfs(dfs, i);
     rmq = {order, [&](int u, int v) { return t[u].d < t[v].d ? u : v; }};
   }
   /**
