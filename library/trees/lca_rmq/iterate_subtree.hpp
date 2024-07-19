@@ -11,4 +11,4 @@
  * @space O(1)
  */
 rep(k, lc.t[u].in, lc.t[u].in + lc.t[u].sub_sz) {
-  int v = lc.t[k].order;
+  int v = lc.rmq.dp[0][k];

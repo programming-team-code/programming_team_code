@@ -16,8 +16,7 @@ inline ll C(int n, int k) {
   assert(n < mod);
   if (k < 0 || n < k) return 0;
   while (sz(t) <= n) {
-    int i = sz(t);
-    ll inv = mod - (mod / i) * t[mod % i].inv % mod;
+    ll i = sz(t), inv = mod - (mod / i) * t[mod % i].inv % mod;
     t.push_back({inv, i * t[i - 1].fact % mod, inv * t[i - 1].inv_fact % mod});
   }
   return t[n].fact * t[k].inv_fact % mod * t[n - k].inv_fact % mod;

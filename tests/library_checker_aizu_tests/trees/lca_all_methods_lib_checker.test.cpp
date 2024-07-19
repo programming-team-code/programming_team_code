@@ -29,7 +29,7 @@ int main() {
     assert(lc.in_subtree(i, i));
     assert(lin_lca.lca(i, i) == i);
     assert(lin_lca.in_subtree(i, i));
-    assert(lc.t[lc.t[i].order].in == i && lc.t[lc.t[i].in].order == i);
+    assert(lc.t[lc.rmq.dp[0][i]].in == i && lc.rmq.dp[0][lc.t[i].in] == i);
   }
   while (q--) {
     int u, v;
