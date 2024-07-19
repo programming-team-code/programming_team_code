@@ -5,7 +5,6 @@
  * Calculate jumps up a tree, to support fast upward jumps and LCAs.
  */
 struct tree_lift {
-  int n;
   struct node {
     int d, p = -1, j = -1;
   };
@@ -15,14 +14,14 @@ struct tree_lift {
    * @time O(n)
    * @space O(n) for d, p, j vectors
    */
-  tree_lift(const vector<vi>& adj) : n(sz(adj)), t(n) {
+  tree_lift(const vector<vi>& adj) : t(sz(adj)) {
     auto dfs = [&](auto&& self, int u) -> void {
       int jump = (t[u].d + t[t[t[u].j].j].d == 2 * t[t[u].j].d) ? t[t[u].j].j : u;
       for (int v : adj[u])
         if (v != t[u].p)
           t[v].d = t[t[v].p = u].d + 1, t[v].j = jump, self(self, v);
     };
-    rep(i, 0, n) if (t[i].j == -1) t[i].j = i, dfs(dfs, i);
+    rep(i, 0, sz(t)) if (t[i].j == -1) t[i].j = i, dfs(dfs, i);
   }
   /**
    * @param u query node
