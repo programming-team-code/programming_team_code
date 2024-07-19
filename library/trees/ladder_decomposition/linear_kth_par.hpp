@@ -24,7 +24,7 @@ struct linear_kth_par {
     vi st;
     auto add_j = [&]() -> void {
       j.push_back(st[0]);
-      int i = sz(st) - 1 - 2 * (sz(j) & -sz(j));
+      int i = sz(st) - 1 - 3 * (sz(j) & -sz(j));
       if (i > 0) j.back() = st[i];
     };
     auto dfs = [&](auto&& self, int u) -> void {
@@ -45,7 +45,7 @@ struct linear_kth_par {
     rep(i, 0, sz(t)) if (t[i].p == i || t[t[i].p].dl != t[i].dl) {
       int leaf = t[i].dl;
       vi& lad = t[leaf].lad;
-      lad.resize(min((t[leaf].d - t[i].d) * 7 / 2, t[leaf].d + 1), leaf);
+      lad.resize(min((t[leaf].d - t[i].d) * 3, t[leaf].d + 1), leaf);
       rep(k, 1, sz(lad))
           lad[k] = t[lad[k - 1]].p;
     }
@@ -63,8 +63,9 @@ struct linear_kth_par {
       case 0: return u;
       case 1: return t[u].p;
       case 2: return t[t[u].p].p;
+      case 3: return t[t[t[u].p].p].p;
       default:
-        int i = bit_floor(unsigned(k / 3)), leaf = t[j[((t[u].idx & -i) | i) - 1]].dl;
+        int i = bit_floor(unsigned(k >> 2)), leaf = t[j[((t[u].idx & -i) | i) - 1]].dl;
         return t[leaf].lad[k + t[leaf].d - t[u].d];
     }
   }
