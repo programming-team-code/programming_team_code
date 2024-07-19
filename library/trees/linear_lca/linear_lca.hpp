@@ -8,7 +8,6 @@ inline int lsb(int x) { return x & -x; }
  * by Baruch Schieber, Uzi Vishkin, April 1987
  */
 struct linear_lca {
-  int n;
   struct node {
     int d, p, head, in, order, big_ch;
     unsigned label, asc;
@@ -20,7 +19,7 @@ struct linear_lca {
    * @time O(n)
    * @space O(n)
    */
-  linear_lca(const vector<vi>& adj) : n(size(adj)), t(n), head(n + 1) {
+  linear_lca(const vector<vi>& adj) : t(sz(adj)), head(sz(t) + 1) {
     int timer = 0;
     auto dfs = [&](auto&& self, int u) -> void {
       t[timer++].order = u;
@@ -34,8 +33,8 @@ struct linear_lca {
         }
       head[t[u].label] = u;
     };
-    rep(i, 0, n) if (t[i].in == 0) t[i].p = i, dfs(dfs, i);
-    rep(i, 0, n) t[t[i].order].asc = lsb(t[t[i].order].label) | t[t[t[i].order].p].asc;
+    rep(i, 0, sz(t)) if (t[i].in == 0) t[i].p = i, dfs(dfs, i);
+    rep(i, 0, sz(t)) t[t[i].order].asc = lsb(t[t[i].order].label) | t[t[t[i].order].p].asc;
   }
   inline int lift(int u, unsigned j) {
     auto k = bit_floor(t[u].asc ^ j);

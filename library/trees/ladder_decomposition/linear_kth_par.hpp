@@ -5,7 +5,6 @@ inline int bit_floor(unsigned x) { return x ? 1 << __lg(x) : 0; }
  * @see Still Simpler Static Level Ancestors by Torben Hagerup, May 2020; https://codeforces.com/blog/entry/126580
  */
 struct linear_kth_par {
-  int n;
   struct node {
     int d, p = -1, dl /*deepest leaf*/, idx;
     vi lad;
@@ -21,7 +20,7 @@ struct linear_kth_par {
    * @time O(n)
    * @space O(n)
    */
-  linear_kth_par(const vector<vi>& adj) : n(sz(adj)), t(n) {
+  linear_kth_par(const vector<vi>& adj) : t(sz(adj)) {
     vi st;
     auto add_j = [&]() -> void {
       j.push_back(st[0]);
@@ -42,8 +41,8 @@ struct linear_kth_par {
         }
       st.pop_back();
     };
-    rep(i, 0, n) if (t[i].p == -1) t[i].p = i, dfs(dfs, i);
-    rep(i, 0, n) if (t[i].p == i || t[t[i].p].dl != t[i].dl) {
+    rep(i, 0, sz(t)) if (t[i].p == -1) t[i].p = i, dfs(dfs, i);
+    rep(i, 0, sz(t)) if (t[i].p == i || t[t[i].p].dl != t[i].dl) {
       int leaf = t[i].dl;
       vi& lad = t[leaf].lad;
       lad.resize(min((t[leaf].d - t[i].d) * 7 / 2, t[leaf].d + 1), leaf);
