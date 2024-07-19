@@ -18,7 +18,7 @@
  * @space O(k) vectors are allocated and returned
  */
 array<vi, 2> compress_tree(vi subset) {
-  auto cmp = [&](int u, int v) { return in[u] < in[v]; };
+  auto cmp = [&](int u, int v) { return t[u].in < t[v].in; };
   sort(all(subset), cmp);
   int siz = sz(subset);
   rep(i, 1, siz)

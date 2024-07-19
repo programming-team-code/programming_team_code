@@ -29,7 +29,7 @@ int main() {
     assert(tl.lca(i, i) == i);
     assert(lc.lca(i, i) == i);
     assert(lin_lca.lca(i, i) == i);
-    assert(lc.in[lc.order[i]] == i && lc.order[lc.in[i]] == i);
+    assert(lc.t[lc.t[i].order].in == i && lc.t[lc.t[i].in].order == i);
   }
   int q;
   cin >> q;

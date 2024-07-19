@@ -6,8 +6,12 @@ inline int bit_floor(unsigned x) { return x ? 1 << __lg(x) : 0; }
  */
 struct linear_kth_par {
   int n;
-  vi d, p, j, dl /*deepest leaf*/, idx;
-  vector<vi> l_tbl;
+  struct node {
+    int d, p = -1, dl /*deepest leaf*/, idx;
+    vi lad;
+  };
+  vi j;
+  vector<node> t;
   /**
    * @code{.cpp}
              linear_kth_par kp(adj);
@@ -17,7 +21,7 @@ struct linear_kth_par {
    * @time O(n)
    * @space O(n)
    */
-  linear_kth_par(const vector<vi>& adj) : n(sz(adj)), d(n), p(n, -1), dl(n), idx(n), l_tbl(n) {
+  linear_kth_par(const vector<vi>& adj) : n(sz(adj)), t(n) {
     vi st;
     auto add_j = [&]() -> void {
       j.push_back(st[0]);
@@ -27,24 +31,24 @@ struct linear_kth_par {
     auto dfs = [&](auto&& self, int u) -> void {
       st.push_back(u);
       add_j();
-      idx[u] = sz(j);
-      dl[u] = u;
+      t[u].idx = sz(j);
+      t[u].dl = u;
       for (int v : adj[u])
-        if (v != p[u]) {
-          d[v] = d[p[v] = u] + 1;
+        if (v != t[u].p) {
+          t[v].d = t[t[v].p = u].d + 1;
           self(self, v);
           add_j();
-          if (d[dl[v]] > d[dl[u]]) dl[u] = dl[v];
+          if (t[t[v].dl].d > t[t[u].dl].d) t[u].dl = t[v].dl;
         }
       st.pop_back();
     };
-    rep(i, 0, n) if (p[i] == -1) p[i] = i, dfs(dfs, i);
-    rep(i, 0, n) if (p[i] == i || dl[p[i]] != dl[i]) {
-      int leaf = dl[i];
-      vi& lad = l_tbl[leaf];
-      lad.resize(min((d[leaf] - d[i]) * 7 / 2, d[leaf] + 1), leaf);
+    rep(i, 0, n) if (t[i].p == -1) t[i].p = i, dfs(dfs, i);
+    rep(i, 0, n) if (t[i].p == i || t[t[i].p].dl != t[i].dl) {
+      int leaf = t[i].dl;
+      vi& lad = t[leaf].lad;
+      lad.resize(min((t[leaf].d - t[i].d) * 7 / 2, t[leaf].d + 1), leaf);
       rep(k, 1, sz(lad))
-          lad[k] = p[lad[k - 1]];
+          lad[k] = t[lad[k - 1]].p;
     }
   }
   /**
@@ -55,14 +59,14 @@ struct linear_kth_par {
    * @space O(1)
    */
   inline int kth_par(int u, int k) {
-    assert(0 <= k && k <= d[u]);
+    assert(0 <= k && k <= t[u].d);
     switch (k) {
       case 0: return u;
-      case 1: return p[u];
-      case 2: return p[p[u]];
+      case 1: return t[u].p;
+      case 2: return t[t[u].p].p;
       default:
-        int i = bit_floor(unsigned(k / 3)), leaf = dl[j[((idx[u] & -i) | i) - 1]];
-        return l_tbl[leaf][k + d[leaf] - d[u]];
+        int i = bit_floor(unsigned(k / 3)), leaf = t[j[((t[u].idx & -i) | i) - 1]].dl;
+        return t[leaf].lad[k + t[leaf].d - t[u].d];
     }
   }
 };
