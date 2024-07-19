@@ -12,11 +12,11 @@
  */
 inline int next_on_path(int u, int v) {
   assert(u != v);
-  if ((asc[u] & asc[v]) != asc[u]) return p[u];
-  if (asc[u] != asc[v]) {
-    auto k = bit_floor(asc[u] ^ asc[v]);
-    v = head[(label[v] & -k) | k];
+  if ((t[u].asc & t[v].asc) != t[u].asc) return t[u].p;
+  if (t[u].asc != t[v].asc) {
+    auto k = bit_floor(t[u].asc ^ t[v].asc);
+    v = head[(t[v].label & -k) | k];
   }
-  if (label[u] != label[p[v]] || d[u] >= d[v]) return p[u];
-  return p[v] == u ? v : big_ch[u];
+  if (t[u].label != t[t[v].p].label || t[u].d >= t[v].d) return t[u].p;
+  return t[v].p == u ? v : t[u].big_ch;
 }

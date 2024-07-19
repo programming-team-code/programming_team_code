@@ -8,30 +8,34 @@
  */
 struct dsu_bipartite {
   int num_sets;
-  vi p, is_bi, parity;
-  dsu_bipartite(int n) : num_sets(n), p(n, -1), is_bi(n, 1), parity(n) {}
+  struct node {
+    int p = -1;
+    bool is_bi = 1, parity;
+  };
+  vector<node> t;
+  dsu_bipartite(int n) : num_sets(n), t(n) {}
   int find(int u) {
-    if (p[u] < 0) return u;
-    int root = find(p[u]);
-    parity[u] ^= parity[p[u]];
-    return p[u] = root;
+    if (t[u].p < 0) return u;
+    int root = find(t[u].p);
+    t[u].parity ^= t[t[u].p].parity;
+    return t[u].p = root;
   }
   bool join(int u, int v) {
     int root_u = find(u), root_v = find(v);
     if (root_u == root_v) {
-      if (parity[u] == parity[v]) is_bi[root_u] = 0;
+      if (t[u].parity == t[v].parity) t[root_u].is_bi = 0;
       return 0;
     }
-    if (p[root_u] > p[root_v]) {
+    if (t[root_u].p > t[root_v].p) {
       swap(u, v);
       swap(root_u, root_v);
     }
-    is_bi[root_u] &= is_bi[root_v];
-    parity[root_v] = parity[v] ^ 1 ^ parity[u];
-    p[root_u] += p[root_v], p[root_v] = root_u, num_sets--;
+    t[root_u].is_bi &= t[root_v].is_bi;
+    t[root_v].parity = t[v].parity ^ 1 ^ t[u].parity;
+    t[root_u].p += t[root_v].p, t[root_v].p = root_u, num_sets--;
     return 1;
   }
-  inline int size(int u) { return -p[find(u)]; }
+  inline int size(int u) { return -t[find(u)].p; }
   inline bool same_set(int u, int v) { return find(u) == find(v); }
-  inline bool is_bipartite(int u) { return is_bi[find(u)]; }
+  inline bool is_bipartite(int u) { return t[find(u)].is_bi; }
 };

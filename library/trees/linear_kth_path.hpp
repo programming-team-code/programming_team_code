@@ -15,9 +15,9 @@ struct linear_kth_path {
    */
   int kth_path(int u, int v, int k) {
     assert(k >= 0);
-    int lca_d = lin_kp.d[lin_lca.lca(u, v)];
-    int u_lca = lin_kp.d[u] - lca_d;
-    int v_lca = lin_kp.d[v] - lca_d;
+    int lca_d = lin_kp.t[lin_lca.lca(u, v)].d;
+    int u_lca = lin_kp.t[u].d - lca_d;
+    int v_lca = lin_kp.t[v].d - lca_d;
     if (k <= u_lca) return lin_kp.kth_par(u, k);
     if (k <= u_lca + v_lca) return lin_kp.kth_par(v, u_lca + v_lca - k);
     return -1;

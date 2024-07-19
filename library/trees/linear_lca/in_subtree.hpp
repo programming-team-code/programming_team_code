@@ -7,7 +7,7 @@
  * @space O(1)
  */
 inline bool in_subtree(int u, int v) {
-  if ((asc[u] & asc[v]) != asc[u]) return 0;
-  v = lift(v, asc[u]);
-  return label[u] == label[v] && d[u] <= d[v];
+  if ((t[u].asc & t[v].asc) != t[u].asc) return 0;
+  v = lift(v, t[u].asc);
+  return t[u].label == t[v].label && t[u].d <= t[v].d;
 }

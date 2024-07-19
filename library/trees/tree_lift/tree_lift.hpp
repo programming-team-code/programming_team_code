@@ -6,20 +6,23 @@
  */
 struct tree_lift {
   int n;
-  vi d, p, j;
+  struct node {
+    int d, p = -1, j = -1;
+  };
+  vector<node> t;
   /**
    * @param adj forest (rooted or unrooted)
    * @time O(n)
    * @space O(n) for d, p, j vectors
    */
-  tree_lift(const vector<vi>& adj) : n(sz(adj)), d(n), p(n, -1), j(n, -1) {
+  tree_lift(const vector<vi>& adj) : n(sz(adj)), t(n) {
     auto dfs = [&](auto&& self, int u) -> void {
-      int jump = (d[u] + d[j[j[u]]] == 2 * d[j[u]]) ? j[j[u]] : u;
+      int jump = (t[u].d + t[t[t[u].j].j].d == 2 * t[t[u].j].d) ? t[t[u].j].j : u;
       for (int v : adj[u])
-        if (v != p[u])
-          d[v] = d[p[v] = u] + 1, j[v] = jump, self(self, v);
+        if (v != t[u].p)
+          t[v].d = t[t[v].p = u].d + 1, t[v].j = jump, self(self, v);
     };
-    rep(i, 0, n) if (j[i] == -1) j[i] = i, dfs(dfs, i);
+    rep(i, 0, n) if (t[i].j == -1) t[i].j = i, dfs(dfs, i);
   }
   /**
    * @param u query node
@@ -29,9 +32,9 @@ struct tree_lift {
    * @space O(1)
    */
   inline int kth_par(int u, int k) {
-    assert(0 <= k && k <= d[u]);
-    int anc_d = d[u] - k;
-    while (d[u] > anc_d) u = d[j[u]] >= anc_d ? j[u] : p[u];
+    assert(0 <= k && k <= t[u].d);
+    int anc_d = t[u].d - k;
+    while (t[u].d > anc_d) u = t[t[u].j].d >= anc_d ? t[u].j : t[u].p;
     return u;
   }
   /**
@@ -41,11 +44,11 @@ struct tree_lift {
    * @space O(1)
    */
   inline int lca(int u, int v) {
-    if (d[u] < d[v]) swap(u, v);
-    u = kth_par(u, d[u] - d[v]);
+    if (t[u].d < t[v].d) swap(u, v);
+    u = kth_par(u, t[u].d - t[v].d);
     while (u != v)
-      if (j[u] != j[v]) u = j[u], v = j[v];
-      else u = p[u], v = p[v];
+      if (t[u].j != t[v].j) u = t[u].j, v = t[v].j;
+      else u = t[u].p, v = t[v].p;
     return u;
   }
 #include "../dist_edges.hpp"

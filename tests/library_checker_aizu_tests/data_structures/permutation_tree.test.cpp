@@ -12,10 +12,6 @@ int main() {
   for (int i = 0; i < n; i++)
     cin >> a[i];
   perm_tree pt = perm_tree_asserts(a);
-  auto is_join = pt.is_join;
-  auto mn_idx = pt.mn_idx;
-  auto mn_num = pt.mn_num;
-  auto len = pt.len;
   auto root = pt.root;
   auto adj = pt.adj;
   cout << sz(adj) << '\n';
@@ -23,7 +19,7 @@ int main() {
   vector<int> node_to_time(sz(adj), -1);
   auto dfs = [&](auto&& self, int u, int p) -> void {
     node_to_time[u] = curr_time++;
-    cout << (p == -1 ? p : node_to_time[p]) << " " << mn_idx[u] << " " << mn_idx[u] + len[u] - 1 << " " << (is_join[u] || empty(adj[u]) ? "linear" : "prime") << '\n';
+    cout << (p == -1 ? p : node_to_time[p]) << " " << pt.t[u].mn_idx << " " << pt.t[u].mn_idx + pt.t[u].len - 1 << " " << (pt.t[u].is_join || empty(adj[u]) ? "linear" : "prime") << '\n';
     for (int v : adj[u])
       self(self, v, u);
   };

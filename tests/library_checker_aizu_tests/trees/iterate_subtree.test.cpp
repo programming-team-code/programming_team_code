@@ -18,19 +18,19 @@ int main() {
     vector<int> cnt_small_iterated(n), cnt_big_iterated(n);
     for (int i = 0; i < n; i++) {
       if (empty(adj[i])) continue;
-      int big_ch_idx = int(max_element(begin(adj[i]), end(adj[i]), [&](int x, int y) { return lc.sub_sz[x] < lc.sub_sz[y]; }) - begin(adj[i]));
+      int big_ch_idx = int(max_element(begin(adj[i]), end(adj[i]), [&](int x, int y) { return lc.t[x].sub_sz < lc.t[y].sub_sz; }) - begin(adj[i]));
       for (int j = 0; j < sz(adj[i]); j++) {
         int u = adj[i][j];
-        assert(lc.sub_sz[u] <= lc.sub_sz[adj[i][big_ch_idx]]);
+        assert(lc.t[u].sub_sz <= lc.t[adj[i][big_ch_idx]].sub_sz);
         if (j == big_ch_idx) {
-          int le = lc.in[u];
-          int ri = lc.in[u] + lc.sub_sz[u];
+          int le = lc.t[u].in;
+          int ri = lc.t[u].in + lc.t[u].sub_sz;
           cnt_big_iterated[le]++;
           if (ri < n) cnt_big_iterated[ri]--;
           continue;
         }
 #include "../../../library/trees/lca_rmq/iterate_subtree.hpp"
-        assert(lc.d[u] <= lc.d[v]);
+        assert(lc.t[u].d <= lc.t[v].d);
         assert(lc.in_subtree(u, v));
         cnt_small_iterated[v]++;
       }
@@ -43,8 +43,8 @@ int main() {
     // sub_sz * 2^k ~= n
     // 2^k ~= n / sub_sz
     // k ~= __lg(n / sub_sz)
-    assert(cnt_small_iterated[i] <= __lg(n / lc.sub_sz[i]));
-    assert(cnt_small_iterated[i] + cnt_big_iterated[lc.in[i]] == lc.d[i]);
+    assert(cnt_small_iterated[i] <= __lg(n / lc.t[i].sub_sz));
+    assert(cnt_small_iterated[i] + cnt_big_iterated[lc.t[i].in] == lc.t[i].d);
   }
 }
 while (q--) {

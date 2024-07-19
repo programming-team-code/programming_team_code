@@ -9,32 +9,37 @@ inline int lsb(int x) { return x & -x; }
  */
 struct linear_lca {
   int n;
-  vi d, p, head, in, order, big_ch;
-  vector<unsigned> label, asc;
+  struct node {
+    int d, p, head, in, order, big_ch;
+    unsigned label, asc;
+  };
+  vector<node> t;
+  vi head;
   /**
    * @param adj forest (rooted or unrooted)
    * @time O(n)
    * @space O(n)
    */
-  linear_lca(const vector<vi>& adj) : n(size(adj)), d(n), p(n), head(n + 1), in(n), big_ch(n), label(n), asc(n) {
+  linear_lca(const vector<vi>& adj) : n(size(adj)), t(n), head(n + 1) {
+    int timer = 0;
     auto dfs = [&](auto&& self, int u) -> void {
-      order.push_back(u);
-      in[u] = label[u] = sz(order);
+      t[timer++].order = u;
+      t[u].in = t[u].label = timer;
       for (int v : adj[u])
-        if (v != p[u]) {
-          d[v] = 1 + d[p[v] = u];
+        if (v != t[u].p) {
+          t[v].d = 1 + t[t[v].p = u].d;
           self(self, v);
-          if (lsb(label[v]) > lsb(label[u]))
-            label[u] = label[big_ch[u] = v];
+          if (lsb(t[v].label) > lsb(t[u].label))
+            t[u].label = t[t[u].big_ch = v].label;
         }
-      head[label[u]] = u;
+      head[t[u].label] = u;
     };
-    rep(i, 0, n) if (in[i] == 0) p[i] = i, dfs(dfs, i);
-    for (int u : order) asc[u] = lsb(label[u]) | asc[p[u]];
+    rep(i, 0, n) if (t[i].in == 0) t[i].p = i, dfs(dfs, i);
+    rep(i, 0, n) t[t[i].order].asc = lsb(t[t[i].order].label) | t[t[t[i].order].p].asc;
   }
   inline int lift(int u, unsigned j) {
-    auto k = bit_floor(asc[u] ^ j);
-    return k == 0 ? u : p[head[(label[u] & -k) | k]];
+    auto k = bit_floor(t[u].asc ^ j);
+    return k == 0 ? u : t[head[(t[u].label & -k) | k]].p;
   }
   /**
    * @param u,v nodes
@@ -43,9 +48,9 @@ struct linear_lca {
    * @space O(1)
    */
   inline int lca(int u, int v) {
-    auto [x, y] = minmax(label[u], label[v]);
-    auto j = asc[u] & asc[v] & -bit_floor((x - 1) ^ y);
-    return d[u = lift(u, j)] < d[v = lift(v, j)] ? u : v;
+    auto [x, y] = minmax(t[u].label, t[v].label);
+    auto j = t[u].asc & t[v].asc & -bit_floor((x - 1) ^ y);
+    return t[u = lift(u, j)].d < t[v = lift(v, j)].d ? u : v;
   }
 #include "../dist_edges.hpp"
 #include "in_subtree.hpp"
