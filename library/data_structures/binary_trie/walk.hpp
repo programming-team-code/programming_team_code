@@ -2,7 +2,7 @@
 #pragma once
 /**
  * @param num integer
- * @returns integer x such that x is in this multiset, and the number of
+ * @returns integer x such that x is in this multiset, and the number
  * (x^num) is minimum.
  * @time O(mx_bit)
  * @space O(1)
