@@ -35,10 +35,6 @@ struct linear_lca {
     rep(i, 0, sz(t)) if (t[i].in == 0) t[i].p = i, dfs(dfs, i);
     for (int u : order) t[u].asc = lsb(t[u].label) | t[t[u].p].asc;
   }
-  inline int lift(int u, unsigned j) {
-    auto k = bit_floor(t[u].asc ^ j);
-    return k == 0 ? u : t[head[(t[u].label & -k) | k]].p;
-  }
   /**
    * @param u,v nodes
    * @returns lca of u, v
@@ -47,7 +43,9 @@ struct linear_lca {
    */
   inline int lca(int u, int v) {
     auto j = t[u].asc & t[v].asc & -bit_floor((t[u].label ^ t[v].label) | 1);
-    return t[u = lift(u, j)].d < t[v = lift(v, j)].d ? u : v;
+    if (auto k = t[u].asc ^ j; k) k = bit_floor(k), u = t[head[(t[u].label & -k) | k]].p;
+    if (auto k = t[v].asc ^ j; k) k = bit_floor(k), v = t[head[(t[v].label & -k) | k]].p;
+    return t[u].d < t[v].d ? u : v;
   }
 #include "../dist_edges.hpp"
 #include "in_subtree.hpp"
