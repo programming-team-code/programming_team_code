@@ -1,18 +1,15 @@
 /** @file */
 #pragma once
-#include "../../monotonic_stack/monotonic_range.hpp"
-#include "../../monotonic_stack/cartesian_binary_tree.hpp"
 inline int bit_floor(unsigned x) { return x ? 1 << __lg(x) : 0; }
 /**
  * @see On Finding Lowest Common Ancestors: Simplification and Parallelization
  * by Baruch Schieber, Uzi Vishkin, April 1987
  */
 template <class T, class F> struct linear_rmq {
-  int n;
-  F cmp;
   vector<T> a;
-  vi head;
-  vector<unsigned> label, asc;
+  F cmp;
+  vector<int> head;
+  vector<array<unsigned, 2>> t;
   /**
    * @code{.cpp}
          vector<ll> a(n);
@@ -25,21 +22,22 @@ template <class T, class F> struct linear_rmq {
    * @time O(n)
    * @space O(n)
    */
-  linear_rmq(const vector<T>& a_a, F a_cmp) : n(sz(a_a)), cmp(a_cmp), a(a_a), head(n + 1), label(n), asc(n) {
-    vi le(mono_st(a, cmp)), ri(mono_range(le)), p(cart_binary_tree(le));
-    rep(i, 0, n)
-        label[i] = ri[i] & -bit_floor(unsigned((le[i] + 1) ^ ri[i]));
-    rep(i, 0, n) if (p[i] == -1 || label[p[i]] != label[i]) {
-      head[label[i]] = p[i];
-      int to_add = label[i] & -label[i];
-      asc[le[i] + 1] += to_add;
-      if (ri[i] < n) asc[ri[i]] -= to_add;
+  linear_rmq(const vector<T>& a_a, F a_cmp) : a(a_a), cmp(a_cmp), head(sz(a) + 1), t(sz(a)) {
+    vector<int> st{-1};
+    for (int i = 0; i <= sz(a); i++) {
+      int prev = -1;
+      while (st.back() != -1 && (i == sz(a) || !cmp(a[st.back()], a[i]))) {
+        if (prev != -1) head[prev] = st.back();
+        int pw2 = bit_floor(unsigned(st.end()[-2] + 1) ^ i);
+        t[st.back()][0] = prev = i & -pw2;
+        st.pop_back();
+        t[st.back() + 1][1] |= pw2;
+      }
+      if (prev != -1) head[prev] = i;
+      st.push_back(i);
     }
-    partial_sum(all(asc), begin(asc));
-  }
-  inline int lift(int u, unsigned j) {
-    auto k = bit_floor(asc[u] ^ j);
-    return k == 0 ? u : head[(label[u] & -k) | k];
+    for (int i = 1; i < sz(a); i++)
+      t[i][1] = (t[i][1] | t[i - 1][1]) & -(t[i][0] & -t[i][0]);
   }
   /**
    * @param le,ri defines range [min(le, ri), max(le, ri)]
@@ -48,8 +46,16 @@ template <class T, class F> struct linear_rmq {
    * @space O(1)
    */
   inline int query_idx(int le, int ri) {
-    auto [x, y] = minmax(label[le], label[ri]);
-    auto j = asc[le] & asc[ri] & -bit_floor((x - 1) ^ y);
-    return cmp(a[le = lift(le, j)], a[ri = lift(ri, j)]) ? le : ri;
+    auto j = t[le][1] & t[ri][1] & -bit_floor((t[le][0] ^ t[ri][0]) | 1);
+    if (auto k = t[le][1] ^ j; k) k = bit_floor(k), le = head[(t[le][0] & -k) | k];
+    if (auto k = t[ri][1] ^ j; k) k = bit_floor(k), ri = head[(t[ri][0] & -k) | k];
+    return cmp(a[le], a[ri]) ? le : ri;
   }
+  /**
+   * @param le,ri defines range [min(le, ri), max(le, ri)]
+   * @returns min/max of range
+   * @time O(1)
+   * @space O(1)
+   */
+  inline T query(int le, int ri) { return a[query_idx(le, ri)]; }
 };
