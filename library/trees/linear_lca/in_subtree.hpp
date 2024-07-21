@@ -11,4 +11,3 @@ inline bool in_subtree(int u, int v) {
   if (auto k = t[v].asc ^ t[u].asc; k) k = bit_floor(k), v = t[head[(t[v].label & -k) | k]].p;
   return t[u].label == t[v].label && t[u].d <= t[v].d;
 }
-
