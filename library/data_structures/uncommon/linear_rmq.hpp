@@ -28,7 +28,7 @@ template <class T, class F> struct linear_rmq {
       int prev = -1;
       while (st.back() != -1 && (i == sz(a) || !cmp(a[st.back()], a[i]))) {
         if (prev != -1) head[prev] = st.back();
-        int pw2 = bit_floor(unsigned(st.end()[-2] + 1) ^ i);
+        int pw2 = bit_floor(unsigned(end(st)[-2] + 1) ^ i);
         t[st.back()][0] = prev = i & -pw2;
         st.pop_back();
         t[st.back() + 1][1] |= pw2;
@@ -36,8 +36,8 @@ template <class T, class F> struct linear_rmq {
       if (prev != -1) head[prev] = i;
       st.push_back(i);
     }
-    for (int i = 1; i < sz(a); i++)
-      t[i][1] = (t[i][1] | t[i - 1][1]) & -(t[i][0] & -t[i][0]);
+    rep(i, 1, sz(a))
+        t[i][1] = (t[i][1] | t[i - 1][1]) & -(t[i][0] & -t[i][0]);
   }
   /**
    * @param le,ri defines range [min(le, ri), max(le, ri)]
