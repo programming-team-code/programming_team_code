@@ -46,8 +46,7 @@ struct linear_lca {
    * @space O(1)
    */
   inline int lca(int u, int v) {
-    auto [x, y] = minmax(t[u].label, t[v].label);
-    auto j = t[u].asc & t[v].asc & -bit_floor((x - 1) ^ y);
+    auto j = t[u].asc & t[v].asc & -bit_floor((t[u].label ^ t[v].label) | 1);
     return t[u = lift(u, j)].d < t[v = lift(v, j)].d ? u : v;
   }
 #include "../dist_edges.hpp"
