@@ -1,6 +1,6 @@
 /** @file */
 #pragma once
-inline int bit_floor(unsigned x) { return x ? 1 << __lg(x) : 0; }
+int bit_floor(unsigned x) { return x ? 1 << __lg(x) : 0; }
 /**
  * @see Still Simpler Static Level Ancestors by Torben Hagerup, May 2020; https://codeforces.com/blog/entry/126580
  */
@@ -56,7 +56,7 @@ struct linear_kth_par {
    * @time O(1)
    * @space O(1)
    */
-  inline int kth_par(int u, int k) {
+  int kth_par(int u, int k) {
     assert(0 <= k && k <= t[u].d);
     switch (k) {
       case 0: return u;

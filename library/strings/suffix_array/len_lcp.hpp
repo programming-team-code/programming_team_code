@@ -10,7 +10,7 @@ RMQ<int, function<int(int, int)>> rmq;
  * @time O(1)
  * @space O(1)
  */
-inline int len_lcp(int i1, int i2) {
+int len_lcp(int i1, int i2) {
   if (i1 > i2) swap(i1, i2);
   assert(0 <= i1 && i2 <= n);
   if (i1 == i2 || i2 == n) return n - i2;

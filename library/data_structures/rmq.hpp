@@ -30,7 +30,7 @@ template <class T, class F> struct RMQ {
    * @time O(1)
    * @space O(1)
    */
-  inline T query(int le, int ri) {
+  T query(int le, int ri) {
     assert(0 <= le && le < ri && ri <= sz(dp[0]));
     int lg = __lg(ri - le);
     return op(dp[lg][le], dp[lg][ri - (1 << lg)]);

@@ -1,6 +1,6 @@
 /** @file */
 #pragma once
-inline int bit_floor(unsigned x) { return x ? 1 << __lg(x) : 0; }
+int bit_floor(unsigned x) { return x ? 1 << __lg(x) : 0; }
 /**
  * @see On Finding Lowest Common Ancestors: Simplification and Parallelization
  * by Baruch Schieber, Uzi Vishkin, April 1987
@@ -45,7 +45,7 @@ template <class T, class F> struct linear_rmq {
    * @time O(1)
    * @space O(1)
    */
-  inline int query_idx(int le, int ri) {
+  int query_idx(int le, int ri) {
     auto j = t[le][1] & t[ri][1] & -bit_floor((t[le][0] ^ t[ri][0]) | 1);
     if (auto k = t[le][1] ^ j; k) k = bit_floor(k), le = head[(t[le][0] & -k) | k];
     if (auto k = t[ri][1] ^ j; k) k = bit_floor(k), ri = head[(t[ri][0] & -k) | k];
@@ -57,5 +57,5 @@ template <class T, class F> struct linear_rmq {
    * @time O(1)
    * @space O(1)
    */
-  inline T query(int le, int ri) { return a[query_idx(le, ri)]; }
+  T query(int le, int ri) { return a[query_idx(le, ri)]; }
 };

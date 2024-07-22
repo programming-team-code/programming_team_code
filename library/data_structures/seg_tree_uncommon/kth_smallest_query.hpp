@@ -24,7 +24,7 @@ struct kth_smallest {
    * @time O(log(maxv - minv))
    * @space O(log(maxv - minv)) for recursion stack; no new nodes are allocated
    */
-  inline int query(int le, int ri, int k) {
+  int query(int le, int ri, int k) {
     assert(0 <= le && ri < sz(pst.roots));
     assert(1 <= k && k <= ri - le);
     return query_impl(k, pst.root_l, pst.root_r, pst.roots[le], pst.roots[ri]);

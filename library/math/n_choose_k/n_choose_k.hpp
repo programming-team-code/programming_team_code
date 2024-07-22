@@ -12,7 +12,7 @@ vector<comb> t(2);
  * @space O(1) amortized
  */
 // NOLINTNEXTLINE(readability-identifier-naming)
-inline ll C(int n, int k) {
+ll C(int n, int k) {
   assert(n < mod);
   if (k < 0 || n < k) return 0;
   while (sz(t) <= n) {

@@ -1,8 +1,8 @@
 /** @file */
 #pragma once
 #include "../../monotonic_stack/monotonic_stack.hpp" /**< only needed for compress_tree */
-inline int bit_floor(unsigned x) { return x ? 1 << __lg(x) : 0; }
-inline int lsb(int x) { return x & -x; }
+int bit_floor(unsigned x) { return x ? 1 << __lg(x) : 0; }
+int lsb(int x) { return x & -x; }
 /**
  * @see On Finding Lowest Common Ancestors: Simplification and Parallelization
  * by Baruch Schieber, Uzi Vishkin, April 1987
@@ -41,7 +41,7 @@ struct linear_lca {
    * @time O(1)
    * @space O(1)
    */
-  inline int lca(int u, int v) {
+  int lca(int u, int v) {
     auto j = t[u].asc & t[v].asc & -bit_floor((t[u].label ^ t[v].label) | 1);
     if (auto k = t[u].asc ^ j; k) k = bit_floor(k), u = t[head[(t[u].label & -k) | k]].p;
     if (auto k = t[v].asc ^ j; k) k = bit_floor(k), v = t[head[(t[v].label & -k) | k]].p;

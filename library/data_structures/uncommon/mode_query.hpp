@@ -37,7 +37,7 @@ struct mode_query {
    * @time O(sqrt(n))
    * @space O(1)
    */
-  inline pii query(int le, int ri) {
+  pii query(int le, int ri) {
     assert(0 <= le && le < ri && ri <= n);
     if (le / b >= (ri - 1) / b - 1) {
       int mode = a[le];
