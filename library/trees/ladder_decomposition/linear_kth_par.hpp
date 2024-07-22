@@ -1,6 +1,6 @@
 /** @file */
 #pragma once
-int bit_floor(unsigned x) { return x ? 1 << __lg(x) : 0; }
+unsigned bit_floor(unsigned x) { return x ? 1 << __lg(x) : 0; }
 /**
  * @see Still Simpler Static Level Ancestors by Torben Hagerup, May 2020; https://codeforces.com/blog/entry/126580
  */
