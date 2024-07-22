@@ -13,7 +13,7 @@ struct linear_lca {
     unsigned label, asc;
   };
   vector<node> t;
-  vector<int> head, order;
+  vi head, order;
   /**
    * @param adj forest (rooted or unrooted)
    * @time O(n)

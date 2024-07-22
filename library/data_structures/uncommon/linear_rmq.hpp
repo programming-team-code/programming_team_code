@@ -8,7 +8,7 @@ inline int bit_floor(unsigned x) { return x ? 1 << __lg(x) : 0; }
 template <class T, class F> struct linear_rmq {
   vector<T> a;
   F cmp;
-  vector<int> head;
+  vi head;
   vector<array<unsigned, 2>> t;
   /**
    * @code{.cpp}
@@ -23,7 +23,7 @@ template <class T, class F> struct linear_rmq {
    * @space O(n)
    */
   linear_rmq(const vector<T>& a_a, F a_cmp) : a(a_a), cmp(a_cmp), head(sz(a) + 1), t(sz(a)) {
-    vector<int> st{-1};
+    vi st{-1};
     for (int i = 0; i <= sz(a); i++) {
       int prev = -1;
       while (st.back() != -1 && (i == sz(a) || !cmp(a[st.back()], a[i]))) {
