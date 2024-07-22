@@ -28,7 +28,7 @@ template <class T, class F> struct linear_rmq {
       int prev = -1;
       while (st.back() != -1 && (i == sz(a) || !cmp(a[st.back()], a[i]))) {
         if (prev != -1) head[prev] = st.back();
-        int pw2 = bit_floor(unsigned(end(st)[-2] + 1) ^ i);
+        auto pw2 = bit_floor(unsigned(end(st)[-2] + 1) ^ i);
         t[st.back()][0] = prev = i & -pw2;
         st.pop_back();
         t[st.back() + 1][1] |= pw2;
