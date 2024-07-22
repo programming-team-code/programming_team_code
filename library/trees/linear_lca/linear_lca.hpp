@@ -1,7 +1,7 @@
 /** @file */
 #pragma once
 #include "../../monotonic_stack/monotonic_stack.hpp" /**< only needed for compress_tree */
-int bit_floor(unsigned x) { return x ? 1 << __lg(x) : 0; }
+unsigned bit_floor(unsigned x) { return x ? 1 << __lg(x) : 0; }
 int lsb(int x) { return x & -x; }
 /**
  * @see On Finding Lowest Common Ancestors: Simplification and Parallelization
