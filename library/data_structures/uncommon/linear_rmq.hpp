@@ -4,6 +4,7 @@ int bit_floor(unsigned x) { return x ? 1 << __lg(x) : 0; }
 /**
  * @see On Finding Lowest Common Ancestors: Simplification and Parallelization
  * by Baruch Schieber, Uzi Vishkin, April 1987
+ * @see https://codeforces.com/blog/entry/125371?#comment-1173604
  */
 template <class T, class F> struct linear_rmq {
   vector<T> a;
