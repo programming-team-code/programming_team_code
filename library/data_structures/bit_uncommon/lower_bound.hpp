@@ -7,7 +7,7 @@
  * @time O(log n)
  * @space O(1)
  */
-inline int lower_bound(T sum) {
+int lower_bound(T sum) {
   if (sum <= 0) return 0;
   int pos = 0;
   for (int pw = 1 << __lg(sz(s) | 1); pw; pw >>= 1)

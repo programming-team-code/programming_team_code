@@ -5,7 +5,7 @@
  * @time O(1)
  * @space O(1)
  */
-inline T front() {
+T front() {
   assert(siz());
   return (empty(le) ? ri[0] : le.back())[0];
 }

@@ -8,7 +8,7 @@
  * @time O(k)
  * @space O(1) amortized
  */
-inline ll c_small_k(ll n, int k) {
+ll c_small_k(ll n, int k) {
   if (k < 0 || n < k || (n %= mod) < k) return 0;
   C(k, k);
   ll res = t[k].inv_fact;

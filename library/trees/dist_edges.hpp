@@ -5,6 +5,6 @@
  * @time same as lca(u, v)
  * @space O(1)
  */
-inline int dist_edges(int u, int v) {
+int dist_edges(int u, int v) {
   return t[u].d + t[v].d - 2 * t[lca(u, v)].d;
 }

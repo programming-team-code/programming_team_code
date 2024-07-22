@@ -54,7 +54,7 @@ struct PST {
    * @time O(log(root_r - root_l))
    * @space O(log(root_r - root_l)) for recursion stack, no new nodes are allocated
    */
-  inline ll query(int le, int ri, int version) {
+  ll query(int le, int ri, int version) {
     assert(root_l <= le && ri <= root_r);
     assert(0 <= version && version < sz(roots));
     return query_impl(le, ri, root_l, root_r, roots[version]);

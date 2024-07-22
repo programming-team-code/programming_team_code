@@ -7,7 +7,7 @@
  * @time O(|t| * log(|s|))
  * @space O(1)
  */
-inline match find_str_long(const T& t) {
+match find_str_long(const T& t) {
   int s_le = 0, s_ri = 0;
   auto cmp = [&](int i, int cmp_num) -> bool {
     auto [it_t, it_s] = mismatch(all(t), i + all(s));

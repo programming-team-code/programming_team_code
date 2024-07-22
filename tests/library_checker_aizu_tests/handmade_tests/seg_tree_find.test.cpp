@@ -7,7 +7,7 @@
 #include "../../../library/data_structures/seg_tree.hpp"
 
 const int mx_n = 100'000;
-inline int rv(int i) { return mx_n - i - 1; }
+int rv(int i) { return mx_n - i - 1; }
 
 int main() {
   cin.tie(0)->sync_with_stdio(0);

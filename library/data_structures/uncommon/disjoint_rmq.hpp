@@ -46,7 +46,7 @@ template <class T, class F> struct disjoint_rmq {
    * @time O(1)
    * @space O(1)
    */
-  inline T query(int le, int ri) {
+  T query(int le, int ri) {
     assert(0 <= le && le < ri && ri <= n);
     if (ri - le == 1) return dp[0][le];
     int lg = __lg(le ^ (ri - 1));

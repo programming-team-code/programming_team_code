@@ -7,7 +7,7 @@
  * @time same as lca(u, v), kth_par(u, k)
  * @space O(1)
  */
-inline int kth_path(int u, int v, int k) {
+int kth_path(int u, int v, int k) {
   assert(k >= 0);
   int lca_d = t[lca(u, v)].d;
   int u_lca = t[u].d - lca_d;

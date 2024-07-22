@@ -30,6 +30,8 @@ cin.exceptions(cin.failbit);
 #pragma GCC target("avx2,bmi,bmi2,lzcnt,popcnt")
 ```
 
+- mark functions as `inline` for C++ speed boost
+
 ### Troubleshooting
 ```
 /* stuff you should look for

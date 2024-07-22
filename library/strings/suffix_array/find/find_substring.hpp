@@ -9,7 +9,7 @@
  * @time O(log(|s|))
  * @space O(1)
  */
-inline pii find_substr(int s_le, int s_ri) {
+pii find_substr(int s_le, int s_ri) {
   assert(0 <= s_le && s_le <= s_ri && s_ri <= n);
   if (s_le == n) return {0, n};
   auto cmp = [&](int i, bool flip) -> bool {

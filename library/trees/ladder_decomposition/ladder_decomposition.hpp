@@ -46,7 +46,7 @@ struct ladder {
    * @time O(1)
    * @space O(1)
    */
-  inline int kth_par(int u, int k) {
+  int kth_par(int u, int k) {
     assert(0 <= k && k <= d[u]);
     if (k == 0) return u;
     int bit = __lg(k);

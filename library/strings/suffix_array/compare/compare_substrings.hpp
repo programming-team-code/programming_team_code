@@ -11,7 +11,7 @@
  * @time O(1)
  * @space O(1)
  */
-inline int cmp_substrs(int le1, int ri1, int le2, int ri2) {
+int cmp_substrs(int le1, int ri1, int le2, int ri2) {
   assert(0 <= le1 && le1 <= ri1 && ri1 <= n);
   assert(0 <= le2 && le2 <= ri2 && ri2 <= n);
   int len1 = ri1 - le1;

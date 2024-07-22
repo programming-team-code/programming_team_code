@@ -35,7 +35,7 @@ struct dsu_bipartite {
     t[root_u].p += t[root_v].p, t[root_v].p = root_u, num_sets--;
     return 1;
   }
-  inline int size(int u) { return -t[find(u)].p; }
-  inline bool same_set(int u, int v) { return find(u) == find(v); }
-  inline bool is_bipartite(int u) { return t[find(u)].is_bi; }
+  int size(int u) { return -t[find(u)].p; }
+  bool same_set(int u, int v) { return find(u) == find(v); }
+  bool is_bipartite(int u) { return t[find(u)].is_bi; }
 };

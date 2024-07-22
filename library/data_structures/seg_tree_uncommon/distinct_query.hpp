@@ -26,7 +26,7 @@ struct distinct_query {
    * @time O(log n)
    * @space O(log n) for recursion stack; no new nodes are allocated
    */
-  inline int query(int le, int ri) {
+  int query(int le, int ri) {
     assert(0 <= le && le <= ri && ri <= n);
     return pst.query(0, le + 1, ri) - pst.query(0, le + 1, le);
   }
