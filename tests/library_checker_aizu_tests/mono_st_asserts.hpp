@@ -1,4 +1,6 @@
 #pragma once
+#include "../../library/monotonic_stack/monotonic_range.hpp"
+#include "../../library/monotonic_stack/cartesian_binary_tree.hpp"
 #include "../../library/monotonic_stack/cartesian_k_ary_tree.hpp"
 #include "../../library/data_structures/rmq.hpp"
 #include "../../library/data_structures/uncommon/linear_rmq.hpp"
