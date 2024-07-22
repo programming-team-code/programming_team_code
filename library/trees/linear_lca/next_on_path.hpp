@@ -10,7 +10,7 @@
  * @time O(1)
  * @space O(1)
  */
-inline int next_on_path(int u, int v) {
+int next_on_path(int u, int v) {
   assert(u != v);
   if ((t[u].asc & t[v].asc) != t[u].asc) return t[u].p;
   if (t[u].asc != t[v].asc) {

@@ -37,7 +37,7 @@ template <class T, class F> struct deq {
    * @time O(1)
    * @space O(1)
    */
-  inline T query() {
+  T query() {
     assert(siz());
     if (empty(le)) return ri.back()[1];
     if (empty(ri)) return le.back()[1];
@@ -48,13 +48,13 @@ template <class T, class F> struct deq {
    * @time O(1)
    * @space O(1)
    */
-  inline int siz() { return sz(le) + sz(ri); }
+  int siz() { return sz(le) + sz(ri); }
   /**
    * @param elem element to insert at end
    * @time O(1)
    * @space O(1)
    */
-  inline void push_back(T elem) {
+  void push_back(T elem) {
     ri.push_back({elem, empty(ri) ? elem : op(ri.back()[1], elem)});
   }
   /**
@@ -62,7 +62,7 @@ template <class T, class F> struct deq {
    * @time O(1) ammortized
    * @space O(1) ammortized
    */
-  inline void pop_front() {
+  void pop_front() {
     assert(siz());
     if (empty(le)) {
       vector<T> a(sz(ri));

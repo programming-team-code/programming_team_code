@@ -25,7 +25,7 @@ template <class T> struct longest_pal_query {
    * @time O(1)
    * @space O(1)
    */
-  inline int len(int i) { return i - 2 * man[i] + 1; }
+  int len(int i) { return i - 2 * man[i] + 1; }
   /**
    * approach: binary search: is there some palindromic substring with length >= mid ?
    * note for a substring [le, ri) of s, the "relevant" centers are subarray [2 * le, 2 * ri - 1) of `man`
@@ -43,7 +43,7 @@ template <class T> struct longest_pal_query {
    * @time O(log n)
    * @space O(1)
    */
-  inline pii longest_pal(int le, int ri) {
+  pii longest_pal(int le, int ri) {
     assert(0 <= le && le < ri && ri <= sz(idx));
     int pal_len = lower_bound(begin(idx), begin(idx) + (ri - le), 0,
                               [&](int mid, int) { return len(rmq.query(2 * le + mid - 1, 2 * ri - mid)) >= mid; }) -

@@ -6,11 +6,11 @@
  * @returns split point of range which makes the segment tree a complete
  * binary tree
  */
-inline int split(int tl, int tr) {
+int split(int tl, int tr) {
   int pw2 = 1 << __lg(tr - tl);
   return min(tl + pw2, tr - pw2 / 2);
 }
-inline ll op(ll vl, ll vr) { return vl + vr; }
+ll op(ll vl, ll vr) { return vl + vr; }
 /**
  * root is at tree[1]
  * internal nodes are [1, n)
@@ -27,11 +27,11 @@ struct seg_tree {
     rep(i, 0, n) tree[(i + pw2) % n + n] = a[i];
     for (int i = n - 1; i >= 1; i--) tree[i] = op(tree[2 * i], tree[2 * i + 1]);
   }
-  inline void apply(ll change, int tl, int tr, int u) {
+  void apply(ll change, int tl, int tr, int u) {
     tree[u] += (tr - tl) * change;
     if (u < n) lazy[u] += change;
   }
-  inline void push(int tl, int tm, int tr, int u) {
+  void push(int tl, int tm, int tr, int u) {
     if (lazy[u]) {
       apply(lazy[u], tl, tm, 2 * u);
       apply(lazy[u], tm, tr, 2 * u + 1);

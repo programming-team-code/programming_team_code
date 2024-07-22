@@ -5,7 +5,7 @@
  * @time O(1)
  * @space O(1)
  */
-inline void push_front(T elem) {
+void push_front(T elem) {
   le.push_back({elem, empty(le) ? elem : op(elem, le.back()[1])});
 }
 /**
@@ -13,7 +13,7 @@ inline void push_front(T elem) {
  * @time O(1) ammortized
  * @space O(1) ammortized
  */
-inline void pop_back() {
+void pop_back() {
   assert(siz());
   if (empty(ri)) {
     vector<T> a(sz(le));

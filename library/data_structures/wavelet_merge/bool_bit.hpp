@@ -31,7 +31,7 @@ struct bool_bit {
    * @time O(log(n / 64))
    * @space O(1)
    */
-  inline int popcount(int i) {
+  int popcount(int i) {
     assert(0 <= i && i <= n);
     return presum.query(i >> 6) + __builtin_popcountll(mask[i >> 6] & ((1ULL << (i & 63)) - 1));
   }
@@ -41,7 +41,7 @@ struct bool_bit {
    * @time O(log(n / 64))
    * @space O(1)
    */
-  inline int popcount(int le, int ri) {
+  int popcount(int le, int ri) {
     assert(le <= ri);
     return popcount(ri) - popcount(le);
   }
@@ -51,7 +51,7 @@ struct bool_bit {
    * @time O(1)
    * @space O(1)
    */
-  inline bool on(int i) {
+  bool on(int i) {
     assert(0 <= i && i < n);
     return (mask[i >> 6] >> (i & 63)) & 1;
   }

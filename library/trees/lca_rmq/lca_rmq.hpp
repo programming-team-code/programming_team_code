@@ -34,7 +34,7 @@ struct LCA {
    * @time O(1)
    * @space O(1)
    */
-  inline int lca(int u, int v) {
+  int lca(int u, int v) {
     if (u == v) return u;
     auto [x, y] = minmax(t[u].in, t[v].in);
     return t[rmq.query(x + 1, y + 1)].p;
