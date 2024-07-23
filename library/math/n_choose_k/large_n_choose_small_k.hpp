@@ -1,6 +1,6 @@
 /** @file */
 #pragma once
-#include "n_choose_k.hpp"
+#include "grow.hpp"
 /**
  * @param n arbitrarily large integer
  * @param k integer with k < mod
@@ -10,7 +10,7 @@
  */
 ll c_small_k(ll n, int k) {
   if (k < 0 || n < k || (n %= mod) < k) return 0;
-  C(k, k);
+  grow(k);
   ll res = t[k].inv_fact;
   rep(i, 0, k) res = res * (n - i) % mod;
   return res;
