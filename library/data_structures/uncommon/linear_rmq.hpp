@@ -9,7 +9,7 @@ template <class T, class F> struct linear_rmq {
   vector<T> a;
   F cmp;
   vi head;
-  vector<array<unsigned, 2>> t;
+  vector<pii> t;
   /**
    * @code{.cpp}
          vector<ll> a(n);
@@ -28,16 +28,17 @@ template <class T, class F> struct linear_rmq {
       int prev = -1;
       while (st.back() != -1 && (i == sz(a) || !cmp(a[st.back()], a[i]))) {
         if (prev != -1) head[prev] = st.back();
-        int pw2 = 1 << __lg(unsigned(end(st)[-2] + 1) ^ i);
-        t[st.back()][0] = prev = i & -pw2;
+        int pw2 = 1 << __lg((end(st)[-2] + 1) ^ i);
+        t[st.back()].first = prev = i & -pw2;
         st.pop_back();
-        t[st.back() + 1][1] |= pw2;
+        t[st.back() + 1].second |= pw2;
       }
       if (prev != -1) head[prev] = i;
       st.push_back(i);
     }
     rep(i, 1, sz(a))
-        t[i][1] = (t[i][1] | t[i - 1][1]) & -(t[i][0] & -t[i][0]);
+        t[i]
+            .second = (t[i].second | t[i - 1].second) & -(t[i].first & -t[i].first);
   }
   /**
    * @param le,ri defines range [min(le, ri), max(le, ri)]
@@ -46,9 +47,9 @@ template <class T, class F> struct linear_rmq {
    * @space O(1)
    */
   int query_idx(int le, int ri) {
-    auto j = t[le][1] & t[ri][1] & -(1 << __lg((t[le][0] ^ t[ri][0]) | 1));
-    if (auto k = t[le][1] ^ j; k) k = 1 << __lg(k), le = head[(t[le][0] & -k) | k];
-    if (auto k = t[ri][1] ^ j; k) k = 1 << __lg(k), ri = head[(t[ri][0] & -k) | k];
+    auto j = t[le].second & t[ri].second & -(1 << __lg((t[le].first ^ t[ri].first) | 1));
+    if (auto k = t[le].second ^ j; k) k = 1 << __lg(k), le = head[(t[le].first & -k) | k];
+    if (auto k = t[ri].second ^ j; k) k = 1 << __lg(k), ri = head[(t[ri].first & -k) | k];
     return cmp(a[le], a[ri]) ? le : ri;
   }
   /**
