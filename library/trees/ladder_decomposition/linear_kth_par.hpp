@@ -1,6 +1,5 @@
 /** @file */
 #pragma once
-unsigned bit_floor(unsigned x) { return x ? 1 << __lg(x) : 0; }
 /**
  * @see Still Simpler Static Level Ancestors by Torben Hagerup, May 2020; https://codeforces.com/blog/entry/126580
  */
@@ -64,7 +63,7 @@ struct linear_kth_par {
       case 2: return t[t[u].p].p;
       case 3: return t[t[t[u].p].p].p;
       default:
-        int i = bit_floor(unsigned(k >> 2)), leaf = t[j[((t[u].idx & -i) | i) - 1]].dl;
+        int i = 1 << __lg(k >> 2), leaf = t[j[((t[u].idx & -i) | i) - 1]].dl;
         return t[leaf].lad[k + t[leaf].d - t[u].d];
     }
   }
