@@ -41,9 +41,9 @@ struct linear_lca {
    * @space O(1)
    */
   int lca(int u, int v) {
-    auto j = t[u].asc & t[v].asc & -(1 << __lg((t[u].label ^ t[v].label) | 1));
-    if (auto k = t[u].asc ^ j; k) u = t[lift(u, k)].p;
-    if (auto k = t[v].asc ^ j; k) v = t[lift(v, k)].p;
+    int j = t[u].asc & t[v].asc & -(1 << __lg((t[u].label ^ t[v].label) | 1));
+    if (int k = t[u].asc ^ j; k) u = t[lift(u, k)].p;
+    if (int k = t[v].asc ^ j; k) v = t[lift(v, k)].p;
     return t[u].d < t[v].d ? u : v;
   }
 #include "../dist_edges.hpp"
