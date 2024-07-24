@@ -1,6 +1,5 @@
 /** @file */
 #pragma once
-unsigned bit_floor(unsigned x) { return x ? 1 << __lg(x) : 0; }
 /**
  * @see On Finding Lowest Common Ancestors: Simplification and Parallelization
  * by Baruch Schieber, Uzi Vishkin, April 1987
@@ -29,7 +28,7 @@ template <class T, class F> struct linear_rmq {
       int prev = -1;
       while (st.back() != -1 && (i == sz(a) || !cmp(a[st.back()], a[i]))) {
         if (prev != -1) head[prev] = st.back();
-        auto pw2 = bit_floor(unsigned(end(st)[-2] + 1) ^ i);
+        int pw2 = 1 << __lg(unsigned(end(st)[-2] + 1) ^ i);
         t[st.back()][0] = prev = i & -pw2;
         st.pop_back();
         t[st.back() + 1][1] |= pw2;
@@ -47,9 +46,9 @@ template <class T, class F> struct linear_rmq {
    * @space O(1)
    */
   int query_idx(int le, int ri) {
-    auto j = t[le][1] & t[ri][1] & -bit_floor((t[le][0] ^ t[ri][0]) | 1);
-    if (auto k = t[le][1] ^ j; k) k = bit_floor(k), le = head[(t[le][0] & -k) | k];
-    if (auto k = t[ri][1] ^ j; k) k = bit_floor(k), ri = head[(t[ri][0] & -k) | k];
+    auto j = t[le][1] & t[ri][1] & -(1 << __lg((t[le][0] ^ t[ri][0]) | 1));
+    if (auto k = t[le][1] ^ j; k) k = 1 << __lg(k), le = head[(t[le][0] & -k) | k];
+    if (auto k = t[ri][1] ^ j; k) k = 1 << __lg(k), ri = head[(t[ri][0] & -k) | k];
     return cmp(a[le], a[ri]) ? le : ri;
   }
   /**
