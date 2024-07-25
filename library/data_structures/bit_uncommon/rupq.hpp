@@ -6,7 +6,7 @@
  */
 template <class T> struct bit_rupq {
   int n;
-  BIT<T> bit;
+  BIT<T> bit = {0};
   /**
    * @param a_n size
    * @time O(n)
@@ -18,7 +18,7 @@ template <class T> struct bit_rupq {
    * @time O(n)
    * @space O(n)
    */
-  bit_rupq(vector<T> a) : n(sz(a)), bit(0) {
+  bit_rupq(vector<T> a) : n(sz(a)) {
     adjacent_difference(all(a), begin(a));
     bit = {a};
   }
