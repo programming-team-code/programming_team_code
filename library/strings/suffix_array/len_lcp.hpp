@@ -11,10 +11,8 @@ RMQ<int, function<int(int, int)>> rmq = {{}, nullptr};
  * @space O(1)
  */
 int len_lcp(int i1, int i2) {
-  if (i1 > i2) swap(i1, i2);
-  assert(0 <= i1 && i2 <= n);
-  if (i1 == i2 || i2 == n) return n - i2;
-  if (empty(rmq.dp)) rmq = {lcp, [](int x, int y) { return min(x, y); }};
+  if (int mx = max(i1, i2); i1 == i2 || mx == n) return n - mx;
+  if (empty(rmq.dp[0])) rmq = {lcp, [](int x, int y) { return min(x, y); }};
   auto [le, ri] = minmax(sa_inv[i1], sa_inv[i2]);
   return rmq.query(le, ri);
 }
