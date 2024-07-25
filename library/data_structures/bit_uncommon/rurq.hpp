@@ -8,7 +8,7 @@
  */
 template <class T> struct bit_rurq {
   int n;
-  BIT<T> bit1, bit2;
+  BIT<T> bit1 = {0}, bit2 = {0};
   /**
    * @param a_n size
    * @time O(n)
@@ -20,7 +20,7 @@ template <class T> struct bit_rurq {
    * @time O(n)
    * @space O(n) for both bits
    */
-  bit_rurq(vector<T> a) : n(sz(a)), bit1(0), bit2(0) {
+  bit_rurq(vector<T> a) : n(sz(a)) {
     adjacent_difference(all(a), begin(a));
     bit1 = {a};
     rep(i, 0, n) a[i] *= i;
