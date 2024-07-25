@@ -13,7 +13,7 @@ template <class T> struct longest_pal_query {
    * @time O(n log n)
    * @space O(n log n) for rmq, everything else is O(n)
    */
-  longest_pal_query(const T& s) : man(manacher(s)), idx(sz(s)), rmq({}) {
+  longest_pal_query(const T& s) : man(manacher(s)), idx(sz(s)), rmq(vi()) {
     iota(all(idx), 1);
     vi init(sz(man));
     iota(all(init), 0);
