@@ -11,7 +11,7 @@
 struct bool_bit {
   int n;
   vector<uint64_t> mask;
-  BIT<int> presum;
+  BIT<int> presum = {0};
   /**
    * @param a boolean array
    * @time O(n)

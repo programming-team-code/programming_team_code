@@ -11,7 +11,6 @@
 template <class T, class F> struct RMQ {
   vector<vector<T>> dp;
   F op;
-  RMQ() {}
   /**
    * @param a static array
    * @param a_op any associative, commutative, idempotent operation
