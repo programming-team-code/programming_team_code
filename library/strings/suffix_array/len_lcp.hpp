@@ -1,6 +1,6 @@
 /** @file */
 #pragma once
-RMQ<int, function<int(int, int)>> rmq;
+RMQ<int, function<int(int, int)>> rmq({});
 /**
  * @param i1,i2 defines substrings [i1, n), [i2, n)
  *      - passing i1,i2 = n is okay
