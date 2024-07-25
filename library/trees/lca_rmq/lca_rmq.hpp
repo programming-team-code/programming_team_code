@@ -11,7 +11,7 @@ struct LCA {
     int in, sub_sz = 1, d, p = -1;
   };
   vector<node> t;
-  RMQ<int, function<int(int, int)>> rmq({});
+  RMQ<int, function<int(int, int)>> rmq = {};
   /**
    * @param adj forest (rooted or unrooted)
    * @time O(n log n)
