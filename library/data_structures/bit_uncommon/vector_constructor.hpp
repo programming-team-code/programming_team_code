@@ -1,6 +1,5 @@
 /** @file */
 #pragma once
-BIT() {} /**< allows late initialization */
 /**
  * @param a initial array
  * @time O(n)
