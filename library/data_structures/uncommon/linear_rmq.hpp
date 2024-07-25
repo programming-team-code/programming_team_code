@@ -7,9 +7,9 @@
  */
 template <class T, class F> struct linear_rmq {
   vector<T> a;
-  int n;
   F cmp;
-  vi label, asc, head;
+  vi head;
+  vector<array<int, 2>> t;
   /**
    * @code{.cpp}
          vector<ll> a(n);
@@ -22,22 +22,22 @@ template <class T, class F> struct linear_rmq {
    * @time O(n)
    * @space O(n)
    */
-  linear_rmq(const vector<T>& a_a, F a_cmp) : a(a_a), n(sz(a)), cmp(a_cmp), label(n), asc(n), head(n + 1) {
+  linear_rmq(const vector<T>& a_a, F a_cmp) : a(a_a), cmp(a_cmp), head(sz(a) + 1), t(sz(a)) {
     vi st{-1};
-    for (int i = 0; i <= n; i++) {
+    for (int i = 0; i <= sz(a); i++) {
       int prev = -1;
-      while (st.back() != -1 && (i == n || !cmp(a[st.back()], a[i]))) {
+      while (st.back() != -1 && (i == sz(a) || !cmp(a[st.back()], a[i]))) {
         if (prev != -1) head[prev] = st.back();
         int pw2 = 1 << __lg((end(st)[-2] + 1) ^ i);
-        label[st.back()] = prev = i & -pw2;
+        t[st.back()][0] = prev = i & -pw2;
         st.pop_back();
-        asc[st.back() + 1] |= pw2;
+        t[st.back() + 1][1] |= pw2;
       }
       if (prev != -1) head[prev] = i;
       st.push_back(i);
     }
-    rep(i, 1, n)
-        asc[i] = (asc[i] | asc[i - 1]) & -(label[i] & -label[i]);
+    rep(i, 1, sz(a))
+        t[i][1] = (t[i][1] | t[i - 1][1]) & -(t[i][0] & -t[i][0]);
   }
   /**
    * @param le,ri defines range [min(le, ri), max(le, ri)]
@@ -46,9 +46,9 @@ template <class T, class F> struct linear_rmq {
    * @space O(1)
    */
   int query_idx(int le, int ri) {
-    int j = asc[le] & asc[ri] & -(1 << __lg((label[le] ^ label[ri]) | 1));
-    if (int k = asc[le] ^ j; k) k = 1 << __lg(k), le = head[(label[le] & -k) | k];
-    if (int k = asc[ri] ^ j; k) k = 1 << __lg(k), ri = head[(label[ri] & -k) | k];
+    int j = t[le][1] & t[ri][1] & -(1 << __lg((t[le][0] ^ t[ri][0]) | 1));
+    if (int k = t[le][1] ^ j; k) k = 1 << __lg(k), le = head[(t[le][0] & -k) | k];
+    if (int k = t[ri][1] ^ j; k) k = 1 << __lg(k), ri = head[(t[ri][0] & -k) | k];
     return cmp(a[le], a[ri]) ? le : ri;
   }
   /**
