@@ -11,13 +11,13 @@ struct LCA {
     int in, sub_sz = 1, d, p = -1;
   };
   vector<node> t;
-  RMQ<int, function<int(int, int)>> rmq;
+  RMQ<int, function<int(int, int)>> rmq = {{}, nullptr};
   /**
    * @param adj forest (rooted or unrooted)
    * @time O(n log n)
    * @space O(n log n) for rmq, all other vectors are O(n)
    */
-  LCA(const vector<vi>& adj) : t(sz(adj)), rmq(vi()) {
+  LCA(const vector<vi>& adj) : t(sz(adj)) {
     vi order;
     auto dfs = [&](auto&& self, int u) -> void {
       t[u].in = sz(order), order.push_back(u);
