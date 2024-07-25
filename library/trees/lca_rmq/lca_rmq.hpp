@@ -17,7 +17,7 @@ struct LCA {
    * @time O(n log n)
    * @space O(n log n) for rmq, all other vectors are O(n)
    */
-  LCA(const vector<vi>& adj) : t(sz(adj)), rmq({}) {
+  LCA(const vector<vi>& adj) : t(sz(adj)), rmq(vi()) {
     vi order;
     auto dfs = [&](auto&& self, int u) -> void {
       t[u].in = sz(order), order.push_back(u);
