@@ -8,7 +8,7 @@
  */
 template <class T> struct bit_rurq {
   int n;
-  BIT<T> bit1, bit2;
+  BIT<T> bit1 = {0}, bit2 = {0};
   /**
    * @param a_n size
    * @time O(n)

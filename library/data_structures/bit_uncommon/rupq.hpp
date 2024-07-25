@@ -6,7 +6,7 @@
  */
 template <class T> struct bit_rupq {
   int n;
-  BIT<T> bit;
+  BIT<T> bit = {0};
   /**
    * @param a_n size
    * @time O(n)
