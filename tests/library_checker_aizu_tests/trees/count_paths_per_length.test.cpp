@@ -18,11 +18,11 @@ int main() {
     adj[v].push_back(u);
   }
   cd_asserts(adj);
-  vector<int64_t> cnt_len = count_paths_per_length(adj);
+  vector<ll> cnt_len = count_paths_per_length(adj);
   if (n >= 2) {
     int k = get_rand(1, n - 1);
-    vector<int64_t> count_paths = count_paths_per_node(adj, k);
-    int64_t sum = accumulate(begin(count_paths), end(count_paths), 0LL);
+    vector<ll> count_paths = count_paths_per_node(adj, k);
+    ll sum = accumulate(begin(count_paths), end(count_paths), 0LL);
     assert(sum % (k + 1) == 0);
     assert(sum / (k + 1) == cnt_len[k]);
   }

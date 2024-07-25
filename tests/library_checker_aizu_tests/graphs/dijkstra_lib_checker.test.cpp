@@ -10,14 +10,14 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n, m, s, t;
   cin >> n >> m >> s >> t;
-  vector<vector<pair<int, int64_t>>> adj(n), adj_inv(n);
+  vector<vector<pair<int, ll>>> adj(n), adj_inv(n);
   for (int i = 0; i < m; i++) {
     int u, v, w;
     cin >> u >> v >> w;
     adj[u].emplace_back(v, w);
     adj_inv[v].emplace_back(u, w);
   }
-  vector<int64_t> len = dijkstra(adj, s);
+  vector<ll> len = dijkstra(adj, s);
   if (len[t] == LLONG_MAX) {
     cout << -1 << '\n';
     return 0;

@@ -7,7 +7,7 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n;
   cin >> n;
-  vector<vector<int64_t>> a(n + 1, vector<int64_t>(n + 1));
+  vector<vector<ll>> a(n + 1, vector<ll>(n + 1));
   for (int i = 1; i <= n; i++) {
     for (int j = 1; j <= n; j++)
       cin >> a[i][j];
