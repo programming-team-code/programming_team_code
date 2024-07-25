@@ -7,13 +7,13 @@
  */
 template <class T> struct longest_pal_query {
   vi man, idx;
-  RMQ<int, function<int(int, int)>> rmq({});
+  RMQ<int, function<int(int, int)>> rmq;
   /**
    * @param s string/vector
    * @time O(n log n)
    * @space O(n log n) for rmq, everything else is O(n)
    */
-  longest_pal_query(const T& s) : man(manacher(s)), idx(sz(s)) {
+  longest_pal_query(const T& s) : man(manacher(s)), idx(sz(s)), rmq({}) {
     iota(all(idx), 1);
     vi init(sz(man));
     iota(all(init), 0);
