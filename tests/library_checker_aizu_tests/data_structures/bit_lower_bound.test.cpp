@@ -47,12 +47,12 @@ int main() {
         return 1;
       };
       int res = bit.lower_bound(order + 1);
-      assert(res - 1 == st.find_first(0, n, f));
-      assert(res - 1 == st.find_first(k, n, [&](int64_t x, int, int) -> bool {
+      assert(res == st.find_first(0, n, f));
+      assert(res == st.find_first(k, n, [&](int64_t x, int, int) -> bool {
         return x > 0;
       }));
-      if (res == n + 1) res = 0;
-      cout << res - 1 << '\n';
+      if (res == n) res = -1;
+      cout << res << '\n';
     } else {
       if (bit.query(k, k + 1) == 1) {
         cout << k << '\n';
@@ -68,12 +68,12 @@ int main() {
         }
         return 1;
       };
-      int res = bit.lower_bound(order);
-      assert(max(res - 1, 0) == st.find_first(0, n, f));
-      assert(res - 1 == st.find_last(0, k + 1, [&](int64_t x, int, int) -> bool {
+      int res = (order == 0 ? -1 : bit.lower_bound(order));
+      assert(max(res, 0) == st.find_first(0, n, f));
+      assert(res == st.find_last(0, k + 1, [&](int64_t x, int, int) -> bool {
         return x > 0;
       }));
-      cout << res - 1 << '\n';
+      cout << res << '\n';
     }
   }
   return 0;
