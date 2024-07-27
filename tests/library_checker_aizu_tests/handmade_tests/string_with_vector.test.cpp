@@ -16,9 +16,9 @@ int main() {
   // mainly to test all strings algs compile when passing in vectors
   // I had a bug where `compare` is only for strings, making `find_str` useless when using vectors
   const int shift = 100'000;
-  vector<int> arr;
+  vector<int> arr(100);
   for (int i = 0; i < 100; i++)
-    arr.push_back(shift + i);
+    arr[i] = shift + i;
   suffix_array sf_a(arr, shift + 100);
   {
     for (int i = 1; i < 100; i++)
@@ -30,9 +30,9 @@ int main() {
     }
     assert(sf_a.cmp_sufs(100, 100) == 0);
   }
-  vector<int> t;
+  vector<int> t(10);
   for (int i = 50; i < 60; i++)
-    t.push_back(shift + i);
+    t[i - 50] = shift + i;
   {
     auto [sa_le, sa_ri] = sf_a.find_str(t);
     assert(sa_le == 50 && sa_ri == 51);
