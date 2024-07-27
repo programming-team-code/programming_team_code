@@ -65,7 +65,6 @@
 "tests/library_checker_aizu_tests/handmade_tests/sa_find_subarray.test.cpp": "2024-07-24 23:18:20 -0500",
 "tests/library_checker_aizu_tests/handmade_tests/seg_tree_find.test.cpp": "2024-07-25 00:18:09 -0500",
 "tests/library_checker_aizu_tests/handmade_tests/seg_tree_find_small.test.cpp": "2024-07-21 21:34:09 -0500",
-"tests/library_checker_aizu_tests/handmade_tests/string_with_vector.test.cpp": "2024-07-26 22:48:48 -0500",
 "tests/library_checker_aizu_tests/handmade_tests/wavelet_merge_updates.test.cpp": "2024-07-25 00:18:09 -0500",
 "tests/library_checker_aizu_tests/handmade_tests/wavelet_tree.test.cpp": "2024-07-21 21:34:09 -0500",
 "tests/library_checker_aizu_tests/loops/chooses.test.cpp": "2024-07-21 21:34:09 -0500",
@@ -123,6 +122,5 @@
 "tests/library_checker_aizu_tests/trees/edge_cd_reroot_dp.test.cpp": "2024-05-15 15:16:07 -0600",
 "tests/library_checker_aizu_tests/trees/iterate_subtree.test.cpp": "2024-07-26 22:59:34 -0500",
 "tests/library_checker_aizu_tests/trees/ladder_decomposition.test.cpp": "2024-07-24 13:20:12 -0500",
-"tests/library_checker_aizu_tests/trees/lca_all_methods_lib_checker.test.cpp": "2024-07-26 22:59:34 -0500",
 "tests/library_checker_aizu_tests/trees/subtree_isomorphism.test.cpp": "2024-07-26 22:48:48 -0500"
 }
