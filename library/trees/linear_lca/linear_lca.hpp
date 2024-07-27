@@ -11,13 +11,14 @@ struct linear_lca {
     int d, p, in, big_ch, label, asc;
   };
   vector<node> t;
-  vi head, order;
+  vi head;
   /**
    * @param adj forest (rooted or unrooted)
    * @time O(n)
    * @space O(n)
    */
   linear_lca(const vector<vi>& adj) : t(sz(adj)), head(sz(adj) + 1) {
+    vi order;
     auto dfs = [&](auto&& self, int u) -> void {
       order.push_back(u);
       t[u].in = t[u].label = sz(order);
@@ -47,7 +48,7 @@ struct linear_lca {
     return t[u].d < t[v].d ? u : v;
   }
 #include "../dist_edges.hpp"
-#include "in_subtree.hpp"
+#include "../in_subtree.hpp"
 #include "next_on_path.hpp"
 #include "../compress_tree.hpp"
 };
