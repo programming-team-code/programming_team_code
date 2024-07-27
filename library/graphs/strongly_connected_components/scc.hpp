@@ -22,7 +22,6 @@ struct sccs {
   sccs(const vector<vi>& adj) : scc_id(sz(adj), -1) {
     int n = sz(adj), timer = 1;
     vi tin(n), st;
-    st.reserve(n);
     auto dfs = [&](auto&& self, int u) -> int {
       int low = tin[u] = timer++, siz = sz(st);
       st.push_back(u);

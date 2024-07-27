@@ -17,7 +17,6 @@ int main() {
   // I had a bug where `compare` is only for strings, making `find_str` useless when using vectors
   const int shift = 100'000;
   vector<int> arr;
-  arr.reserve(100);
   for (int i = 0; i < 100; i++)
     arr.push_back(shift + i);
   suffix_array sf_a(arr, shift + 100);
@@ -32,7 +31,6 @@ int main() {
     assert(sf_a.cmp_sufs(100, 100) == 0);
   }
   vector<int> t;
-  t.reserve(10);
   for (int i = 50; i < 60; i++)
     t.push_back(shift + i);
   {

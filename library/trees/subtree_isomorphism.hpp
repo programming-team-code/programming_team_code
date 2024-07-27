@@ -21,7 +21,6 @@ struct subtree_iso {
     map<vi, int> hashes;
     auto dfs = [&](auto&& self, int u, int p) -> int {
       vi ch_ids;
-      ch_ids.reserve(sz(adj[u]));
       for (int v : adj[u])
         if (v != p) ch_ids.push_back(self(self, v, u));
       sort(all(ch_ids));
