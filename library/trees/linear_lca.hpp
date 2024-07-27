@@ -1,6 +1,6 @@
 /** @file */
 #pragma once
-#include "../../monotonic_stack/monotonic_stack.hpp" /**< only needed for compress_tree */
+#include "../monotonic_stack/monotonic_stack.hpp" /**< only needed for compress_tree */
 int lsb(int x) { return x & -x; }
 /**
  * @see On Finding Lowest Common Ancestors: Simplification and Parallelization
@@ -8,7 +8,7 @@ int lsb(int x) { return x & -x; }
  */
 struct linear_lca {
   struct node {
-    int d, p, in, big_ch, label, asc;
+    int d, p, sub_sz = 1, in, label, asc;
   };
   vector<node> t;
   vi head;
@@ -26,8 +26,8 @@ struct linear_lca {
         if (v != t[u].p) {
           t[v].d = 1 + t[t[v].p = u].d;
           self(self, v);
-          if (lsb(t[v].label) > lsb(t[u].label))
-            t[u].label = t[t[u].big_ch = v].label;
+          t[u].sub_sz += t[v].sub_sz;
+          if (lsb(t[v].label) > lsb(t[u].label)) t[u].label = t[v].label;
         }
       head[t[u].label] = u;
     };
@@ -47,8 +47,7 @@ struct linear_lca {
     if (int k = t[v].asc ^ j; k) v = t[lift(v, k)].p;
     return t[u].d < t[v].d ? u : v;
   }
-#include "../dist_edges.hpp"
-#include "../in_subtree.hpp"
-#include "next_on_path.hpp"
-#include "../compress_tree.hpp"
+#include "dist_edges.hpp"
+#include "in_subtree.hpp"
+#include "compress_tree.hpp"
 };
