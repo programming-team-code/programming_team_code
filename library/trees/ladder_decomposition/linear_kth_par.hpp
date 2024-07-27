@@ -8,8 +8,8 @@ struct linear_kth_par {
     int d, p = -1, dl /*deepest leaf*/, idx;
     vi lad;
   };
-  vi j;
   vector<node> t;
+  vi j;
   /**
    * @code{.cpp}
              linear_kth_par kp(adj);
@@ -18,24 +18,24 @@ struct linear_kth_par {
    * @time O(n)
    * @space O(n)
    */
-  linear_kth_par(const vector<vi>& adj) : t(sz(adj)) {
+  linear_kth_par(const vector<vi>& adj) : t(sz(adj)), j(2 * sz(t)) {
     vi st;
+    int pos = 1;
     auto add_j = [&]() -> void {
-      j.push_back(st[0]);
-      int i = sz(st) - 1 - 2 * (sz(j) & -sz(j));
-      if (i > 0) j.back() = st[i];
+      j[pos] = st[max(0, sz(st) - 1 - 2 * (pos & -pos))];
+      pos++;
     };
     auto dfs = [&](auto&& self, int u) -> void {
       st.push_back(u);
-      add_j();
-      t[u].idx = sz(j);
+      t[u].idx = pos;
       t[u].dl = u;
+      add_j();
       for (int v : adj[u])
         if (v != t[u].p) {
           t[v].d = t[t[v].p = u].d + 1;
           self(self, v);
-          add_j();
           if (t[t[v].dl].d > t[t[u].dl].d) t[u].dl = t[v].dl;
+          add_j();
         }
       st.pop_back();
     };
@@ -62,7 +62,7 @@ struct linear_kth_par {
       case 1: return t[u].p;
       case 2: return t[t[u].p].p;
       default:
-        int i = 1 << __lg(k / 3), leaf = t[j[((t[u].idx & -i) | i) - 1]].dl;
+        int i = 1 << __lg(k / 3), leaf = t[j[(t[u].idx & -i) | i]].dl;
         return t[leaf].lad[k + t[leaf].d - t[u].d];
     }
   }
