@@ -7,7 +7,7 @@
 
 #include "../../../library/trees/lca_rmq/lca_rmq.hpp"
 
-#include "../../../library/trees/linear_lca/linear_lca.hpp"
+#include "../../../library/trees/linear_lca.hpp"
 
 #include "../../../library/trees/ladder_decomposition/ladder_decomposition.hpp"
 
@@ -50,8 +50,6 @@ int main() {
       assert(tl.dist_edges(u, v) == lc.dist_edges(u, v));
       assert(tl.dist_edges(u, v) == lin_lca.dist_edges(u, v));
       assert(tl.kth_path(u, v, 1) == lc.next_on_path(u, v));
-      assert(lin_lca.next_on_path(u, v) == lc.next_on_path(u, v));
-      assert(lin_lca.next_on_path(v, u) == lc.next_on_path(v, u));
       assert(lin_kth_path.kth_path(u, v, 1) == lc.next_on_path(u, v));
       if (tl.t[u].d > tl.t[v].d) swap(u, v);
       auto res = tl.kth_par(v, tl.t[v].d - tl.t[u].d);
