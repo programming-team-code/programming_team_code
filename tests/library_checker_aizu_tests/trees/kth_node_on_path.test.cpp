@@ -5,7 +5,7 @@
 
 #include "../../../library/trees/lca_rmq/lca_rmq.hpp"
 
-#include "../../../library/trees/linear_lca/linear_lca.hpp"
+#include "../../../library/trees/linear_lca.hpp"
 
 #define bit_floor bit_floor_linear
 #include "../../../library/trees/linear_kth_path.hpp"
@@ -44,8 +44,6 @@ int main() {
       assert(lin_kth_path.kth_path(u, v, 1) == lc.next_on_path(u, v));
       assert(tl.kth_path(u, v, dist_in_edges - 1) == lc.next_on_path(v, u));
       assert(lin_kth_path.kth_path(u, v, dist_in_edges - 1) == lc.next_on_path(v, u));
-      assert(lin_kth_path.lin_lca.next_on_path(u, v) == lc.next_on_path(u, v));
-      assert(lin_kth_path.lin_lca.next_on_path(v, u) == lc.next_on_path(v, u));
       assert(lin_kth_path.lin_lca.in_subtree(u, v) == lc.in_subtree(u, v));
       assert(lin_kth_path.lin_lca.in_subtree(v, u) == lc.in_subtree(v, u));
       assert(tl.kth_path(u, v, dist_in_edges) == v);

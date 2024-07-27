@@ -1,5 +1,4 @@
 /** @file */
-#pragma once
 /**
  * @param u,v 2 nodes
  * @returns 1 iff v is in u's subtree

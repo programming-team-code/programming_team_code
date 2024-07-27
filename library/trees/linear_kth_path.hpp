@@ -1,6 +1,6 @@
 /** @file */
 #pragma once
-#include "linear_lca/linear_lca.hpp"
+#include "linear_lca.hpp"
 #include "ladder_decomposition/linear_kth_par.hpp"
 struct linear_kth_path {
   linear_lca lin_lca;

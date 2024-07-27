@@ -40,7 +40,7 @@ struct LCA {
     return t[rmq.query(x + 1, y + 1)].p;
   }
 #include "../dist_edges.hpp"
-#include "in_subtree.hpp"
+#include "../in_subtree.hpp"
 #include "next_on_path.hpp"
 #include "../compress_tree.hpp"
 };
