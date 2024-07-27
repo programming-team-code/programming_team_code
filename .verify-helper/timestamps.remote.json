@@ -123,6 +123,7 @@
 "tests/library_checker_aizu_tests/trees/edge_cd_count_paths_per_length.test.cpp": "2024-07-25 00:04:01 -0500",
 "tests/library_checker_aizu_tests/trees/edge_cd_reroot_dp.test.cpp": "2024-05-15 15:16:07 -0600",
 "tests/library_checker_aizu_tests/trees/iterate_subtree.test.cpp": "2024-07-26 22:59:34 -0500",
+"tests/library_checker_aizu_tests/trees/kth_node_on_path.test.cpp": "2024-07-26 23:39:01 -0500",
 "tests/library_checker_aizu_tests/trees/ladder_decomposition.test.cpp": "2024-07-24 13:20:12 -0500",
 "tests/library_checker_aizu_tests/trees/lca_all_methods_aizu.test.cpp": "2024-07-26 23:35:47 -0500",
 "tests/library_checker_aizu_tests/trees/lca_all_methods_lib_checker.test.cpp": "2024-07-26 23:35:47 -0500",
