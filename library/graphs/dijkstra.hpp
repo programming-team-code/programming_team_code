@@ -14,11 +14,11 @@ vector<ll> dijkstra(const vector<vector<pair<int, ll>>>& adj, int s) {
   pq.emplace(0, s);
   vector<ll> d(sz(adj), LLONG_MAX);
   while (!empty(pq)) {
-    auto [d_u, u] = pq.top();
+    auto [d_v, v] = pq.top();
     pq.pop();
-    if (d[u] <= d_u) continue;
-    d[u] = d_u;
-    for (auto [v, w] : adj[u]) pq.emplace(w + d[u], v);
+    if (d[v] <= d_v) continue;
+    d[v] = d_v;
+    for (auto [u, w] : adj[v]) pq.emplace(w + d[v], u);
   }
   return d;
 }
