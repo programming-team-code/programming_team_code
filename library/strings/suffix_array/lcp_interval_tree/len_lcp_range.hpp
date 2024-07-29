@@ -1,11 +1,11 @@
 /** @file */
 #pragma once
 /**
- * @param u node
- * @returns length of longest common prefix of u's interval/range
+ * @param v node
+ * @returns length of longest common prefix of v's interval/range
  * @time O(1)
  * @space O(1)
  */
-int len_lcp_range(int u) {
-  return u < sf_a.n - 1 ? sf_a.lcp[u] : sf_a.n - sf_a.sa[u - sf_a.n + 1];
+int len_lcp_range(int v) {
+  return v < sf_a.n - 1 ? sf_a.lcp[v] : sf_a.n - sf_a.sa[v - sf_a.n + 1];
 }

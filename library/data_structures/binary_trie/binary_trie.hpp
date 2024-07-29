@@ -25,14 +25,14 @@ template <class T> struct binary_trie {
    */
   void update(T num, int delta) {
     t[0].sub_sz += delta;
-    for (int u = 0, bit = mx_bit; bit >= 0; bit--) {
+    for (int v = 0, bit = mx_bit; bit >= 0; bit--) {
       bool b = (num >> bit) & 1;
-      if (t[u].next[b] == -1) {
-        t[u].next[b] = sz(t);
+      if (t[v].next[b] == -1) {
+        t[v].next[b] = sz(t);
         t.emplace_back();
       }
-      u = t[u].next[b];
-      t[u].sub_sz += delta;
+      v = t[v].next[b];
+      t[v].sub_sz += delta;
     }
   }
 #include "count.hpp"

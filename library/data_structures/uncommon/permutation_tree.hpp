@@ -10,8 +10,8 @@
 struct perm_tree {
   struct node {
     /**
-     * [mn_idx[u], mn_idx[u] + len[u]) is range of indexes
-     * [mn_num[u], mn_num[u] + len[u]) is range of numbers
+     * [mn_idx[v], mn_idx[v] + len[v]) is range of indexes
+     * [mn_num[v], mn_num[v] + len[v]) is range of numbers
      * @{
      */
     int mn_idx, mn_num, len;
@@ -53,37 +53,37 @@ struct perm_tree {
     rep(i, 0, n) allocate(i, a[i], 1, 0, {});
     vector<array<int, 4>> st;
     rep(i, 0, n) {
-      int u = i;
+      int v = i;
       while (!empty(st)) {
-        int v = st.back()[0];
-        if (!empty(adj[v]) && touches(adj[v].back(), u)) {
-          t[v].mn_num = min(t[v].mn_num, t[u].mn_num);
-          t[v].len += t[u].len;
-          adj[v].push_back(u);
-          u = v;
+        int u = st.back()[0];
+        if (!empty(adj[u]) && touches(adj[u].back(), v)) {
+          t[u].mn_num = min(t[u].mn_num, t[v].mn_num);
+          t[u].len += t[v].len;
+          adj[u].push_back(v);
+          v = u;
           st.pop_back();
           continue;
         }
-        if (touches(u, v)) {
-          u = allocate(t[v].mn_idx, min(t[u].mn_num, t[v].mn_num), t[u].len + t[v].len, 1, {v, u});
+        if (touches(v, u)) {
+          v = allocate(t[u].mn_idx, min(t[v].mn_num, t[u].mn_num), t[v].len + t[u].len, 1, {u, v});
           st.pop_back();
           continue;
         }
-        int le = min(t[v].mn_idx, mn_i[t[u].mn_idx]), ri = max(i, mx_i[t[u].mn_idx]), idx = sz(st) - 1;
+        int le = min(t[u].mn_idx, mn_i[t[v].mn_idx]), ri = max(i, mx_i[t[v].mn_idx]), idx = sz(st) - 1;
         while (ri == i && le != t[st[idx][0]].mn_idx)
           le = min(le, st[idx][1]), ri = max(ri, st[idx][2]), idx = st[idx][3];
         if (ri > i) {
-          st.push_back({u, le, ri, idx});
+          st.push_back({v, le, ri, idx});
           break;
         }
-        int min_num = t[u].mn_num;
-        vi ch(1 + sz(st) - idx, u);
+        int min_num = t[v].mn_num;
+        vi ch(1 + sz(st) - idx, v);
         rep(j, idx, sz(st))
             min_num = min(min_num, t[ch[j - idx] = st[j][0]].mn_num);
-        u = allocate(le, min_num, i - le + 1, 0, ch);
+        v = allocate(le, min_num, i - le + 1, 0, ch);
         st.resize(idx);
       }
-      if (empty(st)) st.push_back({u, -1, -1, -1});
+      if (empty(st)) st.push_back({v, -1, -1, -1});
     }
     assert(sz(st) == 1);
     root = st[0][0];

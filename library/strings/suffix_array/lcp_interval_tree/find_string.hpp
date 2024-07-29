@@ -13,14 +13,14 @@
  * @space O(1)
  */
 pii find_str(const string& t) {
-  int u = root;
+  int v = root;
   rep(i, 0, sz(t)) {
-    if (i == len_lcp_range(u)) {
-      u = get_child(u, t[i]);
-      if (u == -1) return {0, 0};
+    if (i == len_lcp_range(v)) {
+      v = get_child(v, t[i]);
+      if (v == -1) return {0, 0};
     }
-    int sa_le = sa_range(u).first;
+    int sa_le = sa_range(v).first;
     if (sf_a.s[sf_a.sa[sa_le] + i] != t[i]) return {0, 0};
   }
-  return sa_range(u);
+  return sa_range(v);
 }

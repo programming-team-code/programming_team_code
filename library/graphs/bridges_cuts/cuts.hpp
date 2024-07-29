@@ -27,17 +27,17 @@ struct cuts {
   cuts(const vector<vector<pii>>& adj, int m) : is_cut(sz(adj)), bcc_id(m, -1) {
     int n = sz(adj), timer = 1;
     vi tin(n), st;
-    auto dfs = [&](auto&& self, int u, int p_id) -> int {
-      int low = tin[u] = timer++, deg = 0;
-      for (auto [v, e_id] : adj[u]) {
-        assert(u != v);
+    auto dfs = [&](auto&& self, int v, int p_id) -> int {
+      int low = tin[v] = timer++, deg = 0;
+      for (auto [u, e_id] : adj[v]) {
+        assert(v != u);
         if (e_id == p_id) continue;
-        if (!tin[v]) {
+        if (!tin[u]) {
           int siz = sz(st);
           st.push_back(e_id);
-          int low_ch = self(self, v, e_id);
-          if (low_ch >= tin[u]) {
-            is_cut[u] = 1;
+          int low_ch = self(self, u, e_id);
+          if (low_ch >= tin[v]) {
+            is_cut[v] = 1;
             rep(i, siz, sz(st))
                 bcc_id[st[i]] = num_bccs;
             st.resize(siz);
@@ -45,12 +45,12 @@ struct cuts {
           }
           low = min(low, low_ch);
           deg++;
-        } else if (tin[v] < tin[u]) {
+        } else if (tin[u] < tin[v]) {
           st.push_back(e_id);
-          low = min(low, tin[v]);
+          low = min(low, tin[u]);
         }
       }
-      if (p_id == -1) is_cut[u] = (deg > 1);
+      if (p_id == -1) is_cut[v] = (deg > 1);
       return low;
     };
     rep(i, 0, n) if (!tin[i]) dfs(dfs, i, -1);

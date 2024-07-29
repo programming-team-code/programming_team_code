@@ -10,13 +10,13 @@
 T walk(T num) {
   assert(t[0].sub_sz > 0);
   T res = 0;
-  for (int u = 0, bit = mx_bit; bit >= 0; bit--) {
+  for (int v = 0, bit = mx_bit; bit >= 0; bit--) {
     bool b = (num >> bit) & 1;
-    int v = t[u].next[b];
-    if (v != -1 && t[v].sub_sz > 0)
-      u = v, res |= T(b) << bit;
+    int u = t[v].next[b];
+    if (u != -1 && t[u].sub_sz > 0)
+      v = u, res |= T(b) << bit;
     else
-      u = t[u].next[!b], res |= T(!b) << bit;
+      v = t[v].next[!b], res |= T(!b) << bit;
   }
   return res;
 }

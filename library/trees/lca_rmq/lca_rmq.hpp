@@ -19,14 +19,14 @@ struct LCA {
    */
   LCA(const vector<vi>& adj) : t(sz(adj)) {
     vi order;
-    auto dfs = [&](auto&& self, int u) -> void {
-      t[u].in = sz(order), order.push_back(u);
-      for (int v : adj[u])
-        if (v != t[u].p)
-          t[v].d = t[t[v].p = u].d + 1, self(self, v), t[u].sub_sz += t[v].sub_sz;
+    auto dfs = [&](auto&& self, int v) -> void {
+      t[v].in = sz(order), order.push_back(v);
+      for (int u : adj[v])
+        if (u != t[v].p)
+          t[u].d = t[t[u].p = v].d + 1, self(self, u), t[v].sub_sz += t[u].sub_sz;
     };
     rep(i, 0, sz(t)) if (t[i].p == -1) dfs(dfs, i);
-    rmq = {order, [&](int u, int v) { return t[u].d < t[v].d ? u : v; }};
+    rmq = {order, [&](int v, int u) { return t[v].d < t[u].d ? v : u; }};
   }
   /**
    * @param u,v 2 nodes in the same component
@@ -34,9 +34,9 @@ struct LCA {
    * @time O(1)
    * @space O(1)
    */
-  int lca(int u, int v) {
-    if (u == v) return u;
-    auto [x, y] = minmax(t[u].in, t[v].in);
+  int lca(int v, int u) {
+    if (v == u) return v;
+    auto [x, y] = minmax(t[v].in, t[u].in);
     return t[rmq.query(x + 1, y + 1)].p;
   }
 #include "../dist_edges.hpp"
