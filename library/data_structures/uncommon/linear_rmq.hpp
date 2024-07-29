@@ -46,9 +46,11 @@ template <class T, class F> struct linear_rmq {
    * @space O(1)
    */
   int query_idx(int le, int ri) {
-    int j = t[le][1] & t[ri][1] & -(1 << __lg((t[le][0] ^ t[ri][0]) | 1));
-    if (int k = t[le][1] ^ j; k) k = 1 << __lg(k), le = head[(t[le][0] & -k) | k];
-    if (int k = t[ri][1] ^ j; k) k = 1 << __lg(k), ri = head[(t[ri][0] & -k) | k];
+    if (int j = t[le][0] ^ t[ri][0]; j) {
+      j = t[le][1] & t[ri][1] & -(1 << __lg(j));
+      if (int k = t[le][1] ^ j; k) k = 1 << __lg(k), le = head[(t[le][0] & -k) | k];
+      if (int k = t[ri][1] ^ j; k) k = 1 << __lg(k), ri = head[(t[ri][0] & -k) | k];
+    }
     return cmp(a[le], a[ri]) ? le : ri;
   }
   /**
