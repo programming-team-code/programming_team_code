@@ -67,10 +67,10 @@ struct lcp_tree {
     rep(i, 0, sf_a.n) {
       int prev_lcp = (i ? sf_a.lcp[i - 1] : 0);
       int next_lcp = (i < sz(sf_a.lcp) ? sf_a.lcp[i] : -1);
-      int u = (prev_lcp > next_lcp) ? i - 1 : node(i);
+      int v = (prev_lcp > next_lcp) ? i - 1 : node(i);
       int idx = sf_a.sa[i] + max(prev_lcp, next_lcp);
-      if (u == -1 || idx == sf_a.n) continue;
-      adj[u][s[idx] - mn] = sf_a.n - 1 + i;
+      if (v == -1 || idx == sf_a.n) continue;
+      adj[v][s[idx] - mn] = sf_a.n - 1 + i;
     }
   }
 #include "sa_range.hpp"
