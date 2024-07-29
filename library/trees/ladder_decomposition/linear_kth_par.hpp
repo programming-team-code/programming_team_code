@@ -25,16 +25,16 @@ struct linear_kth_par {
       j[pos] = st[max(0, sz(st) - 1 - 2 * (pos & -pos))];
       pos++;
     };
-    auto dfs = [&](auto&& self, int u) -> void {
-      st.push_back(u);
-      t[u].idx = pos;
-      t[u].dl = u;
+    auto dfs = [&](auto&& self, int v) -> void {
+      st.push_back(v);
+      t[v].idx = pos;
+      t[v].dl = v;
       add_j();
-      for (int v : adj[u])
-        if (v != t[u].p) {
-          t[v].d = t[t[v].p = u].d + 1;
-          self(self, v);
-          if (t[t[v].dl].d > t[t[u].dl].d) t[u].dl = t[v].dl;
+      for (int u : adj[v])
+        if (u != t[v].p) {
+          t[u].d = t[t[u].p = v].d + 1;
+          self(self, u);
+          if (t[t[u].dl].d > t[t[v].dl].d) t[v].dl = t[u].dl;
           add_j();
         }
       st.pop_back();
@@ -49,21 +49,21 @@ struct linear_kth_par {
     }
   }
   /**
-   * @param u query node
+   * @param v query node
    * @param k number of edges
-   * @returns a node k edges up from u
+   * @returns a node k edges up from v
    * @time O(1)
    * @space O(1)
    */
-  int kth_par(int u, int k) {
-    assert(0 <= k && k <= t[u].d);
+  int kth_par(int v, int k) {
+    assert(0 <= k && k <= t[v].d);
     switch (k) {
-      case 0: return u;
-      case 1: return t[u].p;
-      case 2: return t[t[u].p].p;
+      case 0: return v;
+      case 1: return t[v].p;
+      case 2: return t[t[v].p].p;
       default:
-        int i = 1 << __lg(k / 3), leaf = t[j[(t[u].idx & -i) | i]].dl;
-        return t[leaf].lad[k + t[leaf].d - t[u].d];
+        int i = 1 << __lg(k / 3), leaf = t[j[(t[v].idx & -i) | i]].dl;
+        return t[leaf].lad[k + t[leaf].d - t[v].d];
     }
   }
 };

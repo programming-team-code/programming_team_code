@@ -6,7 +6,7 @@
  * @code{.cpp}
        ladder ld(adj);
        // KACTL functions
-       int kth_par = jmp(ld.b_tbl, u, k);
+       int kth_par = jmp(ld.b_tbl, v, k);
        int curr_lca = lca(ld.b_tbl, ld.d, u, v);
  * @endcode
  */
@@ -20,13 +20,13 @@ struct ladder {
    * @space O(n log n) for b_tbl. Everything else is O(n)
    */
   ladder(const vector<vi>& adj) : n(sz(adj)), l_tbl(n), dl(n), d(n), p(n, -1) {
-    auto dfs = [&](auto&& self, int u) -> void {
-      dl[u] = u;
-      for (int v : adj[u])
-        if (v != p[u]) {
-          d[v] = d[p[v] = u] + 1;
-          self(self, v);
-          if (d[dl[v]] > d[dl[u]]) dl[u] = dl[v];
+    auto dfs = [&](auto&& self, int v) -> void {
+      dl[v] = v;
+      for (int u : adj[v])
+        if (u != p[v]) {
+          d[u] = d[p[u] = v] + 1;
+          self(self, u);
+          if (d[dl[u]] > d[dl[v]]) dl[v] = dl[u];
         }
     };
     rep(i, 0, n) if (p[i] == -1) p[i] = i, dfs(dfs, i);
@@ -40,18 +40,18 @@ struct ladder {
     }
   }
   /**
-   * @param u query node
+   * @param v query node
    * @param k number of edges
-   * @returns a node k edges up from u. With k=1, this returns u's parent.
+   * @returns a node k edges up from v. With k=1, this returns v's parent.
    * @time O(1)
    * @space O(1)
    */
-  int kth_par(int u, int k) {
-    assert(0 <= k && k <= d[u]);
-    if (k == 0) return u;
+  int kth_par(int v, int k) {
+    assert(0 <= k && k <= d[v]);
+    if (k == 0) return v;
     int bit = __lg(k);
-    u = b_tbl[bit][u], k -= (1 << bit);
-    int leaf = dl[u];
-    return l_tbl[leaf][k + d[leaf] - d[u]];
+    v = b_tbl[bit][v], k -= (1 << bit);
+    int leaf = dl[v];
+    return l_tbl[leaf][k + d[leaf] - d[v]];
   }
 };
