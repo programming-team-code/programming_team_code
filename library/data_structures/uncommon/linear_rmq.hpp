@@ -40,7 +40,7 @@ template <class T, class F> struct linear_rmq {
         t[i][1] = (t[i][1] | t[i - 1][1]) & -(t[i][0] & -t[i][0]);
   }
   /**
-   * @param le,ri defines range [min(le, ri), max(le, ri)]
+   * @param le,ri defines range [le, ri]
    * @returns index of min/max of range
    * @time O(1)
    * @space O(1)
@@ -54,7 +54,7 @@ template <class T, class F> struct linear_rmq {
     return cmp(a[le], a[ri]) ? le : ri;
   }
   /**
-   * @param le,ri defines range [min(le, ri), max(le, ri)]
+   * @param le,ri defines range [le, ri]
    * @returns min/max of range
    * @time O(1)
    * @space O(1)
