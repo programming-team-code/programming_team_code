@@ -20,9 +20,8 @@ struct linear_lca {
   linear_lca(const vector<vi>& adj) : t(sz(adj)), head(sz(adj) + 1) {
     vi order;
     auto dfs = [&](auto&& self, int v, int p) -> void {
-      t[v].p = p;
       order.push_back(v);
-      t[v].in = t[v].label = sz(order);
+      t[v].p = p, t[v].in = t[v].label = sz(order);
       for (int u : adj[v])
         if (u != p) {
           t[u].d = 1 + t[v].d;
