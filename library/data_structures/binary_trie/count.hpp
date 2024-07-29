@@ -7,11 +7,11 @@
  * @space O(1)
  */
 int count(T num) {
-  int u = 0;
+  int v = 0;
   for (int bit = mx_bit; bit >= 0; bit--) {
     bool b = (num >> bit) & 1;
-    if (t[u].next[b] == -1) return 0;
-    u = t[u].next[b];
+    if (t[v].next[b] == -1) return 0;
+    v = t[v].next[b];
   }
-  return t[u].sub_sz;
+  return t[v].sub_sz;
 }

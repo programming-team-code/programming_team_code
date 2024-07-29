@@ -27,15 +27,15 @@ struct bridges {
   bridges(const vector<vector<pii>>& adj, int m) : is_bridge(m), two_edge_ccid(sz(adj), -1) {
     int n = sz(adj), timer = 1;
     vi tin(n), st;
-    auto dfs = [&](auto&& self, int u, int p_id) -> int {
-      int low = tin[u] = timer++, siz = sz(st);
-      st.push_back(u);
-      for (auto [v, e_id] : adj[u]) {
+    auto dfs = [&](auto&& self, int v, int p_id) -> int {
+      int low = tin[v] = timer++, siz = sz(st);
+      st.push_back(v);
+      for (auto [u, e_id] : adj[v]) {
         if (e_id == p_id) continue;
-        if (!tin[v]) low = min(low, self(self, v, e_id));
-        low = min(low, tin[v]);
+        if (!tin[u]) low = min(low, self(self, u, e_id));
+        low = min(low, tin[u]);
       }
-      if (tin[u] == low) {
+      if (tin[v] == low) {
         if (p_id != -1) is_bridge[p_id] = 1;
         rep(i, siz, sz(st))
             two_edge_ccid[st[i]] = num_2_edge_ccs;

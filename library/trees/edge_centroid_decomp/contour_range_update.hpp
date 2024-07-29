@@ -14,18 +14,18 @@ template <class T> struct contour_range_update {
   vector<array<bit_rupq<T>, 2>> bits;
   /**
    * @param adj unrooted, undirected tree
-   * @param a_a a_a[u] = initial number for node u
+   * @param a_a a_a[v] = initial number for node v
    * @time O(n log1.5 n)
    * @space O(n log1.5 n) for `info` and `bits`
    */
   contour_range_update(const vector<vi>& adj, const vector<T>& a_a) : n(sz(a_a)), a(a_a), sum_a(adj, vector<T>(n)), info(n) {
     edge_cd(adj, [&](const vector<vi>& cd_adj, int cent, int split) {
       array<int, 2> mx_d = {0, 0};
-      auto dfs = [&](auto&& self, int u, int p, int d, int side) -> void {
+      auto dfs = [&](auto&& self, int v, int p, int d, int side) -> void {
         mx_d[side] = max(mx_d[side], d);
-        info[u].push_back({sz(bits), d, side});
-        for (int v : cd_adj[u])
-          if (v != p) self(self, v, u, 1 + d, side);
+        info[v].push_back({sz(bits), d, side});
+        for (int u : cd_adj[v])
+          if (u != p) self(self, u, v, 1 + d, side);
       };
       rep(i, 0, sz(cd_adj[cent]))
           dfs(dfs, cd_adj[cent][i], cent, 1, i < split);
@@ -33,15 +33,15 @@ template <class T> struct contour_range_update {
     });
   }
   /**
-   * @param u,le,ri,delta add delta to all nodes v such that le <= dist_edges(u, v) < ri
+   * @param v,le,ri,delta add delta to all nodes u such that le <= dist_edges(v, u) < ri
    * @time O(log1.5(n) * log2(n))
    * @space O(1)
    */
-  void update(int u, int le, int ri, T delta) {
+  void update(int v, int le, int ri, T delta) {
     assert(0 <= le && le <= ri && ri <= n);
-    if (le <= 0 && 0 < ri) a[u] += delta;
-    if (le <= 1 && 1 < ri) sum_a.update(u, delta);
-    for (auto [decomp_id, d, side] : info[u]) {
+    if (le <= 0 && 0 < ri) a[v] += delta;
+    if (le <= 1 && 1 < ri) sum_a.update(v, delta);
+    for (auto [decomp_id, d, side] : info[v]) {
       auto& bit = bits[decomp_id][!side];
       int my_l = clamp<int>(le - d, 1, bit.n);
       int my_r = clamp<int>(ri - d, 1, bit.n);
@@ -49,14 +49,14 @@ template <class T> struct contour_range_update {
     }
   }
   /**
-   * @param u node
-   * @returns number of node u
+   * @param v node
+   * @returns number of node v
    * @time O(log1.5(n) * log2(n))
    * @space O(1)
    */
-  T query(int u) {
-    T sum = a[u] + sum_a.query(u);
-    for (auto [decomp_id, d, side] : info[u])
+  T query(int v) {
+    T sum = a[v] + sum_a.query(v);
+    for (auto [decomp_id, d, side] : info[v])
       sum += bits[decomp_id][side].get_index(d);
     return sum;
   }

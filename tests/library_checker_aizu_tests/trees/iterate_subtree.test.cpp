@@ -20,19 +20,19 @@ int main() {
       if (empty(adj[i])) continue;
       int big_ch_idx = int(max_element(begin(adj[i]), end(adj[i]), [&](int x, int y) { return lc.t[x].sub_sz < lc.t[y].sub_sz; }) - begin(adj[i]));
       for (int j = 0; j < sz(adj[i]); j++) {
-        int u = adj[i][j];
-        assert(lc.t[u].sub_sz <= lc.t[adj[i][big_ch_idx]].sub_sz);
+        int v = adj[i][j];
+        assert(lc.t[v].sub_sz <= lc.t[adj[i][big_ch_idx]].sub_sz);
         if (j == big_ch_idx) {
-          int le = lc.t[u].in;
-          int ri = lc.t[u].in + lc.t[u].sub_sz;
+          int le = lc.t[v].in;
+          int ri = lc.t[v].in + lc.t[v].sub_sz;
           cnt_big_iterated[le]++;
           if (ri < n) cnt_big_iterated[ri]--;
           continue;
         }
 #include "../../../library/trees/lca_rmq/iterate_subtree.hpp"
-        assert(lc.t[u].d <= lc.t[v].d);
-        assert(lc.in_subtree(u, v));
-        cnt_small_iterated[v]++;
+        assert(lc.t[v].d <= lc.t[u].d);
+        assert(lc.in_subtree(v, u));
+        cnt_small_iterated[u]++;
       }
     }
   }

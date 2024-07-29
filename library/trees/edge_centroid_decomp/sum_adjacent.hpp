@@ -9,33 +9,33 @@ template <class T> struct sum_adj {
   vi p;
   /**
    * @param adj undirected, unrooted tree
-   * @param a_sum a_sum[u] = initial number for node u
+   * @param a_sum a_sum[v] = initial number for node v
    * @time O(n)
    * @space various O(n) vectors are allocated; recursion stack for dfs is O(n)
    */
   sum_adj(const vector<vi>& adj, const vector<T>& a_sum) : n(sz(a_sum)), sum(a_sum), sum_ch(n), p(n, -1) {
-    auto dfs = [&](auto&& self, int u) -> void {
-      for (int v : adj[u])
-        if (v != p[u])
-          p[v] = u, sum_ch[u] += sum[v], self(self, v);
+    auto dfs = [&](auto&& self, int v) -> void {
+      for (int u : adj[v])
+        if (u != p[v])
+          p[u] = v, sum_ch[v] += sum[u], self(self, u);
     };
     dfs(dfs, 0);
   }
   /**
-   * @param u node
+   * @param v node
    * @param delta number to add
    * @time O(1)
    * @space O(1)
    */
-  void update(int u, T delta) {
-    sum[u] += delta;
-    if (p[u] != -1) sum_ch[p[u]] += delta;
+  void update(int v, T delta) {
+    sum[v] += delta;
+    if (p[v] != -1) sum_ch[p[v]] += delta;
   }
   /**
-   * @param u node
-   * @returns sum of u's neighbors numbers
+   * @param v node
+   * @returns sum of v's neighbors numbers
    * @time O(1)
    * @space O(1)
    */
-  T query(int u) { return sum_ch[u] + (p[u] != -1 ? sum[p[u]] : 0); }
+  T query(int v) { return sum_ch[v] + (p[v] != -1 ? sum[p[v]] : 0); }
 };

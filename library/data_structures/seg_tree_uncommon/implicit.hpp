@@ -21,52 +21,52 @@ template <int N> struct implicit_seg_tree {
   implicit_seg_tree(int le, int ri) : root_l(le), root_r(ri) {
     tree[ptr++].num = {0, ri - le};
   }
-  void apply(ll add, int u) {
-    tree[u].num[0] += add;
-    tree[u].lazy += add;
+  void apply(ll add, int v) {
+    tree[v].num[0] += add;
+    tree[v].lazy += add;
   }
-  void push(int tl, int tm, int tr, int u) {
-    if (tr - tl > 1 && tree[u].lch == -1) {
+  void push(int tl, int tm, int tr, int v) {
+    if (tr - tl > 1 && tree[v].lch == -1) {
       assert(ptr + 1 < N);
-      tree[u].lch = ptr;
+      tree[v].lch = ptr;
       tree[ptr++].num = {0, tm - tl};
-      tree[u].rch = ptr;
+      tree[v].rch = ptr;
       tree[ptr++].num = {0, tr - tm};
     }
-    if (tree[u].lazy) {
-      apply(tree[u].lazy, tree[u].lch);
-      apply(tree[u].lazy, tree[u].rch);
-      tree[u].lazy = 0;
+    if (tree[v].lazy) {
+      apply(tree[v].lazy, tree[v].lch);
+      apply(tree[v].lazy, tree[v].rch);
+      tree[v].lazy = 0;
     }
   }
   /**
    * @param le,ri defines range [le, ri)
    */
   void update(int le, int ri, ll add) { update(le, ri, add, root_l, root_r, 0); }
-  void update(int le, int ri, ll add, int tl, int tr, int u) {
+  void update(int le, int ri, ll add, int tl, int tr, int v) {
     if (ri <= tl || tr <= le)
       return;
     if (le <= tl && tr <= ri)
-      return apply(add, u);
+      return apply(add, v);
     int tm = tl + (tr - tl) / 2;
-    push(tl, tm, tr, u);
-    update(le, ri, add, tl, tm, tree[u].lch);
-    update(le, ri, add, tm, tr, tree[u].rch);
-    tree[u].num = op(tree[tree[u].lch].num,
-                     tree[tree[u].rch].num);
+    push(tl, tm, tr, v);
+    update(le, ri, add, tl, tm, tree[v].lch);
+    update(le, ri, add, tm, tr, tree[v].rch);
+    tree[v].num = op(tree[tree[v].lch].num,
+                     tree[tree[v].rch].num);
   }
   /**
    * @param le,ri defines range [le, ri)
    */
   dt query(int le, int ri) { return query(le, ri, root_l, root_r, 0); }
-  dt query(int le, int ri, int tl, int tr, int u) {
+  dt query(int le, int ri, int tl, int tr, int v) {
     if (ri <= tl || tr <= le)
       return unit;
     if (le <= tl && tr <= ri)
-      return tree[u].num;
+      return tree[v].num;
     int tm = tl + (tr - tl) / 2;
-    push(tl, tm, tr, u);
-    return op(query(le, ri, tl, tm, tree[u].lch),
-              query(le, ri, tm, tr, tree[u].rch));
+    push(tl, tm, tr, v);
+    return op(query(le, ri, tl, tm, tree[v].lch),
+              query(le, ri, tm, tr, tree[v].rch));
   }
 };

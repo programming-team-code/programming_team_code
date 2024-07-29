@@ -1,13 +1,13 @@
 /** @file */
 #pragma once
 /**
- * @param u node
+ * @param v node
  * @returns range [le, ri) such that the following (ri - le) substrings are equal:
- *     - for all i in [le, ri): s.substr(sa[i], lcp_len(u))
+ *     - for all i in [le, ri): s.substr(sa[i], lcp_len(v))
  * @time O(1)
  * @space O(1)
  */
-pii sa_range(int u) {
-  if (u < sf_a.n - 1) return {le[u] + 1, ri[u] + 1};
-  return {u - sf_a.n + 1, u - sf_a.n + 2};
+pii sa_range(int v) {
+  if (v < sf_a.n - 1) return {le[v] + 1, ri[v] + 1};
+  return {v - sf_a.n + 1, v - sf_a.n + 2};
 }

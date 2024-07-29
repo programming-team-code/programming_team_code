@@ -42,30 +42,30 @@ struct hopcroft_karp {
       mvc_l.assign(lsz, 1);
       mvc_r.assign(rsz, 0);
       while (!empty(q)) {
-        int u = q.front();
+        int v = q.front();
         q.pop();
-        mvc_l[u] = 0;
-        for (int v : adj[u]) {
-          mvc_r[v] = 1;
-          int w = r_to_l[v];
+        mvc_l[v] = 0;
+        for (int u : adj[v]) {
+          mvc_r[u] = 1;
+          int w = r_to_l[u];
           if (w == -1) found = 1;
           else if (level[w] == -1) {
-            level[w] = level[u] + 1;
+            level[w] = level[v] + 1;
             q.push(w);
           }
         }
       }
       if (!found) break;
-      auto dfs = [&](auto&& self, int u) -> bool {
-        for (int v : adj[u]) {
-          int w = r_to_l[v];
-          if (w == -1 || (level[u] + 1 == level[w] && self(self, w))) {
-            l_to_r[u] = v;
-            r_to_l[v] = u;
+      auto dfs = [&](auto&& self, int v) -> bool {
+        for (int u : adj[v]) {
+          int w = r_to_l[u];
+          if (w == -1 || (level[v] + 1 == level[w] && self(self, w))) {
+            l_to_r[v] = u;
+            r_to_l[u] = v;
             return 1;
           }
         }
-        level[u] = INT_MAX;
+        level[v] = INT_MAX;
         return 0;
       };
       rep(i, 0, lsz)

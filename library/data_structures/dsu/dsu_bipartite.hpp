@@ -14,11 +14,11 @@ struct dsu_bipartite {
   };
   vector<node> t;
   dsu_bipartite(int n) : num_sets(n), t(n) {}
-  int find(int u) {
-    if (t[u].p < 0) return u;
-    int root = find(t[u].p);
-    t[u].parity ^= t[t[u].p].parity;
-    return t[u].p = root;
+  int find(int v) {
+    if (t[v].p < 0) return v;
+    int root = find(t[v].p);
+    t[v].parity ^= t[t[v].p].parity;
+    return t[v].p = root;
   }
   bool join(int u, int v) {
     int root_u = find(u), root_v = find(v);
@@ -35,7 +35,7 @@ struct dsu_bipartite {
     t[root_u].p += t[root_v].p, t[root_v].p = root_u, num_sets--;
     return 1;
   }
-  int size(int u) { return -t[find(u)].p; }
+  int size(int v) { return -t[find(v)].p; }
   bool same_set(int u, int v) { return find(u) == find(v); }
-  bool is_bipartite(int u) { return t[find(u)].is_bi; }
+  bool is_bipartite(int v) { return t[find(v)].is_bi; }
 };

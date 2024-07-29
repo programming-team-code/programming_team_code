@@ -19,21 +19,21 @@ struct linear_lca {
    */
   linear_lca(const vector<vi>& adj) : t(sz(adj)), head(sz(adj) + 1) {
     vi order;
-    auto dfs = [&](auto&& self, int u, int p) -> void {
-      t[u].p = p;
-      order.push_back(u);
-      t[u].in = t[u].label = sz(order);
-      for (int v : adj[u])
-        if (v != p) {
-          t[v].d = 1 + t[u].d;
-          self(self, v, u);
-          head[t[v].label] = u;
-          t[u].sub_sz += t[v].sub_sz;
-          if (lsb(t[v].label) > lsb(t[u].label)) t[u].label = t[v].label;
+    auto dfs = [&](auto&& self, int v, int p) -> void {
+      t[v].p = p;
+      order.push_back(v);
+      t[v].in = t[v].label = sz(order);
+      for (int u : adj[v])
+        if (u != p) {
+          t[u].d = 1 + t[v].d;
+          self(self, u, v);
+          head[t[u].label] = v;
+          t[v].sub_sz += t[u].sub_sz;
+          if (lsb(t[u].label) > lsb(t[v].label)) t[v].label = t[u].label;
         }
     };
     rep(i, 0, sz(t)) if (t[i].in == 0) dfs(dfs, i, i);
-    for (int u : order) t[u].asc = lsb(t[u].label) | t[t[u].p].asc;
+    for (int v : order) t[v].asc = lsb(t[v].label) | t[t[v].p].asc;
   }
   /**
    * @param u,v nodes

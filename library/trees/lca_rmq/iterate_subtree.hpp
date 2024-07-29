@@ -6,9 +6,9 @@
  * @code{.cpp}
        LCA lc(adj); //required
  * @endcode
- * @param u some node
- * @time O(size of u's subtree)
+ * @param v some node
+ * @time O(size of v's subtree)
  * @space O(1)
  */
-rep(k, lc.t[u].in, lc.t[u].in + lc.t[u].sub_sz) {
-  int v = lc.rmq.dp[0][k];
+rep(k, lc.t[v].in, lc.t[v].in + lc.t[v].sub_sz) {
+  int u = lc.rmq.dp[0][k];
