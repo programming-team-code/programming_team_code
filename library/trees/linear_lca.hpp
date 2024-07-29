@@ -17,7 +17,7 @@ struct linear_lca {
    * @time O(n)
    * @space O(n)
    */
-  linear_lca(const vector<vi>& adj) : t(sz(adj)), head(sz(adj) + 1) {
+  linear_lca(const vector<vi>& adj) : t(sz(adj)), head(sz(t) + 1) {
     vector<pii> order;
     auto dfs = [&](auto&& self, int v, int p) -> void {
       order.emplace_back(v, p);
