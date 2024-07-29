@@ -8,7 +8,7 @@ int lsb(int x) { return x & -x; }
  */
 struct linear_lca {
   struct node {
-    int d, p, sub_sz = 1, in, label, asc;
+    int d, sub_sz = 1, in, label, asc;
   };
   vector<node> t;
   vi head;
@@ -18,10 +18,10 @@ struct linear_lca {
    * @space O(n)
    */
   linear_lca(const vector<vi>& adj) : t(sz(adj)), head(sz(adj) + 1) {
-    vi order;
+    vector<pii> order;
     auto dfs = [&](auto&& self, int v, int p) -> void {
-      order.push_back(v);
-      t[v].p = p, t[v].in = t[v].label = sz(order);
+      order.emplace_back(v, p);
+      t[v].in = t[v].label = sz(order);
       for (int u : adj[v])
         if (u != p) {
           t[u].d = 1 + t[v].d;
@@ -31,8 +31,8 @@ struct linear_lca {
           if (lsb(t[u].label) > lsb(t[v].label)) t[v].label = t[u].label;
         }
     };
-    rep(i, 0, sz(t)) if (t[i].in == 0) dfs(dfs, i, i);
-    for (int v : order) t[v].asc = lsb(t[v].label) | t[t[v].p].asc;
+    rep(i, 0, sz(t)) if (t[i].d == 0) dfs(dfs, i, i);
+    for (auto [v, p] : order) t[v].asc = t[p].asc | lsb(t[v].label);
   }
   /**
    * @param u,v nodes
