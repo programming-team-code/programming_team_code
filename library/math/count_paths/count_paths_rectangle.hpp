@@ -35,4 +35,3 @@ array<vl, 2> get_right_and_top(vl left, vl bottom) {
   }
   return ret;
 }
-
