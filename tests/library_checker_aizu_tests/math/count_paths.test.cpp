@@ -2,12 +2,12 @@
 #include "../template.hpp"
 
 #define const ;
-#define mod mod_not_using_one
+#define mod mod_different_name
 #include "../../../library/math/n_choose_k/grow.hpp"
 #undef const
 #undef mod
 
-#define mod mod_not_using_two
+#define mod mod_not_using
 #define modpow modpow_not_using
 #include "../../../kactl/content/number-theory/ModPow.h"
 #undef mod
@@ -22,7 +22,7 @@ ll modpow(ll b, ll e) {
 
 #include "../../../library/math/count_paths/count_paths_triangle.hpp"
 
-ll count_between_two_sequences(vl a, vl b) {
+ll count_between_two_sequences(const vl& a, const vl& b) {
   int n = sz(a);
   vl dp(b[0] - a[0]);
   dp[0] = 1;
@@ -58,7 +58,7 @@ ll count_between_two_sequences(vl a, vl b) {
 
 int main() {
   cin.tie(0)->sync_with_stdio(0);
-  mod_not_using_one = 998'244'353;
+  mod_different_name = 998'244'353;
   int n, m;
   cin >> n >> m;
   vl a(n), b(n);
