@@ -20,6 +20,7 @@ negativeContainerIndex:../library/strings/suffix_array/burrows_wheeler.hpp:46
 useStlAlgorithm:../kactl/content/numerical/FastFourierTransform.h:53
 useStlAlgorithm:../library/graphs/strongly_connected_components/add_edges_strongly_connected.hpp:57
 useStlAlgorithm:../library/math/matrix_related/row_reduce.hpp:30
+useStlAlgorithm:../library/math/count_paths/count_paths_triangle.hpp:26
 shadowFunction:../kactl/content/graph/BinaryLifting.h:17
 unknownMacro:../kactl/content/graph/BinaryLifting.h:18
 constParameter:../library/data_structures/wavelet_merge/merge_sort_tree.hpp:30
