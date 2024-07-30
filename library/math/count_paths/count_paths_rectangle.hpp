@@ -6,30 +6,21 @@
 array<vl, 2> get_right_and_top(vl left, vl bottom) {
   assert(!empty(left) && !empty(bottom));
   array<vl, 2> ret;
-  for (auto& res : ret) {
+  for (vl& res : ret) {
     {
       vl tr(sz(left));
-      for (int i = 0; i < sz(tr); i++) {
-        tr[i] = C(i + sz(bottom) - 1, i);
-      }
+      rep(i, 0, sz(tr)) tr[i] = C(i + sz(bottom) - 1, i);
       res = conv(left, tr);
       res.resize(sz(left));
     }
     {
       vl tr(sz(left) + sz(bottom));
       grow(sz(tr));
-      for (int i = 0; i < sz(tr); i++) {
-        tr[i] = t[i].fact;
-      }
-      auto dp = bottom;
-      for (int i = 0; i < sz(dp); i++) {
-        dp[i] = dp[i] * t[sz(dp) - 1 - i].inv_fact % mod;
-      }
-      auto tmp_res = conv(dp, tr);
-      for (int i = 0; i < sz(res); i++) {
-        res[i] += tmp_res[i + sz(bottom) - 1] * t[i].inv_fact % mod;
-        res[i] %= mod;
-      }
+      rep(i, 0, sz(tr)) tr[i] = t[i].fact;
+      vl dp(sz(bottom));
+      rep(i, 0, sz(dp)) dp[i] = bottom[i] * t[sz(dp) - 1 - i].inv_fact % mod;
+      vl tmp_res = conv(dp, tr);
+      rep(i, 0, sz(res)) res[i] = (res[i] + tmp_res[i + sz(bottom) - 1] * t[i].inv_fact) % mod;
     }
     swap(left, bottom);
   }
