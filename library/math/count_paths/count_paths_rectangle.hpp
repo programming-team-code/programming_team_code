@@ -2,7 +2,16 @@
 #pragma once
 #include "../../../kactl/content/numerical/NumberTheoreticTransform.h"
 #include "../n_choose_k/n_choose_k.hpp"
-
+/**
+ * @see https://noshi91.hatenablog.com/entry/2023/07/21/235339
+ * @code{.cpp}
+       auto [right, top] = get_right_and_top(left, bottom);
+ * @endcode
+ * @param left,bottom see image
+ * @returns [right, top] -> see image, note right.back() == top.back()
+ * @time O((n + m)log(n + m))
+ * @space O(n + m)
+ */
 array<vl, 2> get_right_and_top(vl left, vl bottom) {
   assert(!empty(left) && !empty(bottom));
   array<vl, 2> ret;
@@ -26,3 +35,4 @@ array<vl, 2> get_right_and_top(vl left, vl bottom) {
   }
   return ret;
 }
+
