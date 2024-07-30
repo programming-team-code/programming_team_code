@@ -1,8 +1,10 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/number_of_increasing_sequences_between_two_sequences"
 #include "../template.hpp"
 
+#define const ;
 #define mod mod_not_using_one
 #include "../../../library/math/n_choose_k/grow.hpp"
+#undef const
 #undef mod
 
 #define mod mod_not_using_two
@@ -56,9 +58,9 @@ ll count_between_two_sequences(vl a, vl b) {
 
 int main() {
   cin.tie(0)->sync_with_stdio(0);
+  mod_not_using_one = 998'244'353;
   int n, m;
   cin >> n >> m;
-  grow(2 * (n + m) + 10);  // TODO move this into count paths rectangle
   vl a(n), b(n);
   for (int i = 0; i < n; i++) {
     cin >> a[i];

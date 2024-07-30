@@ -17,6 +17,7 @@ array<vl, 2> get_right_and_top(vl left, vl bottom) {
     }
     {
       vl tr(sz(left) + sz(bottom));
+      grow(sz(tr));
       for (int i = 0; i < sz(tr); i++) {
         tr[i] = t[i].fact;
       }
