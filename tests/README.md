@@ -38,11 +38,8 @@ Place this directly before a struct or function.
  * @endcode
  * @param le,ri defines range [le, ri)
  * @returns Sum of range.
- * @time O(n * sqrt(n log n)) I don't care about formatting as long as it's
- * clear. Ex: O(log n * k) could either mean O(log(n) * k) or O(log(nk)) - bad.
- * @space O(n ^ (3/2)) note space complexity is always <= time complexity because
- * you can "reuse" space, but you can't "reuse" time. Unless you can travel back in
- * time, then you could have larger space complexity.
+ * @time O(n * sqrt(n log n))
+ * @space O(n ^ (3/2))
  */
 ```
 for member vars:
