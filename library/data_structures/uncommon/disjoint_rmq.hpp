@@ -14,7 +14,6 @@
  * @endcode
  */
 template <class T, class F> struct disjoint_rmq {
-  int n;
   vector<vector<T>> dp;
   /**
    * examples:
@@ -30,8 +29,8 @@ template <class T, class F> struct disjoint_rmq {
    * @time O(n log n)
    * @space O(n log n) for `dp` vector
    */
-  disjoint_rmq(const vector<T>& a, F a_op) : n(sz(a)), op(a_op) {
-    for (int len = 1; len <= n; len *= 2) {
+  disjoint_rmq(const vector<T>& a, F a_op) : op(a_op) {
+    for (int len = 1, n = sz(a); len <= n; len *= 2) {
       dp.emplace_back(n);
       for (int le = 0; le < n; le += 2 * len) {
         int mi = min(n, le + len), ri = min(n, le + 2 * len);
