@@ -37,6 +37,7 @@ struct mode_query {
    * @space O(1)
    */
   pii query(int le, int ri) {
+    assert(le < ri);
     if (le / b >= (ri - 1) / b - 1) {
       int mode = a[le];
       rep(i, le, ri) {
