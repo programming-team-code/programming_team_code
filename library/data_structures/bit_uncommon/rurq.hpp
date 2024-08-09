@@ -35,7 +35,6 @@ template <class T> struct bit_rurq {
    * @space O(1)
    */
   void update(int le, int ri, T d) {
-    assert(0 <= le && le <= ri && ri <= n);
     if (le < n) {
       bit1.update(le, d);
       bit2.update(le, d * le);
@@ -52,7 +51,6 @@ template <class T> struct bit_rurq {
    * @space O(1)
    */
   T query(int ri) {
-    assert(0 <= ri && ri <= n);
     return bit1.query(ri) * ri - bit2.query(ri);
   }
   /**
@@ -62,7 +60,6 @@ template <class T> struct bit_rurq {
    * @space O(1)
    */
   T query(int le, int ri) {
-    assert(le <= ri);
     return query(ri) - query(le);
   }
 };

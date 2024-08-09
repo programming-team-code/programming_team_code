@@ -22,7 +22,6 @@ match find_substrs_concated(const vector<pii>& substrs) {
     return x[2] ^ (n - j < x[1]);
   };
   for (auto [le, ri] : substrs) {
-    assert(0 <= le && le <= ri && ri <= n);
     sa_le = lower_bound(begin(sa) + sa_le, begin(sa) + sa_ri, dt{le, ri - le, 0}, cmp) - begin(sa);
     sa_ri = lower_bound(begin(sa) + sa_le, begin(sa) + sa_ri, dt{le, ri - le, 1}, cmp) - begin(sa);
     sum_len += ri - le;

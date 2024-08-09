@@ -29,7 +29,6 @@ struct bool_presum {
    * @space O(1)
    */
   int popcount(int i) {
-    assert(0 <= i && i <= n);
     return presum[i >> 6] + __builtin_popcountll(mask[i >> 6] & ((1ULL << (i & 63)) - 1));
   }
   /**
@@ -39,7 +38,6 @@ struct bool_presum {
    * @space O(1)
    */
   bool on(int i) {
-    assert(0 <= i && i < n);
     return (mask[i >> 6] >> (i & 63)) & 1;
   }
 };

@@ -9,7 +9,6 @@
  * @space O(n + m)
  */
 vl divide_and_conquer(vl h, vl bottom) {
-  assert(sz(h) == sz(bottom) && is_sorted(all(h)) && !empty(h) && h[0] >= 0);
   {
     int start = find_if(all(h), [](ll x) { return x; }) - begin(h);
     h.erase(begin(h), begin(h) + start);

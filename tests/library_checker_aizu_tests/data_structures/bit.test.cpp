@@ -49,7 +49,7 @@ int main() {
       assert(res == bit_rr.query(l, r));
       cout << res << '\n';
     }
-    auto sum = get_rand<int64_t>(0LL, (int64_t)(1e12));
+    auto sum = rnd<int64_t>(0LL, (int64_t)(1e12));
     auto need = sum;
     auto f = [&](int64_t x, int tl, int tr) -> bool {
       assert(tl <= tr);

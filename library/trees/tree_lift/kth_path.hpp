@@ -8,7 +8,6 @@
  * @space O(1)
  */
 int kth_path(int u, int v, int k) {
-  assert(k >= 0);
   int lca_d = t[lca(u, v)].d;
   int u_lca = t[u].d - lca_d;
   int v_lca = t[v].d - lca_d;

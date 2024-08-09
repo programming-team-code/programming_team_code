@@ -10,7 +10,6 @@
  * @space O(1)
  */
 mint mpow(mint b, ll e) {
-  assert(e >= 0);
   mint res = 1;
   for (; e; e /= 2, b = b * b)
     if (e & 1) res = res * b;

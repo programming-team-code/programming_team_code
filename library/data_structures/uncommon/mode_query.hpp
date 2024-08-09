@@ -16,7 +16,6 @@ struct mode_query {
    */
   mode_query(const vi& a_a) : n(sz(a_a)), a(a_a), cnt(n), index_into_index(n), index(n), mode_blocks((n + b - 1) / b, vector<pii>((n + b - 1) / b)) {
     rep(i, 0, n) {
-      assert(0 <= a[i] && a[i] < n);
       index_into_index[i] = sz(index[a[i]]);
       index[a[i]].push_back(i);
     }
@@ -38,7 +37,7 @@ struct mode_query {
    * @space O(1)
    */
   pii query(int le, int ri) {
-    assert(0 <= le && le < ri && ri <= n);
+    assert(le < ri);
     if (le / b >= (ri - 1) / b - 1) {
       int mode = a[le];
       rep(i, le, ri) {

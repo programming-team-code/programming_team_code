@@ -56,7 +56,6 @@ struct linear_kth_par {
    * @space O(1)
    */
   int kth_par(int v, int k) {
-    assert(0 <= k && k <= t[v].d);
     switch (k) {
       case 0: return v;
       case 1: return t[v].p;

@@ -31,7 +31,6 @@ struct tree_lift {
    * @space O(1)
    */
   int kth_par(int v, int k) {
-    assert(0 <= k && k <= t[v].d);
     int anc_d = t[v].d - k;
     while (t[v].d > anc_d) v = t[t[v].j].d >= anc_d ? t[v].j : t[v].p;
     return v;

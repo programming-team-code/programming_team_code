@@ -14,7 +14,6 @@ void push_front(T elem) {
  * @space O(1) ammortized
  */
 void pop_back() {
-  assert(siz());
   if (empty(ri)) {
     vector<T> a(sz(le));
     transform(all(le), rbegin(a), [](dt& x) { return x[0]; });

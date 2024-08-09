@@ -38,7 +38,6 @@ template <class T> struct contour_range_update {
    * @space O(1)
    */
   void update(int v, int le, int ri, T delta) {
-    assert(0 <= le && le <= ri && ri <= n);
     if (le <= 0 && 0 < ri) a[v] += delta;
     if (le <= 1 && 1 < ri) sum_a.update(v, delta);
     for (auto [decomp_id, d, side] : info[v]) {

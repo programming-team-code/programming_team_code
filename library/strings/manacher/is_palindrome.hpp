@@ -12,7 +12,6 @@ template <class T> struct pal_query {
    * @space O(1)
    */
   bool is_pal(int le, int ri) {
-    assert(0 <= le && le <= ri && ri < n);
     return man[le + ri] <= le;
   }
 };

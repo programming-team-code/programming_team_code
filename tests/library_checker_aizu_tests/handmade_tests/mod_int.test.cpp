@@ -16,35 +16,35 @@ int main() {
   assert(val.x == 0);
   vector<int> mods = {1, 4, 998'244'353, 1'000'000'007};
   for (int i = 0; i < 1'000'000; i++) {
-    int type = get_rand(0, 5);
+    int type = rnd(0, 5);
     if (type == 0) {
-      mod = mods[get_rand(0, sz(mods) - 1)];
-      val = get_rand(-mod + 1, mod - 1);
+      mod = mods[rnd(0, sz(mods) - 1)];
+      val = rnd(-mod + 1, mod - 1);
       assert(0 <= val.x && val.x < mod);
     } else if (type == 1) {
-      int to_add = get_rand(-mod + 1, mod - 1);
+      int to_add = rnd(-mod + 1, mod - 1);
       int prev_val = val.x;
       val = val + mint(to_add);
       assert(val.x == (1LL * prev_val + to_add + mod) % mod);
     } else if (type == 2) {
-      int to_sub = get_rand(-mod + 1, mod - 1);
+      int to_sub = rnd(-mod + 1, mod - 1);
       int prev_val = val.x;
       val = val - mint(to_sub);
       assert(val.x == (1LL * prev_val - to_sub + mod) % mod);
     } else if (type == 3) {
-      int to_mult = get_rand(-mod + 1, mod - 1);
+      int to_mult = rnd(-mod + 1, mod - 1);
       int prev_val = val.x;
       val = val * mint(to_mult);
       assert(val.x == (1LL * prev_val * (to_mult + mod)) % mod);
     } else if (type == 4) {
       if (mod == 1 || mod == 4) continue;
-      int to_divide = get_rand(1, mod - 1);
+      int to_divide = rnd(1, mod - 1);
       int prev_val = val.x;
       val = val / mint(to_divide);
       assert(val.x == (mpow(to_divide, mod - 2) * prev_val).x);
     } else {
       assert(type == 5);
-      int pow = get_rand(0, 20);
+      int pow = rnd(0, 20);
       int prev_val = val.x;
       int naive = 1;
       for (int j = 0; j < pow; j++)

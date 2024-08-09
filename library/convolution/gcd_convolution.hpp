@@ -9,7 +9,6 @@ const int mod = 998'244'353;
  * @space a size O(n) vector is allocated and returned
  */
 vi gcd_convolution(const vi& a, const vi& b) {
-  assert(sz(a) == sz(b));
   int n = sz(a);
   vi c(n);
   for (int g = n - 1; g >= 1; g--) {

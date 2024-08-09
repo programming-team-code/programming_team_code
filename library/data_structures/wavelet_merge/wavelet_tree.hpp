@@ -57,7 +57,6 @@ struct wavelet_tree {
    * @space O(log(maxv - minv)) for recursive stack
    */
   int rect_count(int le, int ri, int x, int y) {
-    assert(0 <= le && le <= ri && ri <= n && x <= y);
     return rect_count_impl(le, ri, x, y, minv, maxv, 1);
   }
   int rect_count_impl(int le, int ri, int x, int y, int tl, int tr, int v) {
@@ -74,7 +73,6 @@ struct wavelet_tree {
    * @space O(log(maxv - minv)) for recursive stack
    */
   ll rect_sum(int le, int ri, int x, int y) {
-    assert(0 <= le && le <= ri && ri <= n && x <= y);
     return rect_sum_impl(le, ri, x, y, minv, maxv, 1);
   }
   ll rect_sum_impl(int le, int ri, int x, int y, int tl, int tr, int v) {
@@ -94,8 +92,6 @@ struct wavelet_tree {
    * @space O(log(maxv - minv)) for recursive stack
    */
   int kth_smallest(int le, int ri, int k) {
-    assert(0 <= le && ri <= n);
-    assert(1 <= k && k <= ri - le);
     return kth_smallest_impl(le, ri, k, minv, maxv, 1);
   }
   int kth_smallest_impl(int le, int ri, int k, int tl, int tr, int v) {
@@ -115,8 +111,6 @@ struct wavelet_tree {
    * @space O(log(maxv - minv)) for recursive stack
    */
   ll kth_sum(int le, int ri, int k) {
-    assert(0 <= le && ri <= n);
-    assert(0 <= k && k <= ri - le);
     return kth_sum_impl(le, ri, k, minv, maxv, 1);
   }
   ll kth_sum_impl(int le, int ri, int k, int tl, int tr, int v) {

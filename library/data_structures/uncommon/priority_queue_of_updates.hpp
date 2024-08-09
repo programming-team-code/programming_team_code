@@ -31,7 +31,6 @@ template <class DS, class... ARGS> struct pq_updates {
    * size of `upd_st`, `mp` member variables decreases by 1
    */
   void pop_update() {
-    assert(!empty(upd_st));
     vector<upd> extra;
     int idx = sz(upd_st) - 1, lowest_pri = INT_MAX;
     for (auto it = rbegin(mp); 2 * sz(extra) < sz(upd_st) - idx; it++) {

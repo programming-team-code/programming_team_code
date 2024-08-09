@@ -68,7 +68,7 @@ int main() {
         }
         return 1;
       };
-      int res = (order == 0 ? -1 : bit.lower_bound(order));
+      int res = bit.lower_bound(order);
       assert(max(res, 0) == st.find_first(0, n, f));
       assert(res == st.find_last(0, k + 1, [&](int64_t x, int, int) -> bool {
         return x > 0;
