@@ -9,8 +9,8 @@ int main() {
   for (int n = 0; n <= 30; n++) {
     for (int tests = 10; tests--;) {
       string s(n, 'a');
-      int mx_char = get_rand<int>(0, 5);
-      generate(begin(s), end(s), [&]() { return char('a' + get_rand<int>(0, mx_char)); });
+      int mx_char = rnd<int>(0, 5);
+      generate(begin(s), end(s), [&]() { return char('a' + rnd<int>(0, mx_char)); });
       suffix_array lq(s, 256);
       for (int i = 0; i <= n; i++) {
         for (int j = i; j <= n; j++) {

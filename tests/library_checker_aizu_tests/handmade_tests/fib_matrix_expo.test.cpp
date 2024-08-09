@@ -35,7 +35,7 @@ int main() {
   for (int i = 0; i < 500; i++)
     check(i);
   for (int tests = 1000; tests--;)
-    check(get_rand<int64_t>(0, LLONG_MAX));
+    check(rnd<int64_t>(0, LLONG_MAX));
   cout << "Hello World\n";
   return 0;
 }
