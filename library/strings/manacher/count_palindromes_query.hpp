@@ -37,6 +37,7 @@ template <class T> struct count_pal_query {
    * @space O(1)
    */
   ll count_pals(int le, int ri) {
+    assert(le < ri);
     int man_le = 2 * le, man_ri = 2 * ri - 1, man_mi = (man_le + man_ri) / 2;
     // sum over range [man_le, man_mi) of:
     //     i / 2 - max(man[i], le) + 1
