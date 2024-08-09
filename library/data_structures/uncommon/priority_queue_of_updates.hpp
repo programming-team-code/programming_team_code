@@ -59,6 +59,7 @@ template <class DS, class... ARGS> struct pq_updates {
   void push_update(ARGS... args, int priority) {
     ds.join(args...);
     auto [it, ins] = mp.emplace(priority, sz(upd_st));
+    assert(ins);
     upd_st.emplace_back(make_tuple(args...), it);
   }
 };
