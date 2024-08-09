@@ -8,7 +8,6 @@
  * @space O(1)
  */
 T walk(T num) {
-  assert(t[0].sub_sz > 0);
   T res = 0;
   for (int v = 0, bit = mx_bit; bit >= 0; bit--) {
     bool b = (num >> bit) & 1;

@@ -20,7 +20,6 @@ template <class T> struct BIT {
    * @space O(1)
    */
   void update(int i, T d) {
-    assert(0 <= i && i < sz(s));
     for (; i < sz(s); i |= i + 1) s[i] += d;
   }
   /**
@@ -30,7 +29,6 @@ template <class T> struct BIT {
    * @space O(1)
    */
   T query(int ri) {
-    assert(0 <= ri && ri <= sz(s));
     T ret = 0;
     for (; ri > 0; ri &= ri - 1) ret += s[ri - 1];
     return ret;
@@ -42,7 +40,6 @@ template <class T> struct BIT {
    * @space O(1)
    */
   T query(int le, int ri) {
-    assert(le <= ri);
     return query(ri) - query(le);
   }
 #include "bit_uncommon/lower_bound.hpp"

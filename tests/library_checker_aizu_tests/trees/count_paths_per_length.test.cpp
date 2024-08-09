@@ -20,7 +20,7 @@ int main() {
   cd_asserts(adj);
   vector<ll> cnt_len = count_paths_per_length(adj);
   if (n >= 2) {
-    int k = get_rand(1, n - 1);
+    int k = rnd(1, n - 1);
     vector<ll> count_paths = count_paths_per_node(adj, k);
     ll sum = accumulate(begin(count_paths), end(count_paths), 0LL);
     assert(sum % (k + 1) == 0);

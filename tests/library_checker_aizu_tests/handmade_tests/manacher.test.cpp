@@ -11,12 +11,12 @@ int main() {
   for (int n = 0; n <= 50; n++) {
     for (int tests = 20; tests--;) {
       string s(n, 'a');
-      if (n == 0 || get_rand<int>(0, 1) == 0) {
-        int mx_char = get_rand<int>(0, 5);
-        generate(begin(s), end(s), [&]() { return char('a' + get_rand<int>(0, mx_char)); });
+      if (n == 0 || rnd<int>(0, 1) == 0) {
+        int mx_char = rnd<int>(0, 5);
+        generate(begin(s), end(s), [&]() { return char('a' + rnd<int>(0, mx_char)); });
       } else {
         for (int i = 5; i--;)
-          s[get_rand<int>(0, n - 1)] = 'b';
+          s[rnd<int>(0, n - 1)] = 'b';
       }
 
       pal_query pq(s);

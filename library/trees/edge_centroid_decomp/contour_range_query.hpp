@@ -51,7 +51,6 @@ template <class T> struct contour_range_query {
    * @space O(1)
    */
   T query(int v, int le, int ri) {
-    assert(0 <= le && le <= ri && ri <= n);
     T sum = 0;
     if (le <= 0 && 0 < ri) sum += sum_a.sum[v];
     if (le <= 1 && 1 < ri) sum += sum_a.query(v);

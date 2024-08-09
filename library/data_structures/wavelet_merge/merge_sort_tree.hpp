@@ -47,7 +47,6 @@ struct merge_sort_tree {
    * @space O(log(n)) for recursive stack
    */
   int rect_count(int le, int ri, int x, int y) {
-    assert(0 <= le && le <= ri && ri <= n && x <= y);
     int xi = lower_bound(all(sorted), x) - begin(sorted);
     int yi = lower_bound(all(sorted), y) - begin(sorted);
     return rect_count_impl(le, ri, xi, yi, 0, n, 1);
@@ -72,7 +71,6 @@ struct merge_sort_tree {
   int kth_smallest(int x, int y, int k) {
     int xi = lower_bound(all(sorted), x) - begin(sorted);
     int yi = lower_bound(all(sorted), y) - begin(sorted);
-    assert(1 <= k && k <= yi - xi);
     return kth_smallest_impl(xi, yi, k, 0, n, 1);
   }
   int kth_smallest_impl(int xi, int yi, int k, int tl, int tr, int v) {

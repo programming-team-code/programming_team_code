@@ -12,17 +12,17 @@ int main() {
     seg_tree seg(n);
     vector<int> a(n);
     for (int q = 0; q < 1'000; q++) {
-      if (get_rand(0, 1) == 0) {
-        int le = get_rand(0, n - 1);
-        int ri = get_rand(le + 1, n);
-        int diff = get_rand(0, 10);
+      if (rnd(0, 1) == 0) {
+        int le = rnd(0, n - 1);
+        int ri = rnd(le + 1, n);
+        int diff = rnd(0, 10);
         seg.update(le, ri, diff);
         for (int i = le; i < ri; i++)
           a[i] += diff;
       } else {
-        int le = get_rand(0, n - 1);
-        int ri = get_rand(le + 1, n);
-        int target_sum = get_rand(0, 100);
+        int le = rnd(0, n - 1);
+        int ri = rnd(le + 1, n);
+        int target_sum = rnd(0, 100);
         int smallest_index_greater_sum = ri;
         for (int pos = le, sum = 0; pos < ri; pos++) {
           sum += a[pos];

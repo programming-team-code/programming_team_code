@@ -20,9 +20,9 @@ void compress_tree_asserts(vector<vector<int>> adj, linear_lca& lin_lca, LCA& lc
   for (int tests = 0; tests < 10; tests++) {
     vector<int> subset;
     {
-      int subset_size = get_rand(1, min(n, 10));
+      int subset_size = rnd(1, min(n, 10));
       while (subset_size--) {
-        int u = get_rand(0, n - 1);
+        int u = rnd(0, n - 1);
         if (!used[u]) {
           used[u] = 1;
           subset.push_back(u);

@@ -10,7 +10,6 @@
  * @space O(1)
  */
 pii find_substr(int s_le, int s_ri) {
-  assert(0 <= s_le && s_le <= s_ri && s_ri <= n);
   if (s_le == n) return {0, n};
   auto cmp = [&](int i, bool flip) -> bool {
     return flip ^ (len_lcp(i, s_le) < s_ri - s_le);

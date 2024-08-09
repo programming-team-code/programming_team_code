@@ -32,7 +32,6 @@ struct bool_bit {
    * @space O(1)
    */
   int popcount(int i) {
-    assert(0 <= i && i <= n);
     return presum.query(i >> 6) + __builtin_popcountll(mask[i >> 6] & ((1ULL << (i & 63)) - 1));
   }
   /**
@@ -42,7 +41,6 @@ struct bool_bit {
    * @space O(1)
    */
   int popcount(int le, int ri) {
-    assert(le <= ri);
     return popcount(ri) - popcount(le);
   }
   /**
@@ -52,7 +50,6 @@ struct bool_bit {
    * @space O(1)
    */
   bool on(int i) {
-    assert(0 <= i && i < n);
     return (mask[i >> 6] >> (i & 63)) & 1;
   }
   /**
@@ -62,7 +59,6 @@ struct bool_bit {
    * @space O(1)
    */
   void set(int i, bool new_num) {
-    assert(0 <= i && i < n);
     if (on(i) != new_num) {
       mask[i >> 6] ^= 1ULL << (i & 63);
       presum.update(i >> 6, new_num ? 1 : -1);

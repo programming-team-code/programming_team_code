@@ -47,7 +47,7 @@ int main() {
       adj[v].push_back(u);
     } else
       cout << dsu.same_set(u, v) << '\n';
-    if (get_rand<int>(0, 20'000) == 0) check();
+    if (rnd<int>(0, 20'000) == 0) check();
   }
   check();
   return 0;

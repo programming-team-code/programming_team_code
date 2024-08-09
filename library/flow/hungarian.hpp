@@ -21,7 +21,6 @@ struct hungarian {
    */
   hungarian(const vector<vector<ll>>& cost) : l_to_r(sz(cost)) {
     int n = sz(cost) - 1, m = sz(cost[0]) - 1;
-    assert(n <= m);
     vi p(m + 1), way(m + 1);
     vector<ll> u(n + 1), v(m + 1);
     rep(i, 1, n + 1) {

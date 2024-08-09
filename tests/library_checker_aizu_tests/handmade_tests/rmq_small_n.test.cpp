@@ -33,7 +33,7 @@ int main() {
   for (int n = 1; n <= 100; n++) {
     for (int times = 0; times < 40; times++) {
       vector<int> a(n);
-      for (int i = 0; i < n; i++) a[i] = get_rand<int>(INT_MIN, INT_MAX);
+      for (int i = 0; i < n; i++) a[i] = rnd<int>(INT_MIN, INT_MAX);
       test_all_subarrays(a);
     }
   }

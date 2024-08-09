@@ -27,7 +27,6 @@ template <int N> struct implicit_seg_tree {
   }
   void push(int tl, int tm, int tr, int v) {
     if (tr - tl > 1 && tree[v].lch == -1) {
-      assert(ptr + 1 < N);
       tree[v].lch = ptr;
       tree[ptr++].num = {0, tm - tl};
       tree[v].rch = ptr;

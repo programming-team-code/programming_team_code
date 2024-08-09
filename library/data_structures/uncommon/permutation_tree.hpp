@@ -39,10 +39,7 @@ struct perm_tree {
     vi mn_i(n), mx_i(n);
     {
       vi a_inv(n, -1);
-      rep(i, 0, n) {
-        assert(0 <= a[i] && a[i] < n && a_inv[a[i]] == -1);
-        a_inv[a[i]] = i;
-      }
+      rep(i, 0, n) a_inv[a[i]] = i;
       linear_rmq rmq_min(a_inv, less());
       linear_rmq rmq_max(a_inv, greater());
       rep(i, 1, n) {

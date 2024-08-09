@@ -39,7 +39,7 @@ int main() {
         for (int j = 1; j <= min(5, m); j++)
           tests.emplace_back(i, j);
       int iter = 20;
-      while (iter--) tests.emplace_back(get_rand(1, n), get_rand(1, m));
+      while (iter--) tests.emplace_back(rnd(1, n), rnd(1, m));
     }
     for (auto [rows, cols] : tests) {
       int cnt = 0;

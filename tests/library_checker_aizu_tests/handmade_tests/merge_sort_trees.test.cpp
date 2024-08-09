@@ -12,11 +12,11 @@ int main() {
   // brute force small cases
   for (int n = 0; n <= 25; n++) {
     for (int tests = 3; tests--;) {
-      int minn = get_rand<int>(-1000, 1000);
-      int maxn = get_rand<int>(-1000, 1000);
+      int minn = rnd<int>(-1000, 1000);
+      int maxn = rnd<int>(-1000, 1000);
       if (minn > maxn) swap(minn, maxn);
       vector<int> arr(n);
-      generate(begin(arr), end(arr), [&]() { return get_rand<int>(minn, maxn); });
+      generate(begin(arr), end(arr), [&]() { return rnd<int>(minn, maxn); });
       merge_sort_tree mst(arr);
       merge_sort_tree_updates mstu(arr, vector<bool>(n, 1));
       for (int i = 0; i < n; i++) {
@@ -24,8 +24,8 @@ int main() {
         assert(mstu.kth_smallest(minn, maxn + 1, i + 1) == i);
       }
       for (int queries = 30; queries--;) {
-        int x = get_rand<int>(-1000, 1000);
-        int y = get_rand<int>(-1000, 1000);
+        int x = rnd<int>(-1000, 1000);
+        int y = rnd<int>(-1000, 1000);
         if (x > y) swap(x, y);
         for (int le = 0; le <= n; le++) {
           int cnt = 0;

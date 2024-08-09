@@ -28,8 +28,8 @@ int main() {
     int t_start = sz(s) + 1;
     suffix_array lq_both(both, 256);
     vector<int> splits = {0, int(sz(t))};
-    for (int num_splits = get_rand(0, 4); num_splits--;)
-      splits.push_back(get_rand<int>(0, sz(t)));
+    for (int num_splits = rnd(0, 4); num_splits--;)
+      splits.push_back(rnd<int>(0, sz(t)));
     sort(begin(splits), end(splits));
     vector<pair<int, int>> subs;
     for (int i = 1; i < sz(splits); i++)

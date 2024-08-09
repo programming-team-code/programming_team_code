@@ -7,6 +7,5 @@
  * @space O(1)
  */
 T operator[](int i) {
-  assert(0 <= i && i < siz());
   return (i < sz(le) ? le[sz(le) - i - 1] : ri[i - sz(le)])[0];
 }

@@ -13,13 +13,13 @@ mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
        vi a(n);
        shuffle(all(a), rng);
        //
-       int x = get_rand(0, 1);
-       ll x = get_rand<ll>(1, 1e18);
+       int x = rnd(0, 1);
+       ll x = rnd<ll>(1, 1e18);
  * @endcode
  * @param le,ri defines range [le, ri]
  * @returns random number in range, chosen with probability 1/(ri - le + 1)
  */
-template <class T> T get_rand(T le, T ri) {
+template <class T> T rnd(T le, T ri) {
   assert(le <= ri);
   return uniform_int_distribution<T>(le, ri)(rng);
 }

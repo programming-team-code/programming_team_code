@@ -16,15 +16,15 @@ int main() {
   for (int i = 0; i < mx_n; i++)
     bit.update(i, 1), seg.update(i, i + 1, 1), rev.update(i, i + 1, 1);
   for (int q = 0; q < 100'000; q++) {
-    int i = get_rand(0, mx_n - 1);
-    int add = get_rand(0, 100'000);
+    int i = rnd(0, mx_n - 1);
+    int add = rnd(0, 100'000);
     bit.update(i, add);
     seg.update(i, i + 1, add);
     rev.update(rv(i), rv(i) + 1, add);
-    int le = get_rand(0, mx_n - 1);
-    int ri = get_rand(le + 1, mx_n);
+    int le = rnd(0, mx_n - 1);
+    int ri = rnd(le + 1, mx_n);
     int64_t in_tree = seg.query(le, ri);
-    auto sum = get_rand<int64_t>(1, in_tree);
+    auto sum = rnd<int64_t>(1, in_tree);
     int64_t need;
     vector<array<int, 3>> rngs;
     auto reset = [&] {

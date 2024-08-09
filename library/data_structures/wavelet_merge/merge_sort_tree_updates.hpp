@@ -28,7 +28,6 @@ struct merge_sort_tree_updates {
    *        O(n + (n log n) / 64) for `bool_bits` vector
    */
   merge_sort_tree_updates(const vi& a, const vector<bool>& active) : n(sz(a)), sorted(n), perm(n), bool_presums(n, vector<bool>()), bool_bits(2 * n, vector<bool>()) {
-    assert(sz(active) == n);
     if (!n) return;
     vector<pair<int, bool>> cpy(n);
     rep(i, 0, n) cpy[i].first = i;
@@ -61,7 +60,6 @@ struct merge_sort_tree_updates {
    * @space O(log(n)) for recursive stack
    */
   void set_active(int i, bool is_active) {
-    assert(0 <= i && i < n);
     if (bool_bits[1].on(perm[i]) == is_active) return;
     set_active_impl(perm[i], is_active, 0, n, 1);
   }
@@ -79,7 +77,6 @@ struct merge_sort_tree_updates {
    * @space O(log(n)) for recursive stack
    */
   int rect_count(int le, int ri, int x, int y) {
-    assert(0 <= le && le <= ri && ri <= n && x <= y);
     int xi = lower_bound(all(sorted), x) - begin(sorted);
     int yi = lower_bound(all(sorted), y) - begin(sorted);
     return rect_count_impl(le, ri, xi, yi, 0, n, 1);
@@ -103,7 +100,6 @@ struct merge_sort_tree_updates {
   int kth_smallest(int x, int y, int k) {
     int xi = lower_bound(all(sorted), x) - begin(sorted);
     int yi = lower_bound(all(sorted), y) - begin(sorted);
-    assert(1 <= k && k <= bool_bits[1].popcount(xi, yi));
     return kth_smallest_impl(xi, yi, k, 0, n, 1);
   }
   int kth_smallest_impl(int xi, int yi, int k, int tl, int tr, int v) {

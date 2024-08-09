@@ -14,7 +14,6 @@
 pair<int, mint> row_reduce(vector<vector<mint>>& mat, int cols) {
   int n = sz(mat), m = sz(mat[0]), rank = 0;
   mint det = 1;
-  assert(cols <= m);
   for (int col = 0; col < cols && rank < n; col++) {
     auto it = find_if(rank + all(mat), [&](auto& v) { return v[col].x; });
     if (it == end(mat)) {

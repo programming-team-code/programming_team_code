@@ -18,7 +18,7 @@ int main() {
         tests.emplace_back(i, j);
     }
     for (int i = 0; i < 30; i++) {
-      int l = get_rand(0, n - 1), r = get_rand(0, n - 1);
+      int l = rnd(0, n - 1), r = rnd(0, n - 1);
       if (l > r) swap(l, r);
       tests.emplace_back(l, r);
     }
@@ -33,7 +33,7 @@ int main() {
     if (longest[i] + 1 < n) {
       assert(!pq.is_pal(i, n - 1));
       for (int tests = 10; tests--;) {
-        int ri = get_rand(longest[i] + 1, n - 1);
+        int ri = rnd(longest[i] + 1, n - 1);
         assert(!pq.is_pal(i, ri));
       }
     }

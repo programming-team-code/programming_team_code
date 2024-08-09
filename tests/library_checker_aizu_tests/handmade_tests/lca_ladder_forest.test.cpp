@@ -23,8 +23,8 @@ int main() {
     vector<vector<int>> adj(n);
     dsu_restorable dsu(n);
     for (int i = 0; i < n - 2; i++) {
-      int u = get_rand<int>(0, n - 1);
-      int v = get_rand<int>(0, n - 1);
+      int u = rnd<int>(0, n - 1);
+      int v = rnd<int>(0, n - 1);
       if (u == v)
         continue;
       if (dsu.join(u, v)) {
@@ -38,8 +38,8 @@ int main() {
     ladder lad(adj);
     linear_kth_path lin_kth_path(adj);
     for (int i = 0; i < 100; i++) {
-      int u = get_rand<int>(0, n - 1);
-      int v = get_rand<int>(0, n - 1);
+      int u = rnd<int>(0, n - 1);
+      int v = rnd<int>(0, n - 1);
       if (u == v || !dsu.same_set(u, v))
         continue;
       auto lca_1 = tl.lca(u, v);

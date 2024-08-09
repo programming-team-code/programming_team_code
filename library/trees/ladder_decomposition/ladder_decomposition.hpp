@@ -47,7 +47,6 @@ struct ladder {
    * @space O(1)
    */
   int kth_par(int v, int k) {
-    assert(0 <= k && k <= d[v]);
     if (k == 0) return v;
     int bit = __lg(k);
     v = b_tbl[bit][v], k -= (1 << bit);

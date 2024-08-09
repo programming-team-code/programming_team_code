@@ -28,8 +28,6 @@ struct PST {
    * @space O(log(root_r - root_l)) new nodes are pushed back onto `tree`; (and for recursion stack)
    */
   void update(int idx, ll change, int version) {
-    assert(root_l <= idx && idx < root_r);
-    assert(0 <= version && version < sz(roots));
     roots.push_back(update_impl(idx, change, root_l, root_r, roots[version]));
   }
   int update_impl(int idx, ll change, int tl, int tr, int v) {
@@ -55,8 +53,6 @@ struct PST {
    * @space O(log(root_r - root_l)) for recursion stack, no new nodes are allocated
    */
   ll query(int le, int ri, int version) {
-    assert(root_l <= le && ri <= root_r);
-    assert(0 <= version && version < sz(roots));
     return query_impl(le, ri, root_l, root_r, roots[version]);
   }
   ll query_impl(int le, int ri, int tl, int tr, int v) {

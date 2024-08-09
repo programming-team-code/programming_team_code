@@ -11,7 +11,6 @@
  * @space O(1)
  */
 ll bin_exp(ll b, ll e, int mod) {
-  assert(0 <= e);
   ll res = 1;
   if ((b %= mod) < 0) b += mod;
   for (; e; b = b * b % mod, e /= 2)

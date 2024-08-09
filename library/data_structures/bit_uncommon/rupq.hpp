@@ -31,7 +31,6 @@ template <class T> struct bit_rupq {
    * @space O(1)
    */
   void update(int le, int ri, T d) {
-    assert(0 <= le && le <= ri && ri <= n);
     if (le < n) bit.update(le, d);
     if (ri < n) bit.update(ri, -d);
   }
@@ -42,7 +41,6 @@ template <class T> struct bit_rupq {
    * @space O(1)
    */
   T get_index(int i) {
-    assert(0 <= i && i < n);
     return bit.query(i + 1);
   }
 };

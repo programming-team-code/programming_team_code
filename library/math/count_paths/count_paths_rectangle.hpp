@@ -13,7 +13,6 @@
  * @space O(n + m)
  */
 array<vl, 2> get_right_and_top(vl left, vl bottom) {
-  assert(!empty(left) && !empty(bottom));
   array<vl, 2> ret;
   for (vl& res : ret) {
     {

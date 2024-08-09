@@ -9,15 +9,15 @@ int main() {
   // brute force small cases
   for (int n = 0; n <= 65; n++) {
     for (int tests = 3; tests--;) {
-      int minn = get_rand<int>(-1000, 1000);
-      int maxn = get_rand<int>(-1000, 1000);
+      int minn = rnd<int>(-1000, 1000);
+      int maxn = rnd<int>(-1000, 1000);
       if (minn > maxn) swap(minn, maxn);
       vector<int> arr(n);
-      generate(begin(arr), end(arr), [&]() { return get_rand<int>(minn, maxn); });
+      generate(begin(arr), end(arr), [&]() { return rnd<int>(minn, maxn); });
       wavelet_tree wt(arr, minn, maxn + 1);
       for (int queries = 3; queries--;) {
-        int x = get_rand<int>(-1000, 1000);
-        int y = get_rand<int>(-1000, 1000);
+        int x = rnd<int>(-1000, 1000);
+        int y = rnd<int>(-1000, 1000);
         if (x > y) swap(x, y);
         for (int le = 0; le <= n; le++) {
           int cnt = 0, sum = 0;
@@ -54,7 +54,7 @@ int main() {
     const int mx_n = 100'000, large = 1'000'000'000, val_range = 20;
     vector<int> arr(mx_n), count_val(val_range);
     for (int& val : arr) {
-      val = get_rand<int>(large, large + val_range - 1);
+      val = rnd<int>(large, large + val_range - 1);
       count_val[val - large]++;
     }
     wavelet_tree wt(arr, large, large + val_range);
@@ -71,7 +71,7 @@ int main() {
       }
     }
     for (int tests_kth_sum = 100; tests_kth_sum--;) {
-      int k = get_rand<int>(0, mx_n);
+      int k = rnd<int>(0, mx_n);
       if (tests_kth_sum == 50) k = 0;
       if (tests_kth_sum == 49) k = mx_n;
       if (k == 0) {

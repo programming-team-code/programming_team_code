@@ -32,7 +32,6 @@ template <class T, class F>
 vector<bool> wildcard_pattern_matching(const T& haystack, const T& needle,
                                        const F& conv) {
   int n = sz(haystack), m = sz(needle);
-  assert(n >= m);
   auto haystack_pws = make_powers(haystack);
   auto needle_pws = make_powers(needle);
   for (auto& needle_pw : needle_pws) reverse(all(needle_pw));
