@@ -18,8 +18,6 @@ template <class T> vi lcs_queries(const T& s, const T& t, const vector<array<int
   vector<vector<array<int, 3>>> qs(n);
   rep(i, 0, q) {
     auto [s_ri, t_le, t_ri] = queries[i];
-    assert(0 <= s_ri && s_ri <= n);
-    assert(0 <= t_le && t_le <= t_ri && t_ri <= m);
     if (s_ri == 0 || t_le == m) continue;
     qs[s_ri - 1].push_back({t_le, t_ri, i});
   }

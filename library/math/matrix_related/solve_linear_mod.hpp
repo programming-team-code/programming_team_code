@@ -22,7 +22,6 @@ struct solve_linear_mod {
    * O(m) solution vector
    */
   solve_linear_mod(vector<vector<mint>>& mat, const vector<mint>& b) {
-    assert(sz(mat) == sz(b));
     int n = sz(mat), m = sz(mat[0]);
     rep(i, 0, n) mat[i].push_back(b[i]);
     tie(rank, det) = row_reduce(mat, m);

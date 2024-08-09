@@ -36,7 +36,6 @@ struct wavelet_tree_updates {
    * @space O((maxv - minv) + n * log(maxv - minv) / 64) for `bool_presums` and for `bool_bits`
    */
   wavelet_tree_updates(const vi& a, int a_minv, int a_maxv, const vector<bool>& active) : n(sz(a)), minv(a_minv), maxv(a_maxv), bool_presums(maxv - minv, vector<bool>()), bool_bits(2 * (maxv - minv), vector<bool>()) {
-    assert(minv < maxv && sz(active) == n);
     vector<pair<int, bool>> cpy(n);
     transform(all(a), begin(active), begin(cpy), [](int x, bool y) { return pair(x, y); });
     build(cpy, 0, n, minv, maxv, 1);
@@ -61,7 +60,6 @@ struct wavelet_tree_updates {
    * @space O(log(maxv - minv)) for recursive stack
    */
   void set_active(int i, bool is_active) {
-    assert(0 <= i && i < n);
     if (bool_bits[1].on(i) == is_active) return;
     set_active_impl(i, is_active, minv, maxv, 1);
   }
@@ -79,7 +77,6 @@ struct wavelet_tree_updates {
    * @space O(log(maxv - minv)) for recursive stack
    */
   int rect_count(int le, int ri, int x, int y) {
-    assert(0 <= le && le <= ri && ri <= n && x <= y);
     return rect_count_impl(le, ri, x, y, minv, maxv, 1);
   }
   int rect_count_impl(int le, int ri, int x, int y, int tl, int tr, int v) {
@@ -99,8 +96,6 @@ struct wavelet_tree_updates {
    * @space O(log(maxv - minv)) for recursive stack
    */
   int kth_smallest(int le, int ri, int k) {
-    assert(0 <= le && ri <= n);
-    assert(1 <= k && k <= bool_bits[1].popcount(le, ri));
     return kth_smallest_impl(le, ri, k, minv, maxv, 1);
   }
   int kth_smallest_impl(int le, int ri, int k, int tl, int tr, int v) {

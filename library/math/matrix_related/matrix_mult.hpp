@@ -10,7 +10,6 @@
  * allocates and returns a O(n * m) vector
  */
 template <class T> vector<vector<T>> operator*(const vector<vector<T>>& a, const vector<vector<T>>& b) {
-  assert(sz(a[0]) == sz(b));
   int n = sz(a), m = sz(b[0]), inner = sz(b);
   vector<vector<T>> c(n, vector<T>(m));
   rep(i, 0, n)

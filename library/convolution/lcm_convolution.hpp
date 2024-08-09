@@ -9,7 +9,6 @@ const int mod = 998'244'353;
  * @space this function allocates/returns various O(n) vectors
  */
 vi lcm_convolution(const vi& a, const vi& b) {
-  assert(sz(a) == sz(b));
   int n = sz(a);
   vector<ll> sum_a(n), sum_b(n);
   vi c(n);

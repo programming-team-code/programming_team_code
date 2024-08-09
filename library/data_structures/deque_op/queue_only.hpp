@@ -38,7 +38,6 @@ template <class T, class F> struct deq {
    * @space O(1)
    */
   T query() {
-    assert(siz());
     if (empty(le)) return ri.back()[1];
     if (empty(ri)) return le.back()[1];
     return op(le.back()[1], ri.back()[1]);
@@ -63,7 +62,6 @@ template <class T, class F> struct deq {
    * @space O(1) ammortized
    */
   void pop_front() {
-    assert(siz());
     if (empty(le)) {
       vector<T> a(sz(ri));
       transform(all(ri), begin(a), [](dt& x) { return x[0]; });

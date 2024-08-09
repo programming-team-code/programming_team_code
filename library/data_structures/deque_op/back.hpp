@@ -6,6 +6,5 @@
  * @space O(1)
  */
 T back() {
-  assert(siz());
   return (empty(ri) ? le[0] : ri.back())[0];
 }

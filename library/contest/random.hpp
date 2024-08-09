@@ -20,6 +20,5 @@ mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
  * @returns random number in range, chosen with probability 1/(ri - le + 1)
  */
 template <class T> T get_rand(T le, T ri) {
-  assert(le <= ri);
   return uniform_int_distribution<T>(le, ri)(rng);
 }

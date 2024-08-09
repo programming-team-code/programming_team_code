@@ -57,7 +57,6 @@ struct lcp_tree {
    * @space adj is O(n * cnt_let)
    */
   lcp_tree(const string& s) : sf_a(s, mn + cnt_let), le(mono_st(sf_a.lcp, less())), ri(mono_range(le)), adj(max(sf_a.n - 1, 0), vector(cnt_let, -1)) {
-    assert(sf_a.n > 0);
     vi p = cart_k_ary_tree(sf_a.lcp, le);
     root = find(all(p), -1) - begin(p);
     auto node = [&](int i) -> int {

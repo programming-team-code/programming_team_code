@@ -44,7 +44,6 @@ template <class T> struct longest_pal_query {
    * @space O(1)
    */
   pii longest_pal(int le, int ri) {
-    assert(0 <= le && le < ri && ri <= sz(idx));
     int pal_len = lower_bound(begin(idx), begin(idx) + (ri - le), 0,
                               [&](int mid, int) { return len(rmq.query(2 * le + mid - 1, 2 * ri - mid)) >= mid; }) -
                   begin(idx);
