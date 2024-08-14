@@ -18,7 +18,7 @@ vector<ll> dijkstra(const vector<vector<pair<int, ll>>>& adj, int s) {
     pq.pop();
     if (d[v] <= d_v) continue;
     d[v] = d_v;
-    for (auto [u, w] : adj[v]) pq.emplace(w + d[v], u);
+    for (auto [u, w] : adj[v]) pq.emplace(w + d_v, u);
   }
   return d;
 }
