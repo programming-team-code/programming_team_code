@@ -9,8 +9,7 @@
  * O(n) distance array. The (temporary) priority queue can grow to size O(m)
  */
 vector<ll> dijkstra(const vector<vector<pair<int, ll>>>& adj, int s) {
-  using dt = pair<ll, int>;
-  priority_queue<dt, vector<dt>, greater<dt>> pq;
+  priority_queue<pair<ll, int>, vector<pair<ll, int>>, greater<>> pq;
   pq.emplace(0, s);
   vector<ll> d(sz(adj), LLONG_MAX);
   while (!empty(pq)) {
