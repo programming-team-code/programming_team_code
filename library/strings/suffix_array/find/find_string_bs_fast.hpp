@@ -10,6 +10,7 @@
  */
 pii find_str_fast(const T& t) {
   int le = lower_bound(all(sa), 0, [&](int i, int) -> bool { return lexicographical_compare(i + all(s), all(t)); }) - begin(sa);
-  int ri = lower_bound(le + all(sa), 0, [&](int i, int) -> bool { return mismatch(all(t), i + all(s)).first == end(t); }) - begin(sa);
+  if (le == n || mismatch(all(t), sa[le] + all(s)).first != end(t)) return {le, le};
+  int ri = lower_bound(le + all(sa), 0, [&](int i, int) -> bool { return len_lcp(i, sa[le]) >= sz(t); }) - begin(sa);
   return {le, ri};
 }
