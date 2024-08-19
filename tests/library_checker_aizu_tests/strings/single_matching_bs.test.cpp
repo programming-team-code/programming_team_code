@@ -26,10 +26,10 @@ int main() {
     // test find_substrs_concated
     string both = s + '$' + t;
     int t_start = sz(s) + 1;
-    suffix_array lq_both(both, 256);
+    sa_query lq_both(both, 256);
     vector<int> splits = {0, int(sz(t))};
     for (int num_splits = rnd(0, 4); num_splits--;)
-      splits.push_back(rnd<int>(0, sz(t)));
+      splits.push_back(rnd<int>(0, sz(t) - 1));
     sort(begin(splits), end(splits));
     vector<pair<int, int>> subs;
     for (int i = 1; i < sz(splits); i++)
