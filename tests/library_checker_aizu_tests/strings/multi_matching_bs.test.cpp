@@ -9,7 +9,7 @@
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   {
-    suffix_array sf_a(string(""), 256);
+    sa_query sf_a(string(""), 256);
     auto [sa_le, sa_ri, s_le, s_ri] = sf_a.find_str_long(string(""));
     pair<int, int> short_res = sf_a.find_str(string(""));
     assert(sa_le == short_res.first && sa_ri == short_res.second);
