@@ -23,4 +23,10 @@ template <class T> struct sa_query {
     auto [le, ri] = minmax(sa_inv[i1], sa_inv[i2]);
     return rmq.query(le, ri);
   }
+#include "compare/compare_suffixes.hpp"
+#include "compare/compare_substrings.hpp"
+#include "find/find_string_bs.hpp"
+#include "find/find_string_bs_long.hpp"
+#include "find/find_substring.hpp"
+#include "find/find_substrings_concatenated.hpp"
 };

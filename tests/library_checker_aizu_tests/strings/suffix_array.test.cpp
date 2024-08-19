@@ -2,7 +2,7 @@
 #include "../template.hpp"
 #include "../mono_st_asserts.hpp"
 
-#include "../../../library/strings/suffix_array/suffix_array.hpp"
+#include "../../../library/strings/suffix_array/len_lcp.hpp"
 
 int main() {
   cin.tie(0)->sync_with_stdio(0);
@@ -19,12 +19,11 @@ int main() {
   string s;
   cin >> s;
   int n = sz(s);
-  auto [sa, sa_inv, lcp] = get_sa(s, 256);
-  mono_st_asserts(lcp);
-  assert(sz(sa) == n);
-  assert(sz(sa_inv) == n);
-  assert(sz(lcp) == n - 1);
-  /*
+  sa_query sf_a(s, 256);
+  mono_st_asserts(sf_a.lcp);
+  assert(sz(sf_a.sa) == n);
+  assert(sz(sf_a.sa_inv) == n);
+  assert(sz(sf_a.lcp) == n - 1);
   {
     auto [sa_le, sa_ri, s_le, s_ri] = sf_a.find_str_long(string(""));
     assert(sa_le == 0 && sa_ri == n);
@@ -58,12 +57,11 @@ int main() {
     assert(sa_le == 0 && sa_ri == n);
     assert(s_ri - s_le == 0);
   }
-  */
   for (int i = 0; i < n; i++) {
-    assert(sa[sa_inv[i]] == i);
-    assert(sa_inv[sa[i]] == i);
+    assert(sf_a.sa[sf_a.sa_inv[i]] == i);
+    assert(sf_a.sa_inv[sf_a.sa[i]] == i);
   }
-  for (auto val : sa)
+  for (auto val : sf_a.sa)
     cout << val << " ";
   cout << '\n';
 }
