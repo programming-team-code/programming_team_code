@@ -3,6 +3,7 @@
 #include "../len_lcp.hpp"
 /**
  * @param s_le,s_ri defines a substring [s_le, s_ri) of s
+ *     - doesn't work when s_le == n
  * @returns a range [le, ri) such that:
  *     - for all i in [le, ri): s.substr(s_le, s_ri - s_le) == s.substr(sa[i], s_ri - s_le)
  *     - `ri - le` is the # of matches of s.substr(s_le, s_ri - s_le) in s.

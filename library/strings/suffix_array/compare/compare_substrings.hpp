@@ -5,6 +5,7 @@
 /**
  * @param le1,ri1 first substring [le1, ri1)
  * @param le2,ri2 second substring [le2, ri2)
+ *     - doesn't work when le1,le2 == n
  * @returns a number `cmp` where:
  *     - cmp < 0 iff s.substr(le1, ri1 - le1) < s.substr(le2, ri2 - le2)
  *     - cmp = 0 iff s.substr(le1, ri1 - le1) = s.substr(le2, ri2 - le2)
