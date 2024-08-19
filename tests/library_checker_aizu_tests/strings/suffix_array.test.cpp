@@ -8,12 +8,12 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
   {
     string s;
-    auto [_, __, lcp] = get_sa(s, 256);
+    auto [_, _sa_inv, lcp] = get_sa(s, 256);
     assert(empty(lcp));
   }
   {
     string s = "a";
-    auto [_, __, lcp] = get_sa(s, 256);
+    auto [_, _sa_inv, lcp] = get_sa(s, 256);
     assert(empty(lcp));
   }
   string s;
