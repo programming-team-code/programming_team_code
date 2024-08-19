@@ -100,6 +100,7 @@
 "tests/library_checker_aizu_tests/strings/lcp_array.test.cpp": "2024-08-19 12:46:44 -0500",
 "tests/library_checker_aizu_tests/strings/lcp_interval_tree.test.cpp": "2024-08-19 12:46:44 -0500",
 "tests/library_checker_aizu_tests/strings/lcp_query_palindrome.test.cpp": "2024-08-19 12:46:44 -0500",
+"tests/library_checker_aizu_tests/strings/lcp_query_zfunc.test.cpp": "2024-08-19 13:11:31 -0500",
 "tests/library_checker_aizu_tests/strings/lcs_dp.test.cpp": "2024-05-15 15:16:07 -0600",
 "tests/library_checker_aizu_tests/strings/lcs_queries.test.cpp": "2024-08-09 09:59:28 -0500",
 "tests/library_checker_aizu_tests/strings/lcs_queries_wavelet.test.cpp": "2024-08-09 09:59:28 -0500",
