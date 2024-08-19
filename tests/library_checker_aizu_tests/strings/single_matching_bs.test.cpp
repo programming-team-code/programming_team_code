@@ -39,7 +39,7 @@ int main() {
         subs.emplace_back(splits[i - 1] + t_start, splits[i] + t_start);
       tests.push_back(subs);
     }
-    for (vector<pii> subs : tests) {
+    for (const vector<pii>& subs : tests) {
       auto [sa_le2, sa_ri2, s_le2, s_ri2] = lq_both.find_substrs_concated(subs);
       pair<int, int> short_res2 = lq_both.find_substr(t_start, sz(both));
       assert(sa_le2 == short_res2.first && sa_ri2 == short_res2.second);
