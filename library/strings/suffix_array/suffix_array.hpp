@@ -29,10 +29,10 @@
  *
  * @code{.cpp}
        string s;
-       auto [sa, sa_inv, lcp] = suffix_array(s, 256);
+       auto [sa, sa_inv, lcp] = get_sa(s, 256);
        // or
        vi a;
-       auto [sa, sa_inv, lcp] = suffix_array(a, 100'005);
+       auto [sa, sa_inv, lcp] = get_sa(a, 100'005);
  * @endcode
  *
  * @param s,max_num string/array with 0 <= s[i] < max_num
@@ -40,7 +40,7 @@
  * @time O(n + max_num)
  * @space vectors `sa`, `sa_inv`, `lcp` are O(n). vector `freq` is O(max_num) and is allocated temporarily
  */
-template <class T> array<vi, 3> suffix_array(const T& s, int max_num) {
+template <class T> array<vi, 3> get_sa(const T& s, int max_num) {
   int n = sz(s);
   vi sa(n), sa_inv(all(s)), lcp(max(0, n - 1));
   iota(all(sa), 0);

@@ -8,18 +8,18 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
   {
     string s;
-    auto [_, __, lcp] = suffix_array(s, 256);
+    auto [_, __, lcp] = get_sa(s, 256);
     assert(empty(lcp));
   }
   {
     string s = "a";
-    auto [_, __, lcp] = suffix_array(s, 256);
+    auto [_, __, lcp] = get_sa(s, 256);
     assert(empty(lcp));
   }
   string s;
   cin >> s;
   int n = sz(s);
-  auto [sa, sa_inv, lcp] = suffix_array(s, 256);
+  auto [sa, sa_inv, lcp] = get_sa(s, 256);
   mono_st_asserts(lcp);
   assert(sz(sa) == n);
   assert(sz(sa_inv) == n);
