@@ -1100,6 +1100,10 @@ EXCLUDE_SYMBOLS        = HLD::node \
                          make_powers \
                          range_parallel_dsu \
                          join_impl \
+                         sa \
+                         sa_inv \
+                         lcp \
+                         sa_query \
 
 # The EXAMPLE_PATH tag can be used to specify one or more files or directories
 # that contain example code fragments that are included (see the \include

@@ -5,13 +5,13 @@
 #include "../template.hpp"
 #include "../../../library/contest/random.hpp"
 
-#include "../../../library/strings/suffix_array/suffix_array.hpp"
+#include "../../../library/strings/suffix_array/suffix_array_query.hpp"
 
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   string s, t;
   cin >> s >> t;
-  suffix_array sf_a(s, 256);
+  sa_query sf_a(s, 256);
   auto [sa_le, sa_ri, s_le, s_ri] = sf_a.find_str_long(t);
   pair<int, int> short_res = sf_a.find_str(t);
   assert(sa_le == short_res.first && sa_ri == short_res.second);
@@ -26,10 +26,10 @@ int main() {
     // test find_substrs_concated
     string both = s + '$' + t;
     int t_start = sz(s) + 1;
-    suffix_array lq_both(both, 256);
+    sa_query lq_both(both, 256);
     vector<int> splits = {0, int(sz(t))};
     for (int num_splits = rnd(0, 4); num_splits--;)
-      splits.push_back(rnd<int>(0, sz(t)));
+      splits.push_back(rnd<int>(0, sz(t) - 1));
     sort(begin(splits), end(splits));
     vector<pair<int, int>> subs;
     for (int i = 1; i < sz(splits); i++)

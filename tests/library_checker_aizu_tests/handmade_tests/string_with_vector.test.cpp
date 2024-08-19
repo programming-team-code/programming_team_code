@@ -1,7 +1,7 @@
 #define PROBLEM "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A"
 #include "../template.hpp"
 
-#include "../../../library/strings/suffix_array/suffix_array.hpp"
+#include "../../../library/strings/suffix_array/suffix_array_query.hpp"
 
 #include "../../../library/strings/knuth_morris_pratt.hpp"
 
@@ -19,16 +19,16 @@ int main() {
   vector<int> arr(100);
   for (int i = 0; i < 100; i++)
     arr[i] = shift + i;
-  suffix_array sf_a(arr, shift + 100);
+  sa_query sf_a(arr, shift + 100);
   {
     for (int i = 1; i < 100; i++)
       assert(sf_a.cmp_sufs(i - 1, i) < 0);
-    for (int i = 0; i < 100; i++) {
-      assert(sf_a.cmp_sufs(100, i) < 0);
-      assert(sf_a.cmp_sufs(i, 100) > 0);
+    for (int i = 0; i < 99; i++) {
+      assert(sf_a.cmp_sufs(99, i) > 0);
+      assert(sf_a.cmp_sufs(i, 99) < 0);
       assert(sf_a.cmp_sufs(i, i) == 0);
     }
-    assert(sf_a.cmp_sufs(100, 100) == 0);
+    assert(sf_a.cmp_sufs(99, 99) == 0);
   }
   vector<int> t(10);
   for (int i = 50; i < 60; i++)
@@ -45,7 +45,6 @@ int main() {
   for (int val : sf_a.lcp) assert(val == 0);
   {
     assert(sf_a.len_lcp(0, 99) == 0);
-    assert(sf_a.len_lcp(0, 100) == 0);
     for (int i = 0; i < 100; i++) {
       auto [sa_le, sa_ri, s_le, s_ri] = sf_a.find_substrs_concated({{i, i + 1}});
       pair<int, int> short_res = sf_a.find_substr(i, i + 1);
@@ -53,7 +52,7 @@ int main() {
       assert(sa_le == i && sa_ri == i + 1);
       assert(s_le == i && s_ri == i + 1);
     }
-    for (int i = 0; i <= 100; i++) {
+    for (int i = 0; i < 100; i++) {
       auto [sa_le, sa_ri, s_le, s_ri] = sf_a.find_substrs_concated({{i, i}, {i, i}});
       pair<int, int> short_res = sf_a.find_substr(i, i);
       assert(sa_le == short_res.first && sa_ri == short_res.second);
@@ -61,7 +60,7 @@ int main() {
     auto [sa_le, sa_ri, s_le, s_ri] = sf_a.find_substrs_concated({});
     assert(sa_le == 0 && sa_ri == sz(arr));
     assert(s_le == s_ri);
-    assert(sf_a.cmp_substrs(0, 0, 100, 100) == 0);
+    assert(sf_a.cmp_substrs(0, 0, 99, 99) == 0);
     assert(sf_a.cmp_substrs(5, 5, 47, 47) == 0);
     assert(sf_a.cmp_substrs(50, 50, 99, 100) < 0);
     assert(sf_a.cmp_substrs(50, 51, 20, 20) > 0);
