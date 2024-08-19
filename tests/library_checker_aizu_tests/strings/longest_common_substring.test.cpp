@@ -1,7 +1,7 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/longest_common_substring"
 #include "../template.hpp"
 
-#include "../../../library/strings/suffix_array/len_lcp.hpp"
+#include "../../../library/strings/suffix_array/suffix_array_query.hpp"
 
 int main() {
   cin.tie(0)->sync_with_stdio(0);

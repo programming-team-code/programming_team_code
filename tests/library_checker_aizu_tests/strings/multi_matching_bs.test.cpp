@@ -4,7 +4,7 @@
 #undef _GLIBCXX_DEBUG
 #include "../template.hpp"
 
-#include "../../../library/strings/suffix_array/suffix_array.hpp"
+#include "../../../library/strings/suffix_array/suffix_array_query.hpp"
 
 int main() {
   cin.tie(0)->sync_with_stdio(0);
@@ -17,7 +17,7 @@ int main() {
   }
   string s;
   cin >> s;
-  suffix_array sf_a(s, 256);
+  sa_query sf_a(s, 256);
   {
     auto [sa_le, sa_ri, s_le, s_ri] = sf_a.find_str_long(string(""));
     pair<int, int> short_res = sf_a.find_str(string(""));
