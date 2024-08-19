@@ -2,6 +2,7 @@
 #pragma once
 #include "suffix_array.hpp"
 #include "../../data_structures/rmq.hpp"
+#include "find/match.hpp"
 template <class T> struct sa_query {
   T s;
   int n;
