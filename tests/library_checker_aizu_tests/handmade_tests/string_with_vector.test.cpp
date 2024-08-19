@@ -1,7 +1,7 @@
 #define PROBLEM "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A"
 #include "../template.hpp"
 
-#include "../../../library/strings/suffix_array/len_lcp.hpp"
+#include "../../../library/strings/suffix_array/suffix_array_query.hpp"
 
 #include "../../../library/strings/knuth_morris_pratt.hpp"
 
