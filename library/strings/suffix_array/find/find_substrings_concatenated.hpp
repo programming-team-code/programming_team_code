@@ -1,6 +1,5 @@
 /** @file */
 #pragma once
-#include "../len_lcp.hpp"
 #include "match.hpp"
 /**
  * @param substrs this defines query string t as:

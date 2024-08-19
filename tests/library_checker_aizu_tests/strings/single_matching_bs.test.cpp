@@ -5,13 +5,13 @@
 #include "../template.hpp"
 #include "../../../library/contest/random.hpp"
 
-#include "../../../library/strings/suffix_array/suffix_array.hpp"
+#include "../../../library/strings/suffix_array/suffix_array_query.hpp"
 
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   string s, t;
   cin >> s >> t;
-  suffix_array sf_a(s, 256);
+  sa_query sf_a(s, 256);
   auto [sa_le, sa_ri, s_le, s_ri] = sf_a.find_str_long(t);
   pair<int, int> short_res = sf_a.find_str(t);
   assert(sa_le == short_res.first && sa_ri == short_res.second);

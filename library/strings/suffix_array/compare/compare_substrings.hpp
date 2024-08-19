@@ -1,6 +1,5 @@
 /** @file */
 #pragma once
-#include "../len_lcp.hpp"
 #include "compare_suffixes.hpp"
 /**
  * @param le1,ri1 first substring [le1, ri1)

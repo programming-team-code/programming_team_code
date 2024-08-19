@@ -1,6 +1,5 @@
 /** @file */
 #pragma once
-#include "../len_lcp.hpp"
 /**
  * @param s_le,s_ri defines a substring [s_le, s_ri) of s
  *     - doesn't work when s_le == n
