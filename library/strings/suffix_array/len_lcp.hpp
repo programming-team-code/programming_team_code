@@ -14,6 +14,7 @@ template <class T> struct sa_query {
    * @param i1,i2 defines suffixes [i1, n), [i2, n)
    *      - if one of the suffixes is the entire string (i1 == 0 || i2 == 0) then
    *        it's the same as z algorithm
+   *      - doesn't work when i1,i2 == n
    * @returns max integer k such that s.substr(i1, k) == s.substr(i2, k)
    * @time O(1)
    * @space O(1)
