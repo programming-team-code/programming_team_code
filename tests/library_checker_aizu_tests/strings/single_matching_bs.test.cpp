@@ -27,23 +27,29 @@ int main() {
     string both = s + '$' + t;
     int t_start = sz(s) + 1;
     sa_query lq_both(both, 256);
-    vector<int> splits = {0, int(sz(t))};
-    for (int num_splits = rnd(0, 4); num_splits--;)
-      splits.push_back(rnd<int>(0, sz(t) - 1));
-    sort(begin(splits), end(splits));
-    vector<pair<int, int>> subs;
-    for (int i = 1; i < sz(splits); i++)
-      subs.emplace_back(splits[i - 1] + t_start, splits[i] + t_start);
-    assert(!empty(subs));
-    auto [sa_le2, sa_ri2, s_le2, s_ri2] = lq_both.find_substrs_concated(subs);
-    pair<int, int> short_res2 = lq_both.find_substr(t_start, sz(both));
-    assert(sa_le2 == short_res2.first && sa_ri2 == short_res2.second);
-    assert(both.substr(s_le2, s_ri2 - s_le2) == t);
-    assert(sa_ri2 - sa_le2 == 1 + sa_ri - sa_le);
-    vector<int> matches_other(begin(lq_both.sa) + sa_le2, begin(lq_both.sa) + sa_ri2);
-    matches_other.erase(remove_if(begin(matches_other), end(matches_other), [&](int val) { return val >= sz(s) + 1; }), end(matches_other));
-    sort(begin(matches_other), end(matches_other));
-    assert(matches == matches_other);
+    vector<vector<pii>> tests;
+    if (sz(t) >= 2) tests.push_back({{t_start, t_start + 1}, {t_start + 1, t_start + 1}, {t_start + 1, t_start + sz(t)}});
+    for (int num_tests = 10; num_tests--;) {
+      vector<int> splits = {0, sz(t)};
+      for (int num_splits = rnd(0, 4); num_splits--;)
+        splits.push_back(rnd<int>(0, sz(t) - 1));
+      sort(begin(splits), end(splits));
+      vector<pair<int, int>> subs;
+      for (int i = 1; i < sz(splits); i++)
+        subs.emplace_back(splits[i - 1] + t_start, splits[i] + t_start);
+      tests.push_back(subs);
+    }
+    for (vector<pii> subs : tests) {
+      auto [sa_le2, sa_ri2, s_le2, s_ri2] = lq_both.find_substrs_concated(subs);
+      pair<int, int> short_res2 = lq_both.find_substr(t_start, sz(both));
+      assert(sa_le2 == short_res2.first && sa_ri2 == short_res2.second);
+      assert(both.substr(s_le2, s_ri2 - s_le2) == t);
+      assert(sa_ri2 - sa_le2 == 1 + sa_ri - sa_le);
+      vector<int> matches_other(begin(lq_both.sa) + sa_le2, begin(lq_both.sa) + sa_ri2);
+      matches_other.erase(remove_if(begin(matches_other), end(matches_other), [&](int val) { return val >= sz(s) + 1; }), end(matches_other));
+      sort(begin(matches_other), end(matches_other));
+      assert(matches == matches_other);
+    }
   }
   for (auto match : matches)
     cout << match << '\n';
