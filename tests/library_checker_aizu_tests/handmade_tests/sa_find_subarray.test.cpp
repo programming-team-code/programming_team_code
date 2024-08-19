@@ -2,7 +2,7 @@
 #include "../template.hpp"
 #include "../../../library/contest/random.hpp"
 
-#include "../../../library/strings/suffix_array/suffix_array.hpp"
+#include "../../../library/strings/suffix_array/len_lcp.hpp"
 
 int main() {
   cin.tie(0)->sync_with_stdio(0);
@@ -11,8 +11,8 @@ int main() {
       string s(n, 'a');
       int mx_char = rnd<int>(0, 5);
       generate(begin(s), end(s), [&]() { return char('a' + rnd<int>(0, mx_char)); });
-      suffix_array lq(s, 256);
-      for (int i = 0; i <= n; i++) {
+      sa_query lq(s, 256);
+      for (int i = 0; i < n; i++) {
         for (int j = i; j <= n; j++) {
           auto [sa_le, sa_ri, s_le, s_ri] = lq.find_substrs_concated({{i, j}});
           pair<int, int> short_res = lq.find_substr(i, j);
@@ -30,8 +30,8 @@ int main() {
           assert(sa_ri == n || s.substr(lq.sa[sa_ri], j - i) != s.substr(i, j - i));
         }
       }
-      for (int i = 0; i <= n; i++) {
-        for (int k = 0; k <= n; k++) {
+      for (int i = 0; i < n; i++) {
+        for (int k = 0; k < n; k++) {
           for (int j = i; j <= n; j++) {
             for (int l = k; l <= n; l++) {
               int cmp_val = lq.cmp_substrs(i, j, k, l);
