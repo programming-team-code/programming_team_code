@@ -44,15 +44,8 @@ int main() {
     assert(s_ri - s_le == 0);
   }
   {
-    auto [sa_le, sa_ri, s_le, s_ri] = sf_a.find_substrs_concated({{0, 0}, {n, n}});
-    pair<int, int> short_res = sf_a.find_substr(n, n);
-    assert(sa_le == short_res.first && sa_ri == short_res.second);
-    assert(sa_le == 0 && sa_ri == n);
-    assert(s_ri - s_le == 0);
-  }
-  {
-    auto [sa_le, sa_ri, s_le, s_ri] = sf_a.find_substrs_concated({{0, 0}, {n / 2, n / 2}, {n, n}});
-    pair<int, int> short_res = sf_a.find_substr(n / 2, n / 2);
+    auto [sa_le, sa_ri, s_le, s_ri] = sf_a.find_substrs_concated({{0, 0}, {n - 1, n - 1}});
+    pair<int, int> short_res = sf_a.find_substr(n - 1, n - 1);
     assert(sa_le == short_res.first && sa_ri == short_res.second);
     assert(sa_le == 0 && sa_ri == n);
     assert(s_ri - s_le == 0);

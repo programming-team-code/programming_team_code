@@ -8,6 +8,7 @@
  *     s.substr(substrs[1][0], substrs[1][1] - substrs[1][0]) +
  *     ...
  *     s.substr(substrs.back()[0], substrs.back()[1] - substrs.back()[0])
+ *     - doesn't work when substrs[i][0] == n
  * @returns see match
  * @time O(sz(substrs) * log(|s|))
  * @space O(1)
