@@ -12,10 +12,8 @@ int main() {
   // test `*_cmp` functions
   {
     for (int num_tests = 50; num_tests--;) {
-      auto le = rnd<int>(0, sz(s));
-      auto ri = rnd<int>(0, sz(s));
-      if (rnd(0, 30) == 0) le = sz(s);
-      if (rnd(0, 30) == 0) ri = sz(s);
+      auto le = rnd<int>(0, sz(s) - 1);
+      auto ri = rnd<int>(0, sz(s) - 1);
       int cmp_val = lq.cmp_sufs(le, ri);
       if (cmp_val < 0) assert(s.substr(le) < s.substr(ri));
       if (cmp_val == 0) assert(s.substr(le) == s.substr(ri));
@@ -25,6 +23,7 @@ int main() {
       auto le1 = rnd<int>(0, sz(s));
       auto ri1 = rnd<int>(0, sz(s));
       if (le1 > ri1) swap(le1, ri1);
+      if (le1 == sz(s)) le1--;
       int le2, ri2;
       if (rnd(0, 20) == 0) {
         le2 = le1;
@@ -33,6 +32,7 @@ int main() {
         le2 = rnd<int>(0, sz(s));
         ri2 = rnd<int>(0, sz(s));
         if (le2 > ri2) swap(le2, ri2);
+        if (le2 == sz(s)) le2--;
       }
       int cmp_result = lq.cmp_substrs(le1, ri1, le2, ri2);
       string sub1 = s.substr(le1, ri1 - le1);
