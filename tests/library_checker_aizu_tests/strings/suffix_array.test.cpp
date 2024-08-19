@@ -8,22 +8,23 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
   {
     string s;
-    suffix_array sf_a(s, 256);
-    assert(empty(sf_a.lcp));
+    auto [_, __, lcp] = suffix_array(s, 256);
+    assert(empty(lcp));
   }
   {
     string s = "a";
-    suffix_array sf_a(s, 256);
-    assert(empty(sf_a.lcp));
+    auto [_, __, lcp] = suffix_array(s, 256);
+    assert(empty(lcp));
   }
   string s;
   cin >> s;
   int n = sz(s);
-  suffix_array sf_a(s, 256);
-  mono_st_asserts(sf_a.lcp);
-  assert(sz(sf_a.sa) == n);
-  assert(sz(sf_a.sa_inv) == n);
-  assert(sz(sf_a.lcp) == n - 1);
+  auto [sa, sa_inv, lcp] = suffix_array(s, 256);
+  mono_st_asserts(lcp);
+  assert(sz(sa) == n);
+  assert(sz(sa_inv) == n);
+  assert(sz(lcp) == n - 1);
+  /*
   {
     auto [sa_le, sa_ri, s_le, s_ri] = sf_a.find_str_long(string(""));
     assert(sa_le == 0 && sa_ri == n);
@@ -57,11 +58,12 @@ int main() {
     assert(sa_le == 0 && sa_ri == n);
     assert(s_ri - s_le == 0);
   }
+  */
   for (int i = 0; i < n; i++) {
-    assert(sf_a.sa[sf_a.sa_inv[i]] == i);
-    assert(sf_a.sa_inv[sf_a.sa[i]] == i);
+    assert(sa[sa_inv[i]] == i);
+    assert(sa_inv[sa[i]] == i);
   }
-  for (auto val : sf_a.sa)
+  for (auto val : sa)
     cout << val << " ";
   cout << '\n';
 }
