@@ -2,13 +2,13 @@
 #include "../template.hpp"
 #include "../../../library/contest/random.hpp"
 
-#include "../../../library/strings/suffix_array/suffix_array.hpp"
+#include "../../../library/strings/suffix_array/len_lcp.hpp"
 
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   string s;
   cin >> s;
-  suffix_array lq(s, 256);
+  sa_query lq(s, 256);
   // test `*_cmp` functions
   {
     for (int num_tests = 50; num_tests--;) {
