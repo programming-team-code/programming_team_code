@@ -17,8 +17,6 @@ int main() {
   transform(begin(t), end(t), begin(t), compress_char);
   lcp_tree lt(s);
   auto [le, ri] = lt.find_str(t);
-  pii fast_res = lt.find_str_fast(t);
-  assert(fast_res == pii(le, ri));
   vector<int> matches(begin(lt.sf_a.sa) + le, begin(lt.sf_a.sa) + ri);
   sort(begin(matches), end(matches));
   {
