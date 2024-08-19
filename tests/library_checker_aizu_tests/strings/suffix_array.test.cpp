@@ -28,6 +28,8 @@ int main() {
     auto [sa_le, sa_ri, s_le, s_ri] = sf_a.find_str_long(string(""));
     assert(sa_le == 0 && sa_ri == n);
     pair<int, int> short_res = sf_a.find_str(string(""));
+    pair<int, int> fast_res = sf_a.find_str_fast(string(""));
+    assert(short_res == fast_res);
     assert(sa_le == short_res.first && sa_ri == short_res.second);
     assert(s_ri - s_le == 0);
   }
