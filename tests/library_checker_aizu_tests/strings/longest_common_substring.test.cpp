@@ -1,14 +1,14 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/longest_common_substring"
 #include "../template.hpp"
 
-#include "../../../library/strings/suffix_array/suffix_array.hpp"
+#include "../../../library/strings/suffix_array/len_lcp.hpp"
 
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   string s, t;
   cin >> s >> t;
   string both = s + '$' + t;
-  suffix_array sf_a(both, 256);
+  sa_query sf_a(both, 256);
   pair<int, int> substr_s = {0, 0}, substr_t = {0, 0};
   for (int i = 0; i < sz(sf_a.lcp); i++) {
     if (both[sf_a.sa[i]] == '$' || both[sf_a.sa[i + 1]] == '$') continue;
