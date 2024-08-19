@@ -3,7 +3,7 @@
 #include "../mono_st_asserts.hpp"
 #include "compress_char.hpp"
 #include "../../../library/strings/suffix_array/burrows_wheeler.hpp"
-#include "../../../library/strings/suffix_array/suffix_array.hpp"
+#include "../../../library/strings/suffix_array/suffix_array_query.hpp"
 
 int main() {
   cin.tie(0)->sync_with_stdio(0);
@@ -16,7 +16,7 @@ int main() {
   string s;
   cin >> s;
   transform(begin(s), end(s), begin(s), compress_char);
-  suffix_array sf_a(s, 256);
+  sa_query sf_a(s, 256);
   bwt bw(s, sf_a.sa);
   mono_st_asserts(sf_a.lcp);
   {

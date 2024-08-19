@@ -2,7 +2,7 @@
 #pragma once
 #include "../../../monotonic_stack/monotonic_range.hpp"
 #include "../../../monotonic_stack/cartesian_k_ary_tree.hpp"
-#include "../suffix_array.hpp"
+#include "../suffix_array_query.hpp"
 const int mn = '0', cnt_let = 36;  // mn <= s[i] < mn + cnt_let; for lowercase letters: mn = 'a', cnt_let = 26
 /**
  * @see Replacing suffix trees with enhanced suffix arrays by Mohamed Ibrahim
@@ -47,7 +47,7 @@ const int mn = '0', cnt_let = 36;  // mn <= s[i] < mn + cnt_let; for lowercase l
  *     - a single suffix
  */
 struct lcp_tree {
-  suffix_array<string> sf_a;
+  sa_query<string> sf_a;
   vi le, ri;
   int root;
   vector<vi> adj;

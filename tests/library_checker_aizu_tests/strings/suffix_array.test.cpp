@@ -2,24 +2,24 @@
 #include "../template.hpp"
 #include "../mono_st_asserts.hpp"
 
-#include "../../../library/strings/suffix_array/suffix_array.hpp"
+#include "../../../library/strings/suffix_array/suffix_array_query.hpp"
 
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   {
     string s;
-    suffix_array sf_a(s, 256);
-    assert(empty(sf_a.lcp));
+    auto [_, _sa_inv, lcp] = get_sa(s, 256);
+    assert(empty(lcp));
   }
   {
     string s = "a";
-    suffix_array sf_a(s, 256);
-    assert(empty(sf_a.lcp));
+    auto [_, _sa_inv, lcp] = get_sa(s, 256);
+    assert(empty(lcp));
   }
   string s;
   cin >> s;
   int n = sz(s);
-  suffix_array sf_a(s, 256);
+  sa_query sf_a(s, 256);
   mono_st_asserts(sf_a.lcp);
   assert(sz(sf_a.sa) == n);
   assert(sz(sf_a.sa_inv) == n);
@@ -44,15 +44,8 @@ int main() {
     assert(s_ri - s_le == 0);
   }
   {
-    auto [sa_le, sa_ri, s_le, s_ri] = sf_a.find_substrs_concated({{0, 0}, {n, n}});
-    pair<int, int> short_res = sf_a.find_substr(n, n);
-    assert(sa_le == short_res.first && sa_ri == short_res.second);
-    assert(sa_le == 0 && sa_ri == n);
-    assert(s_ri - s_le == 0);
-  }
-  {
-    auto [sa_le, sa_ri, s_le, s_ri] = sf_a.find_substrs_concated({{0, 0}, {n / 2, n / 2}, {n, n}});
-    pair<int, int> short_res = sf_a.find_substr(n / 2, n / 2);
+    auto [sa_le, sa_ri, s_le, s_ri] = sf_a.find_substrs_concated({{0, 0}, {n - 1, n - 1}});
+    pair<int, int> short_res = sf_a.find_substr(n - 1, n - 1);
     assert(sa_le == short_res.first && sa_ri == short_res.second);
     assert(sa_le == 0 && sa_ri == n);
     assert(s_ri - s_le == 0);

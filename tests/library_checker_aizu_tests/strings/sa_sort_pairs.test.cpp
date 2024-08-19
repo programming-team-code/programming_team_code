@@ -1,7 +1,7 @@
 #define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/lesson/8/ITP2/all/ITP2_5_A"
 #include "../template.hpp"
 
-#include "../../../library/strings/suffix_array/suffix_array.hpp"
+#include "../../../library/strings/suffix_array/suffix_array_query.hpp"
 
 int main() {
   cin.tie(0)->sync_with_stdio(0);
@@ -22,7 +22,7 @@ int main() {
     assert(0 <= ri && ri < sz(compress) && compress[ri] == x);
     x = ri;
   }
-  suffix_array lq(arr, int(sz(compress)));
+  sa_query lq(arr, int(sz(compress)));
   vector<int> idxs(n);
   iota(begin(idxs), end(idxs), 0);
   sort(begin(idxs), end(idxs), [&](int i, int j) -> bool {
