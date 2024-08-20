@@ -14,6 +14,7 @@ pii find_str_fast(const T& t) {
   int cnt_matched_le = 0;
   int cnt_matched_ri = 0;
   int le_res = lower_bound(all(sa), 0, [&](int i, int) -> bool {
+                 if (max(cnt_matched_le, cnt_matched_ri) == sz(t)) return 0;
                  if (cnt_matched_le >= cnt_matched_ri) {
                    int curr_len_lcp = le == -1 ? 0 : len_lcp(i, le);
                    if (cnt_matched_le < curr_len_lcp) {
