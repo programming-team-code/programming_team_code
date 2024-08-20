@@ -14,11 +14,7 @@ pii find_str_fast(const T& t) {
   bool cond = 0;
   int le = lower_bound(all(sa), 0, [&](int i, int) -> bool {
              int curr_len_lcp = prev_idx == -1 ? 0 : len_lcp(i, prev_idx);
-             if (cnt_matched_prev == sz(t)) {
-               bool naive = lexicographical_compare(i + begin(s), end(s), begin(t), end(t));
-               assert(naive == (curr_len_lcp < sz(t)));
-               return naive;
-             }
+             if (cnt_matched_prev == sz(t)) return curr_len_lcp < sz(t);
              if (cnt_matched_prev < curr_len_lcp) {
                return cond;
              } else if (cnt_matched_prev > curr_len_lcp) {
