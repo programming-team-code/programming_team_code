@@ -14,7 +14,6 @@ pii find_str_fast(const T& t) {
   bool s_less = 0;
   int le = lower_bound(all(sa), 0, [&](int i, int) -> bool {
              int curr_len_lcp = idx == n ? 0 : len_lcp(i, idx);
-             if (cnt == sz(t)) return curr_len_lcp < sz(t);
              if (cnt != curr_len_lcp) return s_less ^ (cnt >= curr_len_lcp);
              auto [it_s, it_t] = mismatch(i + cnt + all(s), cnt + all(t));
              idx = i, cnt = it_t - begin(t);
