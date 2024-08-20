@@ -15,9 +15,9 @@ pii find_str_fast(const T& t) {
              int curr_len_lcp = prev_idx == -1 ? 0 : len_lcp(i, prev_idx);
              if (cnt_matched_prev == sz(t)) return curr_len_lcp < sz(t);
              if (cnt_matched_prev == curr_len_lcp) {
-               int cnt_matched_mid = mismatch(cnt_matched_prev + all(t), i + cnt_matched_prev + all(s)).first - begin(t);
-               prev_idx = i, cnt_matched_prev = cnt_matched_mid;
-               return cnt_matched_mid < sz(t) && (i + cnt_matched_mid == n || s[i + cnt_matched_mid] < t[cnt_matched_mid]);
+               auto [it_s, it_t] = mismatch(i + cnt_matched_prev + all(s), cnt_matched_prev + all(t));
+               prev_idx = i, cnt_matched_prev = it_t - begin(t);
+               return it_t != end(t) && (it_s == end(s) || *it_s < *it_t);
              }
              bool cond = 0;
              if (prev_idx != -1) {
