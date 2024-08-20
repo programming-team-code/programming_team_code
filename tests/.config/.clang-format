@@ -2,7 +2,7 @@
 Language: Cpp
 BasedOnStyle: Google
 ColumnLimit: 0
-Standard: c++17
+Standard: c++20
 SortIncludes: Never
 AllowShortIfStatementsOnASingleLine: AllIfsAndElse
 AlwaysBreakTemplateDeclarations: No
