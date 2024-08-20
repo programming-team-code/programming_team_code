@@ -39,7 +39,7 @@ pii find_str_fast(const T& t) {
                      }
                    }
                  } else {
-                   int curr_len_lcp = len_lcp(prev_idx, i);
+                   int curr_len_lcp = prev_idx == -1 ? 0 : len_lcp(i, prev_idx);
                    if (cnt_matched_prev < curr_len_lcp) {
                      return cond;
                    } else if (cnt_matched_prev > curr_len_lcp) {
