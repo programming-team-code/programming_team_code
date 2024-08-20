@@ -28,14 +28,13 @@ pii find_str_fast(const T& t) {
                    if (is_less) {
                      prev_idx = i, cnt_matched_prev = cnt_matched_mid;
                      cond = 1;
-                     return 1;
                    } else {
                      if (cnt_matched_mid > cnt_matched_prev) {
                        prev_idx = i, cnt_matched_prev = cnt_matched_mid;
                        cond = 0;
                      }
-                     return 0;
                    }
+                   return is_less;
                  }
                }) -
                begin(sa);
