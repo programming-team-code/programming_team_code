@@ -9,17 +9,16 @@
  * @space O(1)
  */
 pii find_str_fast(const T& t) {
-  bool found = 0;
   int prev_idx = -1;
   int cnt_matched_prev = 0;
   bool cond = 0;
   int le = lower_bound(all(sa), 0, [&](int i, int) -> bool {
-             if (found) {
+             int curr_len_lcp = prev_idx == -1 ? 0 : len_lcp(i, prev_idx);
+             if (cnt_matched_prev == sz(t)) {
                bool naive = lexicographical_compare(i + begin(s), end(s), begin(t), end(t));
-               assert(naive == (len_lcp(i, prev_idx) < sz(t)));
+               assert(naive == (curr_len_lcp < sz(t)));
                return naive;
              }
-             int curr_len_lcp = prev_idx == -1 ? 0 : len_lcp(i, prev_idx);
              if (cnt_matched_prev < curr_len_lcp) {
                return cond;
              } else if (cnt_matched_prev > curr_len_lcp) {
@@ -27,7 +26,6 @@ pii find_str_fast(const T& t) {
              } else {
                int cnt_matched_mid = mismatch(cnt_matched_prev + all(t), i + cnt_matched_prev + all(s)).first - begin(t);
                if (cnt_matched_mid == sz(t)) {
-                 found = 1;
                  prev_idx = i, cnt_matched_prev = cnt_matched_mid;
                  return 0;
                }
