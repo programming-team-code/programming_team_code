@@ -15,6 +15,8 @@ echo "DON'T PUSH ANY OF THESE CHANGES TO THE REPO!!!!!!!!"
 sed --in-place '/^\/\*\* @file \*\/$/d' ../library/**/*.hpp
 # remove NOLINTNEXTLINE comments
 sed --in-place '/^\/\/ NOLINTNEXTLINE(readability-identifier-naming)$/d' ../library/**/*.hpp
+# remove clang-format off comments
+sed --in-place '/\/\/ clang-format off$/d' ../library/**/*.hpp
 
 # to copy files like template.cpp, *.sh, *.png, *.md to root directory; so they exist in main branch
 # also to create all directories (cpp command below fails if destination path isn't created)
