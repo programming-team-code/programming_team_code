@@ -9,7 +9,6 @@
  * @space O(1)
  */
 pii find_str_fast(const T& t) {
-  // TODO: combine both cases into one
   int prev_idx = -1;
   int cnt_matched_prev = 0;
   bool cond = 1;
