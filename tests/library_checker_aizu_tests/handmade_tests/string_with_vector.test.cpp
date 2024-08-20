@@ -1,4 +1,6 @@
 #define PROBLEM "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A"
+// since find_str_fast uses lower_bound in a weird way which makes the partition check fail
+#undef _GLIBCXX_DEBUG
 #include "../template.hpp"
 
 #include "../../../library/strings/suffix_array/suffix_array_query.hpp"
