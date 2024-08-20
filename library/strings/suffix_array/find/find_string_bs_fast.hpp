@@ -9,24 +9,21 @@
  * @space O(1)
  */
 pii find_str_fast(const T& t) {
-  int prev_idx = -1;
+  int prev_idx = n;
   int cnt_matched_prev = 0;
+  bool prev_cond = 0;
   int le = lower_bound(all(sa), 0, [&](int i, int) -> bool {
-             int curr_len_lcp = prev_idx == -1 ? 0 : len_lcp(i, prev_idx);
+             int curr_len_lcp = prev_idx == n ? 0 : len_lcp(i, prev_idx);
              if (cnt_matched_prev == sz(t)) return curr_len_lcp < sz(t);
              if (cnt_matched_prev == curr_len_lcp) {
                auto [it_s, it_t] = mismatch(i + cnt_matched_prev + all(s), cnt_matched_prev + all(t));
                prev_idx = i, cnt_matched_prev = it_t - begin(t);
-               return it_t != end(t) && (it_s == end(s) || *it_s < *it_t);
-             }
-             bool cond = 0;
-             if (prev_idx != -1) {
-               cond = prev_idx + cnt_matched_prev == n || s[prev_idx + cnt_matched_prev] < t[cnt_matched_prev];
+               return prev_cond = it_t != end(t) && (it_s == end(s) || *it_s < *it_t);
              }
              if (cnt_matched_prev < curr_len_lcp) {
-               return cond;
+               return prev_cond;
              } else {
-               return !cond;
+               return !prev_cond;
              }
            }) -
            begin(sa);
