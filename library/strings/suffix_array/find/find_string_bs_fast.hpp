@@ -14,55 +14,28 @@ pii find_str_fast(const T& t) {
   int cnt_matched_prev = 0;
   bool cond = 1;
   int le_res = lower_bound(all(sa), 0, [&](int i, int) -> bool {
-                 if (cond) {
-                   int curr_len_lcp = prev_idx == -1 ? 0 : len_lcp(i, prev_idx);
-                   if (cnt_matched_prev < curr_len_lcp) {
-                     return cond;
-                   } else if (cnt_matched_prev > curr_len_lcp) {
-                     return !cond;
-                   } else {
-                     assert(equal(begin(t), begin(t) + cnt_matched_prev, i + begin(s)));
-                     int cnt_matched_mid = mismatch(cnt_matched_prev + all(t), i + cnt_matched_prev + all(s)).first - begin(t);
-                     if (cnt_matched_mid == sz(t)) {
-                       return 0;
-                     }
-                     bool is_less = i + cnt_matched_mid == n || s[i + cnt_matched_mid] < t[cnt_matched_mid];
-                     if (is_less) {
-                       prev_idx = i, cnt_matched_prev = cnt_matched_mid;
-                       cond = 1;
-                       return 1;
-                     } else {
-                       if (cnt_matched_mid > cnt_matched_prev) {
-                         prev_idx = i, cnt_matched_prev = cnt_matched_mid;
-                         cond = 0;
-                       }
-                       return 0;
-                     }
-                   }
+                 int curr_len_lcp = prev_idx == -1 ? 0 : len_lcp(i, prev_idx);
+                 if (cnt_matched_prev < curr_len_lcp) {
+                   return cond;
+                 } else if (cnt_matched_prev > curr_len_lcp) {
+                   return !cond;
                  } else {
-                   int curr_len_lcp = prev_idx == -1 ? 0 : len_lcp(i, prev_idx);
-                   if (cnt_matched_prev < curr_len_lcp) {
-                     return cond;
-                   } else if (cnt_matched_prev > curr_len_lcp) {
-                     return !cond;
+                   assert(equal(begin(t), begin(t) + cnt_matched_prev, i + begin(s)));
+                   int cnt_matched_mid = mismatch(cnt_matched_prev + all(t), i + cnt_matched_prev + all(s)).first - begin(t);
+                   if (cnt_matched_mid == sz(t)) {
+                     return 0;
+                   }
+                   bool is_less = i + cnt_matched_mid == n || s[i + cnt_matched_mid] < t[cnt_matched_mid];
+                   if (is_less) {
+                     prev_idx = i, cnt_matched_prev = cnt_matched_mid;
+                     cond = 1;
+                     return 1;
                    } else {
-                     assert(equal(begin(t), begin(t) + cnt_matched_prev, i + begin(s)));
-                     int cnt_matched_mid = mismatch(cnt_matched_prev + all(t), i + cnt_matched_prev + all(s)).first - begin(t);
-                     if (cnt_matched_mid == sz(t)) {
-                       return 0;
-                     }
-                     bool is_less = i + cnt_matched_mid == n || s[i + cnt_matched_mid] < t[cnt_matched_mid];
-                     if (is_less) {
+                     if (cnt_matched_mid > cnt_matched_prev) {
                        prev_idx = i, cnt_matched_prev = cnt_matched_mid;
-                       cond = 1;
-                       return 1;
-                     } else {
-                       if (cnt_matched_mid > cnt_matched_prev) {
-                         prev_idx = i, cnt_matched_prev = cnt_matched_mid;
-                         cond = 0;
-                       }
-                       return 0;
+                       cond = 0;
                      }
+                     return 0;
                    }
                  }
                }) -
