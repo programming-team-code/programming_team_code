@@ -21,12 +21,8 @@ pii find_str_fast(const T& t) {
                return !cond;
              } else {
                int cnt_matched_mid = mismatch(cnt_matched_prev + all(t), i + cnt_matched_prev + all(s)).first - begin(t);
-               if (cnt_matched_mid == sz(t)) {
-                 prev_idx = i, cnt_matched_prev = cnt_matched_mid;
-                 return 0;
-               }
                prev_idx = i, cnt_matched_prev = cnt_matched_mid;
-               return cond = i + cnt_matched_mid == n || s[i + cnt_matched_mid] < t[cnt_matched_mid];
+               return cond = cnt_matched_mid < sz(t) && (i + cnt_matched_mid == n || s[i + cnt_matched_mid] < t[cnt_matched_mid]);
              }
            }) -
            begin(sa);
