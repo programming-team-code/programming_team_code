@@ -9,5 +9,5 @@ AlwaysBreakTemplateDeclarations: No
 AllowShortBlocksOnASingleLine: Always
 AllowShortCaseLabelsOnASingleLine: true
 AlignTrailingComments: false
-ContinuationIndentWidth: 1
+LambdaBodyIndentation: LBI_OuterScope
 ...
