@@ -12,27 +12,27 @@ pii find_str_fast(const T& t) {
   int prev_idx = -1;
   int cnt_matched_prev = 0;
   bool cond = 0;
-  int le_res = lower_bound(all(sa), 0, [&](int i, int) -> bool {
-                 int curr_len_lcp = prev_idx == -1 ? 0 : len_lcp(i, prev_idx);
-                 if (cnt_matched_prev < curr_len_lcp) {
-                   return cond;
-                 } else if (cnt_matched_prev > curr_len_lcp) {
-                   return !cond;
-                 } else {
-                   int cnt_matched_mid = mismatch(cnt_matched_prev + all(t), i + cnt_matched_prev + all(s)).first - begin(t);
-                   if (cnt_matched_mid == sz(t)) {
-                     return 0;
-                   }
-                   prev_idx = i, cnt_matched_prev = cnt_matched_mid;
-                   return cond = i + cnt_matched_mid == n || s[i + cnt_matched_mid] < t[cnt_matched_mid];
-                 }
-               }) -
-               begin(sa);
+  int le = lower_bound(all(sa), 0, [&](int i, int) -> bool {
+             int curr_len_lcp = prev_idx == -1 ? 0 : len_lcp(i, prev_idx);
+             if (cnt_matched_prev < curr_len_lcp) {
+               return cond;
+             } else if (cnt_matched_prev > curr_len_lcp) {
+               return !cond;
+             } else {
+               int cnt_matched_mid = mismatch(cnt_matched_prev + all(t), i + cnt_matched_prev + all(s)).first - begin(t);
+               if (cnt_matched_mid == sz(t)) {
+                 return 0;
+               }
+               prev_idx = i, cnt_matched_prev = cnt_matched_mid;
+               return cond = i + cnt_matched_mid == n || s[i + cnt_matched_mid] < t[cnt_matched_mid];
+             }
+           }) -
+           begin(sa);
   int le_naive = lower_bound(begin(sa), end(sa), 0, [&](int i, int) -> bool { return lexicographical_compare(i + begin(s), end(s), begin(t), end(t)); }) - begin(sa);
-  assert(le_naive == le_res);
+  assert(le_naive == le);
 
-  if (le_res == n || mismatch(all(t), sa[le_res] + all(s)).first != end(t)) return {le_res, le_res};
-  int ri = lower_bound(le_res + all(sa), 0, [&](int i, int) -> bool { return len_lcp(i, sa[le_res]) >= sz(t); }) - begin(sa);
-  return {le_res, ri};
+  if (le == n || mismatch(all(t), sa[le] + all(s)).first != end(t)) return {le, le};
+  int ri = lower_bound(le + all(sa), 0, [&](int i, int) -> bool { return len_lcp(i, sa[le]) >= sz(t); }) - begin(sa);
+  return {le, ri};
 }
 
