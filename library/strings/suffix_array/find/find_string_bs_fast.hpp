@@ -9,6 +9,9 @@
  * @space O(1)
  */
 pii find_str_fast(const T& t) {
+  // TODO: convert to lower_bound?
+  // TODO: combine both cases into one
+  // TODO: make it not depend on find_substr
   if (empty(t)) return {0, n};
   int le = 0, ri = n - 1;
   int cnt_matched_le = mismatch(all(t), sa[0] + all(s)).first - begin(t);
@@ -47,3 +50,4 @@ pii find_str_fast(const T& t) {
   if (cnt_matched_ri == sz(t)) return find_substr(sa[ri], sa[ri] + sz(t));
   return {0, 0};
 }
+
