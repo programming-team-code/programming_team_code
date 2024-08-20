@@ -10,7 +10,6 @@
  */
 pii find_str_fast(const T& t) {
   // TODO: combine both cases into one
-  if (empty(t)) return {0, n};  // TODO: remove this special case
   int le = -1, ri = -1;
   int cnt_matched_le = 0;
   int cnt_matched_ri = 0;
