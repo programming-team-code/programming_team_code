@@ -13,8 +13,8 @@ pii find_str_fast(const T& t) {
   int cnt = 0;
   bool s_less = 0;
   int le = lower_bound(all(sa), 0, [&](int i, int) -> bool {
-             int curr_len_lcp = idx == n ? 0 : len_lcp(i, idx);
-             if (cnt != curr_len_lcp) return s_less ^ (cnt > curr_len_lcp);
+             int lcp = idx == n ? 0 : len_lcp(i, idx);
+             if (cnt != lcp) return s_less ^ (cnt > lcp);
              auto [it_s, it_t] = mismatch(i + cnt + all(s), cnt + all(t));
              idx = i, cnt = it_t - begin(t);
              return s_less = it_t != end(t) && (it_s == end(s) || *it_s < *it_t);
