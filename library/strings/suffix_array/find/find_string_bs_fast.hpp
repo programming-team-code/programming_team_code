@@ -34,7 +34,7 @@ pii find_str_fast(const T& t) {
                      } else {
                        if (cnt_matched_mid > cnt_matched_prev) {
                          prev_idx = i, cnt_matched_prev = cnt_matched_mid;
-                         cond = !cond;
+                         cond = 0;
                        }
                        return 0;
                      }
@@ -59,6 +59,7 @@ pii find_str_fast(const T& t) {
                      } else {
                        if (cnt_matched_mid > cnt_matched_prev) {
                          prev_idx = i, cnt_matched_prev = cnt_matched_mid;
+                         cond = 0;
                        }
                        return 0;
                      }
