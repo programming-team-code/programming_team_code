@@ -11,7 +11,7 @@
 pii find_str_fast(const T& t) {
   int prev_idx = -1;
   int cnt_matched_prev = 0;
-  bool cond = 1;
+  bool cond = 0;
   int le_res = lower_bound(all(sa), 0, [&](int i, int) -> bool {
                  int curr_len_lcp = prev_idx == -1 ? 0 : len_lcp(i, prev_idx);
                  if (cnt_matched_prev < curr_len_lcp) {
@@ -19,7 +19,6 @@ pii find_str_fast(const T& t) {
                  } else if (cnt_matched_prev > curr_len_lcp) {
                    return !cond;
                  } else {
-                   assert(equal(begin(t), begin(t) + cnt_matched_prev, i + begin(s)));
                    int cnt_matched_mid = mismatch(cnt_matched_prev + all(t), i + cnt_matched_prev + all(s)).first - begin(t);
                    if (cnt_matched_mid == sz(t)) {
                      return 0;
