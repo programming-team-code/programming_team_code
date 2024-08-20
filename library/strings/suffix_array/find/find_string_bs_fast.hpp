@@ -59,10 +59,10 @@ pii find_str_fast(const T& t) {
                  }
                }) -
                begin(sa);
-  if (le_res == n || mismatch(all(t), sa[le_res] + all(s)).first != end(t)) return {le_res, le_res};
   int le_naive = lower_bound(begin(sa), end(sa), 0, [&](int i, int) -> bool { return lexicographical_compare(i + begin(s), end(s), begin(t), end(t)); }) - begin(sa);
   assert(le_naive == le_res);
 
+  if (le_res == n || mismatch(all(t), sa[le_res] + all(s)).first != end(t)) return {le_res, le_res};
   ri = lower_bound(le_res + all(sa), 0, [&](int i, int) -> bool { return len_lcp(i, sa[le_res]) >= sz(t); }) - begin(sa);
   return {le_res, ri};
 }
