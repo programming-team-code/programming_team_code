@@ -17,10 +17,8 @@ pii find_str_fast(const T& t) {
                  if (cnt_matched_le >= cnt_matched_ri) {
                    int curr_len_lcp = le == -1 ? 0 : len_lcp(i, le);
                    if (cnt_matched_le < curr_len_lcp) {
-                     le = i;
                      return 1;
                    } else if (cnt_matched_le > curr_len_lcp) {
-                     ri = i;
                      return 0;
                    } else {
                      assert(equal(begin(t), begin(t) + cnt_matched_le, i + begin(s)));
@@ -40,10 +38,8 @@ pii find_str_fast(const T& t) {
                  } else {
                    int curr_len_lcp = len_lcp(ri, i);
                    if (cnt_matched_ri < curr_len_lcp) {
-                     ri = i;
                      return 0;
                    } else if (cnt_matched_ri > curr_len_lcp) {
-                     le = i;
                      return 1;
                    } else {
                      assert(equal(begin(t), begin(t) + cnt_matched_ri, i + begin(s)));
