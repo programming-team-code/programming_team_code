@@ -1,5 +1,4 @@
 ---
-LambdaBodyIndentation: OuterScope
 Language: Cpp
 BasedOnStyle: Google
 ColumnLimit: 0
@@ -10,4 +9,5 @@ AlwaysBreakTemplateDeclarations: No
 AllowShortBlocksOnASingleLine: Always
 AllowShortCaseLabelsOnASingleLine: true
 AlignTrailingComments: false
+ContinuationIndentWidth: 1
 ...
