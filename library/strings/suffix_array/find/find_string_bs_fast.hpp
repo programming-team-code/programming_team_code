@@ -16,13 +16,12 @@ pii find_str_fast(const T& t) {
   bool cond = 1;
   int le_res = lower_bound(all(sa), 0, [&](int i, int) -> bool {
                  if (max(cnt_matched_le, cnt_matched_ri) == sz(t)) return 0;
-                 assert(cond == (cnt_matched_le >= cnt_matched_ri));
-                 if (cnt_matched_le >= cnt_matched_ri) {
+                 if (cond) {
                    int curr_len_lcp = prev_idx == -1 ? 0 : len_lcp(i, prev_idx);
                    if (cnt_matched_le < curr_len_lcp) {
-                     return 1;
+                     return cond;
                    } else if (cnt_matched_le > curr_len_lcp) {
-                     return 0;
+                     return !cond;
                    } else {
                      assert(equal(begin(t), begin(t) + cnt_matched_le, i + begin(s)));
                      int cnt_matched_mid = mismatch(cnt_matched_le + all(t), i + cnt_matched_le + all(s)).first - begin(t);
@@ -31,7 +30,7 @@ pii find_str_fast(const T& t) {
                      }
                      if (i + cnt_matched_mid == n || s[i + cnt_matched_mid] < t[cnt_matched_mid]) {
                        prev_idx = i, cnt_matched_le = cnt_matched_mid;
-                       return 1;
+                       return cond;
                      } else {
                        if (cnt_matched_mid > cnt_matched_le) {
                          prev_idx = i, cnt_matched_ri = cnt_matched_mid;
@@ -43,9 +42,9 @@ pii find_str_fast(const T& t) {
                  } else {
                    int curr_len_lcp = len_lcp(prev_idx, i);
                    if (cnt_matched_ri < curr_len_lcp) {
-                     return 0;
+                     return cond;
                    } else if (cnt_matched_ri > curr_len_lcp) {
-                     return 1;
+                     return !cond;
                    } else {
                      assert(equal(begin(t), begin(t) + cnt_matched_ri, i + begin(s)));
                      int cnt_matched_mid = mismatch(cnt_matched_ri + all(t), i + cnt_matched_ri + all(s)).first - begin(t);
@@ -54,7 +53,7 @@ pii find_str_fast(const T& t) {
                      }
                      if (i + cnt_matched_mid < n && s[i + cnt_matched_mid] > t[cnt_matched_mid]) {
                        prev_idx = i, cnt_matched_ri = cnt_matched_mid;
-                       return 0;
+                       return cond;
                      } else {
                        prev_idx = i, cnt_matched_le = cnt_matched_mid;
                        cond = !cond;
