@@ -9,6 +9,7 @@
  * @space O(1)
  */
 pii find_str_fast(const T& t) {
+  if (empty(t)) return {0, n};
   int le = 0;
   int cnt_matched_le = mismatch(all(t), sa[0] + all(s)).first - begin(t);
   int cnt_matched_ri = mismatch(all(t), sa.back() + all(s)).first - begin(t);
