@@ -29,7 +29,7 @@ pii find_str_fast(const T& t) {
                      bool is_less = i + cnt_matched_mid == n || s[i + cnt_matched_mid] < t[cnt_matched_mid];
                      if (is_less) {
                        prev_idx = i, cnt_matched_prev = cnt_matched_mid;
-                       return cond;
+                       return 1;
                      } else {
                        if (cnt_matched_mid > cnt_matched_prev) {
                          prev_idx = i, cnt_matched_prev = cnt_matched_mid;
