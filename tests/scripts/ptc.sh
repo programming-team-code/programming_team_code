@@ -23,7 +23,7 @@ sed --in-place '/^\/\*\* @file \*\/$/d' ../library/**/*.hpp
 # remove NOLINTNEXTLINE comments
 sed --in-place '/^\/\/NOLINTNEXTLINE(readability-identifier-naming)$/d' ../library/**/*.hpp
 # remove clang-format off comments
-sed --in-place '/\/\/clang-format off$/d' ../library/**/*.hpp
+sed --in-place '/\/\/ clang-format off$/d' ../library/**/*.hpp
 
 #adds hash code comments
 chmod +x ../library/contest/hash.sh
