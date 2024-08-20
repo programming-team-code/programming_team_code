@@ -31,7 +31,9 @@ pii find_str_fast(const T& t) {
                        le = i, cnt_matched_le = cnt_matched_mid;
                        return 1;
                      } else {
-                       ri = i, cnt_matched_ri = cnt_matched_mid;
+                       if (cnt_matched_mid > cnt_matched_le) {
+                         ri = i, cnt_matched_ri = cnt_matched_mid;
+                       }
                        return 0;
                      }
                    }
@@ -48,7 +50,9 @@ pii find_str_fast(const T& t) {
                        return 0;
                      }
                      if (i + cnt_matched_mid < n && s[i + cnt_matched_mid] > t[cnt_matched_mid]) {
-                       ri = i, cnt_matched_ri = cnt_matched_mid;
+                       if (cnt_matched_mid > cnt_matched_le) {
+                         ri = i, cnt_matched_ri = cnt_matched_mid;
+                       }
                        return 0;
                      } else {
                        le = i, cnt_matched_le = cnt_matched_mid;
