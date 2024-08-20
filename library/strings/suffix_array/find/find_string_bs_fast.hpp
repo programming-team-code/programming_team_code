@@ -20,11 +20,7 @@ pii find_str_fast(const T& t) {
                idx = i, cnt = it_t - begin(t);
                return s_less = it_t != end(t) && (it_s == end(s) || *it_s < *it_t);
              }
-             if (cnt < curr_len_lcp) {
-               return s_less;
-             } else {
-               return !s_less;
-             }
+             return s_less ^ (cnt >= curr_len_lcp);
            }) -
            begin(sa);
 
