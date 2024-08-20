@@ -9,4 +9,5 @@ AlwaysBreakTemplateDeclarations: No
 AllowShortBlocksOnASingleLine: Always
 AllowShortCaseLabelsOnASingleLine: true
 AlignTrailingComments: false
+LambdaBodyIndentation: OuterScope
 ...

@@ -38,7 +38,7 @@ int main() {
     assert(sa_le == 50 && sa_ri == 51);
   }
   {
-    auto [sa_le, sa_ri, s_le, s_ri] = sf_a.find_str_long(t);
+    auto [sa_le, sa_ri, s_le, s_ri] = sf_a.find_str_fast(t);
     assert(sa_le == 50 && sa_ri == 51);
     assert(s_le == 50 && s_ri == 60);
   }
