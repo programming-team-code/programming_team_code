@@ -11,14 +11,13 @@
 pii find_str_fast(const T& t) {
   // TODO: combine both cases into one
   // TODO: make it not depend on find_substr
-  if (empty(t)) return {0, n};
-  int found = -1;
-  int le = sa[0], ri = sa.back();
-  int cnt_matched_le = mismatch(all(t), sa[0] + all(s)).first - begin(t);
-  int cnt_matched_ri = mismatch(all(t), sa.back() + all(s)).first - begin(t);
+  if (empty(t)) return {0, n};  // TODO: remove this special case
+  int le = -1, ri = -1;
+  int cnt_matched_le = 0;
+  int cnt_matched_ri = 0;
   auto _ = lower_bound(all(sa), 0, [&](int i, int) -> bool {
     if (cnt_matched_le >= cnt_matched_ri) {
-      int curr_len_lcp = len_lcp(i, le);
+      int curr_len_lcp = le == -1 ? 0 : len_lcp(i, le);
       if (cnt_matched_le < curr_len_lcp) {
         le = i;
         return 1;
@@ -29,7 +28,7 @@ pii find_str_fast(const T& t) {
         assert(equal(begin(t), begin(t) + cnt_matched_le, i + begin(s)));
         int cnt_matched_mid = mismatch(cnt_matched_le + all(t), i + cnt_matched_le + all(s)).first - begin(t);
         if (cnt_matched_mid == sz(t)) {
-          found = i;
+          ri = i, cnt_matched_ri = cnt_matched_mid;
           return 0;
         }
         if (i + cnt_matched_mid == n || s[i + cnt_matched_mid] < t[cnt_matched_mid]) {
@@ -52,8 +51,8 @@ pii find_str_fast(const T& t) {
         assert(equal(begin(t), begin(t) + cnt_matched_ri, i + begin(s)));
         int cnt_matched_mid = mismatch(cnt_matched_ri + all(t), i + cnt_matched_ri + all(s)).first - begin(t);
         if (cnt_matched_mid == sz(t)) {
-          found = i;
-          return 1;
+          ri = i, cnt_matched_ri = cnt_matched_mid;
+          return 0;
         }
         if (i + cnt_matched_mid < n && s[i + cnt_matched_mid] > t[cnt_matched_mid]) {
           ri = i, cnt_matched_ri = cnt_matched_mid;
@@ -66,7 +65,13 @@ pii find_str_fast(const T& t) {
     }
   });
 
-  if (found != -1) return find_substr(found, found + sz(t));
+  /*
+  if (cnt_matched_le == sz(t)) {
+    int le_naive = lower_bound(begin(sa), end(sa), 0, [&](int i, int) -> bool { return lexicographical_compare(i + begin(s), end(s), begin(t), end(t)); }) - begin(sa);
+    assert(le_naive == le);
+  }
+  */
+
   if (cnt_matched_le == sz(t)) return find_substr(le, le + sz(t));
   if (cnt_matched_ri == sz(t)) return find_substr(ri, ri + sz(t));
   return {0, 0};
