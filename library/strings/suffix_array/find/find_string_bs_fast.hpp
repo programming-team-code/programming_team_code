@@ -34,7 +34,7 @@ pii find_str_fast(const T& t) {
   int le_naive = lower_bound(begin(sa), end(sa), 0, [&](int i, int) -> bool { return lexicographical_compare(i + begin(s), end(s), begin(t), end(t)); }) - begin(sa);
   assert(le_naive == le);
 
-  if (le == n || mismatch(all(t), sa[le] + all(s)).first != end(t)) return {le, le};
+  if (cnt_matched_prev < sz(t)) return {le, le};
   int ri = lower_bound(le + all(sa), 0, [&](int i, int) -> bool { return len_lcp(i, sa[le]) >= sz(t); }) - begin(sa);
   return {le, ri};
 }
