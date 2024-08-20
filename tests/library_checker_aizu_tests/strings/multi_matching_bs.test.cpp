@@ -10,13 +10,8 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
   {
     sa_query sf_a(string(""), 256);
-    auto [sa_le, sa_ri, s_le, s_ri] = sf_a.find_str_long(string(""));
+    auto [sa_le, sa_ri, s_le, s_ri] = sf_a.find_str_fast(string(""));
     pair<int, int> short_res = sf_a.find_str(string(""));
-    pair<int, int> fast_res = sf_a.find_str_fast(string(""));
-    assert(short_res.second - short_res.first == fast_res.second - fast_res.first);
-    if (short_res.first < short_res.second) {
-      assert(short_res == fast_res);
-    }
     assert(sa_le == short_res.first && sa_ri == short_res.second);
     assert(sa_le == 0 && sa_ri == 0 && s_le == 0 && s_ri == 0);
   }
@@ -24,13 +19,8 @@ int main() {
   cin >> s;
   sa_query sf_a(s, 256);
   {
-    auto [sa_le, sa_ri, s_le, s_ri] = sf_a.find_str_long(string(""));
+    auto [sa_le, sa_ri, s_le, s_ri] = sf_a.find_str_fast(string(""));
     pair<int, int> short_res = sf_a.find_str(string(""));
-    pair<int, int> fast_res = sf_a.find_str_fast(string(""));
-    assert(short_res.second - short_res.first == fast_res.second - fast_res.first);
-    if (short_res.first < short_res.second) {
-      assert(short_res == fast_res);
-    }
     assert(sa_le == short_res.first && sa_ri == short_res.second);
     assert(sa_le == 0 && sa_ri == sz(s));
     assert(s_ri - s_le == 0);
@@ -40,13 +30,8 @@ int main() {
   while (q--) {
     string t;
     cin >> t;
-    auto [sa_le, sa_ri, s_le, s_ri] = sf_a.find_str_long(t);
+    auto [sa_le, sa_ri, s_le, s_ri] = sf_a.find_str_fast(t);
     pair<int, int> short_res = sf_a.find_str(t);
-    pair<int, int> fast_res = sf_a.find_str_fast(t);
-    assert(short_res.second - short_res.first == fast_res.second - fast_res.first);
-    if (short_res.first < short_res.second) {
-      assert(short_res == fast_res);
-    }
     assert(sa_le == short_res.first && sa_ri == short_res.second);
     int str_len = s_ri - s_le;
     assert(str_len <= sz(t));

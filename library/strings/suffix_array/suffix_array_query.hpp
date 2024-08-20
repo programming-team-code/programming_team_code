@@ -33,6 +33,5 @@ template <class T> struct sa_query {
 #include "find/find_string_bs.hpp"
 #include "find/find_string_bs_fast.hpp"
 #include "find/find_substring.hpp"
-#include "find/find_string_bs_long.hpp"
 #include "find/find_substrings_concatenated.hpp"
 };
