@@ -10,13 +10,13 @@
  */
 pii find_str_fast(const T& t) {
   // TODO: combine both cases into one
-  int le = -1, ri = -1;
+  int prev_idx = -1;
   int cnt_matched_le = 0;
   int cnt_matched_ri = 0;
   int le_res = lower_bound(all(sa), 0, [&](int i, int) -> bool {
                  if (max(cnt_matched_le, cnt_matched_ri) == sz(t)) return 0;
                  if (cnt_matched_le >= cnt_matched_ri) {
-                   int curr_len_lcp = le == -1 ? 0 : len_lcp(i, le);
+                   int curr_len_lcp = prev_idx == -1 ? 0 : len_lcp(i, prev_idx);
                    if (cnt_matched_le < curr_len_lcp) {
                      return 1;
                    } else if (cnt_matched_le > curr_len_lcp) {
@@ -28,17 +28,17 @@ pii find_str_fast(const T& t) {
                        return 0;
                      }
                      if (i + cnt_matched_mid == n || s[i + cnt_matched_mid] < t[cnt_matched_mid]) {
-                       le = i, cnt_matched_le = cnt_matched_mid;
+                       prev_idx = i, cnt_matched_le = cnt_matched_mid;
                        return 1;
                      } else {
                        if (cnt_matched_mid > cnt_matched_le) {
-                         ri = i, cnt_matched_ri = cnt_matched_mid;
+                         prev_idx = i, cnt_matched_ri = cnt_matched_mid;
                        }
                        return 0;
                      }
                    }
                  } else {
-                   int curr_len_lcp = len_lcp(ri, i);
+                   int curr_len_lcp = len_lcp(prev_idx, i);
                    if (cnt_matched_ri < curr_len_lcp) {
                      return 0;
                    } else if (cnt_matched_ri > curr_len_lcp) {
@@ -51,11 +51,11 @@ pii find_str_fast(const T& t) {
                      }
                      if (i + cnt_matched_mid < n && s[i + cnt_matched_mid] > t[cnt_matched_mid]) {
                        if (cnt_matched_mid > cnt_matched_le) {
-                         ri = i, cnt_matched_ri = cnt_matched_mid;
+                         prev_idx = i, cnt_matched_ri = cnt_matched_mid;
                        }
                        return 0;
                      } else {
-                       le = i, cnt_matched_le = cnt_matched_mid;
+                       prev_idx = i, cnt_matched_le = cnt_matched_mid;
                        return 1;
                      }
                    }
@@ -66,7 +66,7 @@ pii find_str_fast(const T& t) {
   assert(le_naive == le_res);
 
   if (le_res == n || mismatch(all(t), sa[le_res] + all(s)).first != end(t)) return {le_res, le_res};
-  ri = lower_bound(le_res + all(sa), 0, [&](int i, int) -> bool { return len_lcp(i, sa[le_res]) >= sz(t); }) - begin(sa);
+  int ri = lower_bound(le_res + all(sa), 0, [&](int i, int) -> bool { return len_lcp(i, sa[le_res]) >= sz(t); }) - begin(sa);
   return {le_res, ri};
 }
 
