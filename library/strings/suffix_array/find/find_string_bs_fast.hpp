@@ -29,10 +29,8 @@ pii find_str_fast(const T& t) {
                      prev_idx = i, cnt_matched_prev = cnt_matched_mid;
                      cond = 1;
                    } else {
-                     if (cnt_matched_mid > cnt_matched_prev) {
-                       prev_idx = i, cnt_matched_prev = cnt_matched_mid;
-                       cond = 0;
-                     }
+                     prev_idx = i, cnt_matched_prev = cnt_matched_mid;
+                     cond = 0;
                    }
                    return is_less;
                  }
