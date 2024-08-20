@@ -10,10 +10,9 @@
  */
 pii find_str_fast(const T& t) {
   if (empty(t)) return {0, n};
-  int le = 0;
+  int le = 0, ri = n - 1;
   int cnt_matched_le = mismatch(all(t), sa[0] + all(s)).first - begin(t);
   int cnt_matched_ri = mismatch(all(t), sa.back() + all(s)).first - begin(t);
-  int ri = n - 1;
   while (le + 1 < ri) {
     int mid = (le + ri) / 2;
     if (cnt_matched_le >= cnt_matched_ri) {
