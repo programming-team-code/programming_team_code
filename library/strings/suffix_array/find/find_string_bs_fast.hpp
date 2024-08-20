@@ -2,7 +2,7 @@
 #pragma once
 #include "match.hpp"
 /**
- * @see TODO add link to that stack overflow post
+ * @see https://stackoverflow.com/a/11374737
  * @param t query string
  * @returns see match
  * @time O(|t| + log(|s|))
