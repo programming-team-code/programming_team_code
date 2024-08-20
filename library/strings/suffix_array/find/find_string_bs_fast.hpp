@@ -50,13 +50,13 @@ pii find_str_fast(const T& t) {
                      if (cnt_matched_mid == sz(t)) {
                        return 0;
                      }
-                     if (i + cnt_matched_mid < n && s[i + cnt_matched_mid] > t[cnt_matched_mid]) {
-                       prev_idx = i, cnt_matched_prev = cnt_matched_mid;
-                       return cond;
-                     } else {
+                     if (i + cnt_matched_mid == n || s[i + cnt_matched_mid] < t[cnt_matched_mid]) {
                        prev_idx = i, cnt_matched_prev = cnt_matched_mid;
                        cond = !cond;
                        return 1;
+                     } else {
+                       prev_idx = i, cnt_matched_prev = cnt_matched_mid;
+                       return cond;
                      }
                    }
                  }
