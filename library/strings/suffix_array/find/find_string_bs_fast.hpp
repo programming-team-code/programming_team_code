@@ -24,15 +24,8 @@ pii find_str_fast(const T& t) {
                    if (cnt_matched_mid == sz(t)) {
                      return 0;
                    }
-                   bool is_less = i + cnt_matched_mid == n || s[i + cnt_matched_mid] < t[cnt_matched_mid];
-                   if (is_less) {
-                     prev_idx = i, cnt_matched_prev = cnt_matched_mid;
-                     cond = 1;
-                   } else {
-                     prev_idx = i, cnt_matched_prev = cnt_matched_mid;
-                     cond = 0;
-                   }
-                   return is_less;
+                   prev_idx = i, cnt_matched_prev = cnt_matched_mid;
+                   return cond = i + cnt_matched_mid == n || s[i + cnt_matched_mid] < t[cnt_matched_mid];
                  }
                }) -
                begin(sa);
