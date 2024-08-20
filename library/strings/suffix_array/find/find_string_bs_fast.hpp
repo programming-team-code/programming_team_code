@@ -24,7 +24,6 @@ pii find_str_fast(const T& t) {
                      assert(equal(begin(t), begin(t) + cnt_matched_le, i + begin(s)));
                      int cnt_matched_mid = mismatch(cnt_matched_le + all(t), i + cnt_matched_le + all(s)).first - begin(t);
                      if (cnt_matched_mid == sz(t)) {
-                       ri = i, cnt_matched_ri = cnt_matched_mid;
                        return 0;
                      }
                      if (i + cnt_matched_mid == n || s[i + cnt_matched_mid] < t[cnt_matched_mid]) {
@@ -45,7 +44,6 @@ pii find_str_fast(const T& t) {
                      assert(equal(begin(t), begin(t) + cnt_matched_ri, i + begin(s)));
                      int cnt_matched_mid = mismatch(cnt_matched_ri + all(t), i + cnt_matched_ri + all(s)).first - begin(t);
                      if (cnt_matched_mid == sz(t)) {
-                       ri = i, cnt_matched_ri = cnt_matched_mid;
                        return 0;
                      }
                      if (i + cnt_matched_mid < n && s[i + cnt_matched_mid] > t[cnt_matched_mid]) {
