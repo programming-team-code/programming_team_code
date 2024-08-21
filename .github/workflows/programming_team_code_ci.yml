@@ -117,7 +117,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Install dependencies
-      run: sudo apt install clang-format
+      run: sudo apt install clang-format-14.0
     - name: Combine includes and force push to main branch
       run: |
         git config --local user.name github-actions
