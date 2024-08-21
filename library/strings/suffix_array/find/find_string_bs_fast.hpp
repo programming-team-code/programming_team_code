@@ -11,7 +11,6 @@
 match find_str_fast(const T& t) {
   int s_le = n, s_len = 0;
   bool s_less = 0;
-  // clang-format off
   int sa_le = lower_bound(all(sa), 0, [&](int i, int) -> bool {
     if (int lcp_len = s_le == n ? 0 : len_lcp(i, s_le); s_len != lcp_len)
       return s_less ^ (s_len > lcp_len);
