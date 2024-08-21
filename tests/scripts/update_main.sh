@@ -29,5 +29,3 @@ done
 sed --in-place '/^[[:space:]]*$/d' ../**/*.hpp
 # cpp command messes up formatting
 make do_format
-# remove clang-format off comments
-sed --in-place '/\/\/ clang-format off$/d' ../library/**/*.hpp
