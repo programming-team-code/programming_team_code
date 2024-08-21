@@ -34,7 +34,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Install dependencies
-      run: sudo apt install clang-format-14.0 cppcheck
+      run: sudo apt install clang-format-13.0 cppcheck
     - name: checks format then lints
       run: make --directory=tests/ check_format_lint
 
