@@ -2,7 +2,7 @@
 #pragma once
 #include "match.hpp"
 /**
- * @see https://stackoverflow.com/a/11374737
+ * @see https://stackoverflow.com/a/11374737 https://codeforces.com/blog/entry/133051
  * @param t query string
  * @returns see match
  * @time O(|t| + log(|s|))
