@@ -10,13 +10,12 @@
  */
 match find_str_fast(const T& t) {
   int s_le = n, s_len = 0;
-  bool s_less = 0;
   auto cmp = [&](int i, int) -> bool {
     if (int lcp_len = s_le == n ? 0 : len_lcp(i, s_le); s_len != lcp_len)
-      return s_less ^ (s_len > lcp_len);
+      return (s_len > lcp_len) ^ (sa_inv[i] > sa_inv[s_le]);
     auto [it_s, it_t] = mismatch(i + s_len + all(s), s_len + all(t));
     s_le = i, s_len = it_t - begin(t);
-    return s_less = lexicographical_compare(it_s, end(s), it_t, end(t));
+    return lexicographical_compare(it_s, end(s), it_t, end(t));
   };
   int sa_le = lower_bound(all(sa), 0, cmp) - begin(sa), sa_ri = sa_le;
   if (s_len == sz(t))
