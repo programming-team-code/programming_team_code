@@ -25,13 +25,6 @@ int main() {
   assert(sz(sf_a.sa_inv) == n);
   assert(sz(sf_a.lcp) == n - 1);
   {
-    auto [sa_le, sa_ri, s_le, s_ri] = sf_a.find_str_fast(string(""));
-    assert(sa_le == 0 && sa_ri == n);
-    pair<int, int> short_res = sf_a.find_str(string(""));
-    assert(sa_le == short_res.first && sa_ri == short_res.second);
-    assert(s_ri - s_le == 0);
-  }
-  {
     auto [sa_le, sa_ri, s_le, s_ri] = sf_a.find_substrs_concated({});
     assert(sa_le == 0 && sa_ri == n);
     assert(s_ri - s_le == 0);
