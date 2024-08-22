@@ -11,8 +11,8 @@
 match find_str_fast(const T& t) {
   int s_le = n, s_len = 0;
   auto cmp = [&](int i, int) -> bool {
-    if (int lcp_len = s_le == n ? 0 : len_lcp(i, s_le); s_len != lcp_len)
-      return (s_len < lcp_len) ^ (sa_inv[i] < sa_inv[s_le]);
+    if (int lcp_len = s_le == n ? 0 : len_lcp(i, s_le); lcp_len != s_len)
+      return (lcp_len < s_len) ^ (sa_inv[s_le] < sa_inv[i]);
     auto [it_s, it_t] = mismatch(i + s_len + all(s), s_len + all(t));
     s_le = i, s_len = it_t - begin(t);
     return lexicographical_compare(it_s, end(s), it_t, end(t));
