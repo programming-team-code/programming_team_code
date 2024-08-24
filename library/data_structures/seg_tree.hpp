@@ -2,10 +2,10 @@
 #pragma once
 template <class T, class F> struct tree {
   int n;
-  vector<T> s;
   T unit;
   F f;
-  tree(int n, T unit, F f) : n(n), s(2 * n, unit), unit(unit), f(f) {}
+  vector<T> s;
+  tree(int a_n, T a_unit, F a_f) : n(a_n), unit(a_unit), f(a_f), s(2 * n, unit) {}
 #include "seg_tree_uncommon/tree_vector_constructor.hpp"
   void update(int pos, T val) {
     for (s[pos += n] = val; pos /= 2;)
