@@ -4,7 +4,7 @@
 
 #include "../../../library/contest/random.hpp"
 #include "../../../library/data_structures/bit.hpp"
-#include "../../../library/data_structures/seg_tree.hpp"
+#include "../../../library/data_structures/lazy_seg_tree.hpp"
 
 const int mx_n = 100'000;
 int rv(int i) { return mx_n - i - 1; }
