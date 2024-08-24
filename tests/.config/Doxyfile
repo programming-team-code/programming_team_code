@@ -964,7 +964,7 @@ EXCLUDE_SYMBOLS        = HLD::node \
                          dfs2 \
                          calc_sz \
                          find_cent \
-                         seg_tree \
+                         lazy_seg_tree \
                          iter_seg_tree \
                          op \
                          implicit_seg_tree \
