@@ -2,7 +2,7 @@
 #include "../template.hpp"
 
 #include "../../../library/data_structures/bit.hpp"
-#include "../../../library/data_structures/seg_tree.hpp"
+#include "../../../library/data_structures/lazy_seg_tree.hpp"
 
 int main() {
   cin.tie(0)->sync_with_stdio(0);
