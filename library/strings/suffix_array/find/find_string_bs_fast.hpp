@@ -19,6 +19,6 @@ match find_str_fast(const T& t) {
   };
   int sa_le = lower_bound(all(sa), 0, cmp) - begin(sa), sa_ri = sa_le;
   if (s_len == sz(t))
-    sa_ri = lower_bound(sa_le + all(sa), 0, [&](int i, int) -> bool { return len_lcp(i, s_le) >= sz(t); }) - begin(sa);
+    sa_ri = lower_bound(sa_le + all(sa), 0, [&](int i, int) -> bool { return len_lcp(s_le, i) >= sz(t); }) - begin(sa);
   return {sa_le, sa_ri, s_le, s_le + s_len};
 }
