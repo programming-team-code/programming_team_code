@@ -11,7 +11,7 @@
 match find_str_fast(const T& t) {
   int s_le = n, s_len = 0;
   auto cmp = [&](int i, int) -> bool {
-    if (int lcp_len = s_le == n ? 0 : len_lcp(i, s_le); lcp_len != s_len)
+    if (int lcp_len = s_le == n ? 0 : len_lcp(s_le, i); lcp_len != s_len)
       return (lcp_len < s_len) ^ (cmp_sufs(s_le, i) < 0);
     auto [it_s, it_t] = mismatch(i + s_len + all(s), s_len + all(t));
     s_le = i, s_len = it_t - begin(t);
