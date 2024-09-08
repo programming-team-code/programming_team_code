@@ -20,7 +20,7 @@ shfmt | see flags in [scripts/shellcheck_shfmt.sh](scripts/shellcheck_shfmt.sh) 
 ## Doxygen
 Let's try to minimize the # of non-doxygen comments.
 
-Needed for doxygen to see global functions
+Needed for doxygen to see global functions:
 ```
 /** @file */
 ```
