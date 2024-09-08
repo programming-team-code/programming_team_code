@@ -37,7 +37,7 @@
  *
  * @param s,max_num string/array with 0 <= s[i] < max_num
  * @returns sa, sa_inv, lcp
- * @time O(n + max_num)
+ * @time O(nlogn + max_num)
  * @space vectors `sa`, `sa_inv`, `lcp` are O(n). vector `freq` is O(max_num) and is allocated temporarily
  */
 template <class T> array<vi, 3> get_sa(const T& s, int max_num) {
