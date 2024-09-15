@@ -1,45 +1,43 @@
 //! @file
 #pragma once
-/**
- * @see https://github.com/kth-competitive-programming/kactl /blob/main/content/strings/SuffixArray.h
- *
- * suffixes of "banana":
- * 0 banana 3
- * 1 anana  2
- * 2 nana   5
- * 3 ana    1
- * 4 na     4
- * 5 a      0
- *
- * 5 a      0
- *   |
- * 3 ana    1
- *   |||
- * 1 anana  2
- *
- * 0 banana 3
- *
- * 4 na     4
- *   ||
- * 2 nana   5
- *
- * sa = {5, 3, 1, 0, 4, 2}
- * sa_inv = {3, 2, 5, 1, 4, 0} (sa[sa_inv[i]] == i, sa_inv[sa[i]] == i)
- * lcp = {1, 3, 0, 0, 2}
- *
- * @code{.cpp}
-       string s;
-       auto [sa, sa_inv, lcp] = get_sa(s, 256);
-       // or
-       vi a;
-       auto [sa, sa_inv, lcp] = get_sa(a, 100'005);
- * @endcode
- *
- * @param s,max_num string/array with 0 <= s[i] < max_num
- * @returns sa, sa_inv, lcp
- * @time O(nlogn + max_num)
- * @space vectors `sa`, `sa_inv`, `lcp` are O(n). vector `freq` is O(max_num) and is allocated temporarily
- */
+//! @see https://github.com/kth-competitive-programming/kactl /blob/main/content/strings/SuffixArray.h
+//!
+//! suffixes of "banana":
+//! 0 banana 3
+//! 1 anana  2
+//! 2 nana   5
+//! 3 ana    1
+//! 4 na     4
+//! 5 a      0
+//!
+//! 5 a      0
+//!   |
+//! 3 ana    1
+//!   |||
+//! 1 anana  2
+//!
+//! 0 banana 3
+//!
+//! 4 na     4
+//!   ||
+//! 2 nana   5
+//!
+//! sa = {5, 3, 1, 0, 4, 2}
+//! sa_inv = {3, 2, 5, 1, 4, 0} (sa[sa_inv[i]] == i, sa_inv[sa[i]] == i)
+//! lcp = {1, 3, 0, 0, 2}
+//!
+//! @code{.cpp}
+//!     string s;
+//!     auto [sa, sa_inv, lcp] = get_sa(s, 256);
+//!     // or
+//!     vi a;
+//!     auto [sa, sa_inv, lcp] = get_sa(a, 100'005);
+//! @endcode
+//!
+//! @param s,max_num string/array with 0 <= s[i] < max_num
+//! @returns sa, sa_inv, lcp
+//! @time O(nlogn + max_num)
+//! @space vectors `sa`, `sa_inv`, `lcp` are O(n). vector `freq` is O(max_num) and is allocated temporarily
 template <class T> array<vi, 3> get_sa(const T& s, int max_num) {
   int n = sz(s);
   vi sa(n), sa_inv(all(s)), lcp(max(0, n - 1));

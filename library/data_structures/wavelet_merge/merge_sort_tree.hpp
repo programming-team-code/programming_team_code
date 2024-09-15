@@ -1,28 +1,22 @@
 //! @file
 #pragma once
 #include "bool_presum.hpp"
-/**
- * @see https://codeforces.com/blog/entry/112755
- * @param tl,tr defines range [tl, tr)
- * @returns split point of range which makes the merge sort tree a complete
- * binary tree
- */
+//! @see https://codeforces.com/blog/entry/112755
+//! @param tl,tr defines range [tl, tr)
+//! @returns split point of range which makes the merge sort tree a complete
+//! binary tree
 int split(int tl, int tr) {
   int pw2 = 1 << __lg(tr - tl);
   return min(tl + pw2, tr - pw2 / 2);
 }
-/**
- * https://github.com/brunomaletta/Biblioteca /blob/master/Codigo/Estruturas/mergeSortTree.cpp
- */
+//! https://github.com/brunomaletta/Biblioteca /blob/master/Codigo/Estruturas/mergeSortTree.cpp
 struct merge_sort_tree {
   int n;
   vi sorted;
   vector<bool_presum> bool_presums;
-  /**
-   * @param a array
-   * @time O(n log n)
-   * @space O(n + (n log n) / 64) for `bool_presums` vector
-   */
+  //! @param a array
+  //! @time O(n log n)
+  //! @space O(n + (n log n) / 64) for `bool_presums` vector
   merge_sort_tree(const vi& a) : n(sz(a)), sorted(n), bool_presums(n, vector<bool>()) {
     vector<pair<int, bool>> cpy(n);
     transform(all(a), begin(cpy), [](int num) { return pair(num, 0); });
@@ -40,12 +34,10 @@ struct merge_sort_tree {
     transform(begin(cpy) + tl, begin(cpy) + tr, begin(bools), [](auto& num) { return num.second; });
     bool_presums[v] = bool_presum(bools);
   }
-  /**
-   * @param le,ri,x,y defines rectangle: indexes in [le, ri), numbers in [x, y)
-   * @returns number of indexes i such that le <= i < ri and x <= a[i] < y
-   * @time O(log(n))
-   * @space O(log(n)) for recursive stack
-   */
+  //! @param le,ri,x,y defines rectangle: indexes in [le, ri), numbers in [x, y)
+  //! @returns number of indexes i such that le <= i < ri and x <= a[i] < y
+  //! @time O(log(n))
+  //! @space O(log(n)) for recursive stack
   int rect_count(int le, int ri, int x, int y) {
     int xi = lower_bound(all(sorted), x) - begin(sorted);
     int yi = lower_bound(all(sorted), y) - begin(sorted);
@@ -58,16 +50,14 @@ struct merge_sort_tree {
     return rect_count_impl(le, ri, pl, pr, tl, tm, 2 * v) +
            rect_count_impl(le, ri, xi - pl, yi - pr, tm, tr, 2 * v + 1);
   }
-  /**
-   * @param x,y defines range of numbers [x, y)
-   * @param k must satisfy 1 <= k <= number of indexes i such that x <= a[i] < y
-   * @returns the kth smallest index i such that x <= a[i] < y
-   *     - kth_smallest(x,y,1) returns the smallest index i such that x <= a[i] < y
-   *     - kth_smallest(x,y,rect_count(0,n,x,y)) returns the largest index i such that x <= a[i] < y
-   *     - kth_smallest(-INF,INF,k) returns (k - 1)
-   * @time O(log(n))
-   * @space O(log(n)) for recursive stack
-   */
+  //! @param x,y defines range of numbers [x, y)
+  //! @param k must satisfy 1 <= k <= number of indexes i such that x <= a[i] < y
+  //! @returns the kth smallest index i such that x <= a[i] < y
+  //!     - kth_smallest(x,y,1) returns the smallest index i such that x <= a[i] < y
+  //!     - kth_smallest(x,y,rect_count(0,n,x,y)) returns the largest index i such that x <= a[i] < y
+  //!     - kth_smallest(-INF,INF,k) returns (k - 1)
+  //! @time O(log(n))
+  //! @space O(log(n)) for recursive stack
   int kth_smallest(int x, int y, int k) {
     int xi = lower_bound(all(sorted), x) - begin(sorted);
     int yi = lower_bound(all(sorted), y) - begin(sorted);

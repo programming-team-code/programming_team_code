@@ -1,21 +1,17 @@
 //! @file
 #pragma once
 #include "linear_rmq.hpp"
-/**
- * @see https://codeforces.com/blog/entry/78898
- * @code{.cpp}
-       auto [data, root, adj] = perm_tree(a);
- * @endcode
- */
+//! @see https://codeforces.com/blog/entry/78898
+//! @code{.cpp}
+//!     auto [data, root, adj] = perm_tree(a);
+//! @endcode
 struct perm_tree {
   struct node {
-    /**
-     * [mn_idx[v], mn_idx[v] + len[v]) is range of indexes
-     * [mn_num[v], mn_num[v] + len[v]) is range of numbers
-     * @{
-     */
+    //! [mn_idx[v], mn_idx[v] + len[v]) is range of indexes
+    //! [mn_num[v], mn_num[v] + len[v]) is range of numbers
+    //! @{
     int mn_idx, mn_num, len;
-    /** @} */
+    //! @}
     bool is_join;
   };
   vector<node> t;
@@ -29,11 +25,9 @@ struct perm_tree {
     adj.push_back(ch);
     return sz(adj) - 1;
   }
-  /**
-   * @param a permutation
-   * @time O(n)
-   * @space O(n)
-   */
+  //! @param a permutation
+  //! @time O(n)
+  //! @space O(n)
   perm_tree(const vi& a) {
     int n = sz(a);
     vi mn_i(n), mx_i(n);

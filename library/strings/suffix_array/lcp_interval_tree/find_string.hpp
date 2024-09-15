@@ -3,15 +3,13 @@
 #include "sa_range.hpp"
 #include "len_lcp_range.hpp"
 #include "get_child.hpp"
-/**
- * performs trie-style downwards tree walk
- * @param t needle
- * @returns range [le, ri) such that:
- *     - for all i in [le, ri): t == s.substr(sa[i], sz(t))
- *     - `ri - le` is the # of matches of t in s.
- * @time O(|t|)
- * @space O(1)
- */
+//! performs trie-style downwards tree walk
+//! @param t needle
+//! @returns range [le, ri) such that:
+//!     - for all i in [le, ri): t == s.substr(sa[i], sz(t))
+//!     - `ri - le` is the # of matches of t in s.
+//! @time O(|t|)
+//! @space O(1)
 pii find_str(const string& t) {
   int v = root;
   rep(i, 0, sz(t)) {

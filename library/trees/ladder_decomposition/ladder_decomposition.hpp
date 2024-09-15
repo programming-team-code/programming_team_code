@@ -1,24 +1,20 @@
 //! @file
 #pragma once
 #include "../../../kactl/content/graph/BinaryLifting.h"
-/**
- * @see https://codeforces.com/blog/entry/71567#comment-559299 https://youtu.be/0rCFkuQS968
- * @code{.cpp}
-       ladder ld(adj);
-       // KACTL functions
-       int kth_par = jmp(ld.b_tbl, v, k);
-       int curr_lca = lca(ld.b_tbl, ld.d, u, v);
- * @endcode
- */
+//! @see https://codeforces.com/blog/entry/71567#comment-559299 https://youtu.be/0rCFkuQS968
+//! @code{.cpp}
+//!     ladder ld(adj);
+//!     // KACTL functions
+//!     int kth_par = jmp(ld.b_tbl, v, k);
+//!     int curr_lca = lca(ld.b_tbl, ld.d, u, v);
+//! @endcode
 struct ladder {
   int n;
   vector<vi> b_tbl, l_tbl;
   vi dl /*deepest leaf*/, d, p;
-  /**
-   * @param adj forest (rooted or unrooted)
-   * @time O(n log n)
-   * @space O(n log n) for b_tbl. Everything else is O(n)
-   */
+  //! @param adj forest (rooted or unrooted)
+  //! @time O(n log n)
+  //! @space O(n log n) for b_tbl. Everything else is O(n)
   ladder(const vector<vi>& adj) : n(sz(adj)), l_tbl(n), dl(n), d(n), p(n, -1) {
     auto dfs = [&](auto&& self, int v) -> void {
       dl[v] = v;
@@ -39,13 +35,11 @@ struct ladder {
           lad[j] = p[lad[j - 1]];
     }
   }
-  /**
-   * @param v query node
-   * @param k number of edges
-   * @returns a node k edges up from v. With k=1, this returns v's parent.
-   * @time O(1)
-   * @space O(1)
-   */
+  //! @param v query node
+  //! @param k number of edges
+  //! @returns a node k edges up from v. With k=1, this returns v's parent.
+  //! @time O(1)
+  //! @space O(1)
   int kth_par(int v, int k) {
     if (k == 0) return v;
     int bit = __lg(k);

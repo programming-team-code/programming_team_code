@@ -1,10 +1,8 @@
 //! @file
 #pragma once
-/**
- * @param a initial array
- * @time O(n)
- * @space O(n) for `s` vector
- */
+//! @param a initial array
+//! @time O(n)
+//! @space O(n) for `s` vector
 BIT(const vector<T>& a) : s(a) {
   rep(i, 0, sz(a)) {
     int j = i | (i + 1);

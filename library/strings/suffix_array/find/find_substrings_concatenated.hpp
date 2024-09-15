@@ -1,17 +1,15 @@
 //! @file
 #pragma once
 #include "match.hpp"
-/**
- * @param substrs this defines query string t as:
- *     s.substr(substrs[0][0], substrs[0][1] - substrs[0][0]) +
- *     s.substr(substrs[1][0], substrs[1][1] - substrs[1][0]) +
- *     ...
- *     s.substr(substrs.back()[0], substrs.back()[1] - substrs.back()[0])
- *     - doesn't work when substrs[i][0] == n
- * @returns see match
- * @time O(sz(substrs) * log(|s|))
- * @space O(1)
- */
+//! @param substrs this defines query string t as:
+//!     s.substr(substrs[0][0], substrs[0][1] - substrs[0][0]) +
+//!     s.substr(substrs[1][0], substrs[1][1] - substrs[1][0]) +
+//!     ...
+//!     s.substr(substrs.back()[0], substrs.back()[1] - substrs.back()[0])
+//!     - doesn't work when substrs[i][0] == n
+//! @returns see match
+//! @time O(sz(substrs) * log(|s|))
+//! @space O(1)
 match find_substrs_concated(const vector<pii>& substrs) {
   using dt = array<int, 3>;
   int sa_le = 0, sa_ri = n, s_le = 0, s_ri = 0, sum_len = 0;

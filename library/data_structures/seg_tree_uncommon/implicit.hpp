@@ -1,12 +1,10 @@
 //! @file
 #pragma once
-/**
- * @code{.cpp}
-       implicit_seg_tree<10'000'000> ist(le, ri);
- * @endcode
- */
+//! @code{.cpp}
+//!     implicit_seg_tree<10'000'000> ist(le, ri);
+//! @endcode
 template <int N> struct implicit_seg_tree {
-  using dt = array<ll, 2>; /**< min, number of mins */
+  using dt = array<ll, 2>;  //!< min, number of mins
   static dt op(const dt& le, const dt& ri) {
     if (le[0] == ri[0]) return {le[0], le[1] + ri[1]};
     return min(le, ri);
@@ -17,7 +15,7 @@ template <int N> struct implicit_seg_tree {
     ll lazy = 0;
     int lch = -1, rch = -1;
   } tree[N];
-  int ptr = 0, root_l, root_r; /**< [root_l, root_r) defines range of root node; handles negatives */
+  int ptr = 0, root_l, root_r;  //!< [root_l, root_r) defines range of root node; handles negatives
   implicit_seg_tree(int le, int ri) : root_l(le), root_r(ri) {
     tree[ptr++].num = {0, ri - le};
   }
@@ -38,9 +36,7 @@ template <int N> struct implicit_seg_tree {
       tree[v].lazy = 0;
     }
   }
-  /**
-   * @param le,ri defines range [le, ri)
-   */
+  //! @param le,ri defines range [le, ri)
   void update(int le, int ri, ll add) { update(le, ri, add, root_l, root_r, 0); }
   void update(int le, int ri, ll add, int tl, int tr, int v) {
     if (ri <= tl || tr <= le)
@@ -54,9 +50,7 @@ template <int N> struct implicit_seg_tree {
     tree[v].num = op(tree[tree[v].lch].num,
                      tree[tree[v].rch].num);
   }
-  /**
-   * @param le,ri defines range [le, ri)
-   */
+  //! @param le,ri defines range [le, ri)
   dt query(int le, int ri) { return query(le, ri, root_l, root_r, 0); }
   dt query(int le, int ri, int tl, int tr, int v) {
     if (ri <= tl || tr <= le)

@@ -1,9 +1,7 @@
 //! @file
 #pragma once
-/**
- * @time O(mx)
- * @space O(mx)
- */
+//! @time O(mx)
+//! @space O(mx)
 vi sieve(1001) /**< min prime factor */, primes;
 iota(all(sieve), 0);
 rep(i, 2, sz(sieve)) {

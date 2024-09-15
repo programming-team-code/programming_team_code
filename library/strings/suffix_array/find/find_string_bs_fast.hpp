@@ -1,13 +1,11 @@
 //! @file
 #pragma once
 #include "match.hpp"
-/**
- * @see https://stackoverflow.com/a/11374737 https://codeforces.com/blog/entry/133051
- * @param t query string
- * @returns see match
- * @time O(log(|s|) + |t|)
- * @space O(1)
- */
+//! @see https://stackoverflow.com/a/11374737 https://codeforces.com/blog/entry/133051
+//! @param t query string
+//! @returns see match
+//! @time O(log(|s|) + |t|)
+//! @space O(1)
 match find_str_fast(const T& t) {
   int s_le = n, s_len = 0;
   auto cmp = [&](int i, int) -> bool {

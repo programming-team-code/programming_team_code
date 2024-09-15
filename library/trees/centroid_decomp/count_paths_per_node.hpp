@@ -1,14 +1,12 @@
 //! @file
 #pragma once
 #include "centroid_decomp.hpp"
-/**
- * @param adj unrooted, connected forest
- * @param k number of edges
- * @returns array `num_paths` where `num_paths[i]` = number of paths with k
- * edges where node `i` is on the path. 0-based nodes.
- * @time O(n log n)
- * @space this function allocates/returns various vectors which are all O(n)
- */
+//! @param adj unrooted, connected forest
+//! @param k number of edges
+//! @returns array `num_paths` where `num_paths[i]` = number of paths with k
+//! edges where node `i` is on the path. 0-based nodes.
+//! @time O(n log n)
+//! @space this function allocates/returns various vectors which are all O(n)
 vector<ll> count_paths_per_node(const vector<vi>& adj, int k) {
   vector<ll> num_paths(sz(adj));
   centroid(adj, [&](const vector<vi>& cd_adj, int cent) {

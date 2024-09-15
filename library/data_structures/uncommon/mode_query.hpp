@@ -1,19 +1,15 @@
 //! @file
 #pragma once
 const int b = 318; /**< sqrt(1e5) */
-/**
- * @see https://noshi91.hatenablog.com/entry/2020/10/26/140105
- */
+//! @see https://noshi91.hatenablog.com/entry/2020/10/26/140105
 struct mode_query {
   int n;
   vi a, cnt, index_into_index;
   vector<vi> index;
   vector<vector<pii>> mode_blocks; /**< {mode, cnt} of range of blocks */
-  /**
-   * @param a_a compressed array: 0 <= a_a[i] < n
-   * @time O(n * sqrt(n))
-   * @space O(n)
-   */
+  //! @param a_a compressed array: 0 <= a_a[i] < n
+  //! @time O(n * sqrt(n))
+  //! @space O(n)
   mode_query(const vi& a_a) : n(sz(a_a)), a(a_a), cnt(n), index_into_index(n), index(n), mode_blocks((n + b - 1) / b, vector<pii>((n + b - 1) / b)) {
     rep(i, 0, n) {
       index_into_index[i] = sz(index[a[i]]);
@@ -30,12 +26,10 @@ struct mode_query {
       rep(i, start, n) cnt[a[i]]--;
     }
   }
-  /**
-   * @param le,ri defines range [le, ri)
-   * @returns {mode, cnt of mode}
-   * @time O(sqrt(n))
-   * @space O(1)
-   */
+  //! @param le,ri defines range [le, ri)
+  //! @returns {mode, cnt of mode}
+  //! @time O(sqrt(n))
+  //! @space O(1)
   pii query(int le, int ri) {
     assert(le < ri);
     if (le / b >= (ri - 1) / b - 1) {
