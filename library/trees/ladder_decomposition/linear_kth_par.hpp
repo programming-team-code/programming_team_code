@@ -1,23 +1,19 @@
-/** @file */
+//! @file
 #pragma once
-/**
- * @see Still Simpler Static Level Ancestors by Torben Hagerup, May 2020; https://codeforces.com/blog/entry/126580
- */
+//! @see Still Simpler Static Level Ancestors by Torben Hagerup, May 2020; https://codeforces.com/blog/entry/126580
 struct linear_kth_par {
   struct node {
-    int d, p = -1, dl /*deepest leaf*/, idx;
+    int d, p = -1, idx, dl;  //!< deepest leaf
     vi lad;
   };
   vector<node> t;
   vi j;
-  /**
-   * @code{.cpp}
-             linear_kth_par kp(adj);
-   * @endcode
-   * @param adj forest (rooted or unrooted)
-   * @time O(n)
-   * @space O(n)
-   */
+  //! @code{.cpp}
+  //!         linear_kth_par kp(adj);
+  //! @endcode
+  //! @param adj forest (rooted or unrooted)
+  //! @time O(n)
+  //! @space O(n)
   linear_kth_par(const vector<vi>& adj) : t(sz(adj)), j(2 * sz(t)) {
     vi st;
     int pos = 1;
@@ -48,13 +44,11 @@ struct linear_kth_par {
           lad[k] = t[lad[k - 1]].p;
     }
   }
-  /**
-   * @param v query node
-   * @param k number of edges
-   * @returns a node k edges up from v
-   * @time O(1)
-   * @space O(1)
-   */
+  //! @param v query node
+  //! @param k number of edges
+  //! @returns a node k edges up from v
+  //! @time O(1)
+  //! @space O(1)
   int kth_par(int v, int k) {
     switch (k) {
       case 0: return v;

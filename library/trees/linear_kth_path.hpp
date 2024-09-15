@@ -1,4 +1,4 @@
-/** @file */
+//! @file
 #pragma once
 #include "linear_lca.hpp"
 #include "ladder_decomposition/linear_kth_par.hpp"
@@ -6,13 +6,11 @@ struct linear_kth_path {
   linear_lca lin_lca;
   linear_kth_par lin_kp;
   linear_kth_path(const vector<vi>& adj) : lin_lca(adj), lin_kp(adj) {}
-  /**
-   * @param u,v endpoint nodes of path
-   * @param k index into path
-   * @returns the node vi({u,p[u],..,lca(u,v),..,p[v],v})[k], or -1, so u if k=0
-   * @time O(1)
-   * @space O(1)
-   */
+  //! @param u,v endpoint nodes of path
+  //! @param k index into path
+  //! @returns the node vi({u,p[u],..,lca(u,v),..,p[v],v})[k], or -1, so u if k=0
+  //! @time O(1)
+  //! @space O(1)
   int kth_path(int u, int v, int k) {
     int lca_d = lin_kp.t[lin_lca.lca(u, v)].d;
     int u_lca = lin_kp.t[u].d - lca_d;

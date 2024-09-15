@@ -1,14 +1,12 @@
-/** @file */
+//! @file
 #pragma once
 #include "../../../kactl/content/numerical/FastFourierTransform.h"
 #include "centroid_decomp.hpp"
-/**
- * @param adj unrooted, connected forest
- * @returns array `num_paths` where `num_paths[i]` = # of paths in tree with `i`
- * edges. `num_paths[1]` = # edges
- * @time O(n log^2 n)
- * @space this function allocates/returns various vectors which are each O(n)
- */
+//! @param adj unrooted, connected forest
+//! @returns array `num_paths` where `num_paths[i]` = # of paths in tree with `i`
+//! edges. `num_paths[1]` = # edges
+//! @time O(n log^2 n)
+//! @space this function allocates/returns various vectors which are each O(n)
 vector<ll> count_paths_per_length(const vector<vi>& adj) {
   vector<ll> num_paths(sz(adj));
   centroid(adj, [&](const vector<vi>& cd_adj, int cent) {

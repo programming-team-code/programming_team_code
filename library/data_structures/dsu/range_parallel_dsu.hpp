@@ -1,33 +1,27 @@
-/** @file */
+//! @file
 #pragma once
 #include "../../../kactl/content/data-structures/UnionFind.h"
-/**
- * DSU with support for joining two parallel ranges [l1, l1 + len) and [l2, l2 +
- * len) such that edges of the form (l1 + i, l2 + i) are joined. for all `i` in
- * [0, len).
- *
- * @time O(n * log n * inverse ack n) amortized across all queries
- * @space O(n log n)
- */
+//! DSU with support for joining two parallel ranges [l1, l1 + len) and [l2, l2 +
+//! len) such that edges of the form (l1 + i, l2 + i) are joined. for all `i` in
+//! [0, len).
+//!
+//! @time O(n * log n * inverse ack n) amortized across all queries
+//! @space O(n log n)
 struct range_parallel_dsu {
   vector<UF> ufs;
-  /*
-   * constructs a range_parallel_dsu with n elements.
-   */
+  //! constructs a range_parallel_dsu with n elements.
   range_parallel_dsu(int n) : ufs(__lg(n) + 1, UF(n)) {}
-  /*
-   * joins the ranges [l1, l1 + len) and [l2, l2 + len) such that edges of the
-   * form (l1 + i, l2 + i) are joined. for all `i` in [0, len). The function `f`
-   * is called for each connected component of the resulting graph which will
-   * change in this update, with the first argument being the representative of
-   * the component and the second argument being the parent of the component
-   * which is being joined.
-   *
-   * @guarantee the function `f` is called at most `n - 1` times
-   *
-   * @time O(n * log n * inverse ack) amortized across all queries
-   * @space O(log n) due to the recursive stack
-   */
+  //! joins the ranges [l1, l1 + len) and [l2, l2 + len) such that edges of the
+  //! form (l1 + i, l2 + i) are joined. for all `i` in [0, len). The function `f`
+  //! is called for each connected component of the resulting graph which will
+  //! change in this update, with the first argument being the representative of
+  //! the component and the second argument being the parent of the component
+  //! which is being joined.
+  //!
+  //! @guarantee the function `f` is called at most `n - 1` times
+  //!
+  //! @time O(n * log n * inverse ack) amortized across all queries
+  //! @space O(log n) due to the recursive stack
   template <class F>
   void join(int l1, int l2, int len, const F& f) {
     if (len == 0) return;
