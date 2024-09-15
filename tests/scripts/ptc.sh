@@ -10,6 +10,9 @@ cat ../library/**/*.hpp |
 	grep . &&
 	exit 1
 
+echo "check no multiline comments. Generating hash of each prefix of a file requires this."
+grep --extended-regexp "\/\*" --recursive ../library/ && exit 1
+
 #############################################################################
 ############ DON'T PUSH ANY OF THESE CHANGES TO THE REPO!!!!!!!! ############
 #############################################################################
