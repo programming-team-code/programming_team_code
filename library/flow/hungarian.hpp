@@ -8,8 +8,8 @@
 //! complete bipartite graph with n <= m, this matching always has size n. Of
 //! all ways to do this, sum of edge weights is minimized.
 struct hungarian {
-  ll min_weight; /**< sum of edge weights in matching */
-  vi l_to_r; /**< edge v <=> l_to_r[v] is in the matching, 1<=v<=n; 1<=l_to_r[v]<=m */
+  ll min_weight;  //!< sum of edge weights in matching
+  vi l_to_r;  //!< edge v <=> l_to_r[v] is in the matching, 1<=v<=n; 1<=l_to_r[v]<=m
   //! @param cost (n+1)-by-(m+1) array: cost[u][v] = weight (can be negative) of
   //! the edge u <=> v, 1<=u<=n; 1<=v<=m, n<=m
   //! @time O(n^2 * m)

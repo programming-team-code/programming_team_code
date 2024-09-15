@@ -9,7 +9,7 @@
 //!     auto [size_of_matching, l_to_r, r_to_l, mvc_l, mvc_r] = hopcroft_karp(adj, rsz);
 //! @endcode
 struct hopcroft_karp {
-  int size_of_matching = 0; /**< # of edges in max matching (which = size of min vertex cover by König's theorem) */
+  int size_of_matching = 0;  //!< # of edges in max matching (which = size of min vertex cover by König's theorem)
   //! edge node_left <=> l_to_r[node_left] in matching iff l_to_r[node_left] != -1
   //! ditto r_to_l[node_right] <=> node_right
   //! @{

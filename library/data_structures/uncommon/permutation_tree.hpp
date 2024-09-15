@@ -16,7 +16,7 @@ struct perm_tree {
   };
   vector<node> t;
   int root;
-  vector<vi> adj; /**< [0, n) are leaves, [n, sz(adj)) are internal nodes */
+  vector<vi> adj;  //!< [0, n) are leaves, [n, sz(adj)) are internal nodes
   bool touches(int u, int v) {
     return t[u].mn_num == t[v].mn_num + t[v].len || t[v].mn_num == t[u].mn_num + t[u].len;
   }

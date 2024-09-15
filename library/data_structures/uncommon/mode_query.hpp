@@ -1,12 +1,12 @@
 //! @file
 #pragma once
-const int b = 318; /**< sqrt(1e5) */
+const int b = 318;  //!< sqrt(1e5)
 //! @see https://noshi91.hatenablog.com/entry/2020/10/26/140105
 struct mode_query {
   int n;
   vi a, cnt, index_into_index;
   vector<vi> index;
-  vector<vector<pii>> mode_blocks; /**< {mode, cnt} of range of blocks */
+  vector<vector<pii>> mode_blocks;  //!< {mode, cnt} of range of blocks
   //! @param a_a compressed array: 0 <= a_a[i] < n
   //! @time O(n * sqrt(n))
   //! @space O(n)

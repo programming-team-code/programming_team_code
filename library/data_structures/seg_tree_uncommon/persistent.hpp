@@ -9,7 +9,7 @@ struct PST {
     node(ll a_sum, int a_lch, int a_rch) : sum(a_sum), lch(a_lch), rch(a_rch) {}
   };
   int root_l, root_r;
-  vi roots; /**< tree[roots[i]] = root node at version i */
+  vi roots;  //!< tree[roots[i]] = root node at version i
   deque<node> tree;
   //! @param a_root_l,a_root_r defines range [root_l, root_l) of root node, can be
   //! negative

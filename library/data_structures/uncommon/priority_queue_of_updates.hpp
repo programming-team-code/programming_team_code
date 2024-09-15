@@ -17,7 +17,7 @@ template <class DS, class... ARGS> struct pq_updates {
   DS ds;
   using upd = pair<tuple<ARGS...>, map<int, int>::iterator>;
   vector<upd> upd_st;
-  map<int, int> mp; /**< priority -> index into update stack */
+  map<int, int> mp;  //!< priority -> index into update stack
   //! @param a_ds any data structure with member functions `join` and `undo`
   pq_updates(DS& a_ds) : ds(a_ds) {}
   //! Remove update with max priority

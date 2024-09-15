@@ -5,7 +5,7 @@
 //!     auto [num_sccs, scc_id] = sccs(adj);
 //! @endcode
 struct sccs {
-  int num_sccs = 0; /**< number of SCCs */
+  int num_sccs = 0;  //!< number of SCCs
   //! scc_id[v] = id of SCC containing node v. It satisfies:
   //! - 0 <= scc_id[v] < num_sccs
   //! - for each edge u -> v: scc_id[u] >= scc_id[v]
