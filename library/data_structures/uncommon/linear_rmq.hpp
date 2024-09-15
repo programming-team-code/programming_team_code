@@ -1,4 +1,4 @@
-/** @file */
+//! @file
 #pragma once
 /**
  * @see On Finding Lowest Common Ancestors: Simplification and Parallelization

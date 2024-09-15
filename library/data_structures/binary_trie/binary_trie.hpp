@@ -1,4 +1,4 @@
-/** @file */
+//! @file
 #pragma once
 /**
  * Trie on bits. Can be thought of as a multiset of integers.

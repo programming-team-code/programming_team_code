@@ -1,4 +1,4 @@
-/** @file */
+//! @file
 #pragma once
 #include "suffix_array.hpp"
 #include "../../data_structures/rmq.hpp"

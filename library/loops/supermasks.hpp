@@ -1,4 +1,4 @@
-/** @file */
+//! @file
 #pragma once
 /**
  * loops over supermasks in increasing order

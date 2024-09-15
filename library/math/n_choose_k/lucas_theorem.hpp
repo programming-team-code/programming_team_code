@@ -1,4 +1,4 @@
-/** @file */
+//! @file
 #pragma once
 #include "n_choose_k.hpp"
 /**

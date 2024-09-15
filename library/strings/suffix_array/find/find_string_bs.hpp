@@ -1,4 +1,4 @@
-/** @file */
+//! @file
 #pragma once
 /**
  * @see https://github.com/yosupo06/Algorithm/blob /master/src/string/suffixarray.hpp

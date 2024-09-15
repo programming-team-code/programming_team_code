@@ -1,4 +1,4 @@
-/** @file */
+//! @file
 #pragma once
 template <class T>
 vector<T> make_powers(const T& v) {

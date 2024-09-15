@@ -1,4 +1,4 @@
-/** @file */
+//! @file
 #pragma once
 #include "../monotonic_stack/monotonic_stack.hpp" /**< only needed for compress_tree */
 int lsb(int x) { return x & -x; }

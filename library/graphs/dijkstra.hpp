@@ -1,4 +1,4 @@
-/** @file */
+//! @file
 #pragma once
 /**
  * @param adj directed or undirected, weighted graph

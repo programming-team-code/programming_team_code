@@ -1,4 +1,4 @@
-/** @file */
+//! @file
 #pragma once
 #include "calc_sieve.hpp"
 /**

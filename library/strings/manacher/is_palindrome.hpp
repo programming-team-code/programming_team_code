@@ -1,4 +1,4 @@
-/** @file */
+//! @file
 #pragma once
 #include "manacher.hpp"
 template <class T> struct pal_query {

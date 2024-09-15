@@ -1,4 +1,4 @@
-/** @file */
+//! @file
 #pragma once
 #include "centroid_decomp.hpp"
 /**

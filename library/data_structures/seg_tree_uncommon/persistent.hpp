@@ -1,4 +1,4 @@
-/** @file */
+//! @file
 #pragma once
 /**
  * @see https://cp-algorithms.com/data_structures/segment_tree.html# preserving-the-history-of-its-values-persistent-segment-tree

@@ -1,4 +1,4 @@
-/** @file */
+//! @file
 #pragma once
 /**
  * @param convex,arbitrary arrays where convex satisfies convex[i + 1] -

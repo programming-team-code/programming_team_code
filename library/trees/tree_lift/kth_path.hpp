@@ -1,4 +1,4 @@
-/** @file */
+//! @file
 #pragma once
 /**
  * @param u,v endpoint nodes of path

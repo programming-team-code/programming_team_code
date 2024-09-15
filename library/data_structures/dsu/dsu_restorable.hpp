@@ -1,4 +1,4 @@
-/** @file */
+//! @file
 #pragma once
 /**
  * @see https://github.com/ucf-programming-team/hackpack-cpp /blob/master/content/data-structures/DSURestorable.h

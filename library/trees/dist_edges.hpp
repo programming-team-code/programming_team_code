@@ -1,4 +1,4 @@
-/** @file */
+//! @file
 /**
  * @param u,v endpoint nodes of path
  * @returns number of edges on path

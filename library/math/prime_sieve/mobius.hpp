@@ -1,4 +1,4 @@
-/** @file */
+//! @file
 #pragma once
 /**
  * mobius[i] = 0 iff there exists a prime p s.t. i%(p^2)=0

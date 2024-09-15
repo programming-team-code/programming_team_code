@@ -1,4 +1,4 @@
-/** @file */
+//! @file
 /**
  * @see https://github.com/kth-competitive-programming /kactl/blob/main/content/graph/CompressTree.h
  *

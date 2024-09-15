@@ -1,4 +1,4 @@
-/** @file */
+//! @file
 #pragma once
 /**
  * @see https://github.com/dacin21/dacin21_codebook /blob/master/trees/wavelet_matrix.cpp

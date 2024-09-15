@@ -1,4 +1,4 @@
-/** @file */
+//! @file
 #pragma once
 /**
  * @see https://cp-algorithms.com/string /prefix-function.html#implementation

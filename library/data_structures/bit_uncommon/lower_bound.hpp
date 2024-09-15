@@ -1,4 +1,4 @@
-/** @file */
+//! @file
 #pragma once
 /**
  * Requires bit.sum(i, i + 1) >= 0

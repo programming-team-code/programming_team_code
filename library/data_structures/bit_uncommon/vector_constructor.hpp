@@ -1,4 +1,4 @@
-/** @file */
+//! @file
 #pragma once
 /**
  * @param a initial array

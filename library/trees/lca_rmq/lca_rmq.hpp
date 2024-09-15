@@ -1,4 +1,4 @@
-/** @file */
+//! @file
 #pragma once
 #include "../../monotonic_stack/monotonic_stack.hpp" /**< only needed for compress_tree */
 #include "../../data_structures/rmq.hpp"

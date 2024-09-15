@@ -1,4 +1,4 @@
-/** @file */
+//! @file
 #pragma once
 #include "xor_basis_unordered.hpp"
 /**

@@ -1,4 +1,4 @@
-/** @file */
+//! @file
 #pragma once
 #include "sa_range.hpp"
 #include "len_lcp_range.hpp"

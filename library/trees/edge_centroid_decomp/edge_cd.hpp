@@ -1,4 +1,4 @@
-/** @file */
+//! @file
 #pragma once
 /**
  * @see https://codeforces.com/blog/entry/104997 https://codeforces.com/blog/entry/120446

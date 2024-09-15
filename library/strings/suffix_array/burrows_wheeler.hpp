@@ -1,4 +1,4 @@
-/** @file */
+//! @file
 #pragma once
 #include "suffix_array.hpp"
 const int mn = '0', cnt_let = 36;  // mn <= s[i] < mn + cnt_let; for lowercase letters: mn = 'a', cnt_let = 26

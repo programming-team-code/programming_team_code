@@ -1,4 +1,4 @@
-/** @file */
+//! @file
 #pragma once
 #include "count_paths_rectangle.hpp"
 /**

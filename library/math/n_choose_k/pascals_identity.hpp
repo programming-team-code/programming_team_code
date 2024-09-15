@@ -1,4 +1,4 @@
-/** @file */
+//! @file
 #pragma once
 const int mod = 17; /**< composite ok */
 vector<vector<ll>> ch(1010); /**< ch[n][k] = n choose k; sz(ch) > mod is ok */

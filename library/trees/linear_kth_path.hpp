@@ -1,4 +1,4 @@
-/** @file */
+//! @file
 #pragma once
 #include "linear_lca.hpp"
 #include "ladder_decomposition/linear_kth_par.hpp"

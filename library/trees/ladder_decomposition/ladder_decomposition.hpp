@@ -1,4 +1,4 @@
-/** @file */
+//! @file
 #pragma once
 #include "../../../kactl/content/graph/BinaryLifting.h"
 /**

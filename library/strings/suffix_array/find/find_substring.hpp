@@ -1,4 +1,4 @@
-/** @file */
+//! @file
 #pragma once
 /**
  * @param s_le,s_ri defines a substring [s_le, s_ri) of s

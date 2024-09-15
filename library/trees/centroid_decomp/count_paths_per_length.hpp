@@ -1,4 +1,4 @@
-/** @file */
+//! @file
 #pragma once
 #include "../../../kactl/content/numerical/FastFourierTransform.h"
 #include "centroid_decomp.hpp"

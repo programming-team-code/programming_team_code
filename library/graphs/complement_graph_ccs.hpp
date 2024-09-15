@@ -1,4 +1,4 @@
-/** @file */
+//! @file
 #pragma once
 /**
  * @returns a vector of size `n` containing the connected component id of each

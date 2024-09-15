@@ -1,4 +1,4 @@
-/** @file */
+//! @file
 #pragma once
 /**
  * subarray of `sa` of matches, and example of longest matching prefix of t in s

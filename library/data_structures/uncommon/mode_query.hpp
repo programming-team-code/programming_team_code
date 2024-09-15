@@ -1,4 +1,4 @@
-/** @file */
+//! @file
 #pragma once
 const int b = 318; /**< sqrt(1e5) */
 /**

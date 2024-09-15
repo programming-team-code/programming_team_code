@@ -1,4 +1,4 @@
-/** @file */
+//! @file
 #pragma once
 /**
  * DSU with support for parity of path to root for online bipartite check
