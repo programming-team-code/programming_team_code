@@ -22,25 +22,23 @@ Let's try to minimize the # of non-doxygen comments.
 
 Needed for doxygen to see global functions:
 ```
-/** @file */
+//! @file
 ```
 Place this directly before a struct or function.
 
 ```
-/**
- * @see <link to some source>
- *
- * Name, description, and/or any notes/tricks. It's okay if this is multiple
- * lines; wrap like this.
- * @code{.cpp}
-       //example usage or initialization
-       vector<int> arr;
- * @endcode
- * @param le,ri defines range [le, ri)
- * @returns Sum of range.
- * @time O(n * sqrt(n log n))
- * @space O(n ^ (3/2))
- */
+//! @see <link to some source>
+//!
+//! Name, description, and/or any notes/tricks. It's okay if this is multiple
+//! lines; wrap like this.
+//! @code{.cpp}
+//!     //example usage or initialization
+//!     vector<int> arr;
+//! @endcode
+//! @param le,ri defines range [le, ri)
+//! @returns Sum of range.
+//! @time O(n * sqrt(n log n))
+//! @space O(n ^ (3/2))
 ```
 for member vars:
-`int var; /**< Inline description */`
+`int var; //!< Inline description`

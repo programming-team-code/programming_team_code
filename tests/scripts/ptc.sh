@@ -10,6 +10,9 @@ cat ../library/**/*.hpp |
 	grep . &&
 	exit 1
 
+echo "check no multiline comments. Generating hash of each prefix of a file requires this."
+grep --extended-regexp "\/\*" --recursive ../library/**/*.hpp && exit 1
+
 #############################################################################
 ############ DON'T PUSH ANY OF THESE CHANGES TO THE REPO!!!!!!!! ############
 #############################################################################
@@ -18,8 +21,8 @@ echo "DON'T PUSH ANY OF THESE CHANGES TO THE REPO!!!!!!!!"
 
 # remove #pragma once
 sed --in-place '/^#pragma once$/d' ../library/**/*.hpp
-# remove /** @file */
-sed --in-place '/^\/\*\* @file \*\/$/d' ../library/**/*.hpp
+# remove //! @file
+sed --in-place '/^\/\/! @file$/d' ../library/**/*.hpp
 # remove NOLINTNEXTLINE comments
 sed --in-place '/^\/\/NOLINTNEXTLINE(readability-identifier-naming)$/d' ../library/**/*.hpp
 

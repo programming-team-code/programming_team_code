@@ -1,13 +1,11 @@
-/** @file */
+//! @file
 #pragma once
-/**
- * @param convex,arbitrary arrays where convex satisfies convex[i + 1] -
- * convex[i] <= convex[i + 2] - convex[i + 1] for all i [0, n - 2)
- * @returns array `res` where `res[k]` = the min of (a[i] + b[j]) for all pairs
- * (i,j) where i + j == k
- * @time O((n + m) log (n + m))
- * @space a size O(n + m) vector is allocated and returned
- */
+//! @param convex,arbitrary arrays where convex satisfies convex[i + 1] -
+//! convex[i] <= convex[i + 2] - convex[i + 1] for all i [0, n - 2)
+//! @returns array `res` where `res[k]` = the min of (a[i] + b[j]) for all pairs
+//! (i,j) where i + j == k
+//! @time O((n + m) log (n + m))
+//! @space a size O(n + m) vector is allocated and returned
 vi min_plus_convolution_convex_and_arbitrary(const vi& convex,
                                              const vi& arbitrary) {
   int n = sz(convex);

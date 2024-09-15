@@ -1,28 +1,22 @@
-/** @file */
+//! @file
 #pragma once
 #include "../../data_structures/wavelet_merge/wavelet_tree.hpp"
 #include "manacher.hpp"
-/**
- * @param le,ri defines range [le, ri)
- * @returns le + (le + 1) + ... + (ri - 1)
- * @time O(1)
- * @space O(1)
- */
+//! @param le,ri defines range [le, ri)
+//! @returns le + (le + 1) + ... + (ri - 1)
+//! @time O(1)
+//! @space O(1)
 ll sum_consecutive(int le, int ri) {
   return ll(ri - le) * (le + ri - 1) / 2;
 }
-/**
- * @see https://codeforces.com/blog/entry/63105#comment-470339
- */
+//! @see https://codeforces.com/blog/entry/63105#comment-470339
 template <class T> struct count_pal_query {
   int n;
   vi man;
   wavelet_tree wt_le, wt_ri;
-  /**
-   * @param s string/vector
-   * @time O(n log n)
-   * @space O(n log n) for wavelet trees
-   */
+  //! @param s string/vector
+  //! @time O(n log n)
+  //! @space O(n log n) for wavelet trees
   count_pal_query(const T& s) : n(sz(s)), man(manacher(s)), wt_le(man, 0, n), wt_ri(init()) {}
   wavelet_tree init() {
     vi right(sz(man));
@@ -30,12 +24,10 @@ template <class T> struct count_pal_query {
         right[i] = i - man[i] + 1;
     return {right, 1, n + 1};
   }
-  /**
-   * @param le,ri defines substring [le, ri) of s
-   * @returns number of palindromic substrings of s.substr(le, ri - le)
-   * @time O(log n)
-   * @space O(1)
-   */
+  //! @param le,ri defines substring [le, ri) of s
+  //! @returns number of palindromic substrings of s.substr(le, ri - le)
+  //! @time O(log n)
+  //! @space O(1)
   ll count_pals(int le, int ri) {
     assert(le < ri);
     int man_le = 2 * le, man_ri = 2 * ri - 1, man_mi = (man_le + man_ri) / 2;
