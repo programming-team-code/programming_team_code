@@ -18,8 +18,8 @@ echo "DON'T PUSH ANY OF THESE CHANGES TO THE REPO!!!!!!!!"
 
 # remove #pragma once
 sed --in-place '/^#pragma once$/d' ../library/**/*.hpp
-# remove /** @file */
-sed --in-place '/^\/\*\* @file \*\/$/d' ../library/**/*.hpp
+# remove //! @file
+sed --in-place '/^\/\/! @file$/d' ../library/**/*.hpp
 # remove NOLINTNEXTLINE comments
 sed --in-place '/^\/\/NOLINTNEXTLINE(readability-identifier-naming)$/d' ../library/**/*.hpp
 
