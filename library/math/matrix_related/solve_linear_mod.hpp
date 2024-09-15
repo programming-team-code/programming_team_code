@@ -9,9 +9,9 @@
 //!     auto [rank, det, x] = solve_linear_mod(mat, b);
 //! @endcode
 struct solve_linear_mod {
-  int rank; /**< max number of linearly independent vectors */
-  mint det; /**< determinant */
-  vector<mint> x; /**< solution vector, empty iff no solution */
+  int rank;  //!< max number of linearly independent vectors
+  mint det;  //!< determinant
+  vector<mint> x;  //!< solution vector, empty iff no solution
   //! @param mat n (rows) by m (cols) matrix; left in reduced row echelon form
   //! @param b length n column vector
   //! @time O(n * m * min(n, m))

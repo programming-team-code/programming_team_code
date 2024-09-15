@@ -11,11 +11,11 @@
 struct ladder {
   int n;
   vector<vi> b_tbl, l_tbl;
-  vi dl /*deepest leaf*/, d, p;
+  vi d, p, dl;  //!< deepest leaf
   //! @param adj forest (rooted or unrooted)
   //! @time O(n log n)
   //! @space O(n log n) for b_tbl. Everything else is O(n)
-  ladder(const vector<vi>& adj) : n(sz(adj)), l_tbl(n), dl(n), d(n), p(n, -1) {
+  ladder(const vector<vi>& adj) : n(sz(adj)), l_tbl(n), d(n), p(n, -1), dl(n) {
     auto dfs = [&](auto&& self, int v) -> void {
       dl[v] = v;
       for (int u : adj[v])

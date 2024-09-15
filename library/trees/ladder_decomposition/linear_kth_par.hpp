@@ -3,7 +3,7 @@
 //! @see Still Simpler Static Level Ancestors by Torben Hagerup, May 2020; https://codeforces.com/blog/entry/126580
 struct linear_kth_par {
   struct node {
-    int d, p = -1, dl /*deepest leaf*/, idx;
+    int d, p = -1, idx, dl;  //!< deepest leaf
     vi lad;
   };
   vector<node> t;

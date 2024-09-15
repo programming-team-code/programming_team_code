@@ -16,5 +16,5 @@ struct match {
   //! - note if sa_le == sa_ri, i.e. no matches, then s_ri - s_le < sz(t)
   //! @{
   int sa_le, sa_ri, s_le, s_ri;
-  /** @} */
+  //! @}
 };
