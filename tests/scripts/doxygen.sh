@@ -10,7 +10,7 @@ comm -23 --check-order <(
 		sort |
 		uniq
 ) <(
-	grep --fixed-strings "/** @file */" --recursive . --files-with-matches |
+	grep --fixed-strings "//! @file" --recursive . --files-with-matches |
 		sort |
 		uniq
 ) |
