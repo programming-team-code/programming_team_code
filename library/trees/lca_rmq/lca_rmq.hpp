@@ -28,8 +28,8 @@ struct LCA {
     };
     rep(i, 0, sz(t)) if (t[i].p == -1) dfs(dfs, i);
     rmq = {order, [&](int v, int u) {
-             return t[v].d < t[u].d ? v : u;
-           }};
+      return t[v].d < t[u].d ? v : u;
+    }};
   }
   //! @param u,v 2 nodes in the same component
   //! @returns lca of u, v

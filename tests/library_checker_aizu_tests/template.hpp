@@ -17,8 +17,8 @@
 
 #include <bitset>
 #include <chrono>
-#include <climits>     // for INT_MAX, INT_MIN
-#include <complex>     //for kactl's FFT
+#include <climits>  // for INT_MAX, INT_MIN
+#include <complex>  //for kactl's FFT
 #include <functional>  //for lambdas
 #include <optional>
 #include <random>

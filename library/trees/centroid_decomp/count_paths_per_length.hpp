@@ -12,8 +12,8 @@
 vector<ll> count_paths_per_length(
   const vector<vi>& adj) {
   vector<ll> num_paths(sz(adj));
-  centroid(adj, [&](const vector<vi>& cd_adj,
-                  int cent) {
+  centroid(
+    adj, [&](const vector<vi>& cd_adj, int cent) {
     vector<vector<double>> child_depths;
     for (int v : cd_adj[cent]) {
       child_depths.emplace_back(1, 0.0);

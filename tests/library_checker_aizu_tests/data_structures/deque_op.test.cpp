@@ -16,10 +16,9 @@ int main() {
   // we want op(f1, f2) = the function f2(f1(x))
   deq dq(vector<line>(),
     [](const line& i, const line& j) -> line {
-      return pair(1LL * i.first * j.first % mod,
-        (1LL * j.first * i.second + j.second) %
-          mod);
-    });
+    return pair(1LL * i.first * j.first % mod,
+      (1LL * j.first * i.second + j.second) % mod);
+  });
   deque<line> stl_dq;
   while (q--) {
     int type;

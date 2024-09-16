@@ -22,8 +22,8 @@ int main() {
   sort(begin(edges), end(edges),
     [&](const vertical_edge& a,
       const vertical_edge& b) -> bool {
-      return a.x < b.x;
-    });
+    return a.x < b.x;
+  });
   const int mn = 0, mx = 1'000'000'001;
   implicit_seg_tree<500'000 * 31 * 2 * 2 + 100> ist(
     mn, mx);

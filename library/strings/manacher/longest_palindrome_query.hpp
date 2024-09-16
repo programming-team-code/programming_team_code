@@ -18,8 +18,8 @@ template <class T> struct longest_pal_query {
     vi init(sz(man));
     iota(all(init), 0);
     rmq = {init, [&](int i1, int i2) {
-             return len(i1) < len(i2) ? i2 : i1;
-           }};
+      return len(i1) < len(i2) ? i2 : i1;
+    }};
   }
   //! @param i center
   //! @returns length of longest palindrome around
@@ -52,14 +52,12 @@ template <class T> struct longest_pal_query {
   //! @space O(1)
   pii longest_pal(int le, int ri) {
     assert(le < ri);
-    int pal_len =
-      lower_bound(begin(idx),
-        begin(idx) + (ri - le), 0,
-        [&](int mid, int) {
-          return len(rmq.query(2 * le + mid - 1,
-                   2 * ri - mid)) >= mid;
-        }) -
-      begin(idx);
+    int pal_len = lower_bound(begin(idx),
+                    begin(idx) + (ri - le), 0,
+                    [&](int mid, int) {
+      return len(rmq.query(2 * le + mid - 1,
+               2 * ri - mid)) >= mid;
+    }) - begin(idx);
     int best_center = rmq.query(
       2 * le + pal_len - 1, 2 * ri - pal_len);
     return {

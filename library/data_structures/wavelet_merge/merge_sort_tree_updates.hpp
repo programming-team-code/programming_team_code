@@ -56,8 +56,8 @@ struct merge_sort_tree_updates {
     rep(i, tl, tr) cpy[i].second = i < tm;
     inplace_merge(begin(cpy) + tl, begin(cpy) + tm,
       begin(cpy) + tr, [&](auto& i, auto& j) {
-        return a[i.first] < a[j.first];
-      });
+      return a[i.first] < a[j.first];
+    });
     vector<bool> bools(tr - tl);
     transform(begin(cpy) + tl, begin(cpy) + tr,
       begin(bools),

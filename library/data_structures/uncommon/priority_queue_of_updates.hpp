@@ -44,8 +44,8 @@ struct pq_updates {
     }
     auto it =
       remove_if(idx + all(upd_st), [&](auto& curr) {
-        return curr.second->first >= lowest_pri;
-      });
+      return curr.second->first >= lowest_pri;
+    });
     reverse_copy(all(extra), it);
     rep(i, idx, sz(upd_st)) ds.undo();
     upd_st.pop_back();

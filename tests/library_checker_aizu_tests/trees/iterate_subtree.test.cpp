@@ -20,12 +20,11 @@ int main() {
       cnt_big_iterated(n);
     for (int i = 0; i < n; i++) {
       if (empty(adj[i])) continue;
-      int big_ch_idx = int(
-        max_element(begin(adj[i]), end(adj[i]),
-          [&](int x, int y) {
-            return lc.t[x].sub_sz < lc.t[y].sub_sz;
-          }) -
-        begin(adj[i]));
+      int big_ch_idx =
+        int(max_element(begin(adj[i]), end(adj[i]),
+              [&](int x, int y) {
+        return lc.t[x].sub_sz < lc.t[y].sub_sz;
+      }) - begin(adj[i]));
       for (int j = 0; j < sz(adj[i]); j++) {
         int v = adj[i][j];
         assert(lc.t[v].sub_sz <=

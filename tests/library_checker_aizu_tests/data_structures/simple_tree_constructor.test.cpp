@@ -18,9 +18,9 @@ int main() {
   tree st(init, {1, 0},
     [&](const array<int, 2>& le,
       const array<int, 2>& ri) -> array<int, 2> {
-      return {int(1LL * le[0] * ri[0] % mod),
-        int((1LL * ri[0] * le[1] + ri[1]) % mod)};
-    });
+    return {int(1LL * le[0] * ri[0] % mod),
+      int((1LL * ri[0] * le[1] + ri[1]) % mod)};
+  });
   while (q--) {
     int type;
     cin >> type;

@@ -18,7 +18,7 @@ struct cuts {
   int num_bccs =
     0;  //!< number of bi-connected components
   vector<bool>
-    is_cut;   //!< is_cut[node] = 1 iff cut node
+    is_cut;  //!< is_cut[node] = 1 iff cut node
   vi bcc_id;  //!< bcc_id[edge id] = id of bcc
               //!< (which are labeled 0, 1, ...,
               //!< `num_bccs`-1)
