@@ -33,6 +33,13 @@ for header in ../library/**/*.hpp; do
 	echo "$header"
 	for i in $(seq "$(wc --lines <"$header")" -5 1); do
 		hash=$(head --lines "$i" "$header" | sed '/^#include/d' | cpp -dD -P -fpreprocessed | ./../library/contest/hash.sh)
+    line_length=$(sed --quiet "${i}p" "$header" | wc --chars)
+    padding_length=$((60 - 8 - $line_length))
+    echo $line_length
+    echo $padding_length
+    padding_length=$(( $padding_length > 0 ? $padding_length : 0 ))
+    echo $padding_length
+    padding=$(printf '%*s' "$num_spaces")
 		sed --in-place "${i}s/$/\/\/${hash}/" "$header"
 	done
 done
