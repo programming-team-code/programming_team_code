@@ -34,6 +34,7 @@ for header in ../library/**/*.hpp; do
 	for i in $(seq "$(wc --lines <"$header")" -5 1); do
 		hash=$(head --lines "$i" "$header" | sed '/^#include/d' | cpp -dD -P -fpreprocessed | ./../library/contest/hash.sh)
 		line_length=$(sed --quiet "${i}p" "$header" | wc --chars)
+		# PDF wraps at 60 chars, and hash comment takes 8 chars total
 		padding_length=$((60 - 8 - line_length))
 		padding_length=$((padding_length > 0 ? padding_length : 0))
 		padding=$(printf '%*s' "$padding_length" '')
