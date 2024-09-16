@@ -1,7 +1,7 @@
 ---
 Language: Cpp
 BasedOnStyle: Google
-ColumnLimit: 60
+ColumnLimit: 52
 Standard: c++17
 SortIncludes: Never
 AllowShortIfStatementsOnASingleLine: AllIfsAndElse
