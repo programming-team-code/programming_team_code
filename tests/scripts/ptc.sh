@@ -36,7 +36,7 @@ for header in ../library/**/*.hpp; do
 		line_length=$(sed --quiet "${i}p" "$header" | wc --chars)
 		padding_length=$((60 - 8 - line_length))
 		padding_length=$(( padding_length > 0 ? padding_length : 0 ))
-		padding=$(printf '%*s' "$padding_length")
+		padding=$(printf '%*s' "$padding_length" '')
 		sed --in-place "${i}s/$/$padding\/\/${hash}/" "$header"
 	done
 done
