@@ -2,6 +2,7 @@
 # ** glob now searches any number of levels
 shopt -s globstar
 
+# PDF will wrap at 60 characters, but going over a tad is okay I think
 WORD_LENGTH_THRESHOLD=63
 echo "The following words are > $WORD_LENGTH_THRESHOLD characters, and won't wrap in PDF:"
 cat ../library/**/*.hpp |
@@ -30,11 +31,14 @@ sed --in-place '/^\/\/ NOLINTNEXTLINE(readability-identifier-naming)$/d' ../libr
 chmod +x ../library/contest/hash.sh
 for header in ../library/**/*.hpp; do
 	echo "$header"
-	cp "$header" input
-	lines="$(wc -l <input)"
-	for i in $(seq "$lines" -5 1); do
-		hash=$(head -n "$i" input | sed '/^#include/d' | cpp -dD -P -fpreprocessed | ./../library/contest/hash.sh)
-		sed -i "${i}s/$/\/\/${hash}/" "$header"
+	for i in $(seq "$(wc --lines <"$header")" -5 1); do
+		hash=$(head --lines "$i" "$header" | sed '/^#include/d' | cpp -dD -P -fpreprocessed | ./../library/contest/hash.sh)
+		line_length=$(sed --quiet "${i}p" "$header" | wc --chars)
+		# PDF wraps at 60 chars, and hash comment takes 8 chars total
+		padding_length=$((60 - 8 - line_length))
+		padding_length=$((padding_length > 0 ? padding_length : 0))
+		padding=$(printf '%*s' "$padding_length" '')
+		sed --in-place "${i}s/$/$padding\/\/${hash}/" "$header"
 	done
 done
 
