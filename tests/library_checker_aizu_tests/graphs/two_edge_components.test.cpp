@@ -33,8 +33,8 @@ int main() {
     }
     int sum_deg = accumulate(begin(bt), end(bt), 0,
       [](int sum, const auto& neighbors) -> int {
-      return sum + sz(neighbors);
-    });
+        return sum + sz(neighbors);
+      });
     int cnt_bridges = accumulate(
       begin(cc.is_bridge), end(cc.is_bridge), 0);
     assert(sum_deg % 2 == 0 &&

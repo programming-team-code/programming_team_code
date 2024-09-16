@@ -48,8 +48,8 @@ vi offline_incremental_scc(
     auto scc_id = sccs(adj).scc_id;
     auto split =
       partition(el, er, [&](const auto& ed) {
-      return scc_id[ed[0]] == scc_id[ed[1]];
-    });
+        return scc_id[ed[0]] == scc_id[ed[1]];
+      });
     for (auto it = el; it != split; it++)
       joins[it->back()] = mid;
     if (tr - tl == 1) return;

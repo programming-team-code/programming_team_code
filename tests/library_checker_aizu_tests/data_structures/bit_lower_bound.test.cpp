@@ -54,8 +54,8 @@ int main() {
       assert(
         res == st.find_first(k, n,
                  [&](int64_t x, int, int) -> bool {
-        return x > 0;
-      }));
+                   return x > 0;
+                 }));
       if (res == n) res = -1;
       cout << res << '\n';
     } else {
@@ -79,8 +79,8 @@ int main() {
       assert(
         res == st.find_last(0, k + 1,
                  [&](int64_t x, int, int) -> bool {
-        return x > 0;
-      }));
+                   return x > 0;
+                 }));
       cout << res << '\n';
     }
   }

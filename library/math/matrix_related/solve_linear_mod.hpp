@@ -35,8 +35,8 @@ struct solve_linear_mod {
     int j = 0;
     for_each(
       begin(mat), begin(mat) + rank, [&](auto& v) {
-      while (v[j].x == 0) j++;
-      x[j] = v.back();
-    });
+        while (v[j].x == 0) j++;
+        x[j] = v.back();
+      });
   }
 };

@@ -30,8 +30,8 @@ template <class F> struct centroid {
     for (int p = -1, sz_root = sub_sz[v];;) {
       auto big_ch =
         find_if(all(adj[v]), [&](int u) {
-        return u != p && 2 * sub_sz[u] > sz_root;
-      });
+          return u != p && 2 * sub_sz[u] > sz_root;
+        });
       if (big_ch == end(adj[v])) break;
       p = v, v = *big_ch;
     }

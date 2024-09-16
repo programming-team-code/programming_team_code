@@ -10,5 +10,4 @@ AllowShortBlocksOnASingleLine: Always
 AllowShortCaseLabelsOnASingleLine: true
 ContinuationIndentWidth: 2
 AlignAfterOpenBracket: DontAlign
-LambdaBodyIndentation: OuterScope
 ...

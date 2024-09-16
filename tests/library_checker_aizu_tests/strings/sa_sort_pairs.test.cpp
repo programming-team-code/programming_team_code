@@ -33,9 +33,9 @@ int main() {
   iota(begin(idxs), end(idxs), 0);
   sort(begin(idxs), end(idxs),
     [&](int i, int j) -> bool {
-    return lq.cmp_substrs(2 * i, 2 * (i + 1), 2 * j,
-             2 * (j + 1)) < 0;
-  });
+      return lq.cmp_substrs(2 * i, 2 * (i + 1),
+               2 * j, 2 * (j + 1)) < 0;
+    });
   for (int idx : idxs)
     cout << compress[arr[2 * idx]] << " "
          << compress[arr[2 * idx + 1]] << '\n';

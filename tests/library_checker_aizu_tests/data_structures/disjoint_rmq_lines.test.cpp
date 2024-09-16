@@ -27,15 +27,15 @@ int main() {
   }
   disjoint_rmq rmq(
     lines, [](const auto& a, const auto& b) {
-    // f1(x) = a.first * x + a.second
-    // f2(x) = b.first * x + b.second
-    // f2(f1(x)) = b.first * (a.first * x +
-    // a.second) + b.second
-    //           = (a.first * b.first) * x +
-    //           (b.first * a.second + b.second)
-    return pair(a.first * b.first % mod,
-      (b.first * a.second + b.second) % mod);
-  });
+      // f1(x) = a.first * x + a.second
+      // f2(x) = b.first * x + b.second
+      // f2(f1(x)) = b.first * (a.first * x +
+      // a.second) + b.second
+      //           = (a.first * b.first) * x +
+      //           (b.first * a.second + b.second)
+      return pair(a.first * b.first % mod,
+        (b.first * a.second + b.second) % mod);
+    });
   int le = 0, ri = 0;  // range [le, ri)
   for (const auto& curr : queries) {
     if (curr.type == 0) ri++;

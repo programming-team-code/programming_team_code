@@ -33,7 +33,7 @@ array<vi, 2> compress_tree(vi subset) {
   subset.erase(unique(all(subset)), end(subset));
   return {mono_st(subset,
             [&](int u, int v) {
-    return in_subtree(u, v);
-  }),
+              return in_subtree(u, v);
+            }),
     subset};
 }
