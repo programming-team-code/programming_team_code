@@ -1,6 +1,7 @@
 //! @file
 #pragma once
-//! @see https://github.com/kth-competitive-programming /kactl/blob/main/content/graph/SCC.h
+//! @see https://github.com/kth-competitive-programming
+//! /kactl/blob/main/content/graph/SCC.h
 //! @code{.cpp}
 //!     auto [num_sccs, scc_id] = sccs(adj);
 //! @endcode
@@ -23,8 +24,7 @@ struct sccs {
         if (scc_id[u] < 0)
           low = min(low, tin[u] ? tin[u] : self(self, u));
       if (tin[v] == low) {
-        rep(i, siz, sz(st))
-            scc_id[st[i]] = num_sccs;
+        rep(i, siz, sz(st)) scc_id[st[i]] = num_sccs;
         st.resize(siz);
         num_sccs++;
       }

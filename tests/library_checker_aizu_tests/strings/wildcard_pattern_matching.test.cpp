@@ -1,4 +1,6 @@
-#define PROBLEM "https://judge.yosupo.jp/problem/wildcard_pattern_matching"
+#define PROBLEM                      \
+  "https://judge.yosupo.jp/problem/" \
+  "wildcard_pattern_matching"
 
 #include "../template.hpp"
 #include "../../../library/strings/wildcard_pattern_matching.hpp"
@@ -33,7 +35,8 @@ int main() {
   cin >> haystack >> needle;
   auto haystack_vec = to_vec(haystack);
   auto needle_vec = to_vec(needle);
-  auto matches = wildcard_pattern_matching(haystack_vec, needle_vec, conv);
+  auto matches = wildcard_pattern_matching(
+      haystack_vec, needle_vec, conv);
   for (bool b : matches) cout << b;
   cout << '\n';
   return 0;

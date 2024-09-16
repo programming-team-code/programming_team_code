@@ -1,4 +1,6 @@
-#define PROBLEM "https://judge.yosupo.jp/problem/range_parallel_unionfind"
+#define PROBLEM                      \
+  "https://judge.yosupo.jp/problem/" \
+  "range_parallel_unionfind"
 
 #include "../template.hpp"
 #include "../../../library/data_structures/dsu/range_parallel_dsu.hpp"
@@ -30,8 +32,10 @@ int main() {
     dsu.join(a, b, k, f);
     queries.push_back({a, b, k});
     cout << ans.x << '\n';
-    if (qq <= 10 || abs(q - qq) <= 10 || rnd(0, 50'000) == 0) {
-      auto uf = get_range_parallel_equivalence_classes(queries, n);
+    if (qq <= 10 || abs(q - qq) <= 10 ||
+        rnd(0, 50'000) == 0) {
+      auto uf = get_range_parallel_equivalence_classes(
+          queries, n);
       vector<mint> sums(n);
       mint offline_ans = 0;
       for (int i = 0; i < n; i++) {

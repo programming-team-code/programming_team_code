@@ -1,4 +1,6 @@
-#define PROBLEM "https://judge.yosupo.jp/problem/connected_components_of_complement_graph"
+#define PROBLEM                      \
+  "https://judge.yosupo.jp/problem/" \
+  "connected_components_of_complement_graph"
 
 #include "../template.hpp"
 #include "../../../library/graphs/complement_graph_ccs.hpp"
@@ -23,9 +25,7 @@ int main() {
   cout << num_ccs << '\n';
   for (auto& cc : ccs) {
     cout << size(cc);
-    for (int v : cc) {
-      cout << ' ' << v;
-    }
+    for (int v : cc) { cout << ' ' << v; }
     cout << '\n';
   }
   return 0;

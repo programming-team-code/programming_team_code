@@ -1,4 +1,6 @@
-#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/library/7/DPL/all/DPL_3_B"
+#define PROBLEM                                         \
+  "https://onlinejudge.u-aizu.ac.jp/courses/library/7/" \
+  "DPL/all/DPL_3_B"
 #include "../template.hpp"
 #include "../mono_st_asserts.hpp"
 #include "../../../library/contest/random.hpp"
@@ -39,13 +41,15 @@ int main() {
         for (int j = 1; j <= min(5, m); j++)
           tests.emplace_back(i, j);
       int iter = 20;
-      while (iter--) tests.emplace_back(rnd(1, n), rnd(1, m));
+      while (iter--)
+        tests.emplace_back(rnd(1, n), rnd(1, m));
     }
     for (auto [rows, cols] : tests) {
       int cnt = 0;
       for (int i = 0; i + rows <= n; i++) {
         for (int j = 0; j + cols <= m; j++) {
-          if (sm.sum(i, j, i + rows, j + cols) == rows * cols)
+          if (sm.sum(i, j, i + rows, j + cols) ==
+              rows * cols)
             cnt++;
         }
       }
@@ -55,8 +59,7 @@ int main() {
   int res = 0;
   for (int i = 1; i <= n; i++) {
     for (int j = 1; j <= m; j++) {
-      if (size_counts[i][j])
-        res = max(res, i * j);
+      if (size_counts[i][j]) res = max(res, i * j);
     }
   }
   cout << res << '\n';

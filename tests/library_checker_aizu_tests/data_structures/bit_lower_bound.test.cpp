@@ -1,4 +1,5 @@
-#define PROBLEM "https://judge.yosupo.jp/problem/predecessor_problem"
+#define PROBLEM \
+  "https://judge.yosupo.jp/problem/predecessor_problem"
 #include "../template.hpp"
 
 #include "../../../library/data_structures/bit.hpp"
@@ -48,7 +49,9 @@ int main() {
       };
       int res = bit.lower_bound(order + 1);
       assert(res == st.find_first(0, n, f));
-      assert(res == st.find_first(k, n, [&](int64_t x, int, int) -> bool {
+      assert(res ==
+             st.find_first(
+                 k, n, [&](int64_t x, int, int) -> bool {
         return x > 0;
       }));
       if (res == n) res = -1;
@@ -70,7 +73,9 @@ int main() {
       };
       int res = bit.lower_bound(order);
       assert(max(res, 0) == st.find_first(0, n, f));
-      assert(res == st.find_last(0, k + 1, [&](int64_t x, int, int) -> bool {
+      assert(res ==
+             st.find_last(0, k + 1,
+                          [&](int64_t x, int, int) -> bool {
         return x > 0;
       }));
       cout << res << '\n';

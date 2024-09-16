@@ -1,4 +1,6 @@
-#define PROBLEM "https://judge.yosupo.jp/problem/number_of_increasing_sequences_between_two_sequences"
+#define PROBLEM                      \
+  "https://judge.yosupo.jp/problem/" \
+  "number_of_increasing_sequences_between_two_sequences"
 #include "../template.hpp"
 
 #define const ;
@@ -31,9 +33,7 @@ ll count_between_two_sequences(const vl& a, const vl& b) {
     {
       vl h(b[i] - a[i]);
       for (int num = a[i]; num < b[i]; num++) {
-        while (j < n && a[j] <= num) {
-          j++;
-        }
+        while (j < n && a[j] <= num) { j++; }
         h[num - a[i]] = j - i;
       }
       assert(sz(dp) <= sz(h));
@@ -62,12 +62,8 @@ int main() {
   int n, m;
   cin >> n >> m;
   vl a(n), b(n);
-  for (int i = 0; i < n; i++) {
-    cin >> a[i];
-  }
-  for (int i = 0; i < n; i++) {
-    cin >> b[i];
-  }
+  for (int i = 0; i < n; i++) { cin >> a[i]; }
+  for (int i = 0; i < n; i++) { cin >> b[i]; }
   for (int i = 1; i < n; i++) {
     a[i] = max(a[i], a[i - 1]);
   }

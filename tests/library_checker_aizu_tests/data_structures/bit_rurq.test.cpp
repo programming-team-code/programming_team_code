@@ -1,4 +1,6 @@
-#define PROBLEM "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_G"
+#define PROBLEM                             \
+  "https://judge.u-aizu.ac.jp/onlinejudge/" \
+  "description.jsp?id=DSL_2_G"
 #include "../template.hpp"
 
 #include "../../../library/data_structures/bit_uncommon/rurq.hpp"

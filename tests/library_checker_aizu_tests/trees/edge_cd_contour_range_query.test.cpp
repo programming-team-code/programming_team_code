@@ -1,4 +1,6 @@
-#define PROBLEM "https://judge.yosupo.jp/problem/vertex_add_range_contour_sum_on_tree"
+#define PROBLEM                      \
+  "https://judge.yosupo.jp/problem/" \
+  "vertex_add_range_contour_sum_on_tree"
 #include "../template.hpp"
 #include "../edge_cd_asserts.hpp"
 
@@ -9,8 +11,7 @@ int main() {
   int n, q;
   cin >> n >> q;
   vector<int64_t> a(n);
-  for (int i = 0; i < n; i++)
-    cin >> a[i];
+  for (int i = 0; i < n; i++) cin >> a[i];
   vector<vector<int>> adj(n);
   for (int i = 0; i < n - 1; i++) {
     int u, v;
@@ -18,9 +19,7 @@ int main() {
     adj[u].push_back(v);
     adj[v].push_back(u);
   }
-  {
-    edge_cd(adj, edge_cd_asserts);
-  }
+  { edge_cd(adj, edge_cd_asserts); }
   contour_range_query<int64_t> cq(adj, a);
   while (q--) {
     int type;

@@ -1,5 +1,8 @@
-#define PROBLEM "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A"
-// since find_str_fast uses lower_bound in a weird way which makes the partition check fail
+#define PROBLEM                             \
+  "https://judge.u-aizu.ac.jp/onlinejudge/" \
+  "description.jsp?id=ITP1_1_A"
+// since find_str_fast uses lower_bound in a weird way which
+// makes the partition check fail
 #undef _GLIBCXX_DEBUG
 #include "../template.hpp"
 
@@ -15,12 +18,12 @@
 
 int main() {
   cin.tie(0)->sync_with_stdio(0);
-  // mainly to test all strings algs compile when passing in vectors
-  // I had a bug where `compare` is only for strings, making `find_str` useless when using vectors
+  // mainly to test all strings algs compile when passing in
+  // vectors I had a bug where `compare` is only for
+  // strings, making `find_str` useless when using vectors
   const int shift = 100'000;
   vector<int> arr(100);
-  for (int i = 0; i < 100; i++)
-    arr[i] = shift + i;
+  for (int i = 0; i < 100; i++) arr[i] = shift + i;
   sa_query sf_a(arr, shift + 100);
   {
     for (int i = 1; i < 100; i++)
@@ -33,8 +36,7 @@ int main() {
     assert(sf_a.cmp_sufs(99, 99) == 0);
   }
   vector<int> t(10);
-  for (int i = 50; i < 60; i++)
-    t[i - 50] = shift + i;
+  for (int i = 50; i < 60; i++) t[i - 50] = shift + i;
   {
     auto [sa_le, sa_ri] = sf_a.find_str(t);
     assert(sa_le == 50 && sa_ri == 51);
@@ -48,18 +50,23 @@ int main() {
   {
     assert(sf_a.len_lcp(0, 99) == 0);
     for (int i = 0; i < 100; i++) {
-      auto [sa_le, sa_ri, s_le, s_ri] = sf_a.find_substrs_concated({{i, i + 1}});
+      auto [sa_le, sa_ri, s_le, s_ri] =
+          sf_a.find_substrs_concated({{i, i + 1}});
       pair<int, int> short_res = sf_a.find_substr(i, i + 1);
-      assert(sa_le == short_res.first && sa_ri == short_res.second);
+      assert(sa_le == short_res.first &&
+             sa_ri == short_res.second);
       assert(sa_le == i && sa_ri == i + 1);
       assert(s_le == i && s_ri == i + 1);
     }
     for (int i = 0; i < 100; i++) {
-      auto [sa_le, sa_ri, s_le, s_ri] = sf_a.find_substrs_concated({{i, i}, {i, i}});
+      auto [sa_le, sa_ri, s_le, s_ri] =
+          sf_a.find_substrs_concated({{i, i}, {i, i}});
       pair<int, int> short_res = sf_a.find_substr(i, i);
-      assert(sa_le == short_res.first && sa_ri == short_res.second);
+      assert(sa_le == short_res.first &&
+             sa_ri == short_res.second);
     }
-    auto [sa_le, sa_ri, s_le, s_ri] = sf_a.find_substrs_concated({});
+    auto [sa_le, sa_ri, s_le, s_ri] =
+        sf_a.find_substrs_concated({});
     assert(sa_le == 0 && sa_ri == sz(arr));
     assert(s_le == s_ri);
     assert(sf_a.cmp_substrs(0, 0, 99, 99) == 0);
@@ -77,7 +84,8 @@ int main() {
   }
   {
     pal_query pq(arr);
-    vector<int> man(manacher(arr)), longest(longest_from_index(pq));
+    vector<int> man(manacher(arr)),
+        longest(longest_from_index(pq));
     for (int i = 0; i < sz(man); i++) {
       int sz = i - 2 * man[i] + 1;
       assert(sz == (1 ^ (i & 1)));
@@ -87,8 +95,7 @@ int main() {
       assert(pq.is_pal(i, i));
       if (i + 2 <= 100) {
         assert(!pq.is_pal(i, i + 1));
-        if (i)
-          assert(!pq.is_pal(i - 1, i + 1));
+        if (i) assert(!pq.is_pal(i - 1, i + 1));
       }
     }
     count_pal_query cpq(arr);

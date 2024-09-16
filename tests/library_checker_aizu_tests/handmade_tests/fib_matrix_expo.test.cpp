@@ -1,4 +1,6 @@
-#define PROBLEM "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A"
+#define PROBLEM                             \
+  "https://judge.u-aizu.ac.jp/onlinejudge/" \
+  "description.jsp?id=ITP1_1_A"
 #include "../template.hpp"
 #include "../../../library/contest/random.hpp"
 #include "../../../library/math/fibonacci.hpp"
@@ -32,8 +34,7 @@ int main() {
   assert(fib(3)[0] == 2);
   assert(fib(4)[0] == 3);
   assert(fib(5)[0] == 5);
-  for (int i = 0; i < 500; i++)
-    check(i);
+  for (int i = 0; i < 500; i++) check(i);
   for (int tests = 1000; tests--;)
     check(rnd<int64_t>(0, LLONG_MAX));
   cout << "Hello World\n";

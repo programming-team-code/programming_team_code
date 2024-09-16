@@ -1,13 +1,16 @@
 //! @file
 #pragma once
-//! @see https://cp-algorithms.com/string /aho_corasick.html#construction-of-the-trie
-const int mn = 'A', cnt_let = 26;  // mn <= s[i] < mn + cnt_let
+//! @see https://cp-algorithms.com/string
+//! /aho_corasick.html#construction-of-the-trie
+const int mn = 'A',
+          cnt_let = 26;  // mn <= s[i] < mn + cnt_let
 struct trie {
   struct node {
     array<int, cnt_let> next;
     int cnt_words = 0, par = -1;
     char ch;
-    node(int a_par = -1, char a_ch = '#') : par(a_par), ch(a_ch) {
+    node(int a_par = -1, char a_ch = '#')
+        : par(a_par), ch(a_ch) {
       fill(all(next), -1);
     }
   };

@@ -1,4 +1,5 @@
-#define PROBLEM "https://judge.yosupo.jp/problem/matrix_product_mod_2"
+#define PROBLEM \
+  "https://judge.yosupo.jp/problem/matrix_product_mod_2"
 #include "../template.hpp"
 
 #include "../../../library/math/matrix_related/binary_matrix_mult.hpp"

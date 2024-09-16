@@ -1,11 +1,11 @@
-#define PROBLEM "https://judge.yosupo.jp/problem/gcd_convolution"
+#define PROBLEM \
+  "https://judge.yosupo.jp/problem/gcd_convolution"
 #include "../template.hpp"
 
 #include "../../../library/math/mod_int.hpp"
 
 istream& operator>>(istream& is, vector<int>& v) {
-  for (int i = 1; i < sz(v); i++)
-    is >> v[i];
+  for (int i = 1; i < sz(v); i++) is >> v[i];
   return is;
 }
 
@@ -26,8 +26,7 @@ int main() {
     }
     c[g] = c[g] + sum_a * sum_b;
   }
-  for (int i = 1; i < n; i++)
-    cout << c[i].x << ' ';
+  for (int i = 1; i < n; i++) cout << c[i].x << ' ';
   cout << '\n';
   return 0;
 }

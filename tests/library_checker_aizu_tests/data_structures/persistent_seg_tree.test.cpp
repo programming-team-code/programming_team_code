@@ -1,6 +1,7 @@
-#define PROBLEM "https://judge.yosupo.jp/problem/rectangle_sum"
-// since this causes an O(n) partition check for each call to `lower_bound`,
-// causing TLE.
+#define PROBLEM \
+  "https://judge.yosupo.jp/problem/rectangle_sum"
+// since this causes an O(n) partition check for each call
+// to `lower_bound`, causing TLE.
 #undef _GLIBCXX_DEBUG
 #include "../template.hpp"
 
@@ -23,9 +24,15 @@ int main() {
   while (q--) {
     int le, down, ri, up;
     cin >> le >> down >> ri >> up;
-    le = int(lower_bound(begin(points), end(points), array<int, 3>({le, -1, -1})) - begin(points));
-    ri = int(lower_bound(begin(points), end(points), array<int, 3>({ri, -1, -1})) - begin(points));
-    cout << pst.query(down, up, ri) - pst.query(down, up, le) << '\n';
+    le = int(lower_bound(begin(points), end(points),
+                         array<int, 3>({le, -1, -1})) -
+             begin(points));
+    ri = int(lower_bound(begin(points), end(points),
+                         array<int, 3>({ri, -1, -1})) -
+             begin(points));
+    cout << pst.query(down, up, ri) -
+                pst.query(down, up, le)
+         << '\n';
   }
   return 0;
 }

@@ -1,4 +1,5 @@
-#define PROBLEM "https://judge.yosupo.jp/problem/cycle_detection"
+#define PROBLEM \
+  "https://judge.yosupo.jp/problem/cycle_detection"
 #include "../template.hpp"
 #include "../scc_asserts.hpp"
 
@@ -19,7 +20,8 @@ int main() {
   scc_asserts(adj);
   sccs scc(adj);
   vector<int> color(n);
-  vector<pair<int /*edge id*/, int /*node closer to root*/>> edge_stack;
+  vector<pair<int /*edge id*/, int /*node closer to root*/>>
+      edge_stack;
   auto dfs = [&](auto&& self, int u) -> void {
     for (auto [v, e_id] : adj_edge_id[u]) {
       if (color[v] == 0) {
@@ -31,7 +33,8 @@ int main() {
       } else if (color[v] == 1) {
         vector<int> res(1, e_id);
         while (1) {
-          auto [curr_edge_id, curr_node] = edge_stack.back();
+          auto [curr_edge_id, curr_node] =
+              edge_stack.back();
           edge_stack.pop_back();
           assert(scc.scc_id[curr_node] == scc.scc_id[u]);
           res.push_back(curr_edge_id);

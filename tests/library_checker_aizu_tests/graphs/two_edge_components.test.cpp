@@ -1,4 +1,6 @@
-#define PROBLEM "https://judge.yosupo.jp/problem/two_edge_connected_components"
+#define PROBLEM                      \
+  "https://judge.yosupo.jp/problem/" \
+  "two_edge_connected_components"
 #include "../template.hpp"
 #include "../../../library/graphs/bridges_cuts/bridge_tree.hpp"
 #include "../../../library/data_structures/dsu/dsu_restorable.hpp"
@@ -18,7 +20,9 @@ int main() {
   }
   bridges cc(adj, m);
   vector<vector<int>> bt = bridge_tree(adj, cc);
-  assert(find(begin(cc.two_edge_ccid), end(cc.two_edge_ccid), -1) == end(cc.two_edge_ccid));
+  assert(find(begin(cc.two_edge_ccid),
+              end(cc.two_edge_ccid),
+              -1) == end(cc.two_edge_ccid));
   // check correctness of bridge tree
   {
     assert(sz(bt) == cc.num_2_edge_ccs);
@@ -26,10 +30,13 @@ int main() {
       for (auto to : bt[v])
         assert(to != v);  // didn't add any non-bridge
     }
-    int sum_deg = accumulate(begin(bt), end(bt), 0, [](int sum, const auto& neighbors) -> int {
+    int sum_deg = accumulate(
+        begin(bt), end(bt), 0,
+        [](int sum, const auto& neighbors) -> int {
       return sum + sz(neighbors);
     });
-    int cnt_bridges = accumulate(begin(cc.is_bridge), end(cc.is_bridge), 0);
+    int cnt_bridges = accumulate(begin(cc.is_bridge),
+                                 end(cc.is_bridge), 0);
     assert(sum_deg % 2 == 0 && sum_deg / 2 == cnt_bridges);
   }
   dsu_restorable dsu(n);
@@ -50,12 +57,14 @@ int main() {
   }
   for (int i = 0; i < n; i++) {
     int par_of_cc = dsu.find(i);
-    assert(cc.two_edge_ccid[i] == cc.two_edge_ccid[par_of_cc]);
+    assert(cc.two_edge_ccid[i] ==
+           cc.two_edge_ccid[par_of_cc]);
   }
   for (int i = 0; i < m; i++) {
     auto [u, v] = edges[i];
     // bridge if nodes are from different 2-edge CCs
-    assert(cc.is_bridge[i] == (cc.two_edge_ccid[u] != cc.two_edge_ccid[v]));
+    assert(cc.is_bridge[i] ==
+           (cc.two_edge_ccid[u] != cc.two_edge_ccid[v]));
   }
   vector<vector<int>> ccs(cc.num_2_edge_ccs);
   for (int i = 0; i < n; i++)
@@ -63,8 +72,7 @@ int main() {
   cout << cc.num_2_edge_ccs << '\n';
   for (const auto& curr_cc : ccs) {
     cout << sz(curr_cc) << " ";
-    for (auto node : curr_cc)
-      cout << node << " ";
+    for (auto node : curr_cc) cout << node << " ";
     cout << '\n';
   }
   return 0;

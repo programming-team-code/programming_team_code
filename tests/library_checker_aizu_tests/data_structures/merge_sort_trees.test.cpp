@@ -1,6 +1,7 @@
-#define PROBLEM "https://judge.yosupo.jp/problem/static_range_frequency"
-// since this causes an O(n) partition check for each call to `equal_range`,
-// causing TLE.
+#define PROBLEM \
+  "https://judge.yosupo.jp/problem/static_range_frequency"
+// since this causes an O(n) partition check for each call
+// to `equal_range`, causing TLE.
 #undef _GLIBCXX_DEBUG
 #include "../template.hpp"
 
@@ -14,8 +15,7 @@ int main() {
   int n, q;
   cin >> n >> q;
   vector<int> arr(n);
-  for (int i = 0; i < n; i++)
-    cin >> arr[i];
+  for (int i = 0; i < n; i++) cin >> arr[i];
   merge_sort_tree mst(arr);
   merge_sort_tree_updates mstu(arr, vector<bool>(n, 1));
   while (q--) {

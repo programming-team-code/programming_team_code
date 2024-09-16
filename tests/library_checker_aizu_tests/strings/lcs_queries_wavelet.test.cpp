@@ -1,4 +1,5 @@
-#define PROBLEM "https://judge.yosupo.jp/problem/prefix_substring_lcs"
+#define PROBLEM \
+  "https://judge.yosupo.jp/problem/prefix_substring_lcs"
 #include "../template.hpp"
 
 #include "../../../library/strings/longest_common_subsequence/lcs_dp.hpp"

@@ -1,7 +1,8 @@
 //! @file
 #pragma once
 //! @param v node
-//! @returns range [le, ri) such that the following (ri - le) substrings are equal:
+//! @returns range [le, ri) such that the following (ri -
+//! le) substrings are equal:
 //!     - for all i in [le, ri): s.substr(sa[i], lcp_len(v))
 //! @time O(1)
 //! @space O(1)

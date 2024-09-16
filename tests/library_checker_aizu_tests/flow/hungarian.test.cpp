@@ -9,12 +9,10 @@ int main() {
   cin >> n;
   vector<vector<ll>> a(n + 1, vector<ll>(n + 1));
   for (int i = 1; i <= n; i++) {
-    for (int j = 1; j <= n; j++)
-      cin >> a[i][j];
+    for (int j = 1; j <= n; j++) cin >> a[i][j];
   }
   auto [min_weight, l_to_r] = hungarian(a);
   cout << min_weight << '\n';
-  for (int i = 1; i <= n; i++)
-    cout << l_to_r[i] - 1 << " ";
+  for (int i = 1; i <= n; i++) cout << l_to_r[i] - 1 << " ";
   return 0;
 }

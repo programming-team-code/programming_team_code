@@ -9,5 +9,6 @@
 ll C(int n, int k) {
   if (k < 0 || n < k) return 0;
   grow(n);
-  return t[n].fact * t[k].inv_fact % mod * t[n - k].inv_fact % mod;
+  return t[n].fact * t[k].inv_fact % mod *
+         t[n - k].inv_fact % mod;
 }

@@ -9,8 +9,7 @@ int main() {
   cin >> n;
   vector<vector<mint>> matrix(n, vector<mint>(n));
   for (int i = 0; i < n; i++)
-    for (int j = 0; j < n; j++)
-      cin >> matrix[i][j].x;
+    for (int j = 0; j < n; j++) cin >> matrix[i][j].x;
   auto [rank, det] = row_reduce(matrix, n);
   cout << det.x << '\n';
   return 0;

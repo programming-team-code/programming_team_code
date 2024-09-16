@@ -1,7 +1,8 @@
 //! @file
 #pragma once
 #include "../bit.hpp"
-//! @see https://blog.mitrichev.ch/2013 /05/fenwick-tree-range-updates.html
+//! @see https://blog.mitrichev.ch/2013
+//! /05/fenwick-tree-range-updates.html
 //!
 //! range update, range query
 template <class T> struct bit_rurq {
@@ -47,7 +48,5 @@ template <class T> struct bit_rurq {
   //! @returns a[le] + a[le + 1] + ... + a[ri - 1]
   //! @time O(log n)
   //! @space O(1)
-  T query(int le, int ri) {
-    return query(ri) - query(le);
-  }
+  T query(int le, int ri) { return query(ri) - query(le); }
 };

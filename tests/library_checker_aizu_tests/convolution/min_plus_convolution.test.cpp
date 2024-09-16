@@ -1,5 +1,6 @@
-#define PROBLEM \
-  "https://judge.yosupo.jp/problem/min_plus_convolution_convex_arbitrary"
+#define PROBLEM                      \
+  "https://judge.yosupo.jp/problem/" \
+  "min_plus_convolution_convex_arbitrary"
 
 #include "../template.hpp"
 #include "../../../library/convolution/min_plus_convolution_convex_and_arbitrary.hpp"
@@ -15,7 +16,8 @@ int main() {
   cin >> n >> m;
   vector<int> convex(n), arbitrary(m);
   cin >> convex >> arbitrary;
-  auto res = min_plus_convolution_convex_and_arbitrary(convex, arbitrary);
+  auto res = min_plus_convolution_convex_and_arbitrary(
+      convex, arbitrary);
   for (int r : res) cout << r << ' ';
   cout << '\n';
   return 0;

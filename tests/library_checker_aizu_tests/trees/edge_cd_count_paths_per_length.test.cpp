@@ -1,4 +1,6 @@
-#define PROBLEM "https://judge.yosupo.jp/problem/frequency_table_of_tree_distance"
+#define PROBLEM                      \
+  "https://judge.yosupo.jp/problem/" \
+  "frequency_table_of_tree_distance"
 #include "../template.hpp"
 #include "../edge_cd_asserts.hpp"
 
@@ -15,12 +17,9 @@ int main() {
     adj[u].push_back(v);
     adj[v].push_back(u);
   }
-  {
-    edge_cd(adj, edge_cd_asserts);
-  }
+  { edge_cd(adj, edge_cd_asserts); }
   vector<ll> cnt_len = count_paths_per_length(adj);
-  for (int i = 1; i < n; i++)
-    cout << cnt_len[i] << " ";
+  for (int i = 1; i < n; i++) cout << cnt_len[i] << " ";
   cout << '\n';
   return 0;
 }

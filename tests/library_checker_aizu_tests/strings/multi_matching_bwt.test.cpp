@@ -1,4 +1,6 @@
-#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/lesson/1/ALDS1/all/ALDS1_14_D"
+#define PROBLEM                                        \
+  "https://onlinejudge.u-aizu.ac.jp/courses/lesson/1/" \
+  "ALDS1/all/ALDS1_14_D"
 #include "../template.hpp"
 #include "../mono_st_asserts.hpp"
 #include "compress_char.hpp"
@@ -31,7 +33,8 @@ int main() {
     cin >> t;
     transform(begin(t), end(t), begin(t), compress_char);
     auto [le, ri] = bw.find_str(compress_char('a') + t);
-    assert(sz(le) == 2 + sz(t) && sz(ri) == 2 + sz(t) && le.back() == 0 && ri.back() == sz(s));
+    assert(sz(le) == 2 + sz(t) && sz(ri) == 2 + sz(t) &&
+           le.back() == 0 && ri.back() == sz(s));
     for (int i = sz(le) - 2; i >= 0; i--)
       assert(ri[i] - le[i] <= ri[i + 1] - le[i + 1]);
     cout << (!!(ri[1] - le[1] > 0)) << '\n';

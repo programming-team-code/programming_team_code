@@ -30,7 +30,5 @@ template <class T> struct bit_rupq {
   //! @returns a[i]
   //! @time O(log n)
   //! @space O(1)
-  T get_index(int i) {
-    return bit.query(i + 1);
-  }
+  T get_index(int i) { return bit.query(i + 1); }
 };

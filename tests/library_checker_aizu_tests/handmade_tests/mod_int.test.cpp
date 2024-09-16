@@ -1,11 +1,14 @@
-#define PROBLEM "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A"
+#define PROBLEM                             \
+  "https://judge.u-aizu.ac.jp/onlinejudge/" \
+  "description.jsp?id=ITP1_1_A"
 #include "../template.hpp"
 
 #include "../../../library/contest/random.hpp"
 
 #include "../../../kactl/content/number-theory/euclid.h"
 
-// trick to remove const so I can use arbitrary prime mode here
+// trick to remove const so I can use arbitrary prime mode
+// here
 #define const ;
 #include "../../../library/math/mod_int_pow.hpp"
 #undef const
@@ -25,23 +28,27 @@ int main() {
       int to_add = rnd(-mod + 1, mod - 1);
       int prev_val = val.x;
       val = val + mint(to_add);
-      assert(val.x == (1LL * prev_val + to_add + mod) % mod);
+      assert(val.x ==
+             (1LL * prev_val + to_add + mod) % mod);
     } else if (type == 2) {
       int to_sub = rnd(-mod + 1, mod - 1);
       int prev_val = val.x;
       val = val - mint(to_sub);
-      assert(val.x == (1LL * prev_val - to_sub + mod) % mod);
+      assert(val.x ==
+             (1LL * prev_val - to_sub + mod) % mod);
     } else if (type == 3) {
       int to_mult = rnd(-mod + 1, mod - 1);
       int prev_val = val.x;
       val = val * mint(to_mult);
-      assert(val.x == (1LL * prev_val * (to_mult + mod)) % mod);
+      assert(val.x ==
+             (1LL * prev_val * (to_mult + mod)) % mod);
     } else if (type == 4) {
       if (mod == 1 || mod == 4) continue;
       int to_divide = rnd(1, mod - 1);
       int prev_val = val.x;
       val = val / mint(to_divide);
-      assert(val.x == (mpow(to_divide, mod - 2) * prev_val).x);
+      assert(val.x ==
+             (mpow(to_divide, mod - 2) * prev_val).x);
     } else {
       assert(type == 5);
       int pow = rnd(0, 20);

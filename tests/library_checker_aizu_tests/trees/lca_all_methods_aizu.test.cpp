@@ -1,4 +1,6 @@
-#define PROBLEM "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_5_C"
+#define PROBLEM                             \
+  "https://judge.u-aizu.ac.jp/onlinejudge/" \
+  "description.jsp?id=GRL_5_C"
 #include "../template.hpp"
 
 #include "../../../library/trees/tree_lift/tree_lift.hpp"
@@ -18,8 +20,7 @@ int main() {
     int k;
     cin >> k;
     adj[i].resize(k);
-    for (int& child : adj[i])
-      cin >> child;
+    for (int& child : adj[i]) cin >> child;
   }
   tree_lift tl(adj);
   LCA lc(adj);
@@ -29,7 +30,8 @@ int main() {
     assert(tl.lca(i, i) == i);
     assert(lc.lca(i, i) == i);
     assert(lin_lca.lca(i, i) == i);
-    assert(lc.t[lc.rmq.dp[0][i]].in == i && lc.rmq.dp[0][lc.t[i].in] == i);
+    assert(lc.t[lc.rmq.dp[0][i]].in == i &&
+           lc.rmq.dp[0][lc.t[i].in] == i);
   }
   int q;
   cin >> q;

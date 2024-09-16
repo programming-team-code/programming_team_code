@@ -1,4 +1,6 @@
-#define PROBLEM "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A"
+#define PROBLEM                             \
+  "https://judge.u-aizu.ac.jp/onlinejudge/" \
+  "description.jsp?id=ITP1_1_A"
 #include "../template.hpp"
 #include "../perm_tree_asserts.hpp"
 

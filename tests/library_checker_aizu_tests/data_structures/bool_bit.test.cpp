@@ -1,4 +1,5 @@
-#define PROBLEM "https://judge.yosupo.jp/problem/point_add_range_sum"
+#define PROBLEM \
+  "https://judge.yosupo.jp/problem/point_add_range_sum"
 #include "../template.hpp"
 
 #include "../../../library/data_structures/wavelet_merge/bool_bit.hpp"
@@ -28,8 +29,7 @@ int main() {
   int n, q;
   cin >> n >> q;
   vector<int64_t> arr(n);
-  for (int i = 0; i < n; i++)
-    cin >> arr[i];
+  for (int i = 0; i < n; i++) cin >> arr[i];
   vector<bool_bit> prebools = init_prebools(arr);
   assert(sz(prebools) == max_bit);
   while (q--) {
@@ -51,7 +51,8 @@ int main() {
         if (ri - le == 1)
           sum += (1LL << bit) * prebools[bit].on(le);
         else
-          sum += (1LL << bit) * prebools[bit].popcount(le, ri);
+          sum +=
+              (1LL << bit) * prebools[bit].popcount(le, ri);
       }
       cout << sum << '\n';
     }

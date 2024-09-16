@@ -1,4 +1,5 @@
-#define PROBLEM "https://judge.yosupo.jp/problem/range_kth_smallest"
+#define PROBLEM \
+  "https://judge.yosupo.jp/problem/range_kth_smallest"
 #include "../template.hpp"
 
 #include "../../../library/data_structures/seg_tree_uncommon/kth_smallest_query.hpp"
@@ -8,11 +9,11 @@ int main() {
   int n, q;
   cin >> n >> q;
   vector<int> arr(n);
-  for (int i = 0; i < n; i++)
-    cin >> arr[i];
+  for (int i = 0; i < n; i++) cin >> arr[i];
   vector<int> sorted(arr);
   sort(begin(sorted), end(sorted));
-  sorted.erase(unique(begin(sorted), end(sorted)), end(sorted));
+  sorted.erase(unique(begin(sorted), end(sorted)),
+               end(sorted));
   for (int& val : arr) {
     int start = 0, end = sz(sorted);
     while (start + 1 < end) {

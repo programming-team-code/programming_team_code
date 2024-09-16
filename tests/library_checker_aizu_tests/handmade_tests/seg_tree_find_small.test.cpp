@@ -1,5 +1,6 @@
-#define PROBLEM \
-  "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A"
+#define PROBLEM                             \
+  "https://judge.u-aizu.ac.jp/onlinejudge/" \
+  "description.jsp?id=ITP1_1_A"
 #include "../template.hpp"
 
 #include "../../../library/contest/random.hpp"
@@ -17,8 +18,7 @@ int main() {
         int ri = rnd(le + 1, n);
         int diff = rnd(0, 10);
         seg.update(le, ri, diff);
-        for (int i = le; i < ri; i++)
-          a[i] += diff;
+        for (int i = le; i < ri; i++) a[i] += diff;
       } else {
         int le = rnd(0, n - 1);
         int ri = rnd(le + 1, n);
@@ -48,9 +48,11 @@ int main() {
           return 1;
         };
         st_walk_sum = 0;
-        assert(smallest_index_greater_sum == seg.find_first(le, ri, f));
+        assert(smallest_index_greater_sum ==
+               seg.find_first(le, ri, f));
         st_walk_sum = 0;
-        assert(largest_index_greater_sum == seg.find_last(le, ri, f));
+        assert(largest_index_greater_sum ==
+               seg.find_last(le, ri, f));
       }
     }
   }

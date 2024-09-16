@@ -4,18 +4,23 @@
 //! @code{.cpp}
 //!     auto [min_weight, l_to_r] = hungarian(cost);
 //! @endcode
-//! Calculates a matching: number of edges is maximized, but since it's a
-//! complete bipartite graph with n <= m, this matching always has size n. Of
-//! all ways to do this, sum of edge weights is minimized.
+//! Calculates a matching: number of edges is maximized, but
+//! since it's a complete bipartite graph with n <= m, this
+//! matching always has size n. Of all ways to do this, sum
+//! of edge weights is minimized.
 struct hungarian {
   ll min_weight;  //!< sum of edge weights in matching
-  vi l_to_r;  //!< edge v <=> l_to_r[v] is in the matching, 1<=v<=n; 1<=l_to_r[v]<=m
-  //! @param cost (n+1)-by-(m+1) array: cost[u][v] = weight (can be negative) of
-  //! the edge u <=> v, 1<=u<=n; 1<=v<=m, n<=m
+  vi l_to_r;  //!< edge v <=> l_to_r[v] is in the matching,
+              //!< 1<=v<=n; 1<=l_to_r[v]<=m
+  //! @param cost (n+1)-by-(m+1) array: cost[u][v] = weight
+  //! (can be negative) of the edge u <=> v, 1<=u<=n;
+  //! 1<=v<=m, n<=m
   //! @time O(n^2 * m)
-  //! @space besides the O(n * m) `cost` param, this allocates `l_to_r`
-  //! which is O(n), and various O(m) arrays are also allocated temporarily
-  hungarian(const vector<vector<ll>>& cost) : l_to_r(sz(cost)) {
+  //! @space besides the O(n * m) `cost` param, this
+  //! allocates `l_to_r` which is O(n), and various O(m)
+  //! arrays are also allocated temporarily
+  hungarian(const vector<vector<ll>>& cost)
+      : l_to_r(sz(cost)) {
     int n = sz(cost) - 1, m = sz(cost[0]) - 1;
     vi p(m + 1), way(m + 1);
     vector<ll> u(n + 1), v(m + 1);

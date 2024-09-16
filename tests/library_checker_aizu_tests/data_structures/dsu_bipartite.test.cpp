@@ -4,7 +4,8 @@
 #include "../../../library/data_structures/dsu/dsu_bipartite.hpp"
 #include "../../../library/contest/random.hpp"
 
-vector<bool> bipartite_check(const vector<vector<int>>& adj) {
+vector<bool> bipartite_check(
+    const vector<vector<int>>& adj) {
   int n = sz(adj);
   vector<bool> is_bi(n);
   vector<int> color(n, -1);
@@ -19,8 +20,7 @@ vector<bool> bipartite_check(const vector<vector<int>>& adj) {
         if (color[v] == -1) {
           color[v] = color[u] ^ 1;
           q.push_back(v);
-        } else
-          is_bipartite &= color[v] != color[u];
+        } else is_bipartite &= color[v] != color[u];
       }
     }
     for (int u : q) is_bi[u] = is_bipartite;
@@ -36,7 +36,8 @@ int main() {
   vector<vector<int>> adj(n);
   auto check = [&]() {
     vector<bool> is_bi = bipartite_check(adj);
-    for (int s = 0; s < n; s++) assert(dsu.is_bipartite(s) == is_bi[s]);
+    for (int s = 0; s < n; s++)
+      assert(dsu.is_bipartite(s) == is_bi[s]);
   };
   for (int i = 0; i < q; i++) {
     int t, u, v;
@@ -45,8 +46,7 @@ int main() {
       dsu.join(u, v);
       adj[u].push_back(v);
       adj[v].push_back(u);
-    } else
-      cout << dsu.same_set(u, v) << '\n';
+    } else cout << dsu.same_set(u, v) << '\n';
     if (rnd<int>(0, 20'000) == 0) check();
   }
   check();

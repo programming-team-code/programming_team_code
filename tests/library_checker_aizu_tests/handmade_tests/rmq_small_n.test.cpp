@@ -1,4 +1,6 @@
-#define PROBLEM "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A"
+#define PROBLEM                             \
+  "https://judge.u-aizu.ac.jp/onlinejudge/" \
+  "description.jsp?id=ITP1_1_A"
 #include "../template.hpp"
 #include "../../../library/contest/random.hpp"
 
@@ -9,7 +11,8 @@
 void test_all_subarrays(const vector<int>& a) {
   auto n = sz(a);
   RMQ rmq(a, [](auto x, auto y) { return min(x, y); });
-  disjoint_rmq dis_rmq(a, [](auto x, auto y) { return min(x, y); });
+  disjoint_rmq dis_rmq(
+      a, [](auto x, auto y) { return min(x, y); });
   linear_rmq lin_rmq(a, less());
   for (int le = 0; le < n; le++) {
     for (int ri = le + 1; ri <= n; ri++) {
@@ -33,7 +36,8 @@ int main() {
   for (int n = 1; n <= 100; n++) {
     for (int times = 0; times < 40; times++) {
       vector<int> a(n);
-      for (int i = 0; i < n; i++) a[i] = rnd<int>(INT_MIN, INT_MAX);
+      for (int i = 0; i < n; i++)
+        a[i] = rnd<int>(INT_MIN, INT_MAX);
       test_all_subarrays(a);
     }
   }

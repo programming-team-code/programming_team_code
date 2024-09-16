@@ -1,9 +1,12 @@
-#define PROBLEM "https://judge.yosupo.jp/problem/intersection_of_f2_vector_spaces"
+#define PROBLEM                      \
+  "https://judge.yosupo.jp/problem/" \
+  "intersection_of_f2_vector_spaces"
 #include "../template.hpp"
 
 #include "../../../library/math/matrix_related/xor_basis_unordered_intersection.hpp"
 
-// checking the condition: for 0 <= i < j < sz(b): (bit_floor(b[i]) & b[j]) == 0
+// checking the condition: for 0 <= i < j < sz(b):
+// (bit_floor(b[i]) & b[j]) == 0
 void check_condition(const basis<int>& b) {
   int n = sz(b.b);
   int or_bits = 0;
@@ -40,9 +43,7 @@ int main() {
     basis<int> inter = intersection<int>(basis1, basis2);
     check_condition(inter);
     cout << sz(inter.b) << " ";
-    for (int val : inter.b) {
-      cout << val << " ";
-    }
+    for (int val : inter.b) { cout << val << " "; }
     cout << '\n';
   }
   return 0;

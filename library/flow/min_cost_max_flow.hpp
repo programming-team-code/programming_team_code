@@ -22,10 +22,13 @@ struct mcmf {
   }
   //! @param s source, 0 <= s < n
   //! @param t sink, 0 <= t < n
-  //! @param total_flow we try to send this amount of flow through the graph
+  //! @param total_flow we try to send this amount of flow
+  //! through the graph
   //! @returns array of {flow, cost}
-  //! - flow: (<=total_flow) is the max amount of flow we are able to send.
-  //! - cost: minimum sum of: (edge.flow * edge.cost) over each edge (over all
+  //! - flow: (<=total_flow) is the max amount of flow we
+  //! are able to send.
+  //! - cost: minimum sum of: (edge.flow * edge.cost) over
+  //! each edge (over all
   //!   ways to send `flow` flow)
   array<ll, 2> get_flow(int s, int t, ll total_flow) {
     ll flow = 0, cost = 0;
@@ -60,10 +63,12 @@ struct mcmf {
       ll addflow = total_flow - flow;
       for (int u = t; u != s; u = p[u]) {
         int pv = p[u], pr = p_edge[u];
-        addflow = min(addflow, e[adj[pv][pr]].cap - e[adj[pv][pr]].flow);
+        addflow = min(addflow, e[adj[pv][pr]].cap -
+                                   e[adj[pv][pr]].flow);
       }
       for (int u = t; u != s; u = p[u]) {
-        int pv = p[u], pr = p_edge[u], r = e[adj[pv][pr]].back;
+        int pv = p[u], pr = p_edge[u],
+            r = e[adj[pv][pr]].back;
         e[adj[pv][pr]].flow += addflow;
         e[adj[u][r]].flow -= addflow;
         cost += e[adj[pv][pr]].cost * addflow;

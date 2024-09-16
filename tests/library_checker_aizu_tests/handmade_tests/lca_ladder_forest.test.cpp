@@ -1,4 +1,6 @@
-#define PROBLEM "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A"
+#define PROBLEM                             \
+  "https://judge.u-aizu.ac.jp/onlinejudge/" \
+  "description.jsp?id=ITP1_1_A"
 #include "../template.hpp"
 #include "../../../library/contest/random.hpp"
 #include "../../../library/data_structures/dsu/dsu_restorable.hpp"
@@ -25,8 +27,7 @@ int main() {
     for (int i = 0; i < n - 2; i++) {
       int u = rnd<int>(0, n - 1);
       int v = rnd<int>(0, n - 1);
-      if (u == v)
-        continue;
+      if (u == v) continue;
       if (dsu.join(u, v)) {
         adj[u].push_back(v);
         adj[v].push_back(u);
@@ -40,23 +41,27 @@ int main() {
     for (int i = 0; i < 100; i++) {
       int u = rnd<int>(0, n - 1);
       int v = rnd<int>(0, n - 1);
-      if (u == v || !dsu.same_set(u, v))
-        continue;
+      if (u == v || !dsu.same_set(u, v)) continue;
       auto lca_1 = tl.lca(u, v);
       auto lca_2 = lc.lca(u, v);
       auto lca_3 = lin_lca.lca(u, v);
       assert(lca_1 == lca_2);
       assert(lca_1 == lca_3);
       assert(tl.dist_edges(u, v) == lc.dist_edges(u, v));
-      assert(tl.dist_edges(u, v) == lin_lca.dist_edges(u, v));
+      assert(tl.dist_edges(u, v) ==
+             lin_lca.dist_edges(u, v));
       assert(tl.kth_path(u, v, 1) == lc.next_on_path(u, v));
-      assert(lin_kth_path.kth_path(u, v, 1) == lc.next_on_path(u, v));
+      assert(lin_kth_path.kth_path(u, v, 1) ==
+             lc.next_on_path(u, v));
       if (tl.t[u].d > tl.t[v].d) swap(u, v);
       auto res = tl.kth_par(v, tl.t[v].d - tl.t[u].d);
       assert(res == lad.kth_par(v, tl.t[v].d - tl.t[u].d));
-      assert(res == lin_kth_path.lin_kp.kth_par(v, tl.t[v].d - tl.t[u].d));
-      assert(lin_lca.in_subtree(u, v) == lc.in_subtree(u, v));
-      assert(lin_lca.in_subtree(v, u) == lc.in_subtree(v, u));
+      assert(res == lin_kth_path.lin_kp.kth_par(
+                        v, tl.t[v].d - tl.t[u].d));
+      assert(lin_lca.in_subtree(u, v) ==
+             lc.in_subtree(u, v));
+      assert(lin_lca.in_subtree(v, u) ==
+             lc.in_subtree(v, u));
       assert((u == res) == lc.in_subtree(u, v));
     }
   }

@@ -1,4 +1,6 @@
-#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/lesson/8/ITP2/all/ITP2_11_C"
+#define PROBLEM                                        \
+  "https://onlinejudge.u-aizu.ac.jp/courses/lesson/8/" \
+  "ITP2/all/ITP2_11_C"
 #include "../template.hpp"
 
 int main() {
@@ -21,8 +23,7 @@ int main() {
   for (auto submask : sb_msks) {
     cout << submask << ':';
     for (int bit = 0; bit < n; bit++) {
-      if ((submask >> bit) & 1)
-        cout << ' ' << bit;
+      if ((submask >> bit) & 1) cout << ' ' << bit;
     }
     cout << '\n';
   }

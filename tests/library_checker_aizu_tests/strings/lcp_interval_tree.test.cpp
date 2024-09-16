@@ -1,4 +1,5 @@
-#define PROBLEM "https://judge.yosupo.jp/problem/suffixarray"
+#define PROBLEM \
+  "https://judge.yosupo.jp/problem/suffixarray"
 #include "../template.hpp"
 #include "compress_char.hpp"
 
@@ -18,7 +19,6 @@ int main() {
     assert(sz(lt.sf_a.sa_inv) == n);
     assert(sz(lt.sf_a.lcp) == n - 1);
   }
-  for (auto val : lt.sf_a.sa)
-    cout << val << " ";
+  for (auto val : lt.sf_a.sa) cout << val << " ";
   cout << '\n';
 }

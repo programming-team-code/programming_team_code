@@ -2,13 +2,15 @@
 #pragma once
 //! @see https://codeforces.com/blog/entry/87940
 //!
-//! Disjoint RMQ is like normal RMQ except the 2 query ranges never overlap.
+//! Disjoint RMQ is like normal RMQ except the 2 query
+//! ranges never overlap.
 //! @code{.cpp}
 //!     //usage for min and # of mins:
-//!     vector<pair<ll, int>> a; //initialize a[i].second = 1
-//!     disjoint_rmq rmq(a, [&](auto& x, auto& y) {
-//!         if (x.first == y.first) return make_pair(x.first, x.second + y.second);
-//!         return min(x, y);
+//!     vector<pair<ll, int>> a; //initialize a[i].second =
+//!     1 disjoint_rmq rmq(a, [&](auto& x, auto& y) {
+//!         if (x.first == y.first) return
+//!         make_pair(x.first, x.second + y.second); return
+//!         min(x, y);
 //!     });
 //! @endcode
 template <class T, class F> struct disjoint_rmq {
@@ -27,9 +29,13 @@ template <class T, class F> struct disjoint_rmq {
     for (int len = 1, n = sz(a); len <= n; len *= 2) {
       dp.emplace_back(n);
       for (int le = 0; le < n; le += 2 * len) {
-        int mi = min(n, le + len), ri = min(n, le + 2 * len);
-        partial_sum(rend(a) - mi, rend(a) - le, rend(dp.back()) - mi, [&](T x, T y) { return op(y, x); });
-        partial_sum(begin(a) + mi, begin(a) + ri, begin(dp.back()) + mi, op);
+        int mi = min(n, le + len),
+            ri = min(n, le + 2 * len);
+        partial_sum(rend(a) - mi, rend(a) - le,
+                    rend(dp.back()) - mi,
+                    [&](T x, T y) { return op(y, x); });
+        partial_sum(begin(a) + mi, begin(a) + ri,
+                    begin(dp.back()) + mi, op);
       }
     }
   }

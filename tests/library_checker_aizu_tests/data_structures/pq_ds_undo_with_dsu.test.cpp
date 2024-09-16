@@ -1,5 +1,8 @@
-#define PROBLEM "https://judge.yosupo.jp/problem/dynamic_graph_vertex_add_component_sum"
-// since _GLIBCXX_DEBUG causes std::map insert/erase operations to be O(n)
+#define PROBLEM                      \
+  "https://judge.yosupo.jp/problem/" \
+  "dynamic_graph_vertex_add_component_sum"
+// since _GLIBCXX_DEBUG causes std::map insert/erase
+// operations to be O(n)
 #undef _GLIBCXX_DEBUG
 #include "../template.hpp"
 
@@ -51,18 +54,19 @@ int main() {
   }
   dsu_restorable dsu_r(n);
   pq_updates<dsu_restorable, int, int> pq(dsu_r);
-  for (int i = 0; i < n; i++) pq.ds.add(i, initial_values[i]);
+  for (int i = 0; i < n; i++)
+    pq.ds.add(i, initial_values[i]);
   int curr_priority_counter = -q;
   for (int i = 0; i < q; i++) {
     int type = queries[i].type;
     if (type == 0) {
       int u = queries[i].u, v = queries[i].v;
       int curr_pri;
-      if (time_remove[i] == -1) curr_pri = curr_priority_counter--;
+      if (time_remove[i] == -1)
+        curr_pri = curr_priority_counter--;
       else curr_pri = -time_remove[i];
       pq.push_update(u, v, curr_pri);
-    } else if (type == 1)
-      pq.pop_update();
+    } else if (type == 1) pq.pop_update();
     else if (type == 2) {
       int v = queries[i].v, x = queries[i].x;
       pq.ds.add(v, x);

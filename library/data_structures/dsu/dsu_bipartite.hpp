@@ -1,9 +1,12 @@
 //! @file
 #pragma once
-//! DSU with support for parity of path to root for online bipartite check
+//! DSU with support for parity of path to root for online
+//! bipartite check
 //!
-//! @see https://cp-algorithms.com /data_structures/disjoint_set_union.html
-//! support-the-parity-of-the-path-length -checking-bipartiteness-online
+//! @see https://cp-algorithms.com
+//! /data_structures/disjoint_set_union.html
+//! support-the-parity-of-the-path-length
+//! -checking-bipartiteness-online
 struct dsu_bipartite {
   int num_sets;
   struct node {
@@ -30,7 +33,8 @@ struct dsu_bipartite {
     }
     t[root_u].is_bi &= t[root_v].is_bi;
     t[root_v].parity = t[v].parity ^ 1 ^ t[u].parity;
-    t[root_u].p += t[root_v].p, t[root_v].p = root_u, num_sets--;
+    t[root_u].p += t[root_v].p, t[root_v].p = root_u,
+                                num_sets--;
     return 1;
   }
   int size(int v) { return -t[find(v)].p; }

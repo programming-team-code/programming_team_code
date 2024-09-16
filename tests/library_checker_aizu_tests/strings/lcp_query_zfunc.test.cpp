@@ -16,7 +16,8 @@ int main() {
       auto ri = rnd<int>(0, sz(s) - 1);
       int cmp_val = lq.cmp_sufs(le, ri);
       if (cmp_val < 0) assert(s.substr(le) < s.substr(ri));
-      if (cmp_val == 0) assert(s.substr(le) == s.substr(ri));
+      if (cmp_val == 0)
+        assert(s.substr(le) == s.substr(ri));
       if (cmp_val > 0) assert(s.substr(le) > s.substr(ri));
     }
     for (int num_tests = 50; num_tests--;) {

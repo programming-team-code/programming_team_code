@@ -1,4 +1,5 @@
-#define PROBLEM "https://judge.yosupo.jp/problem/incremental_scc"
+#define PROBLEM \
+  "https://judge.yosupo.jp/problem/incremental_scc"
 
 #include "../template.hpp"
 #include "../../../kactl/content/data-structures/UnionFind.h"
@@ -12,23 +13,18 @@ int main() {
   int n, m;
   cin >> n >> m;
   vector<mint> xs(n);
-  for (int i = 0; i < n; i++) {
-    cin >> xs[i].x;
-  }
+  for (int i = 0; i < n; i++) { cin >> xs[i].x; }
   vector<array<int, 2>> eds(m);
-  for (auto& [u, v] : eds) {
-    cin >> u >> v;
-  }
+  for (auto& [u, v] : eds) { cin >> u >> v; }
   auto joins = offline_incremental_scc(eds, n);
   // assert joins[i] == -1 for self-edges
   for (int t = 0; t < m; t++) {
-    if (eds[t][0] == eds[t][1]) {
-      assert(joins[t] == -1);
-    }
+    if (eds[t][0] == eds[t][1]) { assert(joins[t] == -1); }
   }
   vector<int> order(m);
   iota(all(order), 0);
-  sort(all(order), [&](int i, int j) { return joins[i] < joins[j]; });
+  sort(all(order),
+       [&](int i, int j) { return joins[i] < joins[j]; });
   UF uf(n);
   mint sum = 0;
   for (int t = 0, it = 0; t < m; t++) {
@@ -36,9 +32,7 @@ int main() {
       auto [u, v] = eds[order[it]];
       u = uf.find(u);
       v = uf.find(v);
-      if (uf.e[u] > uf.e[v]) {
-        swap(u, v);
-      }
+      if (uf.e[u] > uf.e[v]) { swap(u, v); }
       if (u != v) {
         sum = sum + xs[u] * xs[v];
         xs[u] = xs[u] + xs[v];
