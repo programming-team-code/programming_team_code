@@ -31,7 +31,7 @@ sed --in-place '/^\/\/ NOLINTNEXTLINE(readability-identifier-naming)$/d' ../libr
 chmod +x ../library/contest/hash.sh
 for header in ../library/**/*.hpp; do
 	echo "$header"
-	for i in $(seq "$(wc --lines <$header)" -5 1); do
+	for i in $(seq "$(wc --lines <"$header")" -5 1); do
 		hash=$(head --lines "$i" "$header" | sed '/^#include/d' | cpp -dD -P -fpreprocessed | ./../library/contest/hash.sh)
 		sed --in-place "${i}s/$/\/\/${hash}/" "$header"
 	done
