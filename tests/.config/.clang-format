@@ -8,6 +8,7 @@ AllowShortIfStatementsOnASingleLine: AllIfsAndElse
 AlwaysBreakTemplateDeclarations: No
 AllowShortBlocksOnASingleLine: Always
 AllowShortCaseLabelsOnASingleLine: true
-AlignTrailingComments: false
+ContinuationIndentWidth: 2
+AlignAfterOpenBracket: DontAlign
 LambdaBodyIndentation: OuterScope
 ...
