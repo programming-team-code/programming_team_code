@@ -29,12 +29,12 @@ sed --in-place '/^\/\/NOLINTNEXTLINE(readability-identifier-naming)$/d' ../libra
 #adds hash code comments
 chmod +x ../library/contest/hash.sh
 for header in ../library/**/*.hpp; do
-	cp $header input
-	lines="$(cat input | wc -l)"
-	echo $lines
-	for i in $(seq 1 $lines); do
-		hash=$(head -n $i input | sed '/^#include/d' | cpp -dD -P -fpreprocessed | ./../library/contest/hash.sh)
-		sed -i "${i}s/^/\/\*${hash}\*\/ /" $header
+	echo "$header"
+	cp "$header" input
+	lines="$(wc -l < input)"
+	for i in $(seq 1 "$lines"); do
+		hash=$(head -n "$i" input | sed '/^#include/d' | cpp -dD -P -fpreprocessed | ./../library/contest/hash.sh)
+		sed -i "${i}s/^/\/\*${hash}\*\/ /" "$header"
 	done
 done
 
