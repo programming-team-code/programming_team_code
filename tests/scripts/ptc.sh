@@ -29,8 +29,13 @@ sed --in-place '/^\/\/NOLINTNEXTLINE(readability-identifier-naming)$/d' ../libra
 #adds hash code comments
 chmod +x ../library/contest/hash.sh
 for header in ../library/**/*.hpp; do
-	hash=$(sed '/^#include/d' "$header" | cpp -dD -P -fpreprocessed | ./../library/contest/hash.sh)
-	sed --in-place "1i //hash: $hash" "$header"
+	cp $header input
+	lines="$(cat input | wc -l)"
+	echo $lines
+	for i in $(seq 1 $lines); do
+		hash=$(head -n $i input | sed '/^#include/d' | cpp -dD -P -fpreprocessed | ./../library/contest/hash.sh)
+		sed -i "${i}s/^/\/\*${hash}\*\/ /" $header
+	done
 done
 
 git submodule init
