@@ -24,7 +24,7 @@ sed --in-place '/^#pragma once$/d' ../library/**/*.hpp
 # remove //! @file
 sed --in-place '/^\/\/! @file$/d' ../library/**/*.hpp
 # remove NOLINTNEXTLINE comments
-sed --in-place '/^\/\/NOLINTNEXTLINE(readability-identifier-naming)$/d' ../library/**/*.hpp
+sed --in-place '/^\/\/ NOLINTNEXTLINE(readability-identifier-naming)$/d' ../library/**/*.hpp
 
 #adds hash code comments
 chmod +x ../library/contest/hash.sh
@@ -32,9 +32,9 @@ for header in ../library/**/*.hpp; do
 	echo "$header"
 	cp "$header" input
 	lines="$(wc -l <input)"
-	for i in $(seq 1 "$lines"); do
+	for i in $(seq "$lines" -5 1); do
 		hash=$(head -n "$i" input | sed '/^#include/d' | cpp -dD -P -fpreprocessed | ./../library/contest/hash.sh)
-		sed -i "${i}s/^/\/\*${hash}\*\/ /" "$header"
+		sed -i "${i}s/&/\/\/${hash}/" "$header"
 	done
 done
 
