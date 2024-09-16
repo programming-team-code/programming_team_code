@@ -1,8 +1,10 @@
 //! @file
 #pragma once
 #include "n_choose_k.hpp"
-//! @param n,k arbitrarily large integers; n, k >= mod is ok
-//! @returns number of ways to choose k objects out of n
+//! @param n,k arbitrarily large integers; n, k >=
+//! mod is ok
+//! @returns number of ways to choose k objects out
+//! of n
 //! @time O(log(k)) amortized
 //! @space O(1) amortized
 ll lucas(ll n, ll k) {

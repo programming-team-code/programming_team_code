@@ -1,7 +1,7 @@
 //! @file
 #pragma once
-//! DSU with support for parity of path to root for online
-//! bipartite check
+//! DSU with support for parity of path to root for
+//! online bipartite check
 //!
 //! @see https://cp-algorithms.com
 //! /data_structures/disjoint_set_union.html
@@ -24,7 +24,8 @@ struct dsu_bipartite {
   bool join(int u, int v) {
     int root_u = find(u), root_v = find(v);
     if (root_u == root_v) {
-      if (t[u].parity == t[v].parity) t[root_u].is_bi = 0;
+      if (t[u].parity == t[v].parity)
+        t[root_u].is_bi = 0;
       return 0;
     }
     if (t[root_u].p > t[root_v].p) {
@@ -32,12 +33,17 @@ struct dsu_bipartite {
       swap(root_u, root_v);
     }
     t[root_u].is_bi &= t[root_v].is_bi;
-    t[root_v].parity = t[v].parity ^ 1 ^ t[u].parity;
-    t[root_u].p += t[root_v].p, t[root_v].p = root_u,
-                                num_sets--;
+    t[root_v].parity =
+      t[v].parity ^ 1 ^ t[u].parity;
+    t[root_u].p += t[root_v].p,
+      t[root_v].p = root_u, num_sets--;
     return 1;
   }
   int size(int v) { return -t[find(v)].p; }
-  bool same_set(int u, int v) { return find(u) == find(v); }
-  bool is_bipartite(int v) { return t[find(v)].is_bi; }
+  bool same_set(int u, int v) {
+    return find(u) == find(v);
+  }
+  bool is_bipartite(int v) {
+    return t[find(v)].is_bi;
+  }
 };

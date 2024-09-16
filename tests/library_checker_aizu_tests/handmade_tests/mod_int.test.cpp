@@ -7,8 +7,8 @@
 
 #include "../../../kactl/content/number-theory/euclid.h"
 
-// trick to remove const so I can use arbitrary prime mode
-// here
+// trick to remove const so I can use arbitrary
+// prime mode here
 #define const ;
 #include "../../../library/math/mod_int_pow.hpp"
 #undef const
@@ -17,7 +17,8 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
   mint val;
   assert(val.x == 0);
-  vector<int> mods = {1, 4, 998'244'353, 1'000'000'007};
+  vector<int> mods = {
+    1, 4, 998'244'353, 1'000'000'007};
   for (int i = 0; i < 1'000'000; i++) {
     int type = rnd(0, 5);
     if (type == 0) {
@@ -40,15 +41,17 @@ int main() {
       int to_mult = rnd(-mod + 1, mod - 1);
       int prev_val = val.x;
       val = val * mint(to_mult);
-      assert(val.x ==
-             (1LL * prev_val * (to_mult + mod)) % mod);
+      assert(
+        val.x ==
+        (1LL * prev_val * (to_mult + mod)) % mod);
     } else if (type == 4) {
       if (mod == 1 || mod == 4) continue;
       int to_divide = rnd(1, mod - 1);
       int prev_val = val.x;
       val = val / mint(to_divide);
-      assert(val.x ==
-             (mpow(to_divide, mod - 2) * prev_val).x);
+      assert(
+        val.x ==
+        (mpow(to_divide, mod - 2) * prev_val).x);
     } else {
       assert(type == 5);
       int pow = rnd(0, 20);
@@ -68,7 +71,8 @@ int main() {
       ll gcd = euclid(init, mod, x, y);
       assert(x * init + y * mod == gcd);
       assert(-mod / gcd < x && x < mod / gcd);
-      if (gcd == 1) assert((mint(1) / init).x == mint(x).x);
+      if (gcd == 1)
+        assert((mint(1) / init).x == mint(x).x);
     }
   }
   cout << "Hello World\n";

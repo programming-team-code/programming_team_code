@@ -6,17 +6,18 @@
 #undef LCA
 #include "../../library/contest/random.hpp"
 void compress_tree_asserts(vector<vector<int>> adj,
-                           linear_lca& lin_lca,
-                           LCA& lc_rm) {
+  linear_lca& lin_lca, LCA& lc_rm) {
   int n = sz(adj);
   vector<bool> used(n);
   KACTL_LCA kactl_lca(adj);
   {
-    auto [parent, to_node] = lin_lca.compress_tree({});
+    auto [parent, to_node] =
+      lin_lca.compress_tree({});
     assert(empty(parent) && empty(to_node));
   }
   {
-    auto [parent, to_node] = lc_rm.compress_tree({});
+    auto [parent, to_node] =
+      lc_rm.compress_tree({});
     assert(empty(parent) && empty(to_node));
   }
   for (int tests = 0; tests < 10; tests++) {
@@ -31,11 +32,12 @@ void compress_tree_asserts(vector<vector<int>> adj,
         }
       }
     }
-    auto kactl_res = compressTree(kactl_lca, subset);
+    auto kactl_res =
+      compressTree(kactl_lca, subset);
     auto [lin_parent, lin_to_node] =
-        lin_lca.compress_tree(subset);
+      lin_lca.compress_tree(subset);
     auto [lc_rm_parent, lc_rm_to_node] =
-        lc_rm.compress_tree(subset);
+      lc_rm.compress_tree(subset);
     assert(lin_parent == lc_rm_parent &&
            lin_to_node == lc_rm_to_node);
     assert(sz(lin_parent) == sz(lin_to_node) &&

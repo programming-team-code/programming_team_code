@@ -16,7 +16,7 @@ int main() {
   seg_tree seg(mx_n), rev(mx_n);
   for (int i = 0; i < mx_n; i++)
     bit.update(i, 1), seg.update(i, i + 1, 1),
-        rev.update(i, i + 1, 1);
+      rev.update(i, i + 1, 1);
   for (int q = 0; q < 100'000; q++) {
     int i = rnd(0, mx_n - 1);
     int add = rnd(0, 100'000);
@@ -33,7 +33,8 @@ int main() {
       need = sum;
       rngs = {};
     };
-    auto f = [&](int64_t x, int tl, int tr) -> bool {
+    auto f = [&](
+               int64_t x, int tl, int tr) -> bool {
       if (x < need) {
         rngs.push_back({tl, tr, 0});
         need -= x;
@@ -42,7 +43,8 @@ int main() {
       rngs.push_back({tl, tr, 1});
       return 1;
     };
-    int pos = min(bit.lower_bound(bit.query(le) + sum), ri);
+    int pos =
+      min(bit.lower_bound(bit.query(le) + sum), ri);
 
     reset();
     assert(pos == seg.find_first(le, ri, f));
@@ -60,11 +62,12 @@ int main() {
       }
     }
     sort(begin(rngs), end(rngs));
-    assert(unique(begin(rngs), end(rngs)) == end(rngs));
+    assert(
+      unique(begin(rngs), end(rngs)) == end(rngs));
 
     reset();
-    assert(pos ==
-           rv(rev.find_last(rv(ri - 1), rv(le) + 1, f)));
+    assert(pos == rv(rev.find_last(
+                    rv(ri - 1), rv(le) + 1, f)));
     assert(!empty(rngs));
     assert(rngs[0][1] == rv(le) + 1);
     for (auto [tl, tr, _] : rngs)
@@ -80,7 +83,8 @@ int main() {
       }
     }
     sort(begin(rngs), end(rngs));
-    assert(unique(begin(rngs), end(rngs)) == end(rngs));
+    assert(
+      unique(begin(rngs), end(rngs)) == end(rngs));
   }
   cout << "Hello World\n";
   return 0;

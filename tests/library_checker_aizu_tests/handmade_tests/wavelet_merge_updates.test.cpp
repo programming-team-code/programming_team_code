@@ -19,14 +19,16 @@ int main() {
       // values in range [minn, maxn]
       vector<int> arr(n);
       generate(begin(arr), end(arr),
-               [&]() { return rnd<int>(minn, maxn); });
+        [&]() { return rnd<int>(minn, maxn); });
       vector<bool> active(n);
       generate(begin(active), end(active),
-               [&]() { return rnd<int>(0, 1); });
+        [&]() { return rnd<int>(0, 1); });
       merge_sort_tree_updates mstu(arr, active);
-      wavelet_tree_updates wtu(arr, minn, maxn + 1, active);
+      wavelet_tree_updates wtu(
+        arr, minn, maxn + 1, active);
       for (int operations = 50; operations--;) {
-        if (operations % 4 == 0) {  // rect_count query
+        if (operations % 4 ==
+            0) {  // rect_count query
           int le = rnd<int>(0, n);
           int ri = rnd<int>(0, n);
           if (le > ri) swap(le, ri);
@@ -36,7 +38,8 @@ int main() {
           int count_naive = 0;
           for (int i = le; i < ri; i++)
             count_naive +=
-                (active[i] && x <= arr[i] && arr[i] < y);
+              (active[i] && x <= arr[i] &&
+                arr[i] < y);
           assert(wtu.rect_count(le, ri, x, y) ==
                  count_naive);
           assert(mstu.rect_count(le, ri, x, y) ==
@@ -59,7 +62,8 @@ int main() {
           if (x > y) swap(x, y);
           vector<int> idxs;
           for (int i = 0; i < n; i++)
-            if (active[i] && x <= arr[i] && arr[i] < y)
+            if (active[i] && x <= arr[i] &&
+                arr[i] < y)
               idxs.push_back(i);
           for (int k = 1; k <= sz(idxs); k++)
             assert(mstu.kth_smallest(x, y, k) ==

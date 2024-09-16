@@ -14,16 +14,18 @@ int main() {
   for (int i = 0; i < n; i++) cin >> dsu.subtree[i];
   vector<vector<pair<int, int>>> tree(2 * q);
   auto add_edge = [&](auto&& self, int le, int ri,
-                      int node_u, int node_v, int tl,
-                      int tr, int v) -> void {
+                    int node_u, int node_v, int tl,
+                    int tr, int v) -> void {
     if (ri <= tl || tr <= le) return;
     if (le <= tl && tr <= ri) {
       tree[v].emplace_back(node_u, node_v);
       return;
     }
     int tm = split(tl, tr);
-    self(self, le, ri, node_u, node_v, tl, tm, 2 * v);
-    self(self, le, ri, node_u, node_v, tm, tr, 2 * v + 1);
+    self(
+      self, le, ri, node_u, node_v, tl, tm, 2 * v);
+    self(self, le, ri, node_u, node_v, tm, tr,
+      2 * v + 1);
   };
   struct query {
     int type, v, x;
@@ -45,8 +47,8 @@ int main() {
         cin >> u >> v;
         if (u > v) swap(u, v);
         assert(insert_time.count({u, v}));
-        add_edge(add_edge, insert_time[{u, v}], i, u, v, 0,
-                 q, 1);
+        add_edge(add_edge, insert_time[{u, v}], i,
+          u, v, 0, q, 1);
         insert_time.erase({u, v});
       } else if (type == 2) {
         int v, x;
@@ -60,11 +62,11 @@ int main() {
       }
     }
     for (auto [edge, i_time] : insert_time)
-      add_edge(add_edge, i_time, q, edge.first, edge.second,
-               0, q, 1);
+      add_edge(add_edge, i_time, q, edge.first,
+        edge.second, 0, q, 1);
   }
   auto dfs = [&](auto&& self, int tl, int tr,
-                 int v) -> void {
+               int v) -> void {
     for (auto [node_u, node_v] : tree[v])
       dsu.join(node_u, node_v);
     assert((v >= q) == ((tr - tl) == 1));
@@ -94,35 +96,42 @@ int main() {
           assert(pow_2 != tr - tl);
           assert(pow_2 / 2 < tr - tl - pow_2 &&
                  tr - tl - pow_2 < pow_2);
-          assert(pow_2 <= 2 * (tr - tl - pow_2) - 1 &&
-                 2 * (tr - tl - pow_2) - 1 < 2 * pow_2 - 1);
-          assert(__lg(pow_2) ==
-                     __lg(2 * ((tr - tl) - pow_2) - 1) &&
-                 __lg(pow_2) == __lg(2 * pow_2 - 1));
+          assert(
+            pow_2 <= 2 * (tr - tl - pow_2) - 1 &&
+            2 * (tr - tl - pow_2) - 1 <
+              2 * pow_2 - 1);
+          assert(
+            __lg(pow_2) ==
+              __lg(2 * ((tr - tl) - pow_2) - 1) &&
+            __lg(pow_2) == __lg(2 * pow_2 - 1));
         } else if (pow_2 < tr - tl) {
           assert(pow_2 / 2 < tr - tl - pow_2 / 2 &&
                  tr - tl - pow_2 / 2 <= pow_2);
-          assert(pow_2 <= 2 * ((tr - tl) - pow_2 / 2) - 1 &&
-                 2 * ((tr - tl) - pow_2 / 2) - 1 <=
-                     2 * pow_2 - 1);
-          assert(__lg(2 * (tr - tl - pow_2 / 2) - 1) ==
-                 __lg(2 * pow_2 - 1));
-          assert(__lg(2 * ((tr - tl) - pow_2 / 2) - 1) ==
-                 __lg(pow_2));
+          assert(
+            pow_2 <=
+              2 * ((tr - tl) - pow_2 / 2) - 1 &&
+            2 * ((tr - tl) - pow_2 / 2) - 1 <=
+              2 * pow_2 - 1);
+          assert(__lg(2 * (tr - tl - pow_2 / 2) -
+                      1) == __lg(2 * pow_2 - 1));
+          assert(__lg(2 * ((tr - tl) - pow_2 / 2) -
+                      1) == __lg(pow_2));
           assert(__lg(pow_2) ==
                  1 + __lg(2 * (pow_2 / 2) - 1));
         }
       }
       int tm = split(tl, tr);
-      // in particular, this tests that split works with
-      // negatives
-      assert(split(tl - 1234, tr - 1234) == tm - 1234);
+      // in particular, this tests that split works
+      // with negatives
+      assert(
+        split(tl - 1234, tr - 1234) == tm - 1234);
       assert(split(tl - 1, tr - 1) == tm - 1);
       assert(split(tl + 50, tr + 50) == tm + 50);
       self(self, tl, tm, 2 * v);
       self(self, tm, tr, 2 * v + 1);
     }
-    for (int i = 0; i < sz(tree[v]); i++) dsu.undo();
+    for (int i = 0; i < sz(tree[v]); i++)
+      dsu.undo();
   };
   dfs(dfs, 0, q, 1);
   return 0;

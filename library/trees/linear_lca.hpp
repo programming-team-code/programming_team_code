@@ -2,9 +2,9 @@
 #pragma once
 #include "../monotonic_stack/monotonic_stack.hpp"  //!< only needed for compress_tree
 int lsb(int x) { return x & -x; }
-//! @see On Finding Lowest Common Ancestors: Simplification
-//! and Parallelization by Baruch Schieber, Uzi Vishkin,
-//! April 1987
+//! @see On Finding Lowest Common Ancestors:
+//! Simplification and Parallelization by Baruch
+//! Schieber, Uzi Vishkin, April 1987
 struct linear_lca {
   struct node {
     int d, sub_sz = 1, in, label, asc;
@@ -17,7 +17,8 @@ struct linear_lca {
   linear_lca(const vector<vi>& adj)
       : t(sz(adj)), head(sz(t) + 1) {
     vector<pii> order;
-    auto dfs = [&](auto&& self, int v, int p) -> void {
+    auto dfs = [&](auto&& self, int v,
+                 int p) -> void {
       order.emplace_back(v, p);
       t[v].in = t[v].label = sz(order);
       for (int u : adj[v])
@@ -30,7 +31,8 @@ struct linear_lca {
             t[v].label = t[u].label;
         }
     };
-    rep(i, 0, sz(t)) if (t[i].d == 0) dfs(dfs, i, i);
+    rep(i, 0, sz(t)) if (t[i].d == 0)
+      dfs(dfs, i, i);
     for (auto [v, p] : order)
       t[v].asc = t[p].asc | lsb(t[v].label);
   }
@@ -42,9 +44,11 @@ struct linear_lca {
     if (int j = t[u].label ^ t[v].label; j) {
       j = t[u].asc & t[v].asc & -(1 << __lg(j));
       if (int k = t[u].asc ^ j; k)
-        k = 1 << __lg(k), u = head[(t[u].label & -k) | k];
+        k = 1 << __lg(k),
+        u = head[(t[u].label & -k) | k];
       if (int k = t[v].asc ^ j; k)
-        k = 1 << __lg(k), v = head[(t[v].label & -k) | k];
+        k = 1 << __lg(k),
+        v = head[(t[v].label & -k) | k];
     }
     return t[u].d < t[v].d ? u : v;
   }

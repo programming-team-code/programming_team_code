@@ -1,5 +1,6 @@
-#define PROBLEM \
-  "https://judge.yosupo.jp/problem/incremental_scc"
+#define PROBLEM                      \
+  "https://judge.yosupo.jp/problem/" \
+  "incremental_scc"
 
 #include "../template.hpp"
 #include "../../../kactl/content/data-structures/UnionFind.h"
@@ -19,12 +20,15 @@ int main() {
   auto joins = offline_incremental_scc(eds, n);
   // assert joins[i] == -1 for self-edges
   for (int t = 0; t < m; t++) {
-    if (eds[t][0] == eds[t][1]) { assert(joins[t] == -1); }
+    if (eds[t][0] == eds[t][1]) {
+      assert(joins[t] == -1);
+    }
   }
   vector<int> order(m);
   iota(all(order), 0);
-  sort(all(order),
-       [&](int i, int j) { return joins[i] < joins[j]; });
+  sort(all(order), [&](int i, int j) {
+    return joins[i] < joins[j];
+  });
   UF uf(n);
   mint sum = 0;
   for (int t = 0, it = 0; t < m; t++) {

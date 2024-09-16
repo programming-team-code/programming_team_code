@@ -3,8 +3,8 @@
   "binomial_coefficient_prime_mod"
 #include "../template.hpp"
 
-// trick to remove const so I can use arbitrary prime mode
-// here
+// trick to remove const so I can use arbitrary
+// prime mode here
 #define const ;
 #include "../../../library/math/n_choose_k/n_choose_k.hpp"
 #undef const

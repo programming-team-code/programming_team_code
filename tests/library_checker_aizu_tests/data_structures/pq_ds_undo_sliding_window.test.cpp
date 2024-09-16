@@ -1,5 +1,6 @@
-#define PROBLEM                                         \
-  "https://onlinejudge.u-aizu.ac.jp/courses/library/3/" \
+#define PROBLEM                               \
+  "https://onlinejudge.u-aizu.ac.jp/courses/" \
+  "library/3/"                                \
   "DSL/all/DSL_3_D"
 // since _GLIBCXX_DEBUG causes std::map insert/erase
 // operations to be O(n)
@@ -11,8 +12,8 @@
 struct stack_with_get_max {
   vector<pair<int, int>> st;
   void join(int val) {
-    st.emplace_back(
-        val, empty(st) ? val : min(val, st.back().second));
+    st.emplace_back(val,
+      empty(st) ? val : min(val, st.back().second));
   }
   void undo() { st.pop_back(); }
   int get_max() const { return st.back().second; }

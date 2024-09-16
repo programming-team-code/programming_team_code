@@ -1,4 +1,5 @@
-#define PROBLEM "https://judge.yosupo.jp/problem/zalgorithm"
+#define PROBLEM \
+  "https://judge.yosupo.jp/problem/zalgorithm"
 #include "../template.hpp"
 
 #include "../../../library/strings/prefix_function.hpp"
@@ -19,7 +20,8 @@ int main() {
   for (int i = 1; i < n;) {
     int j, v;
     for (j = 1;
-         j < z[i] && (v = min(z[j], z[i] - j)) >= z[i + j];
+         j < z[i] &&
+         (v = min(z[j], z[i] - j)) >= z[i + j];
          j++)
       z[i + j] = v;
     i += j;

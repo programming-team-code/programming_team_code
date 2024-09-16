@@ -15,7 +15,8 @@ int main() {
     for (int q = 0; q < 100; q++) {
       int type = rnd<int>(0, 2);
       if (type == 0) {
-        int u = rnd<int>(0, n - 1), v = rnd(0, n - 1);
+        int u = rnd<int>(0, n - 1),
+            v = rnd(0, n - 1);
         dsu.join(u, v);
         adj[u].push_back(v);
         adj[v].push_back(u);
@@ -23,7 +24,8 @@ int main() {
       } else if (type == 1) {
         vector<vector<int>> comps;
         vector<bool> vis(n);
-        auto dfs = [&](auto&& self, int node) -> void {
+        auto dfs = [&](auto&& self,
+                     int node) -> void {
           comps.back().push_back(node);
           for (auto next : adj[node])
             if (!vis[next]) {
@@ -45,7 +47,8 @@ int main() {
       } else if (!empty(edge_st)) {
         auto [u, v] = edge_st.back();
         edge_st.pop_back();
-        assert(adj[u].back() == v && adj[v].back() == u);
+        assert(
+          adj[u].back() == v && adj[v].back() == u);
         adj[u].pop_back();
         adj[v].pop_back();
         dsu.undo();

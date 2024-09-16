@@ -16,7 +16,8 @@ int main() {
     for (int j = 0; j < 2; j++) {
       lcs_dp lcs(t);
       for (char c : s) lcs.push_onto_s(c);
-      res[j] = int(count(begin(lcs.dp), end(lcs.dp), -1));
+      res[j] =
+        int(count(begin(lcs.dp), end(lcs.dp), -1));
       swap(s, t);
     }
     assert(res[0] == res[1]);

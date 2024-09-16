@@ -1,5 +1,6 @@
-#define PROBLEM \
-  "https://judge.yosupo.jp/problem/point_add_range_sum"
+#define PROBLEM                      \
+  "https://judge.yosupo.jp/problem/" \
+  "point_add_range_sum"
 #include "../template.hpp"
 
 #include "../../../library/contest/random.hpp"
@@ -21,7 +22,8 @@ int main() {
   seg_tree st(arr_int);
   bit_rurq<int64_t> bit_rr(arr);
   vector<int64_t> suf_sum(n);
-  partial_sum(rbegin(arr), rend(arr), rbegin(suf_sum));
+  partial_sum(
+    rbegin(arr), rend(arr), rbegin(suf_sum));
   bit_rupq<int64_t> bit_i(suf_sum);
   for (int i = 0; i < n; i++) {
     assert(arr[i] == bit.query(i, i + 1));
@@ -44,7 +46,8 @@ int main() {
       int64_t res = bit.query(l, r);
       {
         int64_t bit_i_result = bit_i.get_index(l);
-        if (r < n) bit_i_result -= bit_i.get_index(r);
+        if (r < n)
+          bit_i_result -= bit_i.get_index(r);
         assert(res == bit_i_result);
       }
       assert(res == bit_rr.query(l, r));
@@ -52,7 +55,8 @@ int main() {
     }
     auto sum = rnd<int64_t>(0LL, (int64_t)(1e12));
     auto need = sum;
-    auto f = [&](int64_t x, int tl, int tr) -> bool {
+    auto f = [&](
+               int64_t x, int tl, int tr) -> bool {
       assert(tl <= tr);
       if (x < need) {
         need -= x;
@@ -60,7 +64,8 @@ int main() {
       }
       return 1;
     };
-    assert(bit.lower_bound(sum) == st.find_first(0, n, f));
+    assert(bit.lower_bound(sum) ==
+           st.find_first(0, n, f));
   }
   return 0;
 }

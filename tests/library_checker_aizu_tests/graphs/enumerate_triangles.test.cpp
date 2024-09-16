@@ -1,5 +1,6 @@
-#define PROBLEM \
-  "https://judge.yosupo.jp/problem/enumerate_triangles"
+#define PROBLEM                      \
+  "https://judge.yosupo.jp/problem/" \
+  "enumerate_triangles"
 #include "../template.hpp"
 
 #include "../../../library/graphs/enumerate_triangles.hpp"
@@ -15,8 +16,8 @@ int main() {
   const int mod = 998'244'353;
   int64_t sum = 0;
   auto enumerate = [&](int u, int v, int w) {
-    sum = (sum +
-           1LL * vals[u] * vals[v] % mod * vals[w] % mod) %
+    sum = (sum + 1LL * vals[u] * vals[v] % mod *
+                   vals[w] % mod) %
           mod;
   };
   enumerate_triangles(edges, n, enumerate);

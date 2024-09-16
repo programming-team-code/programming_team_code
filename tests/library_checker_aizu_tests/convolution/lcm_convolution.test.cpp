@@ -1,5 +1,6 @@
-#define PROBLEM \
-  "https://judge.yosupo.jp/problem/lcm_convolution"
+#define PROBLEM                      \
+  "https://judge.yosupo.jp/problem/" \
+  "lcm_convolution"
 #include "../template.hpp"
 
 #include "../../../library/convolution/lcm_convolution.hpp"

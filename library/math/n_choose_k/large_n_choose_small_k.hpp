@@ -3,7 +3,8 @@
 #include "grow.hpp"
 //! @param n arbitrarily large integer
 //! @param k integer with k < mod
-//! @returns number of ways to choose k objects out of n
+//! @returns number of ways to choose k objects out
+//! of n
 //! @time O(k)
 //! @space O(1) amortized
 ll c_small_k(ll n, int k) {

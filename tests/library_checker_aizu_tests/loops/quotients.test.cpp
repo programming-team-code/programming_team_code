@@ -1,5 +1,6 @@
-#define PROBLEM \
-  "https://judge.yosupo.jp/problem/enumerate_quotients"
+#define PROBLEM                      \
+  "https://judge.yosupo.jp/problem/" \
+  "enumerate_quotients"
 #include "../template.hpp"
 
 int main() {

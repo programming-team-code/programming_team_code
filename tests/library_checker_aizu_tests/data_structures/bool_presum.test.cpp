@@ -1,10 +1,12 @@
-#define PROBLEM \
-  "https://judge.yosupo.jp/problem/static_range_sum"
+#define PROBLEM                      \
+  "https://judge.yosupo.jp/problem/" \
+  "static_range_sum"
 #include "../template.hpp"
 
 #include "../../../library/data_structures/wavelet_merge/bool_presum.hpp"
 
-vector<bool_presum> init_presums(const vector<int>& arr) {
+vector<bool_presum> init_presums(
+  const vector<int>& arr) {
   const int mx_n = sz(arr);
   vector<bool_presum> presums;
   for (int bit = 0; bit < 30; bit++) {
@@ -38,8 +40,9 @@ int main() {
       if (ri - le == 1)
         sum += (1LL << bit) * presums[bit].on(le);
       else
-        sum += (1LL << bit) * (presums[bit].popcount(ri) -
-                               presums[bit].popcount(le));
+        sum += (1LL << bit) *
+               (presums[bit].popcount(ri) -
+                 presums[bit].popcount(le));
     cout << sum << '\n';
   }
 }

@@ -23,13 +23,15 @@ int main() {
   vector<ll> cnt_len = count_paths_per_length(adj);
   if (n >= 2) {
     int k = rnd(1, n - 1);
-    vector<ll> count_paths = count_paths_per_node(adj, k);
-    ll sum = accumulate(begin(count_paths),
-                        end(count_paths), 0LL);
+    vector<ll> count_paths =
+      count_paths_per_node(adj, k);
+    ll sum = accumulate(
+      begin(count_paths), end(count_paths), 0LL);
     assert(sum % (k + 1) == 0);
     assert(sum / (k + 1) == cnt_len[k]);
   }
-  for (int i = 1; i < n; i++) cout << cnt_len[i] << " ";
+  for (int i = 1; i < n; i++)
+    cout << cnt_len[i] << " ";
   cout << '\n';
   return 0;
 }

@@ -10,6 +10,6 @@ void grow(int n) {
     ll i = sz(t),
        inv = mod - (mod / i) * t[mod % i].inv % mod;
     t.push_back({inv, i * t[i - 1].fact % mod,
-                 inv * t[i - 1].inv_fact % mod});
+      inv * t[i - 1].inv_fact % mod});
   }
 }

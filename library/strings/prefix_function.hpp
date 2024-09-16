@@ -5,7 +5,8 @@
 //! @param s string/array
 //! @returns prefix function
 //! @time O(n)
-//! @space this function allocates/returns a O(n) vector
+//! @space this function allocates/returns a O(n)
+//! vector
 template <class T> vi prefix_function(const T& s) {
   vi pi(sz(s));
   rep(i, 1, sz(s)) {

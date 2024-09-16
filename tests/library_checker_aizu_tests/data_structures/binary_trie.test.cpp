@@ -27,7 +27,8 @@ int main() {
     if (type == 0) {
       if (bt_int.count(x) == 0) bt_int.update(x, 1);
     } else if (type == 1) {
-      if (bt_int.count(x) == 1) bt_int.update(x, -1);
+      if (bt_int.count(x) == 1)
+        bt_int.update(x, -1);
     } else {
       assert(type == 2);
       int val = bt_int.walk(x);

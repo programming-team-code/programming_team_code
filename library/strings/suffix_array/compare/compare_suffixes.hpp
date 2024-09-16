@@ -1,6 +1,7 @@
 //! @file
 #pragma once
-//! @param le1,le2 defines suffixes [le1, n), [le2, n)
+//! @param le1,le2 defines suffixes [le1, n), [le2,
+//! n)
 //!     - doesn't work when le1,le2 == n
 //! @returns a number `cmp` where:
 //!     - cmp < 0 iff s.substr(le1) < s.substr(le2)

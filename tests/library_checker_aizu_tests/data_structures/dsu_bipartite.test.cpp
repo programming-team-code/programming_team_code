@@ -1,11 +1,12 @@
-#define PROBLEM "https://judge.yosupo.jp/problem/unionfind"
+#define PROBLEM \
+  "https://judge.yosupo.jp/problem/unionfind"
 
 #include "../template.hpp"
 #include "../../../library/data_structures/dsu/dsu_bipartite.hpp"
 #include "../../../library/contest/random.hpp"
 
 vector<bool> bipartite_check(
-    const vector<vector<int>>& adj) {
+  const vector<vector<int>>& adj) {
   int n = sz(adj);
   vector<bool> is_bi(n);
   vector<int> color(n, -1);

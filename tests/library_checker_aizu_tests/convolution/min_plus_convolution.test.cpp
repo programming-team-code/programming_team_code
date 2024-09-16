@@ -16,7 +16,8 @@ int main() {
   cin >> n >> m;
   vector<int> convex(n), arbitrary(m);
   cin >> convex >> arbitrary;
-  auto res = min_plus_convolution_convex_and_arbitrary(
+  auto res =
+    min_plus_convolution_convex_and_arbitrary(
       convex, arbitrary);
   for (int r : res) cout << r << ' ';
   cout << '\n';

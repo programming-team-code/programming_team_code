@@ -19,8 +19,9 @@ int main() {
       for (int i = 0; i < n; i++) {
         for (int j = i; j <= n; j++) {
           auto [sa_le, sa_ri, s_le, s_ri] =
-              lq.find_substrs_concated({{i, j}});
-          pair<int, int> short_res = lq.find_substr(i, j);
+            lq.find_substrs_concated({{i, j}});
+          pair<int, int> short_res =
+            lq.find_substr(i, j);
           assert(sa_le == short_res.first &&
                  sa_ri == short_res.second);
           assert(s.substr(i, j - i) ==
@@ -30,28 +31,31 @@ int main() {
             assert(s_le == s_ri);
           }
           if (i < n)
-            assert(0 <= sa_le && sa_le <= lq.sa_inv[i] &&
-                   lq.sa_inv[i] < sa_ri && sa_ri <= n);
+            assert(
+              0 <= sa_le && sa_le <= lq.sa_inv[i] &&
+              lq.sa_inv[i] < sa_ri && sa_ri <= n);
           for (int idx = sa_le; idx < sa_ri; idx++)
             assert(s.substr(lq.sa[idx], j - i) ==
                    s.substr(i, j - i));
           assert(sa_le == 0 ||
-                 s.substr(lq.sa[sa_le - 1], j - i) !=
-                     s.substr(i, j - i));
+                 s.substr(lq.sa[sa_le - 1],
+                   j - i) != s.substr(i, j - i));
           assert(sa_ri == n ||
                  s.substr(lq.sa[sa_ri], j - i) !=
-                     s.substr(i, j - i));
+                   s.substr(i, j - i));
         }
       }
       for (int i = 0; i < n; i++) {
         for (int k = 0; k < n; k++) {
           for (int j = i; j <= n; j++) {
             for (int l = k; l <= n; l++) {
-              int cmp_val = lq.cmp_substrs(i, j, k, l);
+              int cmp_val =
+                lq.cmp_substrs(i, j, k, l);
               string sub1 = s.substr(i, j - i);
               string sub2 = s.substr(k, l - k);
               if (cmp_val < 0) assert(sub1 < sub2);
-              if (cmp_val == 0) assert(sub1 == sub2);
+              if (cmp_val == 0)
+                assert(sub1 == sub2);
               if (cmp_val > 0) assert(sub1 > sub2);
             }
           }

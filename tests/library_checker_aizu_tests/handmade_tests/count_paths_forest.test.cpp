@@ -10,11 +10,13 @@
 
 #include "../../../library/trees/centroid_decomp/count_paths_per_length.hpp"
 
-vector<vector<ll>> naive(const vector<vector<int>>& adj,
-                         dsu_restorable& dsu) {
+vector<vector<ll>> naive(
+  const vector<vector<int>>& adj,
+  dsu_restorable& dsu) {
   tree_lift tl(adj);
   int n = sz(adj);
-  vector<vector<ll>> cnts_naive(n + 1, vector<ll>(n, 0));
+  vector<vector<ll>> cnts_naive(
+    n + 1, vector<ll>(n, 0));
   for (int u = 0; u < n; u++) {
     for (int v = u; v < n; v++) {
       if (dsu.same_set(u, v)) {
@@ -44,12 +46,15 @@ int main() {
     }
     vector<vector<ll>> cnts_naive = naive(adj, dsu);
     for (int k = 1; k <= n; k++)
-      assert(count_paths_per_node(adj, k) == cnts_naive[k]);
-    vector<ll> num_paths_len = count_paths_per_length(adj);
+      assert(count_paths_per_node(adj, k) ==
+             cnts_naive[k]);
+    vector<ll> num_paths_len =
+      count_paths_per_length(adj);
     for (int k = 1; k < n; k++) {
-      vector<ll> count_paths = count_paths_per_node(adj, k);
-      ll total_paths = accumulate(begin(count_paths),
-                                  end(count_paths), 0LL);
+      vector<ll> count_paths =
+        count_paths_per_node(adj, k);
+      ll total_paths = accumulate(
+        begin(count_paths), end(count_paths), 0LL);
       assert(total_paths % (k + 1) == 0);
       total_paths /= k + 1;
       assert(num_paths_len[k] == total_paths);

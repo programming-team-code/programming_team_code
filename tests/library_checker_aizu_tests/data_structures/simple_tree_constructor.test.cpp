@@ -16,10 +16,10 @@ int main() {
     cin >> init[i][0] >> init[i][1];
   }
   tree st(init, {1, 0},
-          [&](const array<int, 2>& le,
-              const array<int, 2>& ri) -> array<int, 2> {
+    [&](const array<int, 2>& le,
+      const array<int, 2>& ri) -> array<int, 2> {
     return {int(1LL * le[0] * ri[0] % mod),
-            int((1LL * ri[0] * le[1] + ri[1]) % mod)};
+      int((1LL * ri[0] * le[1] + ri[1]) % mod)};
   });
   while (q--) {
     int type;
@@ -34,7 +34,8 @@ int main() {
       assert(st.query(le, le) == st.unit);
       assert(st.query(ri, ri) == st.unit);
       auto [slope, y_int] = st.query(le, ri);
-      cout << (1LL * slope * x + y_int) % mod << '\n';
+      cout << (1LL * slope * x + y_int) % mod
+           << '\n';
     }
   }
   return 0;

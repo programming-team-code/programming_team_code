@@ -36,23 +36,26 @@ int main() {
       int res = ld.kth_par(u, k);
       assert(res == jmp(ld.b_tbl, u, k));
       assert(res == ld_rooted.kth_par(u, k));
-      assert(res == ld_rooted.kth_par(u + n, k) - n);
+      assert(
+        res == ld_rooted.kth_par(u + n, k) - n);
       assert(res == lin_ld_rooted.kth_par(u, k));
-      assert(res == lin_ld_rooted.kth_par(u + n, k) - n);
+      assert(
+        res == lin_ld_rooted.kth_par(u + n, k) - n);
       cout << res << '\n';
     } else {
       int res = ld.kth_par(v, u_lca + v_lca - k);
-      assert(res == jmp(ld.b_tbl, v, u_lca + v_lca - k));
-      assert(res ==
-             ld_rooted.kth_par(v, u_lca + v_lca - k));
-      assert(res ==
-             ld_rooted.kth_par(v + n, u_lca + v_lca - k) -
-                 n);
-      assert(res ==
-             lin_ld_rooted.kth_par(v, u_lca + v_lca - k));
+      assert(
+        res == jmp(ld.b_tbl, v, u_lca + v_lca - k));
+      assert(res == ld_rooted.kth_par(
+                      v, u_lca + v_lca - k));
+      assert(res == ld_rooted.kth_par(
+                      v + n, u_lca + v_lca - k) -
+                      n);
       assert(res == lin_ld_rooted.kth_par(
-                        v + n, u_lca + v_lca - k) -
-                        n);
+                      v, u_lca + v_lca - k));
+      assert(res == lin_ld_rooted.kth_par(
+                      v + n, u_lca + v_lca - k) -
+                      n);
       cout << res << '\n';
     }
   }

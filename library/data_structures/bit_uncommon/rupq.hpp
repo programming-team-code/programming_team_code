@@ -16,7 +16,8 @@ template <class T> struct bit_rupq {
     adjacent_difference(all(a), begin(a));
     bit = {a};
   }
-  //! does a[le] += d, a[le + 1] += d, .., a[ri - 1] += d
+  //! does a[le] += d, a[le + 1] += d, .., a[ri - 1]
+  //! += d
   //!
   //! @param le,ri defines range [le, ri)
   //! @param d delta to add to all indexes in range

@@ -2,8 +2,9 @@
 #pragma once
 //! @see
 //! https://github.com/ucf-programming-team/hackpack-cpp
-//! /blob/master/content/graphs/TreeLifting.h Calculate
-//! jumps up a tree, to support fast upward jumps and LCAs.
+//! /blob/master/content/graphs/TreeLifting.h
+//! Calculate jumps up a tree, to support fast
+//! upward jumps and LCAs.
 struct tree_lift {
   struct node {
     int d, p = -1, j = -1;
@@ -14,22 +15,22 @@ struct tree_lift {
   //! @space O(n) for d, p, j vectors
   tree_lift(const vector<vi>& adj) : t(sz(adj)) {
     auto dfs = [&](auto&& self, int v) -> void {
-      int jump =
-          (t[v].d + t[t[t[v].j].j].d == 2 * t[t[v].j].d)
-              ? t[t[v].j].j
-              : v;
+      int jump = (t[v].d + t[t[t[v].j].j].d ==
+                   2 * t[t[v].j].d)
+                   ? t[t[v].j].j
+                   : v;
       for (int u : adj[v])
         if (u != t[v].p)
-          t[u].d = t[t[u].p = v].d + 1, t[u].j = jump,
-          self(self, u);
+          t[u].d = t[t[u].p = v].d + 1,
+          t[u].j = jump, self(self, u);
     };
     rep(i, 0, sz(t)) if (t[i].j == -1) t[i].j = i,
                                        dfs(dfs, i);
   }
   //! @param v query node
   //! @param k number of edges
-  //! @returns a node k edges up from v. With k=1, this
-  //! returns v's parent.
+  //! @returns a node k edges up from v. With k=1,
+  //! this returns v's parent.
   //! @time O(log k)
   //! @space O(1)
   int kth_par(int v, int k) {

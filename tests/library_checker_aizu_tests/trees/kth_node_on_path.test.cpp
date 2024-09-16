@@ -28,7 +28,8 @@ int main() {
   tree_lift tl(adj);
   LCA lc(adj);
   linear_kth_path lin_kth_path(adj);
-  compress_tree_asserts(adj, lin_kth_path.lin_lca, lc);
+  compress_tree_asserts(
+    adj, lin_kth_path.lin_lca, lc);
   while (q--) {
     int u, v, k;
     cin >> u >> v >> k;
@@ -42,24 +43,26 @@ int main() {
     if (u != v) {
       assert(tl.kth_path(u, v, 0) == u);
       assert(lin_kth_path.kth_path(u, v, 0) == u);
-      assert(tl.kth_path(u, v, 1) == lc.next_on_path(u, v));
+      assert(tl.kth_path(u, v, 1) ==
+             lc.next_on_path(u, v));
       assert(lin_kth_path.kth_path(u, v, 1) ==
              lc.next_on_path(u, v));
       assert(tl.kth_path(u, v, dist_in_edges - 1) ==
              lc.next_on_path(v, u));
-      assert(
-          lin_kth_path.kth_path(u, v, dist_in_edges - 1) ==
-          lc.next_on_path(v, u));
-      assert(lin_kth_path.lin_lca.in_subtree(u, v) ==
-             lc.in_subtree(u, v));
-      assert(lin_kth_path.lin_lca.in_subtree(v, u) ==
-             lc.in_subtree(v, u));
-      assert(tl.kth_path(u, v, dist_in_edges) == v);
-      assert(lin_kth_path.kth_path(u, v, dist_in_edges) ==
-             v);
-      assert(tl.kth_path(u, v, dist_in_edges + 1) == -1);
       assert(lin_kth_path.kth_path(
-                 u, v, dist_in_edges + 1) == -1);
+               u, v, dist_in_edges - 1) ==
+             lc.next_on_path(v, u));
+      assert(lin_kth_path.lin_lca.in_subtree(
+               u, v) == lc.in_subtree(u, v));
+      assert(lin_kth_path.lin_lca.in_subtree(
+               v, u) == lc.in_subtree(v, u));
+      assert(tl.kth_path(u, v, dist_in_edges) == v);
+      assert(lin_kth_path.kth_path(
+               u, v, dist_in_edges) == v);
+      assert(
+        tl.kth_path(u, v, dist_in_edges + 1) == -1);
+      assert(lin_kth_path.kth_path(
+               u, v, dist_in_edges + 1) == -1);
     }
   }
 }

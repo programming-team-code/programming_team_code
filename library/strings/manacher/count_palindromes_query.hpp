@@ -40,14 +40,16 @@ template <class T> struct count_pal_query {
     // sum over range [man_le, man_mi) of:
     //     i / 2 - max(man[i], le) + 1
     ll cnt =
-        -1LL * wt_le.rect_count(man_le, man_mi, 0, le) * le;
+      -1LL *
+      wt_le.rect_count(man_le, man_mi, 0, le) * le;
     cnt -= wt_le.rect_sum(man_le, man_mi, le, n);
     cnt += sum_consecutive(le, man_mi / 2) +
            sum_consecutive(le, (man_mi + 1) / 2);
     cnt += man_mi - man_le;
     // sum over range [man_mi, man_ri) of:
     //     min(right[i], ri) - (i + 1) / 2
-    cnt += ll(wt_ri.rect_count(man_mi, man_ri, ri, n + 1)) *
+    cnt += ll(wt_ri.rect_count(
+             man_mi, man_ri, ri, n + 1)) *
            ri;
     cnt += wt_ri.rect_sum(man_mi, man_ri, 1, ri);
     cnt -= sum_consecutive((man_mi + 1) / 2, ri) +

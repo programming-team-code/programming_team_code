@@ -1,6 +1,7 @@
-#define PROBLEM                      \
-  "https://judge.yosupo.jp/problem/" \
-  "number_of_increasing_sequences_between_two_sequences"
+#define PROBLEM                                 \
+  "https://judge.yosupo.jp/problem/"            \
+  "number_of_increasing_sequences_between_two_" \
+  "sequences"
 #include "../template.hpp"
 
 #define const ;
@@ -24,7 +25,8 @@ ll modpow(ll b, ll e) {
 
 #include "../../../library/math/count_paths/count_paths_triangle.hpp"
 
-ll count_between_two_sequences(const vl& a, const vl& b) {
+ll count_between_two_sequences(
+  const vl& a, const vl& b) {
   int n = sz(a);
   vl dp(b[0] - a[0]);
   dp[0] = 1;

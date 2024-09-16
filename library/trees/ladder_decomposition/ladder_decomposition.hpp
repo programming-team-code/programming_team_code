@@ -16,9 +16,14 @@ struct ladder {
   vi d, p, dl;  //!< deepest leaf
   //! @param adj forest (rooted or unrooted)
   //! @time O(n log n)
-  //! @space O(n log n) for b_tbl. Everything else is O(n)
+  //! @space O(n log n) for b_tbl. Everything else
+  //! is O(n)
   ladder(const vector<vi>& adj)
-      : n(sz(adj)), l_tbl(n), d(n), p(n, -1), dl(n) {
+      : n(sz(adj)),
+        l_tbl(n),
+        d(n),
+        p(n, -1),
+        dl(n) {
     auto dfs = [&](auto&& self, int v) -> void {
       dl[v] = v;
       for (int u : adj[v])
@@ -28,20 +33,23 @@ struct ladder {
           if (d[dl[u]] > d[dl[v]]) dl[v] = dl[u];
         }
     };
-    rep(i, 0, n) if (p[i] == -1) p[i] = i, dfs(dfs, i);
+    rep(i, 0, n) if (p[i] == -1) p[i] = i,
+                                 dfs(dfs, i);
     b_tbl = treeJump(p);
-    rep(i, 0, n) if (p[i] == i || dl[p[i]] != dl[i]) {
+    rep(
+      i, 0, n) if (p[i] == i || dl[p[i]] != dl[i]) {
       int leaf = dl[i];
       vi& lad = l_tbl[leaf];
-      lad.resize(min(2 * (d[leaf] - d[i]), d[leaf] + 1),
-                 leaf);
+      lad.resize(
+        min(2 * (d[leaf] - d[i]), d[leaf] + 1),
+        leaf);
       rep(j, 1, sz(lad)) lad[j] = p[lad[j - 1]];
     }
   }
   //! @param v query node
   //! @param k number of edges
-  //! @returns a node k edges up from v. With k=1, this
-  //! returns v's parent.
+  //! @returns a node k edges up from v. With k=1,
+  //! this returns v's parent.
   //! @time O(1)
   //! @space O(1)
   int kth_par(int v, int k) {

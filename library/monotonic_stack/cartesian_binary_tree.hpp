@@ -14,13 +14,14 @@
 //!
 //! @code{.cpp}
 //!     auto le = mono_st(a, less()), p =
-//!     cart_binary_tree(le); // right-most min is root auto
-//!     le = mono_st(a, less_equal()), p =
-//!     cart_binary_tree(le); // left-most min is root auto
-//!     le = mono_st(a, greater()), p =
-//!     cart_binary_tree(le); // right-most max is root auto
-//!     le = mono_st(a, greater_equal()), p =
-//!     cart_binary_tree(le); // left-most max is root
+//!     cart_binary_tree(le); // right-most min is
+//!     root auto le = mono_st(a, less_equal()), p =
+//!     cart_binary_tree(le); // left-most min is
+//!     root auto le = mono_st(a, greater()), p =
+//!     cart_binary_tree(le); // right-most max is
+//!     root auto le = mono_st(a, greater_equal()),
+//!     p = cart_binary_tree(le); // left-most max
+//!     is root
 //! @endcode
 //! @param le monotonic stack of array `a`
 //! @returns parent array
@@ -28,8 +29,9 @@
 //! @space a O(n) vector is allocated and returned
 vi cart_binary_tree(const vi& le) {
   vi p(le);
-  rep(i, 0, sz(p)) for (int j = i - 1; j != le[i];
-                        j = le[j]) if (le[j] == le[i])
-      p[j] = i;
+  rep(
+    i, 0, sz(p)) for (int j = i - 1; j != le[i];
+                      j = le[j]) if (le[j] == le[i])
+    p[j] = i;
   return p;
 }

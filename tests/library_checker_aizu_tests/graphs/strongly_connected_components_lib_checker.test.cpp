@@ -1,4 +1,5 @@
-#define PROBLEM "https://judge.yosupo.jp/problem/scc"
+#define PROBLEM \
+  "https://judge.yosupo.jp/problem/scc"
 
 #include "../template.hpp"
 #include "../scc_asserts.hpp"
@@ -22,7 +23,8 @@ int main() {
     each_scc[scc_id[i]].push_back(i);
   for (int i = num_sccs - 1; i >= 0; i--) {
     cout << sz(each_scc[i]) << " ";
-    for (auto node : each_scc[i]) cout << node << " ";
+    for (auto node : each_scc[i])
+      cout << node << " ";
     cout << '\n';
   }
   return 0;

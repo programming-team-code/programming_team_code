@@ -10,9 +10,10 @@
 
 void test_all_subarrays(const vector<int>& a) {
   auto n = sz(a);
-  RMQ rmq(a, [](auto x, auto y) { return min(x, y); });
+  RMQ rmq(
+    a, [](auto x, auto y) { return min(x, y); });
   disjoint_rmq dis_rmq(
-      a, [](auto x, auto y) { return min(x, y); });
+    a, [](auto x, auto y) { return min(x, y); });
   linear_rmq lin_rmq(a, less());
   for (int le = 0; le < n; le++) {
     for (int ri = le + 1; ri <= n; ri++) {
@@ -31,7 +32,8 @@ int main() {
     iota(begin(perm), end(perm), 0);
     do {
       test_all_subarrays(perm);
-    } while (next_permutation(begin(perm), end(perm)));
+    } while (
+      next_permutation(begin(perm), end(perm)));
   }
   for (int n = 1; n <= 100; n++) {
     for (int times = 0; times < 40; times++) {

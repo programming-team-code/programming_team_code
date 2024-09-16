@@ -4,20 +4,22 @@
 //! @see [Radecki
 //! Algorithm!](https://codeforces.com/blog/entry/91608)
 //!
-//! @param edge_updates directed edges {u, v} where u -> v
+//! @param edge_updates directed edges {u, v} where
+//! u -> v
 //! @param n number of vertices
 //!
-//! @returns a vec joins where joins[i] = minimum prefix of
-//! edges [0, joins[i]] for eds[i][0] and eds[i][1] to be in
-//! the same SCC; iff eds[i][0] and eds[i][1] are never in
-//! the same SCC then joins[i] = m
+//! @returns a vec joins where joins[i] = minimum
+//! prefix of edges [0, joins[i]] for eds[i][0] and
+//! eds[i][1] to be in the same SCC; iff eds[i][0]
+//! and eds[i][1] are never in the same SCC then
+//! joins[i] = m
 //!
 //! @note for self-edges (u, u), joins[i] = -1
 //!
 //! @time O((n + m) log m)
 //! @space O(n + m)
 vi offline_incremental_scc(
-    vector<array<int, 2>> edge_updates, int n) {
+  vector<array<int, 2>> edge_updates, int n) {
   int m = sz(edge_updates);
   vi ids(n, -1), joins(m, m);
   vector<array<int, 3>> eds(m);
@@ -25,8 +27,9 @@ vi offline_incremental_scc(
     auto [u, v] = edge_updates[t];
     eds[t] = {u, v, t};
   }
-  auto divide_and_conquer = [&](auto&& self, auto el,
-                                auto er, int tl, int tr) {
+  auto divide_and_conquer = [&](auto&& self,
+                              auto el, auto er,
+                              int tl, int tr) {
     int mid = tl + (tr - tl) / 2;
     vi vs;
     vector<vi> adj;
@@ -43,7 +46,8 @@ vi offline_incremental_scc(
     }
     for (int v : vs) ids[v] = -1;
     auto scc_id = sccs(adj).scc_id;
-    auto split = partition(el, er, [&](const auto& ed) {
+    auto split =
+      partition(el, er, [&](const auto& ed) {
       return scc_id[ed[0]] == scc_id[ed[1]];
     });
     for (auto it = el; it != split; it++)
@@ -62,6 +66,7 @@ vi offline_incremental_scc(
   };
   // uses -1 as the lower bound to correctly handle
   // self-edges
-  divide_and_conquer(divide_and_conquer, all(eds), -1, m);
+  divide_and_conquer(
+    divide_and_conquer, all(eds), -1, m);
   return joins;
 }

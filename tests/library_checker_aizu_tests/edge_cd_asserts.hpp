@@ -1,6 +1,6 @@
 #pragma once
 void edge_cd_asserts(const vector<vector<int>>& adj,
-                     int cent, int split) {
+  int cent, int split) {
   assert(0 < split && split < sz(adj[cent]));
   auto dfs = [&](auto&& self, int u, int p) -> int {
     int siz = 1;

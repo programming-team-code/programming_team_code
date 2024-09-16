@@ -1,5 +1,6 @@
-#define PROBLEM \
-  "https://judge.yosupo.jp/problem/biconnected_components"
+#define PROBLEM                      \
+  "https://judge.yosupo.jp/problem/" \
+  "biconnected_components"
 #include "../template.hpp"
 
 #include "../../../library/graphs/bridges_cuts/block_vertex_tree.hpp"
@@ -18,12 +19,13 @@ int main() {
     edges[i] = make_pair(u, v);
   }
   cuts cc(adj, m);
-  vector<vector<int>> bvt = block_vertex_tree(adj, cc);
-  assert(find(begin(cc.bcc_id), end(cc.bcc_id), -1) ==
-         end(cc.bcc_id));
+  vector<vector<int>> bvt =
+    block_vertex_tree(adj, cc);
+  assert(find(begin(cc.bcc_id), end(cc.bcc_id),
+           -1) == end(cc.bcc_id));
   for (int i = 0; i < n; i++) {
-    // cut node if there exists a pair of adjacent edges
-    // belonging to different BCCs
+    // cut node if there exists a pair of adjacent
+    // edges belonging to different BCCs
     bool is_cut = 0;
     for (int j = 0; j < sz(adj[i]); j++) {
       if (cc.bcc_id[adj[i][0].second] !=
@@ -35,19 +37,21 @@ int main() {
   // check correctness of block vertex tree
   for (int i = 0; i < n; i++) {
     assert(sz(adj[i]) >=
-           sz(bvt[i]));  // in particular, if empty(adj[i]),
-                         // then empty(bct[i])
+           sz(bvt[i]));  // in particular, if
+                         // empty(adj[i]), then
+                         // empty(bct[i])
     assert(
-        cc.is_cut[i] ==
-        (sz(bvt[i]) >
-         1));  // is cut means non-leaf in block vertex tree
+      cc.is_cut[i] ==
+      (sz(bvt[i]) > 1));  // is cut means non-leaf
+                          // in block vertex tree
   }
   {
     vector<set<int>> bcc_to_nodes(cc.num_bccs),
-        node_to_bccs(n);
+      node_to_bccs(n);
     for (int i = 0; i < m; i++) {
       int bccid = cc.bcc_id[i];
-      for (auto node : {edges[i].first, edges[i].second}) {
+      for (auto node :
+        {edges[i].first, edges[i].second}) {
         bcc_to_nodes[bccid].insert(node);
         node_to_bccs[node].insert(bccid);
       }
@@ -60,8 +64,10 @@ int main() {
         assert(node_to_bccs[u].count(bccid));
       }
     }
-    for (int bccid = 0; bccid < cc.num_bccs; bccid++) {
-      assert(sz(bcc_to_nodes[bccid]) == sz(bvt[bccid + n]));
+    for (int bccid = 0; bccid < cc.num_bccs;
+         bccid++) {
+      assert(sz(bcc_to_nodes[bccid]) ==
+             sz(bvt[bccid + n]));
       for (auto u : bvt[bccid + n])
         assert(bcc_to_nodes[bccid].count(u));
     }
@@ -70,11 +76,13 @@ int main() {
   for (int u = 0; u < n; u++)
     if (empty(bvt[u])) lone_nodes.push_back(u);
   cout << cc.num_bccs + sz(lone_nodes) << '\n';
-  for (int bccid = 0; bccid < cc.num_bccs; bccid++) {
+  for (int bccid = 0; bccid < cc.num_bccs;
+       bccid++) {
     cout << sz(bvt[bccid + n]) << " ";
     for (auto u : bvt[bccid + n]) cout << u << " ";
     cout << '\n';
   }
-  for (auto u : lone_nodes) cout << "1 " << u << '\n';
+  for (auto u : lone_nodes)
+    cout << "1 " << u << '\n';
   return 0;
 }

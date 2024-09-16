@@ -1,5 +1,6 @@
-#define PROBLEM                                        \
-  "https://onlinejudge.u-aizu.ac.jp/courses/lesson/1/" \
+#define PROBLEM                               \
+  "https://onlinejudge.u-aizu.ac.jp/courses/" \
+  "lesson/1/"                                 \
   "ALDS1/all/ALDS1_4_C"
 #include "../template.hpp"
 
@@ -14,7 +15,8 @@ int main() {
     string type, s;
     cin >> type >> s;
     if (type == "insert") tr.insert(s);
-    else cout << (tr.find(s) ? "yes" : "no") << '\n';
+    else
+      cout << (tr.find(s) ? "yes" : "no") << '\n';
   }
   return 0;
 }

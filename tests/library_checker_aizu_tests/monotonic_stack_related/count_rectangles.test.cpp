@@ -1,5 +1,6 @@
-#define PROBLEM                                         \
-  "https://onlinejudge.u-aizu.ac.jp/courses/library/7/" \
+#define PROBLEM                               \
+  "https://onlinejudge.u-aizu.ac.jp/courses/" \
+  "library/7/"                                \
   "DPL/all/DPL_3_B"
 #include "../template.hpp"
 #include "../mono_st_asserts.hpp"
@@ -28,9 +29,11 @@ int main() {
       mono_st_asserts(h);
     }
   }
-  vector<vector<int>> size_counts = count_rectangles(grid);
+  vector<vector<int>> size_counts =
+    count_rectangles(grid);
   {
-    vector<vector<int>> temp_grid(n, vector<int>(m));
+    vector<vector<int>> temp_grid(
+      n, vector<int>(m));
     for (int i = 0; i < n; i++)
       for (int j = 0; j < m; j++)
         temp_grid[i][j] = grid[i][j];

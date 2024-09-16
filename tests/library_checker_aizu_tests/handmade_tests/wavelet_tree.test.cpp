@@ -16,7 +16,7 @@ int main() {
       if (minn > maxn) swap(minn, maxn);
       vector<int> arr(n);
       generate(begin(arr), end(arr),
-               [&]() { return rnd<int>(minn, maxn); });
+        [&]() { return rnd<int>(minn, maxn); });
       wavelet_tree wt(arr, minn, maxn + 1);
       for (int queries = 3; queries--;) {
         int x = rnd<int>(-1000, 1000);
@@ -25,9 +25,12 @@ int main() {
         for (int le = 0; le <= n; le++) {
           int cnt = 0, sum = 0;
           for (int ri = le; ri <= n; ri++) {
-            assert(wt.rect_count(le, ri, x, y) == cnt);
-            assert(wt.rect_sum(le, ri, x, y) == sum);
-            if (ri < n && x <= arr[ri] && arr[ri] < y) {
+            assert(
+              wt.rect_count(le, ri, x, y) == cnt);
+            assert(
+              wt.rect_sum(le, ri, x, y) == sum);
+            if (ri < n && x <= arr[ri] &&
+                arr[ri] < y) {
               cnt++;
               sum += arr[ri];
             }
@@ -37,11 +40,12 @@ int main() {
       if (n <= 35) {
         for (int le = 0; le <= n; le++) {
           for (int ri = le; ri <= n; ri++) {
-            vector<int> subarray(begin(arr) + le,
-                                 begin(arr) + ri);
+            vector<int> subarray(
+              begin(arr) + le, begin(arr) + ri);
             sort(begin(subarray), end(subarray));
             int sum = 0;
-            for (int k = 0; k <= sz(subarray); k++) {
+            for (int k = 0; k <= sz(subarray);
+                 k++) {
               if (k) {
                 assert(wt.kth_smallest(le, ri, k) ==
                        subarray[k - 1]);
@@ -64,7 +68,8 @@ int main() {
       count_val[val - large]++;
     }
     wavelet_tree wt(arr, large, large + val_range);
-    for (int x = large; x <= large + val_range; x++) {
+    for (int x = large; x <= large + val_range;
+         x++) {
       int cnt = 0;
       int64_t sum = 0;
       for (int y = x; y <= large + val_range; y++) {
@@ -76,7 +81,8 @@ int main() {
         }
       }
     }
-    for (int tests_kth_sum = 100; tests_kth_sum--;) {
+    for (int tests_kth_sum = 100;
+         tests_kth_sum--;) {
       int k = rnd<int>(0, mx_n);
       if (tests_kth_sum == 50) k = 0;
       if (tests_kth_sum == 49) k = mx_n;
@@ -90,11 +96,13 @@ int main() {
       for (int i = 0; i < val_range; i++) {
         if (curr_cnt + count_val[i] >= k) {
           kth_smallest_naive = i + large;
-          curr_sum += 1LL * (i + large) * (k - curr_cnt);
+          curr_sum +=
+            1LL * (i + large) * (k - curr_cnt);
           break;
         }
         curr_cnt += count_val[i];
-        curr_sum += 1LL * (i + large) * count_val[i];
+        curr_sum +=
+          1LL * (i + large) * count_val[i];
       }
       assert(kth_smallest_naive != -1);
       assert(wt.kth_smallest(0, mx_n, k) ==

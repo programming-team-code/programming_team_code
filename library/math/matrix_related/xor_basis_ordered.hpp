@@ -9,8 +9,8 @@ const int lg = 60;
 //!     basis<ll> b;
 //!     basis<bitset<lg>> b;
 //! @endcode
-//! can get tiny speed boost by repeatedly jumping to next
-//! 1-bit in v with __lg
+//! can get tiny speed boost by repeatedly jumping
+//! to next 1-bit in v with __lg
 template <class T> struct basis {
   T b[lg]{};
   int siz = 0;

@@ -14,14 +14,14 @@ template <class T> struct contour_range_query {
   //! @param a a[v] = initial number for node v
   //! @time O(n log1.5 n)
   //! @space O(n log1.5 n) for `info` and `bits`
-  contour_range_query(const vector<vi>& adj,
-                      const vector<T>& a)
+  contour_range_query(
+    const vector<vi>& adj, const vector<T>& a)
       : n(sz(a)), sum_a(adj, a), info(n) {
-    edge_cd(adj, [&](const vector<vi>& cd_adj, int cent,
-                     int split) {
+    edge_cd(adj, [&](const vector<vi>& cd_adj,
+                   int cent, int split) {
       vector<vector<T>> sum_num(2, vector<T>(1));
-      auto dfs = [&](auto&& self, int v, int p, int d,
-                     int side) -> void {
+      auto dfs = [&](auto&& self, int v, int p,
+                   int d, int side) -> void {
         info[v].push_back({sz(bits), d, side});
         if (sz(sum_num[side]) == d)
           sum_num[side].push_back(0);
@@ -29,10 +29,10 @@ template <class T> struct contour_range_query {
         for (int u : cd_adj[v])
           if (u != p) self(self, u, v, 1 + d, side);
       };
-      rep(i, 0, sz(cd_adj[cent]))
-          dfs(dfs, cd_adj[cent][i], cent, 1, i < split);
+      rep(i, 0, sz(cd_adj[cent])) dfs(
+        dfs, cd_adj[cent][i], cent, 1, i < split);
       bits.push_back(
-          {BIT<T>(sum_num[0]), BIT<T>(sum_num[1])});
+        {BIT<T>(sum_num[0]), BIT<T>(sum_num[1])});
     });
   }
   //! @param v node
@@ -46,8 +46,8 @@ template <class T> struct contour_range_query {
   }
   //! @param v node
   //! @param le,ri defines range [le, ri)
-  //! @returns sum of node u's number over all u such that
-  //! le <= dist_edges(u, v) < ri
+  //! @returns sum of node u's number over all u
+  //! such that le <= dist_edges(u, v) < ri
   //! @time O(log1.5(n) * log2(n))
   //! @space O(1)
   T query(int v, int le, int ri) {

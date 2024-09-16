@@ -1,5 +1,6 @@
-#define PROBLEM                                        \
-  "https://onlinejudge.u-aizu.ac.jp/courses/lesson/8/" \
+#define PROBLEM                               \
+  "https://onlinejudge.u-aizu.ac.jp/courses/" \
+  "lesson/8/"                                 \
   "ITP2/all/ITP2_3_D"
 #include "../template.hpp"
 
@@ -23,6 +24,7 @@ int main() {
     arr.push_back(val);
   }
   sa_query lq(arr, 1001);
-  cout << (lq.cmp_substrs(0, n, n, n + m) < 0) << '\n';
+  cout << (lq.cmp_substrs(0, n, n, n + m) < 0)
+       << '\n';
   return 0;
 }

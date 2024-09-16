@@ -18,13 +18,15 @@ int main() {
   cout << sz(adj) << '\n';
   int curr_time = 0;
   vector<int> node_to_time(sz(adj), -1);
-  auto dfs = [&](auto&& self, int u, int p) -> void {
+  auto dfs = [&](
+               auto&& self, int u, int p) -> void {
     node_to_time[u] = curr_time++;
     cout << (p == -1 ? p : node_to_time[p]) << " "
          << pt.t[u].mn_idx << " "
          << pt.t[u].mn_idx + pt.t[u].len - 1 << " "
-         << (pt.t[u].is_join || empty(adj[u]) ? "linear"
-                                              : "prime")
+         << (pt.t[u].is_join || empty(adj[u])
+                ? "linear"
+                : "prime")
          << '\n';
     for (int v : adj[u]) self(self, v, u);
   };

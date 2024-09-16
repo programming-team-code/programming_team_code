@@ -13,7 +13,8 @@ int main() {
   for (int i = 0; i < n; i++) { cin >> a[i]; }
   vector<int> comp(a);
   sort(begin(comp), end(comp));
-  comp.erase(unique(begin(comp), end(comp)), end(comp));
+  comp.erase(
+    unique(begin(comp), end(comp)), end(comp));
   for (int& val : a) {
     int start = 0, end = sz(comp);
     while (start + 1 < end) {

@@ -14,7 +14,8 @@ int main() {
   int n, q;
   cin >> n >> q;
   vector<int> initial_values(n);
-  for (int i = 0; i < n; i++) cin >> initial_values[i];
+  for (int i = 0; i < n; i++)
+    cin >> initial_values[i];
   vector<int> time_remove(q, -1);
   struct query {
     int type, u, v, x;

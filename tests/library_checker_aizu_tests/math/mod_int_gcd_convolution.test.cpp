@@ -1,5 +1,6 @@
-#define PROBLEM \
-  "https://judge.yosupo.jp/problem/gcd_convolution"
+#define PROBLEM                      \
+  "https://judge.yosupo.jp/problem/" \
+  "gcd_convolution"
 #include "../template.hpp"
 
 #include "../../../library/math/mod_int.hpp"

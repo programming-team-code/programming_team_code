@@ -17,7 +17,8 @@ int main() {
     adj[v].push_back(u);
   }
   auto cc_id = get_complement_graph_ccs(adj);
-  int num_ccs = *max_element(begin(cc_id), end(cc_id)) + 1;
+  int num_ccs =
+    *max_element(begin(cc_id), end(cc_id)) + 1;
   vector<vector<int>> ccs(num_ccs);
   for (int u = 0; u < n; u++) {
     ccs[cc_id[u]].push_back(u);

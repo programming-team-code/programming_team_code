@@ -1,5 +1,6 @@
-#define PROBLEM \
-  "https://judge.yosupo.jp/problem/static_range_frequency"
+#define PROBLEM                      \
+  "https://judge.yosupo.jp/problem/" \
+  "static_range_frequency"
 #include "../template.hpp"
 
 #include "../../../library/data_structures/wavelet_merge/wavelet_tree.hpp"
@@ -13,7 +14,7 @@ int main() {
   vector<int> sorted(arr);
   sort(begin(sorted), end(sorted));
   sorted.erase(unique(begin(sorted), end(sorted)),
-               end(sorted));
+    end(sorted));
   for (int& val : arr) {
     int le = 0, ri = sz(sorted);
     while (ri - le > 1) {
@@ -39,7 +40,8 @@ int main() {
     else {
       int idx = start - 30;
       assert(wt.rect_count(le, ri, idx, idx) == 0);
-      cout << wt.rect_count(le, ri, idx, idx + 1) << '\n';
+      cout << wt.rect_count(le, ri, idx, idx + 1)
+           << '\n';
     }
   }
   return 0;

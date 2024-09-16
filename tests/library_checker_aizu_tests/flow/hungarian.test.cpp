@@ -1,4 +1,5 @@
-#define PROBLEM "https://judge.yosupo.jp/problem/assignment"
+#define PROBLEM \
+  "https://judge.yosupo.jp/problem/assignment"
 #include "../template.hpp"
 
 #include "../../../library/flow/hungarian.hpp"
@@ -13,6 +14,7 @@ int main() {
   }
   auto [min_weight, l_to_r] = hungarian(a);
   cout << min_weight << '\n';
-  for (int i = 1; i <= n; i++) cout << l_to_r[i] - 1 << " ";
+  for (int i = 1; i <= n; i++)
+    cout << l_to_r[i] - 1 << " ";
   return 0;
 }

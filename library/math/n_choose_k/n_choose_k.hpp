@@ -2,7 +2,8 @@
 #pragma once
 #include "grow.hpp"
 //! @param n,k integers with n < mod
-//! @returns number of ways to choose k objects out of n
+//! @returns number of ways to choose k objects out
+//! of n
 //! @time O(1) amortized
 //! @space O(1) amortized
 // NOLINTNEXTLINE(readability-identifier-naming)

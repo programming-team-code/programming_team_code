@@ -34,7 +34,8 @@ int main() {
     cout << ans.x << '\n';
     if (qq <= 10 || abs(q - qq) <= 10 ||
         rnd(0, 50'000) == 0) {
-      auto uf = get_range_parallel_equivalence_classes(
+      auto uf =
+        get_range_parallel_equivalence_classes(
           queries, n);
       vector<mint> sums(n);
       mint offline_ans = 0;

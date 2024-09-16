@@ -33,12 +33,16 @@ int main() {
       assert(val1 == val2);
       for (int64_t v : unordered.b)
         assert(((1LL << __lg(v)) & val2) == 0);
-      bool inserted_unordered = unordered.insert(elem);
-      bool inserted_ordered_ll = ordered_ll.insert(elem);
+      bool inserted_unordered =
+        unordered.insert(elem);
+      bool inserted_ordered_ll =
+        ordered_ll.insert(elem);
       bool inserted_ordered_bitset =
-          ordered_bitset.insert(bitset<lg>(elem));
-      assert(inserted_unordered == inserted_ordered_bitset);
-      assert(inserted_unordered == inserted_ordered_ll);
+        ordered_bitset.insert(bitset<lg>(elem));
+      assert(inserted_unordered ==
+             inserted_ordered_bitset);
+      assert(
+        inserted_unordered == inserted_ordered_ll);
       naive_size += inserted_unordered;
       assert(naive_size == sz(unordered.b));
       assert(sz(unordered.b) == ordered_bitset.siz);
@@ -46,7 +50,8 @@ int main() {
       if (inserted_unordered) {
         for (int64_t v : unordered.b) {
           bitset<lg> curr_elem(v);
-          int idx = ordered_bitset.shrink(curr_elem);
+          int idx =
+            ordered_bitset.shrink(curr_elem);
           assert(idx == -1);
           idx = ordered_ll.shrink(v);
           assert(idx == -1);
@@ -59,17 +64,19 @@ int main() {
           assert(ordered_bitset.b[j] ==
                  bitset<lg>(ordered_ll.b[j]));
           if (ordered_bitset.b[j][j])
-            assert(unordered.shrink(
-                       ordered_bitset.b[j].to_ullong()) ==
-                   0);
+            assert(
+              unordered.shrink(
+                ordered_bitset.b[j].to_ullong()) ==
+              0);
         }
-        for (int i1 = 0; i1 < sz(unordered.b); i1++) {
-          for (int i2 = i1 + 1; i2 < sz(unordered.b);
-               i2++) {
+        for (int i1 = 0; i1 < sz(unordered.b);
+             i1++) {
+          for (int i2 = i1 + 1;
+               i2 < sz(unordered.b); i2++) {
             assert(__lg(unordered.b[i1]) !=
                    __lg(unordered.b[i2]));
             assert(((1LL << __lg(unordered.b[i1])) &
-                    unordered.b[i2]) == 0);
+                     unordered.b[i2]) == 0);
           }
         }
       }
@@ -84,8 +91,9 @@ int main() {
       basises[mask] = intersection(u, v);
       basis u_v_union = u;
       for (int64_t vec : v.b) u_v_union.insert(vec);
-      assert(sz(basises[mask].b) + sz(u_v_union.b) ==
-             sz(u.b) + sz(v.b));
+      assert(
+        sz(basises[mask].b) + sz(u_v_union.b) ==
+        sz(u.b) + sz(v.b));
       basis v_u_union = v;
       for (int64_t vec : u.b) v_u_union.insert(vec);
       assert(sz(u_v_union.b) == sz(v_u_union.b));

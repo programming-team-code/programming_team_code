@@ -8,7 +8,8 @@ struct mode_query {
   vi a, cnt, index_into_index;
   vector<vi> index;
   vector<vector<pii>>
-      mode_blocks;  //!< {mode, cnt} of range of blocks
+    mode_blocks;  //!< {mode, cnt} of range of
+                  //!< blocks
   //! @param a_a compressed array: 0 <= a_a[i] < n
   //! @time O(n * sqrt(n))
   //! @space O(n)
@@ -19,7 +20,7 @@ struct mode_query {
         index_into_index(n),
         index(n),
         mode_blocks((n + b - 1) / b,
-                    vector<pii>((n + b - 1) / b)) {
+          vector<pii>((n + b - 1) / b)) {
     rep(i, 0, n) {
       index_into_index[i] = sz(index[a[i]]);
       index[a[i]].push_back(i);
@@ -31,7 +32,8 @@ struct mode_query {
         if (cnt[a[i]] > cnt[mode]) mode = a[i];
         if (mode_blocks[start / b][i / b].second <
             cnt[mode])
-          mode_blocks[start / b][i / b] = {mode, cnt[mode]};
+          mode_blocks[start / b][i / b] = {
+            mode, cnt[mode]};
       }
       rep(i, start, n) cnt[a[i]]--;
     }
@@ -52,7 +54,8 @@ struct mode_query {
       rep(i, le, ri) cnt[a[i]]--;
       return {mode, cnt_mode};
     }
-    pii res = mode_blocks[le / b + 1][(ri - 1) / b - 1];
+    pii res =
+      mode_blocks[le / b + 1][(ri - 1) / b - 1];
     for (int i = le / b * b + b - 1; i >= le; i--)
       cnt[a[i]]++;
     for (int i = le / b * b + b - 1; i >= le; i--) {

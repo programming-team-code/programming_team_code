@@ -1,9 +1,9 @@
 #define PROBLEM \
   "https://judge.yosupo.jp/problem/matrix_product"
-// IMO the vector checks && runtime sanitizer (which checks
-// index out of bounds) suffices here. All the other stuff
-// each slows down the test by 5-10 seconds, which adds up
-// to a TLE.
+// IMO the vector checks && runtime sanitizer (which
+// checks index out of bounds) suffices here. All
+// the other stuff each slows down the test by 5-10
+// seconds, which adds up to a TLE.
 #undef _GLIBCXX_DEBUG
 #undef _GLIBCXX_DEBUG_PEDANTIC
 #undef _GLIBCXX_ASSERTIONS
@@ -28,7 +28,8 @@ int main() {
   }
   auto prod = m1 * m2;
   for (int i = 0; i < n; i++) {
-    for (int j = 0; j < k; j++) cout << prod[i][j] << " ";
+    for (int j = 0; j < k; j++)
+      cout << prod[i][j] << " ";
     cout << '\n';
   }
   return 0;

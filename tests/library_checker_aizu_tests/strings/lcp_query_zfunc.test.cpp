@@ -1,4 +1,5 @@
-#define PROBLEM "https://judge.yosupo.jp/problem/zalgorithm"
+#define PROBLEM \
+  "https://judge.yosupo.jp/problem/zalgorithm"
 #include "../template.hpp"
 #include "../../../library/contest/random.hpp"
 
@@ -15,10 +16,12 @@ int main() {
       auto le = rnd<int>(0, sz(s) - 1);
       auto ri = rnd<int>(0, sz(s) - 1);
       int cmp_val = lq.cmp_sufs(le, ri);
-      if (cmp_val < 0) assert(s.substr(le) < s.substr(ri));
+      if (cmp_val < 0)
+        assert(s.substr(le) < s.substr(ri));
       if (cmp_val == 0)
         assert(s.substr(le) == s.substr(ri));
-      if (cmp_val > 0) assert(s.substr(le) > s.substr(ri));
+      if (cmp_val > 0)
+        assert(s.substr(le) > s.substr(ri));
     }
     for (int num_tests = 50; num_tests--;) {
       auto le1 = rnd<int>(0, sz(s));
@@ -35,11 +38,13 @@ int main() {
         if (le2 > ri2) swap(le2, ri2);
         if (le2 == sz(s)) le2--;
       }
-      int cmp_result = lq.cmp_substrs(le1, ri1, le2, ri2);
+      int cmp_result =
+        lq.cmp_substrs(le1, ri1, le2, ri2);
       string sub1 = s.substr(le1, ri1 - le1);
       string sub2 = s.substr(le2, ri2 - le2);
       if (cmp_result < 0) assert(sub1 < sub2);
-      else if (cmp_result == 0) assert(sub1 == sub2);
+      else if (cmp_result == 0)
+        assert(sub1 == sub2);
       else assert(sub1 > sub2);
     }
   }

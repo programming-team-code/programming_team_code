@@ -2,8 +2,9 @@
 #pragma once
 //! @param u,v endpoint nodes of path
 //! @param k index into path
-//! @returns the node vi({u,p[u],..,lca(u,v),..,p[v],v})[k],
-//! or -1, so u if k=0
+//! @returns the node
+//! vi({u,p[u],..,lca(u,v),..,p[v],v})[k], or -1, so
+//! u if k=0
 //! @time same as lca(u, v), kth_par(u, k)
 //! @space O(1)
 int kth_path(int u, int v, int k) {

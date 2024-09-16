@@ -1,4 +1,5 @@
-#define PROBLEM "https://judge.yosupo.jp/problem/lca"
+#define PROBLEM \
+  "https://judge.yosupo.jp/problem/lca"
 // without this, the test runs in like 34 seconds
 #undef _GLIBCXX_DEBUG
 #include "../template.hpp"

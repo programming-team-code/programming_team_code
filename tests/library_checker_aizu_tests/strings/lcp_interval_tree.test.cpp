@@ -9,7 +9,8 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
   string s;
   cin >> s;
-  transform(begin(s), end(s), begin(s), compress_char);
+  transform(
+    begin(s), end(s), begin(s), compress_char);
   int n = sz(s);
   lcp_tree lt(s);
   {

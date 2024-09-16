@@ -21,9 +21,9 @@ int main() {
     adj_rooted[p].push_back(i);
   }
   auto [num_distinct_subtrees, iso_id] =
-      subtree_iso(adj_unrooted);
-  auto [num_distinct_subtrees_rooted, iso_id_rooted] =
-      subtree_iso(adj_rooted);
+    subtree_iso(adj_unrooted);
+  auto [num_distinct_subtrees_rooted,
+    iso_id_rooted] = subtree_iso(adj_rooted);
   assert(num_distinct_subtrees ==
          num_distinct_subtrees_rooted);
   cout << num_distinct_subtrees << '\n';

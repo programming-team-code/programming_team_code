@@ -47,17 +47,21 @@ int main() {
       auto lca_3 = lin_lca.lca(u, v);
       assert(lca_1 == lca_2);
       assert(lca_1 == lca_3);
-      assert(tl.dist_edges(u, v) == lc.dist_edges(u, v));
+      assert(
+        tl.dist_edges(u, v) == lc.dist_edges(u, v));
       assert(tl.dist_edges(u, v) ==
              lin_lca.dist_edges(u, v));
-      assert(tl.kth_path(u, v, 1) == lc.next_on_path(u, v));
+      assert(tl.kth_path(u, v, 1) ==
+             lc.next_on_path(u, v));
       assert(lin_kth_path.kth_path(u, v, 1) ==
              lc.next_on_path(u, v));
       if (tl.t[u].d > tl.t[v].d) swap(u, v);
-      auto res = tl.kth_par(v, tl.t[v].d - tl.t[u].d);
-      assert(res == lad.kth_par(v, tl.t[v].d - tl.t[u].d));
+      auto res =
+        tl.kth_par(v, tl.t[v].d - tl.t[u].d);
+      assert(res ==
+             lad.kth_par(v, tl.t[v].d - tl.t[u].d));
       assert(res == lin_kth_path.lin_kp.kth_par(
-                        v, tl.t[v].d - tl.t[u].d));
+                      v, tl.t[v].d - tl.t[u].d));
       assert(lin_lca.in_subtree(u, v) ==
              lc.in_subtree(u, v));
       assert(lin_lca.in_subtree(v, u) ==

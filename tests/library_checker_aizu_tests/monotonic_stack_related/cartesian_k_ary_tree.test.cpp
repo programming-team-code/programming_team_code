@@ -18,7 +18,7 @@ int main() {
   assert(*max_element(begin(p), end(p)) < n);
   vector<int> a_neg(n);
   transform(begin(a), end(a), begin(a_neg),
-            [](int x) { return -x; });
+    [](int x) { return -x; });
   auto le_neg = mono_st(a_neg, greater()),
        ri_neg = mono_range(le_neg),
        p_neg = cart_k_ary_tree(a_neg, le_neg);
@@ -26,7 +26,8 @@ int main() {
   assert(p == p_neg);
   for (int i = 0; i < n; i++) {
     if (p[i] != -1)
-      assert(a[p[i]] < a[i]);  // because distinct numbers
+      assert(a[p[i]] <
+             a[i]);  // because distinct numbers
     cout << (p[i] == -1 ? i : p[i]) << " ";
   }
   return 0;

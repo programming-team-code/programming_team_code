@@ -4,8 +4,8 @@
 
 #include "../../../library/math/totient.hpp"
 
-// trick to remove const so I can use arbitrary prime mode
-// here
+// trick to remove const so I can use arbitrary
+// prime mode here
 #define const ;
 #include "../../../library/math/mod_int_pow.hpp"
 #undef const
@@ -32,7 +32,8 @@ int main() {
   while (t--) {
     int a, b, local_mod;
     cin >> a >> b >> local_mod;
-    cout << mod_int_tetration(a, b, local_mod) << '\n';
+    cout << mod_int_tetration(a, b, local_mod)
+         << '\n';
   }
   return 0;
 }

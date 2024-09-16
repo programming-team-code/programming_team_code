@@ -1,5 +1,6 @@
-#define PROBLEM \
-  "https://judge.yosupo.jp/problem/minimum_spanning_tree"
+#define PROBLEM                      \
+  "https://judge.yosupo.jp/problem/" \
+  "minimum_spanning_tree"
 #include "../template.hpp"
 
 #include "../../../library/graphs/mst.hpp"

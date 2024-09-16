@@ -24,7 +24,8 @@ int main() {
         int ri = rnd(le + 1, n);
         int target_sum = rnd(0, 100);
         int smallest_index_greater_sum = ri;
-        for (int pos = le, sum = 0; pos < ri; pos++) {
+        for (int pos = le, sum = 0; pos < ri;
+             pos++) {
           sum += a[pos];
           if (sum > target_sum) {
             smallest_index_greater_sum = pos;
@@ -32,7 +33,8 @@ int main() {
           }
         }
         int largest_index_greater_sum = le - 1;
-        for (int pos = ri - 1, sum = 0; pos >= le; pos--) {
+        for (int pos = ri - 1, sum = 0; pos >= le;
+             pos--) {
           sum += a[pos];
           if (sum > target_sum) {
             largest_index_greater_sum = pos;

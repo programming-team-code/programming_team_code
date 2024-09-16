@@ -1,8 +1,8 @@
 //! @file
 #pragma once
-//! @see On Finding Lowest Common Ancestors: Simplification
-//! and Parallelization by Baruch Schieber, Uzi Vishkin,
-//! April 1987
+//! @see On Finding Lowest Common Ancestors:
+//! Simplification and Parallelization by Baruch
+//! Schieber, Uzi Vishkin, April 1987
 //! @see
 //! https://codeforces.com/blog/entry/125371?#comment-1173604
 template <class T, class F> struct linear_rmq {
@@ -12,22 +12,26 @@ template <class T, class F> struct linear_rmq {
   vector<array<int, 2>> t;
   //! @code{.cpp}
   //!     vector<ll> a(n);
-  //!     linear_rmq rmq(a, less()); // right-most min
-  //!     linear_rmq rmq(a, less_equal()); // left-most min
-  //!     linear_rmq rmq(a, greater()); // right-most max
-  //!     linear_rmq rmq(a, greater_equal()); // left-most
-  //!     max
+  //!     linear_rmq rmq(a, less()); // right-most
+  //!     min linear_rmq rmq(a, less_equal()); //
+  //!     left-most min linear_rmq rmq(a,
+  //!     greater()); // right-most max linear_rmq
+  //!     rmq(a, greater_equal()); // left-most max
   //! @endcode
   //! @param a_a,a_cmp array and a compare operator
   //! @time O(n)
   //! @space O(n)
   linear_rmq(const vector<T>& a_a, F a_cmp)
-      : a(a_a), cmp(a_cmp), head(sz(a) + 1), t(sz(a)) {
+      : a(a_a),
+        cmp(a_cmp),
+        head(sz(a) + 1),
+        t(sz(a)) {
     vi st{-1};
     for (int i = 0; i <= sz(a); i++) {
       int prev = -1;
-      while (st.back() != -1 &&
-             (i == sz(a) || !cmp(a[st.back()], a[i]))) {
+      while (
+        st.back() != -1 &&
+        (i == sz(a) || !cmp(a[st.back()], a[i]))) {
         if (prev != -1) head[prev] = st.back();
         int pw2 = 1 << __lg((end(st)[-2] + 1) ^ i);
         t[st.back()][0] = prev = i & -pw2;
@@ -38,7 +42,8 @@ template <class T, class F> struct linear_rmq {
       st.push_back(i);
     }
     rep(i, 1, sz(a)) t[i][1] =
-        (t[i][1] | t[i - 1][1]) & -(t[i][0] & -t[i][0]);
+      (t[i][1] | t[i - 1][1]) &
+      -(t[i][0] & -t[i][0]);
   }
   //! @param le,ri defines range [le, ri]
   //! @returns index of min/max of range
@@ -48,9 +53,11 @@ template <class T, class F> struct linear_rmq {
     if (int j = t[le][0] ^ t[ri][0]; j) {
       j = t[le][1] & t[ri][1] & -(1 << __lg(j));
       if (int k = t[le][1] ^ j; k)
-        k = 1 << __lg(k), le = head[(t[le][0] & -k) | k];
+        k = 1 << __lg(k),
+        le = head[(t[le][0] & -k) | k];
       if (int k = t[ri][1] ^ j; k)
-        k = 1 << __lg(k), ri = head[(t[ri][0] & -k) | k];
+        k = 1 << __lg(k),
+        ri = head[(t[ri][0] & -k) | k];
     }
     return cmp(a[le], a[ri]) ? le : ri;
   }
@@ -58,5 +65,7 @@ template <class T, class F> struct linear_rmq {
   //! @returns min/max of range
   //! @time O(1)
   //! @space O(1)
-  T query(int le, int ri) { return a[query_idx(le, ri)]; }
+  T query(int le, int ri) {
+    return a[query_idx(le, ri)];
+  }
 };

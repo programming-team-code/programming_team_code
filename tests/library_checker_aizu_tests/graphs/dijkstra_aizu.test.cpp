@@ -1,7 +1,8 @@
-#define PROBLEM \
-  "https://onlinejudge.u-aizu.ac.jp/problems/GRL_1_A"
-// since this causes an O(n) heap-property check for each
-// call to
+#define PROBLEM                                \
+  "https://onlinejudge.u-aizu.ac.jp/problems/" \
+  "GRL_1_A"
+// since this causes an O(n) heap-property check for
+// each call to
 //`priority_queue::push`, causing TLE.
 #undef _GLIBCXX_DEBUG
 #include "../template.hpp"

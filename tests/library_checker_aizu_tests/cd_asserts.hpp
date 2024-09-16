@@ -3,11 +3,12 @@
 void cd_asserts(const vector<vector<int>>& adj) {
   vector<bool> seen_cent(sz(adj));
   centroid(adj,
-           [&](const vector<vector<int>>& cd_adj,
-               int cent) -> void {
+    [&](const vector<vector<int>>& cd_adj,
+      int cent) -> void {
     assert(!seen_cent[cent]);
     seen_cent[cent] = 1;
-    auto dfs = [&](auto&& self, int u, int p) -> int {
+    auto dfs = [&](
+                 auto&& self, int u, int p) -> int {
       int sub_size = 1;
       for (int v : cd_adj[u])
         if (v != p) sub_size += self(self, v, u);
@@ -23,6 +24,6 @@ void cd_asserts(const vector<vector<int>>& adj) {
     }
     assert(sum == sz_decomp);
   });
-  assert(find(begin(seen_cent), end(seen_cent), 0) ==
-         end(seen_cent));
+  assert(find(begin(seen_cent), end(seen_cent),
+           0) == end(seen_cent));
 }

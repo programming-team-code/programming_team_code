@@ -40,7 +40,8 @@ int main() {
       assert(basis2.insert(val));
     }
     check_condition(basis2);
-    basis<int> inter = intersection<int>(basis1, basis2);
+    basis<int> inter =
+      intersection<int>(basis1, basis2);
     check_condition(inter);
     cout << sz(inter.b) << " ";
     for (int val : inter.b) { cout << val << " "; }

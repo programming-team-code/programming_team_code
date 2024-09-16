@@ -1,5 +1,6 @@
-#define PROBLEM \
-  "https://onlinejudge.u-aizu.ac.jp/problems/DSL_2_A"
+#define PROBLEM                                \
+  "https://onlinejudge.u-aizu.ac.jp/problems/" \
+  "DSL_2_A"
 #include "../template.hpp"
 
 #include "../../../library/data_structures/seg_tree.hpp"
@@ -9,7 +10,7 @@ int main() {
   int n, q;
   cin >> n >> q;
   tree st(n, INT_MAX,
-          [&](int x, int y) -> int { return min(x, y); });
+    [&](int x, int y) -> int { return min(x, y); });
   while (q--) {
     int type;
     cin >> type;

@@ -1,4 +1,5 @@
-#define PROBLEM "https://judge.yosupo.jp/problem/staticrmq"
+#define PROBLEM \
+  "https://judge.yosupo.jp/problem/staticrmq"
 #include "../template.hpp"
 #include "../mono_st_asserts.hpp"
 
@@ -15,18 +16,19 @@ int main() {
   {
     RMQ rmq_without_template(vector<int>(), mn);
     disjoint_rmq disjoint_rmq_without_template(
-        vector<int>(), mn);
-    linear_rmq lin_rmq_without_template(vector<int>(),
-                                        my_cmp);
+      vector<int>(), mn);
+    linear_rmq lin_rmq_without_template(
+      vector<int>(), my_cmp);
   }
   int n, q;
   cin >> n >> q;
   vector<int> a(n);
   for (int i = 0; i < n; i++) cin >> a[i];
   mono_st_asserts(a);
-  RMQ rmq(a, [](auto x, auto y) { return min(x, y); });
+  RMQ rmq(
+    a, [](auto x, auto y) { return min(x, y); });
   disjoint_rmq dis_rmq(
-      a, [](auto x, auto y) { return min(x, y); });
+    a, [](auto x, auto y) { return min(x, y); });
   linear_rmq lin_rmq(a, less());
   while (q--) {
     int le, ri;

@@ -1,5 +1,6 @@
-#define PROBLEM \
-  "https://judge.yosupo.jp/problem/bipartitematching"
+#define PROBLEM                      \
+  "https://judge.yosupo.jp/problem/" \
+  "bipartitematching"
 #include "../template.hpp"
 
 #include "../../../library/graphs/hopcroft_karp.hpp"
@@ -18,8 +19,8 @@ int main() {
   }
   hopcroft_karp res(adj, r);
   cout << res.size_of_matching << '\n';
-  // asserting correctness of both l_to_r, and r_to_l (as
-  // well as printing answer)
+  // asserting correctness of both l_to_r, and
+  // r_to_l (as well as printing answer)
   int size_l = 0;
   for (int i = 0; i < l; i++) {
     if (res.l_to_r[i] != -1) {
@@ -41,11 +42,14 @@ int main() {
   assert(size_r == res.size_of_matching);
   // asserting found min vertex cover is correct
   int cnt =
-      accumulate(begin(res.mvc_l), end(res.mvc_l), 0) +
-      accumulate(begin(res.mvc_r), end(res.mvc_r), 0);
-  assert(cnt ==
-         res.size_of_matching);  // size of min vertex cover
-                                 // == size of max matching
+    accumulate(
+      begin(res.mvc_l), end(res.mvc_l), 0) +
+    accumulate(begin(res.mvc_r), end(res.mvc_r), 0);
+  assert(
+    cnt == res.size_of_matching);  // size of min
+                                   // vertex cover
+                                   // == size of max
+                                   // matching
   for (auto [u, v] : edges)
     assert(res.mvc_l[u] || res.mvc_r[v]);
   return 0;

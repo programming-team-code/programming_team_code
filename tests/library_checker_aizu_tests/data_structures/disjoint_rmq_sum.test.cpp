@@ -1,5 +1,6 @@
-#define PROBLEM \
-  "https://judge.yosupo.jp/problem/static_range_sum"
+#define PROBLEM                      \
+  "https://judge.yosupo.jp/problem/" \
+  "static_range_sum"
 #include "../template.hpp"
 
 #include "../../../library/data_structures/uncommon/disjoint_rmq.hpp"

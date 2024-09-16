@@ -3,7 +3,8 @@
 //! @see https://cp-algorithms.com/string
 //! /aho_corasick.html#construction-of-the-trie
 const int mn = 'A',
-          cnt_let = 26;  // mn <= s[i] < mn + cnt_let
+          cnt_let =
+            26;  // mn <= s[i] < mn + cnt_let
 struct trie {
   struct node {
     array<int, cnt_let> next;

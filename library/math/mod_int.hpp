@@ -10,7 +10,9 @@ struct mint {
   mint(int xx = 0) : x(xx < 0 ? xx + mod : xx) {}
   mint operator+(mint b) { return x - mod + b.x; }
   mint operator-(mint b) { return x - b.x; }
-  mint operator*(mint b) { return ll(x) * b.x % mod; }
+  mint operator*(mint b) {
+    return ll(x) * b.x % mod;
+  }
   mint operator/(mint b) {
     int m = mod, u = 1, v = 0;
     while (m)

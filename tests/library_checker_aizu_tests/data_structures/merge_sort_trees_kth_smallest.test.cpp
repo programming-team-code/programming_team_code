@@ -1,7 +1,8 @@
-#define PROBLEM \
-  "https://judge.yosupo.jp/problem/range_kth_smallest"
-// since this causes an O(n) partition check for each call
-// to `lower_bound`, causing TLE.
+#define PROBLEM                      \
+  "https://judge.yosupo.jp/problem/" \
+  "range_kth_smallest"
+// since this causes an O(n) partition check for
+// each call to `lower_bound`, causing TLE.
 #undef _GLIBCXX_DEBUG
 #include "../template.hpp"
 
@@ -20,15 +21,15 @@ int main() {
   vector<int> inverted(n);
   map<int, int> ptr;
   for (int i = 0; i < n; i++) {
-    int pos = int(
-        lower_bound(begin(sorted), end(sorted), arr[i]) -
-        begin(sorted));
+    int pos = int(lower_bound(begin(sorted),
+                    end(sorted), arr[i]) -
+                  begin(sorted));
     if (!ptr.count(arr[i])) ptr[arr[i]] = pos;
     inverted[ptr[arr[i]]++] = i;
   }
   merge_sort_tree mst(inverted);
-  merge_sort_tree_updates mstu(inverted,
-                               vector<bool>(n, 1));
+  merge_sort_tree_updates mstu(
+    inverted, vector<bool>(n, 1));
   while (q--) {
     int le, ri, k;
     cin >> le >> ri >> k;

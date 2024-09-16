@@ -1,5 +1,6 @@
-#define PROBLEM                                        \
-  "https://onlinejudge.u-aizu.ac.jp/courses/lesson/1/" \
+#define PROBLEM                               \
+  "https://onlinejudge.u-aizu.ac.jp/courses/" \
+  "lesson/1/"                                 \
   "ALDS1/all/ALDS1_14_B"
 #include "../template.hpp"
 #include "compress_char.hpp"
@@ -15,12 +16,14 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
   string s, t;
   cin >> s >> t;
-  transform(begin(s), end(s), begin(s), compress_char);
-  transform(begin(t), end(t), begin(t), compress_char);
+  transform(
+    begin(s), end(s), begin(s), compress_char);
+  transform(
+    begin(t), end(t), begin(t), compress_char);
   lcp_tree lt(s);
   auto [le, ri] = lt.find_str(t);
-  vector<int> matches(begin(lt.sf_a.sa) + le,
-                      begin(lt.sf_a.sa) + ri);
+  vector<int> matches(
+    begin(lt.sf_a.sa) + le, begin(lt.sf_a.sa) + ri);
   sort(begin(matches), end(matches));
   {
     // test find via BWT

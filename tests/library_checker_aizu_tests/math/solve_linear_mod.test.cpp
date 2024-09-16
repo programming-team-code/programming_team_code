@@ -36,7 +36,8 @@ int main() {
       assert(0 <= x[j].x && x[j].x < mod);
       for (int k = 0; k < j; k++)
         if (pivot[k] != -1) x[k] = mat[pivot[k]][j];
-      for (int k = 0; k < m; k++) cout << x[k].x << " ";
+      for (int k = 0; k < m; k++)
+        cout << x[k].x << " ";
       cout << '\n';
     }
   return 0;

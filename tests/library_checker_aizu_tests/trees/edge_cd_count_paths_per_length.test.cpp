@@ -19,7 +19,8 @@ int main() {
   }
   { edge_cd(adj, edge_cd_asserts); }
   vector<ll> cnt_len = count_paths_per_length(adj);
-  for (int i = 1; i < n; i++) cout << cnt_len[i] << " ";
+  for (int i = 1; i < n; i++)
+    cout << cnt_len[i] << " ";
   cout << '\n';
   return 0;
 }

@@ -36,7 +36,7 @@ int main() {
   auto haystack_vec = to_vec(haystack);
   auto needle_vec = to_vec(needle);
   auto matches = wildcard_pattern_matching(
-      haystack_vec, needle_vec, conv);
+    haystack_vec, needle_vec, conv);
   for (bool b : matches) cout << b;
   cout << '\n';
   return 0;
