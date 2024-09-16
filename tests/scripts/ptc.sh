@@ -34,7 +34,7 @@ for header in ../library/**/*.hpp; do
 	lines="$(wc -l <input)"
 	for i in $(seq "$lines" -5 1); do
 		hash=$(head -n "$i" input | sed '/^#include/d' | cpp -dD -P -fpreprocessed | ./../library/contest/hash.sh)
-		sed -i "${i}s/&/\/\/${hash}/" "$header"
+		sed -i "${i}s/$/\/\/${hash}/" "$header"
 	done
 done
 
