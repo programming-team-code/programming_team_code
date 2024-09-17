@@ -20,8 +20,7 @@ struct merge_sort_tree {
   //! @space O(n + (n log n) / 64) for
   //! `bool_presums` vector
   merge_sort_tree(const vi& a)
-      : n(sz(a)),
-        sorted(n),
+      : n(sz(a)), sorted(n),
         bool_presums(n, vector<bool>()) {
     vector<pair<int, bool>> cpy(n);
     transform(all(a), begin(cpy),

@@ -14,8 +14,7 @@ struct cd_lca {
   //! @space O(n log n) for `mn_d` and `to_cent`
   //! vectors
   cd_lca(const vector<vi>& adj)
-      : d(sz(adj)),
-        mn_d(sz(adj)),
+      : d(sz(adj)), mn_d(sz(adj)),
         to_cent(sz(adj)) {
     auto dfs_d = [&](auto&& self, int v,
                    int p) -> void {

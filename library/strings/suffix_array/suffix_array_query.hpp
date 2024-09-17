@@ -9,13 +9,10 @@ template <class T> struct sa_query {
   vi sa, sa_inv, lcp;
   RMQ<int, function<int(int, int)>> rmq;
   sa_query(const T& a_s, const array<vi, 3>& d)
-      : s(a_s),
-        n(sz(s)),
-        sa(d[0]),
-        sa_inv(d[1]),
-        lcp(d[2]),
-        rmq(lcp,
-          [](int x, int y) { return min(x, y); }) {}
+      : s(a_s), n(sz(s)), sa(d[0]), sa_inv(d[1]),
+        lcp(d[2]), rmq(lcp, [](int x, int y) {
+          return min(x, y);
+        }) {}
   //! @time O(nlogn + max_val)
   //! @space O(nlogn + max_val) used during
   //! constructor; but member variables are only

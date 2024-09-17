@@ -19,10 +19,8 @@ template <class T> struct count_pal_query {
   //! @time O(n log n)
   //! @space O(n log n) for wavelet trees
   count_pal_query(const T& s)
-      : n(sz(s)),
-        man(manacher(s)),
-        wt_le(man, 0, n),
-        wt_ri(init()) {}
+      : n(sz(s)), man(manacher(s)),
+        wt_le(man, 0, n), wt_ri(init()) {}
   wavelet_tree init() {
     vi right(sz(man));
     rep(i, 0, sz(man)) right[i] = i - man[i] + 1;

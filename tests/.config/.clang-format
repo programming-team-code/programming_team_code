@@ -12,5 +12,5 @@ AlignTrailingComments: false
 LambdaBodyIndentation: OuterScope
 ContinuationIndentWidth: 2
 AlignAfterOpenBracket: DontAlign
-AllowAllParametersOfDeclarationOnNextLine: true
+PackConstructorInitializers: BinPack
 ...

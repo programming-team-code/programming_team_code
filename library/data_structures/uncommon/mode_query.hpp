@@ -14,11 +14,8 @@ struct mode_query {
   //! @time O(n * sqrt(n))
   //! @space O(n)
   mode_query(const vi& a_a)
-      : n(sz(a_a)),
-        a(a_a),
-        cnt(n),
-        index_into_index(n),
-        index(n),
+      : n(sz(a_a)), a(a_a), cnt(n),
+        index_into_index(n), index(n),
         mode_blocks((n + b - 1) / b,
           vector<pii>((n + b - 1) / b)) {
     rep(i, 0, n) {

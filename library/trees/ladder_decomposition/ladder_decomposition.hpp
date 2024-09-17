@@ -19,10 +19,7 @@ struct ladder {
   //! @space O(n log n) for b_tbl. Everything else
   //! is O(n)
   ladder(const vector<vi>& adj)
-      : n(sz(adj)),
-        l_tbl(n),
-        d(n),
-        p(n, -1),
+      : n(sz(adj)), l_tbl(n), d(n), p(n, -1),
         dl(n) {
     auto dfs = [&](auto&& self, int v) -> void {
       dl[v] = v;

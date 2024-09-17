@@ -20,10 +20,8 @@ struct PST {
   //! @time O(1)
   //! @space O(1)
   PST(int a_root_l, int a_root_r)
-      : root_l(a_root_l),
-        root_r(a_root_r),
-        roots(1),
-        tree(1, {0LL, 0, 0}) {}
+      : root_l(a_root_l), root_r(a_root_r),
+        roots(1), tree(1, {0LL, 0, 0}) {}
   //! @param idx,change does a[idx] += change
   //! @param version which version to update. Each
   //! call to update creates a new version.

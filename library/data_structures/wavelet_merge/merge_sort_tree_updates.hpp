@@ -27,9 +27,7 @@ struct merge_sort_tree_updates {
   //!        vector
   merge_sort_tree_updates(
     const vi& a, const vector<bool>& active)
-      : n(sz(a)),
-        sorted(n),
-        perm(n),
+      : n(sz(a)), sorted(n), perm(n),
         bool_presums(n, vector<bool>()),
         bool_bits(2 * n, vector<bool>()) {
     if (!n) return;

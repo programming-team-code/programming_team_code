@@ -38,9 +38,7 @@ struct wavelet_tree_updates {
   //! / 64) for `bool_presums` and for `bool_bits`
   wavelet_tree_updates(const vi& a, int a_minv,
     int a_maxv, const vector<bool>& active)
-      : n(sz(a)),
-        minv(a_minv),
-        maxv(a_maxv),
+      : n(sz(a)), minv(a_minv), maxv(a_maxv),
         bool_presums(maxv - minv, vector<bool>()),
         bool_bits(
           2 * (maxv - minv), vector<bool>()) {

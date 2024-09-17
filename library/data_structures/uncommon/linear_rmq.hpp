@@ -25,9 +25,7 @@ template <class T, class F> struct linear_rmq {
   //! @time O(n)
   //! @space O(n)
   linear_rmq(const vector<T>& a_a, F a_cmp)
-      : a(a_a),
-        cmp(a_cmp),
-        head(sz(a) + 1),
+      : a(a_a), cmp(a_cmp), head(sz(a) + 1),
         t(sz(a)) {
     vi st{-1};
     for (int i = 0; i <= sz(a); i++) {

@@ -14,9 +14,7 @@ template <class T> struct sum_adj {
   //! recursion stack for dfs is O(n)
   sum_adj(
     const vector<vi>& adj, const vector<T>& a_sum)
-      : n(sz(a_sum)),
-        sum(a_sum),
-        sum_ch(n),
+      : n(sz(a_sum)), sum(a_sum), sum_ch(n),
         p(n, -1) {
     auto dfs = [&](auto&& self, int v) -> void {
       for (int u : adj[v])
