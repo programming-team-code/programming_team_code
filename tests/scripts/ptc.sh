@@ -3,12 +3,13 @@
 shopt -s globstar
 
 # first remove @see <link> comments: these aren't useful in the PDF, and are
-# usually the longest words
+# usually the longest words which extend into the next column
 echo "removing links"
 sed --in-place '/\/\/! @see http/d' ../library/**/*.hpp
 
-# PDF will wrap at 60 characters, but going over a tad is okay I think
-WORD_LENGTH_THRESHOLD=63
+# PDF will wrap at 66 characters, but when the PDF wraps, it goes onto the next
+# line with an indent of a few characters
+WORD_LENGTH_THRESHOLD=61
 echo "The following words are > $WORD_LENGTH_THRESHOLD characters, and won't wrap in PDF:"
 cat ../library/**/*.hpp |
 	tr '[:blank:]' '\n' |
@@ -39,8 +40,8 @@ for header in ../library/**/*.hpp; do
 	for i in $(seq "$(wc --lines <"$header")" -5 1); do
 		hash=$(head --lines "$i" "$header" | sed '/^#include/d' | cpp -dD -P -fpreprocessed | ./../library/contest/hash.sh)
 		line_length=$(sed --quiet "${i}p" "$header" | wc --chars)
-		# PDF wraps at 60 chars, and hash comment takes 8 chars total
-		padding_length=$((60 - 8 - line_length))
+		# PDF wraps at 66 chars, and hash comment takes 8 chars total
+		padding_length=$((66 - 8 - line_length))
 		padding_length=$((padding_length > 0 ? padding_length : 0))
 		padding=$(printf '%*s' "$padding_length" '')
 		sed --in-place "${i}s/$/$padding\/\/${hash}/" "$header"
