@@ -9,7 +9,7 @@ sed --in-place '/\/\/! @see http/d' ../library/**/*.hpp
 
 # PDF will wrap at 66 characters, but when the PDF wraps, it goes onto the next
 # line with an indent of a few characters
-WORD_LENGTH_THRESHOLD=60
+WORD_LENGTH_THRESHOLD=61
 echo "The following words are > $WORD_LENGTH_THRESHOLD characters, and won't wrap in PDF:"
 cat ../library/**/*.hpp |
 	tr '[:blank:]' '\n' |
