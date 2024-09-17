@@ -4,6 +4,7 @@ shopt -s globstar
 
 # first remove @see <link> comments: these aren't useful in the PDF, and are
 # usually the longest words
+echo "removing links"
 sed --in-place '/\/\/! @see http/d' ../library/**/*.hpp
 
 # PDF will wrap at 60 characters, but going over a tad is okay I think
