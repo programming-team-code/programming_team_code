@@ -1,7 +1,6 @@
 //! @file
 #pragma once
 //! @see https://codeforces.com/blog/entry/104997 https://codeforces.com/blog/entry/120446
-//!
 //! only handle paths with >=1 edge in each edge-set
 //!     (it is guaranteed the edge-sets are non-empty i.e. 0 < split < sz(adj[cent]))
 //! don't handle cent<->v paths as these will be handled in some smaller decomposition

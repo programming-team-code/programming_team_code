@@ -1,6 +1,6 @@
 //! @file
 #pragma once
-//! @see https://github.com/foreverbell/acm-icpc-cheat-sheet /blob/master/src/graph-algorithm/hopcroft-karp.cpp
+//! @see https://github.com/foreverbell/acm-icpc-cheat-sheet/blob/master/src/graph-algorithm/hopcroft-karp.cpp
 //! @code{.cpp}
 //!     //0 <= node_left < lsz
 //!     //0 <= node_right < rsz

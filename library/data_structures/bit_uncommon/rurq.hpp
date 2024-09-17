@@ -1,8 +1,7 @@
 //! @file
 #pragma once
 #include "../bit.hpp"
-//! @see https://blog.mitrichev.ch/2013 /05/fenwick-tree-range-updates.html
-//!
+//! @see https://blog.mitrichev.ch/2013/05/fenwick-tree-range-updates.html
 //! range update, range query
 template <class T> struct bit_rurq {
   int n;

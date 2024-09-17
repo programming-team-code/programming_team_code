@@ -1,6 +1,6 @@
 //! @file
 #pragma once
-//! @see https://cp-algorithms.com/data_structures/segment_tree.html# preserving-the-history-of-its-values-persistent-segment-tree
+//! @see https://cp-algorithms.com/data_structures/segment_tree.html#preserving-the-history-of-its-values-persistent-segment-tree
 // NOLINTNEXTLINE(readability-identifier-naming)
 struct PST {
   struct node {

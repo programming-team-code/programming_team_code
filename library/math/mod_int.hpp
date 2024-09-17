@@ -1,7 +1,7 @@
 //! @file
 #pragma once
 const int mod = 998244353;
-//! @see https://github.com/kth-competitive-programming/kactl /blob/main/content/number-theory/ModularArithmetic.h
+//! @see https://github.com/kth-competitive-programming/kactl/blob/main/content/number-theory/ModularArithmetic.h
 //! @see https://codeforces.com/blog/entry/122714
 struct mint {
   int x;

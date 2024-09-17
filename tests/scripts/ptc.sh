@@ -2,6 +2,10 @@
 # ** glob now searches any number of levels
 shopt -s globstar
 
+# first remove @see <link> comments: these aren't useful in the PDF, and are
+# usually the longest words
+sed --in-place '/\/\/! @see http/d' ../library/**/*.hpp
+
 # PDF will wrap at 60 characters, but going over a tad is okay I think
 WORD_LENGTH_THRESHOLD=63
 echo "The following words are > $WORD_LENGTH_THRESHOLD characters, and won't wrap in PDF:"
