@@ -1,7 +1,6 @@
 //! @file
 #pragma once
 //! @see https://codeforces.com/blog/entry/80195
-//!
 //! @param a,b matrices
 //! @returns a*b (not overflow safe)
 //! @time O(n * m * inner)

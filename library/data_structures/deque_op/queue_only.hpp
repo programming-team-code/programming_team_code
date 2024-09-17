@@ -12,7 +12,7 @@
 template <class T, class F> struct deq {
   using dt = array<T, 2>;
   F op;
-  //! @see https://github.com/suisen-cp/cp-library-cpp /blob/main/library/datastructure/deque_aggregation.hpp
+  //! @see https://github.com/suisen-cp/cp-library-cpp/blob/main/library/datastructure/deque_aggregation.hpp
   //! simulate a deque with 2 stacks:
   //! `le`, `ri` are stacks of { number, sum }
   //!     accumulate

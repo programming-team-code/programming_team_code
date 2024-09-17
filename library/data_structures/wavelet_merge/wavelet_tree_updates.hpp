@@ -10,8 +10,7 @@ int split(int tl, int tr) {
   int pw2 = 1 << __lg(tr - tl);
   return min(tl + pw2, tr - pw2 / 2);
 }
-//! @see https://ioinformatics.org/journal/v10_2016_19_37.pdf
-//! https://github.com/brunomaletta/Biblioteca /blob/master/Codigo/Estruturas/waveletTree.cpp
+//! @see https://ioinformatics.org/journal/v10_2016_19_37.pdf https://github.com/brunomaletta/Biblioteca/blob/master/Codigo/Estruturas/waveletTree.cpp
 struct wavelet_tree_updates {
   int n, minv, maxv;
   vector<bool_presum> bool_presums;

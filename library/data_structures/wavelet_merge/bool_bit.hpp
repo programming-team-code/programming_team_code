@@ -1,8 +1,7 @@
 //! @file
 #pragma once
 #include "../bit.hpp"
-//! @see https://github.com/dacin21/dacin21_codebook /blob/master/trees/wavelet_matrix_updates.cpp
-//!
+//! @see https://github.com/dacin21/dacin21_codebook/blob/master/trees/wavelet_matrix_updates.cpp
 //! space efficient boolean array with range sum query, and point update
 //! note `>> 6` is the same as `/ 64`
 //! note `& 63` is the same as `% 64`

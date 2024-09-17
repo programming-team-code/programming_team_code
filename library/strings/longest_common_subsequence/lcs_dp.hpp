@@ -1,7 +1,6 @@
 //! @file
 #pragma once
 //! @see https://codeforces.com/blog/entry/111625
-//!
 //! Given strings s, t (s initially empty):
 //!   - append character onto s
 //!   - given range [le, ri), calculate size(LCS(s, t.substr(le, ri - le)))
