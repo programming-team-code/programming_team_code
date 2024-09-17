@@ -1,7 +1,6 @@
 //! @file
 #pragma once
 //! @see https://codeforces.com/blog/entry/87940
-//!
 //! Disjoint RMQ is like normal RMQ except the 2 query ranges never overlap.
 //! @code{.cpp}
 //!     //usage for min and # of mins:

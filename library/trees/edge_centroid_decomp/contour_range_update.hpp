@@ -3,7 +3,7 @@
 #include "../../data_structures/bit_uncommon/rupq.hpp"
 #include "sum_adjacent.hpp"
 #include "edge_cd.hpp"
-//! @see https://judge.yosupo.jp/problem /vertex_get_range_contour_add_on_tree
+//! @see https://judge.yosupo.jp/problem/vertex_get_range_contour_add_on_tree
 template <class T> struct contour_range_update {
   int n;
   vector<T> a;
