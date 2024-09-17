@@ -21,10 +21,8 @@ template <class T> struct bit_rurq {
     rep(i, 0, n) a[i] *= i;
     bit2 = {a};
   }
-  //! does a[le] += d, a[le + 1] += d, ..., a[ri -
-  //! 1] += d
-  //!
-  //! @param le,ri defines range [le, ri)
+  //! does a[le]+=d, a[le+1]+=d, .., a[ri-1]+=d
+  //! @param le,ri defines range [le,ri)
   //! @param d delta to add to each index in range
   //! @time O(log n)
   //! @space O(1)

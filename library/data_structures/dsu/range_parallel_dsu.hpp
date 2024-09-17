@@ -2,10 +2,9 @@
 #pragma once
 #include "../../../kactl/content/data-structures/UnionFind.h"
 //! DSU with support for joining two parallel ranges
-//! [l1, l1
-//! + len) and [l2, l2 + len) such that edges of the
-//! form (l1 + i, l2 + i) are joined. for all `i` in
-//! [0, len).
+//! [l1,l1+len) and [l2,l2+len) such that edges of
+//! the form (l1+i,l2+i) are joined. for all `i` in
+//! [0,len).
 //!
 //! @time O(n * log n * inverse ack n) amortized
 //! across all queries
@@ -16,10 +15,11 @@ struct range_parallel_dsu {
   //! elements.
   range_parallel_dsu(int n)
       : ufs(__lg(n) + 1, UF(n)) {}
-  //! joins the ranges [l1, l1 + len) and [l2, l2 +
-  //! len) such that edges of the form (l1 + i, l2 +
-  //! i) are joined. for all `i` in [0, len). The
-  //! function `f` is called for each connected
+  //! joins the ranges [l1,l1+len) and [l2,l2+len)
+  //! such that edges of the form (l1+i,l2+i) are
+  //! joined. for all `i` in [0,len).
+  //!
+  //! The function `f` is called for each connected
   //! component of the resulting graph which will
   //! change in this update, with the first argument
   //! being the representative of the component and
@@ -27,7 +27,7 @@ struct range_parallel_dsu {
   //! component which is being joined.
   //!
   //! @guarantee the function `f` is called at most
-  //! `n - 1` times
+  //! `n-1` times
   //!
   //! @time O(n * log n * inverse ack) amortized
   //! across all queries

@@ -12,11 +12,14 @@ template <class T, class F> struct linear_rmq {
   vector<array<int, 2>> t;
   //! @code{.cpp}
   //!     vector<ll> a(n);
-  //!     linear_rmq rmq(a, less()); // right-most
-  //!     min linear_rmq rmq(a, less_equal()); //
-  //!     left-most min linear_rmq rmq(a,
-  //!     greater()); // right-most max linear_rmq
-  //!     rmq(a, greater_equal()); // left-most max
+  //!     // right-most min
+  //!     linear_rmq rmq(a, less());
+  //!     // left-most min
+  //!     linear_rmq rmq(a, less_equal());
+  //!     // right-most max
+  //!     linear_rmq rmq(a, greater());
+  //!     // left-most max
+  //!     rmq(a, greater_equal());
   //! @endcode
   //! @param a_a,a_cmp array and a compare operator
   //! @time O(n)

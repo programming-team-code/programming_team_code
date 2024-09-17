@@ -2,14 +2,9 @@
 #pragma once
 //! deque with query for operation of the deque
 //! @code{.cpp}
-//!     //deque with query for: get min and # of
-//!     mins in deque vector<pair<ll, int>> a;
-//!     //initialize a[i].second = 1 deq dq(a,
-//!     [](auto x, auto y) {
-//!         if (x.first == y.first) return
-//!         pair(x.first, x.second + y.second);
-//!         return min(x, y);
-//!     });
+//!     vector<int> a;
+//!     deq dq(a, [](auto x, auto y) {return
+//!     min(x,y);});
 //! @endcode
 template <class T, class F> struct deq {
   using dt = array<T, 2>;
@@ -17,12 +12,6 @@ template <class T, class F> struct deq {
   //! @see
   //! https://github.com/suisen-cp/cp-library-cpp
   //! /blob/main/library/datastructure/deque_aggregation.hpp
-  //! simulate a deque with 2 stacks:
-  //! `le`, `ri` are stacks of { number, sum }
-  //!     accumulate
-  //!    <-----------  -------> fold numbers from
-  //!    inside
-  //!   (     le     ][  ri    )
   //! @{
   vector<dt> le, ri;
   //! @}

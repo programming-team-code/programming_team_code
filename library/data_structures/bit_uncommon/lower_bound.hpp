@@ -1,9 +1,9 @@
 //! @file
 #pragma once
-//! Requires bit.sum(i, i + 1) >= 0
+//! Requires bit.sum(i,i+1)>=0
 //! @param sum see return
-//! @returns max pos such that sum of range [0, pos)
-//! < sum (or -1 when sum <= 0)
+//! @returns max pos such that sum of range
+//! [0,pos)<sum (or -1 when sum<=0)
 //! @time O(log n)
 //! @space O(1)
 int lower_bound(T sum) {

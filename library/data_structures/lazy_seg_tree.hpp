@@ -11,10 +11,7 @@ int split(int tl, int tr) {
 ll op(ll vl, ll vr) { return vl + vr; }
 //! root is at tree[1]
 //! internal nodes are [1, n)
-//! leaf nodes are [n, 2 * n), but rotated such that
-//! a[0] is at tree[pw2]
-//!     where pw2 is the only power of 2 such that n
-//!     <= pw2 < 2 * n
+//! leaf nodes are [n, 2*n), but rotated
 struct seg_tree {
   int n;
   vector<ll> tree, lazy;
