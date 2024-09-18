@@ -4,13 +4,24 @@ BasedOnStyle: Google
 ColumnLimit: 60
 Standard: c++17
 SortIncludes: Never
-AllowShortIfStatementsOnASingleLine: AllIfsAndElse
 AlwaysBreakTemplateDeclarations: No
 AllowShortBlocksOnASingleLine: Always
-AllowShortCaseLabelsOnASingleLine: true
 AlignTrailingComments: false
 LambdaBodyIndentation: OuterScope
 ContinuationIndentWidth: 2
 AlignAfterOpenBracket: DontAlign
 PackConstructorInitializers: BinPack
+PenaltyBreakBeforeFirstCallParameter: 0 # Avoid breaking lines before the first call parameter
+PenaltyBreakString: 0 # Avoid breaking strings
+AllowShortFunctionsOnASingleLine: All # Allow short functions to be on a single line
+AllowShortIfStatementsOnASingleLine: Always # Allow short if statements to be on a single line
+AllowShortCaseLabelsOnASingleLine: true # Allow short case labels to be on a single line
+
+# Additional settings to minimize line count
+BreakBeforeBinaryOperators: NonAssignment # Place binary operators at the end of the line
+BreakBeforeTernaryOperators: false # Do not break before ternary operators
+SpaceBeforeParens: ControlStatements # No space before parentheses in control statements
+CompactNamespaces: true # Compact namespaces onto a single line
+BinPackArguments: true # Pack function arguments into a single line if possible
+BinPackParameters: true # Pack function parameters into a single line if possible
 ...
