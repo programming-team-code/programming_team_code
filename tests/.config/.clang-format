@@ -14,10 +14,8 @@ PackConstructorInitializers: BinPack
 PenaltyBreakBeforeFirstCallParameter: 0 # Avoid breaking lines before the first call parameter
 PenaltyBreakString: 0 # Avoid breaking strings
 AllowShortFunctionsOnASingleLine: All # Allow short functions to be on a single line
-AllowShortIfStatementsOnASingleLine: Always # Allow short if statements to be on a single line
+AllowShortIfStatementsOnASingleLine: AllIfsAndElse # Allow short if statements to be on a single line
 AllowShortCaseLabelsOnASingleLine: true # Allow short case labels to be on a single line
-
-# Additional settings to minimize line count
 BreakBeforeBinaryOperators: NonAssignment # Place binary operators at the end of the line
 BreakBeforeTernaryOperators: false # Do not break before ternary operators
 SpaceBeforeParens: ControlStatements # No space before parentheses in control statements
