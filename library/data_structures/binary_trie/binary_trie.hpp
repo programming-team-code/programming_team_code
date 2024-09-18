@@ -1,7 +1,7 @@
 //! @file
 #pragma once
 //! Trie on bits. Can be thought of as a multiset of integers.
-template <class T> struct binary_trie {
+template<class T> struct binary_trie {
   int mx_bit;
   struct node {
     int sub_sz = 0;
@@ -12,7 +12,7 @@ template <class T> struct binary_trie {
   //!     binary_trie<int> bt; //mx_bit = 30
   //!     binary_trie<ll> bt; //mx_bit = 62
   //! @endcode
-  binary_trie() : mx_bit(8 * sizeof(T) - 2), t(1) {}
+  binary_trie(): mx_bit(8 * sizeof(T) - 2), t(1) {}
   //! @param num integer
   //! @param delta 1 to insert num, -1 to remove num
   //! @time O(mx_bit)

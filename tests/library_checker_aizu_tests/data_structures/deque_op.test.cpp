@@ -1,9 +1,9 @@
-#define PROBLEM "https://judge.yosupo.jp/problem/deque_operate_all_composite"
+#define PROBLEM                      \
+  "https://judge.yosupo.jp/problem/" \
+  "deque_operate_all_composite"
 #include "../template.hpp"
-
 #include "../../../library/contest/random.hpp"
 #include "../../../library/data_structures/deque_op/queue_only.hpp"
-
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   const int mod = 998'244'353;
@@ -12,10 +12,11 @@ int main() {
   using line = pair<int, int>;
   // f1 = begin, f2 = second after begin
   // we want op(f1, f2) = the function f2(f1(x))
-  deq dq(vector<line>(), [](const line& i, const line& j) -> line {
-    return pair(1LL * i.first * j.first % mod,
-                (1LL * j.first * i.second + j.second) % mod);
-  });
+  deq dq(vector<line>(),
+    [](const line& i, const line& j) -> line {
+      return pair(1LL * i.first * j.first % mod,
+        (1LL * j.first * i.second + j.second) % mod);
+    });
   deque<line> stl_dq;
   while (q--) {
     int type;
@@ -40,11 +41,11 @@ int main() {
       assert(type == 4);
       int x;
       cin >> x;
-      if (dq.siz() == 0)
-        cout << x << '\n';
+      if (dq.siz() == 0) cout << x << '\n';
       else {
         line curr = dq.query();
-        cout << (1LL * curr.first * x + curr.second) % mod << '\n';
+        cout << (1LL * curr.first * x + curr.second) % mod
+             << '\n';
       }
     }
     assert(sz(stl_dq) == dq.siz());

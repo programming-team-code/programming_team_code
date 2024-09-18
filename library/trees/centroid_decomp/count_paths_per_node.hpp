@@ -7,7 +7,8 @@
 //! edges where node `i` is on the path. 0-based nodes.
 //! @time O(n log n)
 //! @space this function allocates/returns various vectors which are all O(n)
-vector<ll> count_paths_per_node(const vector<vi>& adj, int k) {
+vector<ll> count_paths_per_node(const vector<vi>& adj,
+  int k) {
   vector<ll> num_paths(sz(adj));
   centroid(adj, [&](const vector<vi>& cd_adj, int cent) {
     vector pre_d{1}, cur_d{0};
@@ -18,8 +19,7 @@ vector<ll> count_paths_per_node(const vector<vi>& adj, int k) {
       ll cnt = 0;
       if (k - d < sz(pre_d)) cnt += pre_d[k - d];
       for (int u : cd_adj[v])
-        if (u != p)
-          cnt += self(self, u, v, d + 1);
+        if (u != p) cnt += self(self, u, v, d + 1);
       num_paths[v] += cnt;
       return cnt;
     };
@@ -33,7 +33,8 @@ vector<ll> count_paths_per_node(const vector<vi>& adj, int k) {
     for (int child : cd_adj[cent])
       num_paths[cent] += dfs_child(child);
     pre_d = cur_d = {0};
-    for_each(rbegin(cd_adj[cent]), rend(cd_adj[cent]), dfs_child);
+    for_each(rbegin(cd_adj[cent]), rend(cd_adj[cent]),
+      dfs_child);
   });
   return num_paths;
 }

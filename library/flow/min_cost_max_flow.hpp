@@ -11,7 +11,7 @@ struct mcmf {
   vector<edge> e;
   vector<vi> adj;
   //! @param a_n number of nodes.
-  mcmf(int a_n) : n(a_n), adj(n) {}
+  mcmf(int a_n): n(a_n), adj(n) {}
   void add_edge(int u, int v, ll cap, ll cost) {
     edge e1 = {u, v, cap, cost, 0, sz(adj[v])};
     edge e2 = {v, u, 0, -cost, 0, sz(adj[u])};
@@ -60,10 +60,12 @@ struct mcmf {
       ll addflow = total_flow - flow;
       for (int u = t; u != s; u = p[u]) {
         int pv = p[u], pr = p_edge[u];
-        addflow = min(addflow, e[adj[pv][pr]].cap - e[adj[pv][pr]].flow);
+        addflow = min(addflow,
+          e[adj[pv][pr]].cap - e[adj[pv][pr]].flow);
       }
       for (int u = t; u != s; u = p[u]) {
-        int pv = p[u], pr = p_edge[u], r = e[adj[pv][pr]].back;
+        int pv = p[u], pr = p_edge[u],
+            r = e[adj[pv][pr]].back;
         e[adj[pv][pr]].flow += addflow;
         e[adj[u][r]].flow -= addflow;
         cost += e[adj[pv][pr]].cost * addflow;

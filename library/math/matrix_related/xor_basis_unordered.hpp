@@ -13,7 +13,7 @@
 //!     - for 0 <= i < j < sz(b): bit_floor(b[i]) != bit_floor(b[j])
 //! @time O(32) or O(64)
 //! @space vector 'b' has size O(32) or O(64) at most
-template <class T> struct basis {
+template<class T> struct basis {
   vector<T> b;
   T shrink(T v) {
     for (T x : b) v = min(v, v ^ x);

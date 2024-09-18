@@ -14,14 +14,15 @@
 //!
 //! @time O(|s| * |t|)
 //! @space O(|t|)
-template <class T> struct lcs_dp {
+template<class T> struct lcs_dp {
   T t;
   vi dp;
-  lcs_dp(const T& a_t) : t(a_t), dp(sz(t)) {
+  lcs_dp(const T& a_t): t(a_t), dp(sz(t)) {
     iota(all(dp), 0);
   }
   void push_onto_s(int c) {
     int v = -1;
-    rep(i, 0, sz(t)) if (c == t[i] || dp[i] < v) swap(dp[i], v);
+    rep(i, 0, sz(t)) if (c == t[i] || dp[i] < v)
+      swap(dp[i], v);
   }
 };

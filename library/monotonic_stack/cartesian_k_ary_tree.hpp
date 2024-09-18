@@ -30,7 +30,8 @@
 //! @returns parent array
 //! @time O(n)
 //! @space a O(n) vector is allocated and returned
-template <class T> vi cart_k_ary_tree(const vector<T>& a, const vi& le) {
+template<class T>
+vi cart_k_ary_tree(const vector<T>& a, const vi& le) {
   vi p(le);
   for (int i = sz(a) - 1; i >= 0; i--)
     for (int j = i - 1; j != le[i]; j = le[j])

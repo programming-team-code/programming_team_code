@@ -24,9 +24,13 @@ array<vl, 2> get_right_and_top(vl left, vl bottom) {
       grow(sz(tr));
       rep(i, 0, sz(tr)) tr[i] = t[i].fact;
       vl dp(sz(bottom));
-      rep(i, 0, sz(dp)) dp[i] = bottom[i] * t[sz(dp) - 1 - i].inv_fact % mod;
+      rep(i, 0, sz(dp)) dp[i] =
+        bottom[i] * t[sz(dp) - 1 - i].inv_fact % mod;
       vl tmp_res = conv(dp, tr);
-      rep(i, 0, sz(res)) res[i] = (res[i] + tmp_res[i + sz(bottom) - 1] * t[i].inv_fact) % mod;
+      rep(i, 0, sz(res)) res[i] =
+        (res[i] +
+          tmp_res[i + sz(bottom) - 1] * t[i].inv_fact) %
+        mod;
     }
     swap(left, bottom);
   }

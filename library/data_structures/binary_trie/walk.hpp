@@ -12,8 +12,7 @@ T walk(T num) {
     int u = t[v].next[b];
     if (u != -1 && t[u].sub_sz > 0)
       v = u, res |= T(b) << bit;
-    else
-      v = t[v].next[!b], res |= T(!b) << bit;
+    else v = t[v].next[!b], res |= T(!b) << bit;
   }
   return res;
 }

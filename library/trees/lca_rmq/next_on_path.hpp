@@ -11,5 +11,7 @@
 //! @time O(1)
 //! @space O(1)
 int next_on_path(int u, int v) {
-  return in_subtree(u, v) ? rmq.query(t[u].in + 1, t[v].in + 1) : t[u].p;
+  return in_subtree(u, v)
+    ? rmq.query(t[u].in + 1, t[v].in + 1)
+    : t[u].p;
 }

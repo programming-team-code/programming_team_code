@@ -11,7 +11,9 @@
 //! @time O(n*m*log(m) + q*log(m) + q*log(q))
 //! @space this allocates/returns a O(q) vector, and various vectors are
 //! allocated temporarily which are O(n + m + q)
-template <class T> vi lcs_queries(const T& s, const T& t, const vector<array<int, 3>>& queries) {
+template<class T>
+vi lcs_queries(const T& s, const T& t,
+  const vector<array<int, 3>>& queries) {
   int n = sz(s), m = sz(t), q = sz(queries);
   vector<vector<array<int, 3>>> qs(n);
   rep(i, 0, q) {

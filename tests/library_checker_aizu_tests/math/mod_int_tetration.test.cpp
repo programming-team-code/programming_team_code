@@ -1,13 +1,11 @@
-#define PROBLEM "https://judge.yosupo.jp/problem/tetration_mod"
+#define PROBLEM \
+  "https://judge.yosupo.jp/problem/tetration_mod"
 #include "../template.hpp"
-
 #include "../../../library/math/totient.hpp"
-
 // trick to remove const so I can use arbitrary prime mode here
 #define const ;
 #include "../../../library/math/mod_int_pow.hpp"
 #undef const
-
 int mod_int_tetration(int b, int e, int local_mod) {
   if (local_mod == 1) return 0;
   if (b == 0) return (e + 1) % 2 % local_mod;
@@ -22,7 +20,6 @@ int mod_int_tetration(int b, int e, int local_mod) {
   assert(mod != 0);
   return mpow(b, exp + t).x;
 }
-
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   int t;

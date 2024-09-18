@@ -3,7 +3,10 @@
 #include "../../../monotonic_stack/monotonic_range.hpp"
 #include "../../../monotonic_stack/cartesian_k_ary_tree.hpp"
 #include "../suffix_array_query.hpp"
-const int mn = '0', cnt_let = 36;  // mn <= s[i] < mn + cnt_let; for lowercase letters: mn = 'a', cnt_let = 26
+const int
+  mn = '0',
+  cnt_let =
+    36; // mn <= s[i] < mn + cnt_let; for lowercase letters: mn = 'a', cnt_let = 26
 //! @see Replacing suffix trees with enhanced suffix arrays by Mohamed Ibrahim
 //! Abouelhoda, Stefan Kurtz, Enno Ohlebusch
 //!
@@ -52,13 +55,19 @@ struct lcp_tree {
   //! @param s non-empty string/array
   //! @time O((n log n) + (mn + cnt_let) + (n * cnt_let))
   //! @space adj is O(n * cnt_let)
-  lcp_tree(const string& s) : sf_a(s, mn + cnt_let), le(mono_st(sf_a.lcp, less())), ri(mono_range(le)), adj(max(sf_a.n - 1, 0), vector(cnt_let, -1)) {
+  lcp_tree(const string& s):
+    sf_a(s, mn + cnt_let), le(mono_st(sf_a.lcp, less())),
+    ri(mono_range(le)),
+    adj(max(sf_a.n - 1, 0), vector(cnt_let, -1)) {
     vi p = cart_k_ary_tree(sf_a.lcp, le);
     root = find(all(p), -1) - begin(p);
     auto node = [&](int i) -> int {
-      return p[i] < i || sf_a.lcp[i] != sf_a.lcp[p[i]] ? i : p[i];
+      return p[i] < i || sf_a.lcp[i] != sf_a.lcp[p[i]]
+        ? i
+        : p[i];
     };
-    rep(i, 0, sz(p)) if (node(i) == i && i != root) adj[p[i]][s[sf_a.sa[i] + sf_a.lcp[p[i]]] - mn] = i;
+    rep(i, 0, sz(p)) if (node(i) == i && i != root)
+      adj[p[i]][s[sf_a.sa[i] + sf_a.lcp[p[i]]] - mn] = i;
     rep(i, 0, sf_a.n) {
       int prev_lcp = (i ? sf_a.lcp[i - 1] : 0);
       int next_lcp = (i < sz(sf_a.lcp) ? sf_a.lcp[i] : -1);

@@ -37,20 +37,25 @@
 //! @returns sa, sa_inv, lcp
 //! @time O(nlogn + max_num)
 //! @space vectors `sa`, `sa_inv`, `lcp` are O(n). vector `freq` is O(max_num) and is allocated temporarily
-template <class T> array<vi, 3> get_sa(const T& s, int max_num) {
+template<class T>
+array<vi, 3> get_sa(const T& s, int max_num) {
   int n = sz(s);
   vi sa(n), sa_inv(all(s)), lcp(max(0, n - 1));
   iota(all(sa), 0);
   for (int ln = 0; ln < n; ln = max(1, 2 * ln)) {
     vi tmp(n), freq(max_num);
     iota(begin(tmp), begin(tmp) + ln, n - ln);
-    copy_if(all(sa), begin(tmp) + ln, [&](int& x) { return (x -= ln) >= 0; });
+    copy_if(all(sa), begin(tmp) + ln,
+      [&](int& x) { return (x -= ln) >= 0; });
     for (int x : sa_inv) freq[x]++;
     partial_sum(all(freq), begin(freq));
-    for_each(rbegin(tmp), rend(tmp), [&](int x) { sa[--freq[sa_inv[x]]] = x; });
+    for_each(rbegin(tmp), rend(tmp),
+      [&](int x) { sa[--freq[sa_inv[x]]] = x; });
     swap(sa_inv, tmp);
     max_num = 1, sa_inv[sa[0]] = 0;
-    auto prev_inv = [&](int i) { return pair(tmp[i], i + ln < n ? tmp[i + ln] : -1); };
+    auto prev_inv = [&](int i) {
+      return pair(tmp[i], i + ln < n ? tmp[i + ln] : -1);
+    };
     rep(i, 1, n) {
       max_num += prev_inv(sa[i - 1]) != prev_inv(sa[i]);
       sa_inv[sa[i]] = max_num - 1;
@@ -61,7 +66,9 @@ template <class T> array<vi, 3> get_sa(const T& s, int max_num) {
   rep(i, 0, n) {
     if (sz > 0) sz--;
     if (sa_inv[i] == 0) continue;
-    for (int j = sa[sa_inv[i] - 1]; max(i, j) + sz < n && s[i + sz] == s[j + sz];) sz++;
+    for (int j = sa[sa_inv[i] - 1];
+         max(i, j) + sz < n && s[i + sz] == s[j + sz];)
+      sz++;
     lcp[sa_inv[i] - 1] = sz;
   }
   return {sa, sa_inv, lcp};

@@ -2,12 +2,12 @@
 #pragma once
 //! Binary Indexed Tree
 // NOLINTNEXTLINE(readability-identifier-naming)
-template <class T> struct BIT {
+template<class T> struct BIT {
   vector<T> s;
   //! @param n initial size
   //! @time O(n)
   //! @space O(n) for `s` vector
-  BIT(int n) : s(n) {}
+  BIT(int n): s(n) {}
 #include "bit_uncommon/vector_constructor.hpp"
   //! @param i index
   //! @param d delta
@@ -29,8 +29,6 @@ template <class T> struct BIT {
   //! @returns a[le] + a[le + 1] + ... + a[ri - 1]
   //! @time O(log n)
   //! @space O(1)
-  T query(int le, int ri) {
-    return query(ri) - query(le);
-  }
+  T query(int le, int ri) { return query(ri) - query(le); }
 #include "bit_uncommon/lower_bound.hpp"
 };

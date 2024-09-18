@@ -7,5 +7,5 @@
 //! @space O(mx)
 vi mobius(1'000'005);
 mobius[1] = 1;
-rep(i, 1, sz(mobius)) for (int j = i + i; j < sz(mobius); j += i)
-    mobius[j] -= mobius[i];
+rep(i, 1, sz(mobius)) for (int j = i + i; j < sz(mobius);
+                           j += i) mobius[j] -= mobius[i];

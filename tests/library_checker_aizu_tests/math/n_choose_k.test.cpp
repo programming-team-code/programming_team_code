@@ -1,11 +1,11 @@
-#define PROBLEM "https://judge.yosupo.jp/problem/binomial_coefficient_prime_mod"
+#define PROBLEM                      \
+  "https://judge.yosupo.jp/problem/" \
+  "binomial_coefficient_prime_mod"
 #include "../template.hpp"
-
 // trick to remove const so I can use arbitrary prime mode here
 #define const ;
 #include "../../../library/math/n_choose_k/n_choose_k.hpp"
 #undef const
-
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   int num_tests;

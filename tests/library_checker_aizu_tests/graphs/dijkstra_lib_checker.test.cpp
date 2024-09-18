@@ -1,11 +1,10 @@
-#define PROBLEM "https://judge.yosupo.jp/problem/shortest_path"
+#define PROBLEM \
+  "https://judge.yosupo.jp/problem/shortest_path"
 // since this causes an O(n) heap-property check for each call to
 //`priority_queue::push`, causing TLE.
 #undef _GLIBCXX_DEBUG
 #include "../template.hpp"
-
 #include "../../../library/graphs/dijkstra.hpp"
-
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n, m, s, t;
@@ -29,7 +28,8 @@ int main() {
   auto dfs = [&](auto&& self, int u) -> bool {
     if (u == s) return 1;
     for (auto [v, w] : adj_inv[u]) {
-      if (!vis[v] && len[v] != LLONG_MAX && len[v] + w == len[u]) {
+      if (!vis[v] && len[v] != LLONG_MAX &&
+        len[v] + w == len[u]) {
         vis[v] = 1;
         if (self(self, v)) {
           path.push_back({v, u});

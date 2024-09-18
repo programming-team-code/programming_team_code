@@ -1,8 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/set_xor_min"
 #include "../template.hpp"
-
 #include "../../../library/data_structures/binary_trie/binary_trie.hpp"
-
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   int q;
@@ -24,11 +22,9 @@ int main() {
     int type, x;
     cin >> type >> x;
     if (type == 0) {
-      if (bt_int.count(x) == 0)
-        bt_int.update(x, 1);
+      if (bt_int.count(x) == 0) bt_int.update(x, 1);
     } else if (type == 1) {
-      if (bt_int.count(x) == 1)
-        bt_int.update(x, -1);
+      if (bt_int.count(x) == 1) bt_int.update(x, -1);
     } else {
       assert(type == 2);
       int val = bt_int.walk(x);

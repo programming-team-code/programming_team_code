@@ -1,8 +1,7 @@
-#define PROBLEM "https://judge.yosupo.jp/problem/persistent_unionfind"
-
+#define PROBLEM \
+  "https://judge.yosupo.jp/problem/persistent_unionfind"
 #include "../template.hpp"
 #include "../../../library/data_structures/dsu/dsu_restorable.hpp"
-
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n, q;
@@ -13,8 +12,7 @@ int main() {
     int type, k;
     cin >> type >> k >> query_u[i] >> query_v[i];
     k++;
-    if (type == 0)
-      childs[k].push_back(i);
+    if (type == 0) childs[k].push_back(i);
     else {
       assert(type == 1);
       queries[k].push_back(i);

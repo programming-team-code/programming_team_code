@@ -1,7 +1,10 @@
 //! @file
 #pragma once
 #include "suffix_array.hpp"
-const int mn = '0', cnt_let = 36;  // mn <= s[i] < mn + cnt_let; for lowercase letters: mn = 'a', cnt_let = 26
+const int
+  mn = '0',
+  cnt_let =
+    36; // mn <= s[i] < mn + cnt_let; for lowercase letters: mn = 'a', cnt_let = 26
 //! Burrows Wheeler transform
 struct bwt {
   int n;
@@ -17,7 +20,9 @@ struct bwt {
   //! @time O(n * cnt_let)
   //! @space O(n * cnt_let) for `occ` vector; it's possible to improve this
   //!     to O(n * cnt_let / 64) https://codeforces.com/contest/963/submission/217802614
-  bwt(const string& s, const vi& sa) : n(sz(s)), last(empty(s) ? -1 : s.back() - mn), occ(n + 1) {
+  bwt(const string& s, const vi& sa):
+    n(sz(s)), last(empty(s) ? -1 : s.back() - mn),
+    occ(n + 1) {
     rep(i, 0, n) {
       cnt[s[i] + 1 - mn]++;
       occ[i + 1] = occ[i];
@@ -37,7 +42,8 @@ struct bwt {
     vi le(sz(t) + 1, 0), ri(sz(t) + 1, n);
     for (int i = sz(t) - 1; i >= 0; i--) {
       char c = t[i] - mn;
-      le[i] = cnt[c] + occ[le[i + 1]][c] + (c == last && i < sz(t) - 1);
+      le[i] = cnt[c] + occ[le[i + 1]][c] +
+        (c == last && i < sz(t) - 1);
       ri[i] = cnt[c] + occ[ri[i + 1]][c] + (c == last);
     }
     return {le, ri};

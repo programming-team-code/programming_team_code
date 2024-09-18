@@ -2,17 +2,17 @@
 #pragma once
 #include "../bit.hpp"
 //! range update, point query
-template <class T> struct bit_rupq {
+template<class T> struct bit_rupq {
   int n;
   BIT<T> bit = {0};
   //! @param a_n size
   //! @time O(n)
   //! @space O(n)
-  bit_rupq(int a_n) : n(a_n), bit(n) {}
+  bit_rupq(int a_n): n(a_n), bit(n) {}
   //! @param a initial array
   //! @time O(n)
   //! @space O(n)
-  bit_rupq(vector<T> a) : n(sz(a)) {
+  bit_rupq(vector<T> a): n(sz(a)) {
     adjacent_difference(all(a), begin(a));
     bit = {a};
   }
@@ -30,7 +30,5 @@ template <class T> struct bit_rupq {
   //! @returns a[i]
   //! @time O(log n)
   //! @space O(1)
-  T get_index(int i) {
-    return bit.query(i + 1);
-  }
+  T get_index(int i) { return bit.query(i + 1); }
 };

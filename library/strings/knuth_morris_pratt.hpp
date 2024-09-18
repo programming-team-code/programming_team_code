@@ -12,13 +12,14 @@
 //! first & last characters) as the haystack or just use kactl's min rotation
 //! code.
 // NOLINTNEXTLINE(readability-identifier-naming)
-template <class T> struct KMP {
+template<class T> struct KMP {
   T needle;
   vi pi;
   //! @param a_needle string to be searched for inside haystack
   //! @time O(|needle|)
   //! @space O(|needle|) for `needle` and `pi` arrays
-  KMP(const T& a_needle) : needle(a_needle), pi(prefix_function(needle)) {}
+  KMP(const T& a_needle):
+    needle(a_needle), pi(prefix_function(needle)) {}
   //! @param haystack usually |needle| <= |haystack|
   //! @returns array `matches` where:
   //! haystack.substr(matches[i], sz(needle)) == needle
@@ -29,7 +30,8 @@ template <class T> struct KMP {
     vi matches;
     int j = 0;
     rep(i, 0, sz(haystack)) {
-      while (j > 0 && needle[j] != haystack[i]) j = pi[j - 1];
+      while (j > 0 && needle[j] != haystack[i])
+        j = pi[j - 1];
       j += (needle[j] == haystack[i]);
       if (j == sz(needle)) {
         matches.push_back(i - sz(needle) + 1);

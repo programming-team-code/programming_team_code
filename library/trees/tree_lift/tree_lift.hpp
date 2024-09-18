@@ -10,14 +10,19 @@ struct tree_lift {
   //! @param adj forest (rooted or unrooted)
   //! @time O(n)
   //! @space O(n) for d, p, j vectors
-  tree_lift(const vector<vi>& adj) : t(sz(adj)) {
+  tree_lift(const vector<vi>& adj): t(sz(adj)) {
     auto dfs = [&](auto&& self, int v) -> void {
-      int jump = (t[v].d + t[t[t[v].j].j].d == 2 * t[t[v].j].d) ? t[t[v].j].j : v;
+      int jump =
+        (t[v].d + t[t[t[v].j].j].d == 2 * t[t[v].j].d)
+        ? t[t[v].j].j
+        : v;
       for (int u : adj[v])
         if (u != t[v].p)
-          t[u].d = t[t[u].p = v].d + 1, t[u].j = jump, self(self, u);
+          t[u].d = t[t[u].p = v].d + 1, t[u].j = jump,
+          self(self, u);
     };
-    rep(i, 0, sz(t)) if (t[i].j == -1) t[i].j = i, dfs(dfs, i);
+    rep(i, 0, sz(t)) if (t[i].j == -1) t[i].j = i,
+                                       dfs(dfs, i);
   }
   //! @param v query node
   //! @param k number of edges
@@ -26,7 +31,8 @@ struct tree_lift {
   //! @space O(1)
   int kth_par(int v, int k) {
     int anc_d = t[v].d - k;
-    while (t[v].d > anc_d) v = t[t[v].j].d >= anc_d ? t[v].j : t[v].p;
+    while (t[v].d > anc_d)
+      v = t[t[v].j].d >= anc_d ? t[v].j : t[v].p;
     return v;
   }
   //! @param u,v 2 nodes in the same component

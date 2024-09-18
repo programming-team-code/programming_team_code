@@ -16,7 +16,8 @@
 pair<ll, vi> mst(const vector<array<int, 3>>& eds, int n) {
   vi order(sz(eds));
   iota(all(order), 0);
-  sort(all(order), [&](int i, int j) { return eds[i][2] < eds[j][2]; });
+  sort(all(order),
+    [&](int i, int j) { return eds[i][2] < eds[j][2]; });
   UF uf(n);
   vi ids;
   ll cost = 0;

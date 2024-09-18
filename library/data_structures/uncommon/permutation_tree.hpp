@@ -16,11 +16,14 @@ struct perm_tree {
   };
   vector<node> t;
   int root;
-  vector<vi> adj;  //!< [0, n) are leaves, [n, sz(adj)) are internal nodes
+  vector<vi>
+    adj; //!< [0, n) are leaves, [n, sz(adj)) are internal nodes
   bool touches(int u, int v) {
-    return t[u].mn_num == t[v].mn_num + t[v].len || t[v].mn_num == t[u].mn_num + t[u].len;
+    return t[u].mn_num == t[v].mn_num + t[v].len ||
+      t[v].mn_num == t[u].mn_num + t[u].len;
   }
-  int allocate(int mn_i, int mn_v, int ln, bool join, const vi& ch) {
+  int allocate(int mn_i, int mn_v, int ln, bool join,
+    const vi& ch) {
     t.push_back({mn_i, mn_v, ln, join});
     adj.push_back(ch);
     return sz(adj) - 1;
@@ -56,21 +59,25 @@ struct perm_tree {
           continue;
         }
         if (touches(v, u)) {
-          v = allocate(t[u].mn_idx, min(t[v].mn_num, t[u].mn_num), t[v].len + t[u].len, 1, {u, v});
+          v = allocate(t[u].mn_idx,
+            min(t[v].mn_num, t[u].mn_num),
+            t[v].len + t[u].len, 1, {u, v});
           st.pop_back();
           continue;
         }
-        int le = min(t[u].mn_idx, mn_i[t[v].mn_idx]), ri = max(i, mx_i[t[v].mn_idx]), idx = sz(st) - 1;
+        int le = min(t[u].mn_idx, mn_i[t[v].mn_idx]),
+            ri = max(i, mx_i[t[v].mn_idx]), idx = sz(st) - 1;
         while (ri == i && le != t[st[idx][0]].mn_idx)
-          le = min(le, st[idx][1]), ri = max(ri, st[idx][2]), idx = st[idx][3];
+          le = min(le, st[idx][1]), ri = max(ri, st[idx][2]),
+          idx = st[idx][3];
         if (ri > i) {
           st.push_back({v, le, ri, idx});
           break;
         }
         int min_num = t[v].mn_num;
         vi ch(1 + sz(st) - idx, v);
-        rep(j, idx, sz(st))
-            min_num = min(min_num, t[ch[j - idx] = st[j][0]].mn_num);
+        rep(j, idx, sz(st)) min_num =
+          min(min_num, t[ch[j - idx] = st[j][0]].mn_num);
         v = allocate(le, min_num, i - le + 1, 0, ch);
         st.resize(idx);
       }

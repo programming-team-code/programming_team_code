@@ -10,7 +10,7 @@
 //!         return min(x, y);
 //!     });
 //! @endcode
-template <class T, class F> struct disjoint_rmq {
+template<class T, class F> struct disjoint_rmq {
   vector<vector<T>> dp;
   //! examples:
   //! - min and # of mins.
@@ -22,13 +22,16 @@ template <class T, class F> struct disjoint_rmq {
   //! @param a_op any associative operation
   //! @time O(n log n)
   //! @space O(n log n) for `dp` vector
-  disjoint_rmq(const vector<T>& a, F a_op) : op(a_op) {
+  disjoint_rmq(const vector<T>& a, F a_op): op(a_op) {
     for (int len = 1, n = sz(a); len <= n; len *= 2) {
       dp.emplace_back(n);
       for (int le = 0; le < n; le += 2 * len) {
         int mi = min(n, le + len), ri = min(n, le + 2 * len);
-        partial_sum(rend(a) - mi, rend(a) - le, rend(dp.back()) - mi, [&](T x, T y) { return op(y, x); });
-        partial_sum(begin(a) + mi, begin(a) + ri, begin(dp.back()) + mi, op);
+        partial_sum(rend(a) - mi, rend(a) - le,
+          rend(dp.back()) - mi,
+          [&](T x, T y) { return op(y, x); });
+        partial_sum(begin(a) + mi, begin(a) + ri,
+          begin(dp.back()) + mi, op);
       }
     }
   }

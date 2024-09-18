@@ -1,20 +1,19 @@
-#define PROBLEM \
-  "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A"
+#define PROBLEM                             \
+  "https://judge.u-aizu.ac.jp/onlinejudge/" \
+  "description.jsp?id=ITP1_1_A"
 #include "../template.hpp"
-
 #include "../../../library/contest/random.hpp"
 #include "../../../library/data_structures/bit.hpp"
 #include "../../../library/data_structures/lazy_seg_tree.hpp"
-
 const int mx_n = 100'000;
 int rv(int i) { return mx_n - i - 1; }
-
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   BIT<int64_t> bit(mx_n);
   seg_tree seg(mx_n), rev(mx_n);
   for (int i = 0; i < mx_n; i++)
-    bit.update(i, 1), seg.update(i, i + 1, 1), rev.update(i, i + 1, 1);
+    bit.update(i, 1), seg.update(i, i + 1, 1),
+      rev.update(i, i + 1, 1);
   for (int q = 0; q < 100'000; q++) {
     int i = rnd(0, mx_n - 1);
     int add = rnd(0, 100'000);
@@ -41,38 +40,33 @@ int main() {
       return 1;
     };
     int pos = min(bit.lower_bound(bit.query(le) + sum), ri);
-
     reset();
     assert(pos == seg.find_first(le, ri, f));
     assert(!empty(rngs));
     assert(rngs[0][0] == le);
-    for (auto [tl, tr, _] : rngs) assert(le <= tl && tl < tr && tr <= ri);
+    for (auto [tl, tr, _] : rngs)
+      assert(le <= tl && tl < tr && tr <= ri);
     for (int it = 1; it < sz(rngs); it++) {
       auto [prv_le, prv_ri, prv] = rngs[it - 1];
       auto [cur_le, cur_ri, cur] = rngs[it];
-      if (prv) {
-        assert(cur_le == prv_le && cur_ri < prv_ri);
-      } else {
-        assert(cur_le == prv_ri);
-      }
+      if (prv) assert(cur_le == prv_le && cur_ri < prv_ri);
+      else assert(cur_le == prv_ri);
     }
     sort(begin(rngs), end(rngs));
     assert(unique(begin(rngs), end(rngs)) == end(rngs));
-
     reset();
-    assert(pos == rv(rev.find_last(rv(ri - 1), rv(le) + 1, f)));
+    assert(
+      pos == rv(rev.find_last(rv(ri - 1), rv(le) + 1, f)));
     assert(!empty(rngs));
     assert(rngs[0][1] == rv(le) + 1);
     for (auto [tl, tr, _] : rngs)
-      assert(rv(ri - 1) <= tl && tl < tr && tr <= rv(le) + 1);
+      assert(
+        rv(ri - 1) <= tl && tl < tr && tr <= rv(le) + 1);
     for (int it = 1; it < sz(rngs); it++) {
       auto [prv_le, prv_ri, prv] = rngs[it - 1];
       auto [cur_le, cur_ri, cur] = rngs[it];
-      if (prv) {
-        assert(cur_ri == prv_ri && cur_le > prv_le);
-      } else {
-        assert(prv_le == cur_ri);
-      }
+      if (prv) assert(cur_ri == prv_ri && cur_le > prv_le);
+      else assert(prv_le == cur_ri);
     }
     sort(begin(rngs), end(rngs));
     assert(unique(begin(rngs), end(rngs)) == end(rngs));

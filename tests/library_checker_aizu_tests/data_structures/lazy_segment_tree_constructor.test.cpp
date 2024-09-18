@@ -1,8 +1,7 @@
-#define PROBLEM "https://judge.yosupo.jp/problem/point_add_range_sum"
+#define PROBLEM \
+  "https://judge.yosupo.jp/problem/point_add_range_sum"
 #include "../template.hpp"
-
 #include "../../../library/data_structures/lazy_seg_tree.hpp"
-
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   {

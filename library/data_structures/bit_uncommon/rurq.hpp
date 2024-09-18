@@ -3,17 +3,17 @@
 #include "../bit.hpp"
 //! @see https://blog.mitrichev.ch/2013/05/fenwick-tree-range-updates.html
 //! range update, range query
-template <class T> struct bit_rurq {
+template<class T> struct bit_rurq {
   int n;
   BIT<T> bit1 = {0}, bit2 = {0};
   //! @param a_n size
   //! @time O(n)
   //! @space O(n) for both bits
-  bit_rurq(int a_n) : n(a_n), bit1(n), bit2(n) {}
+  bit_rurq(int a_n): n(a_n), bit1(n), bit2(n) {}
   //! @param a initial array
   //! @time O(n)
   //! @space O(n) for both bits
-  bit_rurq(vector<T> a) : n(sz(a)) {
+  bit_rurq(vector<T> a): n(sz(a)) {
     adjacent_difference(all(a), begin(a));
     bit1 = {a};
     rep(i, 0, n) a[i] *= i;
@@ -46,7 +46,5 @@ template <class T> struct bit_rurq {
   //! @returns a[le] + a[le + 1] + ... + a[ri - 1]
   //! @time O(log n)
   //! @space O(1)
-  T query(int le, int ri) {
-    return query(ri) - query(le);
-  }
+  T query(int le, int ri) { return query(ri) - query(le); }
 };

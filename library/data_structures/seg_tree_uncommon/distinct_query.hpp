@@ -8,7 +8,7 @@ struct distinct_query {
   //! @param a static array; can't handle updates
   //! @time O(n log n)
   //! @space O(n log n) for PST::tree vector
-  distinct_query(const vi& a) : n(sz(a)), pst(0, n + 1) {
+  distinct_query(const vi& a): n(sz(a)), pst(0, n + 1) {
     map<int, int> last_idx;
     rep(i, 0, n) {
       int& idx = last_idx[a[i]];
@@ -21,6 +21,7 @@ struct distinct_query {
   //! @time O(log n)
   //! @space O(log n) for recursion stack; no new nodes are allocated
   int query(int le, int ri) {
-    return pst.query(0, le + 1, ri) - pst.query(0, le + 1, le);
+    return pst.query(0, le + 1, ri) -
+      pst.query(0, le + 1, le);
   }
 };

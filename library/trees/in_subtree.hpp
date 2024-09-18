@@ -3,5 +3,6 @@
 //! @time O(1)
 //! @space O(1)
 bool in_subtree(int u, int v) {
-  return t[u].in <= t[v].in && t[v].in < t[u].in + t[u].sub_sz;
+  return t[u].in <= t[v].in &&
+    t[v].in < t[u].in + t[u].sub_sz;
 }
