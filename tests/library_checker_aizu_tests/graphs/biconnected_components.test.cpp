@@ -20,7 +20,8 @@ int main() {
   assert(find(begin(cc.bcc_id), end(cc.bcc_id), -1) ==
     end(cc.bcc_id));
   for (int i = 0; i < n; i++) {
-    // cut node if there exists a pair of adjacent edges belonging to different BCCs
+    // cut node if there exists a pair of adjacent edges
+    // belonging to different BCCs
     bool is_cut = 0;
     for (int j = 0; j < sz(adj[i]); j++)
       if (cc.bcc_id[adj[i][0].second] !=
@@ -31,8 +32,8 @@ int main() {
   // check correctness of block vertex tree
   for (int i = 0; i < n; i++) {
     assert(sz(adj[i]) >=
-      sz(bvt
-          [i])); // in particular, if empty(adj[i]), then empty(bct[i])
+      sz(bvt[i])); // in particular, if empty(adj[i]), then
+                   // empty(bct[i])
     assert(cc.is_cut[i] ==
       (sz(bvt[i]) >
         1)); // is cut means non-leaf in block vertex tree

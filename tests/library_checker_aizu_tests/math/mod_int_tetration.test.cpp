@@ -2,7 +2,8 @@
   "https://judge.yosupo.jp/problem/tetration_mod"
 #include "../template.hpp"
 #include "../../../library/math/totient.hpp"
-// trick to remove const so I can use arbitrary prime mode here
+// trick to remove const so I can use arbitrary prime mode
+// here
 #define const ;
 #include "../../../library/math/mod_int_pow.hpp"
 #undef const

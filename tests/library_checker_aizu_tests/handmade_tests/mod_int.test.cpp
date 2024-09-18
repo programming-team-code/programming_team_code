@@ -4,7 +4,8 @@
 #include "../template.hpp"
 #include "../../../library/contest/random.hpp"
 #include "../../../kactl/content/number-theory/euclid.h"
-// trick to remove const so I can use arbitrary prime mode here
+// trick to remove const so I can use arbitrary prime mode
+// here
 #define const ;
 #include "../../../library/math/mod_int_pow.hpp"
 #undef const

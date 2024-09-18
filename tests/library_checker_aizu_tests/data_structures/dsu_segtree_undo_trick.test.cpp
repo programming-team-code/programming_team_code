@@ -112,7 +112,8 @@ int main() {
         }
       }
       int tm = split(tl, tr);
-      // in particular, this tests that split works with negatives
+      // in particular, this tests that split works with
+      // negatives
       assert(split(tl - 1234, tr - 1234) == tm - 1234);
       assert(split(tl - 1, tr - 1) == tm - 1);
       assert(split(tl + 50, tr + 50) == tm + 50);

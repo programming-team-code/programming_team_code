@@ -43,11 +43,9 @@ int main() {
   partial_sum(begin(cnt_big_iterated), end(cnt_big_iterated),
     begin(cnt_big_iterated));
   for (int i = 0; i < n; i++) {
-    // at each merge (small to large), subtree size doubles or more
-    // how many doubles until it reaches n?
-    // sub_sz * 2^k ~= n
-    // 2^k ~= n / sub_sz
-    // k ~= __lg(n / sub_sz)
+    // at each merge (small to large), subtree size doubles
+    // or more how many doubles until it reaches n? sub_sz *
+    // 2^k ~= n 2^k ~= n / sub_sz k ~= __lg(n / sub_sz)
     assert(
       cnt_small_iterated[i] <= __lg(n / lc.t[i].sub_sz));
     assert(

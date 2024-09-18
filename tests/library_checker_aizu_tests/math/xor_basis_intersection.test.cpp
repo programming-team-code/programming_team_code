@@ -3,7 +3,8 @@
   "intersection_of_f2_vector_spaces"
 #include "../template.hpp"
 #include "../../../library/math/matrix_related/xor_basis_unordered_intersection.hpp"
-// checking the condition: for 0 <= i < j < sz(b): (bit_floor(b[i]) & b[j]) == 0
+// checking the condition: for 0 <= i < j < sz(b):
+// (bit_floor(b[i]) & b[j]) == 0
 void check_condition(const basis<int>& b) {
   int n = sz(b.b);
   int or_bits = 0;

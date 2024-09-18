@@ -1,7 +1,8 @@
 #define PROBLEM                             \
   "https://judge.u-aizu.ac.jp/onlinejudge/" \
   "description.jsp?id=ITP1_1_A"
-// since find_str_fast uses lower_bound in a weird way which makes the partition check fail
+// since find_str_fast uses lower_bound in a weird way which
+// makes the partition check fail
 #undef _GLIBCXX_DEBUG
 #include "../template.hpp"
 #include "../../../library/strings/suffix_array/suffix_array_query.hpp"
@@ -12,8 +13,9 @@
 #include "../../../library/strings/longest_common_subsequence/lcs_queries.hpp"
 int main() {
   cin.tie(0)->sync_with_stdio(0);
-  // mainly to test all strings algs compile when passing in vectors
-  // I had a bug where `compare` is only for strings, making `find_str` useless when using vectors
+  // mainly to test all strings algs compile when passing in
+  // vectors I had a bug where `compare` is only for strings,
+  // making `find_str` useless when using vectors
   const int shift = 100'000;
   vector<int> arr(100);
   for (int i = 0; i < 100; i++) arr[i] = shift + i;

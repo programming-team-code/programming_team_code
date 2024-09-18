@@ -1,7 +1,7 @@
 #define PROBLEM \
   "https://judge.yosupo.jp/problem/static_range_frequency"
-// since this causes an O(n) partition check for each call to `equal_range`,
-// causing TLE.
+// since this causes an O(n) partition check for each call to
+// `equal_range`, causing TLE.
 #undef _GLIBCXX_DEBUG
 #include "../template.hpp"
 #include "../../../library/data_structures/wavelet_merge/merge_sort_tree.hpp"

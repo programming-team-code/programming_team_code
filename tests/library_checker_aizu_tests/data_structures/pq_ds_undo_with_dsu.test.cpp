@@ -1,7 +1,8 @@
 #define PROBLEM                      \
   "https://judge.yosupo.jp/problem/" \
   "dynamic_graph_vertex_add_component_sum"
-// since _GLIBCXX_DEBUG causes std::map insert/erase operations to be O(n)
+// since _GLIBCXX_DEBUG causes std::map insert/erase
+// operations to be O(n)
 #undef _GLIBCXX_DEBUG
 #include "../template.hpp"
 #include "../../../library/data_structures/dsu/dsu_restorable.hpp"

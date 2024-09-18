@@ -1,6 +1,7 @@
 #define PROBLEM \
   "https://judge.yosupo.jp/problem/shortest_path"
-// since this causes an O(n) heap-property check for each call to
+// since this causes an O(n) heap-property check for each
+// call to
 //`priority_queue::push`, causing TLE.
 #undef _GLIBCXX_DEBUG
 #include "../template.hpp"

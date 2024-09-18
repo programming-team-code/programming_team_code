@@ -8,7 +8,8 @@ int main() {
   int n = sz(s);
   vector<int> pi = prefix_function(s);
   // prefix -> z func conversion
-  // source: https://codeforces.com/blog/entry/9612#comment-217621
+  // source:
+  // https://codeforces.com/blog/entry/9612#comment-217621
   vector<int> z(n, 0);
   for (int i = 1; i < n; i++)
     if (pi[i]) z[i - pi[i] + 1] = pi[i];

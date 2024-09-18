@@ -8,7 +8,8 @@ int main() {
   cin >> q;
   PST pst(0, q);
   vector<pair<int, int>> bounds(q + 1);
-  // bounds[version] = [left index, right index) represents subarray range of queue
+  // bounds[version] = [left index, right index) represents
+  // subarray range of queue
   for (int curr_version = 1; curr_version <= q;
        curr_version++) {
     int type;

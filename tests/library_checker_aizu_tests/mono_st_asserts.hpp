@@ -83,7 +83,8 @@ void mono_st_asserts(const vector<int>& a) {
       assert(ri[i] == n || !cmp(a[i], a[ri[i]]));
       for (int j = i + 1; j != ri[i]; j = ri[j]) {
         // for all k in [j, ri[j]): cmp(a[i], a[k])
-        // these ranges are disjoint, and union to [i + 1, ri[i])
+        // these ranges are disjoint, and union to [i + 1,
+        // ri[i])
         assert(j <= ri[i]);
         assert(cmp(a[i], a[j]));
         assert(cmp(a[i], a[ri[j] - 1]));

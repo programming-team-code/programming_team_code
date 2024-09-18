@@ -1,7 +1,8 @@
 #define PROBLEM \
   "https://judge.yosupo.jp/problem/montmort_number_mod"
 #include "../template.hpp"
-// trick to remove const so I can use arbitrary prime mode here
+// trick to remove const so I can use arbitrary prime mode
+// here
 #define const ;
 #include "../../../library/math/mod_int.hpp"
 #undef const
