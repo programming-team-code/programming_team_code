@@ -4,7 +4,6 @@
 //!   RMQ rmq(a, [&](auto& x, auto& y) {
 //!     return min(x, y);
 //!   });
-//!   rmq.query(le,ri); // [le,ri)
 //! @endcode
 //! @time O(nlogn + q)
 //! @space O(nlogn)
@@ -19,7 +18,7 @@ template<class T, class F> struct RMQ {
         begin(dp[i]) + (1 << i), begin(dp[i + 1]), op);
     }
   }
-  T query(int le, int ri) {
+  T query(int le, int ri) { // [le, ri)
     assert(le < ri);
     int lg = __lg(ri - le);
     return op(dp[lg][le], dp[lg][ri - (1 << lg)]);

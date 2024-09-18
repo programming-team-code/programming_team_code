@@ -1,7 +1,10 @@
 #pragma once
-//! @param a,b arrays of the same length
-//! @returns array `c` where `c[k]` = the sum of
-//!   (a[i]*b[j]) for all pairs (i,j) where lcm(i,j)==k
+//! @code
+//!   auto c = lcm_convolution(a, b);
+//! @endcode
+//! ssize(a)==ssize(b)
+//! c[k] = sum of (a[i]*b[j]) for all
+//!   pairs (i,j) where lcm(i,j)==k
 //! @time O(n log n)
 //! @space O(n)
 const int mod = 998'244'353;

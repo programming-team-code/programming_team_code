@@ -2,7 +2,6 @@
 //! @code
 //!     implicit_seg_tree<10'000'000> ist(le, ri);
 //! @endcode
-//! ranges are [le, ri)
 template<int N> struct implicit_seg_tree {
   using dt = array<ll, 2>; //!< min, number of mins
   static dt op(const dt& le, const dt& ri) {
@@ -36,7 +35,7 @@ template<int N> struct implicit_seg_tree {
       tree[v].lazy = 0;
     }
   }
-  void update(int le, int ri, ll add) {
+  void update(int le, int ri, ll add) { // [le, ri)
     update(le, ri, add, root_l, root_r, 0);
   }
   void update(int le, int ri, ll add, int tl, int tr,
@@ -50,7 +49,7 @@ template<int N> struct implicit_seg_tree {
     tree[v].num =
       op(tree[tree[v].lch].num, tree[tree[v].rch].num);
   }
-  dt query(int le, int ri) {
+  dt query(int le, int ri) { // [le, ri)
     return query(le, ri, root_l, root_r, 0);
   }
   dt query(int le, int ri, int tl, int tr, int v) {

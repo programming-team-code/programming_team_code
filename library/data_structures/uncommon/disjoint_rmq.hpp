@@ -6,7 +6,6 @@
 //!   disjoint_rmq rmq(a, [&](int x, int y) {
 //!     return 1LL*x*y%10;
 //!   });
-//!   rmq.query(le,ri); // [le, ri)
 //! @endcode
 //! @time O(nlogn + q)
 //! @space O(nlogn)
@@ -26,7 +25,7 @@ template<class T, class F> struct disjoint_rmq {
       }
     }
   }
-  T query(int le, int ri) {
+  T query(int le, int ri) { // [le, ri)
     assert(le < ri);
     if (ri - le == 1) return dp[0][le];
     int lg = __lg(le ^ (ri - 1));

@@ -35,7 +35,7 @@ struct seg_tree {
       lazy[v] = 0;
     }
   }
-  void update(int le, int ri, ll change) {
+  void update(int le, int ri, ll change) { // [le, ri)
     update_impl(le, ri, change, 0, n, 1);
   }
   void update_impl(int le, int ri, ll change, int tl, int tr,
@@ -49,7 +49,7 @@ struct seg_tree {
     update_impl(le, ri, change, tm, tr, 2 * v + 1);
     tree[v] = op(tree[2 * v], tree[2 * v + 1]);
   }
-  ll query(int le, int ri) {
+  ll query(int le, int ri) { // [le, ri)
     return query_impl(le, ri, 0, n, 1);
   }
   ll query_impl(int le, int ri, int tl, int tr, int v) {

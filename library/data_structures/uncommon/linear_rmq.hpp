@@ -1,15 +1,13 @@
 #pragma once
 //! https://codeforces.com/blog/entry/125371?#comment-1173604
 //! @code
-//!   // right-most min
-//!   linear_rmq rmq(a, less());
-//!   // left-most min
-//!   linear_rmq rmq(a, less_equal());
-//!   // right-most max
-//!   linear_rmq rmq(a, greater());
-//!   // left-most max
-//!   linear_rmq rmq(a, greater_equal());
-//!   rmq.query(le,ri); // [le, ri]
+//!   linear_rmq r(a, less());//right-most min
+//!   linear_rmq r(a, less_equal());//left-most min
+//!   linear_rmq r(a, greater());//right-most max
+//!   linear_rmq r(a, greater_equal());//left-most max
+//!   linear_rmq r(a, [&](auto& x, auto& y) {
+//!     return x < y;
+//!   });
 //! @endcode
 //! @time O(n + q)
 //! @space O(n)
@@ -37,7 +35,7 @@ template<class T, class F> struct linear_rmq {
     rep(i, 1, sz(a)) t[i][1] =
       (t[i][1] | t[i - 1][1]) & -(t[i][0] & -t[i][0]);
   }
-  int query_idx(int le, int ri) {
+  int query_idx(int le, int ri) { // [le, ri]
     if (int j = t[le][0] ^ t[ri][0]; j) {
       j = t[le][1] & t[ri][1] & -(1 << __lg(j));
       if (int k = t[le][1] ^ j; k)
