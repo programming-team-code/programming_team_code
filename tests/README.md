@@ -24,21 +24,14 @@ Needed for doxygen to see global functions:
 ```
 //! @file
 ```
-Place this directly before a struct or function.
+Place this at the beginning of a file
 
 ```
 //! @see <link to some source>
-//!
-//! Name, description, and/or any notes/tricks. It's okay if this is multiple
-//! lines; wrap like this.
-//! @code{.cpp}
-//!     //example usage or initialization
-//!     vector<int> arr;
+//! @code
+//!   //example usage or initialization
+//!   vector<int> arr;
 //! @endcode
-//! @param le,ri defines range [le, ri)
-//! @returns Sum of range.
 //! @time O(n * sqrt(n log n))
 //! @space O(n ^ (3/2))
 ```
-for member vars:
-`int var; //!< Inline description`
