@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 //! @code{.cpp}
 //!     enumerate_triangles(edges, n, [&](int u, int v, int w) {

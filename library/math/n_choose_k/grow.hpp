@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 const int mod = 17; //!< must be prime
 struct comb {

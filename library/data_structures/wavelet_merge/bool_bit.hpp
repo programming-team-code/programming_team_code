@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 #include "../bit.hpp"
 //! @see https://github.com/dacin21/dacin21_codebook/blob/master/trees/wavelet_matrix_updates.cpp

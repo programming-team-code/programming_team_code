@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 #include "../../kactl/content/data-structures/UnionFind.h"
 //! Kruskal's algorithm to find a minimum spanning tree of a graph

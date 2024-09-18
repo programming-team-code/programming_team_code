@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 //! @code{.cpp}
 //!     st.find_last(le, ri, [&](ll x, int tl, int tr) -> bool {

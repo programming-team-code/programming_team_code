@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 //! @param adj directed or undirected, weighted graph
 //! @param s start node

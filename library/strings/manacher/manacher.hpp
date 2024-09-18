@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 //! @see https://codeforces.com/blog/entry/12143#comment-324162
 //! subarray [le, ri] has "center" i = le + ri

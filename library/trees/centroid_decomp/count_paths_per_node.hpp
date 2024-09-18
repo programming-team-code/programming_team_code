@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 #include "centroid_decomp.hpp"
 //! @param adj unrooted, connected forest

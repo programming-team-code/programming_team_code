@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 //! @param n an integer
 //! @returns number of integers x (1<=x<=n) such that gcd(x, n) = 1

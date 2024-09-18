@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 #include "mod_int.hpp"
 //! @see https://github.com/kth-competitive-programming/kactl/blob/main/content/number-theory/ModPow.h

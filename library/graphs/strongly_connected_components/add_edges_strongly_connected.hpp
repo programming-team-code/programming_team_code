@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 #include "scc.hpp"
 //! @see https://codeforces.com/blog/entry/15102

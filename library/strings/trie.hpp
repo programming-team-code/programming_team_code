@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 //! @see https://cp-algorithms.com/string/aho_corasick.html#construction-of-the-trie
 const int mn = 'A',

@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 #include "grow.hpp"
 //! @param n arbitrarily large integer

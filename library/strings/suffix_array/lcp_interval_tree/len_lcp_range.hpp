@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 //! @param v node
 //! @returns length of longest common prefix of v's interval/range

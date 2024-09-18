@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 #include "bool_presum.hpp"
 //! @see https://codeforces.com/blog/entry/112755

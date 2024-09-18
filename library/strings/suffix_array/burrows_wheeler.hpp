@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 #include "suffix_array.hpp"
 const int

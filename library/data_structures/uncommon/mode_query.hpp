@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 const int b = 318; //!< sqrt(1e5)
 //! @see https://noshi91.hatenablog.com/entry/2020/10/26/140105

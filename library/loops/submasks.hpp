@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 //! loops over submasks in decreasing order
 //! @param mask a submask of 2^n-1

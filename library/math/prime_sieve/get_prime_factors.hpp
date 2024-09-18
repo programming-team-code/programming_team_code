@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 #include "calc_sieve.hpp"
 //! `fac` will equal all prime factors of num, increasing

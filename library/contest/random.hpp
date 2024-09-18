@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 //! @see https://codeforces.com/blog/entry/61675
 //! @code{.cpp}

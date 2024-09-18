@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 #include "../../../kactl/content/graph/BinaryLifting.h"
 //! @see https://codeforces.com/blog/entry/71567#comment-559299 https://youtu.be/0rCFkuQS968

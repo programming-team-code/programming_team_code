@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 #include "bool_presum.hpp"
 #include "bool_bit.hpp"

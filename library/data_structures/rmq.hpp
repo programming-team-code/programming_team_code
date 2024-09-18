@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 //! @code{.cpp}
 //!     vector<ll> a;

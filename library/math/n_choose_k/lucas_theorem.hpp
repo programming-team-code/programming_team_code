@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 #include "n_choose_k.hpp"
 //! @param n,k arbitrarily large integers; n, k >= mod is ok

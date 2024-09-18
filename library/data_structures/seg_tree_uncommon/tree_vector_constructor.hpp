@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 tree(const vector<T>& a, T a_unit, F a_f):
   n(sz(a)), unit(a_unit), f(a_f), s(2 * n) {

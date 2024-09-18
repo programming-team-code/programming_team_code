@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 #include "lca_rmq.hpp"
 //! @see https://codeforces.com/blog/entry/44351

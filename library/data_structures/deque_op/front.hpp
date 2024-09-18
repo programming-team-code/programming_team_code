@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 //! @returns deq[0]
 //! @time O(1)

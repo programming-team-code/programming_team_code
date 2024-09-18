@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 #include "../../../kactl/content/numerical/NumberTheoreticTransform.h"
 #include "../n_choose_k/n_choose_k.hpp"

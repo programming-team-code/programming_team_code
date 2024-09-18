@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 //! @param v node
 //! @param c letter (don't subtract mn)

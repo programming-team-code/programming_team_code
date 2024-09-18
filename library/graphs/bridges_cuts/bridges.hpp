@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 //! @see https://cp-algorithms.com/graph/bridge-searching.html
 //! @code{.cpp}

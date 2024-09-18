@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 //! @code{.cpp}
 //!     centroid(adj, [&](const vector<vi>& adj, int cent) {

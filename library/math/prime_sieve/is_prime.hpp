@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 #include "calc_sieve.hpp"
 //! @param num an integer

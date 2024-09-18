@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 //! @see Still Simpler Static Level Ancestors by Torben Hagerup, May 2020; https://codeforces.com/blog/entry/126580
 struct linear_kth_par {

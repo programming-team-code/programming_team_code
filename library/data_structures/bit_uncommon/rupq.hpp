@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 #include "../bit.hpp"
 //! range update, point query

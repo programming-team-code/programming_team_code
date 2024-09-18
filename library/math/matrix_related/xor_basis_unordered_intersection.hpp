@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 #include "xor_basis_unordered.hpp"
 //! @see https://github.com/suisen-cp/cp-library-cpp/blob/main/library/linear_algebra/xor_base.hpp

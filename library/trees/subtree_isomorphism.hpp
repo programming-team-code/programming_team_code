@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 //! @code{.cpp}
 //!     auto [num_distinct_subtrees, iso_id] = subtree_iso(adj);

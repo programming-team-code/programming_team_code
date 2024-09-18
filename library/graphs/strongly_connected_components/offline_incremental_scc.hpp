@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 #include "scc.hpp"
 //! @see [Radecki Algorithm!](https://codeforces.com/blog/entry/91608)

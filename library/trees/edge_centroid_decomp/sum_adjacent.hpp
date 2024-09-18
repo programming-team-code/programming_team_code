@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 //! helper for edge CD: given tree, update node's number, find sum of neighbors' numbers
 template<class T> struct sum_adj {

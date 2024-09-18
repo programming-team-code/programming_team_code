@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 //! @param convex,arbitrary arrays where convex satisfies convex[i + 1] -
 //! convex[i] <= convex[i + 2] - convex[i + 1] for all i [0, n - 2)

@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 //! Binary Indexed Tree
 // NOLINTNEXTLINE(readability-identifier-naming)

@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 //! @see https://e-maxx.ru/algo/assignment_hungary
 //! @code{.cpp}

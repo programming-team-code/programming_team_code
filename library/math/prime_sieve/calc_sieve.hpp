@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 //! @time O(mx * log(log mx))
 //! @space O(mx)

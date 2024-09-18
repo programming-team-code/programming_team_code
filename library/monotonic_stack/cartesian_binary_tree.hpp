@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 #include "monotonic_stack.hpp"
 //!   when cmp is less():

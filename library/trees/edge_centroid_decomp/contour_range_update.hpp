@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 #include "../../data_structures/bit_uncommon/rupq.hpp"
 #include "sum_adjacent.hpp"

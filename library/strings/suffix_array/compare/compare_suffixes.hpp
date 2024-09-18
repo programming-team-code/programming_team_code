@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 //! @param le1,le2 defines suffixes [le1, n), [le2, n)
 //!     - doesn't work when le1,le2 == n

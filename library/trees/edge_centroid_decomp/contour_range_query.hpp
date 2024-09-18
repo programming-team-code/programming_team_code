@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 #include "../../data_structures/bit.hpp"
 #include "sum_adjacent.hpp"

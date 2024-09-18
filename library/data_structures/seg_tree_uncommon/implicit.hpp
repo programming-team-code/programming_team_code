@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 //! @code{.cpp}
 //!     implicit_seg_tree<10'000'000> ist(le, ri);

@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 //! @see https://codeforces.com/blog/entry/104997 https://codeforces.com/blog/entry/120446
 //! only handle paths with >=1 edge in each edge-set

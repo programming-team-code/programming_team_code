@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 #include "../../data_structures/rmq.hpp"
 #include "manacher.hpp"

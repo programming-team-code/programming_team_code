@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 //! deque with query for operation of the deque
 //! @code{.cpp}

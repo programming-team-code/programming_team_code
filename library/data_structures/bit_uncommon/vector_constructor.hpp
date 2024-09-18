@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 //! @param a initial array
 //! @time O(n)

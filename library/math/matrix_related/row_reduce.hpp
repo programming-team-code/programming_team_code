@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 #include "../mod_int.hpp"
 //! @code{.cpp}

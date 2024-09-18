@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 #include "monotonic_range.hpp"
 //! @param a contains positive integers

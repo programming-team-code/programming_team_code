@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 //! @see https://github.com/kth-competitive-programming/kactl/blob/main/content/data-structures/SegmentTree.h
 //! @code{.cpp}

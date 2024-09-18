@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 //! @param v node
 //! @returns range [le, ri) such that the following (ri - le) substrings are equal:

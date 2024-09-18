@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 #include "cuts.hpp"
 //! @code{.cpp}

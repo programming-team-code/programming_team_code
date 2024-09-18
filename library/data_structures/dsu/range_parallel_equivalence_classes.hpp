@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 #include "../../../kactl/content/data-structures/UnionFind.h"
 //! Given a set of restrictions (l1, l2, len) such that for each query, we want

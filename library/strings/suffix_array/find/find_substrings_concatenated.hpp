@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 #include "match.hpp"
 //! @param substrs this defines query string t as:

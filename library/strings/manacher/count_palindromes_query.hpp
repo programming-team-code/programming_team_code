@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 #include "../../data_structures/wavelet_merge/wavelet_tree.hpp"
 #include "manacher.hpp"

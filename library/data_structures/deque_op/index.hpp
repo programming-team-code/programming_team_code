@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 //! @param i index
 //! @returns deq[i]

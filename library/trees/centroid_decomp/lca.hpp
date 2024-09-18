@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 #include "centroid_decomp.hpp"
 //! @see https://codeforces.com/blog/entry/81661#comment-686024

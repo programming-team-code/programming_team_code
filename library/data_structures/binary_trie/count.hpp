@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 //! @param num integer
 //! @returns number of occurances of num in the multiset

@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 #include "count_paths_rectangle.hpp"
 //! @see https://noshi91.hatenablog.com/entry/2023/07/21/235339

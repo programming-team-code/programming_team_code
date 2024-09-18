@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 #include "row_reduce.hpp"
 //! Solves mat * x = b under prime mod. Number of unique solutions = (size of

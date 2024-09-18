@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 #include "prefix_function.hpp"
 //! @code{.cpp}

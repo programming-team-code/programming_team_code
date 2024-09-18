@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 const int mod = 998244353;
 //! @see https://github.com/kth-competitive-programming/kactl/blob/main/content/number-theory/ModularArithmetic.h

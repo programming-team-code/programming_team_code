@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 //! @see https://cp-algorithms.com/graph/cutpoints.html
 //! @code{.cpp}

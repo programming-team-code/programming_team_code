@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 #include "monotonic_range.hpp"
 //! @param grid an n-by-m boolean array

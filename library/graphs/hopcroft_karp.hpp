@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 //! @see https://github.com/foreverbell/acm-icpc-cheat-sheet/blob/master/src/graph-algorithm/hopcroft-karp.cpp
 //! @code{.cpp}

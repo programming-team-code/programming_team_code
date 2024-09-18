@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 //! @param a,mod self explanatory
 //! @returns the number of distinct subsequences of `a`. The empty subsequence

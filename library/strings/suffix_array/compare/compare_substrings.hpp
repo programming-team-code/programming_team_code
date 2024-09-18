@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 #include "compare_suffixes.hpp"
 //! @param le1,ri1 first substring [le1, ri1)

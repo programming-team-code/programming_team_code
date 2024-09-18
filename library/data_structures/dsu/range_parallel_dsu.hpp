@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 #include "../../../kactl/content/data-structures/UnionFind.h"
 //! DSU with support for joining two parallel ranges [l1, l1 + len) and [l2, l2 +

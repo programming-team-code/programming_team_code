@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 //! @see https://codeforces.com/blog/entry/112755
 //! @param tl,tr defines range [tl, tr)

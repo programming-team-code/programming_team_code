@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 #include "is_palindrome.hpp"
 //! @see https://github.com/brunomaletta/Biblioteca/blob/master/Codigo/Strings/manacher.cpp

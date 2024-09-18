@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 //! @see https://github.com/kth-competitive-programming/kactl/blob/main/content/various/chapter.tex
 //! @param mask a number with k bits set

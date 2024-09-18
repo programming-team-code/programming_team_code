@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 #include "bridges.hpp"
 //! Never adds multiple edges as bridges.hpp correctly marks them as

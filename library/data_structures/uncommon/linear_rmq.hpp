@@ -1,4 +1,3 @@
-//! @file
 #pragma once
 //! @see On Finding Lowest Common Ancestors: Simplification and Parallelization
 //! by Baruch Schieber, Uzi Vishkin, April 1987
