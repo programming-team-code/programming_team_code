@@ -1,13 +1,13 @@
 #pragma once
 //! https://e-maxx.ru/algo/assignment_hungary
 //! @code
-//!   //cost[i][j] = edge weight, 1<=i<=n<=m;1<=j<=m
 //!   vector cost(n+1,vector(m+1,(ll)0));
 //!   auto [min_weight, l_to_r] = hungarian(cost);
-//!   //min_weight = sum of edge weights in matching
-//!   //edge v <=> l_to_r[v] is in the matching
-//!   //1<=v<=n; 1<=l_to_r[v]<=m
 //! @endcode
+//! cost[i][j] = edge weight, 1<=i<=n<=m; 1<=j<=m
+//! min_weight = sum of edge weights in matching
+//! edge v <=> l_to_r[v] is in the matching
+//!   1<=v<=n; 1<=l_to_r[v]<=m
 //! @time O(n^2 * m)
 //! @space O(n + m)
 struct hungarian {

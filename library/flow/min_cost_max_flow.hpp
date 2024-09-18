@@ -1,5 +1,14 @@
 #pragma once
 //! https://e-maxx.ru/algo/min_cost_flow
+//! @code
+//!   mcmf f(n);
+//!   auto [flow, cost] = f.get_flow(s,t,total_flow);
+//! @endcode
+//! 0<=s,t<n;
+//! flow<=total_flow is the max amount of
+//!   flow we can send
+//! cost: minimum sum of (edge.flow*edge.cost) over
+//!   all ways to send `flow` flow
 struct mcmf {
   struct edge {
     int u, v;
@@ -18,16 +27,6 @@ struct mcmf {
     adj[v].push_back(sz(e));
     e.push_back(e2);
   }
-  //! @param s source, 0 <= s < n
-  //! @param t sink, 0 <= t < n
-  //! @param total_flow we try to send this amount of flow
-  //! through the graph
-  //! @returns array of {flow, cost}
-  //! - flow: (<=total_flow) is the max amount of flow we are
-  //! able to send.
-  //! - cost: minimum sum of: (edge.flow * edge.cost) over
-  //! each edge (over all
-  //!   ways to send `flow` flow)
   array<ll, 2> get_flow(int s, int t, ll total_flow) {
     ll flow = 0, cost = 0;
     while (flow < total_flow) {

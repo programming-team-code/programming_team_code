@@ -1,25 +1,19 @@
 #pragma once
 #include "cuts.hpp"
 //! @code
-//!     cuts cc(adj, m);
-//!     vector<vi> bvt = block_vertex_tree(adj, cc);
-//!     //to loop over each unique bcc containing a node u:
-//!     for (int bccid : bvt[u]) {
-//!         bccid -= n;
-//!     }
-//!     //to loop over each unique node inside a bcc:
-//!     for (int u : bvt[bccid + n]) {}
+//!   cuts cc(adj, m);
+//!   vector<vi> bvt = block_vertex_tree(adj, cc);
+//!   //to loop over each unique bcc containing a node u:
+//!   for (int bccid : bvt[u]) {
+//!       bccid -= n;
+//!   }
+//!   //to loop over each unique node inside a bcc:
+//!   for (int u : bvt[bccid + n]) {}
 //! @endcode
-//!
 //! [0, n) are original nodes
 //! [n, n + num_bccs) are BCC nodes
-//!
-//! @param adj undirected graph
-//! @param cc what's calculated by cuts
-//! @returns adjacency list of block vertex tree
 //! @time O(n + m)
-//! @space besides the O(n + m) sized params, this function
-//! allocates and returns `bvt` vector which is O(n)
+//! @time O(n)
 vector<vi> block_vertex_tree(const vector<vector<pii>>& adj,
   const cuts& cc) {
   int n = sz(adj);

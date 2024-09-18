@@ -7,9 +7,9 @@
 //! is max(# zero indegree SCCs, # zero outdegree SCCs)
 //!
 //! @code
-//!     auto [num_sccs, scc_id] = sccs(adj);
-//!     vector<pii> edges = extra_edges(adj, num_sccs,
-//!     scc_id);
+//!   auto [num_sccs, scc_id] = sccs(adj);
+//!   vector<pii> edges = extra_edges(adj,
+//!     num_sccs, scc_id);
 //! @endcode
 //! @param adj,num_sccs,scc_id directed graph and its SCCs
 //! @returns directed edge list: edges[i][0] -> edges[i][1]

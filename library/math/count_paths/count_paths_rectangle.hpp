@@ -3,7 +3,7 @@
 #include "../n_choose_k/n_choose_k.hpp"
 //! https://noshi91.hatenablog.com/entry/2023/07/21/235339
 //! @code
-//!     auto [right, top] = get_right_and_top(left, bottom);
+//!   auto [right, top] = get_right_and_top(left, bottom);
 //! @endcode
 //! @param left,bottom see image
 //! @returns [right, top] -> see image, note right.back() ==

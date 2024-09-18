@@ -1,17 +1,10 @@
 #pragma once
 #include "../../kactl/content/data-structures/UnionFind.h"
-//! Kruskal's algorithm to find a minimum spanning tree of a
-//! graph
-//!
-//! The implementation will find a minimum spanning forest if
-//! the graph is not connected
-//!
-//! @param eds a list of the edges of the form [u, v, w]
-//! @param n the number of vertices in the graph
-//! @returns [cost, ids] where `cost` is the total weight of
-//! the minimum spanning tree and `ids` is the list of the
-//! indices of the edges that are part of the minimum
-//! spanning tree
+//! @code
+//!   auto [cost, ids] = mst(eds, n);
+//! @endcode
+//! cost = sum of edge weights in MST
+//! eds[ids[i]] = edge in MST
 //! @time O(n α(n) + m log m)
 //! @space O(n + m)
 pair<ll, vi> mst(const vector<array<int, 3>>& eds, int n) {

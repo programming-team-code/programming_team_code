@@ -1,7 +1,6 @@
 #pragma once
 #include "scc.hpp"
-//! [Radecki
-//! Algorithm!](https://codeforces.com/blog/entry/91608)
+//! https://codeforces.com/blog/entry/91608
 //!
 //! @param edge_updates directed edges {u, v} where u -> v
 //! @param n number of vertices
