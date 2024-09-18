@@ -1,9 +1,9 @@
 #pragma once
 #include "../bit.hpp"
 //! https://github.com/dacin21/dacin21_codebook/blob/master/trees/wavelet_matrix_updates.cpp
-//! space efficient boolean array with range sum query, and point update
-//! note `>> 6` is the same as `/ 64`
-//! note `& 63` is the same as `% 64`
+//! space efficient boolean array with range sum query, and
+//! point update note `>> 6` is the same as `/ 64` note `&
+//! 63` is the same as `% 64`
 struct bool_bit {
   int n;
   vector<uint64_t> mask;

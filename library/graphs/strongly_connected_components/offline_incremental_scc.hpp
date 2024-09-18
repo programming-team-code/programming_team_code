@@ -1,13 +1,15 @@
 #pragma once
 #include "scc.hpp"
-//! [Radecki Algorithm!](https://codeforces.com/blog/entry/91608)
+//! [Radecki
+//! Algorithm!](https://codeforces.com/blog/entry/91608)
 //!
 //! @param edge_updates directed edges {u, v} where u -> v
 //! @param n number of vertices
 //!
-//! @returns a vec joins where joins[i] = minimum prefix of edges [0, joins[i]]
-//! for eds[i][0] and eds[i][1] to be in the same SCC; iff eds[i][0] and
-//! eds[i][1] are never in the same SCC then joins[i] = m
+//! @returns a vec joins where joins[i] = minimum prefix of
+//! edges [0, joins[i]] for eds[i][0] and eds[i][1] to be in
+//! the same SCC; iff eds[i][0] and eds[i][1] are never in
+//! the same SCC then joins[i] = m
 //!
 //! @note for self-edges (u, u), joins[i] = -1
 //!
@@ -57,7 +59,8 @@ vi offline_incremental_scc(
     self(self, el, split, tl, mid);
     self(self, split, er, mid, tr);
   };
-  // uses -1 as the lower bound to correctly handle self-edges
+  // uses -1 as the lower bound to correctly handle
+  // self-edges
   divide_and_conquer(divide_and_conquer, all(eds), -1, m);
   return joins;
 }

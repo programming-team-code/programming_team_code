@@ -12,7 +12,8 @@ const int mod = 998'244'353;
 //!     //n=5 -> num=5
 //! @endcode
 //! @param n an integer
-//! @returns a array of {nth fibonacci number, (n+1)th fibonacci number}
+//! @returns a array of {nth fibonacci number, (n+1)th
+//! fibonacci number}
 //! @time O(log n)
 //! @space O(log n) for recursion stack
 array<ll, 2> fib(ll n) {

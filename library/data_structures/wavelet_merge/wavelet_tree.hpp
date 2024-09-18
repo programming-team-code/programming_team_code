@@ -2,8 +2,8 @@
 #include "bool_presum.hpp"
 //! https://codeforces.com/blog/entry/112755
 //! @param tl,tr defines range [tl, tr)
-//! @returns split point of range which makes the wavelet tree a complete
-//! binary tree
+//! @returns split point of range which makes the wavelet
+//! tree a complete binary tree
 int split(int tl, int tr) {
   int pw2 = 1 << __lg(tr - tl);
   return min(tl + pw2, tr - pw2 / 2);
@@ -20,13 +20,16 @@ struct wavelet_tree {
   //!     vi sorted(a);
   //!     sort(all(sorted));
   //!     sorted.erase(unique(all(sorted)), end(sorted));
-  //!     for (int& num : a) num = lower_bound(all(sorted), num) - begin(sorted);
-  //!     wavelet_tree wt(a, 0, sz(sorted));
+  //!     for (int& num : a) num = lower_bound(all(sorted),
+  //!     num) - begin(sorted); wavelet_tree wt(a, 0,
+  //!     sz(sorted));
   //! @endcode
   //! @param a,a_minv,a_maxv must satisfy minv <= a[i] < maxv
   //! @time O((maxv - minv) + n * log(maxv - minv))
-  //! @space O((maxv - minv) + n * log(maxv - minv) / 64) for `bool_presums`
-  //!        O((maxv - minv) + n * log(maxv - minv))      for `presums`
+  //! @space O((maxv - minv) + n * log(maxv - minv) / 64) for
+  //! `bool_presums`
+  //!        O((maxv - minv) + n * log(maxv - minv))      for
+  //!        `presums`
   wavelet_tree(vi a, int a_minv, int a_maxv):
     n(sz(a)), minv(a_minv), maxv(a_maxv),
     bool_presums(maxv - minv, vector<bool>()),
@@ -50,8 +53,10 @@ struct wavelet_tree {
     build(a, le, mi, tl, tm, 2 * v);
     build(a, mi, ri, tm, tr, 2 * v + 1);
   }
-  //! @param le,ri,x,y defines rectangle: indexes in [le, ri), numbers in [x, y)
-  //! @returns number of indexes i such that le <= i < ri and x <= a[i] < y
+  //! @param le,ri,x,y defines rectangle: indexes in [le,
+  //! ri), numbers in [x, y)
+  //! @returns number of indexes i such that le <= i < ri and
+  //! x <= a[i] < y
   //! @time O(log(maxv - minv))
   //! @space O(log(maxv - minv)) for recursive stack
   int rect_count(int le, int ri, int x, int y) {
@@ -68,8 +73,10 @@ struct wavelet_tree {
       rect_count_impl(le - pl, ri - pr, x, y, tm, tr,
         2 * v + 1);
   }
-  //! @param le,ri,x,y defines rectangle: indexes in [le, ri), numbers in [x, y)
-  //! @returns sum of numbers a[i] such that le <= i < ri and x <= a[i] < y
+  //! @param le,ri,x,y defines rectangle: indexes in [le,
+  //! ri), numbers in [x, y)
+  //! @returns sum of numbers a[i] such that le <= i < ri and
+  //! x <= a[i] < y
   //! @time O(log(maxv - minv))
   //! @space O(log(maxv - minv)) for recursive stack
   ll rect_sum(int le, int ri, int x, int y) {

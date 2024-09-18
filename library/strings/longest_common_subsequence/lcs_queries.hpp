@@ -2,14 +2,16 @@
 #include "../../data_structures/bit.hpp"
 #include "lcs_dp.hpp"
 //! Given strings s, t handle queries for:
-//!     given s_ri, t_le, t_ri; calculate size(LCS(s[0, s_ri), t[t_le, t_ri)))
+//!     given s_ri, t_le, t_ri; calculate size(LCS(s[0,
+//!     s_ri), t[t_le, t_ri)))
 //!
 //! @param s,t strings/arrays
 //! @param queries queries[i] = {s_ri, t_le, t_ri}
-//! @returns res[i] = size(LCS(s.substr(0, queries[i][0]), t.substr(queries[i][1], queries[i][2] - queries[i][1])))
+//! @returns res[i] = size(LCS(s.substr(0, queries[i][0]),
+//! t.substr(queries[i][1], queries[i][2] - queries[i][1])))
 //! @time O(n*m*log(m) + q*log(m) + q*log(q))
-//! @space this allocates/returns a O(q) vector, and various vectors are
-//! allocated temporarily which are O(n + m + q)
+//! @space this allocates/returns a O(q) vector, and various
+//! vectors are allocated temporarily which are O(n + m + q)
 template<class T>
 vi lcs_queries(const T& s, const T& t,
   const vector<array<int, 3>>& queries) {

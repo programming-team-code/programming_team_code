@@ -43,7 +43,8 @@ template<class T> struct contour_range_query {
   }
   //! @param v node
   //! @param le,ri defines range [le, ri)
-  //! @returns sum of node u's number over all u such that le <= dist_edges(u, v) < ri
+  //! @returns sum of node u's number over all u such that le
+  //! <= dist_edges(u, v) < ri
   //! @time O(log1.5(n) * log2(n))
   //! @space O(1)
   T query(int v, int le, int ri) {

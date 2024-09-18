@@ -1,6 +1,7 @@
 #pragma once
 //! @param v node
-//! @returns length of longest common prefix of v's interval/range
+//! @returns length of longest common prefix of v's
+//! interval/range
 //! @time O(1)
 //! @space O(1)
 int len_lcp_range(int v) {

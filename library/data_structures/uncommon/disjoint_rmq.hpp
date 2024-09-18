@@ -1,12 +1,13 @@
 #pragma once
 //! https://codeforces.com/blog/entry/87940
-//! Disjoint RMQ is like normal RMQ except the 2 query ranges never overlap.
+//! Disjoint RMQ is like normal RMQ except the 2 query ranges
+//! never overlap.
 //! @code{.cpp}
 //!     //usage for min and # of mins:
 //!     vector<pair<ll, int>> a; //initialize a[i].second = 1
 //!     disjoint_rmq rmq(a, [&](auto& x, auto& y) {
-//!         if (x.first == y.first) return make_pair(x.first, x.second + y.second);
-//!         return min(x, y);
+//!         if (x.first == y.first) return make_pair(x.first,
+//!         x.second + y.second); return min(x, y);
 //!     });
 //! @endcode
 template<class T, class F> struct disjoint_rmq {

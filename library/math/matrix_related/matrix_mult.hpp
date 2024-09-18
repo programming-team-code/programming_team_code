@@ -3,8 +3,8 @@
 //! @param a,b matrices
 //! @returns a*b (not overflow safe)
 //! @time O(n * m * inner)
-//! @space besides the O(n * inner) and O(inner * m) params, this function
-//! allocates and returns a O(n * m) vector
+//! @space besides the O(n * inner) and O(inner * m) params,
+//! this function allocates and returns a O(n * m) vector
 template<class T>
 vector<vector<T>> operator*(const vector<vector<T>>& a,
   const vector<vector<T>>& b) {

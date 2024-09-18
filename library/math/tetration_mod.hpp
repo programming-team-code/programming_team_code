@@ -20,10 +20,11 @@ ll bin_exp(ll b, ll e, int mod) {
 //! So you need enough base cases to cover when log2(mod) > e
 //!
 //! @param b,e,mod see return
-//! @returns b ^ (b ^ (b ^ ... )) % mod, where the height of the tower
-//! is e.
+//! @returns b ^ (b ^ (b ^ ... )) % mod, where the height of
+//! the tower is e.
 //! @time O(sqrt(mod) * log(mod))
-//! @space O(log(mod)) for recursion stack, since totient(totient(mod)) <= mod/2
+//! @space O(log(mod)) for recursion stack, since
+//! totient(totient(mod)) <= mod/2
 ll tetration(ll b, ll e, int mod) {
   if (mod == 1) return 0;
   if (b == 0) return (e + 1) % 2 % mod;

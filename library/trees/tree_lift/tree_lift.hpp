@@ -1,6 +1,7 @@
 #pragma once
 //! https://github.com/ucf-programming-team/hackpack-cpp/blob/master/content/graphs/TreeLifting.h
-//! Calculate jumps up a tree, to support fast upward jumps and LCAs.
+//! Calculate jumps up a tree, to support fast upward jumps
+//! and LCAs.
 struct tree_lift {
   struct node {
     int d, p = -1, j = -1;
@@ -25,7 +26,8 @@ struct tree_lift {
   }
   //! @param v query node
   //! @param k number of edges
-  //! @returns a node k edges up from v. With k=1, this returns v's parent.
+  //! @returns a node k edges up from v. With k=1, this
+  //! returns v's parent.
   //! @time O(log k)
   //! @space O(1)
   int kth_par(int v, int k) {

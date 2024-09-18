@@ -14,10 +14,9 @@ template<int N> struct implicit_seg_tree {
     ll lazy = 0;
     int lch = -1, rch = -1;
   } tree[N];
-  int
-    ptr = 0,
-    root_l,
-    root_r; //!< [root_l, root_r) defines range of root node; handles negatives
+  int ptr = 0, root_l,
+      root_r; //!< [root_l, root_r) defines range of root
+              //!< node; handles negatives
   implicit_seg_tree(int le, int ri): root_l(le), root_r(ri) {
     tree[ptr++].num = {0, ri - le};
   }

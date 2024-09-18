@@ -11,18 +11,20 @@ struct PST {
   int root_l, root_r;
   vi roots; //!< tree[roots[i]] = root node at version i
   deque<node> tree;
-  //! @param a_root_l,a_root_r defines range [root_l, root_l) of root node, can be
-  //! negative
+  //! @param a_root_l,a_root_r defines range [root_l, root_l)
+  //! of root node, can be negative
   //! @time O(1)
   //! @space O(1)
   PST(int a_root_l, int a_root_r):
     root_l(a_root_l), root_r(a_root_r), roots(1),
     tree(1, {0LL, 0, 0}) {}
   //! @param idx,change does a[idx] += change
-  //! @param version which version to update. Each call to update creates a
-  //! new version. Initially there is a dummy version.
+  //! @param version which version to update. Each call to
+  //! update creates a new version. Initially there is a
+  //! dummy version.
   //! @time O(log(root_r - root_l))
-  //! @space O(log(root_r - root_l)) new nodes are pushed back onto `tree`; (and for recursion stack)
+  //! @space O(log(root_r - root_l)) new nodes are pushed
+  //! back onto `tree`; (and for recursion stack)
   void update(int idx, ll change, int version) {
     roots.push_back(update_impl(idx, change, root_l, root_r,
       roots[version]));
@@ -45,9 +47,11 @@ struct PST {
   }
   //! @param le, ri defines range [le, ri)
   //! @param version which version to query
-  //! @returns a[le] + a[le + 1] + ... + a[ri - 1] during the `version`-th version
+  //! @returns a[le] + a[le + 1] + ... + a[ri - 1] during the
+  //! `version`-th version
   //! @time O(log(root_r - root_l))
-  //! @space O(log(root_r - root_l)) for recursion stack, no new nodes are allocated
+  //! @space O(log(root_r - root_l)) for recursion stack, no
+  //! new nodes are allocated
   ll query(int le, int ri, int version) {
     return query_impl(le, ri, root_l, root_r,
       roots[version]);

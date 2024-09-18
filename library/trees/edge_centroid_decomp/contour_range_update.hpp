@@ -32,7 +32,8 @@ template<class T> struct contour_range_update {
           bit_rupq<T>(mx_d[1] + 1)});
       });
   }
-  //! @param v,le,ri,delta add delta to all nodes u such that le <= dist_edges(v, u) < ri
+  //! @param v,le,ri,delta add delta to all nodes u such that
+  //! le <= dist_edges(v, u) < ri
   //! @time O(log1.5(n) * log2(n))
   //! @space O(1)
   void update(int v, int le, int ri, T delta) {

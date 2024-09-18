@@ -1,11 +1,11 @@
 #pragma once
 //! deque with query for operation of the deque
 //! @code{.cpp}
-//!     //deque with query for: get min and # of mins in deque
-//!     vector<pair<ll, int>> a; //initialize a[i].second = 1
-//!     deq dq(a, [](auto x, auto y) {
-//!         if (x.first == y.first) return pair(x.first, x.second + y.second);
-//!         return min(x, y);
+//!     //deque with query for: get min and # of mins in
+//!     deque vector<pair<ll, int>> a; //initialize
+//!     a[i].second = 1 deq dq(a, [](auto x, auto y) {
+//!         if (x.first == y.first) return pair(x.first,
+//!         x.second + y.second); return min(x, y);
 //!     });
 //! @endcode
 template<class T, class F> struct deq {

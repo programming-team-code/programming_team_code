@@ -8,7 +8,8 @@
 //!
 //! man = {0, 1, 1, 0, 2, 3, 2, 4, 4}
 //!
-//! for "center" `i`, man[i] stores minimum index `le` such that [le, i - le] is a palindrome
+//! for "center" `i`, man[i] stores minimum index `le` such
+//! that [le, i - le] is a palindrome
 //!
 //! @param s string/vector
 //! @returns see above

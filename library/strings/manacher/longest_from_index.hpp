@@ -2,7 +2,8 @@
 #include "is_palindrome.hpp"
 //! https://github.com/brunomaletta/Biblioteca/blob/master/Codigo/Strings/manacher.cpp
 //! @param pq palindrome query struct
-//! @returns ri[i] = max index such that [i, ri[i]] is a palindrome
+//! @returns ri[i] = max index such that [i, ri[i]] is a
+//! palindrome
 //! @time O(n)
 //! @space an O(n) vector is allocated and returned
 template<class T> vi longest_from_index(pal_query<T>& pq) {

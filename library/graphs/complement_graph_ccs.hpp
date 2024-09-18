@@ -1,7 +1,7 @@
 #pragma once
-//! @returns a vector of size `n` containing the connected component id of each
-//! vertex in the complement graph of `adj`
-//! guarantee: 0 <= cc_id[v] < number of connected
+//! @returns a vector of size `n` containing the connected
+//! component id of each vertex in the complement graph of
+//! `adj` guarantee: 0 <= cc_id[v] < number of connected
 //! components in the complement graph of adj
 //! @param adj adjacency list of the graph
 //! @time O(n + m)

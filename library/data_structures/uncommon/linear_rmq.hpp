@@ -1,5 +1,7 @@
 #pragma once
-//! On Finding Lowest Common Ancestors: Simplification and Parallelization by Baruch Schieber, Uzi Vishkin, April 1987
+//! On Finding Lowest Common Ancestors: Simplification and
+//! Parallelization by Baruch Schieber, Uzi Vishkin, April
+//! 1987
 //! https://codeforces.com/blog/entry/125371?#comment-1173604
 template<class T, class F> struct linear_rmq {
   vector<T> a;
@@ -11,7 +13,8 @@ template<class T, class F> struct linear_rmq {
   //!     linear_rmq rmq(a, less()); // right-most min
   //!     linear_rmq rmq(a, less_equal()); // left-most min
   //!     linear_rmq rmq(a, greater()); // right-most max
-  //!     linear_rmq rmq(a, greater_equal()); // left-most max
+  //!     linear_rmq rmq(a, greater_equal()); // left-most
+  //!     max
   //! @endcode
   //! @param a_a,a_cmp array and a compare operator
   //! @time O(n)

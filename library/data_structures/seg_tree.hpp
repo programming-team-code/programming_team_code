@@ -1,10 +1,12 @@
 #pragma once
 //! https://github.com/kth-competitive-programming/kactl/blob/main/content/data-structures/SegmentTree.h
 //! @code{.cpp}
-//!     tree st(n, INT_MAX, [&](int x, int y) -> int { return min(x, y); });
-//!     vector<array<int, 2>> a(n);
-//!     tree st(a, {1, 0}, [&](const array<int, 2>& le, const array<int, 2>& ri) -> array<int, 2> {
-//!         return {int(1LL * le[0] * ri[0] % mod), int((1LL * ri[0] * le[1] + ri[1]) % mod)};
+//!     tree st(n, INT_MAX, [&](int x, int y) -> int { return
+//!     min(x, y); }); vector<array<int, 2>> a(n); tree st(a,
+//!     {1, 0}, [&](const array<int, 2>& le, const array<int,
+//!     2>& ri) -> array<int, 2> {
+//!         return {int(1LL * le[0] * ri[0] % mod), int((1LL
+//!         * ri[0] * le[1] + ri[1]) % mod)};
 //!     });
 //! @endcode
 template<class T, class F> struct tree {

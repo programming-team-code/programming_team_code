@@ -5,25 +5,30 @@
 //!     //0 <= node_right < rsz
 //!     //for every edge node_left <=> node_right
 //!     adj[node_left].push_back(node_right);
-//!     auto [size_of_matching, l_to_r, r_to_l, mvc_l, mvc_r] = hopcroft_karp(adj, rsz);
+//!     auto [size_of_matching, l_to_r, r_to_l, mvc_l, mvc_r]
+//!     = hopcroft_karp(adj, rsz);
 //! @endcode
 struct hopcroft_karp {
   int size_of_matching =
-    0; //!< # of edges in max matching (which = size of min vertex cover by König's theorem)
-  //! edge node_left <=> l_to_r[node_left] in matching iff l_to_r[node_left] != -1
-  //! ditto r_to_l[node_right] <=> node_right
+    0; //!< # of edges in max matching (which = size of min
+       //!< vertex cover by König's theorem)
+  //! edge node_left <=> l_to_r[node_left] in matching iff
+  //! l_to_r[node_left] != -1 ditto r_to_l[node_right] <=>
+  //! node_right
   //! @{
   vi l_to_r, r_to_l;
   //! @}
-  //! mvc_l[node_left] = 1 iff node_left is in the min vertex cover; ditto mvc_r[node_right]
-  //! mvc_l[node_left] = 0 iff node_left is in the max independent set
+  //! mvc_l[node_left] = 1 iff node_left is in the min vertex
+  //! cover; ditto mvc_r[node_right] mvc_l[node_left] = 0 iff
+  //! node_left is in the max independent set
   //! @{
   vector<bool> mvc_l, mvc_r;
   //! @}
   //! @param adj bipartite graph
   //! @param rsz number of nodes on right side
   //! @time O(n + m * sqrt(n)) n = lsz + rsz
-  //! @space this allocates member vectors which are O(lsz + rsz)
+  //! @space this allocates member vectors which are O(lsz +
+  //! rsz)
   hopcroft_karp(const vector<vi>& adj, int rsz):
     l_to_r(sz(adj), -1), r_to_l(rsz, -1) {
     int lsz = sz(adj);

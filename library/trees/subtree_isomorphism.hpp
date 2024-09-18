@@ -1,12 +1,14 @@
 #pragma once
 //! @code{.cpp}
-//!     auto [num_distinct_subtrees, iso_id] = subtree_iso(adj);
+//!     auto [num_distinct_subtrees, iso_id] =
+//!     subtree_iso(adj);
 //! @endcode
 struct subtree_iso {
-  int
-    num_distinct_subtrees; //!< number of classes (by iso.) of subtrees
+  int num_distinct_subtrees; //!< number of classes (by iso.)
+                             //!< of subtrees
   //! - 0 <= iso_id[v] < num_distinct_subtrees
-  //! - iso_id[u] == iso_id[v] iff subtree u is isomorphic to subtree v
+  //! - iso_id[u] == iso_id[v] iff subtree u is isomorphic to
+  //! subtree v
   vi iso_id;
   //! @param adj rooted forest (rooted or unrooted)
   //! @time O(n log n)

@@ -55,7 +55,7 @@ NamespaceIndentation: None
 PackConstructorInitializers: BinPack
 PenaltyBreakAssignment: 1
 PenaltyBreakBeforeFirstCallParameter: 1
-PenaltyBreakComment: 300
+# PenaltyBreakComment: 300
 PenaltyBreakFirstLessLess: 1
 PenaltyBreakOpenParenthesis: 1
 PenaltyBreakString: 1000
@@ -64,7 +64,7 @@ PenaltyExcessCharacter: 1000000
 PenaltyReturnTypeOnItsOwnLine: 200
 PointerAlignment: Left
 # QualifierAlignment: Left
-ReflowComments: false
+# ReflowComments: false
 ReferenceAlignment: Pointer
 RemoveBracesLLVM: true
 SeparateDefinitionBlocks: Never

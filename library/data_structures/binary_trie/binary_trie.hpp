@@ -1,5 +1,6 @@
 #pragma once
-//! Trie on bits. Can be thought of as a multiset of integers.
+//! Trie on bits. Can be thought of as a multiset of
+//! integers.
 template<class T> struct binary_trie {
   int mx_bit;
   struct node {

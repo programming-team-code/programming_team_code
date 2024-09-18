@@ -1,7 +1,8 @@
 #pragma once
 #include "../../data_structures/rmq.hpp"
 #include "manacher.hpp"
-//! queries for longest palindromic substring of a given substring
+//! queries for longest palindromic substring of a given
+//! substring
 template<class T> struct longest_pal_query {
   vi man, idx;
   RMQ<int, function<int(int, int)>> rmq = {{}, nullptr};
@@ -22,19 +23,26 @@ template<class T> struct longest_pal_query {
   //! @time O(1)
   //! @space O(1)
   int len(int i) { return i - 2 * man[i] + 1; }
-  //! approach: binary search: is there some palindromic substring with length >= mid ?
-  //! note for a substring [le, ri) of s, the "relevant" centers are subarray [2 * le, 2 * ri - 1) of `man`
+  //! approach: binary search: is there some palindromic
+  //! substring with length >= mid ? note for a substring
+  //! [le, ri) of s, the "relevant" centers are subarray [2 *
+  //! le, 2 * ri - 1) of `man`
   //!
-  //! when center i (in "relevant" range) is even (so represents an odd-length palindrome):
+  //! when center i (in "relevant" range) is even (so
+  //! represents an odd-length palindrome):
   //!     - i / 2 is index of middle of palindrome
   //!     - le <= i / 2 < ri
-  //! when center i (in "relevant" range) is odd (so represents an even-length palindrome):
-  //!     - (i - 1) / 2, (i + 1) / 2 are indexes of middles of palindrome
+  //! when center i (in "relevant" range) is odd (so
+  //! represents an even-length palindrome):
+  //!     - (i - 1) / 2, (i + 1) / 2 are indexes of middles
+  //!     of palindrome
   //!     - le <= (i - 1) / 2 < (i + 1) / 2 < ri
   //!
   //! @param le,ri defines substring [le, ri) of s
-  //! @returns {start index, length} of longest palindromic substring of s.substr(le, ri - le)
-  //!     if there are multiple longest answers, this returns an arbitrary start index
+  //! @returns {start index, length} of longest palindromic
+  //! substring of s.substr(le, ri - le)
+  //!     if there are multiple longest answers, this returns
+  //!     an arbitrary start index
   //! @time O(log n)
   //! @space O(1)
   pii longest_pal(int le, int ri) {

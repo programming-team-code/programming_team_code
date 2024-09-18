@@ -21,8 +21,8 @@
 //! 2 nana   5
 //!
 //! sa = {5, 3, 1, 0, 4, 2}
-//! sa_inv = {3, 2, 5, 1, 4, 0} (sa[sa_inv[i]] == i, sa_inv[sa[i]] == i)
-//! lcp = {1, 3, 0, 0, 2}
+//! sa_inv = {3, 2, 5, 1, 4, 0} (sa[sa_inv[i]] == i,
+//! sa_inv[sa[i]] == i) lcp = {1, 3, 0, 0, 2}
 //!
 //! @code{.cpp}
 //!     string s;
@@ -35,7 +35,8 @@
 //! @param s,max_num string/array with 0 <= s[i] < max_num
 //! @returns sa, sa_inv, lcp
 //! @time O(nlogn + max_num)
-//! @space vectors `sa`, `sa_inv`, `lcp` are O(n). vector `freq` is O(max_num) and is allocated temporarily
+//! @space vectors `sa`, `sa_inv`, `lcp` are O(n). vector
+//! `freq` is O(max_num) and is allocated temporarily
 template<class T>
 array<vi, 3> get_sa(const T& s, int max_num) {
   int n = sz(s);

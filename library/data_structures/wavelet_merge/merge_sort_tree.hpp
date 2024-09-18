@@ -2,13 +2,14 @@
 #include "bool_presum.hpp"
 //! https://codeforces.com/blog/entry/112755
 //! @param tl,tr defines range [tl, tr)
-//! @returns split point of range which makes the merge sort tree a complete
-//! binary tree
+//! @returns split point of range which makes the merge sort
+//! tree a complete binary tree
 int split(int tl, int tr) {
   int pw2 = 1 << __lg(tr - tl);
   return min(tl + pw2, tr - pw2 / 2);
 }
-//! https://github.com/brunomaletta/Biblioteca /blob/master/Codigo/Estruturas/mergeSortTree.cpp
+//! https://github.com/brunomaletta/Biblioteca
+//! /blob/master/Codigo/Estruturas/mergeSortTree.cpp
 struct merge_sort_tree {
   int n;
   vi sorted;
@@ -39,8 +40,10 @@ struct merge_sort_tree {
       [](auto& num) { return num.second; });
     bool_presums[v] = bool_presum(bools);
   }
-  //! @param le,ri,x,y defines rectangle: indexes in [le, ri), numbers in [x, y)
-  //! @returns number of indexes i such that le <= i < ri and x <= a[i] < y
+  //! @param le,ri,x,y defines rectangle: indexes in [le,
+  //! ri), numbers in [x, y)
+  //! @returns number of indexes i such that le <= i < ri and
+  //! x <= a[i] < y
   //! @time O(log(n))
   //! @space O(log(n)) for recursive stack
   int rect_count(int le, int ri, int x, int y) {
@@ -60,10 +63,14 @@ struct merge_sort_tree {
         2 * v + 1);
   }
   //! @param x,y defines range of numbers [x, y)
-  //! @param k must satisfy 1 <= k <= number of indexes i such that x <= a[i] < y
-  //! @returns the kth smallest index i such that x <= a[i] < y
-  //!     - kth_smallest(x,y,1) returns the smallest index i such that x <= a[i] < y
-  //!     - kth_smallest(x,y,rect_count(0,n,x,y)) returns the largest index i such that x <= a[i] < y
+  //! @param k must satisfy 1 <= k <= number of indexes i
+  //! such that x <= a[i] < y
+  //! @returns the kth smallest index i such that x <= a[i] <
+  //! y
+  //!     - kth_smallest(x,y,1) returns the smallest index i
+  //!     such that x <= a[i] < y
+  //!     - kth_smallest(x,y,rect_count(0,n,x,y)) returns the
+  //!     largest index i such that x <= a[i] < y
   //!     - kth_smallest(-INF,INF,k) returns (k - 1)
   //! @time O(log(n))
   //! @space O(log(n)) for recursive stack

@@ -38,7 +38,8 @@ struct ladder {
   }
   //! @param v query node
   //! @param k number of edges
-  //! @returns a node k edges up from v. With k=1, this returns v's parent.
+  //! @returns a node k edges up from v. With k=1, this
+  //! returns v's parent.
   //! @time O(1)
   //! @space O(1)
   int kth_par(int v, int k) {

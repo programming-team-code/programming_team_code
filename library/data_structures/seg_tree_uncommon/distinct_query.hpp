@@ -16,9 +16,11 @@ struct distinct_query {
     }
   }
   //! @param le,ri defines range [le, ri)
-  //! @returns number of distinct elements in range; query(i, i) returns 0.
+  //! @returns number of distinct elements in range; query(i,
+  //! i) returns 0.
   //! @time O(log n)
-  //! @space O(log n) for recursion stack; no new nodes are allocated
+  //! @space O(log n) for recursion stack; no new nodes are
+  //! allocated
   int query(int le, int ri) {
     return pst.query(0, le + 1, ri) -
       pst.query(0, le + 1, le);

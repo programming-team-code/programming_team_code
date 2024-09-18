@@ -25,7 +25,8 @@ template<class T> struct count_pal_query {
     return {right, 1, n + 1};
   }
   //! @param le,ri defines substring [le, ri) of s
-  //! @returns number of palindromic substrings of s.substr(le, ri - le)
+  //! @returns number of palindromic substrings of
+  //! s.substr(le, ri - le)
   //! @time O(log n)
   //! @space O(1)
   ll count_pals(int le, int ri) {

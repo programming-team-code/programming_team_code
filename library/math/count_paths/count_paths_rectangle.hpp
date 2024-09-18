@@ -6,7 +6,8 @@
 //!     auto [right, top] = get_right_and_top(left, bottom);
 //! @endcode
 //! @param left,bottom see image
-//! @returns [right, top] -> see image, note right.back() == top.back()
+//! @returns [right, top] -> see image, note right.back() ==
+//! top.back()
 //! @time O((n + m)log(n + m))
 //! @space O(n + m)
 array<vl, 2> get_right_and_top(vl left, vl bottom) {

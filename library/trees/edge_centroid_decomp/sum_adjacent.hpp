@@ -1,5 +1,6 @@
 #pragma once
-//! helper for edge CD: given tree, update node's number, find sum of neighbors' numbers
+//! helper for edge CD: given tree, update node's number,
+//! find sum of neighbors' numbers
 template<class T> struct sum_adj {
   int n;
   vector<T> sum, sum_ch;
@@ -7,7 +8,8 @@ template<class T> struct sum_adj {
   //! @param adj undirected, unrooted tree
   //! @param a_sum a_sum[v] = initial number for node v
   //! @time O(n)
-  //! @space various O(n) vectors are allocated; recursion stack for dfs is O(n)
+  //! @space various O(n) vectors are allocated; recursion
+  //! stack for dfs is O(n)
   sum_adj(const vector<vi>& adj, const vector<T>& a_sum):
     n(sz(a_sum)), sum(a_sum), sum_ch(n), p(n, -1) {
     auto dfs = [&](auto&& self, int v) -> void {

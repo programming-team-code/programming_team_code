@@ -1,8 +1,8 @@
 #pragma once
 //! https://codeforces.com/blog/entry/112755
 //! @param tl,tr defines range [tl, tr)
-//! @returns split point of range which makes the segment tree a complete
-//! binary tree
+//! @returns split point of range which makes the segment
+//! tree a complete binary tree
 int split(int tl, int tr) {
   int pw2 = 1 << __lg(tr - tl);
   return min(tl + pw2, tr - pw2 / 2);
@@ -10,8 +10,10 @@ int split(int tl, int tr) {
 ll op(ll vl, ll vr) { return vl + vr; }
 //! root is at tree[1]
 //! internal nodes are [1, n)
-//! leaf nodes are [n, 2 * n), but rotated such that a[0] is at tree[pw2]
-//!     where pw2 is the only power of 2 such that n <= pw2 < 2 * n
+//! leaf nodes are [n, 2 * n), but rotated such that a[0] is
+//! at tree[pw2]
+//!     where pw2 is the only power of 2 such that n <= pw2 <
+//!     2 * n
 struct seg_tree {
   int n;
   vector<ll> tree, lazy;

@@ -1,7 +1,8 @@
 #pragma once
 //! https://github.com/tfg50/Competitive-Programming/blob/master/Biblioteca/Math/DivisionTrick.cpp
 //! i-th iteration gives an interval [le_i, ri_i], we have:
-//!     - for all i in [le_i, ri_i]: n / i has the same number
+//!     - for all i in [le_i, ri_i]: n / i has the same
+//!     number
 //!     - le_0 = 1
 //!     - ri_last = n
 //!     - ri_i + 1 = le_(i+1)

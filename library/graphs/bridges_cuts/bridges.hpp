@@ -9,16 +9,19 @@
 //!         adj[u].emplace_back(v, i);
 //!         adj[v].emplace_back(u, i);
 //!     }
-//!     auto [num_2_edge_ccs, is_bridge, two_edge_ccid] = bridges(adj, m);
+//!     auto [num_2_edge_ccs, is_bridge, two_edge_ccid] =
+//!     bridges(adj, m);
 //! @endcode
 struct bridges {
   int num_2_edge_ccs =
     0; //!< number of components in bridge tree
   vector<bool>
     is_bridge; //!< is_bridge[edge id] = 1 iff bridge edge
-  vi
-    two_edge_ccid; //!< two_edge_ccid[node] = id of 2 edge component (labeled 0, 1, ..., `num_2_edge_ccs`-1)
-  //! @param adj undirected graph; possibly with multiple edges
+  vi two_edge_ccid; //!< two_edge_ccid[node] = id of 2 edge
+                    //!< component (labeled 0, 1, ...,
+                    //!< `num_2_edge_ccs`-1)
+  //! @param adj undirected graph; possibly with multiple
+  //! edges
   //! @param m number of edges
   //! @time O(n + m)
   //! @space this allocates member vectors which are O(n + m)

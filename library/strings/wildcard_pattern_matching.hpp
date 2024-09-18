@@ -10,20 +10,21 @@ template<class T> vector<T> make_powers(const T& v) {
   return pws;
 }
 //! @brief wildcard pattern matching
-//! @note the cumulative values for comparision will be on the order of
-//! (max element)^4
+//! @note the cumulative values for comparision will be on
+//! the order of (max element)^4
 //!
-//! @param haystack is the string|array|vector to search in where the value `0`
-//! represents a wildcard
+//! @param haystack is the string|array|vector to search in
+//! where the value `0` represents a wildcard
 //! @param needle is the string|array|vector to search for
-//! @param conv is the convolution, typically supported by an implementation of
-//! NTT or FFT
+//! @param conv is the convolution, typically supported by an
+//! implementation of NTT or FFT
 //!
-//! @return a vector of booleans where the value at index `i` is `true` if the
-//! needle is found starting at index `i` in the haystack
+//! @return a vector of booleans where the value at index `i`
+//! is `true` if the needle is found starting at index `i` in
+//! the haystack
 //!
-//! @time O(max(n,m) log(max(n,m))) where n is the size of the haystack and m is
-//! the size of the needle
+//! @time O(max(n,m) log(max(n,m))) where n is the size of
+//! the haystack and m is the size of the needle
 template<class T, class F>
 vector<bool> wildcard_pattern_matching(const T& haystack,
   const T& needle, const F& conv) {

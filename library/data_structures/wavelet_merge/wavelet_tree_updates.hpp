@@ -3,8 +3,8 @@
 #include "bool_bit.hpp"
 //! https://codeforces.com/blog/entry/112755
 //! @param tl,tr defines range [tl, tr)
-//! @returns split point of range which makes the wavelet tree a complete
-//! binary tree
+//! @returns split point of range which makes the wavelet
+//! tree a complete binary tree
 int split(int tl, int tr) {
   int pw2 = 1 << __lg(tr - tl);
   return min(tl + pw2, tr - pw2 / 2);
@@ -21,13 +21,16 @@ struct wavelet_tree_updates {
   //!     vi sorted(a);
   //!     sort(all(sorted));
   //!     sorted.erase(unique(all(sorted)), end(sorted));
-  //!     for (int& num : a) num = lower_bound(all(sorted), num) - begin(sorted);
-  //!     wavelet_tree_updates wtu(a, 0, sz(sorted), vector<bool>(sz(a), 1));
+  //!     for (int& num : a) num = lower_bound(all(sorted),
+  //!     num) - begin(sorted); wavelet_tree_updates wtu(a,
+  //!     0, sz(sorted), vector<bool>(sz(a), 1));
   //! @endcode
   //! @param a,a_minv,a_maxv must satisfy minv <= a[i] < maxv
-  //! @param active active[i] == 1 iff index i is initially active
+  //! @param active active[i] == 1 iff index i is initially
+  //! active
   //! @time O((maxv - minv) + n * log(maxv - minv))
-  //! @space O((maxv - minv) + n * log(maxv - minv) / 64) for `bool_presums` and for `bool_bits`
+  //! @space O((maxv - minv) + n * log(maxv - minv) / 64) for
+  //! `bool_presums` and for `bool_bits`
   wavelet_tree_updates(const vi& a, int a_minv, int a_maxv,
     const vector<bool>& active):
     n(sz(a)), minv(a_minv), maxv(a_maxv),
@@ -73,8 +76,10 @@ struct wavelet_tree_updates {
       return set_active_impl(pi, is_active, tl, tm, 2 * v);
     set_active_impl(i - pi, is_active, tm, tr, 2 * v + 1);
   }
-  //! @param le,ri,x,y defines rectangle: indexes in [le, ri), numbers in [x, y)
-  //! @returns number of active indexes i such that le <= i < ri and x <= a[i] < y
+  //! @param le,ri,x,y defines rectangle: indexes in [le,
+  //! ri), numbers in [x, y)
+  //! @returns number of active indexes i such that le <= i <
+  //! ri and x <= a[i] < y
   //! @time O(log(maxv - minv) * log(n / 64))
   //! @space O(log(maxv - minv)) for recursive stack
   int rect_count(int le, int ri, int x, int y) {
@@ -93,10 +98,13 @@ struct wavelet_tree_updates {
         2 * v + 1);
   }
   //! @param le,ri defines range [le, ri)
-  //! @param k must satisfy 1 <= k <= # active indexes in [le, ri)
+  //! @param k must satisfy 1 <= k <= # active indexes in
+  //! [le, ri)
   //! @returns kth smallest active number in range.
-  //!     - kth_smallest(le,ri,1) returns the smallest active number
-  //!     - kth_smallest(le,ri,rect_count(le,ri,-INF,INF)) returns the largest active number
+  //!     - kth_smallest(le,ri,1) returns the smallest active
+  //!     number
+  //!     - kth_smallest(le,ri,rect_count(le,ri,-INF,INF))
+  //!     returns the largest active number
   //! @time O(log(maxv - minv) * log(n / 64))
   //! @space O(log(maxv - minv)) for recursive stack
   int kth_smallest(int le, int ri, int k) {

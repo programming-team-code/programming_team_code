@@ -1,9 +1,11 @@
 #pragma once
 #include "monotonic_range.hpp"
 //! @param grid an n-by-m boolean array
-//! @returns an (n+1)-by-(m+1) array cnt where cnt[i][j] = the number of times
-//! an i-by-j sub rectangle appears in the matrix such that all i*j cells in the
-//! sub rectangle are 1. cnt[i][0] and cnt[0][j] will contain garbage numbers.
+//! @returns an (n+1)-by-(m+1) array cnt where cnt[i][j] =
+//! the number of times an i-by-j sub rectangle appears in
+//! the matrix such that all i*j cells in the sub rectangle
+//! are 1. cnt[i][0] and cnt[0][j] will contain garbage
+//! numbers.
 //! @time O(n * m)
 //! @space this function allocates/returns a O(n * m) vector
 vector<vi> count_rectangles(
