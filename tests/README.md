@@ -27,7 +27,7 @@ Needed for doxygen to see global functions:
 Place this at the beginning of a file
 
 ```
-//! @see <link to some source>
+//! https://codeforces.com/blog/entry/69247
 //! @code
 //!   //example usage or initialization
 //!   vector<int> arr;
