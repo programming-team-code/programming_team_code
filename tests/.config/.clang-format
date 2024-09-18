@@ -8,11 +8,11 @@ AlwaysBreakTemplateDeclarations: No
 AllowShortBlocksOnASingleLine: Always
 AlignTrailingComments: false
 LambdaBodyIndentation: OuterScope
-ContinuationIndentWidth: 2
 AlignAfterOpenBracket: DontAlign
+AlignOperands: Align
 PackConstructorInitializers: BinPack
-PenaltyBreakBeforeFirstCallParameter: 0 # Avoid breaking lines before the first call parameter
-PenaltyBreakString: 0 # Avoid breaking strings
+PenaltyBreakBeforeFirstCallParameter: 100 # Avoid breaking lines before the first call parameter
+PenaltyBreakAssignment: 100
 AllowShortFunctionsOnASingleLine: All # Allow short functions to be on a single line
 AllowShortIfStatementsOnASingleLine: AllIfsAndElse # Allow short if statements to be on a single line
 AllowShortCaseLabelsOnASingleLine: true # Allow short case labels to be on a single line
