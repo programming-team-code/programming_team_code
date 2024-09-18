@@ -1,24 +1,23 @@
 #pragma once
-//! On Finding Lowest Common Ancestors: Simplification and
-//! Parallelization by Baruch Schieber, Uzi Vishkin, April
-//! 1987
 //! https://codeforces.com/blog/entry/125371?#comment-1173604
+//! @code
+//!   // right-most min
+//!   linear_rmq rmq(a, less());
+//!   // left-most min
+//!   linear_rmq rmq(a, less_equal());
+//!   // right-most max
+//!   linear_rmq rmq(a, greater());
+//!   // left-most max
+//!   linear_rmq rmq(a, greater_equal());
+//!   rmq.query(le,ri); // [le, ri]
+//! @endcode
+//! @time O(n + q)
+//! @space O(n)
 template<class T, class F> struct linear_rmq {
   vector<T> a;
   F cmp;
   vi head;
   vector<array<int, 2>> t;
-  //! @code
-  //!     vector<ll> a(n);
-  //!     linear_rmq rmq(a, less()); // right-most min
-  //!     linear_rmq rmq(a, less_equal()); // left-most min
-  //!     linear_rmq rmq(a, greater()); // right-most max
-  //!     linear_rmq rmq(a, greater_equal()); // left-most
-  //!     max
-  //! @endcode
-  //! @param a_a,a_cmp array and a compare operator
-  //! @time O(n)
-  //! @space O(n)
   linear_rmq(const vector<T>& a_a, F a_cmp):
     a(a_a), cmp(a_cmp), head(sz(a) + 1), t(sz(a)) {
     vi st{-1};
@@ -38,10 +37,6 @@ template<class T, class F> struct linear_rmq {
     rep(i, 1, sz(a)) t[i][1] =
       (t[i][1] | t[i - 1][1]) & -(t[i][0] & -t[i][0]);
   }
-  //! @param le,ri defines range [le, ri]
-  //! @returns index of min/max of range
-  //! @time O(1)
-  //! @space O(1)
   int query_idx(int le, int ri) {
     if (int j = t[le][0] ^ t[ri][0]; j) {
       j = t[le][1] & t[ri][1] & -(1 << __lg(j));
@@ -52,9 +47,5 @@ template<class T, class F> struct linear_rmq {
     }
     return cmp(a[le], a[ri]) ? le : ri;
   }
-  //! @param le,ri defines range [le, ri]
-  //! @returns min/max of range
-  //! @time O(1)
-  //! @space O(1)
   T query(int le, int ri) { return a[query_idx(le, ri)]; }
 };

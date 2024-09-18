@@ -9,7 +9,6 @@ struct mcmf {
   int n;
   vector<edge> e;
   vector<vi> adj;
-  //! @param a_n number of nodes.
   mcmf(int a_n): n(a_n), adj(n) {}
   void add_edge(int u, int v, ll cap, ll cost) {
     edge e1 = {u, v, cap, cost, 0, sz(adj[v])};

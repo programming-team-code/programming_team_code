@@ -1,19 +1,18 @@
 #pragma once
 //! https://codeforces.com/blog/entry/112755
-//! @param tl,tr defines range [tl, tr)
-//! @returns split point of range which makes the segment
-//! tree a complete binary tree
+//! root is at tree[1]
+//! internal nodes are [1, n)
+//! leaf nodes are [n, 2 * n), but rotated
+//! @code
+//!   st.query(le,ri); // [le, ri)
+//! @endcode
+//! @time O(n + q log n)
+//! @space O(n)
 int split(int tl, int tr) {
   int pw2 = 1 << __lg(tr - tl);
   return min(tl + pw2, tr - pw2 / 2);
 }
 ll op(ll vl, ll vr) { return vl + vr; }
-//! root is at tree[1]
-//! internal nodes are [1, n)
-//! leaf nodes are [n, 2 * n), but rotated such that a[0] is
-//! at tree[pw2]
-//!     where pw2 is the only power of 2 such that n <= pw2 <
-//!     2 * n
 struct seg_tree {
   int n;
   vector<ll> tree, lazy;
@@ -36,7 +35,6 @@ struct seg_tree {
       lazy[v] = 0;
     }
   }
-  //! @param le,ri defines range [le, ri)
   void update(int le, int ri, ll change) {
     update_impl(le, ri, change, 0, n, 1);
   }
@@ -51,7 +49,6 @@ struct seg_tree {
     update_impl(le, ri, change, tm, tr, 2 * v + 1);
     tree[v] = op(tree[2 * v], tree[2 * v + 1]);
   }
-  //! @param le,ri defines range [le, ri)
   ll query(int le, int ri) {
     return query_impl(le, ri, 0, n, 1);
   }

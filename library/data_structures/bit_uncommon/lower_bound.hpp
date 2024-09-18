@@ -1,8 +1,6 @@
 #pragma once
 //! Requires bit.sum(i,i+1) >= 0
 //! @returns max pos such that sum of [0,pos) < sum
-//! @time O(log n)
-//! @space O(1)
 int lower_bound(T sum) {
   if (sum <= 0) return -1;
   int pos = 0;
