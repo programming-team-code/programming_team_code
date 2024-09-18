@@ -1,25 +1,94 @@
 ---
 Language: Cpp
 BasedOnStyle: Google
-ColumnLimit: 60
-Standard: c++17
-SortIncludes: Never
-AlwaysBreakTemplateDeclarations: No
-AllowShortBlocksOnASingleLine: Always
-AlignTrailingComments: false
-LambdaBodyIndentation: OuterScope
+AccessModifierOffset: -2
 AlignAfterOpenBracket: DontAlign
-AlignOperands: Align
+AlignConsecutiveAssignments: false
+AlignConsecutiveBitFields: None
+AlignConsecutiveDeclarations: None
+AlignConsecutiveMacros: None
+AlignOperands: DontAlign
+AlignTrailingComments: false
+AllowShortBlocksOnASingleLine: Always
+AllowShortCaseLabelsOnASingleLine: true
+AllowShortEnumsOnASingleLine: true
+AllowShortFunctionsOnASingleLine: All
+AllowShortIfStatementsOnASingleLine: AllIfsAndElse
+AllowShortLambdasOnASingleLine: All
+AllowShortLoopsOnASingleLine: true
+AlwaysBreakAfterReturnType: None
+AlwaysBreakBeforeMultilineStrings: false
+AlwaysBreakTemplateDeclarations: MultiLine
+AttributeMacros: []
+BinPackArguments: true
+BinPackParameters: true
+BitFieldColonSpacing: Both
+BreakBeforeBinaryOperators: None
+BreakBeforeBraces: Attach
+BreakBeforeConceptDeclarations: false
+BreakBeforeTernaryOperators: true
+BreakConstructorInitializers: AfterColon
+BreakInheritanceList: AfterColon
+BreakStringLiterals: true
+ColumnLimit: 61
+CompactNamespaces: true
+ConstructorInitializerAllOnOneLineOrOnePerLine: false
+ConstructorInitializerIndentWidth: 2
+ContinuationIndentWidth: 2
+Cpp11BracedListStyle: true
+DerivePointerAlignment: true
+EmptyLineAfterAccessModifier: Never
+EmptyLineBeforeAccessModifier: Never
+FixNamespaceComments: false
+ForEachMacros: []
+IncludeBlocks: Preserve
+IndentCaseBlocks: false
+IndentCaseLabels: false
+IndentGotoLabels: false
+IndentWidth: 2
+IndentWrappedFunctionNames: false
+InsertTrailingCommas: None
+# LambdaBodyIndentation: OuterScope
+KeepEmptyLinesAtTheStartOfBlocks: false
+MaxEmptyLinesToKeep: 0
+NamespaceIndentation: None
 PackConstructorInitializers: BinPack
-PenaltyBreakBeforeFirstCallParameter: 100 # Avoid breaking lines before the first call parameter
-PenaltyBreakAssignment: 100
-AllowShortFunctionsOnASingleLine: All # Allow short functions to be on a single line
-AllowShortIfStatementsOnASingleLine: AllIfsAndElse # Allow short if statements to be on a single line
-AllowShortCaseLabelsOnASingleLine: true # Allow short case labels to be on a single line
-BreakBeforeBinaryOperators: NonAssignment # Place binary operators at the end of the line
-BreakBeforeTernaryOperators: false # Do not break before ternary operators
-SpaceBeforeParens: ControlStatements # No space before parentheses in control statements
-CompactNamespaces: true # Compact namespaces onto a single line
-BinPackArguments: true # Pack function arguments into a single line if possible
-BinPackParameters: true # Pack function parameters into a single line if possible
+PenaltyBreakAssignment: 1
+PenaltyBreakBeforeFirstCallParameter: 1
+PenaltyBreakComment: 300
+PenaltyBreakFirstLessLess: 1
+PenaltyBreakOpenParenthesis: 1
+PenaltyBreakString: 1000
+PenaltyExcessCharacter: 1000000
+# PenaltyIndentedWhitespace: 1000
+PenaltyReturnTypeOnItsOwnLine: 200
+PointerAlignment: Left
+# QualifierAlignment: Left
+ReflowComments: false
+ReferenceAlignment: Pointer
+RemoveBracesLLVM: true
+SeparateDefinitionBlocks: Never
+SortIncludes: false
+SortUsingDeclarations: false
+SpaceAfterCStyleCast: false
+SpaceAfterLogicalNot: false
+SpaceAfterTemplateKeyword: false
+SpaceAroundPointerQualifiers: Default
+SpaceBeforeAssignmentOperators: true
+SpaceBeforeCaseColon: false
+SpaceBeforeCpp11BracedList: false
+SpaceBeforeCtorInitializerColon: false
+SpaceBeforeInheritanceColon: false
+SpaceBeforeParens: ControlStatementsExceptControlMacros
+SpaceBeforeRangeBasedForLoopColon: true
+SpaceBeforeSquareBrackets: false
+SpaceInEmptyBlock: false
+SpaceInEmptyParentheses: false
+SpacesBeforeTrailingComments: 1
+SpacesInAngles: false
+SpacesInCStyleCastParentheses: false
+SpacesInContainerLiterals: false
+SpacesInParentheses: false
+SpacesInSquareBrackets: false
+Standard: c++17
 ...
