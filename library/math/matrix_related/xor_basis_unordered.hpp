@@ -1,5 +1,6 @@
 #pragma once
-//! https://codeforces.com/blog/entry/68953 https://codeforces.com/blog/entry/100066?#comment-887897
+//! https://codeforces.com/blog/entry/68953
+//! https://codeforces.com/blog/entry/100066?#comment-887897
 //! @code{.cpp}
 //!     basis<int> b;
 //!     basis<ll> b;

@@ -1,6 +1,7 @@
 #pragma once
 #include "../../../kactl/content/graph/BinaryLifting.h"
-//! https://codeforces.com/blog/entry/71567#comment-559299 https://youtu.be/0rCFkuQS968
+//! https://codeforces.com/blog/entry/71567#comment-559299
+//! https://youtu.be/0rCFkuQS968
 //! @code{.cpp}
 //!     ladder ld(adj);
 //!     // KACTL functions

@@ -2,10 +2,10 @@
 # ** glob now searches any number of levels
 shopt -s globstar
 
-# first remove @see <link> comments: these aren't useful in the PDF, and are
-# usually the longest words which extend into the next column
+# remove links in comments: these aren't useful in the PDF, and are usually the
+# longest words which extend into the next column
 echo "removing links"
-sed --in-place '/\/\/! @see http/d' ../library/**/*.hpp
+sed --in-place '/\/\/! https/d' ../library/**/*.hpp
 
 # PDF will wrap at 66 characters, but when the PDF wraps, it goes onto the next
 # line with an indent of a few characters

@@ -1,6 +1,7 @@
 #pragma once
 const int lg = 60;
-//! https://codeforces.com/blog/entry/68953 https://github.com/ssk4988/Hackpack/blob/main/content/numerical/XORBasis.h
+//! https://codeforces.com/blog/entry/68953
+//! https://github.com/ssk4988/Hackpack/blob/main/content/numerical/XORBasis.h
 //! @code{.cpp}
 //!     basis<int> b;
 //!     basis<ll> b;

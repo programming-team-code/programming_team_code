@@ -1,6 +1,7 @@
 #pragma once
 const int mod = 998'244'353;
-//! https://codeforces.com/blog/entry/14516 https://cp-algorithms.com/algebra/fibonacci-numbers.html#fast-doubling-method
+//! https://codeforces.com/blog/entry/14516
+//! https://cp-algorithms.com/algebra/fibonacci-numbers.html#fast-doubling-method
 //! @code{.cpp}
 //!     ll num = fib(n)[0];
 //!     //n=0 -> num=0
