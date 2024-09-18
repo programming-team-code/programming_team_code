@@ -1,7 +1,10 @@
 #pragma once
 //! https://e-maxx.ru/algo/assignment_hungary
 //! @code
-//!     auto [min_weight, l_to_r] = hungarian(cost);
+//!   //cost[i][j] = edge weight, 1<=i<=n;1<=j<=m
+//!   vector cost(n+1,vector(m+1,(ll)0));
+//!   auto [min_weight, l_to_r] = hungarian(cost);
+//!   //
 //! @endcode
 //! Calculates a matching: number of edges is maximized, but
 //! since it's a complete bipartite graph with n <= m, this
