@@ -1,6 +1,6 @@
 #pragma once
 //! https://cp-algorithms.com/graph/bridge-searching.html
-//! @code{.cpp}
+//! @code
 //!     vector<vector<pii>> adj(n);
 //!     rep (i, 0, m) {
 //!         int u, v;

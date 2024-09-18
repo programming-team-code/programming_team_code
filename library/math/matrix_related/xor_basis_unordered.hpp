@@ -1,7 +1,7 @@
 #pragma once
 //! https://codeforces.com/blog/entry/68953
 //! https://codeforces.com/blog/entry/100066?#comment-887897
-//! @code{.cpp}
+//! @code
 //!     basis<int> b;
 //!     basis<ll> b;
 //!     sort(rbegin(b.b), rend(b.b)); //needed for kth

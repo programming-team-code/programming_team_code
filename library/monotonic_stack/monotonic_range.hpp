@@ -1,6 +1,6 @@
 #pragma once
 #include "monotonic_stack.hpp"
-//! @code{.cpp}
+//! @code
 //!     vector<ll> a;
 //!     auto le = mono_st(a, less()), ri = mono_range(le); //
 //!     greater(), less_equal(), greater_equal()

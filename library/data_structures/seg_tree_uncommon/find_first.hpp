@@ -1,5 +1,5 @@
 #pragma once
-//! @code{.cpp}
+//! @code
 //!     st.find_first(le, ri, [&](ll x, int tl, int tr) ->
 //!     bool {
 //!     });

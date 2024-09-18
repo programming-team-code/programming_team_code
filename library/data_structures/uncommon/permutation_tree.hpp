@@ -1,7 +1,7 @@
 #pragma once
 #include "linear_rmq.hpp"
 //! https://codeforces.com/blog/entry/78898
-//! @code{.cpp}
+//! @code
 //!     auto [data, root, adj] = perm_tree(a);
 //! @endcode
 struct perm_tree {

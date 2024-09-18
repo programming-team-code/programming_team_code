@@ -1,5 +1,5 @@
 #pragma once
-//! @code{.cpp}
+//! @code
 //!     enumerate_triangles(edges, n, [&](int u, int v, int
 //!     w) {
 //!         //u, v, w form a triangle

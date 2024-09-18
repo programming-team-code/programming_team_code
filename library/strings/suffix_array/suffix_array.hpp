@@ -24,7 +24,7 @@
 //! sa_inv = {3, 2, 5, 1, 4, 0} (sa[sa_inv[i]] == i,
 //! sa_inv[sa[i]] == i) lcp = {1, 3, 0, 0, 2}
 //!
-//! @code{.cpp}
+//! @code
 //!     string s;
 //!     auto [sa, sa_inv, lcp] = get_sa(s, 256);
 //!     // or

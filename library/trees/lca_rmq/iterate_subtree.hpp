@@ -1,7 +1,7 @@
 #pragma once
 #include "lca_rmq.hpp"
 //! https://codeforces.com/blog/entry/44351
-//! @code{.cpp}
+//! @code
 //!     LCA lc(adj); //required
 //! @endcode
 //! @param v some node

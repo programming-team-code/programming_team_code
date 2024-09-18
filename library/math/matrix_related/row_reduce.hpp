@@ -1,6 +1,6 @@
 #pragma once
 #include "../mod_int.hpp"
-//! @code{.cpp}
+//! @code
 //!     auto [rank, det] = row_reduce(mat, sz(mat[0]));
 //! @endcode
 //! @param mat,cols columns [0,cols) of mat represent a

@@ -1,6 +1,6 @@
 #pragma once
 //! https://e-maxx.ru/algo/assignment_hungary
-//! @code{.cpp}
+//! @code
 //!     auto [min_weight, l_to_r] = hungarian(cost);
 //! @endcode
 //! Calculates a matching: number of edges is maximized, but

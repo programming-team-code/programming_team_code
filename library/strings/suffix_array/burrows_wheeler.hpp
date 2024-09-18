@@ -10,7 +10,7 @@ struct bwt {
   char last;
   vector<array<int, cnt_let>> occ;
   array<int, cnt_let + 1> cnt{};
-  //! @code{.cpp}
+  //! @code
   //!     string s;
   //!     auto [_, __, sa, sa_inv, lcp, ___] =
   //!     suffix_array(s, 256); bwt bw(s, sa);

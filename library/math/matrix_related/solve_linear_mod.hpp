@@ -4,7 +4,7 @@
 //! solutions = (size of domain) ^ (# of free variables). (#
 //! of free variables) is generally equivalent to m - rank.
 //!
-//! @code{.cpp}
+//! @code
 //!     auto [rank, det, x] = solve_linear_mod(mat, b);
 //! @endcode
 struct solve_linear_mod {

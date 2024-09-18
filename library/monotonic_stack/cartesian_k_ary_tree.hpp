@@ -19,7 +19,7 @@
 //! p[7] = 8
 //! p[5] = 9
 //!
-//! @code{.cpp}
+//! @code
 //!     auto le = mono_st(a, less()), p = cart_k_ary_tree(a,
 //!     le); // min cart tree auto le = mono_st(a,
 //!     greater()), p = cart_k_ary_tree(a, le); // max cart

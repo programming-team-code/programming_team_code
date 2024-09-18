@@ -2,7 +2,7 @@
 #include "bridges.hpp"
 //! Never adds multiple edges as bridges.hpp correctly marks
 //! them as non-bridges.
-//! @code{.cpp}
+//! @code
 //!     bridges cc(adj, m);
 //!     vector<vi> bt = bridge_tree(adj, cc);
 //! @endcode

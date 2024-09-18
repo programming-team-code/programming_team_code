@@ -6,7 +6,7 @@
 //! initially strongly connected, then the edge list's size
 //! is max(# zero indegree SCCs, # zero outdegree SCCs)
 //!
-//! @code{.cpp}
+//! @code
 //!     auto [num_sccs, scc_id] = sccs(adj);
 //!     vector<pii> edges = extra_edges(adj, num_sccs,
 //!     scc_id);

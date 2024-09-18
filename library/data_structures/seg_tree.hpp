@@ -1,6 +1,6 @@
 #pragma once
 //! https://github.com/kth-competitive-programming/kactl/blob/main/content/data-structures/SegmentTree.h
-//! @code{.cpp}
+//! @code
 //!     tree st(n, INT_MAX, [&](int x, int y) -> int { return
 //!     min(x, y); }); vector<array<int, 2>> a(n); tree st(a,
 //!     {1, 0}, [&](const array<int, 2>& le, const array<int,

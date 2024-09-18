@@ -1,5 +1,5 @@
 #pragma once
-//! @code{.cpp}
+//! @code
 //!     auto [num_distinct_subtrees, iso_id] =
 //!     subtree_iso(adj);
 //! @endcode

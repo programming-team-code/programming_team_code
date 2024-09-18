@@ -37,7 +37,7 @@ const int mn = '0',
 //! note leaf nodes dont exist when that suffix is a prefix
 //! of a longer suffix
 //!
-//! @code{.cpp}
+//! @code
 //!     string s;
 //!     lcp_tree lt(s);
 //! @endcode

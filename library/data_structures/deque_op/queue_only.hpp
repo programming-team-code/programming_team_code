@@ -1,54 +1,27 @@
 #pragma once
-//! deque with query for operation of the deque
-//! @code{.cpp}
-//!     //deque with query for: get min and # of mins in
-//!     deque vector<pair<ll, int>> a; //initialize
-//!     a[i].second = 1 deq dq(a, [](auto x, auto y) {
-//!         if (x.first == y.first) return pair(x.first,
-//!         x.second + y.second); return min(x, y);
-//!     });
+//! https://github.com/suisen-cp/cp-library-cpp/blob/main/library/datastructure/deque_aggregation.hpp
+//! @code
+//!   deq dq(a, [](auto x, auto y) {return min(x, y);});
 //! @endcode
+//! @time operations are O(1) ammortized
+//! @space O(n)
 template<class T, class F> struct deq {
   using dt = array<T, 2>;
   F op;
-  //! https://github.com/suisen-cp/cp-library-cpp/blob/main/library/datastructure/deque_aggregation.hpp
-  //! simulate a deque with 2 stacks:
-  //! `le`, `ri` are stacks of { number, sum }
-  //!     accumulate
-  //!    <-----------  -------> fold numbers from inside
-  //!   (     le     ][  ri    )
-  //! @{
   vector<dt> le, ri;
-  //! @}
-  //! @param a initial array: a[0] is front, a.back() is back
-  //! @param a_op associative operation
-  //! @time O(1)
-  //! @space O(1)
   deq(const vector<T>& a, F a_op): op(a_op) {
     rebuild(a, sz(a) / 2);
   }
-  //! @returns deq[0] op deq[1] op ... op deq.back()
-  //! @time O(1)
-  //! @space O(1)
   T query() {
     if (empty(le)) return ri.back()[1];
     if (empty(ri)) return le.back()[1];
     return op(le.back()[1], ri.back()[1]);
   }
-  //! @returns size
-  //! @time O(1)
-  //! @space O(1)
   int siz() { return sz(le) + sz(ri); }
-  //! @param elem element to insert at end
-  //! @time O(1)
-  //! @space O(1)
   void push_back(T elem) {
     ri.push_back(
       {elem, empty(ri) ? elem : op(ri.back()[1], elem)});
   }
-  //! remove deq[0]
-  //! @time O(1) ammortized
-  //! @space O(1) ammortized
   void pop_front() {
     if (empty(le)) {
       vector<T> a(sz(ri));

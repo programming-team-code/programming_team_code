@@ -1,7 +1,7 @@
 #pragma once
+//! https://cp-algorithms.com/data_structures/disjoint_set_union.html#support-the-parity-of-the-path-length-checking-bipartiteness-online
 //! DSU with support for parity of path to root for online
 //! bipartite check
-//! https://cp-algorithms.com/data_structures/disjoint_set_union.html#support-the-parity-of-the-path-length-checking-bipartiteness-online
 struct dsu_bipartite {
   int num_sets;
   struct node {

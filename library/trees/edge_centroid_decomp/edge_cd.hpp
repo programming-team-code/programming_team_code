@@ -9,7 +9,7 @@
 //!     (except for single-edge paths, so handle these
 //!     separately)
 //!
-//! @code{.cpp}
+//! @code
 //!     edge_cd(adj, [&](const vector<vi>& adj, int cent, int
 //!     split) {
 //!         // subtrees of prefix [0, split) of adj[cent] are

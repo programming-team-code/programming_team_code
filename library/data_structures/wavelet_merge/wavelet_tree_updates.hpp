@@ -15,7 +15,7 @@ struct wavelet_tree_updates {
   int n, minv, maxv;
   vector<bool_presum> bool_presums;
   vector<bool_bit> bool_bits;
-  //! @code{.cpp}
+  //! @code
   //!     vi a;
   //!     ...
   //!     vi sorted(a);

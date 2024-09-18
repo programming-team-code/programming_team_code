@@ -1,18 +1,8 @@
 #pragma once
 #include "../../../kactl/content/data-structures/UnionFind.h"
-//! Given a set of restrictions (l1, l2, len) such that for
-//! each query, we want to join the ranges [l1, l1 + len) and
-//! [l2, l2 + len) such that edges of the form (l1 + i, l2 +
-//! i) are joined for all `i` in [0, len).
-//!
-//! @param rests the vector of restrictions of the form (l1,
-//! l2, len)
-//! @param n the number of elements
-//!
-//! @returns a dsu satisfying the equivalences classes
-//!
-//! @time O((n + q) inverse ack n) amortized across all
-//! queries
+//! Given triplets (l1,l2,len), joins (l1,l2),
+//!   (l1+1,l2+1), ..., (l1+len-1,l2+len-1)
+//! @time O((n + q) * α(n))
 //! @space O(n + q)
 UF get_range_parallel_equivalence_classes(
   const vector<array<int, 3>>& rests, int n) {

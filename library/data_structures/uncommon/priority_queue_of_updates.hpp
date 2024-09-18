@@ -1,6 +1,6 @@
 #pragma once
 //! https://codeforces.com/blog/entry/111117
-//! @code{.cpp}
+//! @code
 //!     dsu_restorable dsu_r(n);
 //!     pq_updates<dsu_restorable, int, int> pq(dsu_r);
 //!     rep (i, 0, n) pq.ds.add(i, initial_nums[i]);

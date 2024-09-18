@@ -1,6 +1,6 @@
 #pragma once
 #include "cuts.hpp"
-//! @code{.cpp}
+//! @code
 //!     cuts cc(adj, m);
 //!     vector<vi> bvt = block_vertex_tree(adj, cc);
 //!     //to loop over each unique bcc containing a node u:

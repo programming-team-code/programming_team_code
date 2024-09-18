@@ -1,5 +1,5 @@
 #pragma once
-//! @code{.cpp}
+//! @code
 //!     vector<ll> a;
 //!     vi le = mono_st(a, less()); // greater(),
 //!     less_equal(), greater_equal()

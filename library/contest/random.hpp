@@ -1,6 +1,6 @@
 #pragma once
 //! https://codeforces.com/blog/entry/61675
-//! @code{.cpp}
+//! @code
 //!   mt19937_64 rng(chrono...);
 //!   uint64_t x = rng();
 //!   mt19937 rng; // fixed seed for debugging

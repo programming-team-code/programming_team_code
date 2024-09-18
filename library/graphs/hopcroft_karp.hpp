@@ -1,6 +1,6 @@
 #pragma once
 //! https://github.com/foreverbell/acm-icpc-cheat-sheet/blob/master/src/graph-algorithm/hopcroft-karp.cpp
-//! @code{.cpp}
+//! @code
 //!     //0 <= node_left < lsz
 //!     //0 <= node_right < rsz
 //!     //for every edge node_left <=> node_right

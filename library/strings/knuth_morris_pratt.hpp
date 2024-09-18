@@ -1,6 +1,6 @@
 #pragma once
 #include "prefix_function.hpp"
-//! @code{.cpp}
+//! @code
 //!     string s;
 //!     KMP kmp(s);
 //!     vi a;

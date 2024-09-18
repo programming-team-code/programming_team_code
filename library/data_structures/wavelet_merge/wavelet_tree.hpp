@@ -14,7 +14,7 @@ struct wavelet_tree {
   int n, minv, maxv;
   vector<bool_presum> bool_presums;
   vector<vector<ll>> presums;
-  //! @code{.cpp}
+  //! @code
   //!     vi a;
   //!     ...
   //!     vi sorted(a);

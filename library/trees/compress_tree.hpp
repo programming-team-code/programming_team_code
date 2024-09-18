@@ -3,7 +3,7 @@
 //! minimal subtree that contains all the nodes by adding all
 //! (at most |S|-1) pairwise LCA's and compressing edges.
 //!
-//! @code{.cpp}
+//! @code
 //!     auto [par, orig_node] =
 //!     lin_lca.compress_tree(subset);
 //! @endcode

@@ -8,7 +8,7 @@ template<class T, class F> struct linear_rmq {
   F cmp;
   vi head;
   vector<array<int, 2>> t;
-  //! @code{.cpp}
+  //! @code
   //!     vector<ll> a(n);
   //!     linear_rmq rmq(a, less()); // right-most min
   //!     linear_rmq rmq(a, less_equal()); // left-most min

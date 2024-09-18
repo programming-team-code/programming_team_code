@@ -1,6 +1,6 @@
 #pragma once
 //! https://codeforces.com/blog/entry/71567?#comment-559285
-//! @code{.cpp}
+//! @code
 //!     LCA lc(adj);
 //!     int u, v; //to loop over all nodes (except v) on path
 //!     from u to v: for (int i = u; i != v; i =

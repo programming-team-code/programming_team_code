@@ -1,6 +1,6 @@
 #pragma once
 //! https://github.com/kth-competitive-programming/kactl/blob/main/content/graph/SCC.h
-//! @code{.cpp}
+//! @code
 //!     auto [num_sccs, scc_id] = sccs(adj);
 //! @endcode
 struct sccs {
