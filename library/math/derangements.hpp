@@ -1,5 +1,5 @@
 #pragma once
-//! @see https://oeis.org/A000166
+//! https://oeis.org/A000166
 //! @param n size
 //! @param mod an integer
 //! @return number of permutations p such that p[i] != i

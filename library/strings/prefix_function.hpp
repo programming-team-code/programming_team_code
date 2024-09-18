@@ -1,5 +1,5 @@
 #pragma once
-//! @see https://cp-algorithms.com/string/prefix-function.html#implementation
+//! https://cp-algorithms.com/string/prefix-function.html#implementation
 //! @param s string/array
 //! @returns prefix function
 //! @time O(n)

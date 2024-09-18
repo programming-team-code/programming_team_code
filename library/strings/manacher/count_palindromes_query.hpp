@@ -8,7 +8,7 @@
 ll sum_consecutive(int le, int ri) {
   return ll(ri - le) * (le + ri - 1) / 2;
 }
-//! @see https://codeforces.com/blog/entry/63105#comment-470339
+//! https://codeforces.com/blog/entry/63105#comment-470339
 template<class T> struct count_pal_query {
   int n;
   vi man;

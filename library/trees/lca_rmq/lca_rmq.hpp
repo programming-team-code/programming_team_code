@@ -1,7 +1,7 @@
 #pragma once
 #include "../../monotonic_stack/monotonic_stack.hpp" //!< only needed for compress_tree
 #include "../../data_structures/rmq.hpp"
-//! @see https://github.com/kth-competitive-programming/kactl/blob/main/content/graph/LCA.h
+//! https://github.com/kth-competitive-programming/kactl/blob/main/content/graph/LCA.h
 // NOLINTNEXTLINE(readability-identifier-naming)
 struct LCA {
   struct node {

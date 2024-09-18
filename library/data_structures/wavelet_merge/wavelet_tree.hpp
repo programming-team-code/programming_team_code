@@ -1,6 +1,6 @@
 #pragma once
 #include "bool_presum.hpp"
-//! @see https://codeforces.com/blog/entry/112755
+//! https://codeforces.com/blog/entry/112755
 //! @param tl,tr defines range [tl, tr)
 //! @returns split point of range which makes the wavelet tree a complete
 //! binary tree
@@ -8,7 +8,7 @@ int split(int tl, int tr) {
   int pw2 = 1 << __lg(tr - tl);
   return min(tl + pw2, tr - pw2 / 2);
 }
-//! @see https://ioinformatics.org/journal/v10_2016_19_37.pdf https://github.com/brunomaletta/Biblioteca/blob/master/Codigo/Estruturas/waveletTree.cpp
+//! https://ioinformatics.org/journal/v10_2016_19_37.pdf https://github.com/brunomaletta/Biblioteca/blob/master/Codigo/Estruturas/waveletTree.cpp
 struct wavelet_tree {
   int n, minv, maxv;
   vector<bool_presum> bool_presums;

@@ -1,5 +1,5 @@
 #pragma once
-//! @see https://codeforces.com/blog/entry/61675
+//! https://codeforces.com/blog/entry/61675
 //! @code{.cpp}
 //!   mt19937_64 rng(chrono...);
 //!   uint64_t x = rng();

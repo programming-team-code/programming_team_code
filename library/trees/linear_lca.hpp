@@ -1,8 +1,7 @@
 #pragma once
 #include "../monotonic_stack/monotonic_stack.hpp" //!< only needed for compress_tree
 int lsb(int x) { return x & -x; }
-//! @see On Finding Lowest Common Ancestors: Simplification and Parallelization
-//! by Baruch Schieber, Uzi Vishkin, April 1987
+//! On Finding Lowest Common Ancestors: Simplification and Parallelization by Baruch Schieber, Uzi Vishkin, April 1987
 struct linear_lca {
   struct node {
     int d, sub_sz = 1, in, label, asc;

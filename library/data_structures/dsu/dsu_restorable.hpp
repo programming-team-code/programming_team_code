@@ -1,5 +1,5 @@
 #pragma once
-//! @see https://github.com/ucf-programming-team/hackpack-cpp/blob/master/content/data-structures/DSURestorable.h
+//! https://github.com/ucf-programming-team/hackpack-cpp/blob/master/content/data-structures/DSURestorable.h
 //! DSU without path compression, so non-amortized. Most operations are O(log n)
 struct dsu_restorable {
   int num_sets;

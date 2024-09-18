@@ -1,6 +1,6 @@
 #pragma once
 const int mod = 998'244'353;
-//! @see https://oeis.org/A000041
+//! https://oeis.org/A000041
 //! @param n an integer
 //! @returns array p where p[i] = number of partitions of i numbers
 //! @time O(n sqrt n) note there does exist a O(n log n) solution as well

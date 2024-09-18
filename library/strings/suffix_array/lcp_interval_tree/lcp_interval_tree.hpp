@@ -6,7 +6,7 @@ const int
   mn = '0',
   cnt_let =
     36; // mn <= s[i] < mn + cnt_let; for lowercase letters: mn = 'a', cnt_let = 26
-//! @see Replacing suffix trees with enhanced suffix arrays by Mohamed Ibrahim
+//! Replacing suffix trees with enhanced suffix arrays by Mohamed Ibrahim
 //! Abouelhoda, Stefan Kurtz, Enno Ohlebusch
 //!
 //! offline version of suffix tree, idea: min k-ary cartesian tree of LCP array

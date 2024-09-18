@@ -1,6 +1,6 @@
 #pragma once
 #include "centroid_decomp.hpp"
-//! @see https://codeforces.com/blog/entry/81661#comment-686024
+//! https://codeforces.com/blog/entry/81661#comment-686024
 struct cd_lca {
   vi d;
   vector<vi> mn_d, to_cent;

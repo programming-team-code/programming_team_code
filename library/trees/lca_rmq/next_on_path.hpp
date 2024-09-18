@@ -1,5 +1,5 @@
 #pragma once
-//! @see https://codeforces.com/blog/entry/71567?#comment-559285
+//! https://codeforces.com/blog/entry/71567?#comment-559285
 //! @code{.cpp}
 //!     LCA lc(adj);
 //!     int u, v; //to loop over all nodes (except v) on path from u to v:

@@ -1,5 +1,5 @@
 #pragma once
-//! @see https://github.com/kth-competitive-programming/kactl/blob/main/content/strings/SuffixArray.h
+//! https://github.com/kth-competitive-programming/kactl/blob/main/content/strings/SuffixArray.h
 //! suffixes of "banana":
 //! 0 banana 3
 //! 1 anana  2

@@ -1,4 +1,4 @@
-//! @see https://github.com/kth-competitive-programming/kactl/blob/main/content/graph/CompressTree.h
+//! https://github.com/kth-competitive-programming/kactl/blob/main/content/graph/CompressTree.h
 //! Given a rooted tree and a subset S of nodes, compute the minimal subtree
 //! that contains all the nodes by adding all (at most |S|-1) pairwise LCA's and
 //! compressing edges.

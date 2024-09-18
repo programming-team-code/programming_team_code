@@ -1,6 +1,6 @@
 #pragma once
 #include "bool_presum.hpp"
-//! @see https://codeforces.com/blog/entry/112755
+//! https://codeforces.com/blog/entry/112755
 //! @param tl,tr defines range [tl, tr)
 //! @returns split point of range which makes the merge sort tree a complete
 //! binary tree

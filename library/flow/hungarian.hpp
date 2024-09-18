@@ -1,5 +1,5 @@
 #pragma once
-//! @see https://e-maxx.ru/algo/assignment_hungary
+//! https://e-maxx.ru/algo/assignment_hungary
 //! @code{.cpp}
 //!     auto [min_weight, l_to_r] = hungarian(cost);
 //! @endcode

@@ -1,5 +1,5 @@
 #pragma once
-//! @see https://cp-algorithms.com/graph/cutpoints.html
+//! https://cp-algorithms.com/graph/cutpoints.html
 //! @code{.cpp}
 //!     vector<vector<pii>> adj(n);
 //!     rep (i, 0, m) {

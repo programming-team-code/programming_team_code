@@ -1,6 +1,6 @@
 #pragma once
 #include "scc.hpp"
-//! @see https://codeforces.com/blog/entry/15102
+//! https://codeforces.com/blog/entry/15102
 //! Add minimum extra directed edges to directed graph to make it strongly connected.
 //! If the directed graph is not initially strongly connected, then the edge
 //! list's size is max(# zero indegree SCCs, # zero outdegree SCCs)

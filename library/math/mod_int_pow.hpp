@@ -1,6 +1,6 @@
 #pragma once
 #include "mod_int.hpp"
-//! @see https://github.com/kth-competitive-programming/kactl/blob/main/content/number-theory/ModPow.h
+//! https://github.com/kth-competitive-programming/kactl/blob/main/content/number-theory/ModPow.h
 //! @param b base
 //! @param e exponent
 //! @returns (b^e)%mod, 1 for 0^0.

@@ -1,6 +1,6 @@
 #pragma once
 #include "is_palindrome.hpp"
-//! @see https://github.com/brunomaletta/Biblioteca/blob/master/Codigo/Strings/manacher.cpp
+//! https://github.com/brunomaletta/Biblioteca/blob/master/Codigo/Strings/manacher.cpp
 //! @param pq palindrome query struct
 //! @returns ri[i] = max index such that [i, ri[i]] is a palindrome
 //! @time O(n)

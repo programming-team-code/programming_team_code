@@ -1,6 +1,6 @@
 #pragma once
 #include "linear_rmq.hpp"
-//! @see https://codeforces.com/blog/entry/78898
+//! https://codeforces.com/blog/entry/78898
 //! @code{.cpp}
 //!     auto [data, root, adj] = perm_tree(a);
 //! @endcode

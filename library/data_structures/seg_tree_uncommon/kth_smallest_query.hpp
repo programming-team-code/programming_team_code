@@ -1,6 +1,6 @@
 #pragma once
 #include "persistent.hpp"
-//! @see https://cp-algorithms.com/data_structures/segment_tree.html#preserving-the-history-of-its-values-persistent-segment-tree
+//! https://cp-algorithms.com/data_structures/segment_tree.html#preserving-the-history-of-its-values-persistent-segment-tree
 struct kth_smallest {
   PST pst;
   //! @param a,minv,maxv must satisfy: minv <= a[i] < maxv

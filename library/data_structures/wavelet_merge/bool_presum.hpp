@@ -1,5 +1,5 @@
 #pragma once
-//! @see https://github.com/dacin21/dacin21_codebook/blob/master/trees/wavelet_matrix.cpp
+//! https://github.com/dacin21/dacin21_codebook/blob/master/trees/wavelet_matrix.cpp
 //! space efficient boolean array with prefix sum query
 //! note `>> 6` is the same as `/ 64`
 //! note `& 63` is the same as `% 64`

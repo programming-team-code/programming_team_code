@@ -1,5 +1,5 @@
 #pragma once
-//! @see https://codeforces.com/blog/entry/80195
+//! https://codeforces.com/blog/entry/80195
 //! @param a,b binary matrices
 //! @returns a*b mod 2
 //! @time O(n * m * k / w) where w is the machine word size (usually 32 or

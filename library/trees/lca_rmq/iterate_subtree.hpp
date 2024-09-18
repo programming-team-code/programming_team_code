@@ -1,6 +1,6 @@
 #pragma once
 #include "lca_rmq.hpp"
-//! @see https://codeforces.com/blog/entry/44351
+//! https://codeforces.com/blog/entry/44351
 //! @code{.cpp}
 //!     LCA lc(adj); //required
 //! @endcode

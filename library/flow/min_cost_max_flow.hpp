@@ -1,5 +1,5 @@
 #pragma once
-//! @see https://e-maxx.ru/algo/min_cost_flow
+//! https://e-maxx.ru/algo/min_cost_flow
 struct mcmf {
   struct edge {
     int u, v;

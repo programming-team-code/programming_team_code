@@ -1,5 +1,5 @@
 #pragma once
-//! @see https://codeforces.com/blog/entry/12143#comment-324162
+//! https://codeforces.com/blog/entry/12143#comment-324162
 //! subarray [le, ri] has "center" i = le + ri
 //!
 //! center 0 2 4 6 8

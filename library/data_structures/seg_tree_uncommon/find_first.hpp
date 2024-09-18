@@ -14,7 +14,7 @@
 //! the previous call; otherwise the next call will be a subsequent range of the
 //! previous range
 //!
-//! @see seg_tree_find.test.cpp for more details
+//! seg_tree_find.test.cpp for more details
 //!
 //! @returns the index of the first element in the range that satisfies the
 //! condition described in `f`, if no such element exists then `ri` is returned

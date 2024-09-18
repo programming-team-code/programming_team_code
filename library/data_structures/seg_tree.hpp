@@ -1,5 +1,5 @@
 #pragma once
-//! @see https://github.com/kth-competitive-programming/kactl/blob/main/content/data-structures/SegmentTree.h
+//! https://github.com/kth-competitive-programming/kactl/blob/main/content/data-structures/SegmentTree.h
 //! @code{.cpp}
 //!     tree st(n, INT_MAX, [&](int x, int y) -> int { return min(x, y); });
 //!     vector<array<int, 2>> a(n);

@@ -1,5 +1,5 @@
 #pragma once
-//! @see https://codeforces.com/blog/entry/111117
+//! https://codeforces.com/blog/entry/111117
 //! @code{.cpp}
 //!     dsu_restorable dsu_r(n);
 //!     pq_updates<dsu_restorable, int, int> pq(dsu_r);

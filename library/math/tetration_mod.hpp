@@ -1,6 +1,6 @@
 #pragma once
 #include "totient.hpp"
-//! @see https://github.com/kth-competitive-programming/kactl/blob/main/content/number-theory/ModPow.h
+//! https://github.com/kth-competitive-programming/kactl/blob/main/content/number-theory/ModPow.h
 //! @param b base
 //! @param e exponent
 //! @param mod modulo
@@ -14,7 +14,7 @@ ll bin_exp(ll b, ll e, int mod) {
     if (e & 1) res = res * b % mod;
   return res;
 }
-//! @see https://cp-algorithms.com/algebra/phi-function.html#generalization
+//! https://cp-algorithms.com/algebra/phi-function.html#generalization
 //! Let t = totient(mod).
 //! If log2(mod) <= e then (b^e)%mod == (b^(t+(e%t)))%mod
 //! So you need enough base cases to cover when log2(mod) > e
