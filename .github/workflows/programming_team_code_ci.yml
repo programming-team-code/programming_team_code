@@ -73,15 +73,6 @@ jobs:
     - name: files without tests
       run: make --directory=tests/ files_without_tests
 
-  doxygen:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Install doxygen
-      run: sudo apt install doxygen
-    - name: Check correctness, completeness of doxygen comments
-      run: make --directory=tests/ doxygen
-
   build_ptc:
     runs-on: ubuntu-latest
     steps:
@@ -99,7 +90,7 @@ jobs:
 
   publish_ptc:
     runs-on: ubuntu-latest
-    needs: [library_checker_aizu, check_format_lint, clangtidy, compile_gcc17, compile_gcc20, files_without_tests, doxygen, build_ptc]
+    needs: [library_checker_aizu, check_format_lint, clangtidy, compile_gcc17, compile_gcc20, files_without_tests, build_ptc]
     if: github.ref == 'refs/heads/dev' && github.event_name == 'push'
     steps:
     - uses: actions/checkout@v2
@@ -117,7 +108,7 @@ jobs:
 
   update_main:
     runs-on: ubuntu-latest
-    needs: [library_checker_aizu, check_format_lint, clangtidy, compile_gcc17, compile_gcc20, files_without_tests, doxygen]
+    needs: [library_checker_aizu, check_format_lint, clangtidy, compile_gcc17, compile_gcc20, files_without_tests]
     if: github.ref == 'refs/heads/dev' && github.event_name == 'push'
     steps:
     - uses: actions/checkout@v2
