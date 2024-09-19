@@ -1,4 +1,4 @@
-#define PROBLEM                      \
+#define PROBLEM \
   "https://judge.yosupo.jp/problem/static_range_frequency"
 #include "../template.hpp"
 #include "../../../library/data_structures/wavelet_merge/wavelet_tree.hpp"

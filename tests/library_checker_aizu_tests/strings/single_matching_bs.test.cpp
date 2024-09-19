@@ -1,4 +1,4 @@
-#define PROBLEM                                        \
+#define PROBLEM \
   "https://onlinejudge.u-aizu.ac.jp/courses/lesson/1/ALDS1/all/ALDS1_14_B"
 // since this causes an O(n) partition check for each call
 // to `lower_bound`, causing TLE.

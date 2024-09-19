@@ -1,4 +1,4 @@
-#define PROBLEM                      \
+#define PROBLEM \
   "https://judge.yosupo.jp/problem/two_edge_connected_components"
 #include "../template.hpp"
 #include "../../../library/graphs/bridges_cuts/bridge_tree.hpp"
@@ -18,13 +18,12 @@ int main() {
   }
   bridges cc(adj, m);
   vector<vector<int>> bt = bridge_tree(adj, cc);
-  assert(
-    find(begin(cc.two_edge_ccid), end(cc.two_edge_ccid),
-      -1) == end(cc.two_edge_ccid));
+  assert(find(begin(cc.cc_id), end(cc.cc_id), -1) ==
+    end(cc.cc_id));
   // check correctness of bridge tree
   {
-    assert(sz(bt) == cc.num_2_edge_ccs);
-    for (int v = 0; v < cc.num_2_edge_ccs; v++)
+    assert(sz(bt) == cc.num_ccs);
+    for (int v = 0; v < cc.num_ccs; v++)
       for (auto to : bt[v])
         assert(to != v); // didn't add any non-bridge
     int sum_deg = accumulate(begin(bt), end(bt), 0,
@@ -53,19 +52,18 @@ int main() {
   }
   for (int i = 0; i < n; i++) {
     int par_of_cc = dsu.find(i);
-    assert(
-      cc.two_edge_ccid[i] == cc.two_edge_ccid[par_of_cc]);
+    assert(cc.cc_id[i] == cc.cc_id[par_of_cc]);
   }
   for (int i = 0; i < m; i++) {
     auto [u, v] = edges[i];
     // bridge if nodes are from different 2-edge CCs
-    assert(cc.is_bridge[i] ==
-      (cc.two_edge_ccid[u] != cc.two_edge_ccid[v]));
+    assert(
+      cc.is_bridge[i] == (cc.cc_id[u] != cc.cc_id[v]));
   }
-  vector<vector<int>> ccs(cc.num_2_edge_ccs);
+  vector<vector<int>> ccs(cc.num_ccs);
   for (int i = 0; i < n; i++)
-    ccs[cc.two_edge_ccid[i]].push_back(i);
-  cout << cc.num_2_edge_ccs << '\n';
+    ccs[cc.cc_id[i]].push_back(i);
+  cout << cc.num_ccs << '\n';
   for (const auto& curr_cc : ccs) {
     cout << sz(curr_cc) << " ";
     for (auto node : curr_cc) cout << node << " ";

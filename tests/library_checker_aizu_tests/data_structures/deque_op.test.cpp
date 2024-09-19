@@ -1,4 +1,4 @@
-#define PROBLEM                      \
+#define PROBLEM \
   "https://judge.yosupo.jp/problem/deque_operate_all_composite"
 #include "../template.hpp"
 #include "../../../library/contest/random.hpp"

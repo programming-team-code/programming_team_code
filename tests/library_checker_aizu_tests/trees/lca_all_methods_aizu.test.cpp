@@ -1,4 +1,4 @@
-#define PROBLEM                             \
+#define PROBLEM \
   "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_5_C"
 #include "../template.hpp"
 #include "../../../library/trees/tree_lift/tree_lift.hpp"

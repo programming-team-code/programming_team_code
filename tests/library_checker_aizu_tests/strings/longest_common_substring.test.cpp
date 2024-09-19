@@ -1,4 +1,4 @@
-#define PROBLEM                      \
+#define PROBLEM \
   "https://judge.yosupo.jp/problem/longest_common_substring"
 #include "../template.hpp"
 #include "../../../library/strings/suffix_array/suffix_array_query.hpp"

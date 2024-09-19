@@ -1,4 +1,4 @@
-#define PROBLEM                             \
+#define PROBLEM \
   "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_10_C"
 #include "../template.hpp"
 #include "../../../library/strings/longest_common_subsequence/lcs_dp.hpp"
