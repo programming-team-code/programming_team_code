@@ -2,8 +2,6 @@
 #include "match.hpp"
 //! https://stackoverflow.com/a/11374737
 //! https://codeforces.com/blog/entry/133051
-//! @param t query string
-//! @returns see match
 //! @time O(log(|s|) + |t|)
 //! @space O(1)
 match find_str_fast(const T& t) {

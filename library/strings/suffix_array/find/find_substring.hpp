@@ -1,11 +1,19 @@
 #pragma once
-//! @param s_le,s_ri defines a substring [s_le, s_ri) of s
-//!     - doesn't work when s_le == n
 //! @returns a range [le, ri) such that:
-//!     - for all i in [le, ri): s.substr(s_le, s_ri - s_le)
-//!     == s.substr(sa[i], s_ri - s_le)
-//!     - `ri - le` is the # of matches of s.substr(s_le,
-//!     s_ri - s_le) in s.
+//!   - for all i in [le, ri): s.substr(s_le, s_ri - s_le)
+//!   == s.substr(sa[i], s_ri - s_le)
+//!   - `ri - le` is the # of matches of s.substr(s_le,
+//!   s_ri - s_le) in s.
+
+
+//! @code
+//!   auto [sa_le,sa_ri] = s.find_substr(s_le,s_ri);
+//! @endcode
+//! requires s_le < n
+//! for all i in [sa_le,sa_ri): s.substr(s_le,s_ri-s_le)
+//!   == s.substr(sa[i],s_ri-s_le)
+//!   - `ri-le` is the # of matches of
+//!       s.substr(s_le, s_ri - s_le) in s.
 //! @time O(log(|s|))
 //! @space O(1)
 pii find_substr(int s_le, int s_ri) {

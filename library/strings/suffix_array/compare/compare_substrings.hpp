@@ -1,15 +1,12 @@
 #pragma once
 #include "compare_suffixes.hpp"
-//! @param le1,ri1 first substring [le1, ri1)
-//! @param le2,ri2 second substring [le2, ri2)
-//!     - doesn't work when le1,le2 == n
-//! @returns a number `cmp` where:
-//!     - cmp < 0 iff s.substr(le1, ri1 - le1) <
-//!     s.substr(le2, ri2 - le2)
-//!     - cmp = 0 iff s.substr(le1, ri1 - le1) =
-//!     s.substr(le2, ri2 - le2)
-//!     - cmp > 0 iff s.substr(le1, ri1 - le1) >
-//!     s.substr(le2, ri2 - le2)
+//! @code
+//!   int cmp = s.cmp_substrs(le1,ri1,le2,ri2);
+//! @endcode
+//! requires le1,le2 < n
+//! if cmp<0 then s[le1,ri1) < s[le2,ri2)
+//! if cmp=0 then s[le1,ri1) = s[le2,ri2)
+//! if cmp>0 then s[le1,ri1) > s[le2,ri2)
 //! @time O(1)
 //! @space O(1)
 int cmp_substrs(int le1, int ri1, int le2, int ri2) {

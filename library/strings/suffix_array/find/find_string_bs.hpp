@@ -1,9 +1,8 @@
 #pragma once
 //! https://github.com/yosupo06/Algorithm/blob/master/src/string/suffixarray.hpp
-//! @param t query string
-//! @returns range [le, ri) such that:
-//!     - for all i in [le, ri): t == s.substr(sa[i], sz(t))
-//!     - `ri - le` is the # of matches of t in s.
+//! returns range [le,ri) such that:
+//!   - for all i in [le,ri): t==s.substr(sa[i],sz(t))
+//!   - `ri-le` is the # of matches of t in s.
 //! @time O(|t| * log(|s|))
 //! @space O(1)
 pii find_str(const T& t) {
