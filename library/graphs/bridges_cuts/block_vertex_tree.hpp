@@ -5,7 +5,7 @@
 //!   vector<vi> bvt = block_vertex_tree(adj, cc);
 //!   //to loop over each unique bcc containing a node u:
 //!   for (int bccid : bvt[u]) {
-//!       bccid -= n;
+//!     bccid -= n;
 //!   }
 //!   //to loop over each unique node inside a bcc:
 //!   for (int u : bvt[bccid + n]) {}
