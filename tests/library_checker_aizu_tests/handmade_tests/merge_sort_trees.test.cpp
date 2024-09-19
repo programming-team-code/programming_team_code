@@ -1,6 +1,5 @@
 #define PROBLEM                             \
-  "https://judge.u-aizu.ac.jp/onlinejudge/" \
-  "description.jsp?id=ITP1_1_A"
+  "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A"
 #include "../template.hpp"
 #include "../../../library/contest/random.hpp"
 #include "../../../library/data_structures/wavelet_merge/merge_sort_tree.hpp"

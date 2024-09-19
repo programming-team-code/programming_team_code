@@ -1,6 +1,5 @@
 #define PROBLEM                             \
-  "https://judge.u-aizu.ac.jp/onlinejudge/" \
-  "description.jsp?id=3277"
+  "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3277"
 #include "../template.hpp"
 #define basis basis_ordered
 #include "../../../library/math/matrix_related/xor_basis_ordered.hpp"

@@ -1,7 +1,5 @@
 #define PROBLEM                                         \
-  "https://onlinejudge.u-aizu.ac.jp/courses/library/6/" \
-  "NTL/"                                                \
-  "all/NTL_1_D"
+  "https://onlinejudge.u-aizu.ac.jp/courses/library/6/NTL/all/NTL_1_D"
 #include "../template.hpp"
 #include "../../../library/math/totient.hpp"
 int main() {

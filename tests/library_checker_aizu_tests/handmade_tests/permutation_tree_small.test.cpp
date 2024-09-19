@@ -1,6 +1,5 @@
 #define PROBLEM                             \
-  "https://judge.u-aizu.ac.jp/onlinejudge/" \
-  "description.jsp?id=ITP1_1_A"
+  "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A"
 #include "../template.hpp"
 #include "../perm_tree_asserts.hpp"
 #include "../../../library/data_structures/uncommon/permutation_tree.hpp"

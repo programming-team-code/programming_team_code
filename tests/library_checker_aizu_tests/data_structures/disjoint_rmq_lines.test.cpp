@@ -1,6 +1,5 @@
 #define PROBLEM                      \
-  "https://judge.yosupo.jp/problem/" \
-  "queue_operate_all_composite"
+  "https://judge.yosupo.jp/problem/queue_operate_all_composite"
 #include "../template.hpp"
 #include "../../../library/data_structures/uncommon/disjoint_rmq.hpp"
 int main() {
