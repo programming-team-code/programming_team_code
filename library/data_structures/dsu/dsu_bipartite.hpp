@@ -33,6 +33,8 @@ struct dsu_bipartite {
     return 1;
   }
   int size(int v) { return -t[find(v)].p; }
-  bool same_set(int u, int v) { return find(u) == find(v); }
+  bool same_set(int u, int v) {
+    return find(u) == find(v);
+  }
   bool is_bipartite(int v) { return t[find(v)].is_bi; }
 };

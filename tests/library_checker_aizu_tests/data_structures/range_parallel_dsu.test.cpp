@@ -30,8 +30,8 @@ int main() {
     dsu.join(a, b, k, f);
     queries.push_back({a, b, k});
     cout << ans.x << '\n';
-    if (
-      qq <= 10 || abs(q - qq) <= 10 || rnd(0, 50'000) == 0) {
+    if (qq <= 10 || abs(q - qq) <= 10 ||
+      rnd(0, 50'000) == 0) {
       auto uf =
         get_range_parallel_equivalence_classes(queries, n);
       vector<mint> sums(n);

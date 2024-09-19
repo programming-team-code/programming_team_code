@@ -1,8 +1,8 @@
 #define PROBLEM                                        \
   "https://onlinejudge.u-aizu.ac.jp/courses/lesson/1/" \
   "ALDS1/all/ALDS1_14_B"
-// since this causes an O(n) partition check for each call to
-// `lower_bound`, causing TLE.
+// since this causes an O(n) partition check for each call
+// to `lower_bound`, causing TLE.
 #undef _GLIBCXX_DEBUG
 #include "../template.hpp"
 #include "../../../library/contest/random.hpp"
@@ -17,8 +17,8 @@ int main() {
       sf_a.find_str_fast(string(""));
     assert(sa_le == 0 && sa_ri == sz(s));
     pair<int, int> short_res = sf_a.find_str(string(""));
-    assert(
-      sa_le == short_res.first && sa_ri == short_res.second);
+    assert(sa_le == short_res.first &&
+      sa_ri == short_res.second);
     assert(s_ri - s_le == 0);
   }
   auto [sa_le, sa_ri, s_le, s_ri] = sf_a.find_str_fast(t);
@@ -41,9 +41,9 @@ int main() {
     sa_query lq_both(both, 256);
     vector<vector<pii>> tests;
     if (sz(t) >= 2)
-      tests.push_back(
-        {{t_start, t_start + 1}, {t_start + 1, t_start + 1},
-          {t_start + 1, t_start + sz(t)}});
+      tests.push_back({{t_start, t_start + 1},
+        {t_start + 1, t_start + 1},
+        {t_start + 1, t_start + sz(t)}});
     for (int num_tests = 10; num_tests--;) {
       vector<int> splits = {0, sz(t)};
       for (int num_splits = rnd(0, 4); num_splits--;)

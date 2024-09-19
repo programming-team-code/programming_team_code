@@ -1,5 +1,6 @@
-#define PROBLEM                                             \
-  "https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/" \
+#define PROBLEM                                         \
+  "https://onlinejudge.u-aizu.ac.jp/courses/library/3/" \
+  "DSL/"                                                \
   "all/DSL_3_D"
 #include "../template.hpp"
 #include "../../../library/data_structures/deque_op/queue_only.hpp"

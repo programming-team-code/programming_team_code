@@ -40,7 +40,8 @@ ll count_between_two_sequences(const vl& a, const vl& b) {
       for (int k = i; k < j; k++) h[k - i] = b[k] - b[i];
       if (h.back() == 0) break;
       dp = divide_and_conquer(h, dp);
-      if (j < n) dp = vl(begin(dp) + (a[j] - b[i]), end(dp));
+      if (j < n)
+        dp = vl(begin(dp) + (a[j] - b[i]), end(dp));
     }
     i = j;
   }

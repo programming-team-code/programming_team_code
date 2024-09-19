@@ -13,7 +13,8 @@
 struct hungarian {
   ll min_weight;
   vi l_to_r;
-  hungarian(const vector<vector<ll>>& cost) : l_to_r(sz(cost)) {
+  hungarian(const vector<vector<ll>>& cost):
+    l_to_r(sz(cost)) {
     int n = sz(cost), m = sz(cost[0]);
     vi p(m), way(m);
     vector<ll> u(n), v(m);

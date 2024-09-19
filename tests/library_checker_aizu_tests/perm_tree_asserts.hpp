@@ -12,9 +12,10 @@ perm_tree perm_tree_asserts(const vector<int>& a) {
     while (!empty(q)) {
       auto [u, u_reverse] = q.front();
       q.pop();
-      assert(sz(pt.adj[u]) == sz(pt_reverse.adj[u_reverse]));
       assert(
-        pt.t[u].is_join == pt_reverse.t[u_reverse].is_join);
+        sz(pt.adj[u]) == sz(pt_reverse.adj[u_reverse]));
+      assert(pt.t[u].is_join ==
+        pt_reverse.t[u_reverse].is_join);
       assert(pt.t[u].len == pt_reverse.t[u_reverse].len);
       assert(
         pt.t[u].mn_num == pt_reverse.t[u_reverse].mn_num);
@@ -33,8 +34,8 @@ perm_tree perm_tree_asserts(const vector<int>& a) {
   RMQ rmq_max(a, [](int x, int y) { return max(x, y); });
   auto root = pt.root;
   auto adj = pt.adj;
-  assert(pt.t[root].mn_idx == 0 && pt.t[root].mn_num == 0 &&
-    pt.t[root].len == n);
+  assert(pt.t[root].mn_idx == 0 &&
+    pt.t[root].mn_num == 0 && pt.t[root].len == n);
   if (n == 1) assert(sz(adj) == 1);
   else assert(n + 1 <= sz(adj) && sz(adj) < 2 * n);
   for (int u = 0; u < sz(adj); u++) {
@@ -104,7 +105,8 @@ perm_tree perm_tree_asserts(const vector<int>& a) {
             assert(running_max - running_min >= curr_len);
             assert(curr_len <= pt.t[u].len);
             if (curr_len == pt.t[u].len)
-              assert(running_max - running_min == curr_len);
+              assert(
+                running_max - running_min == curr_len);
             else
               assert(pt.t[u].is_join ==
                 (running_max - running_min == curr_len));

@@ -3,7 +3,8 @@
 #include "../template.hpp"
 #include "../../../library/data_structures/wavelet_merge/bool_bit.hpp"
 const int max_bit = 51;
-vector<bool_bit> init_prebools(const vector<int64_t>& arr) {
+vector<bool_bit> init_prebools(
+  const vector<int64_t>& arr) {
   const int mx_n = sz(arr);
   vector<bool_bit> prebools;
   for (int bit = 0; bit < max_bit; bit++) {
@@ -19,7 +20,8 @@ int main() {
   for (int n = 0; n <= 500; n++) {
     vector<bool> init(n);
     bool_bit bb(init);
-    for (int i = 0; i <= n; i++) assert(bb.popcount(i) == 0);
+    for (int i = 0; i <= n; i++)
+      assert(bb.popcount(i) == 0);
   }
   int n, q;
   cin >> n >> q;

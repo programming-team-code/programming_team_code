@@ -13,8 +13,8 @@ struct range_parallel_dsu {
     if (len == 0) return;
     int lg = __lg(len);
     join_impl(lg, l1, l2, f);
-    join_impl(lg, l1 + len - (1 << lg), l2 + len - (1 << lg),
-      f);
+    join_impl(lg, l1 + len - (1 << lg),
+      l2 + len - (1 << lg), f);
   }
   template<class F>
   void join_impl(int lvl, int u, int v, const F& f) {

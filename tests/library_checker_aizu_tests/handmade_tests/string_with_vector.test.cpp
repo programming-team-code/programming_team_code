@@ -1,8 +1,8 @@
 #define PROBLEM                             \
   "https://judge.u-aizu.ac.jp/onlinejudge/" \
   "description.jsp?id=ITP1_1_A"
-// since find_str_fast uses lower_bound in a weird way which
-// makes the partition check fail
+// since find_str_fast uses lower_bound in a weird way
+// which makes the partition check fail
 #undef _GLIBCXX_DEBUG
 #include "../template.hpp"
 #include "../../../library/strings/suffix_array/suffix_array_query.hpp"
@@ -13,9 +13,9 @@
 #include "../../../library/strings/longest_common_subsequence/lcs_queries.hpp"
 int main() {
   cin.tie(0)->sync_with_stdio(0);
-  // mainly to test all strings algs compile when passing in
-  // vectors I had a bug where `compare` is only for strings,
-  // making `find_str` useless when using vectors
+  // mainly to test all strings algs compile when passing
+  // in vectors I had a bug where `compare` is only for
+  // strings, making `find_str` useless when using vectors
   const int shift = 100'000;
   vector<int> arr(100);
   for (int i = 0; i < 100; i++) arr[i] = shift + i;
@@ -37,7 +37,8 @@ int main() {
     assert(sa_le == 50 && sa_ri == 51);
   }
   {
-    auto [sa_le, sa_ri, s_le, s_ri] = sf_a.find_str_fast(t);
+    auto [sa_le, sa_ri, s_le, s_ri] =
+      sf_a.find_str_fast(t);
     assert(sa_le == 50 && sa_ri == 51);
     assert(s_le == 50 && s_ri == 60);
   }
@@ -47,7 +48,8 @@ int main() {
     for (int i = 0; i < 100; i++) {
       auto [sa_le, sa_ri, s_le, s_ri] =
         sf_a.find_substrs_concated({{i, i + 1}});
-      pair<int, int> short_res = sf_a.find_substr(i, i + 1);
+      pair<int, int> short_res =
+        sf_a.find_substr(i, i + 1);
       assert(sa_le == short_res.first &&
         sa_ri == short_res.second);
       assert(sa_le == i && sa_ri == i + 1);

@@ -21,8 +21,8 @@ template<class T> vi manacher(const T& s) {
       ? p - max(man[2 * p - i], man[p])
       : i / 2;
     man[i] = i - ri;
-    while (
-      man[i] > 0 && ri + 1 < n && s[man[i] - 1] == s[ri + 1])
+    while (man[i] > 0 && ri + 1 < n &&
+      s[man[i] - 1] == s[ri + 1])
       man[i]--, ri++, p = i;
   }
   return man;

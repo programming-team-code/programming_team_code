@@ -35,8 +35,8 @@ struct seg_tree {
   void update(int le, int ri, ll change) { // [le, ri)
     update_impl(le, ri, change, 0, n, 1);
   }
-  void update_impl(int le, int ri, ll change, int tl, int tr,
-    int v) {
+  void update_impl(int le, int ri, ll change, int tl,
+    int tr, int v) {
     if (ri <= tl || tr <= le) return;
     if (le <= tl && tr <= ri)
       return apply(change, tl, tr, v);

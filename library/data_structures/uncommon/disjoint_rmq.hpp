@@ -16,7 +16,8 @@ template<class T, class F> struct disjoint_rmq {
     for (int len = 1, n = sz(a); len <= n; len *= 2) {
       dp.emplace_back(n);
       for (int le = 0; le < n; le += 2 * len) {
-        int mi = min(n, le + len), ri = min(n, le + 2 * len);
+        int mi = min(n, le + len),
+            ri = min(n, le + 2 * len);
         partial_sum(rend(a) - mi, rend(a) - le,
           rend(dp.back()) - mi,
           [&](T x, T y) { return op(y, x); });

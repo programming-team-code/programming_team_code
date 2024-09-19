@@ -5,7 +5,8 @@
 //! performs trie-style downwards tree walk
 //! @param t needle
 //! @returns range [le, ri) such that:
-//!     - for all i in [le, ri): t == s.substr(sa[i], sz(t))
+//!     - for all i in [le, ri): t == s.substr(sa[i],
+//!     sz(t))
 //!     - `ri - le` is the # of matches of t in s.
 //! @time O(|t|)
 //! @space O(1)

@@ -2,9 +2,10 @@
 #include "scc.hpp"
 //! https://codeforces.com/blog/entry/15102
 //! Add minimum extra directed edges to directed graph to
-//! make it strongly connected. If the directed graph is not
-//! initially strongly connected, then the edge list's size
-//! is max(# zero indegree SCCs, # zero outdegree SCCs)
+//! make it strongly connected. If the directed graph is
+//! not initially strongly connected, then the edge list's
+//! size is max(# zero indegree SCCs, # zero outdegree
+//! SCCs)
 //!
 //! @code
 //!   auto [num_sccs, scc_id] = sccs(adj);
@@ -16,8 +17,8 @@
 //! @time O(n + m)
 //! @space An O(n) edge list is allocated and returned, but
 //! multiple O(n + m) vectors are allocated temporarily
-vector<pii> extra_edges(const vector<vi>& adj, int num_sccs,
-  const vi& scc_id) {
+vector<pii> extra_edges(const vector<vi>& adj,
+  int num_sccs, const vi& scc_id) {
   if (num_sccs == 1) return {};
   int n = sz(adj);
   vector<vi> scc_adj(num_sccs);
@@ -57,6 +58,7 @@ vector<pii> extra_edges(const vector<vi>& adj, int num_sccs,
   for (int v : in_unused) edges.emplace_back(0, v);
   vi to_node(num_sccs);
   rep(i, 0, n) to_node[scc_id[i]] = i;
-  for (auto& [u, v] : edges) u = to_node[u], v = to_node[v];
+  for (auto& [u, v] : edges)
+    u = to_node[u], v = to_node[v];
   return edges;
 }

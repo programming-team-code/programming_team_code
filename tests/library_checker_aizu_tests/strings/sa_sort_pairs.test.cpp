@@ -1,5 +1,6 @@
-#define PROBLEM                                             \
-  "https://onlinejudge.u-aizu.ac.jp/courses/lesson/8/ITP2/" \
+#define PROBLEM                                        \
+  "https://onlinejudge.u-aizu.ac.jp/courses/lesson/8/" \
+  "ITP2/"                                              \
   "all/ITP2_5_A"
 #include "../template.hpp"
 #include "../../../library/strings/suffix_array/suffix_array_query.hpp"

@@ -1,4 +1,5 @@
-#define PROBLEM "https://judge.yosupo.jp/problem/suffixarray"
+#define PROBLEM \
+  "https://judge.yosupo.jp/problem/suffixarray"
 #include "../template.hpp"
 #include "../mono_st_asserts.hpp"
 #include "../../../library/strings/suffix_array/suffix_array_query.hpp"
@@ -32,8 +33,8 @@ int main() {
     auto [sa_le, sa_ri, s_le, s_ri] =
       sf_a.find_substrs_concated({{0, 0}});
     pair<int, int> short_res = sf_a.find_substr(0, 0);
-    assert(
-      sa_le == short_res.first && sa_ri == short_res.second);
+    assert(sa_le == short_res.first &&
+      sa_ri == short_res.second);
     assert(sa_le == 0 && sa_ri == n);
     assert(s_ri - s_le == 0);
   }
@@ -42,8 +43,8 @@ int main() {
       sf_a.find_substrs_concated({{0, 0}, {n - 1, n - 1}});
     pair<int, int> short_res =
       sf_a.find_substr(n - 1, n - 1);
-    assert(
-      sa_le == short_res.first && sa_ri == short_res.second);
+    assert(sa_le == short_res.first &&
+      sa_ri == short_res.second);
     assert(sa_le == 0 && sa_ri == n);
     assert(s_ri - s_le == 0);
   }

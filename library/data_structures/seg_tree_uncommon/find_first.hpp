@@ -6,7 +6,8 @@
 //! @endcode
 //! @param le,ri defines range [le, ri)
 //! @param f defines a function that returns true if the
-//! subtree contains an element that satisfies the condition
+//! subtree contains an element that satisfies the
+//! condition
 //!
 //! guarantee: `f` is called in order on the subtrees (tls
 //! are weakly increasing) and at most once on each subtree
@@ -18,9 +19,9 @@
 //!
 //! seg_tree_find.test.cpp for more details
 //!
-//! @returns the index of the first element in the range that
-//! satisfies the condition described in `f`, if no such
-//! element exists then `ri` is returned
+//! @returns the index of the first element in the range
+//! that satisfies the condition described in `f`, if no
+//! such element exists then `ri` is returned
 //! @time O(log(n))
 //! @space O(log(n)) for recursion stack
 template<class F>

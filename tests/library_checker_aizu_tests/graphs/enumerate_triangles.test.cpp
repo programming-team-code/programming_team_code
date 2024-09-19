@@ -14,7 +14,8 @@ int main() {
   int64_t sum = 0;
   auto enumerate = [&](int u, int v, int w) {
     sum =
-      (sum + 1LL * vals[u] * vals[v] % mod * vals[w] % mod) %
+      (sum +
+        1LL * vals[u] * vals[v] % mod * vals[w] % mod) %
       mod;
   };
   enumerate_triangles(edges, n, enumerate);

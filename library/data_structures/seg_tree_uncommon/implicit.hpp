@@ -15,7 +15,8 @@ template<int N> struct implicit_seg_tree {
     int lch = -1, rch = -1;
   } tree[N];
   int ptr = 0, root_l, root_r;
-  implicit_seg_tree(int le, int ri): root_l(le), root_r(ri) {
+  implicit_seg_tree(int le, int ri):
+    root_l(le), root_r(ri) {
     tree[ptr++].num = {0, ri - le};
   }
   void apply(ll add, int v) {

@@ -35,7 +35,8 @@ struct bwt {
   //! @param t query string
   //! @returns vectors `le`, `ri` where given `t_le` (0 <=
   //! t_le <= |t|) defines a suffix [t_le, |t|) of t:
-  //!     - for all i in [le[t_le], ri[t_le]): t.substr(t_le)
+  //!     - for all i in [le[t_le], ri[t_le]):
+  //!     t.substr(t_le)
   //!     == s.substr(sa[i], sz(t) - t_le)
   //!     - `ri[t_le] - le[t_le]` is the # of matches of
   //!     t.substr(t_le) in s. note: ri[t_le] - le[t_le] <=

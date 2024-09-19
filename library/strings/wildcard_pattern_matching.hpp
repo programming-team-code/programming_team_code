@@ -24,7 +24,8 @@ vector<bool> wildcard_pattern_matching(const T& haystack,
   int n = sz(haystack), m = sz(needle);
   auto haystack_pws = make_powers(haystack);
   auto needle_pws = make_powers(needle);
-  for (auto& needle_pw : needle_pws) reverse(all(needle_pw));
+  for (auto& needle_pw : needle_pws)
+    reverse(all(needle_pw));
   vector<T> res(3);
   rep(pw_hay, 0, 3) res[pw_hay] =
     conv(haystack_pws[pw_hay], needle_pws[2 - pw_hay]);

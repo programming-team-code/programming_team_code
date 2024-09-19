@@ -10,8 +10,9 @@ int main() {
     for (int tests = 10; tests--;) {
       string s(n, 'a');
       int mx_char = rnd<int>(0, 5);
-      generate(begin(s), end(s),
-        [&]() { return char('a' + rnd<int>(0, mx_char)); });
+      generate(begin(s), end(s), [&]() {
+        return char('a' + rnd<int>(0, mx_char));
+      });
       sa_query lq(s, 256);
       for (int i = 0; i < n; i++) {
         for (int j = i; j <= n; j++) {

@@ -32,7 +32,8 @@ int main() {
       }
       for (int i = 0; i < n; i++)
         for (int j = i; j < n; j++)
-          assert(pq.is_pal(i, j) == is_pal_naive[i][j + 1]);
+          assert(
+            pq.is_pal(i, j) == is_pal_naive[i][j + 1]);
       vector<int> longest(longest_from_index(pq));
       for (int le = 0; le < n; le++) {
         bool seen_pal = 0;
@@ -48,7 +49,8 @@ int main() {
       for (int len = 2; len <= n; len++) {
         for (int le = 0; le + len <= n; le++) {
           int ri = le + len;
-          count_pals_naive[le][ri] = pq.is_pal(le, ri - 1) +
+          count_pals_naive[le][ri] =
+            pq.is_pal(le, ri - 1) +
             count_pals_naive[le + 1][ri] +
             count_pals_naive[le][ri - 1] -
             count_pals_naive[le + 1][ri - 1];
@@ -74,7 +76,8 @@ int main() {
             longest_pal[le][ri] =
               max(longest_pal[le + 1][ri],
                 longest_pal[le][ri - 1]);
-          auto [curr_idx, curr_len] = lp.longest_pal(le, ri);
+          auto [curr_idx, curr_len] =
+            lp.longest_pal(le, ri);
           assert(curr_len == longest_pal[le][ri]);
           assert(
             pq.is_pal(curr_idx, curr_idx + curr_len - 1));

@@ -1,4 +1,5 @@
-#define PROBLEM "https://judge.yosupo.jp/problem/suffixarray"
+#define PROBLEM \
+  "https://judge.yosupo.jp/problem/suffixarray"
 #include "../template.hpp"
 #include "compress_char.hpp"
 #include "../../../library/strings/suffix_array/lcp_interval_tree/lcp_interval_tree.hpp"

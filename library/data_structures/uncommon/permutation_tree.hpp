@@ -63,10 +63,11 @@ struct perm_tree {
           continue;
         }
         int le = min(t[u].mn_idx, mn_i[t[v].mn_idx]),
-            ri = max(i, mx_i[t[v].mn_idx]), idx = sz(st) - 1;
+            ri = max(i, mx_i[t[v].mn_idx]),
+            idx = sz(st) - 1;
         while (ri == i && le != t[st[idx][0]].mn_idx)
-          le = min(le, st[idx][1]), ri = max(ri, st[idx][2]),
-          idx = st[idx][3];
+          le = min(le, st[idx][1]),
+          ri = max(ri, st[idx][2]), idx = st[idx][3];
         if (ri > i) {
           st.push_back({v, le, ri, idx});
           break;

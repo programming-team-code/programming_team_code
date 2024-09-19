@@ -1,5 +1,6 @@
-#define PROBLEM \
-  "https://judge.yosupo.jp/problem/static_range_mode_query"
+#define PROBLEM                      \
+  "https://judge.yosupo.jp/problem/" \
+  "static_range_mode_query"
 #include "../template.hpp"
 #include "../../../library/data_structures/uncommon/mode_query.hpp"
 int main() {
@@ -18,8 +19,8 @@ int main() {
       if (comp[mid] <= val) start = mid;
       else end = mid;
     }
-    assert(
-      0 <= start && start < sz(comp) && comp[start] == val);
+    assert(0 <= start && start < sz(comp) &&
+      comp[start] == val);
     val = start;
   }
   mode_query mq(a);

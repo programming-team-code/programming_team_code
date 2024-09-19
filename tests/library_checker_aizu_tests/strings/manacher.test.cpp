@@ -39,7 +39,8 @@ int main() {
   }
   for (int i = 0; i < sz(pq.man); i++) {
     int ri = i - pq.man[i];
-    assert(ri + 1 == pq.man[i] || pq.is_pal(pq.man[i], ri));
+    assert(
+      ri + 1 == pq.man[i] || pq.is_pal(pq.man[i], ri));
     assert(pq.man[i] == 0 || ri == n - 1 ||
       !pq.is_pal(pq.man[i] - 1, ri + 1));
     cout << i - 2 * pq.man[i] + 1 << " ";

@@ -31,7 +31,8 @@ struct linear_kth_par {
         if (u != t[v].p) {
           t[u].d = t[t[u].p = v].d + 1;
           self(self, u);
-          if (t[t[u].dl].d > t[t[v].dl].d) t[v].dl = t[u].dl;
+          if (t[t[u].dl].d > t[t[v].dl].d)
+            t[v].dl = t[u].dl;
           add_j();
         }
       st.pop_back();

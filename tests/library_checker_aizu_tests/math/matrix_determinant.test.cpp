@@ -1,4 +1,5 @@
-#define PROBLEM "https://judge.yosupo.jp/problem/matrix_det"
+#define PROBLEM \
+  "https://judge.yosupo.jp/problem/matrix_det"
 #include "../template.hpp"
 #include "../../../library/math/matrix_related/row_reduce.hpp"
 int main() {

@@ -1,5 +1,6 @@
-#define PROBLEM \
-  "https://judge.yosupo.jp/problem/static_range_frequency"
+#define PROBLEM                      \
+  "https://judge.yosupo.jp/problem/" \
+  "static_range_frequency"
 #include "../template.hpp"
 #include "../../../library/data_structures/wavelet_merge/wavelet_tree_updates.hpp"
 int main() {

@@ -23,7 +23,8 @@ int main() {
     dsu_restorable dsu(n);
     auto dfs = [&](auto&& self, int u) -> void {
       for (auto idx : queries[u])
-        res[idx] = dsu.same_set(query_u[idx], query_v[idx]);
+        res[idx] =
+          dsu.same_set(query_u[idx], query_v[idx]);
       for (auto child : childs[u]) {
         dsu.join(query_u[child], query_v[child]);
         self(self, child);

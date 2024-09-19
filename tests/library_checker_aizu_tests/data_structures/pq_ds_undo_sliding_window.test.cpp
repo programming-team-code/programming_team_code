@@ -1,5 +1,6 @@
-#define PROBLEM                                             \
-  "https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/" \
+#define PROBLEM                                         \
+  "https://onlinejudge.u-aizu.ac.jp/courses/library/3/" \
+  "DSL/"                                                \
   "all/DSL_3_D"
 // since _GLIBCXX_DEBUG causes std::map insert/erase
 // operations to be O(n)

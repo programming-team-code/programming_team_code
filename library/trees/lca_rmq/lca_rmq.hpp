@@ -21,8 +21,9 @@ struct LCA {
           t[v].sub_sz += t[u].sub_sz;
     };
     rep(i, 0, sz(t)) if (t[i].p == -1) dfs(dfs, i);
-    rmq = {order,
-      [&](int v, int u) { return t[v].d < t[u].d ? v : u; }};
+    rmq = {order, [&](int v, int u) {
+             return t[v].d < t[u].d ? v : u;
+           }};
   }
   int lca(int v, int u) {
     if (v == u) return v;

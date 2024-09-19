@@ -40,10 +40,12 @@ int main() {
     }
     vector<vector<ll>> cnts_naive = naive(adj, dsu);
     for (int k = 1; k <= n; k++)
-      assert(count_paths_per_node(adj, k) == cnts_naive[k]);
+      assert(
+        count_paths_per_node(adj, k) == cnts_naive[k]);
     vector<ll> num_paths_len = count_paths_per_length(adj);
     for (int k = 1; k < n; k++) {
-      vector<ll> count_paths = count_paths_per_node(adj, k);
+      vector<ll> count_paths =
+        count_paths_per_node(adj, k);
       ll total_paths = accumulate(begin(count_paths),
         end(count_paths), 0LL);
       assert(total_paths % (k + 1) == 0);

@@ -1,5 +1,6 @@
-#define PROBLEM \
-  "https://judge.yosupo.jp/problem/biconnected_components"
+#define PROBLEM                      \
+  "https://judge.yosupo.jp/problem/" \
+  "biconnected_components"
 #include "../template.hpp"
 #include "../../../library/graphs/bridges_cuts/block_vertex_tree.hpp"
 int main() {
@@ -57,7 +58,8 @@ int main() {
       }
     }
     for (int bccid = 0; bccid < cc.num_bccs; bccid++) {
-      assert(sz(bcc_to_nodes[bccid]) == sz(bvt[bccid + n]));
+      assert(
+        sz(bcc_to_nodes[bccid]) == sz(bvt[bccid + n]));
       for (auto u : bvt[bccid + n])
         assert(bcc_to_nodes[bccid].count(u));
     }

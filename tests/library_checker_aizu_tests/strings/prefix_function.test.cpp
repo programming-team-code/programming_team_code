@@ -1,4 +1,5 @@
-#define PROBLEM "https://judge.yosupo.jp/problem/zalgorithm"
+#define PROBLEM \
+  "https://judge.yosupo.jp/problem/zalgorithm"
 #include "../template.hpp"
 #include "../../../library/strings/prefix_function.hpp"
 int main() {

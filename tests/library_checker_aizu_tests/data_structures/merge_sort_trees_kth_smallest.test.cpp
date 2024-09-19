@@ -1,7 +1,7 @@
 #define PROBLEM \
   "https://judge.yosupo.jp/problem/range_kth_smallest"
-// since this causes an O(n) partition check for each call to
-// `lower_bound`, causing TLE.
+// since this causes an O(n) partition check for each call
+// to `lower_bound`, causing TLE.
 #undef _GLIBCXX_DEBUG
 #include "../template.hpp"
 #include "../../../library/data_structures/wavelet_merge/merge_sort_tree.hpp"
@@ -25,7 +25,8 @@ int main() {
     inverted[ptr[arr[i]]++] = i;
   }
   merge_sort_tree mst(inverted);
-  merge_sort_tree_updates mstu(inverted, vector<bool>(n, 1));
+  merge_sort_tree_updates mstu(inverted,
+    vector<bool>(n, 1));
   while (q--) {
     int le, ri, k;
     cin >> le >> ri >> k;

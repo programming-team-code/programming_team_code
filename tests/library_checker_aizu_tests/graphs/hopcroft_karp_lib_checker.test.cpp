@@ -38,11 +38,12 @@ int main() {
   assert(size_l == res.size_of_matching);
   assert(size_r == res.size_of_matching);
   // asserting found min vertex cover is correct
-  int cnt = accumulate(begin(res.mvc_l), end(res.mvc_l), 0) +
+  int cnt =
+    accumulate(begin(res.mvc_l), end(res.mvc_l), 0) +
     accumulate(begin(res.mvc_r), end(res.mvc_r), 0);
-  assert(
-    cnt == res.size_of_matching); // size of min vertex cover
-                                  // == size of max matching
+  assert(cnt ==
+    res.size_of_matching); // size of min vertex cover
+                           // == size of max matching
   for (auto [u, v] : edges)
     assert(res.mvc_l[u] || res.mvc_r[v]);
   return 0;

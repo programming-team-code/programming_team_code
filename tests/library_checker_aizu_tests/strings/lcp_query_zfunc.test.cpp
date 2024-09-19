@@ -1,4 +1,5 @@
-#define PROBLEM "https://judge.yosupo.jp/problem/zalgorithm"
+#define PROBLEM \
+  "https://judge.yosupo.jp/problem/zalgorithm"
 #include "../template.hpp"
 #include "../../../library/contest/random.hpp"
 #include "../../../library/strings/suffix_array/suffix_array_query.hpp"
@@ -14,7 +15,8 @@ int main() {
       auto ri = rnd<int>(0, sz(s) - 1);
       int cmp_val = lq.cmp_sufs(le, ri);
       if (cmp_val < 0) assert(s.substr(le) < s.substr(ri));
-      if (cmp_val == 0) assert(s.substr(le) == s.substr(ri));
+      if (cmp_val == 0)
+        assert(s.substr(le) == s.substr(ri));
       if (cmp_val > 0) assert(s.substr(le) > s.substr(ri));
     }
     for (int num_tests = 50; num_tests--;) {

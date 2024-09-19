@@ -22,7 +22,8 @@ int main() {
       generate(begin(active), end(active),
         [&]() { return rnd<int>(0, 1); });
       merge_sort_tree_updates mstu(arr, active);
-      wavelet_tree_updates wtu(arr, minn, maxn + 1, active);
+      wavelet_tree_updates wtu(arr, minn, maxn + 1,
+        active);
       for (int operations = 50; operations--;) {
         if (operations % 4 == 0) { // rect_count query
           int le = rnd<int>(0, n);
@@ -49,8 +50,8 @@ int main() {
             if (active[i]) sorted.push_back(arr[i]);
           sort(begin(sorted), end(sorted));
           for (int k = 1; k <= sz(sorted); k++)
-            assert(
-              wtu.kth_smallest(le, ri, k) == sorted[k - 1]);
+            assert(wtu.kth_smallest(le, ri, k) ==
+              sorted[k - 1]);
         } else if (operations % 4 == 2) {
           int x = rnd<int>(-100, 100);
           int y = rnd<int>(-100, 100);

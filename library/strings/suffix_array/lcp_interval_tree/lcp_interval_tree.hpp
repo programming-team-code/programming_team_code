@@ -7,12 +7,14 @@ const int mn = '0',
             36; // mn <= s[i] < mn + cnt_let; for lowercase
                 // letters: mn = 'a', cnt_let = 26
 //! Replacing suffix trees with enhanced suffix arrays by
-//! Mohamed Ibrahim Abouelhoda, Stefan Kurtz, Enno Ohlebusch
+//! Mohamed Ibrahim Abouelhoda, Stefan Kurtz, Enno
+//! Ohlebusch
 //!
-//! offline version of suffix tree, idea: min k-ary cartesian
-//! tree of LCP array corresponds exactly to the internal
-//! nodes of the suffix tree. Then add in <= n nodes, one for
-//! each suffix, and it corresponds to the suffix tree.
+//! offline version of suffix tree, idea: min k-ary
+//! cartesian tree of LCP array corresponds exactly to the
+//! internal nodes of the suffix tree. Then add in <= n
+//! nodes, one for each suffix, and it corresponds to the
+//! suffix tree.
 //!
 //! string = "cabcabacaabc"
 //!                                              c
@@ -42,16 +44,16 @@ const int mn = '0',
 //!     lcp_tree lt(s);
 //! @endcode
 //!
-//! internal nodes are a subset of [0, n - 1), each internal
-//! node represents:
+//! internal nodes are a subset of [0, n - 1), each
+//! internal node represents:
 //!     - a prefix of some suffix; in the suffix tree, each
 //!     edge has some substring. This prefix of suffix
 //!     corresponds to this substring
 //!     - a range in the suffix array
-//!     - a lcp number of this range of suffixes representing
-//!     length of prefix of these suffixes
-//! leaf nodes are a subset of [n - 1, 2 * n - 1), each leaf
-//! represents:
+//!     - a lcp number of this range of suffixes
+//!     representing length of prefix of these suffixes
+//! leaf nodes are a subset of [n - 1, 2 * n - 1), each
+//! leaf represents:
 //!     - a single suffix
 struct lcp_tree {
   sa_query<string> sf_a;

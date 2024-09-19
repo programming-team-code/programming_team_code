@@ -14,8 +14,8 @@
 //! [n, n + num_bccs) are BCC nodes
 //! @time O(n + m)
 //! @time O(n)
-vector<vi> block_vertex_tree(const vector<vector<pii>>& adj,
-  const cuts& cc) {
+vector<vi> block_vertex_tree(
+  const vector<vector<pii>>& adj, const cuts& cc) {
   int n = sz(adj);
   vector<vi> bvt(n + cc.num_bccs);
   vector<bool> vis(cc.num_bccs);

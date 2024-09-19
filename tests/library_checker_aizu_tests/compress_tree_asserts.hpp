@@ -42,7 +42,8 @@ void compress_tree_asserts(vector<vector<int>> adj,
     for (int i = 0; i < sz(lin_parent); i++) {
       assert(lin_to_node[i] == kactl_res[i].second);
       assert(lin_parent[i] < i);
-      if (i > 0) assert(lin_parent[i] == kactl_res[i].first);
+      if (i > 0)
+        assert(lin_parent[i] == kactl_res[i].first);
       else assert(lin_parent[i] == -1);
     }
     for (int u : subset) used[u] = 0;

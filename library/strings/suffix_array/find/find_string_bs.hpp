@@ -12,11 +12,11 @@ pii find_str(const T& t) {
         return lexicographical_compare(i + all(s), all(t));
       }) -
     begin(sa);
-  int ri =
-    lower_bound(le + all(sa), 0,
-      [&](int i, int) -> bool {
-        return mismatch(all(t), i + all(s)).first == end(t);
-      }) -
+  int ri = lower_bound(le + all(sa), 0,
+             [&](int i, int) -> bool {
+               return mismatch(all(t), i + all(s)).first ==
+                 end(t);
+             }) -
     begin(sa);
   return {le, ri};
 }

@@ -7,7 +7,8 @@
 //! @time O(32^2) or O(64^2);
 //! @space O(32) or O(64)
 template<class T>
-basis<T> intersection(const basis<T>& u, const basis<T>& v) {
+basis<T> intersection(const basis<T>& u,
+  const basis<T>& v) {
   vector<array<T, 2>> w(sz(u.b));
   rep(i, 0, sz(w)) w[i] = {u.b[i], u.b[i]};
   basis<T> res;

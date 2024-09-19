@@ -5,8 +5,8 @@
 //! d[v] = min dist from s->..->v
 //! @time O(n + (m log m))
 //! @space O(n + m)
-vector<ll> dijkstra(const vector<vector<pair<int, ll>>>& adj,
-  int s) {
+vector<ll> dijkstra(
+  const vector<vector<pair<int, ll>>>& adj, int s) {
   using p = pair<ll, int>;
   priority_queue<p, vector<p>, greater<>> pq;
   pq.emplace(0, s);

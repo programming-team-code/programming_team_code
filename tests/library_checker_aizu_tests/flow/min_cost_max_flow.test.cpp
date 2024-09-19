@@ -1,5 +1,6 @@
-#define PROBLEM                                             \
-  "https://onlinejudge.u-aizu.ac.jp/courses/library/5/GRL/" \
+#define PROBLEM                                         \
+  "https://onlinejudge.u-aizu.ac.jp/courses/library/5/" \
+  "GRL/"                                                \
   "all/GRL_6_B"
 #include "../template.hpp"
 #include "../../../library/flow/min_cost_max_flow.hpp"

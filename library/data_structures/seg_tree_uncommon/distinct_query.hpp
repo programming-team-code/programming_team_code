@@ -16,8 +16,8 @@ struct distinct_query {
     }
   }
   //! @param le,ri defines range [le, ri)
-  //! @returns number of distinct elements in range; query(i,
-  //! i) returns 0.
+  //! @returns number of distinct elements in range;
+  //! query(i, i) returns 0.
   //! @time O(log n)
   //! @space O(log n)
   int query(int le, int ri) {

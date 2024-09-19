@@ -1,5 +1,6 @@
-#define PROBLEM                                             \
-  "https://onlinejudge.u-aizu.ac.jp/courses/library/7/DPL/" \
+#define PROBLEM                                         \
+  "https://onlinejudge.u-aizu.ac.jp/courses/library/7/" \
+  "DPL/"                                                \
   "all/DPL_3_B"
 #include "../template.hpp"
 #include "../mono_st_asserts.hpp"
@@ -46,8 +47,8 @@ int main() {
       int cnt = 0;
       for (int i = 0; i + rows <= n; i++) {
         for (int j = 0; j + cols <= m; j++)
-          if (
-            sm.sum(i, j, i + rows, j + cols) == rows * cols)
+          if (sm.sum(i, j, i + rows, j + cols) ==
+            rows * cols)
             cnt++;
       }
       assert(size_counts[rows][cols] == cnt);

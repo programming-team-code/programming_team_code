@@ -19,7 +19,10 @@ struct solve_linear_mod {
     int n = sz(mat), m = sz(mat[0]);
     rep(i, 0, n) mat[i].push_back(b[i]);
     tie(rank, det) = row_reduce(mat, m);
-    if (any_of(rank + all(mat), [](auto& v) { return v.back().x; })) { return; }
+    if (any_of(rank + all(mat),
+          [](auto& v) { return v.back().x; })) {
+      return;
+    }
     x.resize(m);
     int j = 0;
     for_each(begin(mat), begin(mat) + rank, [&](auto& v) {

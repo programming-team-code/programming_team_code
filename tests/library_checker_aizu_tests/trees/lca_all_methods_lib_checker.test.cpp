@@ -30,8 +30,10 @@ int main() {
   while (q--) {
     int u, v;
     cin >> u >> v;
-    assert(lc.in_subtree(u, v) == lin_lca.in_subtree(u, v));
-    assert(lc.in_subtree(v, u) == lin_lca.in_subtree(v, u));
+    assert(
+      lc.in_subtree(u, v) == lin_lca.in_subtree(u, v));
+    assert(
+      lc.in_subtree(v, u) == lin_lca.in_subtree(v, u));
     int lca = tl.lca(u, v);
     assert(lca == lc.lca(u, v));
     assert(lca == lin_lca.lca(u, v));

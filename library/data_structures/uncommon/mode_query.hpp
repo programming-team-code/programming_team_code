@@ -23,8 +23,10 @@ struct mode_query {
       rep(i, start, n) {
         cnt[a[i]]++;
         if (cnt[a[i]] > cnt[mode]) mode = a[i];
-        if (mode_blocks[start / b][i / b].second < cnt[mode])
-          mode_blocks[start / b][i / b] = {mode, cnt[mode]};
+        if (
+          mode_blocks[start / b][i / b].second < cnt[mode])
+          mode_blocks[start / b][i / b] = {
+            mode, cnt[mode]};
       }
       rep(i, start, n) cnt[a[i]]--;
     }

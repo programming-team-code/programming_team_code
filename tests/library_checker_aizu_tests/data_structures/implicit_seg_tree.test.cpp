@@ -18,10 +18,11 @@ int main() {
     edges.push_back({x2, y1, y2, -1});
   }
   sort(begin(edges), end(edges),
-    [&](const vertical_edge& a,
-      const vertical_edge& b) -> bool { return a.x < b.x; });
+    [&](const vertical_edge& a, const vertical_edge& b)
+      -> bool { return a.x < b.x; });
   const int mn = 0, mx = 1'000'000'001;
-  implicit_seg_tree<500'000 * 31 * 2 * 2 + 100> ist(mn, mx);
+  implicit_seg_tree<500'000 * 31 * 2 * 2 + 100> ist(mn,
+    mx);
   int64_t area = 0;
   // sweepline
   for (int i = 0; i < sz(edges);) {

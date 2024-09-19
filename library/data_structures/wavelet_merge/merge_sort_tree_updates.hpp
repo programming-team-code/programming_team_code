@@ -3,8 +3,8 @@
 #include "bool_bit.hpp"
 //! https://codeforces.com/blog/entry/112755
 //! @param tl,tr defines range [tl, tr)
-//! @returns split point of range which makes the merge sort
-//! tree a complete binary tree
+//! @returns split point of range which makes the merge
+//! sort tree a complete binary tree
 int split(int tl, int tr) {
   int pw2 = 1 << __lg(tr - tl);
   return min(tl + pw2, tr - pw2 / 2);
@@ -19,7 +19,8 @@ struct merge_sort_tree_updates {
   //! @param active active[i] == 1 iff index i is initially
   //! active
   //! @time O(n log n)
-  //! @space O(n + (n log n) / 64) for `bool_presums` vector
+  //! @space O(n + (n log n) / 64) for `bool_presums`
+  //! vector
   //!        O(n + (n log n) / 64) for `bool_bits` vector
   merge_sort_tree_updates(const vi& a,
     const vector<bool>& active):
@@ -50,10 +51,11 @@ struct merge_sort_tree_updates {
         return a[i.first] < a[j.first];
       });
     vector<bool> bools(tr - tl);
-    transform(begin(cpy) + tl, begin(cpy) + tr, begin(bools),
-      [](auto& num) { return num.second; });
+    transform(begin(cpy) + tl, begin(cpy) + tr,
+      begin(bools), [](auto& num) { return num.second; });
     bool_presums[v] = bool_presum(bools);
-    transform(begin(cpy) + tl, begin(cpy) + tr, begin(bools),
+    transform(begin(cpy) + tl, begin(cpy) + tr,
+      begin(bools),
       [&](auto& num) { return active[num.first]; });
     bool_bits[v] = bool_bit(bools);
   }
@@ -65,19 +67,20 @@ struct merge_sort_tree_updates {
     if (bool_bits[1].on(perm[i]) == is_active) return;
     set_active_impl(perm[i], is_active, 0, n, 1);
   }
-  void set_active_impl(int i, bool is_active, int tl, int tr,
-    int v) {
+  void set_active_impl(int i, bool is_active, int tl,
+    int tr, int v) {
     bool_bits[v].set(i, is_active);
     if (tr - tl == 1) return;
-    int tm = split(tl, tr), pi = bool_presums[v].popcount(i);
+    int tm = split(tl, tr),
+        pi = bool_presums[v].popcount(i);
     if (bool_presums[v].on(i))
       return set_active_impl(pi, is_active, tl, tm, 2 * v);
     set_active_impl(i - pi, is_active, tm, tr, 2 * v + 1);
   }
   //! @param le,ri,x,y defines rectangle: indexes in [le,
   //! ri), numbers in [x, y)
-  //! @returns number of active indexes i such that le <= i <
-  //! ri and x <= a[i] < y
+  //! @returns number of active indexes i such that le <= i
+  //! < ri and x <= a[i] < y
   //! @time O(log(n))
   //! @space O(log(n)) for recursive stack
   int rect_count(int le, int ri, int x, int y) {
@@ -85,8 +88,8 @@ struct merge_sort_tree_updates {
     int yi = lower_bound(all(sorted), y) - begin(sorted);
     return rect_count_impl(le, ri, xi, yi, 0, n, 1);
   }
-  int rect_count_impl(int le, int ri, int xi, int yi, int tl,
-    int tr, int v) {
+  int rect_count_impl(int le, int ri, int xi, int yi,
+    int tl, int tr, int v) {
     if (ri <= tl || tr <= le) return 0;
     if (le <= tl && tr <= ri)
       return bool_bits[v].popcount(xi, yi);
@@ -100,12 +103,13 @@ struct merge_sort_tree_updates {
   //! @param x,y defines range of numbers [x, y)
   //! @param k must satisfy 1 <= k <= number of active
   //! indexes i such that x <= a[i] < y
-  //! @returns the kth smallest active index i such that x <=
-  //! a[i] < y
+  //! @returns the kth smallest active index i such that x
+  //! <= a[i] < y
   //!     - kth_smallest(x,y,1) returns the smallest active
   //!     index i such that x <= a[i] < y
-  //!     - kth_smallest(x,y,rect_count(0,n,x,y)) returns the
-  //!     largest active index i such that x <= a[i] < y
+  //!     - kth_smallest(x,y,rect_count(0,n,x,y)) returns
+  //!     the largest active index i such that x <= a[i] <
+  //!     y
   //! @time O(log(n))
   //! @space O(log(n)) for recursive stack
   int kth_smallest(int x, int y, int k) {
@@ -122,7 +126,7 @@ struct merge_sort_tree_updates {
     int cnt_left = bool_bits[2 * v].popcount(pl, pr);
     if (k <= cnt_left)
       return kth_smallest_impl(pl, pr, k, tl, tm, 2 * v);
-    return kth_smallest_impl(xi - pl, yi - pr, k - cnt_left,
-      tm, tr, 2 * v + 1);
+    return kth_smallest_impl(xi - pl, yi - pr,
+      k - cnt_left, tm, tr, 2 * v + 1);
   }
 };

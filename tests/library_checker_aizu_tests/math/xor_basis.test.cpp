@@ -34,7 +34,8 @@ int main() {
       bool inserted_ordered_ll = ordered_ll.insert(elem);
       bool inserted_ordered_bitset =
         ordered_bitset.insert(bitset<lg>(elem));
-      assert(inserted_unordered == inserted_ordered_bitset);
+      assert(
+        inserted_unordered == inserted_ordered_bitset);
       assert(inserted_unordered == inserted_ordered_ll);
       naive_size += inserted_unordered;
       assert(naive_size == sz(unordered.b));
@@ -56,11 +57,13 @@ int main() {
           assert(ordered_bitset.b[j] ==
             bitset<lg>(ordered_ll.b[j]));
           if (ordered_bitset.b[j][j])
-            assert(unordered.shrink(
-                     ordered_bitset.b[j].to_ullong()) == 0);
+            assert(
+              unordered.shrink(
+                ordered_bitset.b[j].to_ullong()) == 0);
         }
         for (int i1 = 0; i1 < sz(unordered.b); i1++) {
-          for (int i2 = i1 + 1; i2 < sz(unordered.b); i2++) {
+          for (int i2 = i1 + 1; i2 < sz(unordered.b);
+               i2++) {
             assert(__lg(unordered.b[i1]) !=
               __lg(unordered.b[i2]));
             assert(((1LL << __lg(unordered.b[i1])) &

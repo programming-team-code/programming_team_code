@@ -58,8 +58,8 @@ int main() {
       }
     }
     for (auto [edge, i_time] : insert_time)
-      add_edge(add_edge, i_time, q, edge.first, edge.second,
-        0, q, 1);
+      add_edge(add_edge, i_time, q, edge.first,
+        edge.second, 0, q, 1);
   }
   auto dfs = [&](auto&& self, int tl, int tr,
                int v) -> void {
@@ -100,7 +100,8 @@ int main() {
         } else if (pow_2 < tr - tl) {
           assert(pow_2 / 2 < tr - tl - pow_2 / 2 &&
             tr - tl - pow_2 / 2 <= pow_2);
-          assert(pow_2 <= 2 * ((tr - tl) - pow_2 / 2) - 1 &&
+          assert(
+            pow_2 <= 2 * ((tr - tl) - pow_2 / 2) - 1 &&
             2 * ((tr - tl) - pow_2 / 2) - 1 <=
               2 * pow_2 - 1);
           assert(__lg(2 * (tr - tl - pow_2 / 2) - 1) ==

@@ -19,7 +19,8 @@ int main() {
     assert(lucas(-1, i) == 0);
     assert(c_small_k(-1, i) == 0);
     assert(lucas(i, i - 1) == i % mod);
-    if (i - 1 < mod) assert(c_small_k(i, i - 1) == i % mod);
+    if (i - 1 < mod)
+      assert(c_small_k(i, i - 1) == i % mod);
     for (int j = 0; j < sz(ch[i]); j++) {
       assert(lucas(i, j) == ch[i][j]);
       if (j < mod) assert(c_small_k(i, j) == ch[i][j]);
@@ -33,8 +34,10 @@ int main() {
   assert(lucas(371283LL, 32981LL) == 0);
   assert(
     lucas(47382946300290018LL, 47382946300290014LL) == 7);
-  assert(lucas(4032010405302301LL, 403201040302301LL) == 0);
-  assert(lucas(4032010405302301LL, 4032010405302298LL) == 4);
+  assert(
+    lucas(4032010405302301LL, 403201040302301LL) == 0);
+  assert(
+    lucas(4032010405302301LL, 4032010405302298LL) == 4);
   cout << "Hello World\n";
   return 0;
 }

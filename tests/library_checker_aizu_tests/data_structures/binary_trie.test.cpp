@@ -1,4 +1,5 @@
-#define PROBLEM "https://judge.yosupo.jp/problem/set_xor_min"
+#define PROBLEM \
+  "https://judge.yosupo.jp/problem/set_xor_min"
 #include "../template.hpp"
 #include "../../../library/data_structures/binary_trie/binary_trie.hpp"
 int main() {

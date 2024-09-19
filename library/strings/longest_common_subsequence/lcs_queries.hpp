@@ -29,7 +29,8 @@ vi lcs_queries(const T& s, const T& t,
     int j = 0;
     rep(t_le, 0, m) {
       while (j < sz(qs[i]) && qs[i][j][0] == t_le)
-        res[qs[i][j][2]] = bit.query(t_le, qs[i][j][1]), j++;
+        res[qs[i][j][2]] = bit.query(t_le, qs[i][j][1]),
+        j++;
       if (dp_inv[t_le] != -1) bit.update(dp_inv[t_le], 1);
     }
   }

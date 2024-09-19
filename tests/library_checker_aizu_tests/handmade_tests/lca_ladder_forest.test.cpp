@@ -43,7 +43,8 @@ int main() {
       assert(tl.dist_edges(u, v) == lc.dist_edges(u, v));
       assert(
         tl.dist_edges(u, v) == lin_lca.dist_edges(u, v));
-      assert(tl.kth_path(u, v, 1) == lc.next_on_path(u, v));
+      assert(
+        tl.kth_path(u, v, 1) == lc.next_on_path(u, v));
       assert(lin_kth_path.kth_path(u, v, 1) ==
         lc.next_on_path(u, v));
       if (tl.t[u].d > tl.t[v].d) swap(u, v);

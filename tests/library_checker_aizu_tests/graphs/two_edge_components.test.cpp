@@ -19,8 +19,9 @@ int main() {
   }
   bridges cc(adj, m);
   vector<vector<int>> bt = bridge_tree(adj, cc);
-  assert(find(begin(cc.two_edge_ccid), end(cc.two_edge_ccid),
-           -1) == end(cc.two_edge_ccid));
+  assert(
+    find(begin(cc.two_edge_ccid), end(cc.two_edge_ccid),
+      -1) == end(cc.two_edge_ccid));
   // check correctness of bridge tree
   {
     assert(sz(bt) == cc.num_2_edge_ccs);
@@ -31,8 +32,8 @@ int main() {
       [](int sum, const auto& neighbors) -> int {
         return sum + sz(neighbors);
       });
-    int cnt_bridges =
-      accumulate(begin(cc.is_bridge), end(cc.is_bridge), 0);
+    int cnt_bridges = accumulate(begin(cc.is_bridge),
+      end(cc.is_bridge), 0);
     assert(sum_deg % 2 == 0 && sum_deg / 2 == cnt_bridges);
   }
   dsu_restorable dsu(n);

@@ -25,12 +25,13 @@ struct wavelet_tree_updates {
   //!     num) - begin(sorted); wavelet_tree_updates wtu(a,
   //!     0, sz(sorted), vector<bool>(sz(a), 1));
   //! @endcode
-  //! @param a,a_minv,a_maxv must satisfy minv <= a[i] < maxv
+  //! @param a,a_minv,a_maxv must satisfy minv <= a[i] <
+  //! maxv
   //! @param active active[i] == 1 iff index i is initially
   //! active
   //! @time O((maxv - minv) + n * log(maxv - minv))
-  //! @space O((maxv - minv) + n * log(maxv - minv) / 64) for
-  //! `bool_presums` and for `bool_bits`
+  //! @space O((maxv - minv) + n * log(maxv - minv) / 64)
+  //! for `bool_presums` and for `bool_bits`
   wavelet_tree_updates(const vi& a, int a_minv, int a_maxv,
     const vector<bool>& active):
     n(sz(a)), minv(a_minv), maxv(a_maxv),
@@ -44,14 +45,14 @@ struct wavelet_tree_updates {
   void build(vector<pair<int, bool>>& cpy, int le, int ri,
     int tl, int tr, int v) {
     vector<bool> bools(ri - le);
-    transform(begin(cpy) + le, begin(cpy) + ri, begin(bools),
-      [](auto& p) { return p.second; });
+    transform(begin(cpy) + le, begin(cpy) + ri,
+      begin(bools), [](auto& p) { return p.second; });
     bool_bits[v] = bool_bit(bools);
     if (tr - tl <= 1) return;
     int tm = split(tl, tr);
     auto low = [&](auto& p) { return p.first < tm; };
-    transform(begin(cpy) + le, begin(cpy) + ri, begin(bools),
-      low);
+    transform(begin(cpy) + le, begin(cpy) + ri,
+      begin(bools), low);
     bool_presums[v] = bool_presum(bools);
     int mi = stable_partition(begin(cpy) + le,
                begin(cpy) + ri, low) -
@@ -67,19 +68,20 @@ struct wavelet_tree_updates {
     if (bool_bits[1].on(i) == is_active) return;
     set_active_impl(i, is_active, minv, maxv, 1);
   }
-  void set_active_impl(int i, bool is_active, int tl, int tr,
-    int v) {
+  void set_active_impl(int i, bool is_active, int tl,
+    int tr, int v) {
     bool_bits[v].set(i, is_active);
     if (tr - tl == 1) return;
-    int tm = split(tl, tr), pi = bool_presums[v].popcount(i);
+    int tm = split(tl, tr),
+        pi = bool_presums[v].popcount(i);
     if (bool_presums[v].on(i))
       return set_active_impl(pi, is_active, tl, tm, 2 * v);
     set_active_impl(i - pi, is_active, tm, tr, 2 * v + 1);
   }
   //! @param le,ri,x,y defines rectangle: indexes in [le,
   //! ri), numbers in [x, y)
-  //! @returns number of active indexes i such that le <= i <
-  //! ri and x <= a[i] < y
+  //! @returns number of active indexes i such that le <= i
+  //! < ri and x <= a[i] < y
   //! @time O(log(maxv - minv) * log(n / 64))
   //! @space O(log(maxv - minv)) for recursive stack
   int rect_count(int le, int ri, int x, int y) {
@@ -101,8 +103,8 @@ struct wavelet_tree_updates {
   //! @param k must satisfy 1 <= k <= # active indexes in
   //! [le, ri)
   //! @returns kth smallest active number in range.
-  //!     - kth_smallest(le,ri,1) returns the smallest active
-  //!     number
+  //!     - kth_smallest(le,ri,1) returns the smallest
+  //!     active number
   //!     - kth_smallest(le,ri,rect_count(le,ri,-INF,INF))
   //!     returns the largest active number
   //! @time O(log(maxv - minv) * log(n / 64))
@@ -119,7 +121,7 @@ struct wavelet_tree_updates {
     int cnt_left = bool_bits[2 * v].popcount(pl, pr);
     if (k <= cnt_left)
       return kth_smallest_impl(pl, pr, k, tl, tm, 2 * v);
-    return kth_smallest_impl(le - pl, ri - pr, k - cnt_left,
-      tm, tr, 2 * v + 1);
+    return kth_smallest_impl(le - pl, ri - pr,
+      k - cnt_left, tm, tr, 2 * v + 1);
   }
 };

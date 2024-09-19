@@ -41,13 +41,15 @@ int main() {
     } else {
       int res = ld.kth_par(v, u_lca + v_lca - k);
       assert(res == jmp(ld.b_tbl, v, u_lca + v_lca - k));
-      assert(res == ld_rooted.kth_par(v, u_lca + v_lca - k));
+      assert(
+        res == ld_rooted.kth_par(v, u_lca + v_lca - k));
       assert(res ==
         ld_rooted.kth_par(v + n, u_lca + v_lca - k) - n);
-      assert(
-        res == lin_ld_rooted.kth_par(v, u_lca + v_lca - k));
       assert(res ==
-        lin_ld_rooted.kth_par(v + n, u_lca + v_lca - k) - n);
+        lin_ld_rooted.kth_par(v, u_lca + v_lca - k));
+      assert(res ==
+        lin_ld_rooted.kth_par(v + n, u_lca + v_lca - k) -
+          n);
       cout << res << '\n';
     }
   }

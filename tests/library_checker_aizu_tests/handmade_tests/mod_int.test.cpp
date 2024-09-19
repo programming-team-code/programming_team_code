@@ -24,12 +24,14 @@ int main() {
       int to_add = rnd(-mod + 1, mod - 1);
       int prev_val = val.x;
       val = val + mint(to_add);
-      assert(val.x == (1LL * prev_val + to_add + mod) % mod);
+      assert(
+        val.x == (1LL * prev_val + to_add + mod) % mod);
     } else if (type == 2) {
       int to_sub = rnd(-mod + 1, mod - 1);
       int prev_val = val.x;
       val = val - mint(to_sub);
-      assert(val.x == (1LL * prev_val - to_sub + mod) % mod);
+      assert(
+        val.x == (1LL * prev_val - to_sub + mod) % mod);
     } else if (type == 3) {
       int to_mult = rnd(-mod + 1, mod - 1);
       int prev_val = val.x;
@@ -62,7 +64,8 @@ int main() {
       ll gcd = euclid(init, mod, x, y);
       assert(x * init + y * mod == gcd);
       assert(-mod / gcd < x && x < mod / gcd);
-      if (gcd == 1) assert((mint(1) / init).x == mint(x).x);
+      if (gcd == 1)
+        assert((mint(1) / init).x == mint(x).x);
     }
   }
   cout << "Hello World\n";
