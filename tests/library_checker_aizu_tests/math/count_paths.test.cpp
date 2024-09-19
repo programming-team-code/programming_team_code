@@ -1,6 +1,5 @@
 #define PROBLEM                      \
-  "https://judge.yosupo.jp/problem/" \
-  "number_of_increasing_sequences_between_two_sequences"
+  "https://judge.yosupo.jp/problem/number_of_increasing_sequences_between_two_sequences"
 #include "../template.hpp"
 #define const ;
 #define mod mod_different_name

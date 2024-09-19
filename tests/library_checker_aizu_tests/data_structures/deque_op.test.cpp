@@ -1,6 +1,5 @@
 #define PROBLEM                      \
-  "https://judge.yosupo.jp/problem/" \
-  "deque_operate_all_composite"
+  "https://judge.yosupo.jp/problem/deque_operate_all_composite"
 #include "../template.hpp"
 #include "../../../library/contest/random.hpp"
 #include "../../../library/data_structures/deque_op/queue_only.hpp"

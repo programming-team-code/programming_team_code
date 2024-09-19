@@ -1,6 +1,5 @@
 #define PROBLEM                      \
-  "https://judge.yosupo.jp/problem/" \
-  "common_interval_decomposition_tree"
+  "https://judge.yosupo.jp/problem/common_interval_decomposition_tree"
 #include "../template.hpp"
 #include "../perm_tree_asserts.hpp"
 #include "../../../library/data_structures/uncommon/permutation_tree.hpp"

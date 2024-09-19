@@ -1,6 +1,5 @@
 #define PROBLEM                      \
-  "https://judge.yosupo.jp/problem/" \
-  "vertex_get_range_contour_add_on_tree"
+  "https://judge.yosupo.jp/problem/vertex_get_range_contour_add_on_tree"
 #include "../template.hpp"
 #include "../edge_cd_asserts.hpp"
 #include "../../../library/trees/edge_centroid_decomp/contour_range_update.hpp"

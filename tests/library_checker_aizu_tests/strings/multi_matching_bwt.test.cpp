@@ -1,6 +1,5 @@
 #define PROBLEM                                        \
-  "https://onlinejudge.u-aizu.ac.jp/courses/lesson/1/" \
-  "ALDS1/all/ALDS1_14_D"
+  "https://onlinejudge.u-aizu.ac.jp/courses/lesson/1/ALDS1/all/ALDS1_14_D"
 #include "../template.hpp"
 #include "../mono_st_asserts.hpp"
 #include "compress_char.hpp"

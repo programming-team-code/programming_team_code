@@ -1,6 +1,5 @@
 #define PROBLEM                      \
-  "https://judge.yosupo.jp/problem/" \
-  "two_edge_connected_components"
+  "https://judge.yosupo.jp/problem/two_edge_connected_components"
 #include "../template.hpp"
 #include "../../../library/graphs/bridges_cuts/bridge_tree.hpp"
 #include "../../../library/data_structures/dsu/dsu_restorable.hpp"

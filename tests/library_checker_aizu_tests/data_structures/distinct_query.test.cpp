@@ -1,6 +1,5 @@
 #define PROBLEM                      \
-  "https://judge.yosupo.jp/problem/" \
-  "static_range_count_distinct"
+  "https://judge.yosupo.jp/problem/static_range_count_distinct"
 #include "../template.hpp"
 #include "../../../library/data_structures/seg_tree_uncommon/distinct_query.hpp"
 int main() {

@@ -1,7 +1,5 @@
 #define PROBLEM                                        \
-  "https://onlinejudge.u-aizu.ac.jp/courses/lesson/8/" \
-  "ITP2/"                                              \
-  "all/ITP2_11_B"
+  "https://onlinejudge.u-aizu.ac.jp/courses/lesson/8/ITP2/all/ITP2_11_B"
 #include "../template.hpp"
 int main() {
   cin.tie(0)->sync_with_stdio(0);

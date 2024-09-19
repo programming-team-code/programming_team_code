@@ -1,7 +1,5 @@
 #define PROBLEM                                        \
-  "https://onlinejudge.u-aizu.ac.jp/courses/lesson/8/" \
-  "ITP2/"                                              \
-  "all/ITP2_1_B"
+  "https://onlinejudge.u-aizu.ac.jp/courses/lesson/8/ITP2/all/ITP2_1_B"
 #include "../template.hpp"
 #include "../../../library/data_structures/deque_op/queue_only.hpp"
 int main() {

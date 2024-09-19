@@ -1,6 +1,5 @@
 #define PROBLEM                      \
-  "https://judge.yosupo.jp/problem/" \
-  "range_parallel_unionfind"
+  "https://judge.yosupo.jp/problem/range_parallel_unionfind"
 #include "../template.hpp"
 #include "../../../library/data_structures/dsu/range_parallel_dsu.hpp"
 #include "../../../library/contest/random.hpp"

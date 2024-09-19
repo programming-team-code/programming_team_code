@@ -1,6 +1,5 @@
 #define PROBLEM                      \
-  "https://judge.yosupo.jp/problem/" \
-  "frequency_table_of_tree_distance"
+  "https://judge.yosupo.jp/problem/frequency_table_of_tree_distance"
 #include "../template.hpp"
 #include "../cd_asserts.hpp"
 #include "../../../library/contest/random.hpp"
