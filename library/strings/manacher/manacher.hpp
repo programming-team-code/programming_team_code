@@ -1,20 +1,18 @@
 #pragma once
 //! https://codeforces.com/blog/entry/12143#comment-324162
-//! subarray [le, ri] has "center" i = le + ri
+//! @code
+//!   auto man = manacher(s);
+//! @endcode
+//!
+//! man[center] = index of start of longest
+//!   palindrome centered at `center`
 //!
 //! center 0 2 4 6 8
 //! string b a a b a
 //! center  1 3 5 7
 //!
-//! man = {0, 1, 1, 0, 2, 3, 2, 4, 4}
-//!
-//! for "center" `i`, man[i] stores minimum index `le` such
-//! that [le, i - le] is a palindrome
-//!
-//! @param s string/vector
-//! @returns see above
 //! @time O(n)
-//! @space a O(n) vector is allocated and returned
+//! @space O(n)
 template<class T> vi manacher(const T& s) {
   int n = sz(s), p = 0;
   vi man(max(0, 2 * n - 1));
