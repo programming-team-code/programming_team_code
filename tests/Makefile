@@ -11,8 +11,6 @@ help:
 	@echo "                                     |"
 	@echo "make clangtidy                       | runs clang-tidy (mainly to verify snake_case)"
 	@echo "                                     |"
-	@echo "make doxygen                         | runs doxygen"
-	@echo "                                     |"
 	@echo "make ptc                             | build ptc.pdf from .tex file"
 	@echo "                                     |"
 	@echo "make shellcheck_shfmt                | runs shellcheck and shfmt"
@@ -44,9 +42,6 @@ clangtidy:
 
 files_without_tests:
 	./scripts/files_without_tests.sh
-
-doxygen:
-	./scripts/doxygen.sh
 
 ptc:
 	./scripts/ptc.sh

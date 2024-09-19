@@ -5,7 +5,8 @@
 #undef RMQ
 #undef LCA
 #include "../../library/contest/random.hpp"
-void compress_tree_asserts(vector<vector<int>> adj, linear_lca& lin_lca, LCA& lc_rm) {
+void compress_tree_asserts(vector<vector<int>> adj,
+  linear_lca& lin_lca, LCA& lc_rm) {
   int n = sz(adj);
   vector<bool> used(n);
   KACTL_LCA kactl_lca(adj);
@@ -30,14 +31,19 @@ void compress_tree_asserts(vector<vector<int>> adj, linear_lca& lin_lca, LCA& lc
       }
     }
     auto kactl_res = compressTree(kactl_lca, subset);
-    auto [lin_parent, lin_to_node] = lin_lca.compress_tree(subset);
-    auto [lc_rm_parent, lc_rm_to_node] = lc_rm.compress_tree(subset);
-    assert(lin_parent == lc_rm_parent && lin_to_node == lc_rm_to_node);
-    assert(sz(lin_parent) == sz(lin_to_node) && sz(lin_parent) == sz(kactl_res));
+    auto [lin_parent, lin_to_node] =
+      lin_lca.compress_tree(subset);
+    auto [lc_rm_parent, lc_rm_to_node] =
+      lc_rm.compress_tree(subset);
+    assert(lin_parent == lc_rm_parent &&
+      lin_to_node == lc_rm_to_node);
+    assert(sz(lin_parent) == sz(lin_to_node) &&
+      sz(lin_parent) == sz(kactl_res));
     for (int i = 0; i < sz(lin_parent); i++) {
       assert(lin_to_node[i] == kactl_res[i].second);
       assert(lin_parent[i] < i);
-      if (i > 0) assert(lin_parent[i] == kactl_res[i].first);
+      if (i > 0)
+        assert(lin_parent[i] == kactl_res[i].first);
       else assert(lin_parent[i] == -1);
     }
     for (int u : subset) used[u] = 0;

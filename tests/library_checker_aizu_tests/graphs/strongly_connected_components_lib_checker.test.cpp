@@ -1,9 +1,7 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/scc"
-
 #include "../template.hpp"
 #include "../scc_asserts.hpp"
 #include "../../../library/graphs/strongly_connected_components/add_edges_strongly_connected.hpp"
-
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n, m;
@@ -18,7 +16,8 @@ int main() {
   auto [num_sccs, scc_id] = sccs(adj);
   cout << num_sccs << '\n';
   vector<vector<int>> each_scc(num_sccs);
-  for (int i = 0; i < n; i++) each_scc[scc_id[i]].push_back(i);
+  for (int i = 0; i < n; i++)
+    each_scc[scc_id[i]].push_back(i);
   for (int i = num_sccs - 1; i >= 0; i--) {
     cout << sz(each_scc[i]) << " ";
     for (auto node : each_scc[i]) cout << node << " ";

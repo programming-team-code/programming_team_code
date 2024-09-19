@@ -1,16 +1,14 @@
-#define PROBLEM "https://judge.yosupo.jp/problem/static_range_mode_query"
+#define PROBLEM                      \
+  "https://judge.yosupo.jp/problem/" \
+  "static_range_mode_query"
 #include "../template.hpp"
-
 #include "../../../library/data_structures/uncommon/mode_query.hpp"
-
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n, q;
   cin >> n >> q;
   vector<int> a(n);
-  for (int i = 0; i < n; i++) {
-    cin >> a[i];
-  }
+  for (int i = 0; i < n; i++) cin >> a[i];
   vector<int> comp(a);
   sort(begin(comp), end(comp));
   comp.erase(unique(begin(comp), end(comp)), end(comp));
@@ -21,7 +19,8 @@ int main() {
       if (comp[mid] <= val) start = mid;
       else end = mid;
     }
-    assert(0 <= start && start < sz(comp) && comp[start] == val);
+    assert(0 <= start && start < sz(comp) &&
+      comp[start] == val);
     val = start;
   }
   mode_query mq(a);

@@ -1,11 +1,8 @@
-//! @file
 #pragma once
-//! @see https://cp-algorithms.com/string/prefix-function.html#implementation
-//! @param s string/array
-//! @returns prefix function
+//! https://cp-algorithms.com/string/prefix-function.html#implementation
 //! @time O(n)
-//! @space this function allocates/returns a O(n) vector
-template <class T> vi prefix_function(const T& s) {
+//! @space O(n)
+template<class T> vi prefix_function(const T& s) {
   vi pi(sz(s));
   rep(i, 1, sz(s)) {
     int j = pi[i - 1];

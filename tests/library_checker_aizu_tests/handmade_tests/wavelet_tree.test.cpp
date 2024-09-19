@@ -1,9 +1,9 @@
-#define PROBLEM "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A"
+#define PROBLEM                             \
+  "https://judge.u-aizu.ac.jp/onlinejudge/" \
+  "description.jsp?id=ITP1_1_A"
 #include "../template.hpp"
 #include "../../../library/contest/random.hpp"
-
 #include "../../../library/data_structures/wavelet_merge/wavelet_tree.hpp"
-
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   // brute force small cases
@@ -13,7 +13,8 @@ int main() {
       int maxn = rnd<int>(-1000, 1000);
       if (minn > maxn) swap(minn, maxn);
       vector<int> arr(n);
-      generate(begin(arr), end(arr), [&]() { return rnd<int>(minn, maxn); });
+      generate(begin(arr), end(arr),
+        [&]() { return rnd<int>(minn, maxn); });
       wavelet_tree wt(arr, minn, maxn + 1);
       for (int queries = 3; queries--;) {
         int x = rnd<int>(-1000, 1000);
@@ -34,12 +35,14 @@ int main() {
       if (n <= 35) {
         for (int le = 0; le <= n; le++) {
           for (int ri = le; ri <= n; ri++) {
-            vector<int> subarray(begin(arr) + le, begin(arr) + ri);
+            vector<int> subarray(begin(arr) + le,
+              begin(arr) + ri);
             sort(begin(subarray), end(subarray));
             int sum = 0;
             for (int k = 0; k <= sz(subarray); k++) {
               if (k) {
-                assert(wt.kth_smallest(le, ri, k) == subarray[k - 1]);
+                assert(wt.kth_smallest(le, ri, k) ==
+                  subarray[k - 1]);
                 sum += subarray[k - 1];
               }
               assert(wt.kth_sum(le, ri, k) == sum);
@@ -51,7 +54,8 @@ int main() {
   }
   // max test for overflow
   {
-    const int mx_n = 100'000, large = 1'000'000'000, val_range = 20;
+    const int mx_n = 100'000, large = 1'000'000'000,
+              val_range = 20;
     vector<int> arr(mx_n), count_val(val_range);
     for (int& val : arr) {
       val = rnd<int>(large, large + val_range - 1);
@@ -91,7 +95,8 @@ int main() {
         curr_sum += 1LL * (i + large) * count_val[i];
       }
       assert(kth_smallest_naive != -1);
-      assert(wt.kth_smallest(0, mx_n, k) == kth_smallest_naive);
+      assert(
+        wt.kth_smallest(0, mx_n, k) == kth_smallest_naive);
       assert(wt.kth_sum(0, mx_n, k) == curr_sum);
     }
   }

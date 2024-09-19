@@ -1,8 +1,8 @@
-#define PROBLEM "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A"
+#define PROBLEM                             \
+  "https://judge.u-aizu.ac.jp/onlinejudge/" \
+  "description.jsp?id=ITP1_1_A"
 #include "../template.hpp"
-
 #include "../../../kactl/content/number-theory/Factor.h"
-
 int main() {
   cin.tie(0)->sync_with_stdio(0);
 #include "../../../library/math/prime_sieve/mobius.hpp"
@@ -23,8 +23,7 @@ int main() {
           break;
         }
       }
-      if (found_square)
-        continue;
+      if (found_square) continue;
     }
     assert(1 - 2 * (sz(factors) % 2) == mobius[i]);
   }

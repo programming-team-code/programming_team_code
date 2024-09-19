@@ -1,10 +1,10 @@
-#define PROBLEM "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A"
+#define PROBLEM                             \
+  "https://judge.u-aizu.ac.jp/onlinejudge/" \
+  "description.jsp?id=ITP1_1_A"
 #include "../template.hpp"
 #include "../../../library/contest/random.hpp"
-
 #include "../../../library/math/n_choose_k/large_n_choose_small_k.hpp"
 #include "../../../library/math/n_choose_k/lucas_theorem.hpp"
-
 int main() {
   cin.tie(0)->sync_with_stdio(0);
 #define mod mod_2
@@ -23,8 +23,7 @@ int main() {
       assert(c_small_k(i, i - 1) == i % mod);
     for (int j = 0; j < sz(ch[i]); j++) {
       assert(lucas(i, j) == ch[i][j]);
-      if (j < mod)
-        assert(c_small_k(i, j) == ch[i][j]);
+      if (j < mod) assert(c_small_k(i, j) == ch[i][j]);
     }
   }
   for (int tests = 100'000; tests--;) {
@@ -33,9 +32,12 @@ int main() {
     assert(lucas(n, k) == c_small_k(n, k));
   }
   assert(lucas(371283LL, 32981LL) == 0);
-  assert(lucas(47382946300290018LL, 47382946300290014LL) == 7);
-  assert(lucas(4032010405302301LL, 403201040302301LL) == 0);
-  assert(lucas(4032010405302301LL, 4032010405302298LL) == 4);
+  assert(
+    lucas(47382946300290018LL, 47382946300290014LL) == 7);
+  assert(
+    lucas(4032010405302301LL, 403201040302301LL) == 0);
+  assert(
+    lucas(4032010405302301LL, 4032010405302298LL) == 4);
   cout << "Hello World\n";
   return 0;
 }

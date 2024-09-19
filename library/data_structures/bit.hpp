@@ -1,35 +1,24 @@
-//! @file
 #pragma once
-//! Binary Indexed Tree
+//! @code
+//!   BIT<int> b(n);
+//!   BIT<ll> b(n);
+//! @endcode
+//! @time O(n + q log n)
+//! @space O(n)
 // NOLINTNEXTLINE(readability-identifier-naming)
-template <class T> struct BIT {
+template<class T> struct BIT {
   vector<T> s;
-  //! @param n initial size
-  //! @time O(n)
-  //! @space O(n) for `s` vector
-  BIT(int n) : s(n) {}
+  BIT(int n): s(n) {}
 #include "bit_uncommon/vector_constructor.hpp"
-  //! @param i index
-  //! @param d delta
-  //! @time O(log n)
-  //! @space O(1)
   void update(int i, T d) {
     for (; i < sz(s); i |= i + 1) s[i] += d;
   }
-  //! @param ri defines range [0, ri)
-  //! @returns a[0] + a[1] + ... + a[ri - 1]
-  //! @time O(log n)
-  //! @space O(1)
-  T query(int ri) {
+  T query(int ri) { // [0, ri)
     T ret = 0;
     for (; ri > 0; ri &= ri - 1) ret += s[ri - 1];
     return ret;
   }
-  //! @param le,ri defines range [le, ri)
-  //! @returns a[le] + a[le + 1] + ... + a[ri - 1]
-  //! @time O(log n)
-  //! @space O(1)
-  T query(int le, int ri) {
+  T query(int le, int ri) { // [le, ri)
     return query(ri) - query(le);
   }
 #include "bit_uncommon/lower_bound.hpp"
