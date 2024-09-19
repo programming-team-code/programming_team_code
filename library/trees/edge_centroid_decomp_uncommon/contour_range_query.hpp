@@ -1,7 +1,7 @@
 #pragma once
 #include "../../data_structures/bit.hpp"
 #include "sum_adjacent.hpp"
-#include "edge_cd.hpp"
+#include "../edge_cd.hpp"
 //! https://judge.yosupo.jp/problem/vertex_add_range_contour_sum_on_tree
 template<class T> struct contour_range_query {
   int n;

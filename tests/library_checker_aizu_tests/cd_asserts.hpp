@@ -1,5 +1,5 @@
 #pragma once
-#include "../../library/trees/centroid_decomp/centroid_decomp.hpp"
+#include "../../library/trees/centroid_decomp.hpp"
 void cd_asserts(const vector<vector<int>>& adj) {
   vector<bool> seen_cent(sz(adj));
   centroid(adj,

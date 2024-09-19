@@ -4,7 +4,7 @@
 #include "../edge_cd_asserts.hpp"
 #include "../../../kactl/stress-tests/utilities/genTree.h"
 #include "../../../library/math/mod_int_pow.hpp"
-#include "../../../library/trees/edge_centroid_decomp/edge_cd.hpp"
+#include "../../../library/trees/edge_cd.hpp"
 int main() {
   {
     vector<vector<int>> adj;
