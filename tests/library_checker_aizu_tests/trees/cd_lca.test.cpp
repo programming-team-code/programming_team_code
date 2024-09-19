@@ -3,7 +3,7 @@
 #undef _GLIBCXX_DEBUG
 #include "../template.hpp"
 #include "../cd_asserts.hpp"
-#include "../../../library/trees/centroid_decomp/lca.hpp"
+#include "../../../library/trees/centroid_decomp_uncommon/lca.hpp"
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n, q;

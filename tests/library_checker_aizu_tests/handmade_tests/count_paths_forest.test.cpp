@@ -2,10 +2,10 @@
   "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A"
 #include "../template.hpp"
 #include "../../../library/contest/random.hpp"
-#include "../../../library/trees/centroid_decomp/count_paths_per_node.hpp"
+#include "../../../library/trees/centroid_decomp_uncommon/count_paths_per_node.hpp"
 #include "../../../library/data_structures/dsu/dsu_restorable.hpp"
 #include "../../../library/trees/tree_lift/tree_lift.hpp"
-#include "../../../library/trees/centroid_decomp/count_paths_per_length.hpp"
+#include "../../../library/trees/centroid_decomp_uncommon/count_paths_per_length.hpp"
 vector<vector<ll>> naive(const vector<vector<int>>& adj,
   dsu_restorable& dsu) {
   tree_lift tl(adj);

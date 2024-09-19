@@ -2,7 +2,7 @@
   "https://judge.yosupo.jp/problem/frequency_table_of_tree_distance"
 #include "../template.hpp"
 #include "../edge_cd_asserts.hpp"
-#include "../../../library/trees/edge_centroid_decomp/count_paths_per_length.hpp"
+#include "../../../library/trees/edge_centroid_decomp_uncommon_uncommon/count_paths_per_length.hpp"
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n;
