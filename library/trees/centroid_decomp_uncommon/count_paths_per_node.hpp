@@ -1,5 +1,5 @@
 #pragma once
-#include "centroid_decomp.hpp"
+#include "../centroid_decomp.hpp"
 //! @param adj unrooted, connected forest
 //! @param k number of edges
 //! @returns array `num_paths` where `num_paths[i]` =
