@@ -1,32 +1,22 @@
 #pragma once
 //! https://codeforces.com/blog/entry/104997
 //! https://codeforces.com/blog/entry/120446
-//! only handle paths with >=1 edge in each edge-set
-//!     (it is guaranteed the edge-sets are non-empty i.e. 0
-//!     < split < sz(adj[cent]))
-//! don't handle cent<->v paths as these will be handled in
-//! some smaller decomposition
-//!     (except for single-edge paths, so handle these
-//!     separately)
-//!
+//! https://youtu.be/wDwaMo5xa-k
 //! @code
-//!     edge_cd(adj, [&](const vector<vi>& adj, int cent, int
-//!     split) {
-//!         // subtrees of prefix [0, split) of adj[cent] are
-//!         the first edge-set
-//!         // subtrees of suffix [split, sz(adj[cent])) of
-//!         adj[cent] are the second edge-set
-//!     });
+//!   edge_cd(adj, [&](const vector<vi>& adj,
+//!     int cent, int split) {
+//!     // subtrees of prefix [0, split) of adj[cent]
+//!     // are the first edge-set
+//!     // subtrees of suffix [split, sz(adj[cent]))
+//!     // of adj[cent] are the second edge-set
+//!   });
 //! @endcode
+//! @time O(n log1.5 n)
+//! @space O(n)
 template<class F> struct edge_cd {
   vector<vi> adj;
   F f;
   vi sub_sz;
-  //! @param a_adj,a_f unrooted tree and callback
-  //! @time O(n * log1.5(n))
-  //! @space `adj` and `sub_sz` arrays take O(n); recursion
-  //! stack for `dfs` is O(log1.5 n); recursion stack for
-  //! `find_cent` is O(n)
   edge_cd(const vector<vi>& a_adj, F a_f):
     adj(a_adj), f(a_f), sub_sz(sz(adj)) {
     dfs(0, sz(adj));

@@ -3,15 +3,12 @@
 //!     centroid(adj, [&](const vector<vi>& adj, int cent) {
 //!     });
 //! @endcode
+//! @time O(n log n)
+//! @space O(n)
 template<class F> struct centroid {
   vector<vi> adj;
   F f;
   vi sub_sz;
-  //! @param a_adj,a_f undirected forest and callback
-  //! @time O(n log n)
-  //! @space `adj` and `sub_sz` arrays take O(n); recursion
-  //! stack for `dfs` is O(log n); recursion stack for
-  //! `calc_sz` is O(n)
   centroid(const vector<vi>& a_adj, F a_f):
     adj(a_adj), f(a_f), sub_sz(sz(adj), -1) {
     rep(i, 0, sz(adj)) if (sub_sz[i] == -1) dfs(i);

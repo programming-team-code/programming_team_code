@@ -1,18 +1,16 @@
 #pragma once
 //! @code
-//!     auto [num_distinct_subtrees, iso_id] =
+//!   auto [num_distinct_subtrees, iso_id] =
 //!     subtree_iso(adj);
 //! @endcode
+//! - 0 <= iso_id[v] < num_distinct_subtrees
+//! - iso_id[u] == iso_id[v] iff subtree u is
+//!     isomorphic to subtree v
+//! @time O(n log n)
+//! @space O(n)
 struct subtree_iso {
-  int num_distinct_subtrees; //!< number of classes (by iso.)
-                             //!< of subtrees
-  //! - 0 <= iso_id[v] < num_distinct_subtrees
-  //! - iso_id[u] == iso_id[v] iff subtree u is isomorphic to
-  //! subtree v
+  int num_distinct_subtrees;
   vi iso_id;
-  //! @param adj rooted forest (rooted or unrooted)
-  //! @time O(n log n)
-  //! @space `iso_id` and `hashes` both are O(n)
   subtree_iso(const vector<vi>& adj): iso_id(sz(adj), -1) {
     map<vi, int> hashes;
     auto dfs = [&](auto&& self, int v, int p) -> int {

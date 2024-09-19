@@ -2,6 +2,8 @@
 #include "../../monotonic_stack/monotonic_stack.hpp" //!< only needed for compress_tree
 #include "../../data_structures/rmq.hpp"
 //! https://github.com/kth-competitive-programming/kactl/blob/main/content/graph/LCA.h
+//! @time O(nlogn + q)
+//! @space O(nlogn)
 // NOLINTNEXTLINE(readability-identifier-naming)
 struct LCA {
   struct node {
@@ -9,9 +11,6 @@ struct LCA {
   };
   vector<node> t;
   RMQ<int, function<int(int, int)>> rmq = {{}, nullptr};
-  //! @param adj forest (rooted or unrooted)
-  //! @time O(n log n)
-  //! @space O(n log n) for rmq, all other vectors are O(n)
   LCA(const vector<vi>& adj): t(sz(adj)) {
     vi order;
     auto dfs = [&](auto&& self, int v) -> void {
@@ -25,10 +24,6 @@ struct LCA {
     rmq = {order,
       [&](int v, int u) { return t[v].d < t[u].d ? v : u; }};
   }
-  //! @param u,v 2 nodes in the same component
-  //! @returns lca of u, v
-  //! @time O(1)
-  //! @space O(1)
   int lca(int v, int u) {
     if (v == u) return v;
     auto [x, y] = minmax(t[v].in, t[u].in);
