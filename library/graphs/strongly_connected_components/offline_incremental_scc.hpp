@@ -1,17 +1,13 @@
 #pragma once
 #include "scc.hpp"
 //! https://codeforces.com/blog/entry/91608
-//!
-//! @param edge_updates directed edges {u, v} where u -> v
-//! @param n number of vertices
-//!
-//! @returns a vec joins where joins[i] = minimum prefix of
-//! edges [0, joins[i]] for eds[i][0] and eds[i][1] to be in
-//! the same SCC; iff eds[i][0] and eds[i][1] are never in
-//! the same SCC then joins[i] = m
-//!
-//! @note for self-edges (u, u), joins[i] = -1
-//!
+//! @code
+//!   auto joins[i] = offline_incremental_scc(eds, n);
+//! @endcode
+//! joins[i] = minimum prefix of edges [0, joins[i]] for
+//!   eds[i][0] and eds[i][1] to be in the same SCC
+//! joins[i] = m if they're never in the same SCC
+//! joins[i] = -1 if eds[i][0] == eds[i][1]
 //! @time O((n + m) log m)
 //! @space O(n + m)
 vi offline_incremental_scc(
