@@ -1,6 +1,5 @@
 #define PROBLEM                      \
-  "https://judge.yosupo.jp/problem/" \
-  "number_of_subsequences"
+  "https://judge.yosupo.jp/problem/number_of_subsequences"
 #include "../template.hpp"
 #include "../../../library/math/num_distinct_subsequences.hpp"
 int main() {

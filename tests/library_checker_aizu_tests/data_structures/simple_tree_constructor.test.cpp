@@ -1,6 +1,5 @@
 #define PROBLEM                      \
-  "https://judge.yosupo.jp/problem/" \
-  "point_set_range_composite"
+  "https://judge.yosupo.jp/problem/point_set_range_composite"
 #include "../template.hpp"
 #include "../../../library/data_structures/seg_tree.hpp"
 const int mod = 998'244'353;

@@ -1,7 +1,5 @@
 #define PROBLEM                                         \
-  "https://onlinejudge.u-aizu.ac.jp/courses/library/7/" \
-  "DPL/"                                                \
-  "all/DPL_3_B"
+  "https://onlinejudge.u-aizu.ac.jp/courses/library/7/DPL/all/DPL_3_B"
 #include "../template.hpp"
 #include "../mono_st_asserts.hpp"
 #include "../../../library/contest/random.hpp"

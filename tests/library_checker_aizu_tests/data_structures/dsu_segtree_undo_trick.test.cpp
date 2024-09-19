@@ -1,6 +1,5 @@
 #define PROBLEM                      \
-  "https://judge.yosupo.jp/problem/" \
-  "dynamic_graph_vertex_add_component_sum"
+  "https://judge.yosupo.jp/problem/dynamic_graph_vertex_add_component_sum"
 #include "../template.hpp"
 #include "../../../library/data_structures/dsu/dsu_restorable.hpp"
 #include "../../../library/data_structures/lazy_seg_tree.hpp"

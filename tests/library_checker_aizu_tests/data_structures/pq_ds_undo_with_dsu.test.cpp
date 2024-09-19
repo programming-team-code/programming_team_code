@@ -1,6 +1,5 @@
 #define PROBLEM                      \
-  "https://judge.yosupo.jp/problem/" \
-  "dynamic_graph_vertex_add_component_sum"
+  "https://judge.yosupo.jp/problem/dynamic_graph_vertex_add_component_sum"
 // since _GLIBCXX_DEBUG causes std::map insert/erase
 // operations to be O(n)
 #undef _GLIBCXX_DEBUG

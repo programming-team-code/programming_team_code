@@ -1,6 +1,5 @@
 #define PROBLEM                      \
-  "https://judge.yosupo.jp/problem/" \
-  "binomial_coefficient_prime_mod"
+  "https://judge.yosupo.jp/problem/binomial_coefficient_prime_mod"
 #include "../template.hpp"
 // trick to remove const so I can use arbitrary prime mode
 // here

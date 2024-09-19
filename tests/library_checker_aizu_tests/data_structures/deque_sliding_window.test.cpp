@@ -1,7 +1,5 @@
 #define PROBLEM                                         \
-  "https://onlinejudge.u-aizu.ac.jp/courses/library/3/" \
-  "DSL/"                                                \
-  "all/DSL_3_D"
+  "https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/all/DSL_3_D"
 #include "../template.hpp"
 #include "../../../library/data_structures/deque_op/queue_only.hpp"
 int mn(int x, int y) { return min(x, y); }

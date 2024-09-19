@@ -1,6 +1,5 @@
 #define PROBLEM                      \
-  "https://judge.yosupo.jp/problem/" \
-  "tree_path_composite_sum"
+  "https://judge.yosupo.jp/problem/tree_path_composite_sum"
 #include "../template.hpp"
 #include "../edge_cd_asserts.hpp"
 #include "../../../library/trees/edge_centroid_decomp/edge_cd.hpp"
