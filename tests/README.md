@@ -24,7 +24,6 @@ Place this at the beginning of a file
 ```
 //! https://codeforces.com/blog/entry/69247
 //! @code
-//!   //example usage or initialization
 //!   vector<int> arr;
 //! @endcode
 //! @time O(n * sqrt(n log n))
