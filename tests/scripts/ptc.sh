@@ -42,7 +42,7 @@ rm ../library/trees/linear_kth_path.hpp
 echo "removing links"
 sed --in-place '/\/\/! https/d' ../library/**/*.hpp
 
-# PDF will wrap at 66 characters, but when the PDF wraps, it goes onto the next
+# PDF will wrap at 68 characters, but when the PDF wraps, it goes onto the next
 # line with an indent of a few characters
 WORD_LENGTH_THRESHOLD=61
 echo "The following words are > $WORD_LENGTH_THRESHOLD characters, and won't wrap in PDF:"
@@ -67,8 +67,8 @@ for header in ../library/**/*.hpp; do
 	for i in $(seq "$(wc --lines <"$header")" -5 1); do
 		hash=$(head --lines "$i" "$header" | sed '/^#include/d' | cpp -dD -P -fpreprocessed | ./../library/contest/hash.sh)
 		line_length=$(sed --quiet "${i}p" "$header" | wc --chars)
-		# PDF wraps at 67 chars, and hash comment takes 8 chars total
-		padding_length=$((67 - 8 - line_length))
+		# PDF wraps at 68 chars, and hash comment takes 8 chars total
+		padding_length=$((68 - 8 - line_length))
 		padding_length=$((padding_length > 0 ? padding_length : 0))
 		padding=$(printf '%*s' "$padding_length" '')
 		sed --in-place "${i}s/$/$padding\/\/${hash}/" "$header"
