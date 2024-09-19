@@ -27,13 +27,8 @@ rm ../library/strings/manacher/count_palindromes_query.hpp
 rm ../library/strings/manacher/longest_palindrome_query.hpp
 rm ../library/strings/suffix_array/burrows_wheeler.hpp
 rm -rf ../library/strings/suffix_array/lcp_interval_tree/
-rm ../library/trees/centroid_decomp/count_paths_per_length.hpp
-rm ../library/trees/centroid_decomp/count_paths_per_node.hpp
-rm ../library/trees/centroid_decomp/lca.hpp
-rm ../library/trees/edge_centroid_decomp/contour_range_query.hpp
-rm ../library/trees/edge_centroid_decomp/contour_range_update.hpp
-rm ../library/trees/edge_centroid_decomp/count_paths_per_length.hpp
-rm ../library/trees/edge_centroid_decomp/sum_adjacent.hpp
+rm -rf ../library/trees/centroid_decomp_uncommon/
+rm -rf ../library/trees/edge_centroid_decomp_uncommon/
 rm -rf ../library/trees/ladder_decomposition/
 rm ../library/trees/linear_kth_path.hpp
 

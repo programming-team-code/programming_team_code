@@ -2,7 +2,7 @@
   "https://judge.yosupo.jp/problem/tree_path_composite_sum"
 #include "../template.hpp"
 #include "../edge_cd_asserts.hpp"
-#include "../../../library/trees/edge_centroid_decomp/edge_cd.hpp"
+#include "../../../library/trees/edge_cd.hpp"
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n;

@@ -1,5 +1,5 @@
 #pragma once
-#include "centroid_decomp.hpp"
+#include "../centroid_decomp.hpp"
 //! https://codeforces.com/blog/entry/81661#comment-686024
 struct cd_lca {
   vi d;
