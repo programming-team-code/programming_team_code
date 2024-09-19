@@ -27,5 +27,5 @@ Place this at the beginning of a file
 //!   vector<int> arr;
 //! @endcode
 //! @time O(n + q * log n)
-//! @space $O(n * \alpha(n))$
+//! @space O(n * \alpha(n))
 ```

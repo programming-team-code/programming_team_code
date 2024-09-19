@@ -5,7 +5,7 @@
 //! @endcode
 //! cost = sum of edge weights in MST
 //! eds[ids[i]] = edge in MST
-//! @time $O(n \alpha(n) + m log m)$
+//! @time O(n \alpha(n) + m log m)
 //! @space O(n + m)
 pair<ll, vi> mst(const vector<array<int, 3>>& eds, int n) {
   vi order(sz(eds));
