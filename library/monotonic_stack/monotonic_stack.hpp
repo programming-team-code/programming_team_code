@@ -1,17 +1,12 @@
 #pragma once
 //! @code
-//!     vector<ll> a;
-//!     vi le = mono_st(a, less()); // greater(),
-//!     less_equal(), greater_equal()
+//!   auto le = mono_st(a, less());
+//!   // less_equal(), greater(), greater_equal()
 //! @endcode
-//! @param a array
-//! @param cmp transitive compare operator
-//! @returns vector le where le[i] = max index such that:
-//! le[i] < i and
-//!          cmp(a[le[i]], a[i]). If no index exists, le[i] =
-//!          -1
+//! when cmp == less():
+//!   a[le[i]] < a[i]
 //! @time O(n)
-//! @space a O(n) vector is allocated and returned
+//! @space O(n)
 template<class T, class F>
 vi mono_st(const vector<T>& a, F cmp) {
   vi le(sz(a));
