@@ -9,7 +9,7 @@ struct linear_kth_par {
   vector<node> t;
   vi j;
   //! @code
-  //!         linear_kth_par kp(adj);
+  //!   linear_kth_par kp(adj);
   //! @endcode
   //! @param adj forest (rooted or unrooted)
   //! @time O(n)

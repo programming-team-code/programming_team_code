@@ -3,10 +3,10 @@
 //! https://codeforces.com/blog/entry/71567#comment-559299
 //! https://youtu.be/0rCFkuQS968
 //! @code
-//!     ladder ld(adj);
-//!     // KACTL functions
-//!     int kth_par = jmp(ld.b_tbl, v, k);
-//!     int curr_lca = lca(ld.b_tbl, ld.d, u, v);
+//!   ladder ld(adj);
+//!   // KACTL functions
+//!   int kth_par = jmp(ld.b_tbl, v, k);
+//!   int curr_lca = lca(ld.b_tbl, ld.d, u, v);
 //! @endcode
 struct ladder {
   int n;

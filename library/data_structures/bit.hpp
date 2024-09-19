@@ -1,11 +1,11 @@
 #pragma once
-// NOLINTNEXTLINE(readability-identifier-naming)
 //! @code
 //!   BIT<int> b(n);
 //!   BIT<ll> b(n);
 //! @endcode
 //! @time O(n + q log n)
 //! @space O(n)
+// NOLINTNEXTLINE(readability-identifier-naming)
 template<class T> struct BIT {
   vector<T> s;
   BIT(int n): s(n) {}

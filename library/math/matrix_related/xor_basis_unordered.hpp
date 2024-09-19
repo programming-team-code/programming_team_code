@@ -2,8 +2,8 @@
 //! https://codeforces.com/blog/entry/68953
 //! https://codeforces.com/blog/entry/100066?#comment-887897
 //! @code
-//!     basis<int> b;
-//!     basis<ll> b;
+//!   basis<int> b;
+//!   basis<ll> b;
 //! @endcode
 //! b.shrink(v) == b.shrink(b.shrink(v))
 //! for x in b.b: (bit_floor(x)&b.shrink(v))==0
