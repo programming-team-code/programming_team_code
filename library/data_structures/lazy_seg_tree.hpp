@@ -3,9 +3,6 @@
 //! root is at tree[1]
 //! internal nodes are [1, n)
 //! leaf nodes are [n, 2 * n), but rotated
-//! @code
-//!   st.query(le,ri); // [le, ri)
-//! @endcode
 //! @time O(n + q log n)
 //! @space O(n)
 int split(int tl, int tr) {

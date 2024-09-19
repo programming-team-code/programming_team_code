@@ -2,21 +2,22 @@
 #include "linear_rmq.hpp"
 //! https://codeforces.com/blog/entry/78898
 //! @code
-//!     auto [data, root, adj] = perm_tree(a);
+//!     auto [t, root, adj] = perm_tree(a);
 //! @endcode
+//! [t[v].mn_idx, t[v].mn_idx+t[v].len) index range
+//! [t[v].mn_num, t[v].mn_num+t[v].len) number range
+//! indexes [0, n) of adj are leaves
+//! indexes [n, sz(adj)) of adj are internal nodes
+//! @time O(n)
+//! @space O(n)
 struct perm_tree {
   struct node {
-    //! [mn_idx[v], mn_idx[v] + len[v]) is range of indexes
-    //! [mn_num[v], mn_num[v] + len[v]) is range of numbers
-    //! @{
     int mn_idx, mn_num, len;
-    //! @}
     bool is_join;
   };
   vector<node> t;
   int root;
-  vector<vi> adj; //!< [0, n) are leaves, [n, sz(adj)) are
-                  //!< internal nodes
+  vector<vi> adj;
   bool touches(int u, int v) {
     return t[u].mn_num == t[v].mn_num + t[v].len ||
       t[v].mn_num == t[u].mn_num + t[u].len;
@@ -27,9 +28,6 @@ struct perm_tree {
     adj.push_back(ch);
     return sz(adj) - 1;
   }
-  //! @param a permutation
-  //! @time O(n)
-  //! @space O(n)
   perm_tree(const vi& a) {
     int n = sz(a);
     vi mn_i(n), mx_i(n);
