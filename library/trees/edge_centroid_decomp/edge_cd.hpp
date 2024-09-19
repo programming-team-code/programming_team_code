@@ -6,9 +6,9 @@
 //!   edge_cd(adj, [&](const vector<vi>& adj,
 //!     int cent, int split) {
 //!     // subtrees of prefix [0, split) of adj[cent]
-//!     // are the first edge-set
+//!     //   are the first edge-set
 //!     // subtrees of suffix [split, sz(adj[cent]))
-//!     // of adj[cent] are the second edge-set
+//!     //   of adj[cent] are the second edge-set
 //!   });
 //! @endcode
 //! @time O(n log1.5 n)
