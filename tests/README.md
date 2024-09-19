@@ -26,6 +26,6 @@ Place this at the beginning of a file
 //! @code
 //!   vector<int> arr;
 //! @endcode
-//! @time O(n * sqrt(n log n))
-//! @space O(n ^ (3/2))
+//! @time O(n + q * log n)
+//! @space $O(n * \alpha(n))$
 ```

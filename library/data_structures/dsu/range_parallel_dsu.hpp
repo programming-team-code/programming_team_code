@@ -3,7 +3,7 @@
 //! Given l1,l2,len, joins (l1,l2), (l1+1,l2+1),
 //!   ..., (l1+len-1,l2+len-1)
 //! `f` is called at most n-1 times
-//! @time O(n*log(n)*α(n) + q)
+//! @time $O(n*log(n)*\alpha(n) + q)$
 //! @space O(n log n)
 struct range_parallel_dsu {
   vector<UF> ufs;
