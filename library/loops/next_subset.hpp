@@ -5,7 +5,6 @@
 //! - x > mask
 //! @time O(1)
 //! @space O(1)
-
 int next_subset(int mask) {
   int c = mask & -mask, r = mask + c;
   return r | (((r ^ mask) >> 2) / c);

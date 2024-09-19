@@ -7,7 +7,6 @@
 //!       of indexes i in [le,ri) with dp[i] < le
 //! @time O(|s| * |t|)
 //! @space O(|t|)
-
 template<class T> struct lcs_dp {
   T t;
   vi dp;
