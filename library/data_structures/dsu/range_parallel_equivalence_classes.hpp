@@ -2,7 +2,7 @@
 #include "../../../kactl/content/data-structures/UnionFind.h"
 //! Given triplets (l1,l2,len), joins (l1,l2),
 //!   (l1+1,l2+1), ..., (l1+len-1,l2+len-1)
-//! @time O((n + q) * α(n))
+//! @time $O((n + q) * \alpha(n))$
 //! @space O(n + q)
 UF get_range_parallel_equivalence_classes(
   const vector<array<int, 3>>& rests, int n) {
