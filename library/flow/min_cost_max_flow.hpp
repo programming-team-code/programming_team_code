@@ -1,6 +1,14 @@
-//! @file
 #pragma once
-//! @see https://e-maxx.ru/algo/min_cost_flow
+//! https://e-maxx.ru/algo/min_cost_flow
+//! @code
+//!   mcmf f(n);
+//!   auto [flow, cost] = f.get_flow(s,t,total_flow);
+//! @endcode
+//! 0<=s,t<n;
+//! flow<=total_flow is the max amount of
+//!   flow we can send
+//! cost: minimum sum of (edge.flow*edge.cost) over
+//!   all ways to send `flow` flow
 struct mcmf {
   struct edge {
     int u, v;
@@ -10,8 +18,7 @@ struct mcmf {
   int n;
   vector<edge> e;
   vector<vi> adj;
-  //! @param a_n number of nodes.
-  mcmf(int a_n) : n(a_n), adj(n) {}
+  mcmf(int a_n): n(a_n), adj(n) {}
   void add_edge(int u, int v, ll cap, ll cost) {
     edge e1 = {u, v, cap, cost, 0, sz(adj[v])};
     edge e2 = {v, u, 0, -cost, 0, sz(adj[u])};
@@ -20,13 +27,6 @@ struct mcmf {
     adj[v].push_back(sz(e));
     e.push_back(e2);
   }
-  //! @param s source, 0 <= s < n
-  //! @param t sink, 0 <= t < n
-  //! @param total_flow we try to send this amount of flow through the graph
-  //! @returns array of {flow, cost}
-  //! - flow: (<=total_flow) is the max amount of flow we are able to send.
-  //! - cost: minimum sum of: (edge.flow * edge.cost) over each edge (over all
-  //!   ways to send `flow` flow)
   array<ll, 2> get_flow(int s, int t, ll total_flow) {
     ll flow = 0, cost = 0;
     while (flow < total_flow) {
@@ -60,10 +60,12 @@ struct mcmf {
       ll addflow = total_flow - flow;
       for (int u = t; u != s; u = p[u]) {
         int pv = p[u], pr = p_edge[u];
-        addflow = min(addflow, e[adj[pv][pr]].cap - e[adj[pv][pr]].flow);
+        addflow = min(addflow,
+          e[adj[pv][pr]].cap - e[adj[pv][pr]].flow);
       }
       for (int u = t; u != s; u = p[u]) {
-        int pv = p[u], pr = p_edge[u], r = e[adj[pv][pr]].back;
+        int pv = p[u], pr = p_edge[u],
+            r = e[adj[pv][pr]].back;
         e[adj[pv][pr]].flow += addflow;
         e[adj[u][r]].flow -= addflow;
         cost += e[adj[pv][pr]].cost * addflow;

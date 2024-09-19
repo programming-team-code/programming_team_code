@@ -10,9 +10,6 @@ grep "endl" --recursive library_checker_aizu_tests/ && exit 1
 echo "check template<class T> over template<typename T>:"
 grep --extended-regexp "template\s?<typename" --recursive ../library/ && exit 1
 
-echo "check formatting of template <class T>:"
-grep --extended-regexp "template<class" --recursive ../library/ && exit 1
-
 echo "check 0 instead of false"
 grep --extended-regexp "false" --recursive ../library/ && exit 1
 
@@ -33,7 +30,7 @@ find ../library/ library_checker_aizu_tests/ -name "*[A-Z]*" -or -name "*-*" |
 	grep --invert-match "README" &&
 	exit 1
 
-clang-format --dry-run --Werror --style=file:.config/.clang-format library_checker_aizu_tests/**/*.hpp library_checker_aizu_tests/**/*.test.cpp ../library/**/*.hpp ../library/**/*.cpp || exit 1
+clang-format-18 --dry-run --Werror --style=file:.config/.clang-format library_checker_aizu_tests/**/*.hpp library_checker_aizu_tests/**/*.test.cpp ../library/**/*.hpp ../library/**/*.cpp || exit 1
 
 git submodule init
 git submodule update

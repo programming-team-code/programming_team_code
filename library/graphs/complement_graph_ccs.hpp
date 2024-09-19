@@ -1,12 +1,13 @@
-//! @file
 #pragma once
-//! @returns a vector of size `n` containing the connected component id of each
-//! vertex in the complement graph of `adj`
-//! guarantee: 0 <= cc_id[v] < number of connected
-//! components in the complement graph of adj
-//! @param adj adjacency list of the graph
+//! @code
+//!   auto cc_id = get_complement_graph_ccs(adj);
+//! @endcode
+//! 0<=cc_id[v]<number of connected components
+//!   in the complement graph
+//! cc_id[u] == cc_id[v] if u,v are in the same
+//!   cc in the compliment graph
 //! @time O(n + m)
-//! @space O(n) additional space
+//! @space O(n)
 vi get_complement_graph_ccs(const vector<vi> &adj) {
   int n = sz(adj);
   vi cc_id(n);

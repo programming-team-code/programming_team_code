@@ -1,26 +1,27 @@
-//! @file
 #pragma once
-//! @see https://cp-algorithms.com/graph/cutpoints.html
-//! @code{.cpp}
-//!     vector<vector<pii>> adj(n);
-//!     rep (i, 0, m) {
-//!         int u, v;
-//!         cin >> u >> v;
-//!         u--, v--;
-//!         adj[u].emplace_back(v, i);
-//!         adj[v].emplace_back(u, i);
-//!     }
-//!     auto [num_bccs, is_cut, bcc_id] = cuts(adj, m);
+//! https://cp-algorithms.com/graph/cutpoints.html
+//! @code
+//!   vector<vector<pii>> adj(n);
+//!   rep (i, 0, m) {
+//!     int u, v;
+//!     cin >> u >> v;
+//!     u--, v--;
+//!     //self edges not allowed
+//!     adj[u].emplace_back(v, i);
+//!     adj[v].emplace_back(u, i);
+//!   }
+//!   auto [num_bccs, is_cut, bcc_id] = cuts(adj, m);
 //! @endcode
+//! is_cut[v] = 1 iff cut node
+//! bcc_id[edge id] = id, 0<=id<num_bccs
+//! @time O(n + m)
+//! @space O(n + m)
 struct cuts {
-  int num_bccs = 0;  //!< number of bi-connected components
-  vector<bool> is_cut;  //!< is_cut[node] = 1 iff cut node
-  vi bcc_id;  //!< bcc_id[edge id] = id of bcc (which are labeled 0, 1, ..., `num_bccs`-1)
-  //! @param adj undirected graph; possibly with multiple edges; self edges not allowed
-  //! @param m number of edges
-  //! @time O(n + m)
-  //! @space this allocates member vectors which are O(n + m)
-  cuts(const vector<vector<pii>>& adj, int m) : is_cut(sz(adj)), bcc_id(m, -1) {
+  int num_bccs = 0;
+  vector<bool> is_cut; //!<
+  vi bcc_id;
+  cuts(const vector<vector<pii>>& adj, int m):
+    is_cut(sz(adj)), bcc_id(m, -1) {
     int n = sz(adj), timer = 1;
     vi tin(n), st;
     auto dfs = [&](auto&& self, int v, int p_id) -> int {
@@ -34,8 +35,7 @@ struct cuts {
           int low_ch = self(self, u, e_id);
           if (low_ch >= tin[v]) {
             is_cut[v] = 1;
-            rep(i, siz, sz(st))
-                bcc_id[st[i]] = num_bccs;
+            rep(i, siz, sz(st)) bcc_id[st[i]] = num_bccs;
             st.resize(siz);
             num_bccs++;
           }

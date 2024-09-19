@@ -1,4 +1,4 @@
-# see: https://github.com/Errichto/youtube/blob/master/testing/s.sh
+# https://github.com/Errichto/youtube/blob/master/testing/s.sh
 # bash tester.sh
 
 g++ -std=c++17 a.cpp -o a.out

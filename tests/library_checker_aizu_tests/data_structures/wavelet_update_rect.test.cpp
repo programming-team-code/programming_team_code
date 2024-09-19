@@ -1,18 +1,18 @@
-#define PROBLEM "https://judge.yosupo.jp/problem/static_range_frequency"
+#define PROBLEM                      \
+  "https://judge.yosupo.jp/problem/" \
+  "static_range_frequency"
 #include "../template.hpp"
-
 #include "../../../library/data_structures/wavelet_merge/wavelet_tree_updates.hpp"
-
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n, q;
   cin >> n >> q;
   vector<int> arr(n);
-  for (int i = 0; i < n; i++)
-    cin >> arr[i];
+  for (int i = 0; i < n; i++) cin >> arr[i];
   vector<int> sorted(arr);
   sort(begin(sorted), end(sorted));
-  sorted.erase(unique(begin(sorted), end(sorted)), end(sorted));
+  sorted.erase(unique(begin(sorted), end(sorted)),
+    end(sorted));
   for (int& val : arr) {
     int le = 0, ri = sz(sorted);
     while (ri - le > 1) {
@@ -23,7 +23,8 @@ int main() {
     assert(le < sz(arr) && sorted[le] == val);
     val = le - 30;
   }
-  wavelet_tree_updates wtu(arr, -30, max(1, int(sz(sorted))) - 30, vector<bool>(n, 1));
+  wavelet_tree_updates wtu(arr, -30,
+    max(1, int(sz(sorted))) - 30, vector<bool>(n, 1));
   while (q--) {
     int le, ri, x;
     cin >> le >> ri >> x;

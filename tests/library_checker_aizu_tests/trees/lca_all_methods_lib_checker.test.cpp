@@ -1,14 +1,9 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/lca"
 #include "../template.hpp"
-
 #include "../../../library/trees/tree_lift/tree_lift.hpp"
-
 #include "../../../library/trees/linear_lca.hpp"
-
 #include "../../../library/trees/lca_rmq/lca_rmq.hpp"
-
 #include "../compress_tree_asserts.hpp"
-
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n, q;
@@ -29,13 +24,16 @@ int main() {
     assert(lc.in_subtree(i, i));
     assert(lin_lca.lca(i, i) == i);
     assert(lin_lca.in_subtree(i, i));
-    assert(lc.t[lc.rmq.dp[0][i]].in == i && lc.rmq.dp[0][lc.t[i].in] == i);
+    assert(lc.t[lc.rmq.dp[0][i]].in == i &&
+      lc.rmq.dp[0][lc.t[i].in] == i);
   }
   while (q--) {
     int u, v;
     cin >> u >> v;
-    assert(lc.in_subtree(u, v) == lin_lca.in_subtree(u, v));
-    assert(lc.in_subtree(v, u) == lin_lca.in_subtree(v, u));
+    assert(
+      lc.in_subtree(u, v) == lin_lca.in_subtree(u, v));
+    assert(
+      lc.in_subtree(v, u) == lin_lca.in_subtree(v, u));
     int lca = tl.lca(u, v);
     assert(lca == lc.lca(u, v));
     assert(lca == lin_lca.lca(u, v));

@@ -1,11 +1,13 @@
-//! @file
 #pragma once
-const int mod = 998'244'353;
-//! @param a,b arrays of the same length
-//! @returns array `c` where `c[k]` = the sum of (a[i] * b[j]) for all pairs
-//! (i,j) where lcm(i,j) == k
+//! @code
+//!   auto c = lcm_convolution(a, b);
+//! @endcode
+//! ssize(a)==ssize(b)
+//! c[k] = sum of (a[i]*b[j]) for all
+//!   pairs (i,j) where lcm(i,j)==k
 //! @time O(n log n)
-//! @space this function allocates/returns various O(n) vectors
+//! @space O(n)
+const int mod = 998'244'353;
 vi lcm_convolution(const vi& a, const vi& b) {
   int n = sz(a);
   vector<ll> sum_a(n), sum_b(n);

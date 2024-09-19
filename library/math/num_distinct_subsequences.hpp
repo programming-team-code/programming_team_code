@@ -1,10 +1,8 @@
-//! @file
 #pragma once
-//! @param a,mod self explanatory
-//! @returns the number of distinct subsequences of `a`. The empty subsequence
-//! is counted.
+//! returns the number of distinct subsequences
+//!   of a, including the empty subsquence
 //! @time O(n log n)
-//! @space besides O(n) `a` param, O(n) extra space is allocated temporarily
+//! @space O(n)
 int num_subsequences(const vi& a, int mod) {
   vector dp(sz(a) + 1, 1);
   map<int, int> last;

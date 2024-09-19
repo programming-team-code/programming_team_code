@@ -1,14 +1,13 @@
-#define PROBLEM "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A"
+#define PROBLEM                             \
+  "https://judge.u-aizu.ac.jp/onlinejudge/" \
+  "description.jsp?id=ITP1_1_A"
 #include "../template.hpp"
 #include "../../../library/contest/random.hpp"
 #include "../../../library/math/fibonacci.hpp"
-
 // NOLINTNEXTLINE(readability-identifier-naming)
 const int MOD = 998'244'353;
-
 #include "../../../kactl/content/data-structures/Matrix.h"
 #include "../../../hackpack-cpp/content/number-theory/ModInt.h"
-
 void check(int64_t n) {
   using mat_2_by_2 = Matrix<mi, 2>;
   mat_2_by_2 mat;
@@ -17,7 +16,6 @@ void check(int64_t n) {
   int64_t res = fib(n)[0];
   assert(res == int(((mat ^ n) * vec)[1]));
 }
-
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   // n=0 -> val=0
@@ -32,8 +30,7 @@ int main() {
   assert(fib(3)[0] == 2);
   assert(fib(4)[0] == 3);
   assert(fib(5)[0] == 5);
-  for (int i = 0; i < 500; i++)
-    check(i);
+  for (int i = 0; i < 500; i++) check(i);
   for (int tests = 1000; tests--;)
     check(rnd<int64_t>(0, LLONG_MAX));
   cout << "Hello World\n";

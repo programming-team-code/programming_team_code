@@ -1,10 +1,9 @@
-#define PROBLEM \
-  "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A"
+#define PROBLEM                             \
+  "https://judge.u-aizu.ac.jp/onlinejudge/" \
+  "description.jsp?id=ITP1_1_A"
 #include "../template.hpp"
-
 #include "../../../library/contest/random.hpp"
 #include "../../../library/data_structures/dsu/dsu_restorable.hpp"
-
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   for (int n = 1; n < 100; n++) {
@@ -39,7 +38,8 @@ int main() {
         }
         assert(sz(comps) == dsu.num_sets);
         for (auto& cc : comps)
-          for (auto node : cc) assert(dsu.size(node) == sz(cc));
+          for (auto node : cc)
+            assert(dsu.size(node) == sz(cc));
       } else if (!empty(edge_st)) {
         auto [u, v] = edge_st.back();
         edge_st.pop_back();

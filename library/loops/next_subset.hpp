@@ -1,9 +1,7 @@
-//! @file
 #pragma once
-//! @see https://github.com/kth-competitive-programming/kactl/blob/main/content/various/chapter.tex
-//! @param mask a number with k bits set
-//! @returns the smallest number x such that:
-//! - x has k bits set
+//! https://github.com/kth-competitive-programming/kactl/blob/main/content/various/chapter.tex
+//! returns the smallest number x such that:
+//! - popcount(x)==popcount(mask)
 //! - x > mask
 //! @time O(1)
 //! @space O(1)
