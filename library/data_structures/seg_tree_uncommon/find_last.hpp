@@ -1,8 +1,8 @@
 #pragma once
 //! @code
-//!     st.find_last(le, ri, [&](ll x, int tl, int tr) ->
-//!     bool {
-//!     });
+//!   st.find_last(le, ri, [&](ll x, int tl, int tr) ->
+//!   bool {
+//!   });
 //! @endcode
 //! @param le,ri defines range [le, ri)
 //! @param f defines a function that returns true if the
