@@ -2,7 +2,7 @@
 #include "linear_rmq.hpp"
 //! https://codeforces.com/blog/entry/78898
 //! @code
-//!     auto [t, root, adj] = perm_tree(a);
+//!   auto [t, root, adj] = perm_tree(a);
 //! @endcode
 //! [t[v].mn_idx, t[v].mn_idx+t[v].len) index range
 //! [t[v].mn_num, t[v].mn_num+t[v].len) number range
