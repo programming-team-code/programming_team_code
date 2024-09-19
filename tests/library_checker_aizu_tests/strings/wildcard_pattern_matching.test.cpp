@@ -1,4 +1,4 @@
-#define PROBLEM                      \
+#define PROBLEM \
   "https://judge.yosupo.jp/problem/wildcard_pattern_matching"
 #include "../template.hpp"
 #include "../../../library/strings/wildcard_pattern_matching.hpp"

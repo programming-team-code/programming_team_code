@@ -1,4 +1,4 @@
-#define PROBLEM                             \
+#define PROBLEM \
   "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_3_C"
 #include "../template.hpp"
 #include "../scc_asserts.hpp"

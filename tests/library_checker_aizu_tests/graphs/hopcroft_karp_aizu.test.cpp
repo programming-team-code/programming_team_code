@@ -1,4 +1,4 @@
-#define PROBLEM                             \
+#define PROBLEM \
   "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_7_A"
 #include "../template.hpp"
 #include "../../../library/graphs/hopcroft_karp.hpp"

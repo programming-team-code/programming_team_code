@@ -1,4 +1,4 @@
-#define PROBLEM                      \
+#define PROBLEM \
   "https://judge.yosupo.jp/problem/range_parallel_unionfind"
 #include "../template.hpp"
 #include "../../../library/data_structures/dsu/range_parallel_dsu.hpp"

@@ -1,4 +1,4 @@
-#define PROBLEM                      \
+#define PROBLEM \
   "https://judge.yosupo.jp/problem/intersection_of_f2_vector_spaces"
 #include "../template.hpp"
 #include "../../../library/math/matrix_related/xor_basis_unordered_intersection.hpp"

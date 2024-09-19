@@ -1,4 +1,4 @@
-#define PROBLEM                      \
+#define PROBLEM \
   "https://judge.yosupo.jp/problem/area_of_union_of_rectangles"
 #include "../template.hpp"
 #include "../../../library/data_structures/seg_tree_uncommon/implicit.hpp"

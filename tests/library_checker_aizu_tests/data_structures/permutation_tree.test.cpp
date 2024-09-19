@@ -1,4 +1,4 @@
-#define PROBLEM                      \
+#define PROBLEM \
   "https://judge.yosupo.jp/problem/common_interval_decomposition_tree"
 #include "../template.hpp"
 #include "../perm_tree_asserts.hpp"

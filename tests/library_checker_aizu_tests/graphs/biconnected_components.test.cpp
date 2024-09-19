@@ -1,4 +1,4 @@
-#define PROBLEM                      \
+#define PROBLEM \
   "https://judge.yosupo.jp/problem/biconnected_components"
 #include "../template.hpp"
 #include "../../../library/graphs/bridges_cuts/block_vertex_tree.hpp"

@@ -1,4 +1,4 @@
-#define PROBLEM                      \
+#define PROBLEM \
   "https://judge.yosupo.jp/problem/static_range_frequency"
 // since this causes an O(n) partition check for each call
 // to `equal_range`, causing TLE.
