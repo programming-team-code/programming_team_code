@@ -2,7 +2,7 @@
   "https://judge.yosupo.jp/problem/vertex_get_range_contour_add_on_tree"
 #include "../template.hpp"
 #include "../edge_cd_asserts.hpp"
-#include "../../../library/trees/edge_centroid_decomp_uncommon_uncommon/contour_range_update.hpp"
+#include "../../../library/trees/edge_centroid_decomp_uncommon/contour_range_update.hpp"
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n, q;
