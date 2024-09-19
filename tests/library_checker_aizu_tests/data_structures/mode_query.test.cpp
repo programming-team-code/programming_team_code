@@ -1,4 +1,4 @@
-#define PROBLEM                      \
+#define PROBLEM \
   "https://judge.yosupo.jp/problem/static_range_mode_query"
 #include "../template.hpp"
 #include "../../../library/data_structures/uncommon/mode_query.hpp"

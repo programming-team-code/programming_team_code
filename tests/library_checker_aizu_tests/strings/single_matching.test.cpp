@@ -1,4 +1,4 @@
-#define PROBLEM                                        \
+#define PROBLEM \
   "https://onlinejudge.u-aizu.ac.jp/courses/lesson/1/ALDS1/all/ALDS1_14_B"
 #include "../template.hpp"
 #include "compress_char.hpp"

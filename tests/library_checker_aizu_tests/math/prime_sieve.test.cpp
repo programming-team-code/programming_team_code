@@ -1,4 +1,4 @@
-#define PROBLEM                                         \
+#define PROBLEM \
   "https://onlinejudge.u-aizu.ac.jp/courses/library/6/NTL/all/NTL_1_C"
 #include "../template.hpp"
 #include "../../../kactl/content/number-theory/MillerRabin.h"

@@ -1,4 +1,4 @@
-#define PROBLEM                                        \
+#define PROBLEM \
   "https://onlinejudge.u-aizu.ac.jp/courses/lesson/1/ALDS1/all/ALDS1_4_C"
 #include "../template.hpp"
 #include "../../../library/strings/trie.hpp"

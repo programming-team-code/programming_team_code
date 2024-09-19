@@ -1,4 +1,4 @@
-#define PROBLEM                      \
+#define PROBLEM \
   "https://judge.yosupo.jp/problem/two_edge_connected_components"
 #include "../template.hpp"
 #include "../../../library/graphs/bridges_cuts/bridge_tree.hpp"
@@ -18,9 +18,8 @@ int main() {
   }
   bridges cc(adj, m);
   vector<vector<int>> bt = bridge_tree(adj, cc);
-  assert(
-    find(begin(cc.cc_id), end(cc.cc_id),
-      -1) == end(cc.cc_id));
+  assert(find(begin(cc.cc_id), end(cc.cc_id), -1) ==
+    end(cc.cc_id));
   // check correctness of bridge tree
   {
     assert(sz(bt) == cc.num_ccs);
@@ -53,14 +52,13 @@ int main() {
   }
   for (int i = 0; i < n; i++) {
     int par_of_cc = dsu.find(i);
-    assert(
-      cc.cc_id[i] == cc.cc_id[par_of_cc]);
+    assert(cc.cc_id[i] == cc.cc_id[par_of_cc]);
   }
   for (int i = 0; i < m; i++) {
     auto [u, v] = edges[i];
     // bridge if nodes are from different 2-edge CCs
-    assert(cc.is_bridge[i] ==
-      (cc.cc_id[u] != cc.cc_id[v]));
+    assert(
+      cc.is_bridge[i] == (cc.cc_id[u] != cc.cc_id[v]));
   }
   vector<vector<int>> ccs(cc.num_ccs);
   for (int i = 0; i < n; i++)

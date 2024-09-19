@@ -1,4 +1,4 @@
-#define PROBLEM                      \
+#define PROBLEM \
   "https://judge.yosupo.jp/problem/rooted_tree_isomorphism_classification"
 #include "../template.hpp"
 #include "../../../library/trees/subtree_isomorphism.hpp"

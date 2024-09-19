@@ -1,4 +1,4 @@
-#define PROBLEM                      \
+#define PROBLEM \
   "https://judge.yosupo.jp/problem/frequency_table_of_tree_distance"
 #include "../template.hpp"
 #include "../edge_cd_asserts.hpp"

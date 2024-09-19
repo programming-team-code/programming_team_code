@@ -1,4 +1,4 @@
-#define PROBLEM                      \
+#define PROBLEM \
   "https://judge.yosupo.jp/problem/tree_path_composite_sum"
 #include "../template.hpp"
 #include "../edge_cd_asserts.hpp"
