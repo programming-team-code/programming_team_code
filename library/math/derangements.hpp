@@ -1,10 +1,11 @@
 #pragma once
 //! https://oeis.org/A000166
-//! @param n size
-//! @param mod an integer
-//! @return number of permutations p such that p[i] != i
+//! @code
+//!   auto der = derangements(n, mod);
+//! @endcode
+//! der[i] = number of permutations p with p[i]!=i
 //! @time O(n)
-//! @space O(n) for `dp` vector
+//! @space O(n)
 vector<ll> derangements(int n, int mod) {
   vector<ll> dp(n);
   dp[0] = 1;

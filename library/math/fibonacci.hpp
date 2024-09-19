@@ -9,13 +9,9 @@ const int mod = 998'244'353;
 //!     //n=2 -> num=1
 //!     //n=3 -> num=2
 //!     //n=4 -> num=3
-//!     //n=5 -> num=5
 //! @endcode
-//! @param n an integer
-//! @returns a array of {nth fibonacci number, (n+1)th
-//! fibonacci number}
 //! @time O(log n)
-//! @space O(log n) for recursion stack
+//! @space O(log n)
 array<ll, 2> fib(ll n) {
   if (n == 0) return {0LL, 1LL};
   auto [x, y] = fib(n >> 1);

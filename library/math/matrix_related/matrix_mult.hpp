@@ -1,10 +1,10 @@
 #pragma once
 //! https://codeforces.com/blog/entry/80195
-//! @param a,b matrices
-//! @returns a*b (not overflow safe)
+//! @code
+//!   auto c = a * b;
+//! @endcode
 //! @time O(n * m * inner)
-//! @space besides the O(n * inner) and O(inner * m) params,
-//! this function allocates and returns a O(n * m) vector
+//! @space O(n * m)
 template<class T>
 vector<vector<T>> operator*(const vector<vector<T>>& a,
   const vector<vector<T>>& b) {

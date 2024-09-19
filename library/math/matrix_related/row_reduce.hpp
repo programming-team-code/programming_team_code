@@ -1,15 +1,13 @@
 #pragma once
 #include "../mod_int.hpp"
 //! @code
-//!     auto [rank, det] = row_reduce(mat, sz(mat[0]));
+//!   auto [rank, det] = row_reduce(mat, cols);
 //! @endcode
-//! @param mat,cols columns [0,cols) of mat represent a
-//! matrix, columns [cols,m) are also affected by row
-//! operations.
-//! @returns pair(rank, determinant)
+//! columns [0,cols) of mat represent a matrix
+//! columns [cols,m) of mat are also
+//!   affected by row operations
 //! @time O(n * m * min(cols, n))
-//! @space besides the O(n * m) `mat` param, this function
-//! uses O(1) space
+//! @space O(1)
 pair<int, mint> row_reduce(vector<vector<mint>>& mat,
   int cols) {
   int n = sz(mat), m = sz(mat[0]), rank = 0;
