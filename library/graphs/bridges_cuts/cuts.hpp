@@ -18,7 +18,7 @@
 //! @space O(n + m)
 struct cuts {
   int num_bccs = 0;
-  vector<bool> is_cut; //!<
+  vector<bool> is_cut;
   vi bcc_id;
   cuts(const vector<vector<pii>>& adj, int m):
     is_cut(sz(adj)), bcc_id(m, -1) {
