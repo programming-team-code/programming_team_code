@@ -26,7 +26,7 @@ unknownMacro:../kactl/content/graph/BinaryLifting.h:18
 constParameter:../library/data_structures/wavelet_merge/merge_sort_tree.hpp:28
 constParameter:../library/data_structures/wavelet_merge/merge_sort_tree.hpp:41
 constParameter:../library/data_structures/wavelet_merge/merge_sort_tree_updates.hpp:50
-constParameter:../library/data_structures/wavelet_merge/merge_sort_tree_updates.hpp:45
+constParameter:../library/data_structures/wavelet_merge/merge_sort_tree_updates.hpp:55
 constParameter:../library/data_structures/wavelet_merge/merge_sort_tree_updates.hpp:59
 constParameter:../library/data_structures/wavelet_merge/wavelet_tree_updates.hpp:49
 constParameter:../library/data_structures/wavelet_merge/wavelet_tree_updates.hpp:53
