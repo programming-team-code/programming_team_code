@@ -1,6 +1,7 @@
 #define PROBLEM \
   "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_5_C"
 #include "../template.hpp"
+#include "../../../library/monotonic_stack/monotonic_stack.hpp"
 #include "../../../library/trees/tree_lift/tree_lift.hpp"
 #include "../../../library/trees/linear_lca.hpp"
 #include "../../../library/trees/lca_rmq/lca_rmq.hpp"
