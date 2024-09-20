@@ -1,8 +1,5 @@
 #pragma once
 //! https://codeforces.com/blog/entry/112755
-//! root is at tree[1]
-//! internal nodes are [1, n)
-//! leaf nodes are [n, 2 * n), but rotated
 //! @time O(n + q log n)
 //! @space O(n)
 int split(int tl, int tr) {
