@@ -21,13 +21,13 @@ struct LCA {
           t[v].sub_sz += t[u].sub_sz;
     };
     rep(i, 0, sz(t)) if (t[i].p == -1) dfs(dfs, i);
-    rmq = {order, [&](int v, int u) {
-             return t[v].d < t[u].d ? v : u;
+    rmq = {order, [&](int u, int v) {
+             return t[u].d < t[v].d ? u : v;
            }};
   }
-  int lca(int v, int u) {
-    if (v == u) return v;
-    auto [x, y] = minmax(t[v].in, t[u].in);
+  int lca(int u, int v) {
+    if (u == v) return u;
+    auto [x, y] = minmax(t[u].in, t[v].in);
     return t[rmq.query(x + 1, y + 1)].p;
   }
 #include "../dist_edges.hpp"
