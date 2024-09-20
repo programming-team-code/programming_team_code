@@ -1,5 +1,5 @@
 #pragma once
-//! Requires bit.sum(i,i+1) >= 0
+//! Requires bit.query(i,i+1) >= 0
 //! @returns max pos such that sum of [0,pos) < sum
 int lower_bound(T sum) {
   if (sum <= 0) return -1;
