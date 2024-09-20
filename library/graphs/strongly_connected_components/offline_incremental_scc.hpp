@@ -2,7 +2,7 @@
 #include "scc.hpp"
 //! https://codeforces.com/blog/entry/91608
 //! @code
-//!   auto joins[i] = offline_incremental_scc(eds, n);
+//!   auto joins = offline_incremental_scc(eds, n);
 //! @endcode
 //! joins[i] = minimum prefix of edges [0, joins[i]] for
 //!   eds[i][0] and eds[i][1] to be in the same SCC
