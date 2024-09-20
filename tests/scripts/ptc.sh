@@ -7,6 +7,7 @@ shopt -s globstar
 #############################################################################
 
 echo "DON'T PUSH ANY OF THESE CHANGES TO THE REPO!!!!!!!!"
+echo "if you push these changes, I'll slap your butt"
 
 # remove some files not suitable for PDF:
 rm ../library/data_structures/bit_uncommon/rupq.hpp
