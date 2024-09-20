@@ -3,11 +3,11 @@
 #include "../template.hpp"
 #include "../../../library/contest/random.hpp"
 #include "../../../library/data_structures/dsu/dsu_restorable.hpp"
+#include "../../../library/monotonic_stack/monotonic_stack.hpp"
 #include "../../../library/trees/tree_lift/tree_lift.hpp"
 #include "../../../library/trees/lca_rmq/lca_rmq.hpp"
 #include "../../../library/trees/linear_lca.hpp"
 #include "../../../library/trees/ladder_decomposition/ladder_decomposition.hpp"
-#include "../../../library/monotonic_stack/monotonic_stack.hpp"
 #define bit_floor bit_floor_2
 #include "../../../library/trees/ladder_decomposition/linear_kth_par.hpp"
 #undef bit_floor
