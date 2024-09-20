@@ -1,16 +1,14 @@
 #pragma once
-#include "../monotonic_stack/monotonic_stack.hpp" //!< only needed for compress_tree
-int lsb(int x) { return x & -x; }
 //! https://codeforces.com/blog/entry/125371
+//! @time O(n + q)
+//! @space O(n)
+int lsb(int x) { return x & -x; }
 struct linear_lca {
   struct node {
     int d, sub_sz = 1, in, label, asc;
   };
   vector<node> t;
   vi head;
-  //! @param adj forest (rooted or unrooted)
-  //! @time O(n)
-  //! @space O(n)
   linear_lca(const vector<vi>& adj):
     t(sz(adj)), head(sz(t) + 1) {
     vector<pii> order;
@@ -31,10 +29,6 @@ struct linear_lca {
     for (auto [v, p] : order)
       t[v].asc = t[p].asc | lsb(t[v].label);
   }
-  //! @param u,v nodes
-  //! @returns lca of u, v
-  //! @time O(1)
-  //! @space O(1)
   int lca(int u, int v) {
     if (int j = t[u].label ^ t[v].label; j) {
       j = t[u].asc & t[v].asc & -(1 << __lg(j));
@@ -45,7 +39,7 @@ struct linear_lca {
     }
     return t[u].d < t[v].d ? u : v;
   }
-#include "dist_edges.hpp"
-#include "in_subtree.hpp"
-#include "compress_tree.hpp"
+#include "extra_members/dist_edges.hpp"
+#include "extra_members/in_subtree.hpp"
+#include "extra_members/compress_tree.hpp"
 };

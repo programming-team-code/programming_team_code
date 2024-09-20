@@ -1,5 +1,4 @@
 #pragma once
-#include "../../monotonic_stack/monotonic_stack.hpp" //!< only needed for compress_tree
 #include "../../data_structures/rmq.hpp"
 //! https://github.com/kth-competitive-programming/kactl/blob/main/content/graph/LCA.h
 //! @time O(nlogn + q)
@@ -30,8 +29,8 @@ struct LCA {
     auto [x, y] = minmax(t[u].in, t[v].in);
     return t[rmq.query(x + 1, y + 1)].p;
   }
-#include "../dist_edges.hpp"
-#include "../in_subtree.hpp"
+#include "../extra_members/dist_edges.hpp"
+#include "../extra_members/in_subtree.hpp"
 #include "next_on_path.hpp"
-#include "../compress_tree.hpp"
+#include "../extra_members/compress_tree.hpp"
 };

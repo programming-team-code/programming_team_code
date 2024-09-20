@@ -3,6 +3,7 @@
 #include "../template.hpp"
 #include "../../../library/contest/random.hpp"
 #include "../../../library/data_structures/dsu/dsu_restorable.hpp"
+#include "../../../library/monotonic_stack/monotonic_stack.hpp"
 #include "../../../library/trees/tree_lift/tree_lift.hpp"
 #include "../../../library/trees/lca_rmq/lca_rmq.hpp"
 #include "../../../library/trees/linear_lca.hpp"
