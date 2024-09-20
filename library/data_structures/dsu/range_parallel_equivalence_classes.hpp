@@ -1,6 +1,6 @@
 #pragma once
 #include "../../../kactl/content/data-structures/UnionFind.h"
-//! Given triplets (l1,l2,len), joins (l1,l2),
+//! Given triplets (l1,l2,len); joins (l1,l2),
 //!   (l1+1,l2+1), ..., (l1+len-1,l2+len-1)
 //! @time O((n + q) * \alpha(n))
 //! @space O(n + q)

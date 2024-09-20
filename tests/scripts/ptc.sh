@@ -38,8 +38,8 @@ rm ../library/trees/linear_kth_path.hpp
 echo "removing links"
 sed --in-place '/\/\/! https/d' ../library/**/*.hpp
 
-# PDF will wrap at 68 characters, but when the PDF wraps, it goes onto the next
-# line with an indent of a few characters
+# PDF will wrap at 68 characters. Let's check that there's no long words, as
+# they won't wrap in PDF
 WORD_LENGTH_THRESHOLD=61
 echo "The following words are > $WORD_LENGTH_THRESHOLD characters, and won't wrap in PDF:"
 cat ../library/**/*.hpp |
@@ -59,7 +59,7 @@ sed --in-place '/^\/\/ NOLINTNEXTLINE(readability-identifier-naming)$/d' ../libr
 #adds hash code comments
 chmod +x ../library/contest/hash.sh
 for header in ../library/**/*.hpp; do
-	echo "$header"
+	echo "adding hash codes for $header"
 	for i in $(seq "$(wc --lines <"$header")" -5 1); do
 		hash=$(head --lines "$i" "$header" | sed '/^#include/d' | cpp -dD -P -fpreprocessed | ./../library/contest/hash.sh)
 		line_length=$(sed --quiet "${i}p" "$header" | wc --chars)
