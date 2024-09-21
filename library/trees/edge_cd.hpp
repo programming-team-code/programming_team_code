@@ -11,6 +11,7 @@
 //!     //   of adj[cent] are the second edge-set
 //!   });
 //! @endcode
+//! handle single-edge-paths separately
 //! @time O(n log1.5 n)
 //! @space O(n)
 template<class F> struct edge_cd {
