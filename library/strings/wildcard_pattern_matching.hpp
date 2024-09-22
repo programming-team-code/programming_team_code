@@ -8,9 +8,9 @@
 //! haystack[i]=0 or needle[i]=0 for a wildcard
 //! @time O((n+m) log (n+m))
 //! @space O(n+m)
-template<class T> vector<T> make_powers(const T& v) {
+vector<vl> make_powers(const vl& v) {
   int n = sz(v);
-  vector pws(3, T(n));
+  vector<vl> pws(3, vl(n));
   rep(i, 0, n) {
     pws[0][i] = v[i];
     pws[1][i] = v[i] * v[i];
@@ -18,15 +18,14 @@ template<class T> vector<T> make_powers(const T& v) {
   }
   return pws;
 }
-template<class T, class F>
-vector<bool> wildcard_pattern_matching(const T& haystack,
-  const T& needle, const F& conv) {
+template<class F>
+vector<bool> wildcard_pattern_matching(const vl& haystack, const vl& needle, F conv) {
   int n = sz(haystack), m = sz(needle);
   auto haystack_pws = make_powers(haystack);
   auto needle_pws = make_powers(needle);
   for (auto& needle_pw : needle_pws)
     reverse(all(needle_pw));
-  vector<T> res(3);
+  vector<vl> res(3);
   rep(pw_hay, 0, 3) res[pw_hay] =
     conv(haystack_pws[pw_hay], needle_pws[2 - pw_hay]);
   vector<bool> matches(n - m + 1);
