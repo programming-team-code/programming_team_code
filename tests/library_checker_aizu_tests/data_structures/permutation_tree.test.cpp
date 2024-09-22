@@ -21,7 +21,7 @@ int main() {
          << pt.p[u].mn_idx << " "
          << pt.p[u].mn_idx + pt.p[u].len - 1 << " "
          << (pt.p[u].is_join || empty(ch[u]) ? "linear"
-                                              : "prime")
+                                             : "prime")
          << '\n';
     for (int v : ch[u]) self(self, v, u);
   };

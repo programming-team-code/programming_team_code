@@ -12,8 +12,7 @@ perm_tree perm_tree_asserts(const vector<int>& a) {
     while (!empty(q)) {
       auto [u, u_reverse] = q.front();
       q.pop();
-      assert(
-        sz(pt.ch[u]) == sz(pt_reverse.ch[u_reverse]));
+      assert(sz(pt.ch[u]) == sz(pt_reverse.ch[u_reverse]));
       assert(pt.p[u].is_join ==
         pt_reverse.p[u_reverse].is_join);
       assert(pt.p[u].len == pt_reverse.p[u_reverse].len);
@@ -27,7 +26,7 @@ perm_tree perm_tree_asserts(const vector<int>& a) {
         q.push({pt.ch[u][i],
           pt_reverse
             .ch[u_reverse]
-                [sz(pt_reverse.ch[u_reverse]) - i - 1]});
+               [sz(pt_reverse.ch[u_reverse]) - i - 1]});
     }
   }
   RMQ rmq_min(a, [](int x, int y) { return min(x, y); });
