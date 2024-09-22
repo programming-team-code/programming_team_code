@@ -20,7 +20,7 @@ touch entire_library.cpp
 } >>entire_library.cpp
 
 {
-  sed --quiet '/\/\/! @code$/,/\/\/! @endcode$/{//!p;}' entire_library.cpp | sed 's/\/\/!//'
-  echo "return 0;"
-  echo "}"
+	sed --quiet '/\/\/! @code$/,/\/\/! @endcode$/{//!p;}' entire_library.cpp | sed 's/\/\/!//'
+	echo "return 0;"
+	echo "}"
 } >>entire_library.cpp
