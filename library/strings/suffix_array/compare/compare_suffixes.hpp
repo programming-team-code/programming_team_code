@@ -1,6 +1,6 @@
 #pragma once
 //! @code
-//!   int cmp2 = s.cmp_sufs(le1,le2);
+//!   int cmp2 = saq.cmp_sufs(le1,le2);
 //! @endcode
 //! requires le1,le2 < n
 //! if cmp2<0 then s[le1,n) < s[le2,n)
