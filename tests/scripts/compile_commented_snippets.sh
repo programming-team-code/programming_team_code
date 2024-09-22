@@ -19,6 +19,4 @@ echo "int main() {" >> entire_library.cpp
 echo "return 0;" >> entire_library.cpp
 echo "}" >> entire_library.cpp
 
-#cpp -std=c17 -nostdinc -C -P library_checker_aizu_tests/template.hpp > entire_library.cpp
-
 sed --quiet '/\/\/! @code$/,/\/\/! @endcode$/{//!p;}' ../library/data_structures/bit.hpp
