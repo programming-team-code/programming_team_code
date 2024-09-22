@@ -24,4 +24,4 @@ git submodule update
 	echo "}"
 } >entire_library.cpp
 
-g++ entire_library.cpp "$(tr '\n' ' ' <.config/.gcc_compile_flags)" -std=c++17
+g++ <.config/.gcc_compile_flags -std=c++17 entire_library.cpp
