@@ -2,12 +2,13 @@
 //! https://e-maxx.ru/algo/min_cost_flow
 //! @code
 //!   mcmf f(n);
-//!   auto [flow, cost] = f.get_flow(s,t,total_flow);
+//!   auto [flow, total_cost] =
+//!     f.get_flow(s,t,total_flow);
 //! @endcode
 //! 0<=s,t<n;
 //! flow<=total_flow is the max amount of
 //!   flow we can send
-//! cost: minimum sum of (edge.flow*edge.cost) over
+//! total_cost: minimum sum of (edge.flow*edge.cost) over
 //!   all ways to send `flow` flow
 struct mcmf {
   struct edge {
