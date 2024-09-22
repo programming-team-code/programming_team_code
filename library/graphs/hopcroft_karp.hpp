@@ -23,7 +23,7 @@ struct hopcroft_karp {
       queue<int> q;
       vector level(lsz, -1);
       rep(i, 0, lsz) if (to_r[i] == -1) level[i] = 0,
-                                          q.push(i);
+                                        q.push(i);
       bool found = 0;
       mvc_l.assign(lsz, 1);
       mvc_r.assign(rsz, 0);

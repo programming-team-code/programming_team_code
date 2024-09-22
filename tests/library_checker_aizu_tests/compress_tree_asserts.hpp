@@ -5,7 +5,8 @@
 #undef RMQ
 #undef LCA
 #include "../../library/contest/random.hpp"
-void compress_tree_asserts(vector<vector<int>> adj, LCA& lc_rm) {
+void compress_tree_asserts(vector<vector<int>> adj,
+  LCA& lc_rm) {
   int n = sz(adj);
   vector<bool> used(n);
   KACTL_LCA kactl_lca(adj);

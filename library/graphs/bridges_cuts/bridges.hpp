@@ -9,7 +9,8 @@
 //!     adj_br[u].emplace_back(v, i);
 //!     adj_br[v].emplace_back(u, i);
 //!   }
-//!   auto [num_ccs, is_bridge, br_id] = bridges(adj_br, m);
+//!   auto [num_ccs, is_bridge, br_id] =
+//!     bridges(adj_br, m);
 //! @endcode
 //! is_bridge[edge id] = 1 iff bridge edge
 //! br_id[v] = id, 0<=id<num_ccs

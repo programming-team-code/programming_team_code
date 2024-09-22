@@ -11,14 +11,12 @@
 template<class T> struct KMP {
   T t;
   vi pi;
-  KMP(const T& a_t):
-    t(a_t), pi(prefix_function(t)) {}
+  KMP(const T& a_t): t(a_t), pi(prefix_function(t)) {}
   vi find_str(const T& s) {
     vi matches;
     int j = 0;
     rep(i, 0, sz(s)) {
-      while (j > 0 && t[j] != s[i])
-        j = pi[j - 1];
+      while (j > 0 && t[j] != s[i]) j = pi[j - 1];
       j += (t[j] == s[i]);
       if (j == sz(t)) {
         matches.push_back(i - sz(t) + 1);
