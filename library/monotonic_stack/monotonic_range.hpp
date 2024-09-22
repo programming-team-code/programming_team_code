@@ -1,12 +1,12 @@
 #pragma once
 #include "monotonic_stack.hpp"
 //! @code
-//!   auto le2 = mono_st(a, less());
-//!   auto ri2 = mono_range(le2);
+//!   auto mono_le2 = mono_st(a, less());
+//!   auto mono_ri2 = mono_range(mono_le2);
 //!   // less_equal(), greater(), greater_equal()
 //! @endcode
 //! when cmp == less():
-//!   a[le[i]] < a[i] >= a[ri[i]]
+//!   a[mono_le2[i]] < a[i] >= a[mono_ri2[i]]
 //! @time O(n)
 //! @space O(n)
 vi mono_range(const vi& le) {

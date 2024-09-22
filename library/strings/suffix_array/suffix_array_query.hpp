@@ -3,7 +3,7 @@
 #include "../../data_structures/rmq.hpp"
 #include "find/match.hpp"
 //! @code
-//!   sa_query saq(s, get_sa(s));
+//!   sa_query saq(s, get_sa(s, 256));
 //! @endcode
 template<class T> struct sa_query {
   T s;
