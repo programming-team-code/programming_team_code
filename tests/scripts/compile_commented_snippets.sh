@@ -18,6 +18,7 @@ git submodule update
 } >entire_library_without_main
 
 {
+	cat entire_library_without_main
 	sed --quiet '/\/\/! @code$/,/\/\/! @endcode$/{//!p;}' entire_library_without_main | sed 's/\/\/!//'
 	echo "return 0;"
 	echo "}"
