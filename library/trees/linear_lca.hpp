@@ -41,5 +41,6 @@ struct linear_lca {
   }
 #include "extra_members/dist_edges.hpp"
 #include "extra_members/in_subtree.hpp"
+#include "extra_members/on_path.hpp"
 #include "extra_members/compress_tree.hpp"
 };
