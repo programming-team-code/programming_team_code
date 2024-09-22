@@ -20,13 +20,13 @@ struct solve_linear_mod {
     rep(i, 0, n) mat[i].push_back(rhs[i]);
     tie(rank, det) = row_reduce(mat, m);
     if (any_of(rank + all(mat),
-          [](auto& v) { return v.back().sol; })) {
+          [](auto& v) { return v.back().x; })) {
       return;
     }
     sol.resize(m);
     int j = 0;
     for_each(begin(mat), begin(mat) + rank, [&](auto& v) {
-      while (v[j].sol == 0) j++;
+      while (v[j].x == 0) j++;
       sol[j] = v.back();
     });
   }

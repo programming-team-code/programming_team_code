@@ -13,12 +13,12 @@ int main() {
   for (int i = 0; i < n; i++) cin >> b[i].x;
   solve_linear_mod info(mat, b);
   assert(info.rank <= min(n, m));
-  if (empty(info.x)) {
+  if (empty(info.sol)) {
     cout << -1 << '\n';
     return 0;
   }
   cout << m - info.rank << '\n';
-  for (auto val : info.x) cout << val.x << " ";
+  for (auto val : info.sol) cout << val.x << " ";
   cout << '\n';
   vector<int> pivot(m, -1);
   for (int i = 0, j = 0; i < info.rank; i++) {

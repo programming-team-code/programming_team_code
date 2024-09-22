@@ -73,10 +73,10 @@ struct perm_tree {
           break;
         }
         int min_num = p[v].mn_num;
-        vi ch(1 + sz(st) - idx, v);
+        vi chs(1 + sz(st) - idx, v);
         rep(j, idx, sz(st)) min_num =
-          min(min_num, p[ch[j - idx] = st[j][0]].mn_num);
-        v = allocate(le, min_num, i - le + 1, 0, ch);
+          min(min_num, p[chs[j - idx] = st[j][0]].mn_num);
+        v = allocate(le, min_num, i - le + 1, 0, chs);
         st.resize(idx);
       }
       if (empty(st)) st.push_back({v, -1, -1, -1});
