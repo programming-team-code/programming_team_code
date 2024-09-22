@@ -23,9 +23,9 @@ struct perm_tree {
       p[v].mn_num == p[u].mn_num + p[u].len;
   }
   int allocate(int mn_i, int mn_v, int ln, bool join,
-    const vi& ch) {
+    const vi& chs) {
     p.push_back({mn_i, mn_v, ln, join});
-    ch.push_back(ch);
+    ch.push_back(chs);
     return sz(ch) - 1;
   }
   perm_tree(const vi& a) {
