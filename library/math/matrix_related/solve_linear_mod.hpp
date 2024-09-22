@@ -1,10 +1,10 @@
 #pragma once
 #include "row_reduce.hpp"
 //! @code
-//!   auto [rank, det, x] = solve_linear_mod(mat, b);
+//!   auto [rank, det, sol] = solve_linear_mod(mat, rhs);
 //! @endcode
 //! for each i, 0<=i<n:
-//!   b[i] == sum over j of (mat[i][j]*x[j])
+//!   rhs[i] == sum over j of (mat[i][j]*sol[j])
 //! Number of unique solutions =
 //!   (size of domain)^(# of free variables)
 //! (# of free variables) = m - rank.
@@ -13,21 +13,21 @@
 struct solve_linear_mod {
   int rank;
   mint det;
-  vector<mint> x;
+  vector<mint> sol;
   solve_linear_mod(vector<vector<mint>>& mat,
-    const vector<mint>& b) {
+    const vector<mint>& rhs) {
     int n = sz(mat), m = sz(mat[0]);
-    rep(i, 0, n) mat[i].push_back(b[i]);
+    rep(i, 0, n) mat[i].push_back(rhs[i]);
     tie(rank, det) = row_reduce(mat, m);
     if (any_of(rank + all(mat),
-          [](auto& v) { return v.back().x; })) {
+          [](auto& v) { return v.back().sol; })) {
       return;
     }
-    x.resize(m);
+    sol.resize(m);
     int j = 0;
     for_each(begin(mat), begin(mat) + rank, [&](auto& v) {
-      while (v[j].x == 0) j++;
-      x[j] = v.back();
+      while (v[j].sol == 0) j++;
+      sol[j] = v.back();
     });
   }
 };

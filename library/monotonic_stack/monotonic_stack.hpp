@@ -1,10 +1,10 @@
 #pragma once
 //! @code
-//!   auto le = mono_st(a, less());
+//!   auto le1 = mono_st(a, less());
 //!   // less_equal(), greater(), greater_equal()
 //! @endcode
 //! when cmp == less():
-//!   a[le[i]] < a[i]
+//!   a[le1[i]] < a[i]
 //! @time O(n)
 //! @space O(n)
 template<class T, class F>

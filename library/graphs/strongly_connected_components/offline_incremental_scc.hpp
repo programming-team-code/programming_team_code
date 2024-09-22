@@ -11,12 +11,12 @@
 //! @time O((n + m) log m)
 //! @space O(n + m)
 vi offline_incremental_scc(
-  vector<array<int, 2>> edge_updates, int n) {
-  int m = sz(edge_updates);
+  vector<array<int, 2>> eds, int n) {
+  int m = sz(eds);
   vi ids(n, -1), joins(m, m);
   vector<array<int, 3>> eds(m);
   rep(t, 0, m) {
-    auto [u, v] = edge_updates[t];
+    auto [u, v] = eds[t];
     eds[t] = {u, v, t};
   }
   auto divide_and_conquer = [&](auto&& self, auto el,

@@ -1,15 +1,13 @@
 #pragma once
 #include "prefix_function.hpp"
 //! @code
-//!   string t;
-//!   KMP kmp(t);
-//!   vi t;
-//!   KMP kmp(t);
-//!   auto match = kmp.find_str(s)
+//!   string needle; // or vi needle;
+//!   KMP kmp(needle);
+//!   auto match = kmp.find_str(haystack)
 //! @endcode
-//! s[match[i],sz(t)) == t
-//! @time O(|s| + |t|)
-//! @space O(|s| + |t|)
+//! haystack[match[i],sz(needle)) == needle
+//! @time O(|haystack| + |needle|)
+//! @space O(|haystack| + |needle|)
 // NOLINTNEXTLINE(readability-identifier-naming)
 template<class T> struct KMP {
   T needle;

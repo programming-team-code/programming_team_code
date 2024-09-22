@@ -1,6 +1,6 @@
 #pragma once
 //! @code
-//!   auto d = dijkstra(adj, s);
+//!   auto d = dijkstra(adj_w, s);
 //! @endcode
 //! d[v] = min dist from s->..->v
 //! @time O(n + (m log m))

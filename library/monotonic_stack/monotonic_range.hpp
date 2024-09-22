@@ -1,8 +1,8 @@
 #pragma once
 #include "monotonic_stack.hpp"
 //! @code
-//!   auto le = mono_st(a, less());
-//!   auto ri = mono_range(le);
+//!   auto le2 = mono_st(a, less());
+//!   auto ri2 = mono_range(le2);
 //!   // less_equal(), greater(), greater_equal()
 //! @endcode
 //! when cmp == less():
