@@ -1,8 +1,8 @@
 #pragma once
 #include "cuts.hpp"
 //! @code
-//!   cuts cc(adj, m);
-//!   vector<vi> bvt = block_vertex_tree(adj, cc);
+//!   cuts cc(adj_c, m);
+//!   vector<vi> bvt = block_vertex_tree(adj_c, cc);
 //!   //to loop over each unique bcc containing a node u:
 //!   for (int bccid : bvt[v]) {
 //!     bccid -= n;
