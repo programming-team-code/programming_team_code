@@ -9,7 +9,7 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n, q;
   cin >> n >> q;
-  range_parallel_dsu dsu(n);
+  rp_dsu dsu(n);
   vector<mint> y(n);
   for (int i = 0; i < n; i++) {
     int num;
@@ -31,8 +31,7 @@ int main() {
     cout << ans.x << '\n';
     if (qq <= 10 || abs(q - qq) <= 10 ||
       rnd(0, 50'000) == 0) {
-      auto uf =
-        get_range_parallel_equivalence_classes(queries, n);
+      auto uf = get_rp_dsu(queries, n);
       vector<mint> sums(n);
       mint offline_ans = 0;
       for (int i = 0; i < n; i++) {
