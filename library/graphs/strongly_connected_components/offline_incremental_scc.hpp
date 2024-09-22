@@ -10,22 +10,18 @@
 //! joins[i] = -1 if eds[i][0] == eds[i][1]
 //! @time O((n + m) log m)
 //! @space O(n + m)
-vi offline_incremental_scc(
-  vector<array<int, 2>> edge_updates, int n) {
-  int m = sz(edge_updates);
-  vi ids(n, -1), joins(m, m);
-  vector<array<int, 3>> eds(m);
-  rep(t, 0, m) {
-    auto [u, v] = edge_updates[t];
-    eds[t] = {u, v, t};
-  }
+vi offline_incremental_scc(vector<array<int, 2>> eds,
+  int n) {
+  int m = sz(eds);
+  vi ids(n, -1), joins(m, m), idx(m);
+  iota(all(idx), 0);
   auto divide_and_conquer = [&](auto&& self, auto el,
                               auto er, int tl, int tr) {
     int mid = tl + (tr - tl) / 2;
     vi vs;
     vector<vi> adj;
     for (auto it = el; it != er; it++) {
-      auto& [u, v, t] = *it;
+      auto& [u, v] = eds[*it];
       for (int w : {u, v}) {
         if (ids[w] != -1) continue;
         ids[w] = sz(vs);
@@ -33,18 +29,17 @@ vi offline_incremental_scc(
         adj.emplace_back();
       }
       u = ids[u], v = ids[v];
-      if (t <= mid) adj[u].push_back(v);
+      if (*it <= mid) adj[u].push_back(v);
     }
     for (int v : vs) ids[v] = -1;
     auto scc_id = sccs(adj).scc_id;
-    auto split = partition(el, er, [&](const auto& ed) {
-      return scc_id[ed[0]] == scc_id[ed[1]];
+    auto split = partition(el, er, [&](int i) {
+      return scc_id[eds[i][0]] == scc_id[eds[i][1]];
     });
-    for (auto it = el; it != split; it++)
-      joins[it->back()] = mid;
+    for (auto it = el; it != split; it++) joins[*it] = mid;
     if (tr - tl == 1) return;
     for (auto it = split; it != er; it++) {
-      auto& [u, v, t] = *it;
+      auto& [u, v] = eds[*it];
       u = scc_id[u], v = scc_id[v];
     }
     // deallocate to avoid O(m log m) memory
@@ -56,6 +51,6 @@ vi offline_incremental_scc(
   };
   // uses -1 as the lower bound to correctly handle
   // self-edges
-  divide_and_conquer(divide_and_conquer, all(eds), -1, m);
+  divide_and_conquer(divide_and_conquer, all(idx), -1, m);
   return joins;
 }

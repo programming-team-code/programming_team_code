@@ -1,6 +1,7 @@
 #pragma once
 //! @code
-//!   st.find_last(le, ri, [&](ll x, int tl, int tr) ->
+//!   seg_tree st2(n);
+//!   st2.find_last(le, ri, [&](ll x, int tl, int tr) ->
 //!   bool {
 //!   });
 //! @endcode

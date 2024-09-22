@@ -2,12 +2,12 @@
 #include "linear_rmq.hpp"
 //! https://codeforces.com/blog/entry/78898
 //! @code
-//!   auto [t, root, adj] = perm_tree(a);
+//!   auto [p, root, ch] = perm_tree(a);
 //! @endcode
-//! [t[v].mn_idx, t[v].mn_idx+t[v].len) index range
-//! [t[v].mn_num, t[v].mn_num+t[v].len) number range
-//! indexes [0, n) of adj are leaves
-//! indexes [n, sz(adj)) of adj are internal nodes
+//! [p[v].mn_idx, p[v].mn_idx+p[v].len) index range
+//! [p[v].mn_num, p[v].mn_num+p[v].len) number range
+//! indexes [0, n) of ch are leaves
+//! indexes [n, sz(ch)) of ch are internal nodes
 //! @time O(n)
 //! @space O(n)
 struct perm_tree {
@@ -15,18 +15,18 @@ struct perm_tree {
     int mn_idx, mn_num, len;
     bool is_join;
   };
-  vector<node> t;
+  vector<node> p;
   int root;
-  vector<vi> adj;
+  vector<vi> ch;
   bool touches(int u, int v) {
-    return t[u].mn_num == t[v].mn_num + t[v].len ||
-      t[v].mn_num == t[u].mn_num + t[u].len;
+    return p[u].mn_num == p[v].mn_num + p[v].len ||
+      p[v].mn_num == p[u].mn_num + p[u].len;
   }
   int allocate(int mn_i, int mn_v, int ln, bool join,
-    const vi& ch) {
-    t.push_back({mn_i, mn_v, ln, join});
-    adj.push_back(ch);
-    return sz(adj) - 1;
+    const vi& chs) {
+    p.push_back({mn_i, mn_v, ln, join});
+    ch.push_back(chs);
+    return sz(ch) - 1;
   }
   perm_tree(const vi& a) {
     int n = sz(a);
@@ -47,36 +47,36 @@ struct perm_tree {
       int v = i;
       while (!empty(st)) {
         int u = st.back()[0];
-        if (!empty(adj[u]) && touches(adj[u].back(), v)) {
-          t[u].mn_num = min(t[u].mn_num, t[v].mn_num);
-          t[u].len += t[v].len;
-          adj[u].push_back(v);
+        if (!empty(ch[u]) && touches(ch[u].back(), v)) {
+          p[u].mn_num = min(p[u].mn_num, p[v].mn_num);
+          p[u].len += p[v].len;
+          ch[u].push_back(v);
           v = u;
           st.pop_back();
           continue;
         }
         if (touches(v, u)) {
-          v = allocate(t[u].mn_idx,
-            min(t[v].mn_num, t[u].mn_num),
-            t[v].len + t[u].len, 1, {u, v});
+          v = allocate(p[u].mn_idx,
+            min(p[v].mn_num, p[u].mn_num),
+            p[v].len + p[u].len, 1, {u, v});
           st.pop_back();
           continue;
         }
-        int le = min(t[u].mn_idx, mn_i[t[v].mn_idx]),
-            ri = max(i, mx_i[t[v].mn_idx]),
+        int le = min(p[u].mn_idx, mn_i[p[v].mn_idx]),
+            ri = max(i, mx_i[p[v].mn_idx]),
             idx = sz(st) - 1;
-        while (ri == i && le != t[st[idx][0]].mn_idx)
+        while (ri == i && le != p[st[idx][0]].mn_idx)
           le = min(le, st[idx][1]),
           ri = max(ri, st[idx][2]), idx = st[idx][3];
         if (ri > i) {
           st.push_back({v, le, ri, idx});
           break;
         }
-        int min_num = t[v].mn_num;
-        vi ch(1 + sz(st) - idx, v);
+        int min_num = p[v].mn_num;
+        vi chs(1 + sz(st) - idx, v);
         rep(j, idx, sz(st)) min_num =
-          min(min_num, t[ch[j - idx] = st[j][0]].mn_num);
-        v = allocate(le, min_num, i - le + 1, 0, ch);
+          min(min_num, p[chs[j - idx] = st[j][0]].mn_num);
+        v = allocate(le, min_num, i - le + 1, 0, chs);
         st.resize(idx);
       }
       if (empty(st)) st.push_back({v, -1, -1, -1});

@@ -1,11 +1,11 @@
 #pragma once
 //! https://codeforces.com/blog/entry/111380
 //! @code
-//!   auto match = wildcard_pattern_matching(
-//!     haystack, needle, conv);
+//!   auto mtch = wildcard_pattern_matching(
+//!     s_vec, t_vec, conv);
 //! @endcode
-//! haystack[match[i],sz(needle)) == needle
-//! haystack[i]=0 or needle[i]=0 for a wildcard
+//! s_vec[mtch[i],sz(t_vec)) == t_vec
+//! s_vec[i]=0 or t_vec[i]=0 for a wildcard
 //! @time O((n+m) log (n+m))
 //! @space O(n+m)
 vector<vl> make_powers(const vl& v) {
@@ -19,21 +19,20 @@ vector<vl> make_powers(const vl& v) {
   return pws;
 }
 template<class F>
-vector<bool> wildcard_pattern_matching(const vl& haystack,
-  const vl& needle, F conv) {
-  int n = sz(haystack), m = sz(needle);
-  auto haystack_pws = make_powers(haystack);
-  auto needle_pws = make_powers(needle);
-  for (auto& needle_pw : needle_pws)
-    reverse(all(needle_pw));
+vector<bool> wildcard_pattern_matching(const vl& s,
+  const vl& t, F conv) {
+  int n = sz(s), m = sz(t);
+  auto s_pws = make_powers(s);
+  auto t_pws = make_powers(t);
+  for (auto& t_pw : t_pws) reverse(all(t_pw));
   vector<vl> res(3);
   rep(pw_hay, 0, 3) res[pw_hay] =
-    conv(haystack_pws[pw_hay], needle_pws[2 - pw_hay]);
-  vector<bool> matches(n - m + 1);
+    conv(s_pws[pw_hay], t_pws[2 - pw_hay]);
+  vector<bool> mtch(n - m + 1);
   rep(i, 0, n - m + 1) {
     int id = i + m - 1;
     auto num = res[0][id] - 2 * res[1][id] + res[2][id];
-    matches[i] = num == 0;
+    mtch[i] = num == 0;
   }
-  return matches;
+  return mtch;
 }

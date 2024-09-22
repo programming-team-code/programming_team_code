@@ -1,8 +1,5 @@
 #pragma once
 //! https://codeforces.com/blog/entry/80195
-//! @code
-//!   auto c = a * b;
-//! @endcode
 //! @time O(n*m*k / 64)
 //! @space O((n*k + n*m + m*k) / 64)
 using ui = unsigned long int;

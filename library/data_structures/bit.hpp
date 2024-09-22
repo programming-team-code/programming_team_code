@@ -1,7 +1,7 @@
 #pragma once
 //! @code
-//!   BIT<int> b(n);
-//!   BIT<ll> b(n);
+//!   BIT<int> bit1(n);
+//!   BIT<ll> bit2(n);
 //! @endcode
 //! @time O(n + q log n)
 //! @space O(n)

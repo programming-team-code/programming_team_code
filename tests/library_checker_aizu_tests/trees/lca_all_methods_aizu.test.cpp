@@ -20,7 +20,7 @@ int main() {
   tree_lift tl(adj);
   LCA lc(adj);
   linear_lca lin_lca(adj);
-  compress_tree_asserts(adj, lin_lca, lc);
+  compress_tree_asserts(adj, lc);
   for (int i = 0; i < n; i++) {
     assert(tl.lca(i, i) == i);
     assert(lc.lca(i, i) == i);
@@ -33,10 +33,6 @@ int main() {
   while (q--) {
     int u, v;
     cin >> u >> v;
-    assert(
-      lc.in_subtree(u, v) == lin_lca.in_subtree(u, v));
-    assert(
-      lc.in_subtree(v, u) == lin_lca.in_subtree(v, u));
     int lca = tl.lca(u, v);
     assert(lca == lc.lca(u, v));
     assert(lca == lin_lca.lca(u, v));

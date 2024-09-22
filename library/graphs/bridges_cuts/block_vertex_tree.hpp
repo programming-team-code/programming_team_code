@@ -1,14 +1,14 @@
 #pragma once
 #include "cuts.hpp"
 //! @code
-//!   cuts cc(adj, m);
-//!   vector<vi> bvt = block_vertex_tree(adj, cc);
+//!   cuts cc(adj_c, m);
+//!   vector<vi> bvt = block_vertex_tree(adj_c, cc);
 //!   //to loop over each unique bcc containing a node u:
-//!   for (int bccid : bvt[u]) {
+//!   for (int bccid : bvt[v]) {
 //!     bccid -= n;
 //!   }
 //!   //to loop over each unique node inside a bcc:
-//!   for (int u : bvt[bccid + n]) {}
+//!   for (int v : bvt[bccid + n]) {}
 //! @endcode
 //! [0, n) are original nodes
 //! [n, n + num_bccs) are BCC nodes

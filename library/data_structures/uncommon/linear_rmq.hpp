@@ -1,11 +1,11 @@
 #pragma once
 //! https://codeforces.com/blog/entry/125371?#comment-1173604
 //! @code
-//!   linear_rmq r(a, less());//right-most min
-//!   linear_rmq r(a, less_equal());//left-most min
-//!   linear_rmq r(a, greater());//right-most max
-//!   linear_rmq r(a, greater_equal());//left-most max
-//!   linear_rmq r(a, [&](auto& x, auto& y) {
+//!   linear_rmq r1(a, less());//right-most min
+//!   linear_rmq r2(a, less_equal());//left-most min
+//!   linear_rmq r3(a, greater());//right-most max
+//!   linear_rmq r4(a, greater_equal());//left-most max
+//!   linear_rmq r5(a, [&](auto& x, auto& y) {
 //!     return x < y;
 //!   });
 //! @endcode

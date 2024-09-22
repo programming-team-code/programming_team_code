@@ -25,10 +25,7 @@
 //! lcp = {1, 3, 0, 0, 2}
 //!
 //! @code
-//!   string s;
 //!   auto [sa, sa_inv, lcp] = get_sa(s, 256);
-//!   vi s;
-//!   auto [sa, sa_inv, lcp] = get_sa(s, 100'005);
 //! @endcode
 //!
 //! requires 0<=s[i]<max_num
