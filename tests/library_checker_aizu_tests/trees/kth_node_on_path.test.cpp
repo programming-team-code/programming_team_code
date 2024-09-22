@@ -1,6 +1,7 @@
 #define PROBLEM \
   "https://judge.yosupo.jp/problem/jump_on_tree"
 #include "../template.hpp"
+#include "../../../library/contest/random.hpp"
 #include "../../../library/monotonic_stack/monotonic_stack.hpp"
 #include "../../../library/trees/tree_lift/tree_lift.hpp"
 #include "../../../library/trees/lca_rmq/lca_rmq.hpp"
@@ -34,6 +35,12 @@ int main() {
     int res = tl.kth_path(u, v, k);
     assert(res == lin_kth_path.kth_path(u, v, k));
     cout << res << '\n';
+    {
+      int w = rnd(0, n - 1);
+      assert(lc.on_path(u, v, w) ==
+        (lc.dist_edges(u, w) + lc.dist_edges(w, v) ==
+          lc.dist_edges(u, v)));
+    }
     if (u != v) {
       assert(tl.kth_path(u, v, 0) == u);
       assert(lin_kth_path.kth_path(u, v, 0) == u);

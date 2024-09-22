@@ -4,8 +4,7 @@
 //!   (l1+1,l2+1), ..., (l1+len-1,l2+len-1)
 //! @time O((n + q) * \alpha(n))
 //! @space O(n + q)
-UF get_range_parallel_equivalence_classes(
-  const vector<array<int, 3>>& rests, int n) {
+UF get_rp_dsu(const vector<array<int, 3>>& rests, int n) {
   vector<vector<array<int, 2>>> rests_by_len(n + 1);
   for (auto [l1, l2, len] : rests)
     rests_by_len[len].push_back({l1, l2});

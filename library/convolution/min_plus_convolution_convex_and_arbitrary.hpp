@@ -5,8 +5,7 @@
 //!   (a[i]+b[j]) for all pairs (i,j) where i+j==k
 //! @time O((n + m) log (n + m))
 //! @space O(n + m)
-vi min_plus_convolution_convex_and_arbitrary(
-  const vi& convex, const vi& arbitrary) {
+vi min_plus(const vi& convex, const vi& arbitrary) {
   int n = sz(convex);
   int m = sz(arbitrary);
   vi res(n + m - 1, INT_MAX);
