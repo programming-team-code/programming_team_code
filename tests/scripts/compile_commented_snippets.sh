@@ -23,3 +23,5 @@ git submodule update
 	echo "return 0;"
 	echo "}"
 } >entire_library.cpp
+
+g++ entire_library.cpp "$(tr '\n' ' ' <.config/.gcc_compile_flags)" -std=c++17
