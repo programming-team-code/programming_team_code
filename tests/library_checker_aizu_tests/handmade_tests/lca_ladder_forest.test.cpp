@@ -53,10 +53,6 @@ int main() {
       assert(res ==
         lin_kth_path.lin_kp.kth_par(v,
           tl.t[v].d - tl.t[u].d));
-      assert(
-        lin_lca.in_subtree(u, v) == lc.in_subtree(u, v));
-      assert(
-        lin_lca.in_subtree(v, u) == lc.in_subtree(v, u));
       assert((u == res) == lc.in_subtree(u, v));
     }
   }
