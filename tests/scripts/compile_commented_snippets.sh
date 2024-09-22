@@ -16,7 +16,7 @@ git submodule update
 	find ../library/ -type f -name "*.hpp" | grep --invert-match --file=.config/.code_snippet_excluded_file_list | sort | sed 's/^/#include "/; s/$/"/' | cpp -std=c17 -nostdinc -C -P | grep --invert-match --extended-regexp "const int mod = |const ll mod = "
 	echo "int main() {"
 	echo "vi a,b,subset;"
-	echo "vl left,bottom;"
+	echo "vl left,bottom,s_vec,t_vec;"
 	echo "vector<vi> adj;"
 	echo "vector<vector<pair<int,ll>>> adj_w;"
   echo "vector<pii> edges;"
@@ -36,4 +36,4 @@ git submodule update
 	echo "}"
 } >entire_library.cpp
 
-g++ <.config/.gcc_compile_flags -std=c++17 entire_library.cpp
+g++ <.config/.gcc_compile_flags -std=c++20 entire_library.cpp

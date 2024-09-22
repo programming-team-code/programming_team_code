@@ -2,10 +2,10 @@
 //! https://codeforces.com/blog/entry/111380
 //! @code
 //!   auto mtch = wildcard_pattern_matching(
-//!     s, t, conv);
+//!     s_vec, t_vec, conv);
 //! @endcode
-//! s[mtch[i],sz(t)) == t
-//! s[i]=0 or t[i]=0 for a wildcard
+//! s_vec[mtch[i],sz(t_vec)) == t_vec
+//! s_vec[i]=0 or t_vec[i]=0 for a wildcard
 //! @time O((n+m) log (n+m))
 //! @space O(n+m)
 vector<vl> make_powers(const vl& v) {
