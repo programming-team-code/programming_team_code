@@ -11,3 +11,10 @@ back.hpp
 deque.hpp
 front.hpp
 index.hpp
+compare_substrings.hpp
+compare_suffixes.hpp
+find_string_bs.hpp
+find_string_bs_fast.hpp
+find_substring.hpp
+find_substrings_concatenated.hpp
+pascals_identity.hpp
