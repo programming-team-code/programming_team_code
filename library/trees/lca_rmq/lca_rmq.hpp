@@ -1,6 +1,9 @@
 #pragma once
 #include "../../data_structures/rmq.hpp"
 //! https://github.com/kth-competitive-programming/kactl/blob/main/content/graph/LCA.h
+//! @code
+//!   LCA lca(adj);
+//! @endcode
 //! @time O(nlogn + q)
 //! @space O(nlogn)
 // NOLINTNEXTLINE(readability-identifier-naming)
