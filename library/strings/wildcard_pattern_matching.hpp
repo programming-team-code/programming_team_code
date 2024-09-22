@@ -1,11 +1,11 @@
 #pragma once
 //! https://codeforces.com/blog/entry/111380
 //! @code
-//!   auto match = wildcard_pattern_matching(
-//!     haystack, needle, conv);
+//!   auto mtch = wildcard_pattern_matching(
+//!     s, t, conv);
 //! @endcode
-//! haystack[match[i],sz(needle)) == needle
-//! haystack[i]=0 or needle[i]=0 for a wildcard
+//! s[mtch[i],sz(t)) == t
+//! s[i]=0 or t[i]=0 for a wildcard
 //! @time O((n+m) log (n+m))
 //! @space O(n+m)
 template<class T> vector<T> make_powers(const T& v) {
@@ -19,11 +19,11 @@ template<class T> vector<T> make_powers(const T& v) {
   return pws;
 }
 template<class T, class F>
-vector<bool> wildcard_pattern_matching(const T& haystack,
-  const T& needle, const F& conv) {
-  int n = sz(haystack), m = sz(needle);
-  auto haystack_pws = make_powers(haystack);
-  auto needle_pws = make_powers(needle);
+vector<bool> wildcard_pattern_matching(const T& s,
+  const T& t, const F& conv) {
+  int n = sz(s), m = sz(t);
+  auto haystack_pws = make_powers(s);
+  auto needle_pws = make_powers(t);
   for (auto& needle_pw : needle_pws)
     reverse(all(needle_pw));
   vector<T> res(3);

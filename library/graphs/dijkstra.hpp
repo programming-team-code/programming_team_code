@@ -1,8 +1,8 @@
 #pragma once
 //! @code
-//!   auto d = dijkstra(adj_w, s);
+//!   auto d = dijkstra(adj_w, source);
 //! @endcode
-//! d[v] = min dist from s->..->v
+//! d[v] = min dist from source->..->v
 //! @time O(n + (m log m))
 //! @space O(n + m)
 vector<ll> dijkstra(

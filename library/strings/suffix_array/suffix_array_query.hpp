@@ -2,6 +2,9 @@
 #include "suffix_array.hpp"
 #include "../../data_structures/rmq.hpp"
 #include "find/match.hpp"
+//! @code
+//!   sa_query saq(s, get_sa(s));
+//! @endcode
 template<class T> struct sa_query {
   T s;
   int n;
