@@ -51,6 +51,9 @@ cat ../library/**/*.hpp |
 echo "check no multiline comments. Generating hashes of file-prefixes requires this."
 grep --extended-regexp "\/\*" --recursive ../library/**/*.hpp && exit 1
 
+# compile code in @code ... @endcode comments
+make compile_commented_snippets || exit 1
+
 # remove #pragma once
 sed --in-place '/^#pragma once$/d' ../library/**/*.hpp
 # remove NOLINTNEXTLINE comments
