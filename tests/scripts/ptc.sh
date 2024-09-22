@@ -48,7 +48,7 @@ cat ../library/**/*.hpp |
 	grep . &&
 	exit 1
 
-echo "check no multiline comments. Generating hash of each prefix of a file requires this."
+echo "check no multiline comments. Generating hashes of file-prefixes requires this."
 grep --extended-regexp "\/\*" --recursive ../library/**/*.hpp && exit 1
 
 # remove #pragma once
