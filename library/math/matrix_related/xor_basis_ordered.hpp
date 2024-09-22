@@ -3,11 +3,11 @@ const int lg = 60;
 //! https://codeforces.com/blog/entry/68953
 //! https://github.com/ssk4988/Hackpack/blob/main/content/numerical/XORBasis.h
 //! @code
-//!   basis<int> b;
-//!   basis<ll> b;
-//!   basis<bitset<lg>> b;
+//!   basis_ordered<int> b;
+//!   basis_ordered<ll> b;
+//!   basis_ordered<bitset<lg>> b;
 //! @endcode
-template<class T> struct basis {
+template<class T> struct basis_ordered {
   T b[lg]{};
   int siz = 0;
   int shrink(T& v) {
