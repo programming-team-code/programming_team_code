@@ -19,7 +19,8 @@ vector<vl> make_powers(const vl& v) {
   return pws;
 }
 template<class F>
-vector<bool> wildcard_pattern_matching(const vl& haystack, const vl& needle, F conv) {
+vector<bool> wildcard_pattern_matching(const vl& haystack,
+  const vl& needle, F conv) {
   int n = sz(haystack), m = sz(needle);
   auto haystack_pws = make_powers(haystack);
   auto needle_pws = make_powers(needle);
