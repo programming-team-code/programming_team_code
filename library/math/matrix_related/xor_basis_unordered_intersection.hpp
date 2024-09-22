@@ -1,9 +1,6 @@
 #pragma once
 #include "xor_basis_unordered.hpp"
 //! https://github.com/suisen-cp/cp-library-cpp/blob/main/library/linear_algebra/xor_base.hpp
-//! @code
-//!   auto inter = intersection(u, v);
-//! @endcode
 //! @time O(32^2) or O(64^2);
 //! @space O(32) or O(64)
 template<class T>

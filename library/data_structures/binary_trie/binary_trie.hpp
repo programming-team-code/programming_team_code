@@ -1,7 +1,7 @@
 #pragma once
 //! @code
-//!   binary_trie<int> bt; //mx_bit = 30
-//!   binary_trie<ll> bt; //mx_bit = 62
+//!   binary_trie<int> bt1; //mx_bit = 30
+//!   binary_trie<ll> bt2; //mx_bit = 62
 //! @endcode
 //! @time O(mx_bit)
 //! @space O(1)

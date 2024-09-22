@@ -2,7 +2,7 @@
 //! https://github.com/kth-competitive-programming/kactl/blob/main/content/graph/CompressTree.h
 //! @code
 //!   auto [par, orig_node] =
-//!     lin_lca.compress_tree(subset);
+//!     lca.compress_tree(subset);
 //! @endcode
 //! par[i] = parent of i in compressed tree, par[0]==-1
 //! orig_node[i] = index of node in original tree

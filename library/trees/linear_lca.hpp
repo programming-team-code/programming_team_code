@@ -5,7 +5,7 @@
 int lsb(int x) { return x & -x; }
 struct linear_lca {
   struct node {
-    int d, sub_sz = 1, in, label, asc;
+    int d, label, asc;
   };
   vector<node> t;
   vi head;
@@ -14,13 +14,12 @@ struct linear_lca {
     vector<pii> order;
     auto dfs = [&](auto&& self, int v, int p) -> void {
       order.emplace_back(v, p);
-      t[v].in = t[v].label = sz(order);
+      t[v].label = sz(order);
       for (int u : adj[v])
         if (u != p) {
           t[u].d = 1 + t[v].d;
           self(self, u, v);
           head[t[u].label] = v;
-          t[v].sub_sz += t[u].sub_sz;
           if (lsb(t[u].label) > lsb(t[v].label))
             t[v].label = t[u].label;
         }
@@ -40,7 +39,4 @@ struct linear_lca {
     return t[u].d < t[v].d ? u : v;
   }
 #include "extra_members/dist_edges.hpp"
-#include "extra_members/in_subtree.hpp"
-#include "extra_members/on_path.hpp"
-#include "extra_members/compress_tree.hpp"
 };

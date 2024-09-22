@@ -1,10 +1,10 @@
 #pragma once
 //! @code
-//!   auto c = gcd_convolution(a, b);
+//!   auto gcd_conv = gcd_convolution(a, b);
 //! @endcode
 //! ssize(a)==ssize(b)
-//! c[k] = sum of (a[i]*b[j]) for all
-//!   pairs (i,j) where gcd(i,j)==k
+//! gcd_conv[k] = sum of (a[i]*b[j])
+//!   for all pairs (i,j) where gcd(i,j)==k
 //! @time O(n log n)
 //! @space O(n)
 const int mod = 998'244'353;

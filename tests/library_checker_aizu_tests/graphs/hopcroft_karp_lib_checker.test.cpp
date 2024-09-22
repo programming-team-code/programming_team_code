@@ -16,23 +16,23 @@ int main() {
   }
   hopcroft_karp res(adj, r);
   cout << res.size_of_matching << '\n';
-  // asserting correctness of both l_to_r, and r_to_l (as
+  // asserting correctness of both to_r, and to_l (as
   // well as printing answer)
   int size_l = 0;
   for (int i = 0; i < l; i++) {
-    if (res.l_to_r[i] != -1) {
+    if (res.to_r[i] != -1) {
       size_l++;
-      int node_r = res.l_to_r[i];
+      int node_r = res.to_r[i];
       cout << i << " " << node_r << '\n';
-      assert(res.r_to_l[node_r] == i);
+      assert(res.to_l[node_r] == i);
     }
   }
   int size_r = 0;
   for (int i = 0; i < r; i++) {
-    if (res.r_to_l[i] != -1) {
+    if (res.to_l[i] != -1) {
       size_r++;
-      int node_l = res.r_to_l[i];
-      assert(res.l_to_r[node_l] == i);
+      int node_l = res.to_l[i];
+      assert(res.to_r[node_l] == i);
     }
   }
   assert(size_l == res.size_of_matching);

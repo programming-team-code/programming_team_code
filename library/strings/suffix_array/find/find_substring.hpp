@@ -1,6 +1,6 @@
 #pragma once
 //! @code
-//!   auto [sa_le,sa_ri] = s.find_substr(s_le,s_ri);
+//!   auto [sa_le,sa_ri] = saq.find_substr(s_le,s_ri);
 //! @endcode
 //! requires s_le < n
 //! for all i in [sa_le,sa_ri): s.substr(s_le,s_ri-s_le)

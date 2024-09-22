@@ -24,6 +24,8 @@ help:
 	@echo "make print_which_tests_havent_run    | mainly to check if all tests have run"
 	@echo "                                     |"
 	@echo "make finish_running_tests            | manually trigger CI every 15 minutes until all tests have run"
+	@echo "                                     |"
+	@echo "make compile_commented_snippets      | compile code in @code...@endcode comments"
 
 compile_gcc17:
 	./scripts/compile_gcc17.sh
@@ -57,3 +59,6 @@ print_which_tests_havent_run:
 
 finish_running_tests:
 	./scripts/finish_running_tests.sh
+
+compile_commented_snippets:
+	./scripts/compile_commented_snippets.sh

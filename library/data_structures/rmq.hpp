@@ -1,7 +1,7 @@
 #pragma once
 //! @code
-//!   RMQ rmq(a, ranges::min); // -std=c++20
-//!   RMQ rmq(a, [&](auto& x, auto& y) {
+//!   RMQ rmq1(a, ranges::min); // -std=c++20
+//!   RMQ rmq2(a, [&](auto& x, auto& y) {
 //!     return min(x, y);
 //!   });
 //! @endcode

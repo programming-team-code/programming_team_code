@@ -3,9 +3,9 @@ const int lg = 60;
 //! https://codeforces.com/blog/entry/68953
 //! https://github.com/ssk4988/Hackpack/blob/main/content/numerical/XORBasis.h
 //! @code
-//!   basis_ordered<int> b;
-//!   basis_ordered<ll> b;
-//!   basis_ordered<bitset<lg>> b;
+//!   basis_ordered<int> b3;
+//!   basis_ordered<ll> b4;
+//!   basis_ordered<bitset<lg>> b5;
 //! @endcode
 template<class T> struct basis_ordered {
   T b[lg]{};

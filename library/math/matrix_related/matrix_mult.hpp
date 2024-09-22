@@ -1,8 +1,5 @@
 #pragma once
 //! https://codeforces.com/blog/entry/80195
-//! @code
-//!   auto c = a * b;
-//! @endcode
 //! @time O(n * m * inner)
 //! @space O(n * m)
 template<class T>
