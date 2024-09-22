@@ -5,8 +5,8 @@
 //! @endcode
 //! @time O(n*m*k / 64)
 //! @space O((n*k + n*m + m*k) / 64)
-template<unsigned long int N, unsigned long int M,
-  unsigned long int K>
+using ui = unsigned long int;
+template<ui N, ui M, ui K>
 array<bitset<K>, N> operator*(const array<bitset<M>, N>& a,
   const array<bitset<K>, M>& b) {
   array<bitset<K>, N> c;
