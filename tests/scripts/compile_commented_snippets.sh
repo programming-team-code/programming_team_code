@@ -5,8 +5,6 @@ shopt -s globstar
 git submodule init
 git submodule update
 
-touch entire_library.cpp
-
 # build cpp file with everything in the library with all code in @code ...
 # @endcode comments in main
 
@@ -17,10 +15,10 @@ touch entire_library.cpp
 	echo "const ll mod = (119 << 23) + 1, root = 62;"
 	find ../library/ -type f -name "*.hpp" | grep --invert-match --file=.config/.code_snippet_excluded_file_list | sort | sed 's/^/#include "/; s/$/"/' | cpp -std=c17 -nostdinc -C -P | grep --invert-match --extended-regexp "const int mod = |const ll mod = "
 	echo "int main() {"
-} >>entire_library_without_main
+} >entire_library_without_main
 
 {
 	sed --quiet '/\/\/! @code$/,/\/\/! @endcode$/{//!p;}' entire_library_without_main | sed 's/\/\/!//'
 	echo "return 0;"
 	echo "}"
-} >>entire_library.cpp
+} >entire_library.cpp
