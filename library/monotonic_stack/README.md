@@ -10,6 +10,6 @@ For cartesian binary tree, the invariant is on the `i`-th iteration, the
 cartesian tree is built for the `i`-th prefix. Then the inner `j` loop can be
 thought of as looping up the "right spine" of blue nodes:
 
-![](cartesian_binary_tree_reversed_before.png)
+![](cartesian_binary_tree_before.png)
 
-![](cartesian_binary_tree_reversed_after.png)
+![](cartesian_binary_tree_after.png)
