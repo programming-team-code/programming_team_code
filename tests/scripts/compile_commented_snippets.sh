@@ -37,4 +37,4 @@ git submodule update
 } >entire_library.cpp
 
 echo "compiling code in @code ... @endcode comments"
-g++ <.config/.gcc_compile_flags -std=c++20 entire_library.cpp
+g++ -std=c++20 entire_library.cpp
