@@ -13,8 +13,8 @@
 pair<ll, vi> hungarian(const vector<vector<ll>>& cost) {
   int n = sz(cost), m = sz(cost[0]);
   vi p(m), way(m);
-  vector u(n, 0LL), v(m, 0LL);
-  for (int i = 1; i < n; i++) {
+  vector<ll> u(n), v(m);
+  rep(i, 1, n) {
     p[0] = i;
     int j0 = 0;
     vector minv(m, LLONG_MAX);
@@ -23,16 +23,14 @@ pair<ll, vi> hungarian(const vector<vector<ll>>& cost) {
       used[j0] = 1;
       int i0 = p[j0], j1 = 0;
       ll delta = LLONG_MAX;
-      for (int j = 1; j < m; j++)
-        if (!used[j]) {
-          ll cur = cost[i0][j] - u[i0] - v[j];
-          if (cur < minv[j]) minv[j] = cur, way[j] = j0;
-          if (minv[j] < delta) delta = minv[j], j1 = j;
-        }
-      for (int j = 0; j < m; j++)
-        if (used[j]) u[p[j]] += delta, v[j] -= delta;
-        else minv[j] -= delta;
-      j0 = j1;
+      rep(j, 1, m) if (!used[j]) {
+        ll cur = cost[i0][j] - u[i0] - v[j];
+        if (cur < minv[j]) minv[j] = cur, way[j] = j0;
+        if (minv[j] < delta) delta = minv[j], j1 = j;
+      }
+      rep(j, 0, m) if (used[j]) u[p[j]] += delta,
+        v[j] -= delta;
+      else minv[j] -= delta; j0 = j1;
     } while (p[j0] != 0);
     do {
       int j1 = way[j0];
@@ -41,6 +39,6 @@ pair<ll, vi> hungarian(const vector<vector<ll>>& cost) {
     } while (j0);
   }
   vi l_to_r(n);
-  for (int j = 1; j < m; j++) l_to_r[p[j]] = j;
+  rep(j, 1, m) l_to_r[p[j]] = j;
   return {-v[0], l_to_r};
 }
