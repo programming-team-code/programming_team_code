@@ -3,9 +3,9 @@
 //! @code
 //!   mcmf f(n);
 //!   auto [flow, total_cost] =
-//!     f.get_flow(source,sink,total_flow);
+//!     f.get_f low(source,sink,total_flow);
 //! @endcode
-//! 0<=source,sink<n;
+//! 0<=source,sink<n
 //! flow<=total_flow is the max amount of
 //!   flow we can send
 //! total_cost: minimum sum of (edge.flow*edge.cost) over
