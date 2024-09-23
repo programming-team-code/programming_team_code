@@ -2,7 +2,7 @@
 //! https://github.com/foreverbell/acm-icpc-cheat-sheet/blob/master/src/graph-algorithm/hopcroft-karp.cpp
 //! @code
 //!   adj[le].push_back(ri); // add edge le <-> ri
-//!   auto [size_of_matching, to_r, to_l,
+//!   auto [m_sz, to_r, to_l,
 //!     mvc_l, mvc_r] = hopcroft_karp(adj, rsz);
 //! @endcode
 //! 0<=le<lsz; 0<=ri<rsz
@@ -13,7 +13,7 @@
 //! @time O(n + m * sqrt(n)) n = lsz + rsz
 //! @space O(n)
 struct hopcroft_karp {
-  int size_of_matching = 0;
+  int m_sz = 0;
   vi to_r, to_l;
   vector<bool> mvc_l, mvc_r;
   hopcroft_karp(const vector<vi>& adj, int rsz):
@@ -55,7 +55,7 @@ struct hopcroft_karp {
         level[v] = INT_MAX;
         return 0;
       };
-      rep(i, 0, lsz) size_of_matching +=
+      rep(i, 0, lsz) m_sz +=
         (to_r[i] == -1 && dfs(dfs, i));
     }
   }
