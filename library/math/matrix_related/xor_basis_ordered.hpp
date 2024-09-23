@@ -1,5 +1,4 @@
 #pragma once
-const int lg = 60;
 //! https://codeforces.com/blog/entry/68953
 //! https://github.com/ssk4988/Hackpack/blob/main/content/numerical/XORBasis.h
 //! @code
@@ -7,6 +6,7 @@ const int lg = 60;
 //!   basis_ordered<ll> b4;
 //!   basis_ordered<bitset<lg>> b5;
 //! @endcode
+const int lg = 60;
 template<class T> struct basis_ordered {
   T b[lg]{};
   int siz = 0;
