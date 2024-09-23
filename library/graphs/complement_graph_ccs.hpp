@@ -10,8 +10,7 @@
 //! @space O(n)
 vi get_complement_graph_ccs(const vector<vi> &adj) {
   int n = sz(adj);
-  vi cc_id(n);
-  vi unseen(n);
+  vi cc_id(n), unseen(n);
   iota(all(unseen), 0);
   vector<bool> is_adj(n);
   for (int cnt = 0; !empty(unseen); cnt++) {
