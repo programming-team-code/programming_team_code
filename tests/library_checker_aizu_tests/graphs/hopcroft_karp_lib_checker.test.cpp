@@ -15,7 +15,7 @@ int main() {
     edges.emplace_back(u, v);
   }
   hopcroft_karp res(adj, r);
-  cout << res.size_of_matching << '\n';
+  cout << res.m_sz << '\n';
   // asserting correctness of both to_r, and to_l (as
   // well as printing answer)
   int size_l = 0;
@@ -35,14 +35,13 @@ int main() {
       assert(res.to_r[node_l] == i);
     }
   }
-  assert(size_l == res.size_of_matching);
-  assert(size_r == res.size_of_matching);
+  assert(size_l == res.m_sz);
+  assert(size_r == res.m_sz);
   // asserting found min vertex cover is correct
   int cnt =
     accumulate(begin(res.mvc_l), end(res.mvc_l), 0) +
     accumulate(begin(res.mvc_r), end(res.mvc_r), 0);
-  assert(cnt ==
-    res.size_of_matching); // size of min vertex cover
+  assert(cnt == res.m_sz); // size of min vertex cover
                            // == size of max matching
   for (auto [u, v] : edges)
     assert(res.mvc_l[u] || res.mvc_r[v]);
