@@ -1,5 +1,4 @@
 #pragma once
-const int mod = 998'244'353;
 //! https://codeforces.com/blog/entry/14516
 //! https://cp-algorithms.com/algebra/fibonacci-numbers.html#fast-doubling-method
 //! @code
@@ -12,6 +11,7 @@ const int mod = 998'244'353;
 //! @endcode
 //! @time O(log n)
 //! @space O(log n)
+const int mod = 998'244'353;
 array<ll, 2> fib(ll n) {
   if (n == 0) return {0LL, 1LL};
   auto [x, y] = fib(n >> 1);
