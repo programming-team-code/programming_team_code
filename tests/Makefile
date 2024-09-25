@@ -5,6 +5,8 @@ help:
 	@echo "                                     |"
 	@echo "make compile_gcc20                   | compile all tests with -std=c++20 without ssize macro for warnings"
 	@echo "                                     |"
+	@echo "make compile_clang                   | compile all tests with clang, -std=c++17 for warnings"
+	@echo "                                     |"
 	@echo "make check_format_lint               | checks format with clang-format, then cppcheck"
 	@echo "                                     |"
 	@echo "make do_format                       | format with clang-format"
@@ -32,6 +34,9 @@ compile_gcc17:
 
 compile_gcc20:
 	./scripts/compile_gcc20.sh
+
+compile_clang:
+	./scripts/compile_clang.sh
 
 check_format_lint:
 	./scripts/check_format_lint.sh
