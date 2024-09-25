@@ -6,4 +6,4 @@ git submodule init
 git submodule update
 
 find library_checker_aizu_tests/ -type f -name "*.test.cpp" |
-	parallel clang++ {} "$(tr '\n' ' ' <.config/.compile_flags)" -std=c++17
+	parallel clang++ {} "$(tr '\n' ' ' <.config/.gcc_compile_flags)" -std=c++17

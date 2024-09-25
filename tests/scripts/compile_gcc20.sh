@@ -9,4 +9,4 @@ git submodule update
 cp library_checker_aizu_tests/actual_kactl_macros.hpp library_checker_aizu_tests/kactl_macros.hpp
 
 find library_checker_aizu_tests/ -type f -name "*.test.cpp" |
-	parallel g++ {} "$(tr '\n' ' ' <.config/.compile_flags)" -std=c++20 -Wno-narrowing
+	parallel g++ {} "$(tr '\n' ' ' <.config/.gcc_compile_flags)" -std=c++20 -Wno-narrowing
