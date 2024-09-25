@@ -1,0 +1,12 @@
+-Wall
+-Wextra
+-Wunused
+-Wpedantic
+-Wshadow
+-Wformat=2
+-Wfloat-equal
+-Wcast-qual
+-Wcast-align
+-Wno-keyword-macro
+-Werror
+-O2
