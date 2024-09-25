@@ -7,6 +7,6 @@
 -Wfloat-equal
 -Wcast-qual
 -Wcast-align
--Wnokeyword-macro
+-Wno-keyword-macro
 -Werror
 -O2
