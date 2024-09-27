@@ -12,6 +12,7 @@ echo "if you push these changes, I'll slap your butt"
 # remove some files not suitable for PDF:
 rm ../library/data_structures/bit_uncommon/rupq.hpp
 rm ../library/data_structures/bit_uncommon/rurq.hpp
+rm ../library/data_structures/seg_tree.png
 rm ../library/data_structures/seg_tree_uncommon/distinct_query.hpp
 rm ../library/data_structures/seg_tree_uncommon/implicit.hpp
 rm ../library/data_structures/seg_tree_uncommon/kth_smallest_query.hpp
@@ -32,7 +33,7 @@ rm ../library/strings/suffix_array/burrows_wheeler.hpp
 rm -rf ../library/strings/suffix_array/lcp_interval_tree/
 rm -rf ../library/trees/centroid_decomp_uncommon/
 rm -rf ../library/trees/edge_centroid_decomp_uncommon/
-rm -rf ../library/trees/ladder_decomposition/
+rm -rf ../library/trees/ladder_decomposition/ladder_decomposition.hpp
 rm ../library/trees/linear_kth_path.hpp
 
 # remove links in comments: these aren't useful in the PDF, and are usually the
