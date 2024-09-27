@@ -1,19 +1,19 @@
 #pragma once
-//! Still Simpler Static Level Ancestors by Torben Hagerup,
-//! May 2020; https://codeforces.com/blog/entry/126580
+//! https://codeforces.com/blog/entry/126580
+//! @code
+//!   linear_kth_par kp(adj);
+//!   int kth_par = kp.kth_par(v, k);
+//! @endcode
+//! kth_par = a node k edges up from v
+//! @time O(3.5*n + q)
+//! @space O(3.5*n)
 struct linear_kth_par {
   struct node {
-    int d, p = -1, idx, dl; //!< deepest leaf
+    int d, p = -1, idx, dl;
     vi lad;
   };
   vector<node> t;
   vi j;
-  //! @code
-  //!   linear_kth_par kp(adj);
-  //! @endcode
-  //! @param adj forest (rooted or unrooted)
-  //! @time O(n)
-  //! @space O(n)
   linear_kth_par(const vector<vi>& adj):
     t(sz(adj)), j(2 * sz(t)) {
     vi st;
@@ -49,11 +49,6 @@ struct linear_kth_par {
       rep(k, 1, sz(lad)) lad[k] = t[lad[k - 1]].p;
     }
   }
-  //! @param v query node
-  //! @param k number of edges
-  //! @returns a node k edges up from v
-  //! @time O(1)
-  //! @space O(1)
   int kth_par(int v, int k) {
     switch (k) {
     case 0: return v;

@@ -1,11 +1,5 @@
 #pragma once
-//! https://codeforces.com/blog/entry/112755
-//! @time O(n + q log n)
-//! @space O(n)
-int split(int tl, int tr) {
-  int pw2 = 1 << __lg(tr - tl);
-  return min(tl + pw2, tr - pw2 / 2);
-}
+#include "lazy_seg_tree_midpoint.hpp"
 ll op(ll vl, ll vr) { return vl + vr; }
 struct seg_tree {
   int n;
