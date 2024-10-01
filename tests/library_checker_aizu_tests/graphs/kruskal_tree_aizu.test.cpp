@@ -21,18 +21,13 @@ int main() {
   sort(all(w_eds));
   kr_tree kt(n);
   vector<int> weight(2 * n);
-  for (auto [w, u, v] : w_eds) {
-    if (kt.join(u, v)) {
-      weight[kt.id - 1] = w;
-    }
-  }
+  for (auto [w, u, v] : w_eds)
+    if (kt.join(u, v)) weight[kt.id - 1] = w;
   rep(k, 0, n) rep(i, 0, n) rep(j, 0, n) {
     mat[i][j] = min(mat[i][j], max(mat[i][k], mat[k][j]));
   }
   int mst_sum = 0;
-  for (int i = n; i < kt.id; i++) {
-    mst_sum += weight[i];
-  }
+  for (int i = n; i < kt.id; i++) mst_sum += weight[i];
   vector<int> depth(2 * n);
   vector<int> actual_par(2 * n, -1);
   auto dfs = [&](auto&& self, int v) -> void {
@@ -45,13 +40,9 @@ int main() {
   dfs(dfs, kt.id - 1);
   rep(i, 0, n) rep(j, i + 1, n) {
     int u = i, v = j;
-    while (u != v) {
-      if (depth[u] > depth[v]) {
-        u = actual_par[u];
-      } else {
-        v = actual_par[v];
-      }
-    }
+    while (u != v)
+      if (depth[u] > depth[v]) u = actual_par[u];
+      else v = actual_par[v];
     assert(weight[u] == mat[i][j]);
   }
   cout << mst_sum << '\n';
