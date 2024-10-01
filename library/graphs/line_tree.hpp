@@ -1,7 +1,9 @@
 #pragma once
 #include "../../kactl/content/data-structures/UnionFind.h"
-pair<vector<pii>, UF> line_tree(int n, const vector<array<int, 3>>& w_eds) {
-  vector<pii> list(n, {-1, -1});  // list[v] = {next node, edge weight}
+pair<vector<pii>, UF> line_tree(
+  const vector<array<int, 3>>& w_eds, int n) {
+  vector<pii> list(n,
+    {-1, -1}); // list[v] = {next node, edge weight}
   vi last(n);
   iota(all(last), 0);
   UF uf(n);
@@ -15,4 +17,3 @@ pair<vector<pii>, UF> line_tree(int n, const vector<array<int, 3>>& w_eds) {
   }
   return {list, uf};
 }
-

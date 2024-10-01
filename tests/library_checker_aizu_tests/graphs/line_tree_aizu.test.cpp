@@ -1,4 +1,5 @@
-#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/problems/ALDS1_12_A"
+#define PROBLEM \
+  "https://onlinejudge.u-aizu.ac.jp/problems/ALDS1_12_A"
 #include "../template.hpp"
 #include "../../../library/graphs/line_tree.hpp"
 #include "../../../library/data_structures/rmq.hpp"
@@ -19,21 +20,21 @@ int main() {
     }
   }
   sort(all(w_eds));
-  auto [llist, uf] = line_tree(n, w_eds);
+  auto [llist, uf] = line_tree(w_eds, n);
   rep(k, 0, n) rep(i, 0, n) rep(j, 0, n) {
     mat[i][j] = min(mat[i][j], max(mat[i][k], mat[k][j]));
   }
   int mst_sum = 0;
   vector<int> edge_weights;
   vector<int> to_time(n);
-  for (int v = uf.find(0), timer = 1; llist[v].first != -1; v = llist[v].first, timer++) {
+  for (int v = uf.find(0), timer = 1; llist[v].first != -1;
+       v = llist[v].first, timer++) {
     edge_weights.push_back(llist[v].second);
     to_time[llist[v].first] = timer;
     mst_sum += llist[v].second;
   }
-  RMQ rmq(edge_weights, [&](int x, int y) {
-    return max(x, y);
-  });
+  RMQ rmq(edge_weights,
+    [&](int x, int y) { return max(x, y); });
   rep(i, 0, n) rep(j, i + 1, n) {
     auto [i1, i2] = minmax(to_time[i], to_time[j]);
     assert(rmq.query(i1, i2) == mat[i][j]);
