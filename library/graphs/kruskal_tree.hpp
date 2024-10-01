@@ -1,4 +1,7 @@
 #pragma once
+//! https://mzhang2021.github.io/cp-blog/kruskal/
+//! @time O(n log n)
+//! @space O(n)
 struct kr_tree {
   int id;
   vi p;
