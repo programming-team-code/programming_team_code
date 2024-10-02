@@ -19,7 +19,7 @@ int main() {
     }
   }
   sort(all(w_eds));
-  kr_tree kt(n);
+  kr_tree_lin_h kt(n);
   vector<int> weight(2 * n);
   for (auto [w, u, v] : w_eds)
     if (kt.join(u, v)) weight[kt.id - 1] = w;
