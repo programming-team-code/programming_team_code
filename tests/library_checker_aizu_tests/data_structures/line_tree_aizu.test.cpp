@@ -34,7 +34,7 @@ int main() {
     mst_sum += llist[v].second;
   }
   RMQ rmq(edge_weights,
-          [&](int x, int y) { return max(x, y); });
+    [&](int x, int y) { return max(x, y); });
   rep(i, 0, n) rep(j, i + 1, n) {
     auto [i1, i2] = minmax(to_time[i], to_time[j]);
     assert(rmq.query(i1, i2) == mat[i][j]);
