@@ -1,7 +1,8 @@
 #define PROBLEM \
   "https://judge.yosupo.jp/problem/minimum_spanning_tree"
 #include "../template.hpp"
-#include "../../../library/graphs/line_tree.hpp"
+#include "../../../library/data_structures/dsu/line_tree.hpp"
+#include "../../../library/data_structures/dsu/kruskal_tree.hpp"
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n, m;
@@ -23,6 +24,13 @@ int main() {
        v = llist[v].first) {
     ids.push_back(llist[v].second);
     cost += weights[llist[v].second];
+  }
+  {
+    kr_tree kt(n);
+    int64_t kr_tree_cost = 0;
+    for (auto [e_id, u, v] : w_eds)
+      if (kt.join(u, v)) kr_tree_cost += weights[e_id];
+    assert(kr_tree_cost == cost);
   }
   cout << cost << '\n';
   for (int id : ids) cout << id << ' ';

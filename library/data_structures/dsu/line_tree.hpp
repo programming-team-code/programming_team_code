@@ -1,5 +1,5 @@
 #pragma once
-#include "../../kactl/content/data-structures/UnionFind.h"
+#include "../../../kactl/content/data-structures/UnionFind.h"
 //! https://codeforces.com/blog/entry/71568?#comment-559304
 //! @code
 //!   sort(all(w_eds));
@@ -21,9 +21,9 @@ pair<vector<pii>, UF> line_tree(
   for (auto [w, u, v] : w_eds) {
     u = uf.find(u), v = uf.find(v);
     if (uf.join(u, v)) {
-      int p = uf.find(u);
-      list[last[p]] = {p ^ u ^ v, w};
-      last[p] = last[p ^ u ^ v];
+      if (v != uf.find(v)) swap(u, v);
+      list[last[v]] = {u, w};
+      last[v] = last[u];
     }
   }
   return {list, uf};
