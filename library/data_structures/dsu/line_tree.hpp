@@ -13,7 +13,7 @@
 //! @time O(n + m * \alpha(n))
 //! @space O(n + m)
 pair<vector<pii>, UF> line_tree(
-    const vector<array<int, 3>>& w_eds, int n) {
+  const vector<array<int, 3>>& w_eds, int n) {
   vector<pii> list(n, {-1, -1});
   vi last(n);
   iota(all(last), 0);
