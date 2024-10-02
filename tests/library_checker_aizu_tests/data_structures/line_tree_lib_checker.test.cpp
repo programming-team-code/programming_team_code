@@ -15,8 +15,8 @@ int main() {
     w_eds[i] = {i, u, v};
   }
   sort(all(w_eds),
-       [&](const array<int, 3>& x, const array<int, 3>& y)
-           -> bool { return weights[x[0]] < weights[y[0]]; });
+    [&](const array<int, 3>& x, const array<int, 3>& y)
+      -> bool { return weights[x[0]] < weights[y[0]]; });
   auto [llist, uf] = line_tree(w_eds, n);
   int64_t cost = 0;
   vector<int> ids;
@@ -28,11 +28,8 @@ int main() {
   {
     kr_tree kt(n);
     int64_t kr_tree_cost = 0;
-    for (auto [e_id, u, v] : w_eds) {
-      if (kt.join(u, v)) {
-        kr_tree_cost += weights[e_id];
-      }
-    }
+    for (auto [e_id, u, v] : w_eds)
+      if (kt.join(u, v)) kr_tree_cost += weights[e_id];
     assert(kr_tree_cost == cost);
   }
   cout << cost << '\n';
