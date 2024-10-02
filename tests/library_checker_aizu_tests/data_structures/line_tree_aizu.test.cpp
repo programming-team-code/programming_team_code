@@ -1,7 +1,7 @@
 #define PROBLEM \
   "https://onlinejudge.u-aizu.ac.jp/problems/ALDS1_12_A"
 #include "../template.hpp"
-#include "../../../library/graphs/line_tree.hpp"
+#include "../../../library/data_structures/dsu/line_tree.hpp"
 #include "../../../library/data_structures/rmq.hpp"
 int main() {
   cin.tie(0)->sync_with_stdio(0);
@@ -34,7 +34,7 @@ int main() {
     mst_sum += llist[v].second;
   }
   RMQ rmq(edge_weights,
-    [&](int x, int y) { return max(x, y); });
+          [&](int x, int y) { return max(x, y); });
   rep(i, 0, n) rep(j, i + 1, n) {
     auto [i1, i2] = minmax(to_time[i], to_time[j]);
     assert(rmq.query(i1, i2) == mat[i][j]);
