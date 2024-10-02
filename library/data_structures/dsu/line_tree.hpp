@@ -1,5 +1,5 @@
 #pragma once
-#include "../../kactl/content/data-structures/UnionFind.h"
+#include "../../../kactl/content/data-structures/UnionFind.h"
 //! https://codeforces.com/blog/entry/71568?#comment-559304
 //! @code
 //!   sort(all(w_eds));
