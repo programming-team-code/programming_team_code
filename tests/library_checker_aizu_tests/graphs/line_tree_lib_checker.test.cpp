@@ -14,8 +14,8 @@ int main() {
     w_eds[i] = {i, u, v};
   }
   sort(all(w_eds),
-       [&](const array<int, 3>& x, const array<int, 3>& y)
-           -> bool { return weights[x[0]] < weights[y[0]]; });
+    [&](const array<int, 3>& x, const array<int, 3>& y)
+      -> bool { return weights[x[0]] < weights[y[0]]; });
   auto [llist, uf] = line_tree(w_eds, n);
   int64_t cost = 0;
   vector<int> ids;
