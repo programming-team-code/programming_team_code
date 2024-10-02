@@ -13,7 +13,7 @@
 //! @time O(n + m * \alpha(n))
 //! @space O(n + m)
 pair<vector<pii>, UF> line_tree(
-  const vector<array<int, 3>>& w_eds, int n) {
+    const vector<array<int, 3>>& w_eds, int n) {
   vector<pii> list(n, {-1, -1});
   vi last(n);
   iota(all(last), 0);
@@ -21,9 +21,9 @@ pair<vector<pii>, UF> line_tree(
   for (auto [w, u, v] : w_eds) {
     u = uf.find(u), v = uf.find(v);
     if (uf.join(u, v)) {
-      int p = uf.find(u);
-      list[last[p]] = {p ^ u ^ v, w};
-      last[p] = last[p ^ u ^ v];
+      if (v != uf.find(v)) swap(u, v);
+      list[last[v]] = {u, w};
+      last[v] = last[u];
     }
   }
   return {list, uf};

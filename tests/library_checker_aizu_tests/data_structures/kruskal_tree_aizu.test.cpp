@@ -1,7 +1,7 @@
 #define PROBLEM \
   "https://onlinejudge.u-aizu.ac.jp/problems/ALDS1_12_A"
 #include "../template.hpp"
-#include "../../../library/data_structures/dsu/kruskal_tree_linear_height.hpp"
+#include "../../../library/data_structures/dsu/kruskal_tree.hpp"
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n;
@@ -19,7 +19,7 @@ int main() {
     }
   }
   sort(all(w_eds));
-  kr_tree_lin_h kt(n);
+  kr_tree kt(n);
   vector<int> weight(2 * n);
   for (auto [w, u, v] : w_eds)
     if (kt.join(u, v)) weight[kt.id - 1] = w;
