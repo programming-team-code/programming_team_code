@@ -4,12 +4,13 @@
 //!   sort(all(w_eds));
 //!   line_tree lt(n);
 //!   for (auto [w, u, v] : w_eds) lt.join(u, v);
-//!   for (int v = lt.find(0); v != -1;
-//!     v = lt.t[v].edge.first) {
-//!     int w = w_eds[lt.t[v].edge.second][0];
+//!   for (int v = lt.find(0); v != -1;) {
+//!     auto [next, e_id] = lt.t[v].edge;
+//!     int w = w_eds[e_id][0];
+//!     //
+//!     v = next;
 //!   }
 //! @endcode
-//! lt.t[v].edge = {next node, edge index}
 //! lt.find(v) = head of linked list
 //!   of component containing v
 //! @time O(n + m * \alpha(n))
