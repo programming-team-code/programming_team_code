@@ -32,7 +32,7 @@ struct seg_tree_inc {
     if (ri < tl || tr < le) return;
     if (le <= tl && tr <= ri)
       return apply(change, tl, tr, v);
-    int tm = split(tl, tr);
+    int tm = split_inc(tl, tr);
     push(tl, tm, tr, v);
     update_impl(le, ri, change, tl, tm, 2 * v);
     update_impl(le, ri, change, tm + 1, tr, 2 * v + 1);
@@ -44,7 +44,7 @@ struct seg_tree_inc {
   ll query_impl(int le, int ri, int tl, int tr, int v) {
     if (ri < tl || tr < le) return 0;
     if (le <= tl && tr <= ri) return tree[v];
-    int tm = split(tl, tr);
+    int tm = split_inc(tl, tr);
     push(tl, tm, tr, v);
     return op(query_impl(le, ri, tl, tm, 2 * v),
       query_impl(le, ri, tm + 1, tr, 2 * v + 1));
