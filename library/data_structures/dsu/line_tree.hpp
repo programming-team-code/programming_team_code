@@ -18,17 +18,19 @@ struct line_tree {
     int p = -1, last;
     pii edge = {-1, -1};
   };
-  vi t;
-  line_tree(int n) : t(n) {
-    rep(i, 0, n) t[i].last = i;
-  }
+  vector<node> t;
+  line_tree(int n): t(n) { rep(i, 0, n) t[i].last = i; }
   int size(int x) { return -t[find(x)].p; }
-  int find(int x) { return t[x].p < 0 ? x : t[x].p = find(t[x].p); }
+  int find(int x) {
+    return t[x].p < 0 ? x : t[x].p = find(t[x].p);
+  }
   bool join(int u, int v) {
     u = find(u), v = find(v);
     if (u == v) return 0;
     if (t[u].p < t[v].p) swap(u, v);
-    t[v].p += t[u].p, t[u].p = v, t[exchange(t[v].last, t[u].last)].edge = {u, id++};
-    return true;
+    t[v].p += t[u].p,
+      t[u].p = v,
+      t[exchange(t[v].last, t[u].last)].edge = {u, id++};
+    return 1;
   }
 };
