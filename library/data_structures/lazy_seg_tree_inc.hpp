@@ -1,6 +1,6 @@
 #pragma once
 #include "lazy_seg_tree_inc_midpoint.hpp"
-ll op(ll vl, ll vr) { return vl + vr; }
+ll op_inc(ll vl, ll vr) { return vl + vr; }
 struct seg_tree_inc {
   int n;
   vector<ll> tree, lazy;
@@ -11,7 +11,7 @@ struct seg_tree_inc {
     while (pw2 < n) pw2 *= 2;
     rep(i, 0, n) tree[(i + pw2) % n + n] = a[i];
     for (int i = n - 1; i >= 1; i--)
-      tree[i] = op(tree[2 * i], tree[2 * i + 1]);
+      tree[i] = op_inc(tree[2 * i], tree[2 * i + 1]);
   }
   void apply(ll change, int tl, int tr, int v) {
     tree[v] += (tr - tl + 1) * change;
@@ -36,7 +36,7 @@ struct seg_tree_inc {
     push(tl, tm, tr, v);
     update_impl(le, ri, change, tl, tm, 2 * v);
     update_impl(le, ri, change, tm + 1, tr, 2 * v + 1);
-    tree[v] = op(tree[2 * v], tree[2 * v + 1]);
+    tree[v] = op_inc(tree[2 * v], tree[2 * v + 1]);
   }
   ll query(int le, int ri) { // [le, ri]
     return query_impl(le, ri, 0, n - 1, 1);
@@ -46,7 +46,7 @@ struct seg_tree_inc {
     if (le <= tl && tr <= ri) return tree[v];
     int tm = split_inc(tl, tr);
     push(tl, tm, tr, v);
-    return op(query_impl(le, ri, tl, tm, 2 * v),
+    return op_inc(query_impl(le, ri, tl, tm, 2 * v),
       query_impl(le, ri, tm + 1, tr, 2 * v + 1));
   }
 };
