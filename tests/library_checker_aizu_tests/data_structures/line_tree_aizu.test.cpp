@@ -23,9 +23,7 @@ int main() {
     min(mat[i][j], max(mat[i][k], mat[k][j]));
   sort(all(w_eds));
   line_tree lt(n);
-  vi weights;
-  for (auto [w, u, v] : w_eds)
-    if (lt.join(u, v)) weights.push_back(w);
+  for (auto [w, u, v] : w_eds) lt.join(u, v);
   int mst_sum = 0;
   vector<int> edge_weights;
   vector<int> to_time(n);
@@ -34,14 +32,14 @@ int main() {
        v = lt.t[v].edge.first, timer++) {
     edge_weights.push_back(lt.t[v].edge.second);
     to_time[lt.t[v].edge.first] = timer;
-    mst_sum += weights[lt.t[v].edge.second];
+    mst_sum += lt.t[v].edge.second;
   }
   assert(sz(edge_weights) == n - 1);
   RMQ rmq(edge_weights,
     [&](int x, int y) { return max(x, y); });
   rep(i, 0, n) rep(j, i + 1, n) {
     auto [i1, i2] = minmax(to_time[i], to_time[j]);
-    assert(weights[rmq.query(i1, i2)] == mat[i][j]);
+    assert(rmq.query(i1, i2) == mat[i][j]);
   }
   cout << mst_sum << '\n';
   return 0;
