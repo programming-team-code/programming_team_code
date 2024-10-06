@@ -1,9 +1,8 @@
-#define PROBLEM "https://judge.yosupo.jp/problem/point_add_range_sum"
+#define PROBLEM \
+  "https://judge.yosupo.jp/problem/point_add_range_sum"
 #include <bits/stdc++.h>
 using namespace std;
-
 #include "../../../library/data_structures/bit_inc.hpp"
-
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n, q;
@@ -14,7 +13,6 @@ int main() {
     cin >> val;
     bit.update(i, val);
   }
-
   while (q--) {
     int type;
     cin >> type;
