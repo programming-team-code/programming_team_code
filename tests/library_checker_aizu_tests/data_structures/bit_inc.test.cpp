@@ -6,7 +6,7 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n, q;
   cin >> n >> q;
-  bit_inc<int64_t> bit(a);
+  bit_inc<int64_t> bit(n);
   for (int i = 0; i < n; i++) {
     int val;
     cin >> val;
