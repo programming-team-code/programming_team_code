@@ -25,14 +25,14 @@
 //! such element exists then `ri` is returned
 //! @time O(log(n))
 //! @space O(log(n)) for recursion stack
-template <class F>
+template<class F>
 int find_first(int le, int ri, const F& f) {
   return find_first_in_range(le, ri, f, 0, n, 1);
 }
 //! invariant: f(tree[v], tl, tr) is 1
-template <class F>
+template<class F>
 int find_first_in_subtree(const F& f, int tl, int tr,
-                          int v) {
+  int v) {
   if (v >= n) return tl;
   int tm = split(tl, tr);
   push(tl, tm, tr, v);
@@ -40,14 +40,14 @@ int find_first_in_subtree(const F& f, int tl, int tr,
     return find_first_in_subtree(f, tl, tm, 2 * v);
   return find_first_in_subtree(f, tm, tr, 2 * v + 1);
 }
-template <class F>
+template<class F>
 int find_first_in_range(int le, int ri, const F& f, int tl,
-                        int tr, int v) {
+  int tr, int v) {
   if (ri <= tl || tr <= le) return ri;
   if (le <= tl && tr <= ri)
     return f(tree[v], tl, tr)
-               ? find_first_in_subtree(f, tl, tr, v)
-               : ri;
+      ? find_first_in_subtree(f, tl, tr, v)
+      : ri;
   int tm = split(tl, tr);
   push(tl, tm, tr, v);
   int res = find_first_in_range(le, ri, f, tl, tm, 2 * v);
