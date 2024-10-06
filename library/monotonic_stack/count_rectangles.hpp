@@ -6,7 +6,7 @@
 //!
 //! cnt[i][j] = the number of times an i-by-j
 //!   sub rectangle appears in the matrix such that
-//!   all i*j cells in the sub rectangle are true
+//!   all i*j cells in the sub rectangle are 1
 //!
 //! cnt[i][0] and cnt[0][j] will contain garbage numbers.
 //! @time O(n * m)
