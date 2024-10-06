@@ -37,6 +37,7 @@ constParameter:../library/data_structures/deque_op/deque.hpp:10
 constParameter:../library/data_structures/deque_op/queue_only.hpp:29
 constParameter:../library/data_structures/uncommon/priority_queue_of_updates.hpp:43
 constParameter:../library/math/matrix_related/row_reduce.hpp:17
+constParameter:library_checker_aizu_tests/data_structures/rmq_inc.test.cpp:11
 variableScope:../kactl/content/number-theory/Factor.h:47
 syntaxError:../library/math/n_choose_k/pascals_identity.hpp:4
 syntaxError:../library/math/prime_sieve/calc_sieve.hpp:6
