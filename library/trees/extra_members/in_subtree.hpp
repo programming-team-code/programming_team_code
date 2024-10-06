@@ -1,5 +1,5 @@
-//! returns true if v is in u's subtree
+//! returns 1 if v is in u's subtree
 bool in_subtree(int u, int v) {
   return t[u].in <= t[v].in &&
-    t[v].in < t[u].in + t[u].sub_sz;
+         t[v].in < t[u].in + t[u].sub_sz;
 }
