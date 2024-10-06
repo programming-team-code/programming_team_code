@@ -5,10 +5,10 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n, q;
   cin >> n >> q;
-  vector<int> a(n);
+  vi a(n);
   for (int i = 0; i < n; i++) cin >> a[i];
   disjoint_rmq_inc rmq(a,
-    [](int a, int b) { return min(a, b); });
+    [](int x, int y) { return min(x, y); });
   while (q--) {
     int le, ri;
     cin >> le >> ri;
