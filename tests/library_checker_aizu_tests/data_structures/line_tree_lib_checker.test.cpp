@@ -17,13 +17,16 @@ int main() {
   sort(all(w_eds),
     [&](const array<int, 3>& x, const array<int, 3>& y)
       -> bool { return weights[x[0]] < weights[y[0]]; });
-  auto [llist, uf] = line_tree(w_eds, n);
+  line_tree lt(n);
+  vector<int> idxs;
+  for (auto [i, u, v] : w_eds)
+    if (lt.join(u, v)) idxs.push_back(i);
   int64_t cost = 0;
   vector<int> ids;
-  for (int v = uf.find(0); llist[v].first != -1;
-       v = llist[v].first) {
-    ids.push_back(llist[v].second);
-    cost += weights[llist[v].second];
+  for (int v = lt.find(0); lt.t[v].edge.first != -1;
+       v = lt.t[v].edge.first) {
+    ids.push_back(idxs[lt.t[v].edge.second]);
+    cost += weights[idxs[lt.t[v].edge.second]];
   }
   {
     kr_tree kt(n);
