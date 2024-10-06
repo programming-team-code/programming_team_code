@@ -2,12 +2,15 @@
 //! https://codeforces.com/blog/entry/71568?#comment-559304
 //! @code
 //!   sort(all(w_eds));
-//!   auto [llist, uf] = line_tree(w_eds, n);
-//!   for (int v = uf.find(0); v != -1;
-//!     v = llist[v].first) {}
+//!   line_tree lt(n);
+//!   for (auto [w, u, v] : w_eds) lt.join(u, v);
+//!   for (int v = lt.find(0); v != -1;
+//!     v = t[v].edge.first) {
+//!     int w = w_eds[t[v].edge.second][0];
+//!   }
 //! @endcode
-//! llist[v] = {next node, edge weight}
-//! uf.find(v) = head of linked list
+//! lt.t[v].edge = {next node, edge index}
+//! lt.find(v) = head of linked list
 //!   of component containing v
 //! @time O(n + m * \alpha(n))
 //! @space O(n + m)
@@ -24,12 +27,12 @@ struct line_tree {
     return t[x].p < 0 ? x : t[x].p = find(t[x].p);
   }
   bool join(int u, int v) {
-    u = find(u), v = find(v);
+    u = find(u), v = find(v), id++;
     if (u == v) return 0;
     if (t[u].p < t[v].p) swap(u, v);
     t[v].p += t[u].p,
       t[u].p = v,
-      t[exchange(t[v].last, t[u].last)].edge = {u, id++};
+      t[exchange(t[v].last, t[u].last)].edge = {u, id - 1};
     return 1;
   }
 };
