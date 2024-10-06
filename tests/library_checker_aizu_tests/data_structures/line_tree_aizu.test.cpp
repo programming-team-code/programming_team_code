@@ -20,7 +20,7 @@ int main() {
     }
   }
   rep(k, 0, n) rep(i, 0, n) rep(j, 0, n) mat[i][j] =
-      min(mat[i][j], max(mat[i][k], mat[k][j]));
+    min(mat[i][j], max(mat[i][k], mat[k][j]));
   sort(all(w_eds));
   line_tree lt(n);
   for (auto [w, u, v] : w_eds) lt.join(u, v);
@@ -36,7 +36,7 @@ int main() {
   }
   assert(sz(edge_weights) == n - 1);
   RMQ rmq(edge_weights,
-          [&](int x, int y) { return max(x, y); });
+    [&](int x, int y) { return max(x, y); });
   rep(i, 0, n) rep(j, i + 1, n) {
     auto [i1, i2] = minmax(to_time[i], to_time[j]);
     assert(rmq.query(i1, i2) == mat[i][j]);

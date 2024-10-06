@@ -18,15 +18,13 @@ int main() {
     [&](const array<int, 3>& x, const array<int, 3>& y)
       -> bool { return weights[x[0]] < weights[y[0]]; });
   line_tree lt(n);
-  vector<int> idxs;
-  for (auto [i, u, v] : w_eds)
-    if (lt.join(u, v)) idxs.push_back(i);
+  for (auto [i, u, v] : w_eds) lt.join(u, v);
   int64_t cost = 0;
   vector<int> ids;
   for (int v = lt.find(0); lt.t[v].edge.first != -1;
        v = lt.t[v].edge.first) {
-    ids.push_back(idxs[lt.t[v].edge.second]);
-    cost += weights[idxs[lt.t[v].edge.second]];
+    ids.push_back(w_eds[lt.t[v].edge.second][0]);
+    cost += weights[w_eds[lt.t[v].edge.second][0]];
   }
   {
     kr_tree kt(n);
