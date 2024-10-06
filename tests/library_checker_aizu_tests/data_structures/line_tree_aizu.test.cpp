@@ -19,20 +19,22 @@ int main() {
       w_eds.push_back({mat[i][j], i, j});
     }
   }
+  rep(k, 0, n) rep(i, 0, n) rep(j, 0, n) mat[i][j] =
+    min(mat[i][j], max(mat[i][k], mat[k][j]));
   sort(all(w_eds));
-  auto [llist, uf] = line_tree(w_eds, n);
-  rep(k, 0, n) rep(i, 0, n) rep(j, 0, n) {
-    mat[i][j] = min(mat[i][j], max(mat[i][k], mat[k][j]));
-  }
+  line_tree lt(n);
+  for (auto [w, u, v] : w_eds) lt.join(u, v);
   int mst_sum = 0;
   vector<int> edge_weights;
   vector<int> to_time(n);
-  for (int v = uf.find(0), timer = 1; llist[v].first != -1;
-       v = llist[v].first, timer++) {
-    edge_weights.push_back(llist[v].second);
-    to_time[llist[v].first] = timer;
-    mst_sum += llist[v].second;
+  for (int v = lt.find(0), timer = 1;
+       lt.t[v].edge != pii{-1, -1};
+       v = lt.t[v].edge.first, timer++) {
+    edge_weights.push_back(w_eds[lt.t[v].edge.second][0]);
+    to_time[lt.t[v].edge.first] = timer;
+    mst_sum += w_eds[lt.t[v].edge.second][0];
   }
+  assert(sz(edge_weights) == n - 1);
   RMQ rmq(edge_weights,
     [&](int x, int y) { return max(x, y); });
   rep(i, 0, n) rep(j, i + 1, n) {
