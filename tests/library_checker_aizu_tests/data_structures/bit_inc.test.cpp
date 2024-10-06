@@ -1,6 +1,6 @@
 #define PROBLEM \
   "https://judge.yosupo.jp/problem/point_add_range_sum"
-#include "../template"
+#include "../template.hpp"
 #include "../../../library/data_structures/bit_inc.hpp"
 int main() {
   cin.tie(0)->sync_with_stdio(0);
