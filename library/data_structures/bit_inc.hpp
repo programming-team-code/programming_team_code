@@ -13,7 +13,7 @@ template<class T> struct bit_inc {
   }
   T query(int ri) { // [0, ri]
     T ret = 0;
-    for (; ri >= 0; ri = (ri & (ri + 1)) - 1) ret += s[ri];
+    for (; ri >= 0; (ri &= ri + 1)--) ret += s[ri];
     return ret;
   }
   T query(int le, int ri) { // [le, ri]
