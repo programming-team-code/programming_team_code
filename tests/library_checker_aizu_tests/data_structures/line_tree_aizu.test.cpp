@@ -24,6 +24,7 @@ int main() {
   sort(all(w_eds));
   line_tree lt(n);
   for (auto [w, u, v] : w_eds) lt.join(u, v);
+  assert(lt.size(0) == n);
   int mst_sum = 0;
   vector<int> edge_weights;
   vector<int> to_time(n);
