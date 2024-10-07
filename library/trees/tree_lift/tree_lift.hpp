@@ -1,8 +1,8 @@
 #pragma once
 //! https://github.com/ucf-programming-team/hackpack-cpp/blob/master/content/graphs/TreeLifting.h
 //! @code
-//!   tree_lift tl(adj);
-//!   int kth_p = tl.kth_par(v, k);
+//!   tree_lift tree_l(adj);
+//!   int kth_p = tree_l.kth_par(v, k);
 //! @endcode
 //! kth_p = a node k edges up from v
 //! @time O(n + q log n)
