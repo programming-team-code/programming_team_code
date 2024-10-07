@@ -19,5 +19,4 @@ template<class T> struct bit_inc {
   T query(int le, int ri) { // [le, ri]
     return query(ri) - query(le - 1);
   }
-#include "bit_uncommon/lower_bound.hpp"
 };
