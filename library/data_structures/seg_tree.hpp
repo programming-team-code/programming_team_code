@@ -20,12 +20,12 @@ template<class T, class F> struct tree {
     for (s[i += n] = val; i /= 2;)
       s[i] = f(s[2 * i], s[2 * i + 1]);
   }
-  T query(int b, int e) { // [b, e)
-    T ra = unit, rb = unit;
-    for (b += n, e += n; b < e; b /= 2, e /= 2) {
-      if (b % 2) ra = f(ra, s[b++]);
-      if (e % 2) rb = f(s[--e], rb);
+  T query(int le, int ri) { // [le, ri)
+    T x = unit, y = unit;
+    for (le += n, ri += n; le < ri; le /= 2, ri /= 2) {
+      if (le % 2) x = f(x, s[le++]);
+      if (ri % 2) y = f(s[--ri], y);
     }
-    return f(ra, rb);
+    return f(x, y);
   }
 };
