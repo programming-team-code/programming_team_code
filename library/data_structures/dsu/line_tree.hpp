@@ -31,9 +31,8 @@ struct line_tree {
     u = find(u), v = find(v), id++;
     if (u == v) return 0;
     if (t[u].p < t[v].p) swap(u, v);
-    t[v].p += t[u].p,
-      t[u].p = v,
-      t[exchange(t[v].last, t[u].last)].edge = {u, id - 1};
+    t[v].p += t[u].p, t[u].p = v;
+    t[exchange(t[v].last, t[u].last)].edge = {u, id - 1};
     return 1;
   }
 };

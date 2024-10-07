@@ -2,8 +2,7 @@
 //! https://github.com/kth-competitive-programming/kactl/blob/main/content/data-structures/SegmentTree.h
 //! @code
 //!   tree_inc st3(n, INT_MAX, ranges::min); // -std=c++20
-//!   tree_inc st4(n, INT_MAX,
-//!     [&](int x, int y) -> int {
+//!   tree_inc st4(n, INT_MAX, [&](int x, int y) -> int {
 //!     return min(x, y);
 //!   });
 //! @endcode

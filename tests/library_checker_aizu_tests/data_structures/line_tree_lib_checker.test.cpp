@@ -19,6 +19,7 @@ int main() {
       -> bool { return weights[x[0]] < weights[y[0]]; });
   line_tree lt(n);
   for (auto [i, u, v] : w_eds) lt.join(u, v);
+  assert(lt.size(0) == n);
   int64_t cost = 0;
   vector<int> ids;
   for (int v = lt.find(0); lt.t[v].edge.first != -1;

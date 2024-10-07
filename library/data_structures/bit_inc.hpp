@@ -11,9 +11,9 @@ template<class T> struct bit_inc {
   void update(int i, T d) {
     for (; i < sz(s); i |= i + 1) s[i] += d;
   }
-  T query(int ri) { // [0, ri]
+  T query(int i) { // [0, i]
     T ret = 0;
-    for (; ri >= 0; (ri &= ri + 1)--) ret += s[ri];
+    for (; i >= 0; (i &= i + 1)--) ret += s[i];
     return ret;
   }
   T query(int le, int ri) { // [le, ri]
