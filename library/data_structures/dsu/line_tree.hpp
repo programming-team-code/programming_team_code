@@ -17,22 +17,21 @@
 //! @space O(n + m)
 struct line_tree {
   int id = 0;
-  struct node {
-    int p = -1, last;
-    pii edge = {-1, -1};
-  };
-  vector<node> t;
-  line_tree(int n): t(n) { rep(i, 0, n) t[i].last = i; }
-  int size(int x) { return -t[find(x)].p; }
+  vi p, last;
+  vector<pii> edge;
+  line_tree(int n): p(n, -1), last(n), edge(n, {-1, -1}) {
+    iota(all(last), 0);
+  }
+  int size(int x) { return -p[find(x)]; }
   int find(int x) {
-    return t[x].p < 0 ? x : t[x].p = find(t[x].p);
+    return p[x] < 0 ? x : p[x] = find(p[x]);
   }
   bool join(int u, int v) {
     u = find(u), v = find(v), id++;
     if (u == v) return 0;
-    if (t[u].p < t[v].p) swap(u, v);
-    t[v].p += t[u].p, t[u].p = v;
-    t[exchange(t[v].last, t[u].last)].edge = {u, id - 1};
+    if (p[u] < p[v]) swap(u, v);
+    p[v] += p[u], p[u] = v;
+    edge[exchange(last[v], last[u])] = {u, id - 1};
     return 1;
   }
 };
