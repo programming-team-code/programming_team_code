@@ -22,10 +22,10 @@ int main() {
   assert(lt.size(0) == n);
   int64_t cost = 0;
   vector<int> ids;
-  for (int v = lt.find(0); lt.t[v].edge.first != -1;
-       v = lt.t[v].edge.first) {
-    ids.push_back(w_eds[lt.t[v].edge.second][0]);
-    cost += weights[w_eds[lt.t[v].edge.second][0]];
+  for (int v = lt.find(0); lt.edge[v].first != -1;
+       v = lt.edge[v].first) {
+    ids.push_back(w_eds[lt.edge[v].second][0]);
+    cost += weights[w_eds[lt.edge[v].second][0]];
   }
   {
     kr_tree kt(n);
