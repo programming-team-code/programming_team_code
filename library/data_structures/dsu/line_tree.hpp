@@ -5,7 +5,7 @@
 //!   line_tree lt(n);
 //!   for (auto [w, u, v] : w_eds) lt.join(u, v);
 //!   for (int v = lt.find(0); v != -1;) {
-//!     auto [next, e_id] = lt.t[v].edge;
+//!     auto [next, e_id] = lt.edge[v];
 //!     int w = w_eds[e_id][0];
 //!     //
 //!     v = next;
