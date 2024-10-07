@@ -22,9 +22,9 @@ struct line_tree {
   line_tree(int n): p(n, -1), last(n), edge(n, {-1, -1}) {
     iota(all(last), 0);
   }
-  int size(int x) { return -p[find(x)]; }
-  int find(int x) {
-    return p[x] < 0 ? x : p[x] = find(p[x]);
+  int size(int v) { return -p[find(v)]; }
+  int find(int v) {
+    return p[v] < 0 ? v : p[v] = find(p[v]);
   }
   bool join(int u, int v) {
     u = find(u), v = find(v), id++;
