@@ -17,7 +17,7 @@ template<class T, class F> struct tree_inc {
     n(a_n), unit(a_unit), f(a_f), s(2 * n, unit) {}
   void update(int i, T val) {
     for (s[i += n] = val; i /= 2;)
-      s[i] = f(s[i * 2], s[i * 2 + 1]);
+      s[i] = f(s[2 * i], s[2 * i + 1]);
   }
   T query(int b, int e) { // [b, e]
     T ra = unit, rb = unit;
