@@ -23,7 +23,7 @@ template<class T, class F> struct tree_inc {
     T ra = unit, rb = unit;
     for (b += n, e += n; b <= e; b /= 2, e /= 2) {
       if (b % 2) ra = f(ra, s[b++]);
-      if (e % 2 == 0) rb = f(s[e--], rb);
+      if (!(e % 2)) rb = f(s[e--], rb);
     }
     return f(ra, rb);
   }
