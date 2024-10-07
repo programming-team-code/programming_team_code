@@ -4,6 +4,9 @@
 //!   rmq_inc rmq4(a, [&](auto& x, auto& y) {
 //!     return min(x, y);
 //!   });
+//!   vector<rmq_inc<int, function<int(int, int)>>>
+//!     rmqs2(3, {{}, NULL});
+//!   rmqs2[1] = {a, ranges::min};
 //! @endcode
 //! @time O(nlogn + q)
 //! @space O(nlogn)
