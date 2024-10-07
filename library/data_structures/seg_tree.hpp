@@ -18,7 +18,7 @@ template<class T, class F> struct tree {
 #include "seg_tree_uncommon/tree_vector_constructor.hpp"
   void update(int i, T val) {
     for (s[i += n] = val; i /= 2;)
-      s[i] = f(s[i * 2], s[i * 2 + 1]);
+      s[i] = f(s[2 * i], s[2 * i + 1]);
   }
   T query(int b, int e) { // [b, e)
     T ra = unit, rb = unit;
