@@ -22,8 +22,8 @@ template<class T, class F> struct tree_inc {
   T query(int le, int ri) { // [le, ri]
     T x = unit, y = unit;
     for (le += n, ri += n; le <= ri; le /= 2, ri /= 2) {
-      if (le % 2) x = f(x, s[le++]);
-      if (!(ri % 2)) y = f(s[ri--], y);
+      if (le % 2 == 1) x = f(x, s[le++]);
+      if (ri % 2 == 0) y = f(s[ri--], y);
     }
     return f(x, y);
   }
