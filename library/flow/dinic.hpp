@@ -1,8 +1,9 @@
 //! https://github.com/kth-competitive-programming/kactl/blob/main/content/graph/Dinic.h
 //! @code
-//!   const int source = n, sink = n + 1;
+//!   const int src = n, snk = n + 1;
 //!   dinic dn(n + 2);
 //!   int e_id = dn.adj_edge(u, v, 1);
+//!   ll total_flow = dn.calc(src, snk);
 //!   dinic::edge an_edge = dn.edges[e_id];
 //! @endcode
 //! @time O(n * m * log(max_cap))
