@@ -2,7 +2,7 @@
 //! @code
 //!   const int src = n, snk = n + 1;
 //!   dinic dn(n + 2);
-//!   int e_id = dn.adj_edge(u, v, 1);
+//!   int e_id = dn.add_edge(u, v, 1);
 //!   ll total_flow = dn.calc(src, snk);
 //!   dinic::edge an_edge = dn.edges[e_id];
 //! @endcode
