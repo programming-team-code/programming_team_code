@@ -1,3 +1,14 @@
+//! https://github.com/kth-competitive-programming/kactl/blob/main/content/graph/Dinic.h
+//! @code
+//!   const int source = n, sink = n + 1;
+//!   Dinic d(n + 2);
+//!   int e_id = d.adjEdge(u, v, 1);
+//!   Dinic::Edge an_edge = d.edge[e_id];
+//! @endcode
+//! @time O(n * m * log(max_cap))
+//! @time O(min(sqrt(m), n^(2/3)) * m) if max_cap==1
+//! @time O(m * sqrt(m))
+//! @space O(n + m)
 struct Dinic {
   struct Edge {
     int to;
@@ -6,7 +17,7 @@ struct Dinic {
   };
   ll max_cap = 0;
   vi lvl, ptr, q;
-  vector<vector<int>> adj;
+  vector<vi> adj;
   vector<Edge> edge;
   Dinic(int n): lvl(n), ptr(n), q(n), adj(n) {}
   int addEdge(int a, int b, ll c) {
