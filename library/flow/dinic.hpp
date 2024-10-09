@@ -2,7 +2,7 @@
 //! @code
 //!   const int source = n, sink = n + 1;
 //!   dinic dn(n + 2);
-//!   int e_id = dn.adjEdge(u, v, 1);
+//!   int e_id = dn.adj_edge(u, v, 1);
 //!   dinic::edge an_edge = dn.edges[e_id];
 //! @endcode
 //! @time O(n * m * log(max_cap))
