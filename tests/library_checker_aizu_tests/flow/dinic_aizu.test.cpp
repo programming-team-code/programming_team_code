@@ -30,5 +30,26 @@ int main() {
   assert(out_flow[n - 1] == 0);
   for (int i = 1; i < n - 1; i++)
     assert(in_flow[i] == out_flow[i]);
+  {
+    queue<int> q;
+    q.push(0);
+    vector<bool> vis(n);
+    vis[0] = 1;
+    while (!empty(q)) {
+      int v = q.front();
+      q.pop();
+      for (int id : d.adj[v]) {
+        dinic::edge e = d.edges[id];
+        if (e.flow() == e.oc) continue;
+        int u = e.to;
+        if (!vis[u]) {
+          vis[u] = 1;
+          q.push(u);
+        }
+      }
+    }
+    for (int i = 0; i < n; i++)
+      assert(vis[i] == d.left_of_min_cut(i));
+  }
   return 0;
 }
