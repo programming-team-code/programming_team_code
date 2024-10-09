@@ -2,6 +2,7 @@
   "https://judge.yosupo.jp/problem/bipartitematching"
 #include "../template.hpp"
 #include "../../../library/flow/dinic.hpp"
+#include "../dinic_asserts.hpp"
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   int l, r, m;
@@ -19,7 +20,9 @@ int main() {
     u_node[i] = u;
     edge_ids[i] = d.add_edge(u, v + l, 1);
   }
-  cout << d.calc(source, sink) << '\n';
+  ll total_flow = d.calc(source, sink);
+  cout << total_flow << '\n';
+  dinic_asserts(d, source, sink, total_flow);
   for (int i = 0; i < m; i++) {
     dinic::edge an_edge = d.edges[edge_ids[i]];
     if (an_edge.flow() == 1)

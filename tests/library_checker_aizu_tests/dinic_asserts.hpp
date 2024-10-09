@@ -1,6 +1,6 @@
 #pragma once
-#include "../../library/flow/dinic.hpp"
-void dinic_asserts(const dinic& d) {
+void dinic_asserts(dinic& d, int source, int sink,
+  ll total_flow) {
   int n = sz(d.q);
   vector<ll> in_flow(n), out_flow(n);
   for (int v = 0; v < n; v++) {
@@ -9,26 +9,29 @@ void dinic_asserts(const dinic& d) {
       dinic::edge e = d.edges[id];
       out_flow[v] += e.flow();
       in_flow[e.to] += e.flow();
-      assert(0 <= e.flow() && e.flow() <= e.oc);
+      assert(0 <= e.flow() && e.flow() <= e.cap);
     }
   }
-  assert(in_flow[0] == 0);
-  assert(out_flow[0] == flow);
-  assert(in_flow[n - 1] == flow);
-  assert(out_flow[n - 1] == 0);
-  for (int i = 1; i < n - 1; i++)
+  assert(in_flow[source] == 0);
+  assert(out_flow[source] == total_flow);
+  assert(in_flow[sink] == total_flow);
+  assert(out_flow[sink] == 0);
+  for (int i = 0; i < n; i++) {
+    if (i == source) continue;
+    if (i == sink) continue;
     assert(in_flow[i] == out_flow[i]);
+  }
   {
     queue<int> q;
-    q.push(0);
+    q.push(source);
     vector<bool> vis(n);
-    vis[0] = 1;
+    vis[source] = 1;
     while (!empty(q)) {
       int v = q.front();
       q.pop();
       for (int id : d.adj[v]) {
         dinic::edge e = d.edges[id];
-        if (e.flow() == e.oc) continue;
+        if (e.flow() == e.cap) continue;
         int u = e.to;
         if (!vis[u]) {
           vis[u] = 1;
