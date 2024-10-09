@@ -13,8 +13,8 @@
 struct dinic {
   struct edge {
     int to;
-    ll c, oc;
-    ll flow() { return oc - c; }
+    ll c, cap;
+    ll flow() { return cap - c; }
   };
   ll max_cap = 0;
   vi lvl, ptr, q;

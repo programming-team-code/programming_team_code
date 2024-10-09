@@ -40,7 +40,7 @@ int main() {
       q.pop();
       for (int id : d.adj[v]) {
         dinic::edge e = d.edges[id];
-        if (e.flow() == e.oc) continue;
+        if (e.flow() == e.cap) continue;
         int u = e.to;
         if (!vis[u]) {
           vis[u] = 1;
