@@ -24,11 +24,11 @@ int main() {
     in_flow[e.to] += e.flow();
     assert(0 <= e.flow() && e.flow() <= all_edges[i][2]);
   }
-  for (int i = 1; i < n - 1; i++)
-    assert(in_flow[i] == out_flow[i]);
   assert(in_flow[0] == 0);
   assert(out_flow[0] == flow);
   assert(in_flow[n - 1] == flow);
   assert(out_flow[n - 1] == 0);
+  for (int i = 1; i < n - 1; i++)
+    assert(in_flow[i] == out_flow[i]);
   return 0;
 }
