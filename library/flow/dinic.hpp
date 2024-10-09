@@ -16,7 +16,7 @@ struct dinic {
     ll c, cap;
     ll flow() { return cap - c; }
   };
-  ll max_cap = 0;
+  ll max_cap = 1;
   vi lvl, ptr, q;
   vector<vi> adj;
   vector<edge> edges;
