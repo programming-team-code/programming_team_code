@@ -8,7 +8,7 @@
 //! @endcode
 //! @time O(n * m * log(max_cap))
 //!       O(min(sqrt(m), n^(2/3)) * m) if max_cap==1
-//!       O(m * sqrt(m))
+//!       O(m * sqrt(n)) for bipartite matching
 //! @space O(n + m)
 struct dinic {
   struct edge {
