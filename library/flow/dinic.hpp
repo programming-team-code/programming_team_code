@@ -1,9 +1,9 @@
 //! https://github.com/kth-competitive-programming/kactl/blob/main/content/graph/Dinic.h
 //! @code
 //!   const int source = n, sink = n + 1;
-//!   dinic d(n + 2);
-//!   int e_id = d.adjEdge(u, v, 1);
-//!   dinic::edge an_edge = d.edges[e_id];
+//!   dinic dn(n + 2);
+//!   int e_id = dn.adjEdge(u, v, 1);
+//!   dinic::edge an_edge = dn.edges[e_id];
 //! @endcode
 //! @time O(n * m * log(max_cap))
 //!       O(min(sqrt(m), n^(2/3)) * m) if max_cap==1
