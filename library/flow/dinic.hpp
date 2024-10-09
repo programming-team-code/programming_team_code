@@ -1,16 +1,16 @@
 //! https://github.com/kth-competitive-programming/kactl/blob/main/content/graph/Dinic.h
 //! @code
 //!   const int source = n, sink = n + 1;
-//!   Dinic d(n + 2);
+//!   dinic d(n + 2);
 //!   int e_id = d.adjEdge(u, v, 1);
-//!   Dinic::Edge an_edge = d.edge[e_id];
+//!   dinic::edge an_edge = d.edges[e_id];
 //! @endcode
 //! @time O(n * m * log(max_cap))
 //! @time O(min(sqrt(m), n^(2/3)) * m) if max_cap==1
 //! @time O(m * sqrt(m))
 //! @space O(n + m)
-struct Dinic {
-  struct Edge {
+struct dinic {
+  struct edge {
     int to;
     ll c, oc;
     ll flow() { return oc - c; }
@@ -18,23 +18,23 @@ struct Dinic {
   ll max_cap = 0;
   vi lvl, ptr, q;
   vector<vi> adj;
-  vector<Edge> edge;
-  Dinic(int n): lvl(n), ptr(n), q(n), adj(n) {}
-  int addEdge(int a, int b, ll c) {
-    adj[a].push_back(sz(edge));
-    edge.push_back({b, c, c});
-    adj[b].push_back(sz(edge));
-    edge.push_back({a, 0, 0});
+  vector<edge> edges;
+  dinic(int n): lvl(n), ptr(n), q(n), adj(n) {}
+  int add_edge(int a, int b, ll c) {
+    adj[a].push_back(sz(edges));
+    edges.push_back({b, c, c});
+    adj[b].push_back(sz(edges));
+    edges.push_back({a, 0, 0});
     max_cap = max(max_cap, c);
-    return sz(edge) - 2;
+    return sz(edges) - 2;
   }
   ll dfs(int v, int t, ll f) {
     if (v == t || !f) return f;
     for (int& i = ptr[v]; i < sz(adj[v]); i++) {
-      Edge& e = edge[adj[v][i]];
+      edge& e = edges[adj[v][i]];
       if (lvl[e.to] == lvl[v] + 1)
         if (ll p = dfs(e.to, t, min(f, e.c))) {
-          e.c -= p, edge[adj[v][i] ^ 1].c += p;
+          e.c -= p, edges[adj[v][i] ^ 1].c += p;
           return p;
         }
     }
@@ -49,12 +49,12 @@ struct Dinic {
         while (qi < qe && !lvl[t]) {
           int v = q[qi++];
           for (int id : adj[v])
-            if (Edge e = edge[id]; !lvl[e.to] && e.c / i)
+            if (edge e = edges[id]; !lvl[e.to] && e.c / i)
               q[qe++] = e.to, lvl[e.to] = lvl[v] + 1;
         }
         while (ll p = dfs(s, t, LLONG_MAX)) flow += p;
       } while (lvl[t]);
     return flow;
   }
-  bool leftOfMinCut(int a) { return lvl[a] != 0; }
+  bool left_of_min_cut(int a) { return lvl[a] != 0; }
 };
