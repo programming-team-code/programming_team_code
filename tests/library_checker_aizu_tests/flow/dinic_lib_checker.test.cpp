@@ -12,12 +12,10 @@ int main() {
   dinic d(l + r + 2);
   for (int i = 0; i < l; i++) d.add_edge(source, i, 1);
   for (int i = 0; i < r; i++) d.add_edge(i + l, sink, 1);
-  vector<int> u_node(m);
   vector<int> edge_ids(m);
   for (int i = 0; i < m; i++) {
     int u, v;
     cin >> u >> v;
-    u_node[i] = u;
     edge_ids[i] = d.add_edge(u, v + l, 1);
   }
   ll total_flow = d.calc(source, sink);
@@ -26,7 +24,7 @@ int main() {
   for (int i = 0; i < m; i++) {
     dinic::edge an_edge = d.edges[edge_ids[i]];
     if (an_edge.flow() == 1)
-      cout << u_node[i] << ' ' << an_edge.to - l << '\n';
+      cout << an_edge.v << ' ' << an_edge.to - l << '\n';
   }
   return 0;
 }

@@ -3,14 +3,11 @@ void dinic_asserts(dinic& d, int source, int sink,
   ll total_flow) {
   int n = sz(d.q);
   vector<ll> in_flow(n), out_flow(n);
-  for (int v = 0; v < n; v++) {
-    for (int id : d.adj[v]) {
-      if (id % 2) continue;
-      dinic::edge e = d.edges[id];
-      out_flow[v] += e.flow();
-      in_flow[e.to] += e.flow();
-      assert(0 <= e.flow() && e.flow() <= e.cap);
-    }
+  for (int i = 0; i < sz(d.edges); i += 2) {
+    dinic::edge e = d.edges[i];
+    out_flow[e.v] += e.flow();
+    in_flow[e.to] += e.flow();
+    assert(0 <= e.flow() && e.flow() <= e.cap);
   }
   assert(in_flow[source] == 0);
   assert(out_flow[source] == total_flow);

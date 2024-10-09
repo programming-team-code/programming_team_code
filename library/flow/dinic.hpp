@@ -12,7 +12,7 @@
 //! @space O(n + m)
 struct dinic {
   struct edge {
-    int to;
+    int v, to;
     ll c, cap;
     ll flow() { return cap - c; }
   };
@@ -23,9 +23,9 @@ struct dinic {
   dinic(int n): lvl(n), ptr(n), q(n), adj(n) {}
   int add_edge(int a, int b, ll c) {
     adj[a].push_back(sz(edges));
-    edges.push_back({b, c, c});
+    edges.push_back({a, b, c, c});
     adj[b].push_back(sz(edges));
-    edges.push_back({a, 0, 0});
+    edges.push_back({-1, a, 0, -1});
     max_cap = max(max_cap, c);
     return sz(edges) - 2;
   }
