@@ -50,7 +50,7 @@ struct dinic {
         while (qi < qe && !lvl[t]) {
           int v = q[qi++];
           for (int id : adj[v])
-            if (edge e = edges[id]; !lvl[e.to] && e.c / i)
+            if (edge e = edges[id]; !lvl[e.to] && e.c >= i)
               q[qe++] = e.to, lvl[e.to] = lvl[v] + 1;
         }
         while (ll p = dfs(s, t, LLONG_MAX)) flow += p;
