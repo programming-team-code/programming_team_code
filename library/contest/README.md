@@ -1,5 +1,11 @@
 ## Tips and Tricks
 
+File IO
+```
+freopen("input.txt", "r", stdin);
+freopen("output.txt", "w", stdout);
+```
+
 If you changed something for debugging, add a `cout << "don't submit" << endl;`
 or `assert(0);` at the end of the code
 
