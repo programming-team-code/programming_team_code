@@ -26,15 +26,17 @@ struct ladder {
           if (d[dl[u]] > d[dl[v]]) dl[v] = dl[u];
         }
     };
-    rep(i, 0, n) if (p[i] == -1) p[i] = i, dfs(dfs, i);
-    b_tbl = treeJump(p);
-    rep(i, 0, n) if (p[i] == i || dl[p[i]] != dl[i]) {
-      int leaf = dl[i];
-      vi& lad = l_tbl[leaf];
-      lad.resize(min(2 * (d[leaf] - d[i]), d[leaf] + 1),
-        leaf);
-      rep(j, 1, sz(lad)) lad[j] = p[lad[j - 1]];
+    rep(i, 0, n) {
+      if (p[i] == -1) p[i] = i, dfs(dfs, i);
+      if (p[i] == i || dl[p[i]] != dl[i]) {
+        int leaf = dl[i];
+        vi& lad = l_tbl[leaf];
+        lad.resize(min(2 * (d[leaf] - d[i]), d[leaf] + 1),
+          leaf);
+        rep(j, 1, sz(lad)) lad[j] = p[lad[j - 1]];
+      }
     }
+    b_tbl = treeJump(p);
   }
   //! @param v query node
   //! @param k number of edges
@@ -43,6 +45,7 @@ struct ladder {
   //! @time O(1)
   //! @space O(1)
   int kth_par(int v, int k) {
+    assert(0 <= k && k <= d[v]);
     if (k == 0) return v;
     int bit = __lg(k);
     v = b_tbl[bit][v], k -= (1 << bit);

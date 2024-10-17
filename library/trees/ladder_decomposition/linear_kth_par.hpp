@@ -38,15 +38,16 @@ struct linear_kth_par {
         }
       st.pop_back();
     };
-    rep(i, 0, sz(t)) if (t[i].p == -1) dfs(dfs, i);
-    rep(i, 0, sz(t)) if (
-      t[i].p == -1 || t[t[i].p].dl != t[i].dl) {
-      int leaf = t[i].dl;
-      vi& lad = t[leaf].lad;
-      lad.resize(
-        min((t[leaf].d - t[i].d) * 2, t[leaf].d + 1),
-        leaf);
-      rep(k, 1, sz(lad)) lad[k] = t[lad[k - 1]].p;
+    rep(i, 0, sz(t)) {
+      if (t[i].p == -1) dfs(dfs, i);
+      if (t[i].p == -1 || t[t[i].p].dl != t[i].dl) {
+        int leaf = t[i].dl;
+        vi& lad = t[leaf].lad;
+        lad.resize(
+          min((t[leaf].d - t[i].d) * 2, t[leaf].d + 1),
+          leaf);
+        rep(k, 1, sz(lad)) lad[k] = t[lad[k - 1]].p;
+      }
     }
   }
   int kth_par(int v, int k) {
