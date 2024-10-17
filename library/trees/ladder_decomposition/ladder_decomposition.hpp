@@ -31,10 +31,12 @@ struct ladder {
       if (p[i] == i || dl[p[i]] != dl[i]) {
         int leaf = dl[i];
         vi& lad = l_tbl[leaf];
-        lad.resize(min(2 * (d[leaf] - d[i]), d[leaf] + 1), leaf);
+        lad.resize(min(2 * (d[leaf] - d[i]), d[leaf] + 1),
+          leaf);
         rep(j, 1, sz(lad)) lad[j] = p[lad[j - 1]];
-  }
-    b_tbl = treeJump(p);
+      }
+      b_tbl = treeJump(p);
+    }
   }
   //! @param v query node
   //! @param k number of edges
