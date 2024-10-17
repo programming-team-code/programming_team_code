@@ -25,8 +25,7 @@ struct linear_kth_par {
     };
     auto dfs = [&](auto&& self, int v) -> void {
       st.push_back(v);
-      t[v].idx = pos;
-      t[v].dl = v;
+      t[v].idx = pos, t[v].dl = v;
       add_j();
       for (int u : adj[v])
         if (u != t[v].p) {
