@@ -35,8 +35,8 @@ struct ladder {
           leaf);
         rep(j, 1, sz(lad)) lad[j] = p[lad[j - 1]];
       }
-      b_tbl = treeJump(p);
     }
+    b_tbl = treeJump(p);
   }
   //! @param v query node
   //! @param k number of edges
@@ -45,6 +45,7 @@ struct ladder {
   //! @time O(1)
   //! @space O(1)
   int kth_par(int v, int k) {
+    assert(0 <= k && k <= d[v]);
     if (k == 0) return v;
     int bit = __lg(k);
     v = b_tbl[bit][v], k -= (1 << bit);
