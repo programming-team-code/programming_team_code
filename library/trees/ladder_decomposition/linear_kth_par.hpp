@@ -13,7 +13,7 @@ struct linear_kth_par {
   };
   vector<node> t;
   vector<pii> j;
-  vi lad;
+  vi l_tbl;
   linear_kth_par(const vector<vi>& adj):
     t(sz(adj)), j(2 * sz(t)) {
     vi st;
@@ -41,9 +41,9 @@ struct linear_kth_par {
       if (t[i].p == -1) dfs(dfs, i);
       if (t[i].p == -1 || t[t[i].p].dl != t[i].dl) {
         int v = t[i].dl, len = (t[v].d - t[i].d) * 2;
-        t[v].idx_l = sz(lad) + t[v].d;
+        t[v].idx_l = sz(l_tbl) + t[v].d;
         for (; v != -1 && len--; v = t[v].p)
-          lad.push_back(v);
+          l_tbl.push_back(v);
       }
     }
   }
@@ -57,7 +57,7 @@ struct linear_kth_par {
       int i = 1 << __lg(k / 3);
       auto [j1, j2] = j[(t[v].idx_j & -i) | i];
       int up = t[v].d - t[j2].d <= k ? j2 : j1;
-      return lad[t[t[up].dl].idx_l + k - t[v].d];
+      return l_tbl[t[t[up].dl].idx_l + k - t[v].d];
     }
   }
 };
