@@ -49,6 +49,6 @@ struct ladder {
     int bit = __lg(k);
     v = b_tbl[bit][v], k -= (1 << bit);
     int leaf = dl[v];
-    return l_tbl[k + idx_l[leaf] - d[v]];
+    return l_tbl[idx_l[leaf] + k - d[v]];
   }
 };
