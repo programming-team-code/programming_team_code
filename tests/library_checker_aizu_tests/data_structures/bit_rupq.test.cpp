@@ -6,8 +6,8 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n, q;
   cin >> n >> q;
-  bit_rupq<int64_t> bit_i_1(n);
-  bit_rupq<int64_t> bit_i_2(vector<int64_t>(n, 50));
+  bit_rupq bit_i_1(n);
+  bit_rupq bit_i_2(vector<ll>(n, 50));
   while (q--) {
     int type;
     cin >> type;
@@ -26,7 +26,7 @@ int main() {
       int idx;
       cin >> idx;
       idx--;
-      int64_t res = bit_i_1.get_index(idx);
+      ll res = bit_i_1.get_index(idx);
       assert(res == bit_i_2.get_index(idx) - 50);
       cout << res << '\n';
     }

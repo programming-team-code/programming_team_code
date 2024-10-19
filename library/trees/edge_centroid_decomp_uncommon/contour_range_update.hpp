@@ -3,19 +3,20 @@
 #include "sum_adjacent.hpp"
 #include "../edge_cd.hpp"
 //! https://judge.yosupo.jp/problem/vertex_get_range_contour_add_on_tree
-template<class T> struct contour_range_update {
+struct contour_range_update {
   int n;
-  vector<T> a;
-  sum_adj<T> sum_a;
+  vector<ll> a;
+  sum_adj sum_a;
   vector<vector<array<int, 3>>> info;
-  vector<array<bit_rupq<T>, 2>> bits;
+  vector<array<bit_rupq, 2>> bits;
   //! @param adj unrooted, undirected tree
   //! @param a_a a_a[v] = initial number for node v
   //! @time O(n log1.5 n)
   //! @space O(n log1.5 n) for `info` and `bits`
   contour_range_update(const vector<vi>& adj,
-    const vector<T>& a_a):
-    n(sz(a_a)), a(a_a), sum_a(adj, vector<T>(n)), info(n) {
+    const vector<ll>& a_a):
+    n(sz(a_a)), a(a_a), sum_a(adj, vector<ll>(n)),
+    info(n) {
     edge_cd(adj,
       [&](const vector<vi>& cd_adj, int cent, int split) {
         array<int, 2> mx_d = {0, 0};
@@ -28,15 +29,15 @@ template<class T> struct contour_range_update {
         };
         rep(i, 0, sz(cd_adj[cent]))
           dfs(dfs, cd_adj[cent][i], cent, 1, i < split);
-        bits.push_back({bit_rupq<T>(mx_d[0] + 1),
-          bit_rupq<T>(mx_d[1] + 1)});
+        bits.push_back(
+          {bit_rupq(mx_d[0] + 1), bit_rupq(mx_d[1] + 1)});
       });
   }
   //! @param v,le,ri,delta add delta to all nodes u such
   //! that le <= dist_edges(v, u) < ri
   //! @time O(log1.5(n) * log2(n))
   //! @space O(1)
-  void update(int v, int le, int ri, T delta) {
+  void update(int v, int le, int ri, ll delta) {
     if (le <= 0 && 0 < ri) a[v] += delta;
     if (le <= 1 && 1 < ri) sum_a.update(v, delta);
     for (auto [decomp_id, d, side] : info[v]) {
@@ -50,8 +51,8 @@ template<class T> struct contour_range_update {
   //! @returns number of node v
   //! @time O(log1.5(n) * log2(n))
   //! @space O(1)
-  T query(int v) {
-    T sum = a[v] + sum_a.query(v);
+  ll query(int v) {
+    ll sum = a[v] + sum_a.query(v);
     for (auto [decomp_id, d, side] : info[v])
       sum += bits[decomp_id][side].get_index(d);
     return sum;

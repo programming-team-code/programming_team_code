@@ -19,12 +19,12 @@ vi lcs_queries(const T& s, const T& t,
   vi res(q);
   rep(i, 0, n) {
     lcs.push_onto_s(s[i]);
-    vi init(m), dp_inv(m, -1);
+    BIT bit(m);
+    vi dp_inv(m, -1);
     rep(j, 0, m) {
-      if (lcs.dp[j] == -1) init[j] = 1;
+      if (lcs.dp[j] == -1) bit.update(j, 1);
       else dp_inv[lcs.dp[j]] = j;
     }
-    BIT<int> bit(init);
     sort(all(qs[i]));
     int j = 0;
     rep(t_le, 0, m) {
