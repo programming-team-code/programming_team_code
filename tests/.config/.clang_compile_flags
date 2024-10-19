@@ -10,3 +10,4 @@
 -Wno-keyword-macro
 -Werror
 -O2
+-Wno-narrowing
