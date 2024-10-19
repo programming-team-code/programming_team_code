@@ -33,4 +33,4 @@ using namespace std;
 //
 // modifying kactl_macros.hpp will also re-run all library
 // checker tests
-#include "kactl_macros.hpp"
+#include "kactl_macros_gcc20.hpp"
