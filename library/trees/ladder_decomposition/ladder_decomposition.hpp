@@ -50,6 +50,8 @@ struct ladder {
     v = b_tbl[bit][v], k -= (1 << bit);
     int le = idx_l[dl[v]] - d[v];
     assert(l_tbl[le] == v);
+    // subarray [le, le+k] of l corresponds to the rest of
+    // the jump
     return l_tbl[le + k];
   }
 };
