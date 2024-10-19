@@ -1,7 +1,4 @@
 #pragma once
-//! @code
-//!   bit_inc bit2(n);
-//! @endcode
 //! @time O(n + q log n)
 //! @space O(n)
 struct bit_inc {
