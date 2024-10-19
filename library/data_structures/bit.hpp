@@ -1,24 +1,23 @@
 #pragma once
 //! @code
-//!   BIT<int> bit1(n);
-//!   BIT<ll> bit2(n);
+//!   BIT bit(n);
 //! @endcode
 //! @time O(n + q log n)
 //! @space O(n)
 // NOLINTNEXTLINE(readability-identifier-naming)
-template<class T> struct BIT {
-  vector<T> s;
+struct BIT {
+  vector<ll> s;
   BIT(int n): s(n) {}
 #include "bit_uncommon/vector_constructor.hpp"
-  void update(int i, T d) {
+  void update(int i, ll d) {
     for (; i < sz(s); i |= i + 1) s[i] += d;
   }
-  T query(int ri) { // [0, ri)
-    T ret = 0;
+  ll query(int ri) { // [0, ri)
+    ll ret = 0;
     for (; ri > 0; ri &= ri - 1) ret += s[ri - 1];
     return ret;
   }
-  T query(int le, int ri) { // [le, ri)
+  ll query(int le, int ri) { // [le, ri)
     return query(ri) - query(le);
   }
 #include "bit_uncommon/lower_bound.hpp"
