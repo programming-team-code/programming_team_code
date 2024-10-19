@@ -7,7 +7,7 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n, q;
   cin >> n >> q;
-  vector<int64_t> a(n);
+  vector<ll> a(n);
   for (int i = 0; i < n; i++) cin >> a[i];
   vector<vector<int>> adj(n);
   for (int i = 0; i < n - 1; i++) {
@@ -23,14 +23,14 @@ int main() {
     cin >> type;
     if (type == 0) {
       int u;
-      int64_t delta;
+      ll delta;
       cin >> u >> delta;
       cq.update(u, delta);
     } else {
       assert(type == 1);
       int u, le, ri;
       cin >> u >> le >> ri;
-      int64_t res = cq.query(u, le, le);
+      ll res = cq.query(u, le, le);
       assert(res == 0);
       res = cq.query(u, ri, ri);
       assert(res == 0);
