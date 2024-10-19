@@ -15,12 +15,12 @@ int main() {
     cin >> arr[i];
     arr_int[i] = int(arr[i]);
   }
-  BIT<int64_t> bit(arr);
+  BIT bit(arr);
   seg_tree st(arr_int);
-  bit_rurq<int64_t> bit_rr(arr);
+  bit_rurq bit_rr(arr);
   vector<int64_t> suf_sum(n);
   partial_sum(rbegin(arr), rend(arr), rbegin(suf_sum));
-  bit_rupq<int64_t> bit_i(suf_sum);
+  bit_rupq bit_i(suf_sum);
   for (int i = 0; i < n; i++) {
     assert(arr[i] == bit.query(i, i + 1));
     assert(bit_i.get_index(i) == bit.query(i, n));
