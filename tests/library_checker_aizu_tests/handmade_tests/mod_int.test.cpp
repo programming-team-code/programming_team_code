@@ -16,7 +16,7 @@ int main() {
   for (int i = 0; i < 1'000'000; i++) {
     int type = rnd(0, 5);
     if (type == 0) {
-      mod = mods[rnd(0, sz(mods) - 1)];
+      mod = mods[rnd<int>(0, sz(mods) - 1)];
       val = rnd(-mod + 1, mod - 1);
       assert(0 <= val.x && val.x < mod);
     } else if (type == 1) {
