@@ -17,7 +17,7 @@ int main() {
     adj[v].push_back(u);
   }
   { edge_cd(adj, edge_cd_asserts); }
-  contour_range_query<int64_t> cq(adj, a);
+  contour_range_query cq(adj, a);
   while (q--) {
     int type;
     cin >> type;

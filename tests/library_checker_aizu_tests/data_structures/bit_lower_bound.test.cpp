@@ -10,7 +10,8 @@ int main() {
   cin >> n >> q >> s;
   vector<int> init(n);
   vector<ll> init_ll(n);
-  for (int i = 0; i < n; i++) init[i] = init_ll[i] = s[i] - '0';
+  for (int i = 0; i < n; i++)
+    init[i] = init_ll[i] = s[i] - '0';
   BIT bit(init_ll);
   seg_tree st(init);
   while (q--) {
@@ -49,10 +50,10 @@ int main() {
       int res = bit.lower_bound(order + 1);
       assert(res == st.find_first(0, n, f));
       assert(res ==
-             st.find_first(k, n,
-                           [&](int64_t x, int, int) -> bool {
-                             return x > 0;
-                           }));
+        st.find_first(k, n,
+          [&](int64_t x, int, int) -> bool {
+            return x > 0;
+          }));
       if (res == n) res = -1;
       cout << res << '\n';
     } else {
@@ -73,10 +74,10 @@ int main() {
       int res = bit.lower_bound(order);
       assert(max(res, 0) == st.find_first(0, n, f));
       assert(res ==
-             st.find_last(0, k + 1,
-                          [&](int64_t x, int, int) -> bool {
-                            return x > 0;
-                          }));
+        st.find_last(0, k + 1,
+          [&](int64_t x, int, int) -> bool {
+            return x > 0;
+          }));
       cout << res << '\n';
     }
   }

@@ -17,7 +17,7 @@ int main() {
     adj[v].push_back(u);
   }
   { edge_cd(adj, edge_cd_asserts); }
-  contour_range_update<int64_t> cu(adj, a);
+  contour_range_update cu(adj, a);
   while (q--) {
     int type;
     cin >> type;
