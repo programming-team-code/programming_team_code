@@ -11,11 +11,11 @@
 struct ladder {
   int n;
   vector<vi> b_tbl;
-  vi d, p, dl, le, ri, l_tbl;
+  vi d, p, dl, idx_l, l_tbl;
   //! @param adj forest (rooted or unrooted)
   //! @time O(n log n)
   //! @space O(n log n) for b_tbl. Everything else is O(n)
-  ladder(const vector<vi>& adj) : n(sz(adj)), d(n), p(n, -1), dl(n), le(n), ri(n) {
+  ladder(const vector<vi>& adj) : n(sz(adj)), d(n), p(n, -1), dl(n), idx_l(n) {
     auto dfs = [&](auto&& self, int v) -> void {
       dl[v] = v;
       for (int u : adj[v])
@@ -29,10 +29,9 @@ struct ladder {
       if (p[i] == -1) p[i] = i, dfs(dfs, i);
       if (p[i] == i || dl[p[i]] != dl[i]) {
         int v = dl[i], len = (d[v] - d[i]) * 2;
-        le[v] = sz(l_tbl);
+        idx_l[v] = sz(l_tbl) + d[v];
         for (; v != -1 && len--; v = p[v])
           l_tbl.push_back(v);
-        ri[v] = sz(l_tbl);
       }
     }
     b_tbl = treeJump(p);
@@ -48,10 +47,8 @@ struct ladder {
     if (k == 0) return v;
     int bit = __lg(k);
     v = b_tbl[bit][v], k -= (1 << bit);
-    int leaf = dl[v];
-    int idx = le[leaf] + k + d[leaf] - d[v];
-    assert(le[leaf] <= idx);
-    assert(idx < ri[leaf]);
-    return l_tbl[le[leaf] + k + d[leaf] - d[v]];
+    int le = idx_l[dl[v]] - d[v];
+    assert(l_tbl[le] == v);
+    return l_tbl[le + k];
   }
 };
