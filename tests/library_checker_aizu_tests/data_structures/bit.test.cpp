@@ -9,7 +9,7 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n, q;
   cin >> n >> q;
-  vector<int64_t> arr(n);
+  vector<ll> arr(n);
   vector<int> arr_int(n);
   for (int i = 0; i < n; i++) {
     cin >> arr[i];
@@ -18,7 +18,7 @@ int main() {
   BIT bit(arr);
   seg_tree st(arr_int);
   bit_rurq bit_rr(arr);
-  vector<int64_t> suf_sum(n);
+  vector<ll> suf_sum(n);
   partial_sum(rbegin(arr), rend(arr), rbegin(suf_sum));
   bit_rupq bit_i(suf_sum);
   for (int i = 0; i < n; i++) {
@@ -39,18 +39,18 @@ int main() {
     } else {
       int l, r;
       cin >> l >> r;
-      int64_t res = bit.query(l, r);
+      ll res = bit.query(l, r);
       {
-        int64_t bit_i_result = bit_i.get_index(l);
+        ll bit_i_result = bit_i.get_index(l);
         if (r < n) bit_i_result -= bit_i.get_index(r);
         assert(res == bit_i_result);
       }
       assert(res == bit_rr.query(l, r));
       cout << res << '\n';
     }
-    auto sum = rnd<int64_t>(0LL, (int64_t)(1e12));
+    auto sum = rnd<ll>(0LL, (ll)(1e12));
     auto need = sum;
-    auto f = [&](int64_t x, int tl, int tr) -> bool {
+    auto f = [&](ll x, int tl, int tr) -> bool {
       assert(tl <= tr);
       if (x < need) {
         need -= x;
