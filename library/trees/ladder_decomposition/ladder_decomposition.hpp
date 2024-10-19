@@ -15,7 +15,8 @@ struct ladder {
   //! @param adj forest (rooted or unrooted)
   //! @time O(n log n)
   //! @space O(n log n) for b_tbl. Everything else is O(n)
-  ladder(const vector<vi>& adj) : n(sz(adj)), d(n), p(n, -1), dl(n), idx_l(n) {
+  ladder(const vector<vi>& adj):
+    n(sz(adj)), d(n), p(n, -1), dl(n), idx_l(n) {
     auto dfs = [&](auto&& self, int v) -> void {
       dl[v] = v;
       for (int u : adj[v])
