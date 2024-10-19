@@ -19,8 +19,9 @@ struct linear_kth_par {
     vi st;
     int pos = 1;
     auto add_j = [&]() -> void {
-      j[pos] = {st[max(0, sz(st) - 1 - 2 * (pos & -pos))],
-        st[max(0, sz(st) - 1 - 4 * (pos & -pos))]};
+      j[pos] = {
+        st[max<int>(0, sz(st) - 1 - 2 * (pos & -pos))],
+        st[max<int>(0, sz(st) - 1 - 4 * (pos & -pos))]};
       pos++;
     };
     auto dfs = [&](auto&& self, int v) -> void {

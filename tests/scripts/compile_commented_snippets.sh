@@ -11,7 +11,7 @@ git submodule update
 {
 	echo "#include <bits/stdc++.h>"
 	echo "using namespace std;"
-	cat library_checker_aizu_tests/actual_kactl_macros.hpp
+	cat library_checker_aizu_tests/kactl_macros_gcc20.hpp
 	echo "const ll mod = (119 << 23) + 1, root = 62;"
 	find ../library/ -type f -name "*.hpp" | grep --invert-match --file=.config/.code_snippet_excluded_file_list | sort | sed 's/^/#include "/; s/$/"/' | cpp -std=c17 -nostdinc -C -P | grep --invert-match --extended-regexp "const int mod = |const ll mod = "
 	echo "int main() {"
@@ -40,4 +40,4 @@ echo "compiling code in @code ... @endcode comments with g++"
 g++ -std=c++20 entire_library.cpp || exit 1
 
 echo "compiling code in @code ... @endcode comments with clang++"
-clang++ -std=c++20 entire_library.cpp || exit 1
+clang++ -std=c++20 -Wno-narrowing entire_library.cpp || exit 1

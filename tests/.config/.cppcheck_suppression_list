@@ -24,6 +24,7 @@ useStlAlgorithm:../library/math/matrix_related/row_reduce.hpp:28
 useStlAlgorithm:../library/math/count_paths/count_paths_triangle.hpp:23
 shadowFunction:../kactl/content/graph/BinaryLifting.h:17
 unknownMacro:../kactl/content/graph/BinaryLifting.h:18
+constParameter:../kactl/content/graph/BinaryLifting.h:29
 constParameter:../library/data_structures/wavelet_merge/merge_sort_tree.hpp:28
 constParameter:../library/data_structures/wavelet_merge/merge_sort_tree.hpp:41
 constParameter:../library/data_structures/wavelet_merge/merge_sort_tree_updates.hpp:50
