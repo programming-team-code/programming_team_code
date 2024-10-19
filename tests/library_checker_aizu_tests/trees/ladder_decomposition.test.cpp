@@ -15,6 +15,7 @@ int main() {
     adj[v].push_back(u);
   }
   ladder ld(adj);
+  assert(sz(ld.l_tbl) <= 2 * n - ld.d[0]);
   vector<vector<int>> adj_rooted(n + n);
   for (int i = 0; i < n; i++)
     if (ld.p[i] != i) {
