@@ -7,13 +7,13 @@
 struct bool_bit {
   int n;
   vector<uint64_t> mask;
-  BIT<int> presum = {0};
+  BIT presum = {0};
   //! @param a boolean array
   //! @time O(n)
   //! @space O(n / 64)
   bool_bit(const vector<bool>& a):
     n(sz(a)), mask(n / 64 + 1) {
-    vi init((n + 63) / 64);
+    vector<ll> init((n + 63) / 64);
     rep(i, 0, n) {
       mask[i >> 6] |= (uint64_t(a[i]) << (i & 63));
       init[i >> 6] += a[i];

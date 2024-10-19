@@ -5,9 +5,9 @@
 //!   size(LCS(s[0,s_ri), t[t_le,t_ri)))
 //! @time O(n*m*log(m) + q*log(m) + q*log(q))
 //! @space O(n + m + q)
-template <class T>
+template<class T>
 vi lcs_queries(const T& s, const T& t,
-               const vector<array<int, 3>>& queries) {
+  const vector<array<int, 3>>& queries) {
   int n = sz(s), m = sz(t), q = sz(queries);
   vector<vector<array<int, 3>>> qs(n);
   rep(i, 0, q) {
