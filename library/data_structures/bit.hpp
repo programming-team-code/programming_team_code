@@ -1,7 +1,4 @@
 #pragma once
-//! @code
-//!   BIT bit(n);
-//! @endcode
 //! @time O(n + q log n)
 //! @space O(n)
 // NOLINTNEXTLINE(readability-identifier-naming)
