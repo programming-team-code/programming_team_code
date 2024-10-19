@@ -8,7 +8,7 @@ const int mx_n = 100'000;
 int rv(int i) { return mx_n - i - 1; }
 int main() {
   cin.tie(0)->sync_with_stdio(0);
-  BIT<int64_t> bit(mx_n);
+  BIT bit(mx_n);
   seg_tree seg(mx_n), rev(mx_n);
   for (int i = 0; i < mx_n; i++)
     bit.update(i, 1), seg.update(i, i + 1, 1),

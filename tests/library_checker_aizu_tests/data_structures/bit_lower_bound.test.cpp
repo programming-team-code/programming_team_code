@@ -9,8 +9,10 @@ int main() {
   string s;
   cin >> n >> q >> s;
   vector<int> init(n);
-  for (int i = 0; i < n; i++) init[i] = s[i] - '0';
-  BIT<int> bit(init);
+  vector<ll> init_ll(n);
+  for (int i = 0; i < n; i++)
+    init[i] = init_ll[i] = s[i] - '0';
+  BIT bit(init_ll);
   seg_tree st(init);
   while (q--) {
     int type, k;
