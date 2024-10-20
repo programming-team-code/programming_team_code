@@ -31,37 +31,37 @@ struct mode_query {
       rep(i, start, n) cnt[a[i]]--;
     }
   }
-  //! @param le,ri defines range [le, ri)
+  //! @param l,r defines range [l, r)
   //! @returns {mode, cnt of mode}
   //! @time O(sqrt(n))
   //! @space O(1)
-  pii query(int le, int ri) {
-    assert(le < ri);
-    if (le / b >= (ri - 1) / b - 1) {
-      int mode = a[le];
-      rep(i, le, ri) {
+  pii query(int l, int r) {
+    assert(l < r);
+    if (l / b >= (r - 1) / b - 1) {
+      int mode = a[l];
+      rep(i, l, r) {
         cnt[a[i]]++;
         if (cnt[a[i]] > cnt[mode]) mode = a[i];
       }
       int cnt_mode = cnt[mode];
-      rep(i, le, ri) cnt[a[i]]--;
+      rep(i, l, r) cnt[a[i]]--;
       return {mode, cnt_mode};
     }
-    pii res = mode_blocks[le / b + 1][(ri - 1) / b - 1];
-    for (int i = le / b * b + b - 1; i >= le; i--)
+    pii res = mode_blocks[l / b + 1][(r - 1) / b - 1];
+    for (int i = l / b * b + b - 1; i >= l; i--)
       cnt[a[i]]++;
-    for (int i = le / b * b + b - 1; i >= le; i--) {
+    for (int i = l / b * b + b - 1; i >= l; i--) {
       int idx = index_into_index[i];
       if (idx + res.second < sz(index[a[i]]) &&
-        index[a[i]][idx + res.second] < ri)
+        index[a[i]][idx + res.second] < r)
         res = {a[i], cnt[a[i]] + res.second};
       cnt[a[i]]--;
     }
-    rep(i, (ri - 1) / b * b, ri) cnt[a[i]]++;
-    rep(i, (ri - 1) / b * b, ri) {
+    rep(i, (r - 1) / b * b, r) cnt[a[i]]++;
+    rep(i, (r - 1) / b * b, r) {
       int idx = index_into_index[i];
       if (idx >= res.second &&
-        index[a[i]][idx - res.second] >= le)
+        index[a[i]][idx - res.second] >= l)
         res = {a[i], cnt[a[i]] + res.second};
       cnt[a[i]]--;
     }

@@ -24,14 +24,14 @@ match find_substrs_concated(const vector<pii>& substrs) {
       return sa_inv[j] - sa_inv[x[0]] < x[2];
     return x[2] ^ (n - j < x[1]);
   };
-  for (auto [le, ri] : substrs) {
+  for (auto [l, r] : substrs) {
     sa_le = lower_bound(begin(sa) + sa_le,
-              begin(sa) + sa_ri, dt{le, ri - le, 0}, cmp) -
+              begin(sa) + sa_ri, dt{l, r - l, 0}, cmp) -
       begin(sa);
     sa_ri = lower_bound(begin(sa) + sa_le,
-              begin(sa) + sa_ri, dt{le, ri - le, 1}, cmp) -
+              begin(sa) + sa_ri, dt{l, r - l, 1}, cmp) -
       begin(sa);
-    sum_len += ri - le;
+    sum_len += r - l;
   }
   return {sa_le, sa_ri, s_le, s_ri};
 }

@@ -29,12 +29,12 @@ struct bool_bit {
       __builtin_popcountll(
         mask[i >> 6] & ((1ULL << (i & 63)) - 1));
   }
-  //! @param le,ri defines range [le, ri)
-  //! @returns a[le] + a[le + 1] + ... + a[ri - 1]
+  //! @param l,r defines range [l, r)
+  //! @returns a[l] + a[l + 1] + ... + a[r - 1]
   //! @time O(log(n / 64))
   //! @space O(1)
-  int popcount(int le, int ri) {
-    return popcount(ri) - popcount(le);
+  int popcount(int l, int r) {
+    return popcount(r) - popcount(l);
   }
   //! @param i index
   //! @returns 1 iff index i is active

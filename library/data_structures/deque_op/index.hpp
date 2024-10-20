@@ -1,5 +1,4 @@
 #pragma once
 T operator[](int i) {
-  return (
-    i < sz(le) ? le[sz(le) - i - 1] : ri[i - sz(le)])[0];
+  return (i < sz(l) ? l[sz(l) - i - 1] : r[i - sz(l)])[0];
 }

@@ -48,10 +48,10 @@ struct ladder {
     if (k == 0) return v;
     int bit = __lg(k);
     v = b_tbl[bit][v], k -= (1 << bit);
-    int le = idx_l[dl[v]] - d[v];
-    assert(l_tbl[le] == v);
-    // subarray [le, le+k] of l_tbl corresponds to the rest
+    int l = idx_l[dl[v]] - d[v];
+    assert(l_tbl[l] == v);
+    // subarray [l, l+k] of l_tbl corresponds to the rest
     // of the jump
-    return l_tbl[le + k];
+    return l_tbl[l + k];
   }
 };

@@ -12,7 +12,7 @@ struct bit_inc {
     for (; i >= 0; (i &= i + 1)--) ret += s[i];
     return ret;
   }
-  ll query(int le, int ri) { // [le, ri]
-    return query(ri) - query(le - 1);
+  ll query(int l, int r) { // [l, r]
+    return query(r) - query(l - 1);
   }
 };

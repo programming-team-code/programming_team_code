@@ -21,8 +21,8 @@ template<class T> struct sa_query {
   //! @space O(1)
   int len_lcp(int i1, int i2) {
     if (i1 == i2) return n - i1;
-    auto [le, ri] = minmax(sa_inv[i1], sa_inv[i2]);
-    return rmq.query(le, ri);
+    auto [l, r] = minmax(sa_inv[i1], sa_inv[i2]);
+    return rmq.query(l, r);
   }
 #include "compare/compare_suffixes.hpp"
 #include "compare/compare_substrings.hpp"

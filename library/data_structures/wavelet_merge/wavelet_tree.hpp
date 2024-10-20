@@ -37,112 +37,111 @@ struct wavelet_tree {
     presums(maxv - minv) {
     build(a, 0, n, minv, maxv, 1);
   }
-  void build(vi& a, int le, int ri, int tl, int tr,
-    int v) {
+  void build(vi& a, int l, int r, int tl, int tr, int v) {
     if (tr - tl <= 1) return;
     int tm = split(tl, tr);
     auto low = [&](int num) { return num < tm; };
-    vector<bool> bools(ri - le);
-    transform(begin(a) + le, begin(a) + ri, begin(bools),
+    vector<bool> bools(r - l);
+    transform(begin(a) + l, begin(a) + r, begin(bools),
       low);
     bool_presums[v] = bool_presum(bools);
-    presums[v].resize(ri - le + 1);
-    inclusive_scan(begin(a) + le, begin(a) + ri,
+    presums[v].resize(r - l + 1);
+    inclusive_scan(begin(a) + l, begin(a) + r,
       begin(presums[v]) + 1, plus<ll>(), 0LL);
     int mi =
-      stable_partition(begin(a) + le, begin(a) + ri, low) -
+      stable_partition(begin(a) + l, begin(a) + r, low) -
       begin(a);
-    build(a, le, mi, tl, tm, 2 * v);
-    build(a, mi, ri, tm, tr, 2 * v + 1);
+    build(a, l, mi, tl, tm, 2 * v);
+    build(a, mi, r, tm, tr, 2 * v + 1);
   }
-  //! @param le,ri,x,y defines rectangle: indexes in [le,
-  //! ri), numbers in [x, y)
-  //! @returns number of indexes i such that le <= i < ri
+  //! @param l,r,x,y defines rectangle: indexes in [l,
+  //! r), numbers in [x, y)
+  //! @returns number of indexes i such that l <= i < r
   //! and x <= a[i] < y
   //! @time O(log(maxv - minv))
   //! @space O(log(maxv - minv)) for recursive stack
-  int rect_count(int le, int ri, int x, int y) {
-    return rect_count_impl(le, ri, x, y, minv, maxv, 1);
+  int rect_count(int l, int r, int x, int y) {
+    return rect_count_impl(l, r, x, y, minv, maxv, 1);
   }
-  int rect_count_impl(int le, int ri, int x, int y, int tl,
+  int rect_count_impl(int l, int r, int x, int y, int tl,
     int tr, int v) {
     if (y <= tl || tr <= x) return 0;
-    if (x <= tl && tr <= y) return ri - le;
+    if (x <= tl && tr <= y) return r - l;
     int tm = split(tl, tr),
-        pl = bool_presums[v].popcount(le),
-        pr = bool_presums[v].popcount(ri);
+        pl = bool_presums[v].popcount(l),
+        pr = bool_presums[v].popcount(r);
     return rect_count_impl(pl, pr, x, y, tl, tm, 2 * v) +
-      rect_count_impl(le - pl, ri - pr, x, y, tm, tr,
+      rect_count_impl(l - pl, r - pr, x, y, tm, tr,
         2 * v + 1);
   }
-  //! @param le,ri,x,y defines rectangle: indexes in [le,
-  //! ri), numbers in [x, y)
-  //! @returns sum of numbers a[i] such that le <= i < ri
+  //! @param l,r,x,y defines rectangle: indexes in [l,
+  //! r), numbers in [x, y)
+  //! @returns sum of numbers a[i] such that l <= i < r
   //! and x <= a[i] < y
   //! @time O(log(maxv - minv))
   //! @space O(log(maxv - minv)) for recursive stack
-  ll rect_sum(int le, int ri, int x, int y) {
-    return rect_sum_impl(le, ri, x, y, minv, maxv, 1);
+  ll rect_sum(int l, int r, int x, int y) {
+    return rect_sum_impl(l, r, x, y, minv, maxv, 1);
   }
-  ll rect_sum_impl(int le, int ri, int x, int y, int tl,
+  ll rect_sum_impl(int l, int r, int x, int y, int tl,
     int tr, int v) {
     if (y <= tl || tr <= x) return 0;
     if (x <= tl && tr <= y)
       return (tr - tl == 1
-          ? ll(tl) * (ri - le)
-          : presums[v][ri] - presums[v][le]);
+          ? ll(tl) * (r - l)
+          : presums[v][r] - presums[v][l]);
     int tm = split(tl, tr),
-        pl = bool_presums[v].popcount(le),
-        pr = bool_presums[v].popcount(ri);
+        pl = bool_presums[v].popcount(l),
+        pr = bool_presums[v].popcount(r);
     return rect_sum_impl(pl, pr, x, y, tl, tm, 2 * v) +
-      rect_sum_impl(le - pl, ri - pr, x, y, tm, tr,
+      rect_sum_impl(l - pl, r - pr, x, y, tm, tr,
         2 * v + 1);
   }
-  //! @param le,ri defines range [le, ri)
-  //! @param k must satisfy 1 <= k <= ri - le
+  //! @param l,r defines range [l, r)
+  //! @param k must satisfy 1 <= k <= r - l
   //! @returns kth smallest number in range.
-  //!     - kth_smallest(le,ri,1) returns the min
-  //!     - kth_smallest(le,ri,(ri-le)) returns the max
+  //!     - kth_smallest(l,r,1) returns the min
+  //!     - kth_smallest(l,r,(r-l)) returns the max
   //! @time O(log(maxv - minv))
   //! @space O(log(maxv - minv)) for recursive stack
-  int kth_smallest(int le, int ri, int k) {
-    return kth_smallest_impl(le, ri, k, minv, maxv, 1);
+  int kth_smallest(int l, int r, int k) {
+    return kth_smallest_impl(l, r, k, minv, maxv, 1);
   }
-  int kth_smallest_impl(int le, int ri, int k, int tl,
+  int kth_smallest_impl(int l, int r, int k, int tl,
     int tr, int v) {
     if (tr - tl == 1) return tl;
     int tm = split(tl, tr),
-        pl = bool_presums[v].popcount(le),
-        pr = bool_presums[v].popcount(ri);
+        pl = bool_presums[v].popcount(l),
+        pr = bool_presums[v].popcount(r);
     if (k <= pr - pl)
       return kth_smallest_impl(pl, pr, k, tl, tm, 2 * v);
-    return kth_smallest_impl(le - pl, ri - pr,
-      k - (pr - pl), tm, tr, 2 * v + 1);
+    return kth_smallest_impl(l - pl, r - pr, k - (pr - pl),
+      tm, tr, 2 * v + 1);
   }
-  //! @param le,ri defines range [le, ri)
-  //! @param k must satisfy 0 <= k <= ri - le
+  //! @param l,r defines range [l, r)
+  //! @param k must satisfy 0 <= k <= r - l
   //! @returns the sum of the k smallest numbers in range.
-  //!     - kth_sum(le,ri,0) returns 0
-  //!     - kth_sum(le,ri,1) returns the min
-  //!     - kth_sum(le,ri,(ri-le)) returns the sum
+  //!     - kth_sum(l,r,0) returns 0
+  //!     - kth_sum(l,r,1) returns the min
+  //!     - kth_sum(l,r,(r-l)) returns the sum
   //! @time O(log(maxv - minv))
   //! @space O(log(maxv - minv)) for recursive stack
-  ll kth_sum(int le, int ri, int k) {
-    return kth_sum_impl(le, ri, k, minv, maxv, 1);
+  ll kth_sum(int l, int r, int k) {
+    return kth_sum_impl(l, r, k, minv, maxv, 1);
   }
-  ll kth_sum_impl(int le, int ri, int k, int tl, int tr,
+  ll kth_sum_impl(int l, int r, int k, int tl, int tr,
     int v) {
     if (tr - tl == 1) return ll(k) * tl;
     int tm = split(tl, tr),
-        pl = bool_presums[v].popcount(le),
-        pr = bool_presums[v].popcount(ri);
+        pl = bool_presums[v].popcount(l),
+        pr = bool_presums[v].popcount(r);
     if (k <= pr - pl)
       return kth_sum_impl(pl, pr, k, tl, tm, 2 * v);
     ll sum_left = (tm - tl == 1
         ? ll(tl) * (pr - pl)
         : presums[2 * v][pr] - presums[2 * v][pl]);
     return sum_left +
-      kth_sum_impl(le - pl, ri - pr, k - (pr - pl), tm, tr,
+      kth_sum_impl(l - pl, r - pr, k - (pr - pl), tm, tr,
         2 * v + 1);
   }
 };

@@ -7,5 +7,4 @@
 //!   - ri_i + 1 = le_(i+1)
 //! @time O(sqrt(n))
 //! @space O(1)
-for (ll le = 1, ri; le <= n && (ri = n / (n / le));
-     le = ri + 1)
+for (ll l = 1, r; l <= n && (r = n / (n / l)); l = r + 1) 

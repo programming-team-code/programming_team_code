@@ -25,37 +25,37 @@ template<class T> struct longest_pal_query {
   int len(int i) { return i - 2 * man[i] + 1; }
   //! approach: binary search: is there some palindromic
   //! substring with length >= mid ? note for a substring
-  //! [le, ri) of s, the "relevant" centers are subarray [2
-  //! * le, 2 * ri - 1) of `man`
+  //! [l, r) of s, the "relevant" centers are subarray [2
+  //! * l, 2 * r - 1) of `man`
   //!
   //! when center i (in "relevant" range) is even (so
   //! represents an odd-length palindrome):
   //!     - i / 2 is index of middle of palindrome
-  //!     - le <= i / 2 < ri
+  //!     - l <= i / 2 < r
   //! when center i (in "relevant" range) is odd (so
   //! represents an even-length palindrome):
   //!     - (i - 1) / 2, (i + 1) / 2 are indexes of middles
   //!     of palindrome
-  //!     - le <= (i - 1) / 2 < (i + 1) / 2 < ri
+  //!     - l <= (i - 1) / 2 < (i + 1) / 2 < r
   //!
-  //! @param le,ri defines substring [le, ri) of s
+  //! @param l,r defines substring [l, r) of s
   //! @returns {start index, length} of longest palindromic
-  //! substring of s.substr(le, ri - le)
+  //! substring of s.substr(l, r - l)
   //!     if there are multiple longest answers, this
   //!     returns an arbitrary start index
   //! @time O(log n)
   //! @space O(1)
-  pii longest_pal(int le, int ri) {
-    assert(le < ri);
+  pii longest_pal(int l, int r) {
+    assert(l < r);
     int pal_len =
-      lower_bound(begin(idx), begin(idx) + (ri - le), 0,
+      lower_bound(begin(idx), begin(idx) + (r - l), 0,
         [&](int mid, int) {
-          return len(rmq.query(2 * le + mid - 1,
-                   2 * ri - mid)) >= mid;
+          return len(rmq.query(2 * l + mid - 1,
+                   2 * r - mid)) >= mid;
         }) -
       begin(idx);
     int best_center =
-      rmq.query(2 * le + pal_len - 1, 2 * ri - pal_len);
+      rmq.query(2 * l + pal_len - 1, 2 * r - pal_len);
     return {(best_center + 1 - pal_len) / 2, pal_len};
   }
 };
