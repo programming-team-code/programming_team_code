@@ -26,7 +26,7 @@ git submodule update
 	echo "vector<vector<mint>> mat;"
 	echo "vector<vector<bool>> grid;"
 	echo "string s,t;"
-	echo "int n,m,k,tl,tr,l,r,l1,r1,l2,r2,s_le,s_ri,root_l,root_r,source,sink,total_flow,bccid,u,v,rsz,cols,cap;"
+	echo "int n,m,k,tl,tr,l,r,l1,r1,l2,r2,s_l,s_r,root_l,root_r,source,sink,total_flow,bccid,u,v,rsz,cols,cap;"
 } >entire_library_without_main
 
 {
