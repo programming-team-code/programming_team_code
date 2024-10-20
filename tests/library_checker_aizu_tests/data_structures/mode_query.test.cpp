@@ -24,9 +24,9 @@ int main() {
   }
   mode_query mq(a);
   while (q--) {
-    int le, ri;
-    cin >> le >> ri;
-    auto [mode, cnt] = mq.query(le, ri);
+    int l, r;
+    cin >> l >> r;
+    auto [mode, cnt] = mq.query(l, r);
     cout << comp[mode] << " " << cnt << '\n';
   }
   return 0;

@@ -11,10 +11,10 @@ int main() {
   for (int i = 0; i < n; i++)
     cin >> init[i][0] >> init[i][1];
   tree_inc st(n, array<int, 2>{1, 0},
-    [&](const array<int, 2>& le,
-      const array<int, 2>& ri) -> array<int, 2> {
-      return {int(1LL * le[0] * ri[0] % mod),
-        int((1LL * ri[0] * le[1] + ri[1]) % mod)};
+    [&](const array<int, 2>& l,
+      const array<int, 2>& r) -> array<int, 2> {
+      return {int(1LL * l[0] * r[0] % mod),
+        int((1LL * r[0] * l[1] + r[1]) % mod)};
     });
   for (int i = 0; i < n; i++) st.update(i, init[i]);
   while (q--) {
@@ -25,9 +25,9 @@ int main() {
       cin >> pos >> c >> d;
       st.update(pos, {c, d});
     } else {
-      int le, ri, x;
-      cin >> le >> ri >> x;
-      auto [slope, y_int] = st.query(le, ri - 1);
+      int l, r, x;
+      cin >> l >> r >> x;
+      auto [slope, y_int] = st.query(l, r - 1);
       cout << (1LL * slope * x + y_int) % mod << '\n';
     }
   }

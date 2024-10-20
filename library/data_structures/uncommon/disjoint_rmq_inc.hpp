@@ -15,20 +15,19 @@ template<class T, class F> struct disjoint_rmq_inc {
   disjoint_rmq_inc(const vector<T>& a, F a_op): op(a_op) {
     for (int len = 1, n = sz(a); len <= n; len *= 2) {
       dp.emplace_back(n);
-      for (int le = 0; le < n; le += 2 * len) {
-        int mi = min(n, le + len),
-            ri = min(n, le + 2 * len);
-        partial_sum(rend(a) - mi, rend(a) - le,
+      for (int l = 0; l < n; l += 2 * len) {
+        int mi = min(n, l + len), r = min(n, l + 2 * len);
+        partial_sum(rend(a) - mi, rend(a) - l,
           rend(dp.back()) - mi,
           [&](T x, T y) { return op(y, x); });
-        partial_sum(begin(a) + mi, begin(a) + ri,
+        partial_sum(begin(a) + mi, begin(a) + r,
           begin(dp.back()) + mi, op);
       }
     }
   }
-  T query(int le, int ri) { // [le, ri]
-    if (le == ri) return dp[0][le];
-    int lg = __lg(le ^ ri);
-    return op(dp[lg][le], dp[lg][ri]);
+  T query(int l, int r) { // [l, r]
+    if (l == r) return dp[0][l];
+    int lg = __lg(l ^ r);
+    return op(dp[lg][l], dp[lg][r]);
   }
 };

@@ -10,12 +10,12 @@ int main() {
     int64_t prev_ri = 0;
 #include "../../../library/loops/quotients.hpp"
     {
-      assert(n / le == n / ri);
-      assert(le == 1 || n / le < n / (le - 1));
-      assert(n / (ri + 1) < n / ri);
-      assert(prev_ri + 1 == le);
-      prev_ri = ri;
-      quots.push_back(n / le);
+      assert(n / l == n / r);
+      assert(l == 1 || n / l < n / (l - 1));
+      assert(n / (r + 1) < n / r);
+      assert(prev_ri + 1 == l);
+      prev_ri = r;
+      quots.push_back(n / l);
     }
     assert(prev_ri == n);
   }

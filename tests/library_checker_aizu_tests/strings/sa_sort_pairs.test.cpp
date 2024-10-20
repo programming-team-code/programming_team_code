@@ -13,15 +13,14 @@ int main() {
   compress.erase(unique(begin(compress), end(compress)),
     end(compress));
   for (int& x : arr) {
-    int le = -1, ri = int(sz(compress));
-    while (ri - le > 1) {
-      int mi = le + (ri - le) / 2;
-      if (compress[mi] >= x) ri = mi;
-      else le = mi;
+    int l = -1, r = int(sz(compress));
+    while (r - l > 1) {
+      int mi = l + (r - l) / 2;
+      if (compress[mi] >= x) r = mi;
+      else l = mi;
     }
-    assert(
-      0 <= ri && ri < sz(compress) && compress[ri] == x);
-    x = ri;
+    assert(0 <= r && r < sz(compress) && compress[r] == x);
+    x = r;
   }
   sa_query lq(arr, int(sz(compress)));
   vector<int> idxs(n);

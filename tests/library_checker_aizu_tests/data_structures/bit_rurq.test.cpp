@@ -11,18 +11,18 @@ int main() {
     int type;
     cin >> type;
     if (type == 0) {
-      int le, ri, x;
-      cin >> le >> ri >> x;
-      le--;
-      bit.update(le, ri, x);
+      int l, r, x;
+      cin >> l >> r >> x;
+      l--;
+      bit.update(l, r, x);
       // test degenerate update
-      bit.update(le, le, x);
-      bit.update(ri, ri, x);
+      bit.update(l, l, x);
+      bit.update(r, r, x);
     } else {
-      int le, ri;
-      cin >> le >> ri;
-      le--;
-      cout << bit.query(le, ri) << '\n';
+      int l, r;
+      cin >> l >> r;
+      l--;
+      cout << bit.query(l, r) << '\n';
     }
   }
   return 0;

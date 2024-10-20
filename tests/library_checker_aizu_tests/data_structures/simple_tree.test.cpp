@@ -16,10 +16,10 @@ int main() {
       cin >> pos >> new_val;
       st.update(pos, new_val);
     } else {
-      int le, ri;
-      cin >> le >> ri;
-      ri++;
-      cout << st.query(le, ri) << '\n';
+      int l, r;
+      cin >> l >> r;
+      r++;
+      cout << st.query(l, r) << '\n';
     }
   }
   return 0;

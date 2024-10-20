@@ -10,17 +10,17 @@ int main() {
   dsu_restorable dsu(n);
   for (int i = 0; i < n; i++) cin >> dsu.subtree[i];
   vector<vector<pair<int, int>>> tree(2 * q);
-  auto add_edge = [&](auto&& self, int le, int ri,
+  auto add_edge = [&](auto&& self, int l, int r,
                     int node_u, int node_v, int tl, int tr,
                     int v) -> void {
-    if (ri <= tl || tr <= le) return;
-    if (le <= tl && tr <= ri) {
+    if (r <= tl || tr <= l) return;
+    if (l <= tl && tr <= r) {
       tree[v].emplace_back(node_u, node_v);
       return;
     }
     int tm = split(tl, tr);
-    self(self, le, ri, node_u, node_v, tl, tm, 2 * v);
-    self(self, le, ri, node_u, node_v, tm, tr, 2 * v + 1);
+    self(self, l, r, node_u, node_v, tl, tm, 2 * v);
+    self(self, l, r, node_u, node_v, tm, tr, 2 * v + 1);
   };
   struct query {
     int type, v, x;

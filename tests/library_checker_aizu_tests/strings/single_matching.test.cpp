@@ -15,16 +15,16 @@ int main() {
   transform(begin(s), end(s), begin(s), compress_char);
   transform(begin(t), end(t), begin(t), compress_char);
   lcp_tree lt(s);
-  auto [le, ri] = lt.find_str(t);
-  vector<int> matches(begin(lt.sf_a.sa) + le,
-    begin(lt.sf_a.sa) + ri);
+  auto [l, r] = lt.find_str(t);
+  vector<int> matches(begin(lt.sf_a.sa) + l,
+    begin(lt.sf_a.sa) + r);
   sort(begin(matches), end(matches));
   {
     // test find via BWT
     bwt bw(s, lt.sf_a.sa);
     auto [bwt_le, bwt_ri] = bw.find_str(t);
-    assert(ri - le == bwt_ri[0] - bwt_le[0]);
-    if (le < ri) assert(bwt_le[0] == le);
+    assert(r - l == bwt_ri[0] - bwt_le[0]);
+    if (l < r) assert(bwt_le[0] == l);
   }
   for (auto match : matches) cout << match << '\n';
   return 0;

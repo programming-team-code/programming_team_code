@@ -19,11 +19,11 @@ template<class T, class F> struct tree_inc {
     for (s[i += n] = val; i /= 2;)
       s[i] = f(s[2 * i], s[2 * i + 1]);
   }
-  T query(int le, int ri) { // [le, ri]
+  T query(int l, int r) { // [l, r]
     T x = unit, y = unit;
-    for (le += n, ri += n; le <= ri; le /= 2, ri /= 2) {
-      if (le % 2 == 1) x = f(x, s[le++]);
-      if (ri % 2 == 0) y = f(s[ri--], y);
+    for (l += n, r += n; l <= r; l /= 2, r /= 2) {
+      if (l % 2 == 1) x = f(x, s[l++]);
+      if (r % 2 == 0) y = f(s[r--], y);
     }
     return f(x, y);
   }

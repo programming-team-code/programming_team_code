@@ -41,15 +41,15 @@ int main() {
         prebools[bit].set(i, (arr[i] >> bit) & 1);
     } else {
       assert(type == 1);
-      int le, ri;
-      cin >> le >> ri;
+      int l, r;
+      cin >> l >> r;
       int64_t sum = 0;
       for (int bit = 0; bit < max_bit; bit++)
-        if (ri - le == 1)
-          sum += (1LL << bit) * prebools[bit].on(le);
+        if (r - l == 1)
+          sum += (1LL << bit) * prebools[bit].on(l);
         else
           sum +=
-            (1LL << bit) * prebools[bit].popcount(le, ri);
+            (1LL << bit) * prebools[bit].popcount(l, r);
       cout << sum << '\n';
     }
   }

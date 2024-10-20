@@ -8,12 +8,12 @@ struct bit_rupq {
     adjacent_difference(all(a), begin(a));
     bit = {a};
   }
-  //! does a[le]+=d, a[le+1]+=d, .., a[ri-1]+=d
+  //! does a[l]+=d, a[l+1]+=d, .., a[r-1]+=d
   //! @time O(log n)
   //! @space O(1)
-  void update(int le, int ri, ll d) {
-    if (le < n) bit.update(le, d);
-    if (ri < n) bit.update(ri, -d);
+  void update(int l, int r, ll d) {
+    if (l < n) bit.update(l, d);
+    if (r < n) bit.update(r, -d);
   }
   //! @returns a[i]
   //! @time O(log n)

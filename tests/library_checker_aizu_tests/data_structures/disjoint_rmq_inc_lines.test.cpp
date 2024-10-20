@@ -31,14 +31,14 @@ int main() {
       return pair(a.first * b.first % mod,
         (b.first * a.second + b.second) % mod);
     });
-  int le = 0, ri = 0; // range [le, ri)
+  int l = 0, r = 0; // range [l, r)
   for (const auto& curr : queries) {
-    if (curr.type == 0) ri++;
-    else if (curr.type == 1) le++;
+    if (curr.type == 0) r++;
+    else if (curr.type == 1) l++;
     else {
-      if (le == ri) cout << curr.x << '\n';
+      if (l == r) cout << curr.x << '\n';
       else {
-        auto [slope, y_int] = rmq.query(le, ri - 1);
+        auto [slope, y_int] = rmq.query(l, r - 1);
         cout << (slope * curr.x + y_int) % mod << '\n';
       }
     }

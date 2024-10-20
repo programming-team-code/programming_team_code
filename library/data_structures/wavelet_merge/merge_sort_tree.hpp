@@ -41,26 +41,26 @@ struct merge_sort_tree {
       begin(bools), [](auto& num) { return num.second; });
     bool_presums[v] = bool_presum(bools);
   }
-  //! @param le,ri,x,y defines rectangle: indexes in [le,
-  //! ri), numbers in [x, y)
-  //! @returns number of indexes i such that le <= i < ri
+  //! @param l,r,x,y defines rectangle: indexes in [l,
+  //! r), numbers in [x, y)
+  //! @returns number of indexes i such that l <= i < r
   //! and x <= a[i] < y
   //! @time O(log(n))
   //! @space O(log(n)) for recursive stack
-  int rect_count(int le, int ri, int x, int y) {
+  int rect_count(int l, int r, int x, int y) {
     int xi = lower_bound(all(sorted), x) - begin(sorted);
     int yi = lower_bound(all(sorted), y) - begin(sorted);
-    return rect_count_impl(le, ri, xi, yi, 0, n, 1);
+    return rect_count_impl(l, r, xi, yi, 0, n, 1);
   }
-  int rect_count_impl(int le, int ri, int xi, int yi,
-    int tl, int tr, int v) {
-    if (ri <= tl || tr <= le) return 0;
-    if (le <= tl && tr <= ri) return yi - xi;
+  int rect_count_impl(int l, int r, int xi, int yi, int tl,
+    int tr, int v) {
+    if (r <= tl || tr <= l) return 0;
+    if (l <= tl && tr <= r) return yi - xi;
     int tm = split(tl, tr),
         pl = bool_presums[v].popcount(xi),
         pr = bool_presums[v].popcount(yi);
-    return rect_count_impl(le, ri, pl, pr, tl, tm, 2 * v) +
-      rect_count_impl(le, ri, xi - pl, yi - pr, tm, tr,
+    return rect_count_impl(l, r, pl, pr, tl, tm, 2 * v) +
+      rect_count_impl(l, r, xi - pl, yi - pr, tm, tr,
         2 * v + 1);
   }
   //! @param x,y defines range of numbers [x, y)

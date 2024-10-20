@@ -9,9 +9,9 @@
 //! @space O(n)
 template<class T, class F>
 vi mono_st(const vector<T>& a, F cmp) {
-  vi le(sz(a));
+  vi l(sz(a));
   rep(i, 0, sz(a)) for (
-    le[i] = i - 1; le[i] >= 0 && !cmp(a[le[i]], a[i]);)
-    le[i] = le[le[i]];
-  return le;
+    l[i] = i - 1; l[i] >= 0 && !cmp(a[l[i]], a[i]);) l[i] =
+    l[l[i]];
+  return l;
 }

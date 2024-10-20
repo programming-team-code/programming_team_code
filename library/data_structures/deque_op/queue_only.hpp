@@ -8,28 +8,28 @@
 template<class T, class F> struct deq {
   using dt = array<T, 2>;
   F op;
-  vector<dt> le, ri;
+  vector<dt> l, r;
   deq(const vector<T>& a, F a_op): op(a_op) {
     rebuild(a, sz(a) / 2);
   }
   T query() {
-    if (empty(le)) return ri.back()[1];
-    if (empty(ri)) return le.back()[1];
-    return op(le.back()[1], ri.back()[1]);
+    if (empty(l)) return r.back()[1];
+    if (empty(r)) return l.back()[1];
+    return op(l.back()[1], r.back()[1]);
   }
-  int siz() { return sz(le) + sz(ri); }
+  int siz() { return sz(l) + sz(r); }
   void push_back(T elem) {
-    ri.push_back(
-      {elem, empty(ri) ? elem : op(ri.back()[1], elem)});
+    r.push_back(
+      {elem, empty(r) ? elem : op(r.back()[1], elem)});
   }
   void pop_front() {
-    if (empty(le)) {
-      vector<T> a(sz(ri));
-      transform(all(ri), begin(a),
+    if (empty(l)) {
+      vector<T> a(sz(r));
+      transform(all(r), begin(a),
         [](dt& x) { return x[0]; });
       rebuild(a, (sz(a) + 1) / 2);
     }
-    le.pop_back();
+    l.pop_back();
   }
   void rebuild(const vector<T>& a, int sz_le) {
     vector<T> presum(sz(a));
@@ -37,12 +37,12 @@ template<class T, class F> struct deq {
       rend(presum) - sz_le,
       [&](T x, T y) { return op(y, x); });
     partial_sum(sz_le + all(a), begin(presum) + sz_le, op);
-    le.resize(sz_le);
-    ri.resize(sz(a) - sz_le);
+    l.resize(sz_le);
+    r.resize(sz(a) - sz_le);
     transform(begin(a), begin(a) + sz_le, begin(presum),
-      rbegin(le), [](T x, T y) { return dt{x, y}; });
+      rbegin(l), [](T x, T y) { return dt{x, y}; });
     transform(sz_le + all(a), begin(presum) + sz_le,
-      begin(ri), [](T x, T y) { return dt{x, y}; });
+      begin(r), [](T x, T y) { return dt{x, y}; });
   }
 #include "deque.hpp"
 #include "index.hpp"

@@ -11,29 +11,27 @@ struct bit_rurq {
     rep(i, 0, n) a[i] *= i;
     bit2 = {a};
   }
-  //! does a[le]+=d, a[le+1]+=d, ..., a[ri-1]+=d
+  //! does a[l]+=d, a[l+1]+=d, ..., a[r-1]+=d
   //! @time O(log n)
   //! @space O(1)
-  void update(int le, int ri, ll d) {
-    if (le < n) {
-      bit1.update(le, d);
-      bit2.update(le, d * le);
+  void update(int l, int r, ll d) {
+    if (l < n) {
+      bit1.update(l, d);
+      bit2.update(l, d * l);
     }
-    if (ri < n) {
-      bit1.update(ri, -d);
-      bit2.update(ri, -d * ri);
+    if (r < n) {
+      bit1.update(r, -d);
+      bit2.update(r, -d * r);
     }
   }
-  //! @returns a[0]+a[1]+...+a[ri-1]
+  //! @returns a[0]+a[1]+...+a[r-1]
   //! @time O(log n)
   //! @space O(1)
-  ll query(int ri) {
-    return bit1.query(ri) * ri - bit2.query(ri);
+  ll query(int r) {
+    return bit1.query(r) * r - bit2.query(r);
   }
-  //! @returns a[le]+a[le+1]+...+a[ri-1]
+  //! @returns a[l]+a[l+1]+...+a[r-1]
   //! @time O(log n)
   //! @space O(1)
-  ll query(int le, int ri) {
-    return query(ri) - query(le);
-  }
+  ll query(int l, int r) { return query(r) - query(l); }
 };

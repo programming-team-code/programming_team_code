@@ -28,13 +28,13 @@ int main() {
       cq.update(u, delta);
     } else {
       assert(type == 1);
-      int u, le, ri;
-      cin >> u >> le >> ri;
-      ll res = cq.query(u, le, le);
+      int u, l, r;
+      cin >> u >> l >> r;
+      ll res = cq.query(u, l, l);
       assert(res == 0);
-      res = cq.query(u, ri, ri);
+      res = cq.query(u, r, r);
       assert(res == 0);
-      cout << cq.query(u, le, ri) << '\n';
+      cout << cq.query(u, l, r) << '\n';
     }
   }
   return 0;

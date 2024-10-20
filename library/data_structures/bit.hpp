@@ -9,13 +9,13 @@ struct BIT {
   void update(int i, ll d) {
     for (; i < sz(s); i |= i + 1) s[i] += d;
   }
-  ll query(int ri) { // [0, ri)
+  ll query(int r) { // [0, r)
     ll ret = 0;
-    for (; ri > 0; ri &= ri - 1) ret += s[ri - 1];
+    for (; r > 0; r &= r - 1) ret += s[r - 1];
     return ret;
   }
-  ll query(int le, int ri) { // [le, ri)
-    return query(ri) - query(le);
+  ll query(int l, int r) { // [l, r)
+    return query(r) - query(l);
   }
 #include "bit_uncommon/lower_bound.hpp"
 };

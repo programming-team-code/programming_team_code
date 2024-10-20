@@ -13,20 +13,20 @@ int main() {
   sorted.erase(unique(begin(sorted), end(sorted)),
     end(sorted));
   for (int& val : arr) {
-    int le = 0, ri = sz(sorted);
-    while (ri - le > 1) {
-      int mi = le + (ri - le) / 2;
-      if (sorted[mi] <= val) le = mi;
-      else ri = mi;
+    int l = 0, r = sz(sorted);
+    while (r - l > 1) {
+      int mi = l + (r - l) / 2;
+      if (sorted[mi] <= val) l = mi;
+      else r = mi;
     }
-    assert(le < sz(arr) && sorted[le] == val);
-    val = le - 30;
+    assert(l < sz(arr) && sorted[l] == val);
+    val = l - 30;
   }
   wavelet_tree_updates wtu(arr, -30,
     max(1, int(sz(sorted))) - 30, vector<bool>(n, 1));
   while (q--) {
-    int le, ri, x;
-    cin >> le >> ri >> x;
+    int l, r, x;
+    cin >> l >> r >> x;
     int start = 0, end = sz(sorted);
     while (end - start > 1) {
       int mi = start + (end - start) / 2;
@@ -37,8 +37,8 @@ int main() {
       cout << 0 << '\n';
     else {
       int idx = start - 30;
-      assert(wtu.rect_count(le, ri, idx, idx) == 0);
-      cout << wtu.rect_count(le, ri, idx, idx + 1) << '\n';
+      assert(wtu.rect_count(l, r, idx, idx) == 0);
+      cout << wtu.rect_count(l, r, idx, idx + 1) << '\n';
     }
   }
   return 0;

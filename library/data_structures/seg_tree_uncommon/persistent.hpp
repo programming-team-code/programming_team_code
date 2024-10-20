@@ -41,15 +41,15 @@ struct PST {
       rch);
     return sz(tree) - 1;
   }
-  ll query(int le, int ri, int version) { // [le, ri)
-    return query_impl(le, ri, root_l, root_r,
+  ll query(int l, int r, int version) { // [l, r)
+    return query_impl(l, r, root_l, root_r,
       roots[version]);
   }
-  ll query_impl(int le, int ri, int tl, int tr, int v) {
-    if (v == 0 || ri <= tl || tr <= le) return 0;
-    if (le <= tl && tr <= ri) return tree[v].sum;
+  ll query_impl(int l, int r, int tl, int tr, int v) {
+    if (v == 0 || r <= tl || tr <= l) return 0;
+    if (l <= tl && tr <= r) return tree[v].sum;
     int tm = tl + (tr - tl) / 2;
-    return query_impl(le, ri, tl, tm, tree[v].lch) +
-      query_impl(le, ri, tm, tr, tree[v].rch);
+    return query_impl(l, r, tl, tm, tree[v].lch) +
+      query_impl(l, r, tm, tr, tree[v].rch);
   }
 };

@@ -12,23 +12,23 @@ int main() {
   cin >> s >> t;
   sa_query sf_a(s, 256);
   {
-    auto [sa_le, sa_ri, s_le, s_ri] =
+    auto [sa_le, sa_ri, s_l, s_r] =
       sf_a.find_str_fast(string(""));
     assert(sa_le == 0 && sa_ri == sz(s));
     pair<int, int> short_res = sf_a.find_str(string(""));
     assert(sa_le == short_res.first &&
       sa_ri == short_res.second);
-    assert(s_ri - s_le == 0);
+    assert(s_r - s_l == 0);
   }
-  auto [sa_le, sa_ri, s_le, s_ri] = sf_a.find_str_fast(t);
+  auto [sa_le, sa_ri, s_l, s_r] = sf_a.find_str_fast(t);
   pair<int, int> short_res = sf_a.find_str(t);
   assert(
     sa_le == short_res.first && sa_ri == short_res.second);
-  int str_len = s_ri - s_le;
-  assert(s.substr(s_le, str_len) == t.substr(0, str_len));
+  int str_len = s_r - s_l;
+  assert(s.substr(s_l, str_len) == t.substr(0, str_len));
   assert(str_len <= sz(t));
-  assert(str_len == sz(t) || s_ri == sz(s) ||
-    t[str_len] != s[s_ri]);
+  assert(str_len == sz(t) || s_r == sz(s) ||
+    t[str_len] != s[s_r]);
   assert((sa_le < sa_ri) == (str_len == sz(t)));
   vector<int> matches(begin(sf_a.sa) + sa_le,
     begin(sf_a.sa) + sa_ri);

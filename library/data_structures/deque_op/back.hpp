@@ -1,2 +1,2 @@
 #pragma once
-T back() { return (empty(ri) ? le[0] : ri.back())[0]; }
+T back() { return (empty(r) ? l[0] : r.back())[0]; }

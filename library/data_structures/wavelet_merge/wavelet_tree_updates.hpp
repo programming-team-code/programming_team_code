@@ -42,23 +42,23 @@ struct wavelet_tree_updates {
       [](int x, bool y) { return pair(x, y); });
     build(cpy, 0, n, minv, maxv, 1);
   }
-  void build(vector<pair<int, bool>>& cpy, int le, int ri,
+  void build(vector<pair<int, bool>>& cpy, int l, int r,
     int tl, int tr, int v) {
-    vector<bool> bools(ri - le);
-    transform(begin(cpy) + le, begin(cpy) + ri,
-      begin(bools), [](auto& p) { return p.second; });
+    vector<bool> bools(r - l);
+    transform(begin(cpy) + l, begin(cpy) + r, begin(bools),
+      [](auto& p) { return p.second; });
     bool_bits[v] = bool_bit(bools);
     if (tr - tl <= 1) return;
     int tm = split(tl, tr);
     auto low = [&](auto& p) { return p.first < tm; };
-    transform(begin(cpy) + le, begin(cpy) + ri,
-      begin(bools), low);
+    transform(begin(cpy) + l, begin(cpy) + r, begin(bools),
+      low);
     bool_presums[v] = bool_presum(bools);
-    int mi = stable_partition(begin(cpy) + le,
-               begin(cpy) + ri, low) -
+    int mi = stable_partition(begin(cpy) + l,
+               begin(cpy) + r, low) -
       begin(cpy);
-    build(cpy, le, mi, tl, tm, 2 * v);
-    build(cpy, mi, ri, tm, tr, 2 * v + 1);
+    build(cpy, l, mi, tl, tm, 2 * v);
+    build(cpy, mi, r, tm, tr, 2 * v + 1);
   }
   //! @param i index
   //! @param is_active we want to set active[i] = is_active
@@ -78,50 +78,50 @@ struct wavelet_tree_updates {
       return set_active_impl(pi, is_active, tl, tm, 2 * v);
     set_active_impl(i - pi, is_active, tm, tr, 2 * v + 1);
   }
-  //! @param le,ri,x,y defines rectangle: indexes in [le,
-  //! ri), numbers in [x, y)
-  //! @returns number of active indexes i such that le <= i
-  //! < ri and x <= a[i] < y
+  //! @param l,r,x,y defines rectangle: indexes in [l,
+  //! r), numbers in [x, y)
+  //! @returns number of active indexes i such that l <= i
+  //! < r and x <= a[i] < y
   //! @time O(log(maxv - minv) * log(n / 64))
   //! @space O(log(maxv - minv)) for recursive stack
-  int rect_count(int le, int ri, int x, int y) {
-    return rect_count_impl(le, ri, x, y, minv, maxv, 1);
+  int rect_count(int l, int r, int x, int y) {
+    return rect_count_impl(l, r, x, y, minv, maxv, 1);
   }
-  int rect_count_impl(int le, int ri, int x, int y, int tl,
+  int rect_count_impl(int l, int r, int x, int y, int tl,
     int tr, int v) {
     if (y <= tl || tr <= x) return 0;
     if (x <= tl && tr <= y)
-      return bool_bits[v].popcount(le, ri);
+      return bool_bits[v].popcount(l, r);
     int tm = split(tl, tr),
-        pl = bool_presums[v].popcount(le),
-        pr = bool_presums[v].popcount(ri);
+        pl = bool_presums[v].popcount(l),
+        pr = bool_presums[v].popcount(r);
     return rect_count_impl(pl, pr, x, y, tl, tm, 2 * v) +
-      rect_count_impl(le - pl, ri - pr, x, y, tm, tr,
+      rect_count_impl(l - pl, r - pr, x, y, tm, tr,
         2 * v + 1);
   }
-  //! @param le,ri defines range [le, ri)
+  //! @param l,r defines range [l, r)
   //! @param k must satisfy 1 <= k <= # active indexes in
-  //! [le, ri)
+  //! [l, r)
   //! @returns kth smallest active number in range.
-  //!     - kth_smallest(le,ri,1) returns the smallest
+  //!     - kth_smallest(l,r,1) returns the smallest
   //!     active number
-  //!     - kth_smallest(le,ri,rect_count(le,ri,-INF,INF))
+  //!     - kth_smallest(l,r,rect_count(l,r,-INF,INF))
   //!     returns the largest active number
   //! @time O(log(maxv - minv) * log(n / 64))
   //! @space O(log(maxv - minv)) for recursive stack
-  int kth_smallest(int le, int ri, int k) {
-    return kth_smallest_impl(le, ri, k, minv, maxv, 1);
+  int kth_smallest(int l, int r, int k) {
+    return kth_smallest_impl(l, r, k, minv, maxv, 1);
   }
-  int kth_smallest_impl(int le, int ri, int k, int tl,
+  int kth_smallest_impl(int l, int r, int k, int tl,
     int tr, int v) {
     if (tr - tl == 1) return tl;
     int tm = split(tl, tr),
-        pl = bool_presums[v].popcount(le),
-        pr = bool_presums[v].popcount(ri);
+        pl = bool_presums[v].popcount(l),
+        pr = bool_presums[v].popcount(r);
     int cnt_left = bool_bits[2 * v].popcount(pl, pr);
     if (k <= cnt_left)
       return kth_smallest_impl(pl, pr, k, tl, tm, 2 * v);
-    return kth_smallest_impl(le - pl, ri - pr,
-      k - cnt_left, tm, tr, 2 * v + 1);
+    return kth_smallest_impl(l - pl, r - pr, k - cnt_left,
+      tm, tr, 2 * v + 1);
   }
 };

@@ -20,17 +20,16 @@ int main() {
   for (const auto& point : points)
     pst.update(point[1], point[2], sz(pst.roots) - 1);
   while (q--) {
-    int le, down, ri, up;
-    cin >> le >> down >> ri >> up;
-    le = int(lower_bound(begin(points), end(points),
-               array<int, 3>({le, -1, -1})) -
+    int l, down, r, up;
+    cin >> l >> down >> r >> up;
+    l = int(lower_bound(begin(points), end(points),
+              array<int, 3>({l, -1, -1})) -
       begin(points));
-    ri = int(lower_bound(begin(points), end(points),
-               array<int, 3>({ri, -1, -1})) -
+    r = int(lower_bound(begin(points), end(points),
+              array<int, 3>({r, -1, -1})) -
       begin(points));
-    cout
-      << pst.query(down, up, ri) - pst.query(down, up, le)
-      << '\n';
+    cout << pst.query(down, up, r) - pst.query(down, up, l)
+         << '\n';
   }
   return 0;
 }

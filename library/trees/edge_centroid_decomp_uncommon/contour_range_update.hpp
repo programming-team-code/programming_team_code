@@ -33,17 +33,17 @@ struct contour_range_update {
           {bit_rupq(mx_d[0] + 1), bit_rupq(mx_d[1] + 1)});
       });
   }
-  //! @param v,le,ri,delta add delta to all nodes u such
-  //! that le <= dist_edges(v, u) < ri
+  //! @param v,l,r,delta add delta to all nodes u such
+  //! that l <= dist_edges(v, u) < r
   //! @time O(log1.5(n) * log2(n))
   //! @space O(1)
-  void update(int v, int le, int ri, ll delta) {
-    if (le <= 0 && 0 < ri) a[v] += delta;
-    if (le <= 1 && 1 < ri) sum_a.update(v, delta);
+  void update(int v, int l, int r, ll delta) {
+    if (l <= 0 && 0 < r) a[v] += delta;
+    if (l <= 1 && 1 < r) sum_a.update(v, delta);
     for (auto [decomp_id, d, side] : info[v]) {
       auto& bit = bits[decomp_id][!side];
-      int my_l = clamp<int>(le - d, 1, bit.n);
-      int my_r = clamp<int>(ri - d, 1, bit.n);
+      int my_l = clamp<int>(l - d, 1, bit.n);
+      int my_r = clamp<int>(r - d, 1, bit.n);
       bit.update(my_l, my_r, delta);
     }
   }

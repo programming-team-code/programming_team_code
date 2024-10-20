@@ -42,20 +42,20 @@ struct contour_range_query {
       bits[decomp][side].update(d, delta);
   }
   //! @param v node
-  //! @param le,ri defines range [le, ri)
+  //! @param l,r defines range [l, r)
   //! @returns sum of node u's number over all u such that
-  //! le
-  //! <= dist_edges(u, v) < ri
+  //! l
+  //! <= dist_edges(u, v) < r
   //! @time O(log1.5(n) * log2(n))
   //! @space O(1)
-  ll query(int v, int le, int ri) {
+  ll query(int v, int l, int r) {
     ll sum = 0;
-    if (le <= 0 && 0 < ri) sum += sum_a.sum[v];
-    if (le <= 1 && 1 < ri) sum += sum_a.query(v);
+    if (l <= 0 && 0 < r) sum += sum_a.sum[v];
+    if (l <= 1 && 1 < r) sum += sum_a.query(v);
     for (auto [decomp, d, side] : info[v]) {
       auto& bit = bits[decomp][!side];
-      int my_l = clamp<int>(le - d, 1, sz(bit.s));
-      int my_r = clamp<int>(ri - d, 1, sz(bit.s));
+      int my_l = clamp<int>(l - d, 1, sz(bit.s));
+      int my_r = clamp<int>(r - d, 1, sz(bit.s));
       sum += bit.query(my_l, my_r);
     }
     return sum;

@@ -25,32 +25,32 @@ int main() {
         active);
       for (int operations = 50; operations--;) {
         if (operations % 4 == 0) { // rect_count query
-          int le = rnd<int>(0, n);
-          int ri = rnd<int>(0, n);
-          if (le > ri) swap(le, ri);
+          int l = rnd<int>(0, n);
+          int r = rnd<int>(0, n);
+          if (l > r) swap(l, r);
           int x = rnd<int>(-100, 100);
           int y = rnd<int>(-100, 100);
           if (x > y) swap(x, y);
           int count_naive = 0;
-          for (int i = le; i < ri; i++)
+          for (int i = l; i < r; i++)
             count_naive +=
               (active[i] && x <= arr[i] && arr[i] < y);
           assert(
-            wtu.rect_count(le, ri, x, y) == count_naive);
+            wtu.rect_count(l, r, x, y) == count_naive);
           assert(
-            mstu.rect_count(le, ri, x, y) == count_naive);
+            mstu.rect_count(l, r, x, y) == count_naive);
         } else if (
           operations % 4 == 1) { // kth_smallest query
-          int le = rnd<int>(0, n);
-          int ri = rnd<int>(0, n);
-          if (le > ri) swap(le, ri);
+          int l = rnd<int>(0, n);
+          int r = rnd<int>(0, n);
+          if (l > r) swap(l, r);
           vector<int> sorted;
-          for (int i = le; i < ri; i++)
+          for (int i = l; i < r; i++)
             if (active[i]) sorted.push_back(arr[i]);
           sort(begin(sorted), end(sorted));
           for (int k = 1; k <= sz(sorted); k++)
-            assert(wtu.kth_smallest(le, ri, k) ==
-              sorted[k - 1]);
+            assert(
+              wtu.kth_smallest(l, r, k) == sorted[k - 1]);
         } else if (operations % 4 == 2) {
           int x = rnd<int>(-100, 100);
           int y = rnd<int>(-100, 100);

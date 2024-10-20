@@ -19,32 +19,32 @@ int main() {
         int x = rnd<int>(-1000, 1000);
         int y = rnd<int>(-1000, 1000);
         if (x > y) swap(x, y);
-        for (int le = 0; le <= n; le++) {
+        for (int l = 0; l <= n; l++) {
           int cnt = 0, sum = 0;
-          for (int ri = le; ri <= n; ri++) {
-            assert(wt.rect_count(le, ri, x, y) == cnt);
-            assert(wt.rect_sum(le, ri, x, y) == sum);
-            if (ri < n && x <= arr[ri] && arr[ri] < y) {
+          for (int r = l; r <= n; r++) {
+            assert(wt.rect_count(l, r, x, y) == cnt);
+            assert(wt.rect_sum(l, r, x, y) == sum);
+            if (r < n && x <= arr[r] && arr[r] < y) {
               cnt++;
-              sum += arr[ri];
+              sum += arr[r];
             }
           }
         }
       }
       if (n <= 35) {
-        for (int le = 0; le <= n; le++) {
-          for (int ri = le; ri <= n; ri++) {
-            vector<int> subarray(begin(arr) + le,
-              begin(arr) + ri);
+        for (int l = 0; l <= n; l++) {
+          for (int r = l; r <= n; r++) {
+            vector<int> subarray(begin(arr) + l,
+              begin(arr) + r);
             sort(begin(subarray), end(subarray));
             int sum = 0;
             for (int k = 0; k <= sz(subarray); k++) {
               if (k) {
-                assert(wt.kth_smallest(le, ri, k) ==
+                assert(wt.kth_smallest(l, r, k) ==
                   subarray[k - 1]);
                 sum += subarray[k - 1];
               }
-              assert(wt.kth_sum(le, ri, k) == sum);
+              assert(wt.kth_sum(l, r, k) == sum);
             }
           }
         }

@@ -1,17 +1,17 @@
 #pragma once
 #include "compare_suffixes.hpp"
 //! @code
-//!   int cmp1 = saq.cmp_substrs(le1,ri1,le2,ri2);
+//!   int cmp1 = saq.cmp_substrs(l1,r1,l2,r2);
 //! @endcode
-//! requires le1,le2 < n
-//! if cmp1<0 then s[le1,ri1) < s[le2,ri2)
-//! if cmp1=0 then s[le1,ri1) = s[le2,ri2)
-//! if cmp1>0 then s[le1,ri1) > s[le2,ri2)
+//! requires l1,l2 < n
+//! if cmp1<0 then s[l1,r1) < s[l2,r2)
+//! if cmp1=0 then s[l1,r1) = s[l2,r2)
+//! if cmp1>0 then s[l1,r1) > s[l2,r2)
 //! @time O(1)
 //! @space O(1)
-int cmp_substrs(int le1, int ri1, int le2, int ri2) {
-  int len1 = ri1 - le1, len2 = ri2 - le2;
-  return len_lcp(le1, le2) >= min(len1, len2)
+int cmp_substrs(int l1, int r1, int l2, int r2) {
+  int len1 = r1 - l1, len2 = r2 - l2;
+  return len_lcp(l1, l2) >= min(len1, len2)
     ? len1 - len2
-    : cmp_sufs(le1, le2);
+    : cmp_sufs(l1, l2);
 }

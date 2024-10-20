@@ -30,13 +30,12 @@ int main() {
         int x = rnd<int>(-1000, 1000);
         int y = rnd<int>(-1000, 1000);
         if (x > y) swap(x, y);
-        for (int le = 0; le <= n; le++) {
+        for (int l = 0; l <= n; l++) {
           int cnt = 0;
-          for (int ri = le; ri <= n; ri++) {
-            assert(mst.rect_count(le, ri, x, y) == cnt);
-            assert(mstu.rect_count(le, ri, x, y) == cnt);
-            if (ri < n && x <= arr[ri] && arr[ri] < y)
-              cnt++;
+          for (int r = l; r <= n; r++) {
+            assert(mst.rect_count(l, r, x, y) == cnt);
+            assert(mstu.rect_count(l, r, x, y) == cnt);
+            if (r < n && x <= arr[r] && arr[r] < y) cnt++;
           }
         }
         vector<int> vals;

@@ -11,17 +11,17 @@ struct kth_smallest {
     pst(minv, maxv) {
     rep(i, 0, sz(a)) pst.update(a[i], 1, i);
   }
-  //! @param le,ri defines range [le, ri)
-  //! @param k must satisfy 1 <= k <= ri - le
+  //! @param l,r defines range [l, r)
+  //! @param k must satisfy 1 <= k <= r - l
   //! @returns kth smallest number in range.
-  //!     - query(le,ri,1) returns the min
-  //!     - query(le,ri,(ri-le)) returns the max
+  //!     - query(l,r,1) returns the min
+  //!     - query(l,r,(r-l)) returns the max
   //! @time O(log(maxv - minv))
   //! @space O(log(maxv - minv)) for recursion stack; no
   //! new nodes are allocated
-  int query(int le, int ri, int k) {
+  int query(int l, int r, int k) {
     return query_impl(k, pst.root_l, pst.root_r,
-      pst.roots[le], pst.roots[ri]);
+      pst.roots[l], pst.roots[r]);
   }
   int query_impl(int k, int tl, int tr, int vl, int vr) {
     if (tr - tl == 1) return tl;

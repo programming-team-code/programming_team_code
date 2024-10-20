@@ -25,13 +25,13 @@ int main() {
     [](auto x, auto y) { return min(x, y); });
   linear_rmq lin_rmq(a, less());
   while (q--) {
-    int le, ri;
-    cin >> le >> ri;
-    int idx_min = lin_rmq.query_idx(le, ri - 1);
-    assert(le <= idx_min && idx_min < ri);
-    assert(lin_rmq.query(le, ri - 1) == a[idx_min]);
-    assert(a[idx_min] == rmq.query(le, ri));
-    assert(a[idx_min] == dis_rmq.query(le, ri));
+    int l, r;
+    cin >> l >> r;
+    int idx_min = lin_rmq.query_idx(l, r - 1);
+    assert(l <= idx_min && idx_min < r);
+    assert(lin_rmq.query(l, r - 1) == a[idx_min]);
+    assert(a[idx_min] == rmq.query(l, r));
+    assert(a[idx_min] == dis_rmq.query(l, r));
     cout << a[idx_min] << '\n';
   }
 }

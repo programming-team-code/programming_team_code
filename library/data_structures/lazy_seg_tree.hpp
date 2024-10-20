@@ -23,30 +23,30 @@ struct seg_tree {
       lazy[v] = 0;
     }
   }
-  void update(int le, int ri, ll change) { // [le, ri)
-    update_impl(le, ri, change, 0, n, 1);
+  void update(int l, int r, ll change) { // [l, r)
+    update_impl(l, r, change, 0, n, 1);
   }
-  void update_impl(int le, int ri, ll change, int tl,
-    int tr, int v) {
-    if (ri <= tl || tr <= le) return;
-    if (le <= tl && tr <= ri)
+  void update_impl(int l, int r, ll change, int tl, int tr,
+    int v) {
+    if (r <= tl || tr <= l) return;
+    if (l <= tl && tr <= r)
       return apply(change, tl, tr, v);
     int tm = split(tl, tr);
     push(tl, tm, tr, v);
-    update_impl(le, ri, change, tl, tm, 2 * v);
-    update_impl(le, ri, change, tm, tr, 2 * v + 1);
+    update_impl(l, r, change, tl, tm, 2 * v);
+    update_impl(l, r, change, tm, tr, 2 * v + 1);
     tree[v] = op(tree[2 * v], tree[2 * v + 1]);
   }
-  ll query(int le, int ri) { // [le, ri)
-    return query_impl(le, ri, 0, n, 1);
+  ll query(int l, int r) { // [l, r)
+    return query_impl(l, r, 0, n, 1);
   }
-  ll query_impl(int le, int ri, int tl, int tr, int v) {
-    if (ri <= tl || tr <= le) return 0;
-    if (le <= tl && tr <= ri) return tree[v];
+  ll query_impl(int l, int r, int tl, int tr, int v) {
+    if (r <= tl || tr <= l) return 0;
+    if (l <= tl && tr <= r) return tree[v];
     int tm = split(tl, tr);
     push(tl, tm, tr, v);
-    return op(query_impl(le, ri, tl, tm, 2 * v),
-      query_impl(le, ri, tm, tr, 2 * v + 1));
+    return op(query_impl(l, r, tl, tm, 2 * v),
+      query_impl(l, r, tm, tr, 2 * v + 1));
   }
 #include "seg_tree_uncommon/find_first.hpp"
 #include "seg_tree_uncommon/find_last.hpp"

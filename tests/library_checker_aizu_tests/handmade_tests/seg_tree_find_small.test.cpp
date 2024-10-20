@@ -11,25 +11,25 @@ int main() {
     vector<int> a(n);
     for (int q = 0; q < 1'000; q++) {
       if (rnd(0, 1) == 0) {
-        int le = rnd(0, n - 1);
-        int ri = rnd(le + 1, n);
+        int l = rnd(0, n - 1);
+        int r = rnd(l + 1, n);
         int diff = rnd(0, 10);
-        seg.update(le, ri, diff);
-        for (int i = le; i < ri; i++) a[i] += diff;
+        seg.update(l, r, diff);
+        for (int i = l; i < r; i++) a[i] += diff;
       } else {
-        int le = rnd(0, n - 1);
-        int ri = rnd(le + 1, n);
+        int l = rnd(0, n - 1);
+        int r = rnd(l + 1, n);
         int target_sum = rnd(0, 100);
-        int smallest_index_greater_sum = ri;
-        for (int pos = le, sum = 0; pos < ri; pos++) {
+        int smallest_index_greater_sum = r;
+        for (int pos = l, sum = 0; pos < r; pos++) {
           sum += a[pos];
           if (sum > target_sum) {
             smallest_index_greater_sum = pos;
             break;
           }
         }
-        int largest_index_greater_sum = le - 1;
-        for (int pos = ri - 1, sum = 0; pos >= le; pos--) {
+        int largest_index_greater_sum = l - 1;
+        for (int pos = r - 1, sum = 0; pos >= l; pos--) {
           sum += a[pos];
           if (sum > target_sum) {
             largest_index_greater_sum = pos;
@@ -46,10 +46,10 @@ int main() {
         };
         st_walk_sum = 0;
         assert(smallest_index_greater_sum ==
-          seg.find_first(le, ri, f));
+          seg.find_first(l, r, f));
         st_walk_sum = 0;
         assert(largest_index_greater_sum ==
-          seg.find_last(le, ri, f));
+          seg.find_last(l, r, f));
       }
     }
   }

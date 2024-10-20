@@ -11,8 +11,8 @@ int main() {
   int n = sz(s);
   lcp_tree lt(s);
   {
-    auto [le, ri] = lt.find_str(string(""));
-    assert(le == 0 && ri == n);
+    auto [l, r] = lt.find_str(string(""));
+    assert(l == 0 && r == n);
     assert(sz(lt.sf_a.sa) == n);
     assert(sz(lt.sf_a.sa_inv) == n);
     assert(sz(lt.sf_a.lcp) == n - 1);

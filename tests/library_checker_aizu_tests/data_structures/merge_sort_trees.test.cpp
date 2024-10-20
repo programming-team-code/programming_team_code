@@ -17,12 +17,12 @@ int main() {
   merge_sort_tree mst(arr);
   merge_sort_tree_updates mstu(arr, vector<bool>(n, 1));
   while (q--) {
-    int le, ri, x;
-    cin >> le >> ri >> x;
-    assert(mst.rect_count(le, ri, x, x) == 0);
-    assert(mstu.rect_count(le, ri, x, x) == 0);
-    int res = mst.rect_count(le, ri, x, x + 1);
-    assert(res == mstu.rect_count(le, ri, x, x + 1));
+    int l, r, x;
+    cin >> l >> r >> x;
+    assert(mst.rect_count(l, r, x, x) == 0);
+    assert(mstu.rect_count(l, r, x, x) == 0);
+    int res = mst.rect_count(l, r, x, x + 1);
+    assert(res == mstu.rect_count(l, r, x, x + 1));
     cout << res << '\n';
   }
   return 0;

@@ -1,8 +1,8 @@
-`vi le = mono_st(a, less());`
+`vi l = mono_st(a, less());`
 
 ![](mono_stack_le.png)
 
-`vi ri = mono_range(le);`
+`vi r = mono_range(l);`
 
 ![](mono_stack_ri.png)
 

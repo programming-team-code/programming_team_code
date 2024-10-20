@@ -10,8 +10,8 @@ int main() {
   rmq_inc rmq(a,
     [&](auto& x, auto& y) { return min(x, y); });
   while (q--) {
-    int le, ri;
-    cin >> le >> ri;
-    cout << rmq.query(le, ri - 1) << '\n';
+    int l, r;
+    cin >> l >> r;
+    cout << rmq.query(l, r - 1) << '\n';
   }
 }

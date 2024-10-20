@@ -24,29 +24,29 @@ int main() {
   assert(sz(sf_a.sa_inv) == n);
   assert(sz(sf_a.lcp) == n - 1);
   {
-    auto [sa_le, sa_ri, s_le, s_ri] =
+    auto [sa_le, sa_ri, s_l, s_r] =
       sf_a.find_substrs_concated({});
     assert(sa_le == 0 && sa_ri == n);
-    assert(s_ri - s_le == 0);
+    assert(s_r - s_l == 0);
   }
   {
-    auto [sa_le, sa_ri, s_le, s_ri] =
+    auto [sa_le, sa_ri, s_l, s_r] =
       sf_a.find_substrs_concated({{0, 0}});
     pair<int, int> short_res = sf_a.find_substr(0, 0);
     assert(sa_le == short_res.first &&
       sa_ri == short_res.second);
     assert(sa_le == 0 && sa_ri == n);
-    assert(s_ri - s_le == 0);
+    assert(s_r - s_l == 0);
   }
   {
-    auto [sa_le, sa_ri, s_le, s_ri] =
+    auto [sa_le, sa_ri, s_l, s_r] =
       sf_a.find_substrs_concated({{0, 0}, {n - 1, n - 1}});
     pair<int, int> short_res =
       sf_a.find_substr(n - 1, n - 1);
     assert(sa_le == short_res.first &&
       sa_ri == short_res.second);
     assert(sa_le == 0 && sa_ri == n);
-    assert(s_ri - s_le == 0);
+    assert(s_r - s_l == 0);
   }
   for (int i = 0; i < n; i++) {
     assert(sf_a.sa[sf_a.sa_inv[i]] == i);

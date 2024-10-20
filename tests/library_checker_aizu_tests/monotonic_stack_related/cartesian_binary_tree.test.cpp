@@ -8,7 +8,7 @@ int main() {
   cin >> n;
   vector<int> a(n);
   for (int i = 0; i < n; i++) cin >> a[i];
-  auto le = mono_st(a, less()), p = cart_binary_tree(le);
+  auto l = mono_st(a, less()), p = cart_binary_tree(l);
   for (int i = 0; i < n; i++)
     cout << (p[i] == -1 ? i : p[i]) << " ";
   return 0;
