@@ -1,13 +1,13 @@
 #pragma once
 //! @code
-//!   int cmp2 = saq.cmp_sufs(le1,le2);
+//!   int cmp2 = saq.cmp_sufs(l1,l2);
 //! @endcode
-//! requires le1,le2 < n
-//! if cmp2<0 then s[le1,n) < s[le2,n)
-//! if cmp2=0 then s[le1,n) = s[le2,n)
-//! if cmp2>0 then s[le1,n) > s[le2,n)
+//! requires l1,l2 < n
+//! if cmp2<0 then s[l1,n) < s[l2,n)
+//! if cmp2=0 then s[l1,n) = s[l2,n)
+//! if cmp2>0 then s[l1,n) > s[l2,n)
 //! @time O(1)
 //! @space O(1)
-int cmp_sufs(int le1, int le2) {
-  return sa_inv[le1] - sa_inv[le2];
+int cmp_sufs(int l1, int l2) {
+  return sa_inv[l1] - sa_inv[l2];
 }

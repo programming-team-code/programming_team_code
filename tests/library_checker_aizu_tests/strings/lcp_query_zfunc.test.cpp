@@ -19,23 +19,23 @@ int main() {
       if (cmp_val > 0) assert(s.substr(l) > s.substr(r));
     }
     for (int num_tests = 50; num_tests--;) {
-      auto le1 = rnd<int>(0, sz(s));
-      auto ri1 = rnd<int>(0, sz(s));
-      if (le1 > ri1) swap(le1, ri1);
-      if (le1 == sz(s)) le1--;
-      int le2, ri2;
+      auto l1 = rnd<int>(0, sz(s));
+      auto r1 = rnd<int>(0, sz(s));
+      if (l1 > r1) swap(l1, r1);
+      if (l1 == sz(s)) l1--;
+      int l2, r2;
       if (rnd(0, 20) == 0) {
-        le2 = le1;
-        ri2 = ri1;
+        l2 = l1;
+        r2 = r1;
       } else {
-        le2 = rnd<int>(0, sz(s));
-        ri2 = rnd<int>(0, sz(s));
-        if (le2 > ri2) swap(le2, ri2);
-        if (le2 == sz(s)) le2--;
+        l2 = rnd<int>(0, sz(s));
+        r2 = rnd<int>(0, sz(s));
+        if (l2 > r2) swap(l2, r2);
+        if (l2 == sz(s)) l2--;
       }
-      int cmp_result = lq.cmp_substrs(le1, ri1, le2, ri2);
-      string sub1 = s.substr(le1, ri1 - le1);
-      string sub2 = s.substr(le2, ri2 - le2);
+      int cmp_result = lq.cmp_substrs(l1, r1, l2, r2);
+      string sub1 = s.substr(l1, r1 - l1);
+      string sub2 = s.substr(l2, r2 - l2);
       if (cmp_result < 0) assert(sub1 < sub2);
       else if (cmp_result == 0) assert(sub1 == sub2);
       else assert(sub1 > sub2);

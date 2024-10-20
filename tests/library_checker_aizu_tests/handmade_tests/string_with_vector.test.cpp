@@ -36,35 +36,34 @@ int main() {
     assert(sa_le == 50 && sa_ri == 51);
   }
   {
-    auto [sa_le, sa_ri, s_le, s_ri] =
-      sf_a.find_str_fast(t);
+    auto [sa_le, sa_ri, s_l, s_r] = sf_a.find_str_fast(t);
     assert(sa_le == 50 && sa_ri == 51);
-    assert(s_le == 50 && s_ri == 60);
+    assert(s_l == 50 && s_r == 60);
   }
   for (int val : sf_a.lcp) assert(val == 0);
   {
     assert(sf_a.len_lcp(0, 99) == 0);
     for (int i = 0; i < 100; i++) {
-      auto [sa_le, sa_ri, s_le, s_ri] =
+      auto [sa_le, sa_ri, s_l, s_r] =
         sf_a.find_substrs_concated({{i, i + 1}});
       pair<int, int> short_res =
         sf_a.find_substr(i, i + 1);
       assert(sa_le == short_res.first &&
         sa_ri == short_res.second);
       assert(sa_le == i && sa_ri == i + 1);
-      assert(s_le == i && s_ri == i + 1);
+      assert(s_l == i && s_r == i + 1);
     }
     for (int i = 0; i < 100; i++) {
-      auto [sa_le, sa_ri, s_le, s_ri] =
+      auto [sa_le, sa_ri, s_l, s_r] =
         sf_a.find_substrs_concated({{i, i}, {i, i}});
       pair<int, int> short_res = sf_a.find_substr(i, i);
       assert(sa_le == short_res.first &&
         sa_ri == short_res.second);
     }
-    auto [sa_le, sa_ri, s_le, s_ri] =
+    auto [sa_le, sa_ri, s_l, s_r] =
       sf_a.find_substrs_concated({});
     assert(sa_le == 0 && sa_ri == sz(arr));
-    assert(s_le == s_ri);
+    assert(s_l == s_r);
     assert(sf_a.cmp_substrs(0, 0, 99, 99) == 0);
     assert(sf_a.cmp_substrs(5, 5, 47, 47) == 0);
     assert(sf_a.cmp_substrs(50, 50, 99, 100) < 0);
