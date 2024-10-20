@@ -9,9 +9,9 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
   {
     bwt bw(string(""), vector<int>());
-    auto [le, ri] = bw.find_str(string(""));
-    assert(sz(le) == 1 && sz(ri) == 1);
-    assert(le[0] == 0 && ri[0] == 0);
+    auto [l, r] = bw.find_str(string(""));
+    assert(sz(l) == 1 && sz(r) == 1);
+    assert(l[0] == 0 && r[0] == 0);
   }
   string s;
   cin >> s;
@@ -20,9 +20,9 @@ int main() {
   bwt bw(s, sf_a.sa);
   mono_st_asserts(sf_a.lcp);
   {
-    auto [le, ri] = bw.find_str("");
-    assert(sz(le) == 1 && sz(ri) == 1);
-    assert(le[0] == 0 && ri[0] == sz(s));
+    auto [l, r] = bw.find_str("");
+    assert(sz(l) == 1 && sz(r) == 1);
+    assert(l[0] == 0 && r[0] == sz(s));
   }
   int q;
   cin >> q;
@@ -30,12 +30,12 @@ int main() {
     string t;
     cin >> t;
     transform(begin(t), end(t), begin(t), compress_char);
-    auto [le, ri] = bw.find_str(compress_char('a') + t);
-    assert(sz(le) == 2 + sz(t) && sz(ri) == 2 + sz(t) &&
-      le.back() == 0 && ri.back() == sz(s));
-    for (int i = sz(le) - 2; i >= 0; i--)
-      assert(ri[i] - le[i] <= ri[i + 1] - le[i + 1]);
-    cout << (!!(ri[1] - le[1] > 0)) << '\n';
+    auto [l, r] = bw.find_str(compress_char('a') + t);
+    assert(sz(l) == 2 + sz(t) && sz(r) == 2 + sz(t) &&
+      l.back() == 0 && r.back() == sz(s));
+    for (int i = sz(l) - 2; i >= 0; i--)
+      assert(r[i] - l[i] <= r[i + 1] - l[i + 1]);
+    cout << (!!(r[1] - l[1] > 0)) << '\n';
   }
   return 0;
 }

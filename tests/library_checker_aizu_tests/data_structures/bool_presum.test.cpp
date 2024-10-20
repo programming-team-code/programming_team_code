@@ -28,16 +28,16 @@ int main() {
   vector<bool_presum> presums = init_presums(arr);
   assert(sz(presums) == 30);
   while (q--) {
-    int le, ri;
-    cin >> le >> ri;
+    int l, r;
+    cin >> l >> r;
     int64_t sum = 0;
     for (int bit = 0; bit < 30; bit++)
-      if (ri - le == 1)
-        sum += (1LL << bit) * presums[bit].on(le);
+      if (r - l == 1)
+        sum += (1LL << bit) * presums[bit].on(l);
       else
         sum += (1LL << bit) *
-          (presums[bit].popcount(ri) -
-            presums[bit].popcount(le));
+          (presums[bit].popcount(r) -
+            presums[bit].popcount(l));
     cout << sum << '\n';
   }
 }

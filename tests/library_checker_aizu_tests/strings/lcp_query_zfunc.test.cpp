@@ -11,13 +11,12 @@ int main() {
   // test `*_cmp` functions
   {
     for (int num_tests = 50; num_tests--;) {
-      auto le = rnd<int>(0, sz(s) - 1);
-      auto ri = rnd<int>(0, sz(s) - 1);
-      int cmp_val = lq.cmp_sufs(le, ri);
-      if (cmp_val < 0) assert(s.substr(le) < s.substr(ri));
-      if (cmp_val == 0)
-        assert(s.substr(le) == s.substr(ri));
-      if (cmp_val > 0) assert(s.substr(le) > s.substr(ri));
+      auto l = rnd<int>(0, sz(s) - 1);
+      auto r = rnd<int>(0, sz(s) - 1);
+      int cmp_val = lq.cmp_sufs(l, r);
+      if (cmp_val < 0) assert(s.substr(l) < s.substr(r));
+      if (cmp_val == 0) assert(s.substr(l) == s.substr(r));
+      if (cmp_val > 0) assert(s.substr(l) > s.substr(r));
     }
     for (int num_tests = 50; num_tests--;) {
       auto le1 = rnd<int>(0, sz(s));

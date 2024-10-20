@@ -12,16 +12,16 @@ int main() {
     int type;
     cin >> type;
     if (type == 0) {
-      int le, ri, x;
-      cin >> le >> ri >> x;
-      le--;
-      bit_i_1.update(le, ri, x);
-      bit_i_2.update(le, ri, x);
+      int l, r, x;
+      cin >> l >> r >> x;
+      l--;
+      bit_i_1.update(l, r, x);
+      bit_i_2.update(l, r, x);
       // test degenerate updates
-      bit_i_1.update(le, le, x);
-      bit_i_1.update(ri, ri, x);
-      bit_i_2.update(le, le, x);
-      bit_i_2.update(ri, ri, x);
+      bit_i_1.update(l, l, x);
+      bit_i_1.update(r, r, x);
+      bit_i_2.update(l, l, x);
+      bit_i_2.update(r, r, x);
     } else {
       int idx;
       cin >> idx;
