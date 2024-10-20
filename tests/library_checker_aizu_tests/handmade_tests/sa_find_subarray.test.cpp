@@ -15,16 +15,16 @@ int main() {
       sa_query lq(s, 256);
       for (int i = 0; i < n; i++) {
         for (int j = i; j <= n; j++) {
-          auto [sa_le, sa_ri, s_le, s_ri] =
+          auto [sa_le, sa_ri, s_l, s_r] =
             lq.find_substrs_concated({{i, j}});
           pair<int, int> short_res = lq.find_substr(i, j);
           assert(sa_le == short_res.first &&
             sa_ri == short_res.second);
           assert(s.substr(i, j - i) ==
-            s.substr(s_le, s_ri - s_le));
+            s.substr(s_l, s_r - s_l));
           if (i == j) {
             assert(sa_le == 0 && sa_ri == n);
-            assert(s_le == s_ri);
+            assert(s_l == s_r);
           }
           if (i < n)
             assert(0 <= sa_le && sa_le <= lq.sa_inv[i] &&

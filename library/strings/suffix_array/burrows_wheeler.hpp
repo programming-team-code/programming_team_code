@@ -33,24 +33,24 @@ struct bwt {
     partial_sum(all(cnt), begin(cnt));
   }
   //! @param t query string
-  //! @returns vectors `le`, `ri` where given `t_le` (0 <=
+  //! @returns vectors `l`, `r` where given `t_le` (0 <=
   //! t_le <= |t|) defines a suffix [t_le, |t|) of t:
-  //!     - for all i in [le[t_le], ri[t_le]):
+  //!     - for all i in [l[t_le], r[t_le]):
   //!     t.substr(t_le)
   //!     == s.substr(sa[i], sz(t) - t_le)
-  //!     - `ri[t_le] - le[t_le]` is the # of matches of
-  //!     t.substr(t_le) in s. note: ri[t_le] - le[t_le] <=
-  //!     ri[t_le + 1] - le[t_le + 1]
+  //!     - `r[t_le] - l[t_le]` is the # of matches of
+  //!     t.substr(t_le) in s. note: r[t_le] - l[t_le] <=
+  //!     r[t_le + 1] - l[t_le + 1]
   //! @time O(|t|)
   //! @space 2 O(|t|) vectors are allocated and returned
   array<vi, 2> find_str(const string& t) {
-    vi le(sz(t) + 1, 0), ri(sz(t) + 1, n);
+    vi l(sz(t) + 1, 0), r(sz(t) + 1, n);
     for (int i = sz(t) - 1; i >= 0; i--) {
       char c = t[i] - mn;
-      le[i] = cnt[c] + occ[le[i + 1]][c] +
+      l[i] = cnt[c] + occ[l[i + 1]][c] +
         (c == last && i < sz(t) - 1);
-      ri[i] = cnt[c] + occ[ri[i + 1]][c] + (c == last);
+      r[i] = cnt[c] + occ[r[i + 1]][c] + (c == last);
     }
-    return {le, ri};
+    return {l, r};
   }
 };

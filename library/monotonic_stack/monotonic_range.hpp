@@ -9,9 +9,9 @@
 //!   a[mono_le2[i]] < a[i] >= a[mono_ri2[i]]
 //! @time O(n)
 //! @space O(n)
-vi mono_range(const vi& le) {
-  vi ri(sz(le), sz(le));
-  rep(i, 0, sz(le)) for (int j = i - 1; j != le[i];
-                         j = le[j]) ri[j] = i;
-  return ri;
+vi mono_range(const vi& l) {
+  vi r(sz(l), sz(l));
+  rep(i, 0, sz(l)) for (int j = i - 1; j != l[i]; j = l[j])
+    r[j] = i;
+  return r;
 }

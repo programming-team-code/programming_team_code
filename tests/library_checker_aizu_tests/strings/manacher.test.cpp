@@ -32,17 +32,16 @@ int main() {
     if (longest[i] + 1 < n) {
       assert(!pq.is_pal(i, n - 1));
       for (int tests = 10; tests--;) {
-        int ri = rnd(longest[i] + 1, n - 1);
-        assert(!pq.is_pal(i, ri));
+        int r = rnd(longest[i] + 1, n - 1);
+        assert(!pq.is_pal(i, r));
       }
     }
   }
   for (int i = 0; i < sz(pq.man); i++) {
-    int ri = i - pq.man[i];
-    assert(
-      ri + 1 == pq.man[i] || pq.is_pal(pq.man[i], ri));
-    assert(pq.man[i] == 0 || ri == n - 1 ||
-      !pq.is_pal(pq.man[i] - 1, ri + 1));
+    int r = i - pq.man[i];
+    assert(r + 1 == pq.man[i] || pq.is_pal(pq.man[i], r));
+    assert(pq.man[i] == 0 || r == n - 1 ||
+      !pq.is_pal(pq.man[i] - 1, r + 1));
     cout << i - 2 * pq.man[i] + 1 << " ";
   }
   return 0;

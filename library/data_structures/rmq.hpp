@@ -21,9 +21,9 @@ template<class T, class F> struct RMQ {
         begin(dp[i]) + (1 << i), begin(dp[i + 1]), op);
     }
   }
-  T query(int le, int ri) { // [le, ri)
-    assert(le < ri);
-    int lg = __lg(ri - le);
-    return op(dp[lg][le], dp[lg][ri - (1 << lg)]);
+  T query(int l, int r) { // [l, r)
+    assert(l < r);
+    int lg = __lg(r - l);
+    return op(dp[lg][l], dp[lg][r - (1 << lg)]);
   }
 };

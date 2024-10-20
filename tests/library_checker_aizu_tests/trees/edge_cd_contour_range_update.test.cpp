@@ -22,11 +22,11 @@ int main() {
     int type;
     cin >> type;
     if (type == 0) {
-      int u, le, ri, delta;
-      cin >> u >> le >> ri >> delta;
-      cu.update(u, le, le, delta);
-      cu.update(u, le, ri, delta);
-      cu.update(u, ri, ri, delta);
+      int u, l, r, delta;
+      cin >> u >> l >> r >> delta;
+      cu.update(u, l, l, delta);
+      cu.update(u, l, r, delta);
+      cu.update(u, r, r, delta);
     } else {
       assert(type == 1);
       int u;

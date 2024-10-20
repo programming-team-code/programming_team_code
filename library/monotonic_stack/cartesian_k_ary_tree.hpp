@@ -20,23 +20,23 @@
 //! p[5] = 9
 //!
 //! @code
-//!     auto le = mono_st(a, less()), p =
-//!     cart_k_ary_tree(a, le); // min cart tree auto le =
-//!     mono_st(a, greater()), p = cart_k_ary_tree(a, le);
+//!     auto l = mono_st(a, less()), p =
+//!     cart_k_ary_tree(a, l); // min cart tree auto l =
+//!     mono_st(a, greater()), p = cart_k_ary_tree(a, l);
 //!     // max cart tree bool is_node = (p[i] < i || a[i]
 //!     != a[p[i]]);
 //! @endcode
 //!
-//! @param a,le array and its left-monotonic stack
+//! @param a,l array and its left-monotonic stack
 //! @returns parent array
 //! @time O(n)
 //! @space a O(n) vector is allocated and returned
 template<class T>
-vi cart_k_ary_tree(const vector<T>& a, const vi& le) {
-  vi p(le);
+vi cart_k_ary_tree(const vector<T>& a, const vi& l) {
+  vi p(l);
   for (int i = sz(a) - 1; i >= 0; i--)
-    for (int j = i - 1; j != le[i]; j = le[j])
-      if (le[j] == le[i] || a[i] == a[le[j]])
+    for (int j = i - 1; j != l[i]; j = l[j])
+      if (l[j] == l[i] || a[i] == a[l[j]])
         p[j] = (p[i] < i || a[i] != a[p[i]] ? i : p[i]);
   return p;
 }

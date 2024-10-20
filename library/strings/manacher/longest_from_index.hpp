@@ -2,9 +2,9 @@
 #include "is_palindrome.hpp"
 //! https://github.com/brunomaletta/Biblioteca/blob/master/Codigo/Strings/manacher.cpp
 //! @code
-//!   auto ri = longest_from_index(pq);
+//!   auto r = longest_from_index(pq);
 //! @endcode
-//! ri[i] = max index such that [i, ri[i]]
+//! r[i] = max index such that [i, r[i]]
 //!   is a palindrome
 //! @time O(n)
 //! @space O(n)

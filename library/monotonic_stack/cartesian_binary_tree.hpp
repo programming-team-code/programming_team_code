@@ -21,10 +21,10 @@
 //!      0  1  2  3  4  5  6  7  8  9  10
 //! @time O(n)
 //! @space O(n)
-vi cart_binary_tree(const vi& le) {
-  vi p(le);
-  rep(i, 0, sz(p)) for (int j = i - 1; j != le[i];
-                        j = le[j]) if (le[j] == le[i])
-    p[j] = i;
+vi cart_binary_tree(const vi& l) {
+  vi p(l);
+  rep(i, 0, sz(p)) for (int j = i - 1; j != l[i];
+                        j = l[j]) if (l[j] == l[i]) p[j] =
+    i;
   return p;
 }

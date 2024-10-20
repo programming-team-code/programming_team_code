@@ -15,13 +15,12 @@ struct distinct_query {
       idx = i + 1;
     }
   }
-  //! @param le,ri defines range [le, ri)
+  //! @param l,r defines range [l, r)
   //! @returns number of distinct elements in range;
   //! query(i, i) returns 0.
   //! @time O(log n)
   //! @space O(log n)
-  int query(int le, int ri) {
-    return pst.query(0, le + 1, ri) -
-      pst.query(0, le + 1, le);
+  int query(int l, int r) {
+    return pst.query(0, l + 1, r) - pst.query(0, l + 1, l);
   }
 };

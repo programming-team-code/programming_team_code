@@ -1,11 +1,11 @@
 #pragma once
 //! https://codeforces.com/blog/entry/125371?#comment-1173604
 //! @code
-//!   linear_rmq r1(a, less());//right-most min
-//!   linear_rmq r2(a, less_equal());//left-most min
-//!   linear_rmq r3(a, greater());//right-most max
-//!   linear_rmq r4(a, greater_equal());//left-most max
-//!   linear_rmq r5(a, [&](auto& x, auto& y) {
+//!   linear_rmq lr1(a, less());//right-most min
+//!   linear_rmq lr2(a, less_equal());//left-most min
+//!   linear_rmq lr3(a, greater());//right-most max
+//!   linear_rmq lr4(a, greater_equal());//left-most max
+//!   linear_rmq lr5(a, [&](auto& x, auto& y) {
 //!     return x < y;
 //!   });
 //! @endcode
@@ -35,15 +35,15 @@ template<class T, class F> struct linear_rmq {
     rep(i, 1, sz(a)) t[i][1] =
       (t[i][1] | t[i - 1][1]) & -(t[i][0] & -t[i][0]);
   }
-  int query_idx(int le, int ri) { // [le, ri]
-    if (int j = t[le][0] ^ t[ri][0]; j) {
-      j = t[le][1] & t[ri][1] & -(1 << __lg(j));
-      if (int k = t[le][1] ^ j; k)
-        k = 1 << __lg(k), le = head[(t[le][0] & -k) | k];
-      if (int k = t[ri][1] ^ j; k)
-        k = 1 << __lg(k), ri = head[(t[ri][0] & -k) | k];
+  int query_idx(int l, int r) { // [l, r]
+    if (int j = t[l][0] ^ t[r][0]; j) {
+      j = t[l][1] & t[r][1] & -(1 << __lg(j));
+      if (int k = t[l][1] ^ j; k)
+        k = 1 << __lg(k), l = head[(t[l][0] & -k) | k];
+      if (int k = t[r][1] ^ j; k)
+        k = 1 << __lg(k), r = head[(t[r][0] & -k) | k];
     }
-    return cmp(a[le], a[ri]) ? le : ri;
+    return cmp(a[l], a[r]) ? l : r;
   }
-  T query(int le, int ri) { return a[query_idx(le, ri)]; }
+  T query(int l, int r) { return a[query_idx(l, r)]; }
 };

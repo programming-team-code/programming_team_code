@@ -28,10 +28,10 @@ int main() {
   merge_sort_tree_updates mstu(inverted,
     vector<bool>(n, 1));
   while (q--) {
-    int le, ri, k;
-    cin >> le >> ri >> k;
-    int res = mst.kth_smallest(le, ri, k + 1);
-    assert(res == mstu.kth_smallest(le, ri, k + 1));
+    int l, r, k;
+    cin >> l >> r >> k;
+    int res = mst.kth_smallest(l, r, k + 1);
+    assert(res == mstu.kth_smallest(l, r, k + 1));
     cout << sorted[res] << '\n';
   }
   return 0;

@@ -57,17 +57,17 @@ const int mn = '0',
 //!     - a single suffix
 struct lcp_tree {
   sa_query<string> sf_a;
-  vi le, ri;
+  vi l, r;
   int root;
   vector<vi> adj;
   //! @param s non-empty string/array
   //! @time O((n log n) + (mn + cnt_let) + (n * cnt_let))
   //! @space adj is O(n * cnt_let)
   lcp_tree(const string& s):
-    sf_a(s, mn + cnt_let), le(mono_st(sf_a.lcp, less())),
-    ri(mono_range(le)),
+    sf_a(s, mn + cnt_let), l(mono_st(sf_a.lcp, less())),
+    r(mono_range(l)),
     adj(max(sf_a.n - 1, 0), vector(cnt_let, -1)) {
-    vi p = cart_k_ary_tree(sf_a.lcp, le);
+    vi p = cart_k_ary_tree(sf_a.lcp, l);
     root = find(all(p), -1) - begin(p);
     auto node = [&](int i) -> int {
       return p[i] < i || sf_a.lcp[i] != sf_a.lcp[p[i]]

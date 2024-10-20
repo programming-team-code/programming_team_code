@@ -1,8 +1,8 @@
 #pragma once
 #include "../../data_structures/bit.hpp"
 #include "lcs_dp.hpp"
-//! Given tuples (s_ri, t_le, t_ri), find:
-//!   size(LCS(s[0,s_ri), t[t_le,t_ri)))
+//! Given tuples (s_r, t_le, t_ri), find:
+//!   size(LCS(s[0,s_r), t[t_le,t_ri)))
 //! @time O(n*m*log(m) + q*log(m) + q*log(q))
 //! @space O(n + m + q)
 template<class T>
@@ -11,9 +11,9 @@ vi lcs_queries(const T& s, const T& t,
   int n = sz(s), m = sz(t), q = sz(queries);
   vector<vector<array<int, 3>>> qs(n);
   rep(i, 0, q) {
-    auto [s_ri, t_le, t_ri] = queries[i];
-    if (s_ri == 0 || t_le == m) continue;
-    qs[s_ri - 1].push_back({t_le, t_ri, i});
+    auto [s_r, t_le, t_ri] = queries[i];
+    if (s_r == 0 || t_le == m) continue;
+    qs[s_r - 1].push_back({t_le, t_ri, i});
   }
   lcs_dp lcs(t);
   vi res(q);

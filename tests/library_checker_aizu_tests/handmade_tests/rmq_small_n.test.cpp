@@ -11,12 +11,12 @@ void test_all_subarrays(const vector<int>& a) {
   disjoint_rmq dis_rmq(a,
     [](auto x, auto y) { return min(x, y); });
   linear_rmq lin_rmq(a, less());
-  for (int le = 0; le < n; le++) {
-    for (int ri = le + 1; ri <= n; ri++) {
-      int idx_min = lin_rmq.query_idx(le, ri - 1);
-      assert(le <= idx_min && idx_min < ri);
-      assert(a[idx_min] == rmq.query(le, ri));
-      assert(a[idx_min] == dis_rmq.query(le, ri));
+  for (int l = 0; l < n; l++) {
+    for (int r = l + 1; r <= n; r++) {
+      int idx_min = lin_rmq.query_idx(l, r - 1);
+      assert(l <= idx_min && idx_min < r);
+      assert(a[idx_min] == rmq.query(l, r));
+      assert(a[idx_min] == dis_rmq.query(l, r));
     }
   }
 }

@@ -1,23 +1,22 @@
 #pragma once
 //! @code
-//!   auto [sa_le,sa_ri] = saq.find_substr(s_le,s_ri);
+//!   auto [sa_le,sa_ri] = saq.find_substr(s_l,s_r);
 //! @endcode
-//! requires s_le < n
-//! for all i in [sa_le,sa_ri): s.substr(s_le,s_ri-s_le)
-//!   == s.substr(sa[i],s_ri-s_le)
-//!   - `ri-le` is the # of matches of
-//!       s.substr(s_le, s_ri - s_le) in s.
+//! requires s_l < n
+//! for all i in [sa_le,sa_ri): s.substr(s_l,s_r-s_l)
+//!   == s.substr(sa[i],s_r-s_l)
+//!   - `r-l` is the # of matches of
+//!       s.substr(s_l, s_r - s_l) in s.
 //! @time O(log(|s|))
 //! @space O(1)
-pii find_substr(int s_le, int s_ri) {
+pii find_substr(int s_l, int s_r) {
   auto cmp = [&](int i, bool flip) -> bool {
-    return flip ^ (len_lcp(i, s_le) < s_ri - s_le);
+    return flip ^ (len_lcp(i, s_l) < s_r - s_l);
   };
-  int le = lower_bound(begin(sa), begin(sa) + sa_inv[s_le],
-             0, cmp) -
+  int l = lower_bound(begin(sa), begin(sa) + sa_inv[s_l],
+            0, cmp) -
     begin(sa);
-  int ri =
-    lower_bound(sa_inv[s_le] + 1 + all(sa), 1, cmp) -
+  int r = lower_bound(sa_inv[s_l] + 1 + all(sa), 1, cmp) -
     begin(sa);
-  return {le, ri};
+  return {l, r};
 }

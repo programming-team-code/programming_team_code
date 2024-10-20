@@ -10,9 +10,9 @@ int main() {
   for (int i = 0; i < n; i++) cin >> a[i];
   distinct_query dq(a);
   while (q--) {
-    int le, ri;
-    cin >> le >> ri;
-    cout << dq.query(le, ri) << '\n';
+    int l, r;
+    cin >> l >> r;
+    cout << dq.query(l, r) << '\n';
   }
   return 0;
 }

@@ -19,9 +19,9 @@ vector<vi> count_rectangles(
   for (const auto& row : grid) {
     transform(all(h), begin(row), begin(h),
       [](int a, bool g) { return g * (a + 1); });
-    vi le(mono_st(h, less())), ri(mono_range(le));
+    vi l(mono_st(h, less())), r(mono_range(l));
     rep(j, 0, m) {
-      int cnt_l = j - le[j] - 1, cnt_r = ri[j] - j - 1;
+      int cnt_l = j - l[j] - 1, cnt_r = r[j] - j - 1;
       cnt[h[j]][cnt_l + cnt_r + 1]++;
       cnt[h[j]][cnt_l]--;
       cnt[h[j]][cnt_r]--;

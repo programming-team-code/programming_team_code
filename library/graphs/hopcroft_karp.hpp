@@ -1,15 +1,15 @@
 #pragma once
 //! https://github.com/foreverbell/acm-icpc-cheat-sheet/blob/master/src/graph-algorithm/hopcroft-karp.cpp
 //! @code
-//!   adj[le].push_back(ri); // add edge le <-> ri
+//!   adj[l].push_back(r); // add edge l <-> r
 //!   auto [matching_size, to_r, to_l,
 //!     mvc_l, mvc_r] = hopcroft_karp(adj, rsz);
 //! @endcode
-//! 0<=le<lsz; 0<=ri<rsz
-//! le <-> to_r[le] in matching if to_r[le]!=-1
-//! to_l[ri] <-> ri in matching if to_l[ri]!=-1
-//! mvc_l[le] is 1 if le in Min Vertex Cover
-//! mvc_r[ri] is 1 if ri in Min Vertex Cover
+//! 0<=l<lsz; 0<=r<rsz
+//! l <-> to_r[l] in matching if to_r[l]!=-1
+//! to_l[r] <-> r in matching if to_l[r]!=-1
+//! mvc_l[l] is 1 if l in Min Vertex Cover
+//! mvc_r[r] is 1 if r in Min Vertex Cover
 //! @time O(n + m * sqrt(n)) n = lsz + rsz
 //! @space O(n)
 struct hopcroft_karp {

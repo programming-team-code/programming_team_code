@@ -10,8 +10,8 @@ int main() {
   transform(begin(s), end(s), begin(s), compress_char);
   lcp_tree lt(s);
   {
-    auto [le, ri] = lt.find_str(string(""));
-    assert(le == 0 && ri == sz(s));
+    auto [l, r] = lt.find_str(string(""));
+    assert(l == 0 && r == sz(s));
   }
   int q;
   cin >> q;
@@ -19,8 +19,8 @@ int main() {
     string t;
     cin >> t;
     transform(begin(t), end(t), begin(t), compress_char);
-    auto [le, ri] = lt.find_str(t);
-    cout << (!!(ri - le > 0)) << '\n';
+    auto [l, r] = lt.find_str(t);
+    cout << (!!(r - l > 0)) << '\n';
   }
   return 0;
 }

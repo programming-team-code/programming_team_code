@@ -1,11 +1,11 @@
 #pragma once
 //! @code
 //!   seg_tree st2(n);
-//!   st2.find_last(le, ri, [&](ll x, int tl, int tr) ->
+//!   st2.find_last(l, r, [&](ll x, int tl, int tr) ->
 //!   bool {
 //!   });
 //! @endcode
-//! @param le,ri defines range [le, ri)
+//! @param l,r defines range [l, r)
 //! @param f defines a function that returns 1 if the
 //! subtree contains an element that satisfies the
 //! condition
@@ -22,12 +22,11 @@
 //!
 //! @returns the index of the last element in the range
 //! that satisfies the condition described in `f`, if no
-//! such element exists then (le - 1) is returned
+//! such element exists then (l - 1) is returned
 //! @time O(log(n))
 //! @space O(log(n)) for recursion stack
-template<class F>
-int find_last(int le, int ri, const F& f) {
-  return find_last_in_range(le, ri, f, 0, n, 1);
+template<class F> int find_last(int l, int r, const F& f) {
+  return find_last_in_range(l, r, f, 0, n, 1);
 }
 //! invariant: f(tree[v], tl, tr) is 1
 template<class F>
@@ -41,17 +40,16 @@ int find_last_in_subtree(const F& f, int tl, int tr,
   return find_last_in_subtree(f, tl, tm, 2 * v);
 }
 template<class F>
-int find_last_in_range(int le, int ri, const F& f, int tl,
+int find_last_in_range(int l, int r, const F& f, int tl,
   int tr, int v) {
-  if (ri <= tl || tr <= le) return le - 1;
-  if (le <= tl && tr <= ri)
+  if (r <= tl || tr <= l) return l - 1;
+  if (l <= tl && tr <= r)
     return f(tree[v], tl, tr)
       ? find_last_in_subtree(f, tl, tr, v)
-      : le - 1;
+      : l - 1;
   int tm = split(tl, tr);
   push(tl, tm, tr, v);
-  int res =
-    find_last_in_range(le, ri, f, tm, tr, 2 * v + 1);
-  if (res >= le) return res;
-  return find_last_in_range(le, ri, f, tl, tm, 2 * v);
+  int res = find_last_in_range(l, r, f, tm, tr, 2 * v + 1);
+  if (res >= l) return res;
+  return find_last_in_range(l, r, f, tl, tm, 2 * v);
 }

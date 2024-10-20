@@ -19,9 +19,9 @@ int main() {
     bit.update(i, add);
     seg.update(i, i + 1, add);
     rev.update(rv(i), rv(i) + 1, add);
-    int le = rnd(0, mx_n - 1);
-    int ri = rnd(le + 1, mx_n);
-    int64_t in_tree = seg.query(le, ri);
+    int l = rnd(0, mx_n - 1);
+    int r = rnd(l + 1, mx_n);
+    int64_t in_tree = seg.query(l, r);
     auto sum = rnd<int64_t>(1, in_tree);
     int64_t need;
     vector<array<int, 3>> rngs;
@@ -38,14 +38,13 @@ int main() {
       rngs.push_back({tl, tr, 1});
       return 1;
     };
-    int pos =
-      min(bit.lower_bound(bit.query(le) + sum), ri);
+    int pos = min(bit.lower_bound(bit.query(l) + sum), r);
     reset();
-    assert(pos == seg.find_first(le, ri, f));
+    assert(pos == seg.find_first(l, r, f));
     assert(!empty(rngs));
-    assert(rngs[0][0] == le);
+    assert(rngs[0][0] == l);
     for (auto [tl, tr, _] : rngs)
-      assert(le <= tl && tl < tr && tr <= ri);
+      assert(l <= tl && tl < tr && tr <= r);
     for (int it = 1; it < sz(rngs); it++) {
       auto [prv_le, prv_ri, prv] = rngs[it - 1];
       auto [cur_le, cur_ri, cur] = rngs[it];
@@ -56,12 +55,12 @@ int main() {
     assert(unique(begin(rngs), end(rngs)) == end(rngs));
     reset();
     assert(
-      pos == rv(rev.find_last(rv(ri - 1), rv(le) + 1, f)));
+      pos == rv(rev.find_last(rv(r - 1), rv(l) + 1, f)));
     assert(!empty(rngs));
-    assert(rngs[0][1] == rv(le) + 1);
+    assert(rngs[0][1] == rv(l) + 1);
     for (auto [tl, tr, _] : rngs)
       assert(
-        rv(ri - 1) <= tl && tl < tr && tr <= rv(le) + 1);
+        rv(r - 1) <= tl && tl < tr && tr <= rv(l) + 1);
     for (int it = 1; it < sz(rngs); it++) {
       auto [prv_le, prv_ri, prv] = rngs[it - 1];
       auto [cur_le, cur_ri, cur] = rngs[it];
