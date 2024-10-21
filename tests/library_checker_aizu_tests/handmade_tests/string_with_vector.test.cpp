@@ -74,8 +74,12 @@ int main() {
   }
   {
     KMP kmp(t);
-    vector<int> matches = kmp.find_str(arr);
-    assert(matches == vector<int>({50}));
+    vector<bool> is_m = kmp.find_str(arr);
+    assert(is_m[50]);
+    rep(i, 0, sz(is_m)) {
+      if (i == 50) continue;
+      assert(!is_m[i]);
+    }
   }
   {
     pal_query pq(arr);

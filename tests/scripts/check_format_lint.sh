@@ -10,7 +10,7 @@ grep "endl" --recursive library_checker_aizu_tests/ && exit 1
 echo "check template<class T> over template<typename T>:"
 grep --extended-regexp "template\s?<typename" --recursive ../library/ && exit 1
 
-echo "check 0 instead of true"
+echo "check 1 instead of true"
 grep --extended-regexp "true" --recursive ../library/ && exit 1
 
 echo "check 0 instead of false"
