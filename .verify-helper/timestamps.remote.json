@@ -81,6 +81,7 @@
 "tests/library_checker_aizu_tests/handmade_tests/sa_find_subarray.test.cpp": "2024-10-19 22:41:15 -0700",
 "tests/library_checker_aizu_tests/handmade_tests/seg_tree_find.test.cpp": "2024-10-19 22:41:15 -0700",
 "tests/library_checker_aizu_tests/handmade_tests/seg_tree_find_small.test.cpp": "2024-10-19 22:41:15 -0700",
+"tests/library_checker_aizu_tests/handmade_tests/string_with_vector.test.cpp": "2024-10-21 10:29:56 -0700",
 "tests/library_checker_aizu_tests/handmade_tests/wavelet_merge_updates.test.cpp": "2024-10-19 22:41:15 -0700",
 "tests/library_checker_aizu_tests/handmade_tests/wavelet_tree.test.cpp": "2024-10-19 22:41:15 -0700",
 "tests/library_checker_aizu_tests/loops/chooses.test.cpp": "2024-10-19 01:05:18 -0700",
