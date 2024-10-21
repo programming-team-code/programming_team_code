@@ -4,7 +4,7 @@
 //!   KMP kmp(t);
 //!   auto match = kmp.find_str(s);
 //! @endcode
-//! if match[i] is true then s[i,sz(t)) == t
+//! if match[i] == 1 then s[i,sz(t)) == t
 //! @time O(|s| + |t|)
 //! @space O(|s| + |t|)
 // NOLINTNEXTLINE(readability-identifier-naming)
