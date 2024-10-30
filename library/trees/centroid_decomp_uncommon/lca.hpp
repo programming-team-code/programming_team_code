@@ -15,16 +15,17 @@ struct cd_lca {
         if (u != p) d[u] = 1 + d[v], self(self, u, v);
     };
     dfs_d(dfs_d, 0, -1);
-    centroid(adj, [&](const vector<vi>& cd_adj, int cent) {
-      auto dfs = [&](auto&& self, int v, int p) -> void {
-        mn_d[v].push_back(
-          p == -1 ? v : cmp(mn_d[p].back(), v));
-        to_cent[v].push_back(cent);
-        for (int u : cd_adj[v])
-          if (u != p) self(self, u, v);
-      };
-      dfs(dfs, cent, -1);
-    });
+    centroid(adj,
+      [&](const vector<vi>& cd_adj, int cent, int) {
+        auto dfs = [&](auto&& self, int v, int p) -> void {
+          mn_d[v].push_back(
+            p == -1 ? v : cmp(mn_d[p].back(), v));
+          to_cent[v].push_back(cent);
+          for (int u : cd_adj[v])
+            if (u != p) self(self, u, v);
+        };
+        dfs(dfs, cent, -1);
+      });
   }
   //! @param u,v nodes
   //! @returns lca of u, v; where the root is 0
