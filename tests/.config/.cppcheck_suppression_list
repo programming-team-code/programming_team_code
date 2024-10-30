@@ -16,6 +16,8 @@ unusedScopedObject:library_checker_aizu_tests/trees/centroid_path_dist.test.cpp:
 unusedScopedObject:../library/trees/edge_centroid_decomp_uncommon/count_paths_per_length.hpp:13
 unusedScopedObject:library_checker_aizu_tests/trees/edge_cd_lca.test.cpp:20
 unusedScopedObject:library_checker_aizu_tests/trees/edge_cd_reroot_dp.test.cpp:48
+unusedScopedObject:library_checker_aizu_tests/trees/cd_jump_on_tree.test.cpp:20
+unusedScopedObject:library_checker_aizu_tests/trees/cd_jump_on_tree.test.cpp:58
 arrayIndexOutOfBoundsCond:library_checker_aizu_tests/math/linear_prime_sieve.test.cpp:17
 negativeContainerIndex:../library/strings/suffix_array/burrows_wheeler.hpp:50
 useStlAlgorithm:../kactl/content/numerical/FastFourierTransform.h:53
