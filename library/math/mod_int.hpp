@@ -8,12 +8,5 @@ struct mint {
   mint operator+(mint b) { return x - mod + b.x; }
   mint operator-(mint b) { return x - b.x; }
   mint operator*(mint b) { return ll(x) * b.x % mod; }
-  mint operator/(mint b) {
-    int m = mod, u = 1, v = 0;
-    while (m)
-      u = exchange(v, u - b.x / m * v),
-      b.x = exchange(m, b.x % m);
-    assert(b.x == 1);
-    return *this * u;
-  }
+#include "mod_int_division.hpp"
 };
