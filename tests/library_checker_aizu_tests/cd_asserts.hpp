@@ -1,28 +1,26 @@
 #pragma once
 #include "../../library/trees/centroid_decomp.hpp"
 void cd_asserts(const vector<vector<int>>& adj) {
-  vector<bool> seen_cent(sz(adj));
+  vector<int> decomp_size(sz(adj), -1);
   centroid(adj,
     [&](const vector<vector<int>>& cd_adj, int cent,
-      int) -> void {
-      assert(!seen_cent[cent]);
-      seen_cent[cent] = 1;
+      int par_cent) -> void {
+      assert(decomp_size[cent] == -1);
       auto dfs = [&](auto&& self, int u, int p) -> int {
         int sub_size = 1;
         for (int v : cd_adj[u])
           if (v != p) sub_size += self(self, v, u);
         return sub_size;
       };
-      int sz_decomp = dfs(dfs, cent, -1);
-      int sum = 1;
+      decomp_size[cent] = dfs(dfs, cent, -1);
+      if (par_cent != -1)
+        assert(1 <= decomp_size[cent] &&
+          2 * decomp_size[cent] <= decomp_size[par_cent]);
       for (int u : cd_adj[cent]) {
         int sz_subtree = dfs(dfs, u, cent);
-        sum += sz_subtree;
-        assert(
-          1 <= sz_subtree && 2 * sz_subtree <= sz_decomp);
+        assert(1 <= sz_subtree &&
+          2 * sz_subtree <= decomp_size[cent]);
       }
-      assert(sum == sz_decomp);
     });
-  assert(find(begin(seen_cent), end(seen_cent), 0) ==
-    end(seen_cent));
+  rep(i, 0, sz(adj)) assert(decomp_size[i] >= 1);
 }
