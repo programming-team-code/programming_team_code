@@ -64,7 +64,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Install dependencies
-      run: wget -qO- https://apt.llvm.org/llvm.sh | bash -s -- 18
+      run: wget -qO- https://apt.llvm.org/llvm.sh | sudo bash -s -- 18
     - name: Compile all tests
       run: make --directory=tests/ compile_clang
 
