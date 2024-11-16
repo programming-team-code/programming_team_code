@@ -4,6 +4,9 @@ shopt -s globstar
 
 # miscellaneous checks - done before initializing git submodules to avoid checking stuff not in our code
 
+echo "check bit_width instead of __lg"
+grep "__lg" --recursive ../library/ && exit 1
+
 echo "check no endl"
 grep "endl" --recursive library_checker_aizu_tests/ && exit 1
 
