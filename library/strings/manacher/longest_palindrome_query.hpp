@@ -4,14 +4,12 @@
 //! queries for longest palindromic substring of a given
 //! substring
 template<class T> struct longest_pal_query {
-  vi man, idx;
+  vi man;
   RMQ<int, function<int(int, int)>> rmq = {{}, nullptr};
   //! @param s string/vector
   //! @time O(n log n)
   //! @space O(n log n) for rmq, everything else is O(n)
-  longest_pal_query(const T& s):
-    man(manacher(s)), idx(sz(s)) {
-    iota(all(idx), 1);
+  longest_pal_query(const T& s): man(manacher(s)) {
     vi init(sz(man));
     iota(all(init), 0);
     rmq = {init, [&](int i1, int i2) {
@@ -47,13 +45,11 @@ template<class T> struct longest_pal_query {
   //! @space O(1)
   pii longest_pal(int l, int r) {
     assert(l < r);
-    int pal_len =
-      lower_bound(begin(idx), begin(idx) + (r - l), 0,
-        [&](int mid, int) {
-          return len(rmq.query(2 * l + mid - 1,
-                   2 * r - mid)) >= mid;
-        }) -
-      begin(idx);
+    int pal_len = *ranges::partition_point(
+      views::iota(0, r - l), [&](int x) {
+        return len(rmq.query(2 * l + x, 2 * r - x - 1)) >
+          x;
+      });
     int best_center =
       rmq.query(2 * l + pal_len - 1, 2 * r - pal_len);
     return {(best_center + 1 - pal_len) / 2, pal_len};
