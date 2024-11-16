@@ -8,4 +8,4 @@
 //! @time O(log(hi-lo))
 //! @space O(1)
 ll res = *ranges::partition_point(views::iota(lo, hi),
-  [&](ll x) -> bool { return 1; });
+  [&](ll x) -> bool { return x < 0; });

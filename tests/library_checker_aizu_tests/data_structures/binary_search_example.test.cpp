@@ -6,7 +6,7 @@ int main() {
   {
     ll lo = -5, hi = 5;
 #include "../../../library/contest/binary_search.hpp"
-    assert(res == hi);
+    assert(res == 0);
   }
   int n, s;
   cin >> n >> s;
