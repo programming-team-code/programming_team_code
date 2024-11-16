@@ -44,7 +44,7 @@ cin.exceptions(cin.failbit);
 ```
 Author: Benq
 
-- refer to https://github.com/kth-competitive-programming/kactl/ blob/main/content/contest/troubleshoot.txt
+- refer to https://github.com/kth-competitive-programming/kactl/blob/main/content/contest/troubleshoot.txt
 
 ## Sources
 
