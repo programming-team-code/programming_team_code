@@ -11,3 +11,4 @@
 -Werror
 -O2
 -Wno-narrowing
+-Wno-deprecated-declarations
