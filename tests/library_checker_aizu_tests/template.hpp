@@ -24,6 +24,7 @@
 #include <optional>
 #include <random>
 #include <utility> // for std::exchange
+#include <bit>
 using namespace std;
 // https://github.com/kth-competitive-programming/kactl/blob/main/content/contest/template.cpp
 // compile all tests with KACTL macros mainly to avoid
