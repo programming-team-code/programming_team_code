@@ -3,7 +3,7 @@ help:
 	@echo "------------------------------------ | -----------"
 	@echo "make compile_gcc                     | compile all tests with -std=c++20 for warnings"
 	@echo "                                     |"
-	@echo "make compile_clang                   | compile all tests with clang, -std=c++17 for warnings"
+	@echo "make compile_clang                   | compile all tests with clang, -std=c++20 for warnings"
 	@echo "                                     |"
 	@echo "make check_format_lint               | checks format with clang-format, then cppcheck"
 	@echo "                                     |"
