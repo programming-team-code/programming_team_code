@@ -8,9 +8,7 @@
 #include "../../../library/trees/lca_rmq/lca_rmq.hpp"
 #include "../../../library/trees/linear_lca.hpp"
 #include "../../../library/trees/ladder_decomposition/ladder_decomposition.hpp"
-#define bit_floor bit_floor_2
 #include "../../../library/trees/ladder_decomposition/linear_kth_par.hpp"
-#undef bit_floor
 #include "../../../library/trees/linear_kth_path.hpp"
 int main() {
   cin.tie(0)->sync_with_stdio(0);
