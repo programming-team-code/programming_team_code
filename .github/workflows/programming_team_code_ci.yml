@@ -48,7 +48,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Install dependencies
-      run: sudo apt update && sudo apt install -y clang-tidy-18
+      run: sudo apt update && sudo apt install -y clang-18
     - name: clang-tidy
       run: make --directory=tests/ clangtidy
 
