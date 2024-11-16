@@ -48,7 +48,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Install dependencies
-      run: wget https://apt.llvm.org/llvm.sh && chmod u+x llvm.sh && sudo ./llvm.sh 18 && clang-18 --version
+      run: sudo apt install clang
     - name: clang-tidy
       run: make --directory=tests/ clangtidy
 
