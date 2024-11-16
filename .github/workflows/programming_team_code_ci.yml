@@ -52,19 +52,12 @@ jobs:
     - name: clang-tidy
       run: make --directory=tests/ clangtidy
 
-  compile_gcc17:
+  compile_gcc:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - name: Compile all tests
-      run: make --directory=tests/ compile_gcc17
-
-  compile_gcc20:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Compile all tests
-      run: make --directory=tests/ compile_gcc20
+      run: make --directory=tests/ compile_gcc
 
   compile_clang:
     runs-on: ubuntu-latest

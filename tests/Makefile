@@ -1,9 +1,7 @@
 help:
 	@echo "command                              | explanation"
 	@echo "------------------------------------ | -----------"
-	@echo "make compile_gcc17                   | compile all tests with -std=c++17 for warnings"
-	@echo "                                     |"
-	@echo "make compile_gcc20                   | compile all tests with -std=c++20 without ssize macro for warnings"
+	@echo "make compile_gcc                     | compile all tests with -std=c++20 for warnings"
 	@echo "                                     |"
 	@echo "make compile_clang                   | compile all tests with clang, -std=c++17 for warnings"
 	@echo "                                     |"
@@ -29,11 +27,8 @@ help:
 	@echo "                                     |"
 	@echo "make compile_commented_snippets      | compile code in @code...@endcode comments"
 
-compile_gcc17:
-	./scripts/compile_gcc17.sh
-
-compile_gcc20:
-	./scripts/compile_gcc20.sh
+compile_gcc:
+	./scripts/compile_gcc.sh
 
 compile_clang:
 	./scripts/compile_clang.sh
