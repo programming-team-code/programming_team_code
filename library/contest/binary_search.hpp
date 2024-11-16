@@ -1,3 +1,4 @@
+#pragma once
 //! https://codeforces.com/blog/entry/134777
 //!
 //! returns first x in [lo, hi) such that lambda returns 0,
