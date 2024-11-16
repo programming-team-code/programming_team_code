@@ -8,7 +8,7 @@ unusedStructMember:../library/strings/suffix_array/find/match.hpp:10
 unusedStructMember:../library/trees/tree_lift/tree_lift.hpp:12
 unusedStructMember:../library/trees/ladder_decomposition/linear_kth_par.hpp:12
 unusedStructMember:../library/data_structures/dsu/dsu_bipartite.hpp:9
-unusedStructMember:../library/trees/linear_lca.hpp:8
+unusedStructMember:../library/trees/linear_lca.hpp:7
 unusedScopedObject:../library/trees/centroid_decomp_uncommon/count_paths_per_length.hpp:12
 unusedScopedObject:library_checker_aizu_tests/cd_asserts.hpp:5
 unusedScopedObject:../library/trees/centroid_decomp_uncommon/count_paths_per_node.hpp:14
