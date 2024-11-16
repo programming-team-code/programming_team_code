@@ -20,7 +20,7 @@ struct contour_range_query {
         vector<vector<ll>> sum_num(2, vector<ll>(1));
         auto dfs = [&](auto&& self, int v, int p, int d,
                      int side) -> void {
-          info[v].push_back({size(bits), d, side});
+          info[v].push_back({int(sz(bits)), d, side});
           if (sz(sum_num[side]) == d)
             sum_num[side].push_back(0);
           sum_num[side][d] += a[v];
