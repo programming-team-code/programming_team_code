@@ -4,8 +4,9 @@
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   {
-    ll lo, hi;
+    ll lo = -5, hi = 5;
 #include "../../../library/contest/binary_search.hpp"
+    assert(res == hi);
   }
   int n, s;
   cin >> n >> s;
