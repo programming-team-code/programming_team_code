@@ -117,3 +117,5 @@ CheckOptions:
     value:           lower_case
   - key:             readability-identifier-naming.TemplateParameterCase
     value:           UPPER_CASE
+  - key:             readability-identifier-naming.TypeTemplateParameterIgnoredRegexp
+    value:           expr-type
