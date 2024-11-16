@@ -13,8 +13,7 @@
 struct mcmf {
   struct edge {
     int u, v;
-    ll cap, cost, flow;
-    int back;
+    ll cap, cost, flow, back;
   };
   int n;
   vector<edge> e;

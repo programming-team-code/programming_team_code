@@ -21,7 +21,7 @@ int main() {
     int pos =
       int(lower_bound(begin(sorted), end(sorted), arr[i]) -
         begin(sorted));
-    if (!ptr.count(arr[i])) ptr[arr[i]] = pos;
+    if (!ptr.contains(arr[i])) ptr[arr[i]] = pos;
     inverted[ptr[arr[i]]++] = i;
   }
   merge_sort_tree mst(inverted);

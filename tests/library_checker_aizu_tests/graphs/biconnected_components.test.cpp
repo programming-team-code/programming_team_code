@@ -53,14 +53,14 @@ int main() {
       assert(sz(node_to_bccs[u]) == sz(bvt[u]));
       for (auto bccid : bvt[u]) {
         bccid -= n;
-        assert(node_to_bccs[u].count(bccid));
+        assert(node_to_bccs[u].contains(bccid));
       }
     }
     for (int bccid = 0; bccid < cc.num_bccs; bccid++) {
       assert(
         sz(bcc_to_nodes[bccid]) == sz(bvt[bccid + n]));
       for (auto u : bvt[bccid + n])
-        assert(bcc_to_nodes[bccid].count(u));
+        assert(bcc_to_nodes[bccid].contains(u));
     }
   }
   vector<int> lone_nodes;
