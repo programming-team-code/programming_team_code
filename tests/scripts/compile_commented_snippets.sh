@@ -11,8 +11,6 @@ git submodule update
 {
 	echo '#include "library_checker_aizu_tests/template.hpp"'
 	echo "const ll mod = (119 << 23) + 1, root = 62;"
-	find ../library/ -type f -name "*.hpp" | grep --invert-match --file=.config/.code_snippet_excluded_file_list | sort | sed 's/^/#include "/; s/$/"/' | cpp -nostdinc -C -P | grep --invert-match --extended-regexp "const int mod = |const ll mod = "
-	echo "int main() {"
 	echo "vi a,b,subset;"
 	echo "vl left,bottom,s_vec,t_vec;"
 	echo "vector<vi> adj;"
@@ -25,6 +23,8 @@ git submodule update
 	echo "vector<vector<bool>> grid;"
 	echo "string s,t;"
 	echo "int n,m,k,tl,tr,l,r,l1,r1,l2,r2,s_l,s_r,root_l,root_r,source,sink,total_flow,bccid,u,v,rsz,cols,cap;"
+	find ../library/ -type f -name "*.hpp" | grep --invert-match --file=.config/.code_snippet_excluded_file_list | sort | sed 's/^/#include "/; s/$/"/' | cpp -nostdinc -C -P | grep --invert-match --extended-regexp "const int mod = |const ll mod = "
+	echo "int main() {"
 } >entire_library_without_main
 
 {
