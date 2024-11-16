@@ -8,22 +8,22 @@
 #include <cassert>
 #include <iostream>
 #include <map>
-#include <numeric>  //for iota
+#include <numeric> //for iota
 #include <queue>
 #include <set>
 #include <string>
 #include <unordered_map>
 #include <vector>
 // for random numbers
-#include <stdint.h>  // for uint64_t
+#include <stdint.h> // for uint64_t
 #include <bitset>
 #include <chrono>
-#include <climits>  // for INT_MAX, INT_MIN
-#include <complex>  //for kactl's FFT
-#include <functional>  //for lambdas
+#include <climits> // for INT_MAX, INT_MIN
+#include <complex> //for kactl's FFT
+#include <functional> //for lambdas
 #include <optional>
 #include <random>
-#include <utility>  // for std::exchange
+#include <utility> // for std::exchange
 using namespace std;
 // https://github.com/kth-competitive-programming/kactl/blob/main/content/contest/template.cpp
 // compile all tests with KACTL macros mainly to avoid

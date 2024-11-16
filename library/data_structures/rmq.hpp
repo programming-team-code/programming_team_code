@@ -1,6 +1,6 @@
 #pragma once
 //! @code
-//!   RMQ rmq1(a, ranges::min); // -std=c++20
+//!   RMQ rmq1(a, ranges::min);
 //!   RMQ rmq2(a, [&](auto& x, auto& y) {
 //!     return min(x, y);
 //!   });
