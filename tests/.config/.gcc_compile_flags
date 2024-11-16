@@ -12,3 +12,4 @@
 -Wduplicated-cond
 -Werror
 -O2
+-std=c++20

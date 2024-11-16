@@ -1,3 +1,5 @@
+/////////MODIFYING THIS FILE WILL RERUN ALL TESTS/////////
+//
 // to avoid bits/stdc++.h include which slows down CI
 // modifying this file will re-run all library checker
 // tests
@@ -6,22 +8,22 @@
 #include <cassert>
 #include <iostream>
 #include <map>
-#include <numeric> //for iota
+#include <numeric>  //for iota
 #include <queue>
 #include <set>
 #include <string>
 #include <unordered_map>
 #include <vector>
 // for random numbers
-#include <stdint.h> // for uint64_t
+#include <stdint.h>  // for uint64_t
 #include <bitset>
 #include <chrono>
-#include <climits> // for INT_MAX, INT_MIN
-#include <complex> //for kactl's FFT
-#include <functional> //for lambdas
+#include <climits>  // for INT_MAX, INT_MIN
+#include <complex>  //for kactl's FFT
+#include <functional>  //for lambdas
 #include <optional>
 #include <random>
-#include <utility> // for std::exchange
+#include <utility>  // for std::exchange
 using namespace std;
 // https://github.com/kth-competitive-programming/kactl/blob/main/content/contest/template.cpp
 // compile all tests with KACTL macros mainly to avoid
@@ -30,7 +32,9 @@ using namespace std;
 // also defines are used here instead of typedef/using's
 // (even though it's sketchier) so that they can be
 // expanded before pushing to main
-//
-// modifying kactl_macros.hpp will also re-run all library
-// checker tests
-#include "kactl_macros_gcc20.hpp"
+#define rep(i, a, b) for (int i = a; i < b; i++)
+#define all(x) begin(x), end(x)
+#define sz(x) ssize(x)
+#define ll int64_t
+#define pii pair<int, int>
+#define vi vector<int>
