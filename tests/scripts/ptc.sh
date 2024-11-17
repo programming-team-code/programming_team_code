@@ -18,7 +18,6 @@ rm ../library/data_structures/seg_tree_uncommon/implicit.hpp
 rm ../library/data_structures/seg_tree_uncommon/kth_smallest_query.hpp
 rm ../library/data_structures/uncommon/mode_query.hpp
 rm ../library/data_structures/uncommon/priority_queue_of_updates.hpp
-rm -rf ../library/data_structures/wavelet_merge/
 rm ../library/graphs/strongly_connected_components/add_edges_strongly_connected.hpp
 rm ../library/math/derangements.hpp
 rm ../library/math/num_distinct_subsequences.hpp
@@ -27,7 +26,6 @@ rm ../library/monotonic_stack/cartesian_k_ary_tree.hpp
 rm ../library/monotonic_stack/max_rect_histogram.hpp
 rm ../library/monotonic_stack/cartesian_binary_tree_after.png
 rm ../library/monotonic_stack/mono_stack_ri.png
-rm ../library/strings/manacher/count_palindromes_query.hpp
 rm ../library/strings/manacher/longest_palindrome_query.hpp
 rm ../library/strings/suffix_array/burrows_wheeler.hpp
 rm -rf ../library/strings/suffix_array/lcp_interval_tree/

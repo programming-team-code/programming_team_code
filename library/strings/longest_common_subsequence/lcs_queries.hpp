@@ -25,7 +25,7 @@ vi lcs_queries(const T& s, const T& t,
       if (lcs.dp[j] == -1) bit.update(j, 1);
       else dp_inv[lcs.dp[j]] = j;
     }
-    sort(all(qs[i]));
+    ranges::sort(qs[i]);
     int j = 0;
     rep(t_le, 0, m) {
       while (j < sz(qs[i]) && qs[i][j][0] == t_le)

@@ -7,7 +7,6 @@
 #include "../../../library/strings/suffix_array/suffix_array_query.hpp"
 #include "../../../library/strings/knuth_morris_pratt.hpp"
 #include "../../../library/strings/manacher/longest_from_index.hpp"
-#include "../../../library/strings/manacher/count_palindromes_query.hpp"
 #include "../../../library/strings/manacher/longest_palindrome_query.hpp"
 #include "../../../library/strings/longest_common_subsequence/lcs_queries.hpp"
 int main() {
@@ -97,11 +96,9 @@ int main() {
         if (i) assert(!pq.is_pal(i - 1, i + 1));
       }
     }
-    count_pal_query cpq(arr);
     longest_pal_query lpq(arr);
     for (int l = 0; l < 100; l++) {
       for (int r = l + 1; r <= 100; r++) {
-        assert(cpq.count_pals(l, r) == r - l);
         auto [idx, len] = lpq.longest_pal(l, r);
         assert(l <= idx && idx < r);
         assert(len == 1);

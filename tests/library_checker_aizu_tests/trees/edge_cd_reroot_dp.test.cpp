@@ -24,8 +24,8 @@ int main() {
       cin >> u >> v >> b[i] >> c[i];
       adj[u].push_back(v);
       adj[v].push_back(u);
-      adj_with_id[u].push_back({v, i});
-      adj_with_id[v].push_back({u, i});
+      adj_with_id[u].emplace_back(v, i);
+      adj_with_id[v].emplace_back(u, i);
       res[u] += 1LL * b[i] * a[v] + c[i];
       res[u] %= mod;
       res[v] += 1LL * b[i] * a[u] + c[i];

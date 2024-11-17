@@ -14,11 +14,6 @@ for policy base DS:
 #include <bits/extc++.h>
 ```
 
-for -std=c++17
-```
-#define ssize(x) (int)(x).size()
-```
-
 don't use cin for doubles/floats, it's slow, read into string, then convert to double/float
 - [C++ tips and tricks](https://codeforces.com/blog/entry/74684)
 - invokes RTE (Run Time Error) upon integer overflow
@@ -49,7 +44,7 @@ cin.exceptions(cin.failbit);
 ```
 Author: Benq
 
-- refer to https://github.com/kth-competitive-programming/kactl/ blob/main/content/contest/troubleshoot.txt
+- refer to https://github.com/kth-competitive-programming/kactl/blob/main/content/contest/troubleshoot.txt
 
 ## Sources
 

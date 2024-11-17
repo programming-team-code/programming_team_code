@@ -20,7 +20,7 @@ cp -r ../library/. ../
 
 for header in ../library/**/*.hpp; do
 	# see https://github.com/programming-team-code/kactl_no_macros/blob/main/remove_macros.sh
-	cpp -std=c17 -nostdinc -C -P "$header" | cat library_checker_aizu_tests/kactl_macros_gcc20.hpp - | cpp -std=c17 -nostdinc -C -P - -o "${header/\/library/}"
+	cpp -nostdinc -C -P "$header" | cat library_checker_aizu_tests/kactl_macros.hpp - | cpp -nostdinc -C -P - -o "${header/\/library/}"
 done
 
 # the cpp preprocessor sometimes leaves blank empty lines

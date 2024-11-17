@@ -3,7 +3,6 @@
 #include "../template.hpp"
 #include "../../../library/contest/random.hpp"
 #include "../../../library/strings/manacher/longest_from_index.hpp"
-#include "../../../library/strings/manacher/count_palindromes_query.hpp"
 #include "../../../library/strings/manacher/longest_palindrome_query.hpp"
 int main() {
   cin.tie(0)->sync_with_stdio(0);
@@ -52,14 +51,6 @@ int main() {
             count_pals_naive[l + 1][r] +
             count_pals_naive[l][r - 1] -
             count_pals_naive[l + 1][r - 1];
-        }
-      }
-      count_pal_query pcq(s);
-      for (int len = 1; len <= n; len++) {
-        for (int l = 0; l + len <= n; l++) {
-          int r = l + len;
-          assert(pcq.count_pals(l, r) ==
-            count_pals_naive[l][r]);
         }
       }
       vector<vector<int>> longest_pal(n + 1,

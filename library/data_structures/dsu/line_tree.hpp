@@ -1,7 +1,7 @@
 #pragma once
 //! https://codeforces.com/blog/entry/71568?#comment-559304
 //! @code
-//!   sort(all(w_eds));
+//!   ranges::sort(w_eds);
 //!   line_tree lt(n);
 //!   for (auto [w, u, v] : w_eds) lt.join(u, v);
 //!   for (int v = lt.find(0); v != -1;) {

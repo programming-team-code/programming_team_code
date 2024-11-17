@@ -2,16 +2,16 @@
   "https://judge.yosupo.jp/problem/prefix_substring_lcs"
 #include "../template.hpp"
 #include "../../../library/strings/longest_common_subsequence/lcs_dp.hpp"
-#include "../../../library/data_structures/wavelet_merge/wavelet_tree.hpp"
+#include "../../../library/data_structures/seg_tree_uncommon/merge_sort_tree.hpp"
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   int q;
   string s, t;
   cin >> q >> s >> t;
-  vector<wavelet_tree> wts;
+  vector<merge_sort_tree> msts;
   {
     lcs_dp lcs(t);
-    wts.emplace_back(lcs.dp, -1, sz(t));
+    msts.emplace_back(lcs.dp);
     for (char c : s) {
       lcs.push_onto_s(c);
       {
@@ -24,13 +24,13 @@ int main() {
           seen[val] = 1;
         }
       }
-      wts.emplace_back(lcs.dp, -1, sz(t));
+      msts.emplace_back(lcs.dp);
     }
   }
   for (int i = 0; i < q; i++) {
     int a, b, c;
     cin >> a >> b >> c;
-    cout << wts[a].rect_count(b, c, -1, b) << '\n';
+    cout << msts[a].query(b, c, -1, b) << '\n';
   }
   return 0;
 }

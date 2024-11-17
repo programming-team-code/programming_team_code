@@ -6,9 +6,7 @@
 #include "../../../library/trees/tree_lift/tree_lift.hpp"
 #include "../../../library/trees/lca_rmq/lca_rmq.hpp"
 #include "../../../library/trees/linear_lca.hpp"
-#define bit_floor bit_floor_linear
 #include "../../../library/trees/linear_kth_path.hpp"
-#undef bit_floor
 #include "../compress_tree_asserts.hpp"
 int main() {
   cin.tie(0)->sync_with_stdio(0);
