@@ -55,7 +55,7 @@ struct linear_kth_par {
     case 1: return t[v].p;
     case 2: return t[t[v].p].p;
     default:
-      int i = 1 << __lg(k / 3);
+      int i = bit_floor(unsigned(k / 3));
       auto [j1, j2] = j[(t[v].idx_j & -i) | i];
       int up = t[v].d - t[j2].d <= k ? j2 : j1;
       return l[t[t[up].dl].idx_l - t[v].d + k];

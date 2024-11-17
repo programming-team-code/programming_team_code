@@ -44,7 +44,7 @@ int main() {
         {t_start + 1, t_start + 1},
         {t_start + 1, t_start + sz(t)}});
     for (int num_tests = 10; num_tests--;) {
-      vector<int> splits = {0, sz(t)};
+      vector<int> splits = {0, int(sz(t))};
       for (int num_splits = rnd(0, 4); num_splits--;)
         splits.push_back(rnd<int>(0, sz(t) - 1));
       sort(begin(splits), end(splits));

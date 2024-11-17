@@ -2,7 +2,6 @@
   "https://judge.yosupo.jp/problem/prefix_substring_lcs"
 #include "../template.hpp"
 #include "../../../library/strings/longest_common_subsequence/lcs_queries.hpp"
-#include "../../../library/data_structures/wavelet_merge/wavelet_tree.hpp"
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   int q;

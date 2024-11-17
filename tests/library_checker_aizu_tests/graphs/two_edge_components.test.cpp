@@ -12,8 +12,8 @@ int main() {
   for (int i = 0; i < m; i++) {
     int u, v;
     cin >> u >> v;
-    adj[u].push_back({v, i});
-    adj[v].push_back({u, i});
+    adj[u].emplace_back(v, i);
+    adj[v].emplace_back(u, i);
     edges[i] = {u, v};
   }
   bridges br(adj, m);

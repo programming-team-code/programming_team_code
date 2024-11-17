@@ -23,7 +23,7 @@ struct contour_range_update {
         auto dfs = [&](auto&& self, int v, int p, int d,
                      int side) -> void {
           mx_d[side] = max(mx_d[side], d);
-          info[v].push_back({sz(bits), d, side});
+          info[v].push_back({int(sz(bits)), d, side});
           for (int u : cd_adj[v])
             if (u != p) self(self, u, v, 1 + d, side);
         };

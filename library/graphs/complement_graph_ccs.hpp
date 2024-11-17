@@ -30,7 +30,7 @@ vi get_complement_graph_ccs(const vector<vi> &adj) {
           q.push(u);
         }
       }
-      unseen = move(nxt_unseen);
+      swap(unseen, nxt_unseen);
       for (int u : adj[v]) is_adj[u] = 0;
     }
   }

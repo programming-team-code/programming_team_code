@@ -11,7 +11,7 @@ pair<ll, vi> mst(const vector<array<int, 3>>& w_eds,
   int n) {
   vi order(sz(w_eds));
   iota(all(order), 0);
-  sort(all(order), [&](int i, int j) {
+  ranges::sort(order, [&](int i, int j) {
     return w_eds[i][2] < w_eds[j][2];
   });
   UF uf(n);

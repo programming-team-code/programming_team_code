@@ -35,13 +35,13 @@ int main() {
         int u, v;
         cin >> u >> v;
         if (u > v) swap(u, v);
-        assert(!insert_time.count({u, v}));
+        assert(!insert_time.contains({u, v}));
         insert_time[{u, v}] = i;
       } else if (type == 1) {
         int u, v;
         cin >> u >> v;
         if (u > v) swap(u, v);
-        assert(insert_time.count({u, v}));
+        assert(insert_time.contains({u, v}));
         add_edge(add_edge, insert_time[{u, v}], i, u, v, 0,
           q, 1);
         insert_time.erase({u, v});

@@ -22,13 +22,13 @@ vector<ll> count_paths_per_length(const vector<vi>& adj) {
             q.pop();
             for (int w : cd_adj[u]) {
               if (w == p) continue;
-              new_q.push({w, u});
+              new_q.emplace(w, u);
             }
           }
           swap(q, new_q);
         }
       }
-      sort(all(child_depths),
+      ranges::sort(child_depths,
         [&](auto& x, auto& y) { return sz(x) < sz(y); });
       vector total_depth(1, 1.0);
       for (auto& cnt_depth : child_depths) {

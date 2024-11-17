@@ -7,7 +7,7 @@
 //! @space O(n log n)
 struct rp_dsu {
   vector<UF> ufs;
-  rp_dsu(int n): ufs(__lg(n) + 1, UF(n)) {}
+  rp_dsu(int n): ufs(bit_width(unsigned(n)), UF(n)) {}
   template<class F>
   void join(int l1, int l2, int len, const F& f) {
     if (len == 0) return;

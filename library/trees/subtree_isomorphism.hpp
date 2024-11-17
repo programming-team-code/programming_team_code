@@ -17,7 +17,7 @@ struct subtree_iso {
       vi ch_ids;
       for (int u : adj[v])
         if (u != p) ch_ids.push_back(self(self, u, v));
-      sort(all(ch_ids));
+      ranges::sort(ch_ids);
       return iso_id[v] =
                hashes.try_emplace(ch_ids, sz(hashes))
                  .first->second;
