@@ -13,10 +13,8 @@ struct merge_sort_tree {
         begin(tree[i]));
     }
   }
-  //! @code
-  //!   vector<int> arr;
-  //! @endcode
-  //! @time O(TODO)
+  //! count of i in [l, r) such that a[i] in [vl, vr)
+  //! @time O(log(n)^2)
   //! @space O(1)
   int query(int l, int r, int vl, int vr) {
     return query_impl(l, r, vl, vr, 0, n, 1);

@@ -2,10 +2,7 @@
   "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A"
 #include "../template.hpp"
 #include "../../../library/contest/random.hpp"
-#include "../../../library/data_structures/wavelet_merge/merge_sort_tree.hpp"
-#define split split_2
-#include "../../../library/data_structures/wavelet_merge/merge_sort_tree_updates.hpp"
-#undef split
+#include "../../../library/data_structures/seg_tree_uncommon/merge_sort_tree.hpp"
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   // brute force small cases
@@ -18,14 +15,6 @@ int main() {
       generate(begin(arr), end(arr),
         [&]() { return rnd<int>(minn, maxn); });
       merge_sort_tree mst(arr);
-      merge_sort_tree_updates mstu(arr,
-        vector<bool>(n, 1));
-      for (int i = 0; i < n; i++) {
-        assert(
-          mst.kth_smallest(minn, maxn + 1, i + 1) == i);
-        assert(
-          mstu.kth_smallest(minn, maxn + 1, i + 1) == i);
-      }
       for (int queries = 30; queries--;) {
         int x = rnd<int>(-1000, 1000);
         int y = rnd<int>(-1000, 1000);
@@ -33,20 +22,9 @@ int main() {
         for (int l = 0; l <= n; l++) {
           int cnt = 0;
           for (int r = l; r <= n; r++) {
-            assert(mst.rect_count(l, r, x, y) == cnt);
-            assert(mstu.rect_count(l, r, x, y) == cnt);
+            assert(mst.query(l, r, x, y) == cnt);
             if (r < n && x <= arr[r] && arr[r] < y) cnt++;
           }
-        }
-        vector<int> vals;
-        for (int i = 0; i < n; i++)
-          if (x <= arr[i] && arr[i] < y) vals.push_back(i);
-        assert(sz(vals) == mst.rect_count(0, n, x, y));
-        assert(sz(vals) == mstu.rect_count(0, n, x, y));
-        for (int k = 1; k <= sz(vals); k++) {
-          assert(mst.kth_smallest(x, y, k) == vals[k - 1]);
-          assert(
-            mstu.kth_smallest(x, y, k) == vals[k - 1]);
         }
       }
     }
