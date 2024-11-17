@@ -1,4 +1,3 @@
-#pragma once
 //! Requires bit.s[i] >= 0
 //! @returns max pos such that sum of [0,pos) < sum
 int walk(ll sum) {
