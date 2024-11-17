@@ -58,7 +58,7 @@ int main() {
       }
       return 1;
     };
-    assert(bit.lower_bound(sum) == st.find_first(0, n, f));
+    assert(bit.walk(sum) == st.find_first(0, n, f));
   }
   return 0;
 }

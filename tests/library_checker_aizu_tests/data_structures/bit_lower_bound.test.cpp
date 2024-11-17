@@ -47,7 +47,7 @@ int main() {
         }
         return 1;
       };
-      int res = bit.lower_bound(order + 1);
+      int res = bit.walk(order + 1);
       assert(res == st.find_first(0, n, f));
       assert(res ==
         st.find_first(k, n,
@@ -71,7 +71,7 @@ int main() {
         }
         return 1;
       };
-      int res = bit.lower_bound(order);
+      int res = bit.walk(order);
       assert(max(res, 0) == st.find_first(0, n, f));
       assert(res ==
         st.find_last(0, k + 1,

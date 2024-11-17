@@ -1,7 +1,6 @@
-#pragma once
-//! Requires bit.query(i,i+1) >= 0
+//! Requires bit.s[i] >= 0
 //! @returns max pos such that sum of [0,pos) < sum
-int lower_bound(ll sum) {
+int walk(ll sum) {
   if (sum <= 0) return -1;
   int pos = 0;
   for (int pw = bit_floor(size(s)); pw; pw >>= 1)
