@@ -47,6 +47,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    - name: Set up LLVM repository
+      run: |
+        sudo apt update
+        sudo apt install -y wget software-properties-common
+        wget -O - https://apt.llvm.org/llvm.sh | sudo bash
     - name: Install dependencies
       run: sudo apt update && sudo apt install -y clang-tidy-18
     - name: clang-tidy
