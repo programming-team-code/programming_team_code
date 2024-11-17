@@ -22,7 +22,7 @@ vector<ll> count_paths_per_length(const vector<vi>& adj) {
             q.pop();
             for (int w : cd_adj[u]) {
               if (w == p) continue;
-              new_q.push({w, u});
+              new_q.emplace(w, u);
             }
           }
           swap(q, new_q);

@@ -2,7 +2,6 @@ Checks: >
     -clang-analyzer-core.UndefinedBinaryOperatorResult,
     bugprone-argument-comment,
     bugprone-assert-side-effect,
-    bugprone-assignment-in-if-condition,
     bugprone-bad-signal-to-kill-thread,
     bugprone-bool-pointer-implicit-conversion,
     bugprone-branch-clone,
@@ -119,3 +118,5 @@ CheckOptions:
     value:           UPPER_CASE
   - key:             readability-identifier-naming.TypeTemplateParameterIgnoredRegexp
     value:           expr-type
+  - key:             clang-diagnostic-deprecated-declarations
+    value:           false

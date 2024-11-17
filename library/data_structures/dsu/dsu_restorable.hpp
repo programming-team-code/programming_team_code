@@ -23,8 +23,8 @@ struct dsu_restorable {
     return 1;
   }
   void undo() {
-    if (st.back()) {
-      auto [u, v, sz_v] = st.back().value();
+    if (auto b = st.back()) {
+      auto [u, v, sz_v] = *b;
       num_sets++, subtree[u] -= subtree[v], p[v] = sz_v,
                                             p[u] -= p[v];
     }
