@@ -19,3 +19,5 @@ find_substring.hpp
 find_substrings_concatenated.hpp
 pascals_identity.hpp
 binary_search.hpp
+prev.hpp
+next.hpp
