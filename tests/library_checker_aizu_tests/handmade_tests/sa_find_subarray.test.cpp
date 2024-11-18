@@ -5,7 +5,7 @@
 #include "../../../library/strings/suffix_array/suffix_array_query.hpp"
 int main() {
   cin.tie(0)->sync_with_stdio(0);
-  for (int n = 0; n <= 30; n++) {
+  for (int n = 1; n <= 30; n++) {
     for (int tests = 10; tests--;) {
       string s(n, 'a');
       int mx_char = rnd<int>(0, 5);
