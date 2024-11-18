@@ -3,18 +3,16 @@
 #include "../../data_structures/rmq.hpp"
 #include "find/match.hpp"
 //! @code
-//!   auto [sa, sa_inv, lcp] = get_sa(s, 256);
-//!   sa_query saq(s, sa, sa_inv, lcp);
+//!   auto [sa1, sa_inv1, lcp1] = get_sa(s, 256);
+//!   sa_query saq(s, sa1, sa_inv1, lcp1);
 //! @endcode
-template<class T> struct sa_query {
+template <class T> struct sa_query {
   T s;
   int n;
   vi sa, sa_inv, lcp;
   RMQ<int, function<int(int, int)>> rmq;
   sa_query(const T& a_s, const vi& a_sa, const vi& a_inv,
-    const vi& a_lcp):
-    s(a_s), n(sz(s)), sa(a_sa), sa_inv(a_inv), lcp(a_lcp),
-    rmq(lcp, [](int x, int y) { return min(x, y); }) {}
+           const vi& a_lcp) : s(a_s), n(sz(s)), sa(a_sa), sa_inv(a_inv), lcp(a_lcp), rmq(lcp, [](int x, int y) { return min(x, y); }) {}
   //! returns max integer k such that
   //!   s.substr(i1, k) == s.substr(i2, k)
   //! @time O(1)
