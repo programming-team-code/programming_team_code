@@ -38,7 +38,9 @@ int main() {
     // test find_substrs_concated
     string both = s + '$' + t;
     int t_start = sz(s) + 1;
-    sa_query lq_both(both, 256);
+    auto [both_sa, both_sa_inv, both_lcp] =
+      get_sa(both, 256);
+    sa_query lq_both(both, both_sa, both_sa_inv, both_lcp);
     vector<vector<pii>> tests;
     if (sz(t) >= 2)
       tests.push_back({{t_start, t_start + 1},
