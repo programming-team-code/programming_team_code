@@ -35,25 +35,24 @@
 template<class T>
 array<vi, 3> get_sa(const T& s, int max_num) {
   int n = sz(s);
-  vi sa(n), sa_inv(all(s)), lcp(max(0, n - 1));
+  vi sa(n), sa_inv(all(s)), lcp(n - 1);
   iota(all(sa), 0);
-  for (int ln = 0; ln < n; ln = max(1, 2 * ln)) {
-    vi tmp(n), freq(max_num);
-    iota(begin(tmp), begin(tmp) + ln, n - ln);
-    copy_if(all(sa), begin(tmp) + ln,
-      [&](int& x) { return (x -= ln) >= 0; });
-    for (int x : sa_inv) freq[x]++;
+  for (int i = 0; i < n; i = max(1, 2 * i)) {
+    vi y(sa_inv), freq(max_num);
+    iota(all(sa_inv), n - i);
+    ranges::copy_if(sa, begin(sa_inv) + i,
+      [&](int& x) { return (x -= i) >= 0; });
+    for (int x : y) freq[x]++;
     partial_sum(all(freq), begin(freq));
-    for_each(rbegin(tmp), rend(tmp),
-      [&](int x) { sa[--freq[sa_inv[x]]] = x; });
-    swap(sa_inv, tmp);
+    for (int x : sa_inv | views::reverse)
+      sa[--freq[y[x]]] = x;
     max_num = 1, sa_inv[sa[0]] = 0;
-    auto prev_inv = [&](int i) {
-      return pair(tmp[i], i + ln < n ? tmp[i + ln] : -1);
+    auto prev_inv = [&](int j) {
+      return pair(y[j], i + j < n ? y[i + j] : -1);
     };
-    rep(i, 1, n) {
-      max_num += prev_inv(sa[i - 1]) != prev_inv(sa[i]);
-      sa_inv[sa[i]] = max_num - 1;
+    rep(j, 1, n) {
+      max_num += prev_inv(sa[j - 1]) != prev_inv(sa[j]);
+      sa_inv[sa[j]] = max_num - 1;
     }
     if (max_num == n) break;
   }
