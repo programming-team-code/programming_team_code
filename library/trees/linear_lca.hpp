@@ -4,8 +4,7 @@
 //! @space O(n)
 struct linear_lca {
   struct node {
-    int d;
-    unsigned label, asc;
+    int d, label, asc;
   };
   vector<node> t;
   vi head;
@@ -20,8 +19,8 @@ struct linear_lca {
           t[u].d = 1 + t[v].d;
           self(self, u, v);
           head[t[u].label] = v;
-          if (countr_zero(t[u].label) >
-            countr_zero(t[v].label))
+          if ((t[u].label & -t[u].label) >
+            (t[v].label & -t[v].label))
             t[v].label = t[u].label;
         }
     };

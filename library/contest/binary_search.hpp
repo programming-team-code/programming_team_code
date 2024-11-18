@@ -1,10 +1,14 @@
 #pragma once
 //! https://codeforces.com/blog/entry/134777
 //!
-//! returns first x in [lo, hi) such that lambda returns 0,
-//! or hi if it doesn't exist. Be careful to make sure the
-//! lo and hi are both integers of the same type, otherwise
-//! there is weird behavior.
+//! lambda(lo) -> T
+//! lambda(lo+1) -> T
+//! ...
+//! lambda(i-1) -> T
+//! lambda(i) -> F       <---- returns i
+//! ...
+//! lambda(hi-1) -> F
+//! lambda(hi) -> F
 //!
 //! @time O(log(hi-lo))
 //! @space O(1)
