@@ -12,7 +12,8 @@ int main() {
       generate(begin(s), end(s), [&]() {
         return char('a' + rnd<int>(0, mx_char));
       });
-      sa_query lq(s, 256);
+      auto [sa, sa_inv, lcp] = get_sa(s, 256);
+      sa_query lq(s, sa, sa_inv, lcp);
       for (int i = 0; i < n; i++) {
         for (int j = i; j <= n; j++) {
           auto [sa_le, sa_ri, s_l, s_r] =

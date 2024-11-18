@@ -8,7 +8,8 @@ int main() {
   cin >> s;
   int n = sz(s);
   s = s + '$' + string(rbegin(s), rend(s));
-  sa_query lq(s, 256);
+  auto [sa, sa_inv, lcp] = get_sa(s, 256);
+  sa_query lq(s, sa, sa_inv, lcp);
   for (int i = 0; i < n; i++)
     for (int j = i; j < min(i + 2, n); j++)
       cout << lq.len_lcp(j, (n - i - 1) + n + 1) * 2 -
