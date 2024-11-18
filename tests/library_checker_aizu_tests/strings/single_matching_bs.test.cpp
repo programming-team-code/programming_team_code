@@ -10,7 +10,8 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
   string s, t;
   cin >> s >> t;
-  sa_query sf_a(s, 256);
+  auto [sa, sa_inv, lcp] = get_sa(s, 256);
+  sa_query sf_a(s, sa, sa_inv, lcp);
   {
     auto [sa_le, sa_ri, s_l, s_r] =
       sf_a.find_str_fast(string(""));

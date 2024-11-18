@@ -16,9 +16,10 @@ int main() {
   string s;
   cin >> s;
   transform(begin(s), end(s), begin(s), compress_char);
-  sa_query sf_a(s, 256);
-  bwt bw(s, sf_a.sa);
-  mono_st_asserts(sf_a.lcp);
+  auto [sa, sa_inv, lcp] = get_sa(s, 256);
+  sa_query sf_a(s, sa, sa_inv, lcp);
+  bwt bw(s, sa);
+  mono_st_asserts(lcp);
   {
     auto [l, r] = bw.find_str("");
     assert(sz(l) == 1 && sz(r) == 1);

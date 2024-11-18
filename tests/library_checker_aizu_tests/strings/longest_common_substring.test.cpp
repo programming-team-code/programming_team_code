@@ -7,7 +7,8 @@ int main() {
   string s, t;
   cin >> s >> t;
   string both = s + '$' + t;
-  sa_query sf_a(both, 256);
+  auto [sa, sa_inv, lcp] = get_sa(both, 256);
+  sa_query sf_a(both, sa, sa_inv, lcp);
   pair<int, int> substr_s = {0, 0}, substr_t = {0, 0};
   for (int i = 0; i < sz(sf_a.lcp); i++) {
     if (both[sf_a.sa[i]] == '$' ||

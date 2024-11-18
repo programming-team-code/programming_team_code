@@ -7,7 +7,8 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
   string s;
   cin >> s;
-  sa_query lq(s, 256);
+  auto [sa, sa_inv, lcp] = get_sa(s, 256);
+  sa_query lq(s, sa, sa_inv, lcp);
   // test `*_cmp` functions
   {
     for (int num_tests = 50; num_tests--;) {
