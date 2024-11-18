@@ -12,7 +12,7 @@ struct LCA {
     int in, sub_sz = 1, d, p = -1;
   };
   vector<node> t;
-  RMQ<int, function<int(int, int)>> rmq = {{}, nullptr};
+  RMQ<int, function<int(int, int)>> rmq = {{}, NULL};
   LCA(const vector<vi>& adj): t(sz(adj)) {
     vi order;
     auto dfs = [&](auto&& self, int v) -> void {
