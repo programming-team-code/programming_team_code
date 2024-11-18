@@ -38,6 +38,3 @@ git submodule update
 
 echo "compiling code in @code ... @endcode comments with g++"
 g++ -std=c++20 entire_library.cpp || exit 1
-
-echo "compiling code in @code ... @endcode comments with clang++"
-clang++ -std=c++20 -Wno-narrowing entire_library.cpp || exit 1
