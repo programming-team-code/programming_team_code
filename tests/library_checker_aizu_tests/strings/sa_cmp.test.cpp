@@ -19,7 +19,7 @@ int main() {
     cin >> val;
     arr.push_back(val);
   }
-  auto [sa, sa_inv, lcp] = get_sa(s, 256);
+  auto [sa, sa_inv, lcp] = get_sa(arr, 1001);
   sa_query lq(arr, sa, sa_inv, lcp);
   cout << (lq.cmp_substrs(0, n, n, n + m) < 0) << '\n';
   return 0;
