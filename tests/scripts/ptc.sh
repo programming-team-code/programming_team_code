@@ -27,8 +27,6 @@ rm ../library/monotonic_stack/max_rect_histogram.hpp
 rm ../library/monotonic_stack/cartesian_binary_tree_after.png
 rm ../library/monotonic_stack/mono_stack_ri.png
 rm ../library/strings/manacher/longest_palindrome_query.hpp
-rm ../library/strings/suffix_array/burrows_wheeler.hpp
-rm -rf ../library/strings/suffix_array/lcp_interval_tree/
 rm -rf ../library/trees/centroid_decomp_uncommon/
 rm -rf ../library/trees/edge_centroid_decomp_uncommon/
 rm -rf ../library/trees/ladder_decomposition/ladder_decomposition.hpp
