@@ -4,8 +4,7 @@
 //! @space O(n)
 struct linear_lca {
   struct node {
-    int d;
-    unsigned label, asc;
+    int d, label, asc;
   };
   vector<node> t;
   vi head;
