@@ -18,11 +18,12 @@ int main() {
   string s;
   cin >> s;
   int n = sz(s);
-  sa_query sf_a(s, 256);
-  mono_st_asserts(sf_a.lcp);
-  assert(sz(sf_a.sa) == n);
-  assert(sz(sf_a.sa_inv) == n);
-  assert(sz(sf_a.lcp) == n - 1);
+  auto [sa, sa_inv, lcp] = get_sa(s, 256);
+  sa_query sf_a(s, sa, sa_inv, lcp);
+  mono_st_asserts(lcp);
+  assert(sz(sa) == n);
+  assert(sz(sa_inv) == n);
+  assert(sz(lcp) == n - 1);
   {
     auto [sa_le, sa_ri, s_l, s_r] =
       sf_a.find_substrs_concated({});
@@ -49,9 +50,9 @@ int main() {
     assert(s_r - s_l == 0);
   }
   for (int i = 0; i < n; i++) {
-    assert(sf_a.sa[sf_a.sa_inv[i]] == i);
-    assert(sf_a.sa_inv[sf_a.sa[i]] == i);
+    assert(sa[sa_inv[i]] == i);
+    assert(sa_inv[sa[i]] == i);
   }
-  for (auto val : sf_a.sa) cout << val << " ";
+  for (auto val : sa) cout << val << " ";
   cout << '\n';
 }

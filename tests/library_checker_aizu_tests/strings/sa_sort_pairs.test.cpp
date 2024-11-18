@@ -22,7 +22,8 @@ int main() {
     assert(0 <= r && r < sz(compress) && compress[r] == x);
     x = r;
   }
-  sa_query lq(arr, int(sz(compress)));
+  auto [sa, sa_inv, lcp] = get_sa(arr, int(sz(compress)));
+  sa_query lq(arr, sa, sa_inv, lcp);
   vector<int> idxs(n);
   iota(begin(idxs), end(idxs), 0);
   sort(begin(idxs), end(idxs), [&](int i, int j) -> bool {

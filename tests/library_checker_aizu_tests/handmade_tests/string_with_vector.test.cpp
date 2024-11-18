@@ -17,7 +17,8 @@ int main() {
   const int shift = 100'000;
   vector<int> arr(100);
   for (int i = 0; i < 100; i++) arr[i] = shift + i;
-  sa_query sf_a(arr, shift + 100);
+  auto [sa, sa_inv, lcp] = get_sa(arr, shift + 100);
+  sa_query sf_a(arr, sa, sa_inv, lcp);
   {
     for (int i = 1; i < 100; i++)
       assert(sf_a.cmp_sufs(i - 1, i) < 0);
