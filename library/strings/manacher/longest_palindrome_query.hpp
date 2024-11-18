@@ -5,7 +5,7 @@
 //! substring
 template<class T> struct longest_pal_query {
   vi man;
-  RMQ<int, function<int(int, int)>> rmq = {{}, nullptr};
+  RMQ<int, function<int(int, int)>> rmq = {{}, NULL};
   //! @param s string/vector
   //! @time O(n log n)
   //! @space O(n log n) for rmq, everything else is O(n)

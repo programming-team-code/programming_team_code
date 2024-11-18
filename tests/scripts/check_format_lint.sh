@@ -4,6 +4,9 @@ shopt -s globstar
 
 # miscellaneous checks - done before initializing git submodules to avoid checking stuff not in our code
 
+echo "check NULL instead of nullptr"
+grep "nullptr" --recursive ../library/ && exit 1
+
 echo "check no endl"
 grep "endl" --recursive library_checker_aizu_tests/ && exit 1
 
@@ -11,13 +14,13 @@ echo "check template<class T> over template<typename T>:"
 grep --extended-regexp "template\s?<typename" --recursive ../library/ && exit 1
 
 echo "check 1 instead of true"
-grep --extended-regexp "true" --recursive ../library/ && exit 1
+grep "true" --recursive ../library/ && exit 1
 
 echo "check 0 instead of false"
-grep --extended-regexp "false" --recursive ../library/ && exit 1
+grep "false" --recursive ../library/ && exit 1
 
 echo "check int64_t instead of long long"
-grep --extended-regexp "long long" --recursive ../library/ && exit 1
+grep "long long" --recursive ../library/ && exit 1
 
 echo "check begin(arr) instead of arr.begin(), similarly for end, rbegin, rend, empty, size:"
 # TODO: remove this define filter if/when we move to -std=c++20
