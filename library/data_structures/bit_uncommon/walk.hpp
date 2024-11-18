@@ -1,5 +1,5 @@
-//! Requires bit.s[i] >= 0
-//! @returns max pos such that sum of [0,pos) < sum
+//! Requires s[i] >= 0
+//! @returns max pos such that sum of [0,pos) < sum, or -1
 int walk(ll sum) {
   if (sum <= 0) return -1;
   int pos = 0;
