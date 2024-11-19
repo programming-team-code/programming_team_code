@@ -1,5 +1,5 @@
 #pragma once
-#include "bit_vec.hpp"
+#include "wavelet_bit_vec.hpp"
 struct wavelet_matrix {
   int n;
   vector<bit_vec> bv;
