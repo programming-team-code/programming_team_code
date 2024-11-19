@@ -4,6 +4,8 @@ struct wavelet_matrix {
   int n;
   vector<bit_vec> bv;
   //! Requires 0 <= a[i] <= max_val
+  //! @time O(n * log(max_val))
+  //! @space O(n * log(max_val) / 64)
   wavelet_matrix(const vector<ll>& a, ll max_val):
     n(sz(a)), bv(bit_width(uint64_t(max_val)), {{}}) {
     vector<ll> cur(a), nxt(n);
