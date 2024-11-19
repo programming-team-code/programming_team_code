@@ -36,8 +36,8 @@ vector<ll> count_paths_per_node(const vector<vi>& adj,
       for (int child : cd_adj[cent])
         num_paths[cent] += dfs_child(child);
       pre_d = cur_d = {0};
-      for_each(rbegin(cd_adj[cent]), rend(cd_adj[cent]),
-        dfs_child);
+      for (int child : cd_adj[cent] | views::reverse)
+        dfs_child(child);
     });
   return num_paths;
 }
