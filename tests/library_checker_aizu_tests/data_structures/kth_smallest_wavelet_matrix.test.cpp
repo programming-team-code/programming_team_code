@@ -7,12 +7,15 @@ int main() {
   int n, q;
   cin >> n >> q;
   vector<ll> a(n);
-  for (int i = 0; i < n; i++) cin >> a[i];
-  wavelet_matrix wm(a, 1'000'000'001);
+  for (int i = 0; i < n; i++) {
+    cin >> a[i];
+    a[i] <<= 23;
+  }
+  wavelet_matrix wm(a, 1'000'000'001LL << 23);
   while (q--) {
     int l, r, k;
     cin >> l >> r >> k;
-    cout << wm.kth(l, r, k) << '\n';
+    cout << (wm.kth(l, r, k) >> 23) << '\n';
   }
   return 0;
 }
