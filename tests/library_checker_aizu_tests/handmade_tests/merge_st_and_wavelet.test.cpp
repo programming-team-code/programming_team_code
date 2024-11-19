@@ -8,7 +8,7 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
   // brute force small cases
   for (int n = 0; n <= 25; n++) {
-    for (int tests = 3; tests--;) {
+    for (int tests = 10; tests--;) {
       int minn = rnd<int>(-1000, 1000);
       int maxn = rnd<int>(-1000, 1000);
       if (minn > maxn) swap(minn, maxn);
@@ -18,7 +18,7 @@ int main() {
       merge_sort_tree mst(arr);
       vector<ll> arr_shifted(n);
       rep(i, 0, n) arr_shifted[i] = arr[i] - minn;
-      wavelet_matrix wm(arr_shifted, maxn - minn + 1);
+      wavelet_matrix wm(arr_shifted, maxn - minn);
       for (int queries = 30; queries--;) {
         int x = rnd<int>(minn, maxn);
         int y = rnd<int>(minn, maxn);

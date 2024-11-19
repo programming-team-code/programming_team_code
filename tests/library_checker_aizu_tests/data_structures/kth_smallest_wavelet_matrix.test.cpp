@@ -11,7 +11,7 @@ int main() {
     cin >> a[i];
     a[i] <<= 23;
   }
-  wavelet_matrix wm(a, 1'000'000'001LL << 23);
+  wavelet_matrix wm(a, 1'000'000'000LL << 23);
   while (q--) {
     int l, r, k;
     cin >> l >> r >> k;

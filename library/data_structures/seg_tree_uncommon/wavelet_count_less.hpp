@@ -1,6 +1,8 @@
-
 #pragma once
-// count i in [l..r) satisfying a[i] < ub
+//! Requires ub >= 0
+//! count of i in [l..r) such that a[i] < ub
+//! @time O(log(max_val))
+//! @space O(1)
 int count(int l, int r, ll ub) {
   int res = 0;
   for (int h = sz(bv); h--;) {

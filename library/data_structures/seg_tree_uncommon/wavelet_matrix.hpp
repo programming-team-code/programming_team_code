@@ -3,7 +3,7 @@
 struct wavelet_matrix {
   int n;
   vector<bit_vec> bv;
-  //! Requires 0 <= a[i] < max_val
+  //! Requires 0 <= a[i] <= max_val
   wavelet_matrix(const vector<ll>& a, ll max_val):
     n(sz(a)), bv(bit_width(uint64_t(max_val)), {{}}) {
     vector<ll> cur(a), nxt(n);
@@ -16,6 +16,10 @@ struct wavelet_matrix {
       swap(cur, nxt);
     }
   }
+  //! (k+1)th smallest number in [l,r)
+  //! kth(l,r,0) returns the min
+  //! @time O(log(max_val))
+  //! @space O(1)
   ll kth(int l, int r, int k) {
     ll res = 0;
     for (int h = sz(bv); h--;) {
