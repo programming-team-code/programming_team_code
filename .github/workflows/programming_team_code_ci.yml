@@ -84,10 +84,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Install texlive, rename, nodejs, npm
+    - name: Install texlive, rename, nodejs, npm, clang
       run: |
         sudo apt update
         sudo apt install texlive texlive-latex-extra rename nodejs npm
+        wget -qO- https://apt.llvm.org/llvm.sh | sudo bash -s -- 18
     - name: build ptc
       run: make --directory=tests/ ptc
     - uses: actions/upload-artifact@v3
