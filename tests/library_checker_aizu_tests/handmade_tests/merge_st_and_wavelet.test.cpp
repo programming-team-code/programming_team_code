@@ -16,7 +16,7 @@ int main() {
       generate(begin(arr), end(arr),
         [&]() { return rnd<int>(minn, maxn); });
       merge_sort_tree mst(arr);
-      vector<ll> arr_shifted(n);
+      vector<ull> arr_shifted(n);
       rep(i, 0, n) arr_shifted[i] = arr[i] - minn;
       wavelet_matrix wm(arr_shifted, maxn - minn);
       for (int queries = 30; queries--;) {

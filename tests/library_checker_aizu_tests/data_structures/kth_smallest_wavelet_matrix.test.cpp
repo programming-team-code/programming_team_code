@@ -6,7 +6,7 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n, q;
   cin >> n >> q;
-  vector<ll> a(n);
+  vector<ull> a(n);
   for (int i = 0; i < n; i++) {
     cin >> a[i];
     a[i] <<= 23;
