@@ -1,5 +1,5 @@
 #pragma once
-using ull = uint64_t;
+#define ull uint64_t
 struct bit_vec {
   vector<pair<ull, int>> b;
   //! @time O(n)
