@@ -21,7 +21,7 @@ struct hopcroft_karp {
     int lsz = sz(adj);
     while (1) {
       queue<int> q;
-      vector level(lsz, -1);
+      vi level(lsz, -1);
       rep(i, 0, lsz) if (to_r[i] == -1) level[i] = 0,
                                         q.push(i);
       bool found = 0;
