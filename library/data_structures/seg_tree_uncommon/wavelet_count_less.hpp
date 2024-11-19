@@ -1,5 +1,4 @@
 #pragma once
-//! Requires ub >= 0
 //! count of i in [l..r) such that a[i] < ub
 //! @time O(log(max_val))
 //! @space O(1)
