@@ -9,11 +9,11 @@ struct bit_vec {
     rep(i, 0, sz(b) - 1) b[i + 1].second =
       popcount(b[i].first) + b[i].second;
   }
-  //! @returns !a[0] + !a[1] + ... + !a[i - 1]
+  //! @returns !a[0] + !a[1] + ... + !a[r - 1]
   //! @time O(1)
   //! @space O(1)
-  int cnt0(int i) {
-    auto [x, y] = b[i >> 6];
-    return i - y - popcount(x & ((1ULL << (i & 63)) - 1));
+  int cnt0(int r) {
+    auto [x, y] = b[r >> 6];
+    return r - y - popcount(x & ((1ULL << (r & 63)) - 1));
   }
 };
