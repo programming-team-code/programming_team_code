@@ -1,5 +1,8 @@
 #define PROBLEM \
   "https://judge.yosupo.jp/problem/suffixarray"
+// just because with debug mode, test runs in 30s, and
+// there's like 30 tests
+#undef _GLIBCXX_DEBUG
 #include "../template.hpp"
 #include "../../../library/strings/suffix_array/suffix_array_short.hpp"
 int main() {
