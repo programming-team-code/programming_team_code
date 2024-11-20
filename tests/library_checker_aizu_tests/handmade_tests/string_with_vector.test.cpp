@@ -31,9 +31,10 @@ int main() {
     assert(sf_a.cmp_sufs(99, 99) == 0);
   }
   {
-    auto [sa_sht, sa_inv_sht] = sa_short(arr);
+    auto [sa_sht, sa_inv_sht, lcp_sht] = sa_short(arr);
     assert(sa_sht == sa);
     assert(sa_inv_sht == sa_inv);
+    assert(lcp == lcp_sht);
   }
   vector<int> t(10);
   for (int i = 50; i < 60; i++) t[i - 50] = shift + i;
