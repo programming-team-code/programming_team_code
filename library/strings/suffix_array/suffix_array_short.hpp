@@ -1,13 +1,13 @@
 #pragma once
 //! https://github.com/atcoder/ac-library/blob/master/atcoder/string.hpp
 //! @code
-//!   auto [sa, sa_inv, lcp] = sa_short(s);
+//!   auto [sa_short, sa_inv_short] = sa_short(s);
 //! @endcode
 //! runs in ~1.5s for 5e5
-//! @time O(nlogn)
+//! @time O(n * log^2(n))
 //! @space O(n)
 template<class T> array<vi, 2> sa_short(const T& s) {
-  int n = int(s.size());
+  int n = sz(s);
   vi sa(n), sa_inv(all(s));
   iota(all(sa), 0);
   for (int k = 1; k <= n; k *= 2) {
