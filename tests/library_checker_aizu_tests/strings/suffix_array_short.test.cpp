@@ -9,7 +9,7 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
   string s;
   cin >> s;
-  auto [sa, sa_inv] = sa_short(s);
+  auto [sa, sa_inv, _] = sa_short(s);
   for (int i = 0; i < sz(s); i++) {
     assert(sa[sa_inv[i]] == i);
     assert(sa_inv[sa[i]] == i);
