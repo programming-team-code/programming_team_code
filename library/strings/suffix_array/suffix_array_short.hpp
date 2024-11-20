@@ -1,7 +1,7 @@
 #pragma once
 //! https://github.com/atcoder/ac-library/blob/master/atcoder/string.hpp
 //! @code
-//!   auto [sa_short, sa_inv_short] = sa_short(s);
+//!   auto [sa1, sa_inv1] = sa_short(s);
 //! @endcode
 //! runs in ~1.5s for 5e5
 //! @time O(n * log^2(n))
