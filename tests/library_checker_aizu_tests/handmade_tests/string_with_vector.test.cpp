@@ -5,6 +5,7 @@
 #undef _GLIBCXX_DEBUG
 #include "../template.hpp"
 #include "../../../library/strings/suffix_array/suffix_array_query.hpp"
+#include "../../../library/strings/suffix_array/suffix_array_short.hpp"
 #include "../../../library/strings/knuth_morris_pratt.hpp"
 #include "../../../library/strings/manacher/longest_from_index.hpp"
 #include "../../../library/strings/manacher/longest_palindrome_query.hpp"
@@ -28,6 +29,11 @@ int main() {
       assert(sf_a.cmp_sufs(i, i) == 0);
     }
     assert(sf_a.cmp_sufs(99, 99) == 0);
+  }
+  {
+    auto [sa_sht, sa_inv_sht] = sa_short(arr);
+    assert(sa_sht == sa);
+    assert(sa_inv_sht == sa_inv);
   }
   vector<int> t(10);
   for (int i = 50; i < 60; i++) t[i - 50] = shift + i;
