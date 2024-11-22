@@ -1,6 +1,7 @@
 #pragma once
 //! https://github.com/atcoder/ac-library/blob/master/atcoder/string.hpp
 //! @code
+//!   // requires s[i]>=0
 //!   auto [sa2, sa_inv2, lcp2] = sa_short(s);
 //! @endcode
 //! runs in ~1.5s for 5e5
