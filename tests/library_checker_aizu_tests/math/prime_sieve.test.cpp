@@ -25,9 +25,9 @@ int main() {
       int prev_prime = -1;
 #include "../../../library/math/prime_sieve/get_prime_factors.hpp"
       {
-        assert(fac >= prev_prime);
-        prev_prime = fac;
-        curr[fac]++;
+        assert(p >= prev_prime);
+        prev_prime = p;
+        curr[p]++;
       }
     }
     for (auto [p, e] : curr)
