@@ -96,7 +96,6 @@
 "tests/library_checker_aizu_tests/math/n_choose_k.test.cpp": "2024-11-17 14:04:03 -0600",
 "tests/library_checker_aizu_tests/math/num_subsequences.test.cpp": "2024-11-17 14:04:03 -0600",
 "tests/library_checker_aizu_tests/math/partitions.test.cpp": "2024-11-17 14:04:03 -0600",
-"tests/library_checker_aizu_tests/math/prime_sieve.test.cpp": "2024-11-17 14:04:03 -0600",
 "tests/library_checker_aizu_tests/math/solve_linear_mod.test.cpp": "2024-11-17 14:04:03 -0600",
 "tests/library_checker_aizu_tests/math/tetration.test.cpp": "2024-11-17 14:04:03 -0600",
 "tests/library_checker_aizu_tests/math/totient.test.cpp": "2024-11-17 14:04:03 -0600",
