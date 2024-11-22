@@ -23,3 +23,4 @@ walk.hpp
 prev.hpp
 next.hpp
 wavelet_count_less.hpp
+dynamic_bitset.hpp

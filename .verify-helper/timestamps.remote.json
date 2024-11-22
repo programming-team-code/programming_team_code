@@ -64,6 +64,7 @@
 "tests/library_checker_aizu_tests/graphs/two_edge_components.test.cpp": "2024-11-17 14:04:03 -0600",
 "tests/library_checker_aizu_tests/handmade_tests/count_paths_forest.test.cpp": "2024-11-18 19:15:07 -0600",
 "tests/library_checker_aizu_tests/handmade_tests/dsu_size.test.cpp": "2024-11-17 14:04:03 -0600",
+"tests/library_checker_aizu_tests/handmade_tests/dynamic_bitset.test.cpp": "2024-11-22 10:40:54 -0600",
 "tests/library_checker_aizu_tests/handmade_tests/edge_cd_small_trees.test.cpp": "2024-11-17 14:04:03 -0600",
 "tests/library_checker_aizu_tests/handmade_tests/fib_matrix_expo.test.cpp": "2024-11-17 14:04:03 -0600",
 "tests/library_checker_aizu_tests/handmade_tests/lca_ladder_forest.test.cpp": "2024-11-18 11:06:03 -0600",
