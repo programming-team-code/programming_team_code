@@ -52,5 +52,5 @@ syntaxError:../library/math/prime_sieve/mobius.hpp:6
 syntaxError:../library/trees/lca_rmq/iterate_subtree.hpp:6
 constVariable:../kactl/content/graph/CompressTree.h:20
 knownConditionTrueFalse:../library/strings/suffix_array/suffix_array.hpp:61
-knownConditionTrueFalse:../library/strings/suffix_array/suffix_array_short.hpp:25
+knownConditionTrueFalse:../library/strings/suffix_array/suffix_array_short.hpp:26
 constVariable:../kactl/content/numerical/NumberTheoreticTransform.h:30
