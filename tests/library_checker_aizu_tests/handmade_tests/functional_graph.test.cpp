@@ -10,13 +10,13 @@ struct functional_graph_processor {
     init((int)next.size());
     build(next);
   }
-  template <class Graph_t>
+  template<class Graph_t>
   functional_graph_processor(const Graph_t &g) {
     init(g.n);
     build(g);
   }
-  void init(int n) {
-    this->n = n;
+  void init(int a_n) {
+    n = a_n;
     cycle.clear();
     cycle_id.assign(n, -1);
     cycle_pos.assign(n, -1);
@@ -62,14 +62,14 @@ struct functional_graph_processor {
         }
         cycle.push_back(c);
       }
-      auto dfs = [&](auto self, int u) -> void {
-        if (was2[u] == attempt) return;
-        was2[u] = attempt;
-        int v = next[u];
-        self(self, v);
-        root_of[u] = root_of[v];
-        depth[u] = depth[v] + 1;
-        abr[v].push_back(u);
+      auto dfs = [&](auto self, int u2) -> void {
+        if (was2[u2] == attempt) return;
+        was2[u2] = attempt;
+        int v2 = next[u2];
+        self(self, v2);
+        root_of[u2] = root_of[v2];
+        depth[u2] = depth[v2] + 1;
+        abr[v2].push_back(u2);
       };
       dfs(dfs, u);
     }
@@ -99,7 +99,7 @@ struct functional_graph_processor {
     }
   }
   friend ostream &operator<<(ostream &out,
-                             const functional_graph_processor &fgp) {
+    const functional_graph_processor &fgp) {
     out << "\nCycles: {\n";
     for (auto i = 0; i < (int)fgp.cycle.size(); ++i) {
       out << " {";
@@ -134,29 +134,28 @@ struct functional_graph_processor {
   }
   int n;
   vector<vector<int>> cycle;
-  vector<int> cycle_id;  // id of the cycle it belongs to,
-                         // -1 if not part of one
-  vector<int> cycle_pos;  // position in its cycle, -1 if
-                          // not part of one
-  vector<int> cycle_prev;  // previous vertex in its cycle,
-                           // -1 if not part of one
-  vector<int> component_size;  // size of its weakly
-                               // connected component
-  vector<int> root_of;  // first reachable node in a cycle
-  vector<int> depth;  // distance to its root
+  vector<int> cycle_id; // id of the cycle it belongs to,
+                        // -1 if not part of one
+  vector<int> cycle_pos; // position in its cycle, -1 if
+                         // not part of one
+  vector<int> cycle_prev; // previous vertex in its cycle,
+                          // -1 if not part of one
+  vector<int> component_size; // size of its weakly
+                              // connected component
+  vector<int> root_of; // first reachable node in a cycle
+  vector<int> depth; // distance to its root
   vector<vector<int>>
-      abr;  // forest of arborescences of reversed edges not
-            // on the cycles
-  vector<int> order;  // dfs order of abr
-  vector<int> pos;  // pos in the dfs order
-  vector<int> end;  // [pos[u], end[u]) denotes the subtree
-  vector<int> size;  // size of the subtree in abr
+    abr; // forest of arborescences of reversed edges not
+         // on the cycles
+  vector<int> order; // dfs order of abr
+  vector<int> pos; // pos in the dfs order
+  vector<int> end; // [pos[u], end[u]) denotes the subtree
+  vector<int> size; // size of the subtree in abr
 };
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   for (int num_tests = 1000; num_tests--;) {
     int n = rnd(1, 1000);
-    cerr << "n: " << n << endl;
     vector<int> a(n);
     for (int i = 0; i < n; i++) a[i] = rnd(0, n - 1);
     auto [t, cycle] = func_graph(a);
@@ -166,16 +165,16 @@ int main() {
       assert(t[i].root_of == fgp.root_of[i]);
       assert(t[i].childs == fgp.abr[i]);
       assert(t[i].cyc_pos.has_value() ==
-             (fgp.cycle_id[i] != -1));
+        (fgp.cycle_id[i] != -1));
       if (auto id = t[i].cyc_pos) {
         int cyc_len = ssize(cycle[id->first]);
         assert(i == cycle[id->first][id->second]);
         assert(
-            cycle[id->first][(id->second + 1) % cyc_len] ==
-            a[i]);
+          cycle[id->first][(id->second + 1) % cyc_len] ==
+          a[i]);
         assert(fgp.cycle_prev[i] ==
-               cycle[id->first]
-                    [(id->second - 1 + cyc_len) % cyc_len]);
+          cycle[id->first]
+               [(id->second - 1 + cyc_len) % cyc_len]);
       } else {
         assert(fgp.cycle_prev[i] == -1);
       }
