@@ -5,7 +5,6 @@
 #include "../../../library/graphs/functional_graph_processor.hpp"
 // https://github.com/Aeren1564/Algorithms/blob/master/Algorithm_Implementations_Cpp/Graph_Theory/Special_Graphs/functional_graph_processor.sublime-snippet
 struct functional_graph_processor {
-  functional_graph_processor() {}
   functional_graph_processor(const vector<int> &next) {
     init(sz(next));
     build(next);
