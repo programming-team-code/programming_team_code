@@ -7,7 +7,7 @@
 struct functional_graph_processor {
   functional_graph_processor() {}
   functional_graph_processor(const vector<int> &next) {
-    init((int)next.size());
+    init(sz(next));
     build(next);
   }
   template<class Graph_t>
@@ -37,9 +37,11 @@ struct functional_graph_processor {
   vector<int> was, was2;
   void build(const vector<int> &next) {
     cycle.clear();
-    fill(all(cycle_id), -1);
-    fill(all(cycle_pos), -1);
-    fill(all(cycle_prev), -1);
+    for (int i = 0; i < n; i++) {
+      cycle_id[i] = -1;
+      cycle_pos[i] = -1;
+      cycle_prev[i] = -1;
+    }
     ++attempt;
     for (auto u = 0; u < n; ++u) {
       if (was[u] == attempt) continue;
@@ -53,8 +55,8 @@ struct functional_graph_processor {
         vector<int> c;
         while (was2[w] != attempt) {
           was2[w] = attempt;
-          cycle_id[w] = (int)cycle.size();
-          cycle_pos[w] = (int)c.size();
+          cycle_id[w] = sz(cycle);
+          cycle_pos[w] = sz(c);
           c.push_back(w);
           root_of[w] = w;
           depth[w] = 0;
@@ -78,13 +80,13 @@ struct functional_graph_processor {
     for (const auto &c : cycle) {
       auto dfs = [&](auto self, int u) -> void {
         size[u] = 1;
-        pos[u] = (int)order.size();
+        pos[u] = sz(order);
         order.push_back(u);
         for (auto v : abr[u]) {
           self(self, v);
           size[u] += size[v];
         }
-        end[u] = (int)order.size();
+        end[u] = sz(order);
       };
       int csize = 0;
       for (auto u : c) {
@@ -97,40 +99,6 @@ struct functional_graph_processor {
           component_size[v] = csize;
         }
     }
-  }
-  friend ostream &operator<<(ostream &out,
-    const functional_graph_processor &fgp) {
-    out << "\nCycles: {\n";
-    for (auto i = 0; i < (int)fgp.cycle.size(); ++i) {
-      out << " {";
-      for (auto j = 0; j < (int)fgp.cycle[i].size(); ++j) {
-        out << fgp.cycle[i][j];
-        if (j + 1 < (int)fgp.cycle[i].size()) out << ", ";
-      }
-      out << "}";
-      if (i + 1 < (int)fgp.cycle.size()) out << ",";
-      out << "\n";
-    }
-    out << "}\n";
-    out << "Abr: {\n";
-    for (auto u = 0; u < (int)fgp.abr.size(); ++u) {
-      out << u << ": {";
-      for (auto i = 0; i < (int)fgp.abr[u].size(); ++i) {
-        out << fgp.abr[u][i];
-        if (i + 1 < (int)fgp.abr[u].size()) out << ", ";
-      }
-      out << "}";
-      if (u + 1 < (int)fgp.abr.size()) out << ",";
-      out << "\n";
-    }
-    out << "}\n";
-    out << "Order: {";
-    for (auto i = 0; i < (int)fgp.order.size(); ++i) {
-      out << fgp.order[i];
-      if (i + 1 < (int)fgp.order.size()) out << ", ";
-    }
-    out << "}\n";
-    return out;
   }
   int n;
   vector<vector<int>> cycle;
