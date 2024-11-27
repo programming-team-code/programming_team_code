@@ -19,6 +19,7 @@ rm ../library/data_structures/seg_tree_uncommon/kth_smallest_query.hpp
 rm ../library/data_structures/uncommon/mode_query.hpp
 rm ../library/data_structures/uncommon/priority_queue_of_updates.hpp
 rm ../library/graphs/strongly_connected_components/add_edges_strongly_connected.hpp
+rm ../library/graphs/functional_graph_processor.hpp
 rm ../library/math/derangements.hpp
 rm ../library/math/num_distinct_subsequences.hpp
 rm ../library/math/partitions.hpp
