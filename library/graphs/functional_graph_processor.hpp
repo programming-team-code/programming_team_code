@@ -1,4 +1,15 @@
 #pragma once
+//! https://github.com/Aeren1564/Algorithms/blob/master/Algorithm_Implementations_Cpp/Graph_Theory/Special_Graphs/functional_graph_processor.sublime-snippet
+//! @code
+//!   // 0 <= a[i] < n
+//!   auto [t, cycle] = func_graph(a);
+//!   if (auto id = t[v].cyc_pos)
+//!     assert(v == cycle[id->first][id->second]);
+//! @endcode
+//! t[v].root_of = first reachable node in a cycle
+//! t[v].childs = forest of reversed edges not in cycles
+//! @time O(n)
+//! @space O(n)
 struct func_graph {
   struct node {
     int root_of;
