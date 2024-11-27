@@ -37,9 +37,9 @@ struct functional_graph_processor {
   vector<int> was, was2;
   void build(const vector<int> &next) {
     cycle.clear();
-    fill(cycle_id.begin(), cycle_id.end(), -1);
-    fill(cycle_pos.begin(), cycle_pos.end(), -1);
-    fill(cycle_prev.begin(), cycle_prev.end(), -1);
+    fill(all(cycle_id), -1);
+    fill(all(cycle_pos), -1);
+    fill(all(cycle_prev), -1);
     ++attempt;
     for (auto u = 0; u < n; ++u) {
       if (was[u] == attempt) continue;
@@ -75,7 +75,7 @@ struct functional_graph_processor {
     }
     for (auto u = 0; u < n; ++u)
       if (~cycle_pos[u]) cycle_prev[next[u]] = u;
-    for (auto c : cycle) {
+    for (const auto &c : cycle) {
       auto dfs = [&](auto self, int u) -> void {
         size[u] = 1;
         pos[u] = (int)order.size();
