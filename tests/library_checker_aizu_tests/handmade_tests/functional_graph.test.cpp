@@ -131,6 +131,7 @@ int main() {
     for (int i = 0; i < n; i++) {
       int root =
         cycle[t[i].root_of.first][t[i].root_of.second];
+      assert(root == fgp.root_of[i]);
       assert(t[i].childs == fgp.abr[i]);
       assert((root == i) == (fgp.cycle_id[i] != -1));
       if (root == i) {
