@@ -129,17 +129,22 @@ int main() {
     functional_graph_processor fgp(a);
     assert(cycle == fgp.cycle);
     for (int i = 0; i < n; i++) {
-      int root = cycle[t[i].i][t[i].j];
+      int root =
+        cycle[t[i].root_of.first][t[i].root_of.second];
       assert(t[i].childs == fgp.abr[i]);
       assert((root == i) == (fgp.cycle_id[i] != -1));
       if (root == i) {
-        assert(t[i].i == fgp.cycle_id[i]);
-        assert(t[i].j == fgp.cycle_pos[i]);
-        int cyc_len = ssize(cycle[t[i].i]);
+        assert(t[i].root_of.first == fgp.cycle_id[i]);
+        assert(t[i].root_of.second == fgp.cycle_pos[i]);
+        int cyc_len = ssize(cycle[t[i].root_of.first]);
         assert(
-          cycle[t[i].i][(t[i].j + 1) % cyc_len] == a[i]);
+          cycle[t[i].root_of.first]
+               [(t[i].root_of.second + 1) % cyc_len] ==
+          a[i]);
         assert(fgp.cycle_prev[i] ==
-          cycle[t[i].i][(t[i].j - 1 + cyc_len) % cyc_len]);
+          cycle[t[i].root_of.first]
+               [(t[i].root_of.second - 1 + cyc_len) %
+                 cyc_len]);
       } else {
         assert(fgp.cycle_prev[i] == -1);
       }
