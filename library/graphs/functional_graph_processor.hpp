@@ -3,17 +3,16 @@
 //! @code
 //!   // 0 <= a[i] < n
 //!   auto [t2, cycle] = func_graph(a);
-//!   if (auto id = t2[v].cyc_pos)
-//!     assert(v == cycle[id->first][id->second]);
+//!   int root = cycle[t2[v].i][t2[v].j];
+//!   bool is_on_cycle = (v == root);
 //! @endcode
-//! t[v].root_of = first reachable node in a cycle
+//! root = first reachable node on cycle
 //! t[v].childs = forest of reversed edges not in cycles
 //! @time O(n)
 //! @space O(n)
 struct func_graph {
   struct node {
-    int root_of;
-    optional<pii> cyc_pos;
+    int i, j;
     vi childs;
   };
   vector<node> t;
@@ -22,26 +21,25 @@ struct func_graph {
     vi state(sz(a));
     rep(i, 0, sz(a)) {
       if (state[i] == 0) {
-        int v = i;
-        while (state[v] == 0) {
-          state[v] = 1;
-          v = a[v];
+        int u = i;
+        while (state[u] == 0) {
+          state[u] = 1;
+          u = a[u];
         }
-        if (state[v] == 1) {
+        if (state[u] == 1) {
           cycle.emplace_back();
-          while (state[v] == 1) {
-            t[v].root_of = v;
-            t[v].cyc_pos = {
-              sz(cycle) - 1, sz(cycle.back())};
-            cycle.back().push_back(v);
-            state[v] = 2;
-            v = a[v];
+          while (state[u] == 1) {
+            t[u].i = sz(cycle) - 1;
+            t[u].j = sz(cycle.back());
+            cycle.back().push_back(u);
+            state[u] = 2;
+            u = a[u];
           }
         }
-        int curr_root_of = t[v].root_of;
-        v = i;
+        int v = i;
         while (state[v] == 1) {
-          t[v].root_of = curr_root_of;
+          t[v].i = t[u].i;
+          t[v].j = t[u].j;
           t[a[v]].childs.push_back(v);
           state[v] = 2;
           v = a[v];
