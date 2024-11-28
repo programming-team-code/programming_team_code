@@ -3,7 +3,8 @@
 //! @code
 //!   // 0 <= a[i] < n
 //!   auto [t2, cycle] = func_graph(a);
-//!   int root = cycle[t2[v].i][t2[v].j];
+//!   auto [cyc_id, cyc_pos] = t2[v].root_of;
+//!   int root = cycle[cyc_id][cyc_pos];
 //!   bool is_on_cycle = (v == root);
 //! @endcode
 //! root = first reachable node on cycle
@@ -12,7 +13,7 @@
 //! @space O(n)
 struct func_graph {
   struct node {
-    int i, j;
+    pii root_of;
     vi childs;
   };
   vector<node> t;
@@ -29,8 +30,8 @@ struct func_graph {
         if (state[u] == 1) {
           cycle.emplace_back();
           while (state[u] == 1) {
-            t[u].i = sz(cycle) - 1;
-            t[u].j = sz(cycle.back());
+            t[u].root_of = {
+              sz(cycle) - 1, sz(cycle.back())};
             cycle.back().push_back(u);
             state[u] = 2;
             u = a[u];
@@ -38,8 +39,7 @@ struct func_graph {
         }
         int v = i;
         while (state[v] == 1) {
-          t[v].i = t[u].i;
-          t[v].j = t[u].j;
+          t[v].root_of = t[u].root_of;
           t[a[v]].childs.push_back(v);
           state[v] = 2;
           v = a[v];
