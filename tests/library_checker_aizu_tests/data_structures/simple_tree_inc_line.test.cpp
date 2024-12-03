@@ -10,13 +10,12 @@ int main() {
   vector<array<int, 2>> init(n);
   for (int i = 0; i < n; i++)
     cin >> init[i][0] >> init[i][1];
-  tree_inc st(n, array<int, 2>{1, 0},
+  tree_inc st(init,
     [&](const array<int, 2>& l,
       const array<int, 2>& r) -> array<int, 2> {
       return {int(1LL * l[0] * r[0] % mod),
         int((1LL * r[0] * l[1] + r[1]) % mod)};
     });
-  for (int i = 0; i < n; i++) st.update(i, init[i]);
   while (q--) {
     int type;
     cin >> type;
