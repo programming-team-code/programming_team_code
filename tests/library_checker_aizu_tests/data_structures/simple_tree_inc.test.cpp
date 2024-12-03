@@ -6,8 +6,7 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n, q;
   cin >> n >> q;
-  tree_inc st(n, INT_MAX,
-    [&](int x, int y) -> int { return min(x, y); });
+  tree_inc st(vector<int>(n, INT_MAX), ranges::min);
   while (q--) {
     int type;
     cin >> type;
