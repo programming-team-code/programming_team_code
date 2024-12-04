@@ -17,8 +17,8 @@ template<class T, class F> struct RMQ {
   RMQ(const vector<T>& a, F a_op): dp(1, a), op(a_op) {
     for (int i = 0; (2 << i) <= sz(a); i++) {
       dp.emplace_back(sz(a) - (2 << i) + 1);
-      transform(all(dp[i]) - (1 << i),
-        begin(dp[i]) + (1 << i), begin(dp[i + 1]), op);
+      ranges::transform(dp[i], dp[i] | views::drop(1 << i),
+        begin(dp[i + 1]), op);
     }
   }
   T query(int l, int r) { // [l, r)
