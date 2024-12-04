@@ -6,11 +6,10 @@
 //! @time O(|t| * log(|s|))
 //! @space O(1)
 pii find_str(const T& t) {
-  auto [l, r] =
-    ranges::equal_range(sa, 0, less(), [&](int i) {
-      return bit_cast<char>(
-        lexicographical_compare_three_way(begin(s) + i,
-          begin(s) + min(i + sz(t), sz(s)), all(t)));
-    });
+  auto [l, r] = ranges::equal_range(sa, 0, {}, [&](int i) {
+    return bit_cast<char>(
+      lexicographical_compare_three_way(begin(s) + i,
+        begin(s) + min(i + sz(t), sz(s)), all(t)));
+  });
   return {l - begin(sa), r - begin(sa)};
 }
