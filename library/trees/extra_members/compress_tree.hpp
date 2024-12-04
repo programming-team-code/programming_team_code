@@ -9,14 +9,12 @@
 //! @time O(|subset| log |subset|)
 //! @space O(|subset|)
 array<vi, 2> compress_tree(vi subset) {
-  auto cmp = [&](int u, int v) {
-    return t[u].in < t[v].in;
-  };
-  ranges::sort(subset, cmp);
+  auto proj = [&](int v) { return t[v].in; };
+  ranges::sort(subset, {}, proj);
   int siz = sz(subset);
   rep(i, 1, siz)
     subset.push_back(lca(subset[i - 1], subset[i]));
-  ranges::sort(subset, cmp);
+  ranges::sort(subset, {}, proj);
   subset.erase(unique(all(subset)), end(subset));
   return {
     mono_st(subset,
