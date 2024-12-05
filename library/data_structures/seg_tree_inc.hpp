@@ -1,5 +1,5 @@
 #pragma once
-//! https://github.com/kth-competitive-programming/kactl/blob/main/content/data-structures/SegmentTree.h
+//! https://codeforces.com/blog/entry/118682
 //! @code
 //!   tree_inc st3(a, ranges::min);
 //!   tree_inc st4(a, [&](int x, int y) -> int {
