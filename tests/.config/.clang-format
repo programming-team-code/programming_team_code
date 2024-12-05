@@ -65,7 +65,7 @@ PenaltyReturnTypeOnItsOwnLine: 200
 PointerAlignment: Left
 # QualifierAlignment: Left
 # ReflowComments: false
-ReferenceAlignment: Pointer
+ReferenceAlignment: Left
 RemoveBracesLLVM: true
 SeparateDefinitionBlocks: Never
 SortIncludes: false
