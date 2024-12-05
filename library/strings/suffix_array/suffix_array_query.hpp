@@ -7,13 +7,13 @@
 //!   sa_query saq(s, sa1, sa_inv1, lcp1);
 //! @endcode
 template<class T> struct sa_query {
-  T s;
   int n;
+  T s;
   vi sa, sa_inv, lcp;
   RMQ<int, function<int(int, int)>> rmq;
-  sa_query(const T& a_s, const vi& a_sa, const vi& a_inv,
-    const vi& a_lcp):
-    s(a_s), n(sz(s)), sa(a_sa), sa_inv(a_inv), lcp(a_lcp),
+  sa_query(const T& s, const vi& sa, const vi& sa_inv,
+    const vi& lcp):
+    n(sz(s)), s(s), sa(sa), sa_inv(sa_inv), lcp(lcp),
     rmq(lcp, [](int x, int y) { return min(x, y); }) {}
   //! returns max integer k such that
   //!   s.substr(i1, k) == s.substr(i2, k)

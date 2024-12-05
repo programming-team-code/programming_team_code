@@ -10,8 +10,8 @@ template<class F> struct centroid {
   vector<vi> adj;
   F f;
   vi siz;
-  centroid(const vector<vi>& a_adj, F a_f):
-    adj(a_adj), f(a_f), siz(sz(adj), -1) {
+  centroid(const vector<vi>& adj, F f):
+    adj(adj), f(f), siz(sz(adj), -1) {
     rep(i, 0, sz(adj)) if (siz[i] == -1) dfs(i, -1);
   }
   void calc_sz(int v, int p) {

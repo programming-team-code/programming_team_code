@@ -12,14 +12,14 @@ struct PST {
   struct node {
     ll sum;
     int lch, rch;
-    node(ll a_sum, int a_lch, int a_rch):
-      sum(a_sum), lch(a_lch), rch(a_rch) {}
+    node(ll sum, int lch, int rch):
+      sum(sum), lch(lch), rch(rch) {}
   };
   int root_l, root_r;
   vi roots;
   deque<node> tree;
-  PST(int a_root_l, int a_root_r):
-    root_l(a_root_l), root_r(a_root_r), roots(1),
+  PST(int root_l, int root_r):
+    root_l(root_l), root_r(root_r), roots(1),
     tree(1, {0LL, 0, 0}) {}
   void update(int idx, ll change, int version) {
     roots.push_back(update_impl(idx, change, root_l,

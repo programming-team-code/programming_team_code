@@ -6,12 +6,12 @@ struct sum_adj {
   vector<ll> sum, sum_ch;
   vi p;
   //! @param adj undirected, unrooted tree
-  //! @param a_sum a_sum[v] = initial number for node v
+  //! @param sum sum[v] = initial number for node v
   //! @time O(n)
   //! @space various O(n) vectors are allocated; recursion
   //! stack for dfs is O(n)
-  sum_adj(const vector<vi>& adj, const vector<ll>& a_sum):
-    n(sz(a_sum)), sum(a_sum), sum_ch(n), p(n, -1) {
+  sum_adj(const vector<vi>& adj, const vector<ll>& sum):
+    n(sz(sum)), sum(sum), sum_ch(n), p(n, -1) {
     auto dfs = [&](auto&& self, int v) -> void {
       for (int u : adj[v])
         if (u != p[v])

@@ -18,8 +18,8 @@ template<class F> struct edge_cd {
   vector<vi> adj;
   F f;
   vi sub_sz;
-  edge_cd(const vector<vi>& a_adj, F a_f):
-    adj(a_adj), f(a_f), sub_sz(sz(adj)) {
+  edge_cd(const vector<vi>& adj, F f):
+    adj(adj), f(f), sub_sz(sz(adj)) {
     dfs(0, sz(adj));
   }
   int find_cent(int v, int p, int siz) {
