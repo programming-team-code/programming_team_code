@@ -22,13 +22,13 @@ template<class T, class F> struct tree_inc {
     for (s[i += n] = val; i /= 2;)
       s[i] = op(s[2 * i], s[2 * i + 1]);
   }
-  T go(int& l, int r) {
+  T nxt(int& l, int r) {
     int lg = __lg(min(l & -l, r - l + 1));
     return s[exchange(l, l + (1 << lg)) >> lg];
   }
   T query(int l, int r) { // [l, r]
-    T res = go(l += n, r += n);
-    while (l <= r) res = op(res, go(l, r));
+    T res = nxt(l += n, r += n);
+    while (l <= r) res = op(res, nxt(l, r));
     return res;
   }
 };
