@@ -10,10 +10,10 @@ struct mode_query {
   //! @param a_a compressed array: 0 <= a_a[i] < n
   //! @time O(n * sqrt(n))
   //! @space O(n)
-  mode_query(const vi& a_a):
-    n(sz(a_a)), a(a_a), cnt(n), index_into_index(n),
-    index(n), mode_blocks((n + b - 1) / b,
-                vector<pii>((n + b - 1) / b)) {
+  mode_query(const vi& a):
+    n(sz(a)), a(a), cnt(n), index_into_index(n), index(n),
+    mode_blocks((n + b - 1) / b,
+      vector<pii>((n + b - 1) / b)) {
     rep(i, 0, n) {
       index_into_index[i] = sz(index[a[i]]);
       index[a[i]].push_back(i);

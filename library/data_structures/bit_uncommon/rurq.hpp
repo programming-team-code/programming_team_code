@@ -4,7 +4,7 @@
 struct bit_rurq {
   int n;
   BIT bit1 = {0}, bit2 = {0};
-  bit_rurq(int a_n): n(a_n), bit1(n), bit2(n) {}
+  bit_rurq(int n): n(n), bit1(n), bit2(n) {}
   bit_rurq(vector<ll> a): n(sz(a)) {
     adjacent_difference(all(a), begin(a));
     bit1 = {a};
