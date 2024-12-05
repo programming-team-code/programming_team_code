@@ -7,7 +7,7 @@ struct mode_query {
   vector<vi> index;
   vector<vector<pii>>
     mode_blocks; //!< {mode, cnt} of range of blocks
-  //! @param a_a compressed array: 0 <= a_a[i] < n
+  //! @param a compressed array: 0 <= a[i] < n
   //! @time O(n * sqrt(n))
   //! @space O(n)
   mode_query(const vi& a):
