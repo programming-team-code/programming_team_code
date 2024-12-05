@@ -23,7 +23,7 @@ template<class T, class F> struct RMQ {
   }
   T query(int l, int r) { // [l, r)
     assert(l < r);
-    int lg = __lg(r - l);
+    int l = __lg(r - l);
     return op(dp[lg][l], dp[lg][r - (1 << lg)]);
   }
 };
