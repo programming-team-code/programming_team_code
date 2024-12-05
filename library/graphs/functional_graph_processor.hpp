@@ -18,7 +18,7 @@ struct func_graph {
   };
   vector<node> t;
   vector<vi> cycle;
-  func_graph(const vi &a): t(sz(a)) {
+  func_graph(const vi& a): t(sz(a)) {
     vi state(sz(a));
     rep(i, 0, sz(a)) {
       if (state[i] == 0) {
