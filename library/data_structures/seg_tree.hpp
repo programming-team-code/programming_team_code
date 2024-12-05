@@ -11,21 +11,21 @@
 template<class T, class F> struct tree {
   int n;
   T unit;
-  F f;
+  F op;
   vector<T> s;
-  tree(int n, T unit, F f):
-    n(n), unit(unit), f(f), s(2 * n, unit) {}
+  tree(int n, T unit, F op):
+    n(n), unit(unit), op(op), s(2 * n, unit) {}
 #include "seg_tree_uncommon/tree_vector_constructor.hpp"
   void update(int i, T val) {
     for (s[i += n] = val; i /= 2;)
-      s[i] = f(s[2 * i], s[2 * i + 1]);
+      s[i] = op(s[2 * i], s[2 * i + 1]);
   }
   T query(int l, int r) { // [l, r)
     T x = unit, y = unit;
     for (l += n, r += n; l < r; l /= 2, r /= 2) {
-      if (l % 2) x = f(x, s[l++]);
-      if (r % 2) y = f(s[--r], y);
+      if (l % 2) x = op(x, s[l++]);
+      if (r % 2) y = op(s[--r], y);
     }
-    return f(x, y);
+    return op(x, y);
   }
 };
