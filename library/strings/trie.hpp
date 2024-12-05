@@ -7,8 +7,7 @@ struct trie {
     array<int, cnt_let> next;
     int cnt_words = 0, par = -1;
     char ch;
-    node(int a_par = -1, char a_ch = '#'):
-      par(a_par), ch(a_ch) {
+    node(int par = -1, char ch = '#'): par(par), ch(ch) {
       fill(all(next), -1);
     }
   };

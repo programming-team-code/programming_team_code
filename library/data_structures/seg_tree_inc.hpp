@@ -12,8 +12,8 @@ template<class T, class F> struct tree_inc {
   int n;
   F f;
   vector<T> s;
-  tree_inc(const vector<T>& a, F a_f):
-    n(sz(a)), f(a_f), s(2 * n) {
+  tree_inc(const vector<T>& a, F f):
+    n(sz(a)), f(f), s(2 * n) {
     rep(i, 0, n) s[i + n] = a[i];
     for (int i = n - 1; i > 0; i--)
       s[i] = f(s[2 * i], s[2 * i + 1]);

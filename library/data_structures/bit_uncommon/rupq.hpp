@@ -3,7 +3,7 @@
 struct bit_rupq {
   int n;
   BIT bit = {0};
-  bit_rupq(int a_n): n(a_n), bit(n) {}
+  bit_rupq(int n): n(n), bit(n) {}
   bit_rupq(vector<ll> a): n(sz(a)) {
     adjacent_difference(all(a), begin(a));
     bit = {a};

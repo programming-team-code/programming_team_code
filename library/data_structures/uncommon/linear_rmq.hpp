@@ -16,8 +16,8 @@ template<class T, class F> struct linear_rmq {
   F cmp;
   vi head;
   vector<array<int, 2>> t;
-  linear_rmq(const vector<T>& a_a, F a_cmp):
-    a(a_a), cmp(a_cmp), head(sz(a) + 1), t(sz(a)) {
+  linear_rmq(const vector<T>& a, F cmp):
+    a(a), cmp(cmp), head(sz(a) + 1), t(sz(a)) {
     vi st{-1};
     for (int i = 0; i <= sz(a); i++) {
       int prev = -1;

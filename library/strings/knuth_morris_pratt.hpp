@@ -11,7 +11,7 @@
 template<class T> struct KMP {
   T t;
   vi pi;
-  KMP(const T& a_t): t(a_t), pi(prefix_function(t)) {}
+  KMP(const T& t): t(t), pi(prefix_function(t)) {}
   vector<bool> find_str(const T& s) {
     vector<bool> is_m(sz(s));
     int j = 0;

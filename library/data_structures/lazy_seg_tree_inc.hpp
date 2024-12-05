@@ -4,7 +4,7 @@ ll op_inc(ll vl, ll vr) { return vl + vr; }
 struct seg_tree_inc {
   int n;
   vector<ll> tree, lazy;
-  seg_tree_inc(int a_n): n(a_n), tree(2 * n), lazy(n) {}
+  seg_tree_inc(int n): n(n), tree(2 * n), lazy(n) {}
   seg_tree_inc(const vi& a):
     n(sz(a)), tree(2 * n), lazy(n) {
     int pw2 = bit_ceil(size(a));

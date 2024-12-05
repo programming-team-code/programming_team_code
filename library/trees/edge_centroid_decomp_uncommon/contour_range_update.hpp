@@ -10,13 +10,12 @@ struct contour_range_update {
   vector<vector<array<int, 3>>> info;
   vector<array<bit_rupq, 2>> bits;
   //! @param adj unrooted, undirected tree
-  //! @param a_a a_a[v] = initial number for node v
+  //! @param a a[v] = initial number for node v
   //! @time O(n log1.5 n)
   //! @space O(n log1.5 n) for `info` and `bits`
   contour_range_update(const vector<vi>& adj,
-    const vector<ll>& a_a):
-    n(sz(a_a)), a(a_a), sum_a(adj, vector<ll>(n)),
-    info(n) {
+    const vector<ll>& a):
+    n(sz(a)), a(a), sum_a(adj, vector<ll>(n)), info(n) {
     edge_cd(adj,
       [&](const vector<vi>& cd_adj, int cent, int split) {
         array<int, 2> mx_d = {0, 0};

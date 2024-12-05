@@ -9,7 +9,7 @@ template<class T, class F> struct deq {
   using dt = array<T, 2>;
   F op;
   vector<dt> l, r;
-  deq(const vector<T>& a, F a_op): op(a_op) {
+  deq(const vector<T>& a, F op): op(op) {
     rebuild(a, sz(a) / 2);
   }
   T query() {

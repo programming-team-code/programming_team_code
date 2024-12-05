@@ -12,7 +12,7 @@
 template<class T, class F> struct disjoint_rmq_inc {
   vector<vector<T>> dp;
   F op;
-  disjoint_rmq_inc(const vector<T>& a, F a_op): op(a_op) {
+  disjoint_rmq_inc(const vector<T>& a, F op): op(op) {
     for (int len = 1, n = sz(a); len <= n; len *= 2) {
       dp.emplace_back(n);
       for (int l = 0; l < n; l += 2 * len) {

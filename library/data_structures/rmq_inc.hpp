@@ -13,7 +13,7 @@
 template<class T, class F> struct rmq_inc {
   vector<vector<T>> dp;
   F op;
-  rmq_inc(const vector<T>& a, F a_op): dp(1, a), op(a_op) {
+  rmq_inc(const vector<T>& a, F op): dp(1, a), op(op) {
     for (int i = 0; (2 << i) <= sz(a); i++) {
       dp.emplace_back(sz(a) - (2 << i) + 1);
       ranges::transform(dp[i], dp[i] | views::drop(1 << i),

@@ -13,8 +13,8 @@ template<class T, class F> struct tree {
   T unit;
   F f;
   vector<T> s;
-  tree(int a_n, T a_unit, F a_f):
-    n(a_n), unit(a_unit), f(a_f), s(2 * n, unit) {}
+  tree(int n, T unit, F f):
+    n(n), unit(unit), f(f), s(2 * n, unit) {}
 #include "seg_tree_uncommon/tree_vector_constructor.hpp"
   void update(int i, T val) {
     for (s[i += n] = val; i /= 2;)
