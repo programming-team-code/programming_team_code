@@ -2,7 +2,6 @@
 -Wextra
 -Wunused
 -Wpedantic
--Wshadow
 -Wlogical-op
 -Wformat=2
 -Wfloat-equal
