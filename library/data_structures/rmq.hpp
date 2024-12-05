@@ -11,19 +11,19 @@
 //! @time O(nlogn + q)
 //! @space O(nlogn)
 // NOLINTNEXTLINE(readability-identifier-naming)
-template <class T, class F> struct RMQ {
+template<class T, class F> struct RMQ {
   vector<vector<T>> dp;
   F op;
-  RMQ(const vector<T>& a, F op) : dp(1, a), op(op) {
+  RMQ(const vector<T>& a, F op): dp(1, a), op(op) {
     for (int i = 0; (2 << i) <= sz(a); i++) {
       dp.emplace_back(sz(a) - (2 << i) + 1);
       ranges::transform(dp[i], dp[i] | views::drop(1 << i),
-                        begin(dp[i + 1]), op);
+        begin(dp[i + 1]), op);
     }
   }
-  T query(int l, int r) {  // [l, r)
+  T query(int l, int r) { // [l, r)
     assert(l < r);
-    int l = __lg(r - l);
-    return op(dp[l][l], dp[l][r - (1 << l)]);
+    int lg = __lg(r - l);
+    return op(dp[lg][l], dp[lg][r - (1 << lg)]);
   }
 };
