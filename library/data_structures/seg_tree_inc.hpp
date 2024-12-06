@@ -8,6 +8,10 @@
 //! @endcode
 //! @time O(n + q log n)
 //! @space O(n)
+int nxt(int& l, int r) {
+  int lg = __lg(min(l & -l, r - l + 1));
+  return exchange(l, l + (1 << lg)) >> lg;
+}
 template<class T, class F> struct tree_inc {
   int n;
   F op;
@@ -21,10 +25,6 @@ template<class T, class F> struct tree_inc {
   void update(int i, T val) {
     for (s[i += n] = val; i /= 2;)
       s[i] = op(s[2 * i], s[2 * i + 1]);
-  }
-  int nxt(int& l, int r) {
-    int lg = __lg(min(l & -l, r - l + 1));
-    return exchange(l, l + (1 << lg)) >> lg;
   }
   T query(int l, int r) { // [l, r]
     T res = s[nxt(l += n, r += n)];
