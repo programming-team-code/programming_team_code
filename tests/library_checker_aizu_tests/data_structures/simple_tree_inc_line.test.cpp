@@ -7,7 +7,7 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n, q;
   cin >> n >> q;
-  tree_inc st(n, array<int, 2>{-1, -1},
+  tree_inc st(n, array<int, 2>{},
     [&](const array<int, 2>& l,
       const array<int, 2>& r) -> array<int, 2> {
       return {int(1LL * l[0] * r[0] % mod),
@@ -16,7 +16,7 @@ int main() {
   for (int i = 0; i < n; i++) {
     int a, b;
     cin >> a >> b;
-    st.update(i, {a, b});
+    st.update(i, array<int, 2>{a, b});
   }
   while (q--) {
     int type;
