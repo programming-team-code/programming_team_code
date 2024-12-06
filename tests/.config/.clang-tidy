@@ -89,7 +89,6 @@ Checks: >
     readability-function-size,
     readability-misleading-indentation,
     readability-misplaced-array-index,
-    readability-named-parameter,
     readability-string-compare,
     readability-suspicious-call-argument,
     readability-use-anyofallof,
