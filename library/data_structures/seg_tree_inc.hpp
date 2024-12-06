@@ -1,11 +1,10 @@
 #pragma once
 //! https://codeforces.com/blog/entry/118682
 //! @code
-//!   tree_inc st3(a, ranges::min);
-//!   tree_inc st4(a, [&](int x, int y) -> int {
+//!   tree_inc st3(n, 0, ranges::min);
+//!   tree_inc st4(n, 0, [&](int x, int y) -> int {
 //!     return min(x, y);
 //!   });
-//!   rep(i, 0, n) st3.update(i, a[i]);
 //! @endcode
 //! @time O(n + q log n)
 //! @space O(n)
@@ -15,9 +14,9 @@ int nxt(int& l, int r) {
 }
 template<class T, class F> struct tree_inc {
   int n;
-  F op;
   vector<T> s;
-  tree_inc(int n, F op): n(n), op(op), s(2 * n) {}
+  F op;
+  tree_inc(int n, T x, F op): n(n), s(2 * n, x), op(op) {}
   void update(int i, T val) {
     for (s[i += n] = val; i /= 2;)
       s[i] = op(s[2 * i], s[2 * i + 1]);
