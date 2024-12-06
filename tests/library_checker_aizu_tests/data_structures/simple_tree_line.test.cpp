@@ -7,15 +7,17 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n, q;
   cin >> n >> q;
-  vector<array<int, 2>> init(n);
-  for (int i = 0; i < n; i++)
-    cin >> init[i][0] >> init[i][1];
-  tree st(init, {1, 0},
+  tree st(n, array<int, 2>{1, 0},
     [&](const array<int, 2>& l,
       const array<int, 2>& r) -> array<int, 2> {
       return {int(1LL * l[0] * r[0] % mod),
         int((1LL * r[0] * l[1] + r[1]) % mod)};
     });
+  for (int i = 0; i < n; i++) {
+    int a, b;
+    cin >> a >> b;
+    st.update(i, {a, b});
+  }
   while (q--) {
     int type;
     cin >> type;
