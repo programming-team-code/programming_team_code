@@ -14,7 +14,7 @@ template<class T> struct sa_query {
   sa_query(const T& s, const vi& sa, const vi& sa_inv,
     const vi& lcp):
     n(sz(s)), s(s), sa(sa), sa_inv(sa_inv), lcp(lcp),
-    rmq(lcp, [](int x, int y) { return min(x, y); }) {}
+    rmq(lcp, ranges::min) {}
   //! returns max integer k such that
   //!   s.substr(i1, k) == s.substr(i2, k)
   //! @time O(1)
