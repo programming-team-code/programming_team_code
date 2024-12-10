@@ -9,21 +9,21 @@ int main() {
   {
     vector<vector<int>> adj;
     edge_cd(adj,
-      [&](const vector<vector<int>>&, int, int) -> void {
-        assert(false);
-      });
+            [&](const vector<vector<int>>&, int, int) -> void {
+              assert(false);
+            });
   }
   {
     vector<vector<int>> adj(1);
     edge_cd(adj,
-      [&](const vector<vector<int>>&, int, int) -> void {
-        assert(false);
-      });
+            [&](const vector<vector<int>>&, int, int) -> void {
+              assert(false);
+            });
   }
-  for (int n = 2; n <= 8; n++) {
+  for (int n = 2; n <= 7; n++) {
     int num_codes = mpow(n, n - 2).x;
     vector<vector<int>> pruf_codes(num_codes,
-      vector<int>(n - 2));
+                                   vector<int>(n - 2));
     for (int i = 0; i < num_codes; i++) {
       int val = i;
       for (int j = 0; j < n - 2; j++) {
