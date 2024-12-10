@@ -1,7 +1,5 @@
 #define PROBLEM \
   "https://judge.yosupo.jp/problem/incremental_scc"
-// to speed up test
-#undef _GLIBCXX_DEBUG
 #include "../template.hpp"
 #include "../../../kactl/content/data-structures/UnionFind.h"
 #include "../../../library/graphs/strongly_connected_components/offline_incremental_scc.hpp"
