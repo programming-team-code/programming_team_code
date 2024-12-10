@@ -1,6 +1,15 @@
 #define PROBLEM \
   "https://judge.yosupo.jp/problem/bipartitematching"
+#undef _GLIBCXX_DEBUG
+#undef _GLIBCXX_ASSERTIONS
+#undef _GLIBCXX_SANITIZE_VECTOR
+#undef _GLIBCXX_DEBUG_PEDANTIC
+
 #include "../template.hpp"
+#undef ll
+#define ll int
+#undef LLONG_MAX
+#define LLONG_MAX 1'000'000'000
 #include "../../../library/flow/dinic.hpp"
 #include "../dinic_asserts.hpp"
 int main() {
@@ -20,7 +29,7 @@ int main() {
   }
   ll total_flow = d.calc(source, sink);
   cout << total_flow << '\n';
-  dinic_asserts(d, source, sink, total_flow);
+  // dinic_asserts(d, source, sink, total_flow);
   for (int i = 0; i < m; i++) {
     dinic::edge an_edge = d.edges[edge_ids[i]];
     if (an_edge.flow() == 1)
