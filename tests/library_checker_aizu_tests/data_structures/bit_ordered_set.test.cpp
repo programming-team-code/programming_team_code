@@ -19,19 +19,25 @@ int main() {
   ranges::sort(compress);
   compress.erase(unique(all(compress)), end(compress));
   bit_inc bit(ssize(compress));
+  auto get_compressed_idx = [&](int val) -> int {
+    int l = 0, r = ssize(compress);
+    while (l + 1 < r) {
+      int m = (l + r) / 2;
+      if (compress[m] <= val) l = m;
+      else r = m;
+    }
+    return l;
+  };
   for (int i = 0; i < n; i++) {
-    int val = ranges::lower_bound(compress, init[i]) -
-      begin(compress);
+    int val = get_compressed_idx(init[i]);
     bit.update(val, 1);
   }
   for (auto [type, x] : query) {
     if (type == 0) {
-      x =
-        ranges::lower_bound(compress, x) - begin(compress);
+      x = get_compressed_idx(x);
       if (bit.query(x, x) == 0) bit.update(x, 1);
     } else if (type == 1) {
-      x =
-        ranges::lower_bound(compress, x) - begin(compress);
+      x = get_compressed_idx(x);
       if (bit.query(x, x) == 1) bit.update(x, -1);
     } else if (type == 2) {
       int res = bit.walk(x);
@@ -39,18 +45,15 @@ int main() {
         cout << -1 << '\n';
       else cout << compress[res] << '\n';
     } else if (type == 3) {
-      x =
-        ranges::lower_bound(compress, x) - begin(compress);
+      x = get_compressed_idx(x);
       cout << bit.query(x) << '\n';
     } else if (type == 4) {
-      x =
-        ranges::lower_bound(compress, x) - begin(compress);
+      x = get_compressed_idx(x);
       int res = bit.prev(x);
       if (res == -1) cout << -1 << '\n';
       else cout << compress[res] << '\n';
     } else {
-      x =
-        ranges::lower_bound(compress, x) - begin(compress);
+      x = get_compressed_idx(x);
       int res = bit.next(x);
       if (res == ssize(bit.s)) cout << -1 << '\n';
       else cout << compress[res] << '\n';
