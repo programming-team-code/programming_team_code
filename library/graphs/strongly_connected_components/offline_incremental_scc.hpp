@@ -11,13 +11,13 @@
 //! @time O((n + m) log m)
 //! @space O(n + m)
 vi offline_incremental_scc(vector<array<int, 2>> eds,
-  int n) {
+                           int n) {
   int m = sz(eds);
   vi ids(n, -1), joins(m, m), idx(m);
   iota(all(idx), 0);
   auto divide_and_conquer = [&](auto&& self, auto el,
-                              auto er, int tl, int tr) {
-    int mid = tl + (tr - tl) / 2;
+                                auto er, int tl, int tr) {
+    int mid = midpoint(tl, tr);
     vi vs;
     vector<vi> adj;
     for (auto it = el; it != er; it++) {

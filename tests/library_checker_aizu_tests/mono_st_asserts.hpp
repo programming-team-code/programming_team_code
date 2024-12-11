@@ -6,7 +6,7 @@
 #include "../../library/data_structures/uncommon/linear_rmq.hpp"
 tuple<int, vector<vector<int>>, vector<int>>
 min_cartesian_tree(const vector<int>& a,
-  const vector<int>& l, const vector<int>& r) {
+                   const vector<int>& l, const vector<int>& r) {
   int n = sz(a);
   assert(sz(l) == n && sz(r) == n);
   auto is_node = [&](int i) -> bool {
@@ -24,7 +24,7 @@ min_cartesian_tree(const vector<int>& a,
       root = i;
     } else if (is_node(i)) {
       bool le_par =
-        (l[i] >= 0 && (r[i] == n || a[l[i]] > a[r[i]]));
+          (l[i] >= 0 && (r[i] == n || a[l[i]] > a[r[i]]));
       adj[to_min[le_par ? l[i] : r[i]]].push_back(i);
     }
   }
@@ -40,42 +40,17 @@ void mono_st_asserts(const vector<int>& a) {
   for (auto cmp : compares) {
     vector<int> init(n);
     iota(begin(init), end(init), 0);
-    RMQ rmq(init, [&](int x, int y) -> int {
-      return cmp(a[x], a[y]) ? x : y;
-    });
     linear_rmq lin_rmq(a, cmp);
     auto l = mono_st(a, cmp), r = mono_range(l),
          p = cart_binary_tree(l);
     {
-      int iterations = 0;
-      queue<array<int, 3>> q;
-      q.push({0, n, -1}); // node_le, node_ri, parent
-      while (!empty(q)) {
-        auto [node_le, node_ri, node_par] = q.front();
-        q.pop();
-        if (node_le == node_ri) continue;
-        iterations++;
-        int idx_root = rmq.query(node_le, node_ri);
-        int idx_root_2 =
-          lin_rmq.query_idx(node_le, node_ri - 1);
-        assert(idx_root == idx_root_2);
-        assert(node_le <= idx_root && idx_root < node_ri);
-        assert(l[idx_root] == node_le - 1);
-        assert(r[idx_root] == node_ri);
-        assert(p[idx_root] == node_par);
-        q.push({node_le, idx_root, idx_root});
-        q.push({idx_root + 1, node_ri, idx_root});
-      }
-      assert(iterations == n);
-    }
-    {
       vector old_way_ri =
-        mono_st<int>({rbegin(a), rend(a)},
-          [&](int x, int y) { return !cmp(y, x); });
+          mono_st<int>({rbegin(a), rend(a)},
+                       [&](int x, int y) { return !cmp(y, x); });
       reverse(begin(old_way_ri), end(old_way_ri));
       transform(begin(old_way_ri), end(old_way_ri),
-        begin(old_way_ri),
-        [&](int i) { return sz(a) - i - 1; });
+                begin(old_way_ri),
+                [&](int i) { return sz(a) - i - 1; });
       assert(r == old_way_ri);
     }
     int iterations = 0;
