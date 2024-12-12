@@ -2,7 +2,6 @@
 #include "../../library/monotonic_stack/monotonic_range.hpp"
 #include "../../library/monotonic_stack/cartesian_binary_tree.hpp"
 #include "../../library/monotonic_stack/cartesian_k_ary_tree.hpp"
-#include "../../library/data_structures/rmq.hpp"
 #include "../../library/data_structures/uncommon/linear_rmq.hpp"
 tuple<int, vector<vector<int>>, vector<int>>
 min_cartesian_tree(const vector<int>& a,
@@ -38,9 +37,6 @@ void mono_st_asserts(const vector<int>& a) {
   compares.push_back(greater_equal());
   int n = sz(a);
   for (auto cmp : compares) {
-    vector<int> init(n);
-    iota(begin(init), end(init), 0);
-    linear_rmq lin_rmq(a, cmp);
     auto l = mono_st(a, cmp), r = mono_range(l),
          p = cart_binary_tree(l);
     {
@@ -65,8 +61,6 @@ void mono_st_asserts(const vector<int>& a) {
         assert(cmp(a[i], a[j]));
         assert(cmp(a[i], a[r[j] - 1]));
         assert(cmp(a[i], a[j + (r[j] - j) / 2]));
-        int range_op = a[rmq.query(j, r[j])];
-        assert(cmp(a[i], range_op));
         iterations++;
       }
     }

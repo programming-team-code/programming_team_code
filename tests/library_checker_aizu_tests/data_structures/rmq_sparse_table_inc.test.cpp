@@ -7,8 +7,7 @@ int main() {
   cin >> n >> q;
   vector<int> a(n);
   for (int i = 0; i < n; i++) cin >> a[i];
-  rmq_inc rmq(a,
-    [&](auto& x, auto& y) { return min(x, y); });
+  rmq_inc rmq(a, ranges::min);
   while (q--) {
     int l, r;
     cin >> l >> r;
