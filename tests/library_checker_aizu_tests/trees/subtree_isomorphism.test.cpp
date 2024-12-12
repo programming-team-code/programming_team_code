@@ -1,5 +1,6 @@
 #define PROBLEM \
   "https://judge.yosupo.jp/problem/rooted_tree_isomorphism_classification"
+// as std::map insert takes O(n) time in debug mode
 #undef _GLIBCXX_DEBUG
 #include "../template.hpp"
 #include "../../../library/trees/subtree_isomorphism.hpp"
