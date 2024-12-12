@@ -1,5 +1,6 @@
 #define PROBLEM \
   "https://judge.yosupo.jp/problem/rooted_tree_isomorphism_classification"
+#undef _GLIBCXX_DEBUG
 #include "../template.hpp"
 #include "../../../library/trees/subtree_isomorphism.hpp"
 int main() {
@@ -18,11 +19,11 @@ int main() {
     adj_rooted[p].push_back(i);
   }
   auto [num_distinct_subtrees, iso_id] =
-    subtree_iso(adj_unrooted);
+      subtree_iso(adj_unrooted);
   auto [num_distinct_subtrees_rooted, iso_id_rooted] =
-    subtree_iso(adj_rooted);
+      subtree_iso(adj_rooted);
   assert(
-    num_distinct_subtrees == num_distinct_subtrees_rooted);
+      num_distinct_subtrees == num_distinct_subtrees_rooted);
   cout << num_distinct_subtrees << '\n';
   for (int i = 0; i < n; i++) {
     cout << iso_id[i] << " ";
