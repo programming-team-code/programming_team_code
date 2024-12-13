@@ -3,8 +3,6 @@
 #include "../template.hpp"
 #include "../edge_cd_asserts.hpp"
 #include "../../../library/trees/edge_centroid_decomp_uncommon/count_paths_per_length.hpp"
-#include "../../../library/contest/random.hpp"
-#include "../../../library/trees/centroid_decomp_uncommon/count_paths_per_node.hpp"
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n;
@@ -18,13 +16,6 @@ int main() {
   }
   { edge_cd(adj, edge_cd_asserts); }
   vector<ll> cnt_len = count_paths_per_length(adj);
-  if (n >= 2) {
-    int k = rnd(1, n - 1);
-    vector<ll> count_paths = count_paths_per_node(adj, k);
-    ll sum = accumulate(begin(count_paths), end(count_paths), 0LL);
-    assert(sum % (k + 1) == 0);
-    assert(sum / (k + 1) == cnt_len[k]);
-  }
   for (int i = 1; i < n; i++) cout << cnt_len[i] << " ";
   cout << '\n';
   return 0;

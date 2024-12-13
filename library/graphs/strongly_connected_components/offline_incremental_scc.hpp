@@ -13,26 +13,25 @@
 vi offline_incremental_scc(vector<array<int, 2>> eds,
                            int n) {
   int m = sz(eds);
-  vi ids(n, -1), joins(m, m), idx(m);
+  vi ids(n, -1), joins(m, m), idx(m), vs(n), scc_id;
   iota(all(idx), 0);
   auto divide_and_conquer = [&](auto&& self, auto el,
                                 auto er, int tl, int tr) {
-    int mid = midpoint(tl, tr);
-    vi vs;
+    int mid = midpoint(tl, tr), p = 0;
     vector<vi> adj;
     for (auto it = el; it != er; it++) {
       auto& [u, v] = eds[*it];
       for (int w : {u, v}) {
         if (ids[w] != -1) continue;
-        ids[w] = sz(vs);
-        vs.push_back(w);
+        ids[w] = p;
+        vs[p++] = w;
         adj.emplace_back();
       }
       u = ids[u], v = ids[v];
       if (*it <= mid) adj[u].push_back(v);
     }
-    for (int v : vs) ids[v] = -1;
-    auto scc_id = sccs(adj).scc_id;
+    rep(i, 0, p) ids[vs[i]] = -1;
+    scc_id = sccs(adj).scc_id;
     auto split = partition(el, er, [&](int i) {
       return scc_id[eds[i][0]] == scc_id[eds[i][1]];
     });
@@ -43,9 +42,7 @@ vi offline_incremental_scc(vector<array<int, 2>> eds,
       u = scc_id[u], v = scc_id[v];
     }
     // deallocate to avoid O(m log m) memory
-    vi().swap(vs);
     vector<vi>().swap(adj);
-    vi().swap(scc_id);
     self(self, el, split, tl, mid);
     self(self, split, er, mid, tr);
   };
