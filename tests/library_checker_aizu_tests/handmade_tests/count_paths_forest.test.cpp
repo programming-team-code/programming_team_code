@@ -6,8 +6,9 @@
 #include "../../../library/data_structures/dsu/dsu_restorable.hpp"
 #include "../../../library/trees/tree_lift/tree_lift.hpp"
 #include "../../../library/trees/centroid_decomp_uncommon/count_paths_per_length.hpp"
+#include "../cd_asserts.hpp"
 vector<vector<ll>> naive(const vector<vector<int>>& adj,
-  dsu_restorable& dsu) {
+                         dsu_restorable& dsu) {
   tree_lift tl(adj);
   int n = sz(adj);
   vector<vector<ll>> cnts_naive(n + 1, vector<ll>(n, 0));
@@ -37,16 +38,17 @@ int main() {
         adj[v].push_back(u);
       }
     }
+    cd_asserts(adj);
     vector<vector<ll>> cnts_naive = naive(adj, dsu);
     for (int k = 1; k <= n; k++)
       assert(
-        count_paths_per_node(adj, k) == cnts_naive[k]);
+          count_paths_per_node(adj, k) == cnts_naive[k]);
     vector<ll> num_paths_len = count_paths_per_length(adj);
     for (int k = 1; k < n; k++) {
       vector<ll> count_paths =
-        count_paths_per_node(adj, k);
+          count_paths_per_node(adj, k);
       ll total_paths = accumulate(begin(count_paths),
-        end(count_paths), 0LL);
+                                  end(count_paths), 0LL);
       assert(total_paths % (k + 1) == 0);
       total_paths /= k + 1;
       assert(num_paths_len[k] == total_paths);
