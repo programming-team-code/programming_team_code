@@ -18,21 +18,21 @@ vi offline_incremental_scc(vector<array<int, 2>> eds,
   vector<vi> adj;
   auto divide_and_conquer = [&](auto&& self, auto el,
                                 auto er, int tl, int tr) {
-    int mid = midpoint(tl, tr), p = 0;
+    adj.clear();
+    int mid = midpoint(tl, tr);
     for (auto it = el; it != er; it++) {
       auto& [u, v] = eds[*it];
       for (int w : {u, v}) {
         if (ids[w] != -1) continue;
-        ids[w] = p;
-        vs[p++] = w;
+        ids[w] = sz(adj);
+        vs[sz(adj)] = w;
         adj.emplace_back();
       }
       u = ids[u], v = ids[v];
       if (*it <= mid) adj[u].push_back(v);
     }
-    rep(i, 0, p) ids[vs[i]] = -1;
+    rep(i, 0, sz(adj)) ids[vs[i]] = -1;
     scc_id = sccs(adj).scc_id;
-    adj.clear();
     auto split = partition(el, er, [&](int i) {
       return scc_id[eds[i][0]] == scc_id[eds[i][1]];
     });
