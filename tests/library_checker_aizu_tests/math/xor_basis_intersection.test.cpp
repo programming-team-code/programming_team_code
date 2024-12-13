@@ -17,11 +17,10 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
   int t;
   cin >> t;
-  basis<int> basis1, basis2;
   while (t--) {
     int n;
     cin >> n;
-    basis1.b.clear();
+    basis<int> basis1;
     for (int i = 0; i < n; i++) {
       int val;
       cin >> val;
@@ -30,7 +29,7 @@ int main() {
     check_condition(basis1);
     int m;
     cin >> m;
-    basis2.b.clear();
+    basis<int> basis2;
     for (int j = 0; j < m; j++) {
       int val;
       cin >> val;

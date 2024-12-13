@@ -13,6 +13,7 @@ int main() {
   vector<array<int, 2>> eds(m);
   for (auto& [u, v] : eds) cin >> u >> v;
   auto joins = offline_incremental_scc(eds, n);
+  // assert joins[i] == -1 for self-edges
   for (int t = 0; t < m; t++)
     assert((eds[t][0] == eds[t][1]) == (joins[t] == -1));
   vector<int> order(m);
