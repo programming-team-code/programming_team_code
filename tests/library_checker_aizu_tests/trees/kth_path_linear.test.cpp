@@ -2,6 +2,8 @@
   "https://judge.yosupo.jp/problem/jump_on_tree"
 #include "../template.hpp"
 #include "../../../library/trees/linear_kth_path.hpp"
+#include "../../../library/trees/lca_rmq/lca_rmq.hpp"
+#include "../compress_tree_asserts.hpp"
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n, q;
@@ -14,6 +16,8 @@ int main() {
     adj[v].push_back(u);
   }
   linear_kth_path lin_kth_path(adj);
+  LCA lc(adj);
+  compress_tree_asserts(adj, lc);
   while (q--) {
     int u, v, k;
     cin >> u >> v >> k;
