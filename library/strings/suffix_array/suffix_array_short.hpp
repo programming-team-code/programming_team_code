@@ -2,12 +2,15 @@
 //! https://github.com/atcoder/ac-library/blob/master/atcoder/string.hpp
 //! @code
 //!   // requires s[i]>=0
-//!   auto [sa2, sa_inv2, lcp2] = sa_short(s);
+//!   string s2;
+//!   auto [sa2, sa_inv2, lcp2] = sa_short(s2);
+//!   vi s_vec2;
+//!   auto [sa3, sa_inv3, lcp3] = sa_short(s_vec2);
 //! @endcode
 //! runs in ~1.5s for 5e5
 //! @time O(n * log^2(n))
 //! @space O(n)
-template<class T> array<vi, 3> sa_short(const T& s) {
+template <class T> array<vi, 3> sa_short(const T& s) {
   int n = sz(s);
   vi sa(n), sa_inv(all(s)), lcp(n - 1);
   iota(all(sa), 0);
@@ -19,7 +22,7 @@ template<class T> array<vi, 3> sa_short(const T& s) {
     ranges::sort(sa, {}, proj);
     sa_inv[sa[0]] = 0;
     rep(i, 1, n) sa_inv[sa[i]] =
-      sa_inv[sa[i - 1]] + (proj(sa[i - 1]) != proj(sa[i]));
+        sa_inv[sa[i - 1]] + (proj(sa[i - 1]) != proj(sa[i]));
   }
   int sz = 0;
   rep(i, 0, n) {

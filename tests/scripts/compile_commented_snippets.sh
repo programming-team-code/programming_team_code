@@ -17,21 +17,18 @@ git submodule update
 	echo "int main() {"
 	echo "vi a,b,subset;"
 	echo "vl left,bottom,s_vec,t_vec;"
-	echo "vector<vi> adj;"
-	echo "vector<vector<pair<int,ll>>> adj_w;"
 	echo "vector<pii> edges;"
 	echo "vector<array<int,2>> eds;"
 	echo "vector<array<int,3>> w_eds;"
 	echo "vector<mint> rhs;"
 	echo "vector<vector<mint>> mat;"
 	echo "vector<vector<bool>> grid;"
-	echo "string s,t;"
 	echo "int n,m,k,tl,tr,l,r,l1,r1,l2,r2,s_l,s_r,root_l,root_r,source,sink,total_flow,bccid,u,v,rsz,cols,cap;"
 } >entire_library_without_main
 
 {
 	cat entire_library_without_main
-	sed --quiet '/\/\/! @code$/,/\/\/! @endcode$/{//!p;}' entire_library_without_main | sed 's/\/\/!//'
+	sed --quiet '/\/\/! @code$/,/\/\/! @endcode$/p' entire_library_without_main | sed 's/\/\/! @code/{/' | sed 's/\/\/! @endcode/}/' | sed 's/\/\/!//'
 	echo "return 0;"
 	echo "}"
 } >entire_library.cpp
