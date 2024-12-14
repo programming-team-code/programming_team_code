@@ -1,8 +1,8 @@
 #pragma once
 //! https://github.com/kth-competitive-programming/kactl/blob/main/content/data-structures/SegmentTree.h
 //! @code
-//!   tree st0(n, INT_MAX, ranges::min);
-//!   tree st(n, INT_MAX, [&](int x, int y) -> int {
+//!   tree st1(n, INT_MAX, ranges::min);
+//!   tree st2(n, INT_MAX, [&](int x, int y) -> int {
 //!     return min(x, y);
 //!   });
 //! @endcode

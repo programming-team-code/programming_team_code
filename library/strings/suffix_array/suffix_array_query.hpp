@@ -3,12 +3,12 @@
 #include "../../data_structures/rmq.hpp"
 #include "find/match.hpp"
 //! @code
-//!   string s3;
-//!   auto [sa4, sa_inv4, lcp4] = get_sa(s3, 256);
-//!   sa_query saq(s, sa4, sa_inv4, lcp4);
-//!   vi s_vec3;
-//!   auto [sa5, sa_inv5, lcp5] = get_sa(s_vec3, 100'001);
-//!   sa_query saq2(s_vec3, sa5, sa_inv5, lcp5);
+//!   string s;
+//!   auto [sa, sa_inv, lcp] = get_sa(s, 256);
+//!   sa_query saq(s, sa, sa_inv, lcp);
+//!   vi s_vec;
+//!   auto [sa1, sa_inv1, lcp1] = sa_short(s_vec, 100'001);
+//!   sa_query saq(s_vec, sa1, sa_inv1, lcp1);
 //! @endcode
 template <class T> struct sa_query {
   int n;

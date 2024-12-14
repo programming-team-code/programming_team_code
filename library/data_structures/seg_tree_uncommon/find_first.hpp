@@ -1,7 +1,7 @@
 #pragma once
 //! @code
-//!   seg_tree st1(n);
-//!   st1.find_first(l, r, [&](ll x, int tl, int tr) ->
+//!   seg_tree st(n);
+//!   st.find_first(l, r, [&](ll x, int tl, int tr) ->
 //!   bool {
 //!   });
 //! @endcode

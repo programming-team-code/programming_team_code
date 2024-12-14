@@ -1,16 +1,15 @@
 #pragma once
 //! https://cp-algorithms.com/graph/bridge-searching.html
 //! @code
-//!   vector<vector<pii>> adj_br(n);
+//!   vector<vector<pii>> adj(n);
 //!   rep (i, 0, m) {
 //!     int u, v;
 //!     cin >> u >> v;
 //!     u--, v--;
-//!     adj_br[u].emplace_back(v, i);
-//!     adj_br[v].emplace_back(u, i);
+//!     adj[u].emplace_back(v, i);
+//!     adj[v].emplace_back(u, i);
 //!   }
-//!   auto [num_ccs, is_bridge, br_id] =
-//!     bridges(adj_br, m);
+//!   auto [num_ccs, is_bridge, br_id] = bridges(adj, m);
 //! @endcode
 //! is_bridge[edge id] = 1 iff bridge edge
 //! br_id[v] = id, 0<=id<num_ccs

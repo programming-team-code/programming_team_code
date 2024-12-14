@@ -1,6 +1,7 @@
 #pragma once
 //! https://github.com/foreverbell/acm-icpc-cheat-sheet/blob/master/src/graph-algorithm/hopcroft-karp.cpp
 //! @code
+//!   vector<vi> adj(lsz);
 //!   adj[l].push_back(r); // add edge l <-> r
 //!   auto [matching_size, to_r, to_l,
 //!     mvc_l, mvc_r] = hopcroft_karp(adj, rsz);

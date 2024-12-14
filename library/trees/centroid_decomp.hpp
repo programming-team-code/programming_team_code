@@ -1,5 +1,6 @@
 #pragma once
 //! @code
+//!   vector<vi> adj(n);
 //!   centroid(adj, [&](const vector<vi>& adj,
 //!     int cent, int par_cent) {
 //!   });

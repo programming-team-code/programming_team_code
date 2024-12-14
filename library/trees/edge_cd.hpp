@@ -3,6 +3,7 @@
 //! https://codeforces.com/blog/entry/120446
 //! https://youtu.be/wDwaMo5xa-k
 //! @code
+//!   vector<vi> adj(n);
 //!   edge_cd(adj, [&](const vector<vi>& adj,
 //!     int cent, int split) {
 //!     // subtrees of prefix [0, split) of adj[cent]

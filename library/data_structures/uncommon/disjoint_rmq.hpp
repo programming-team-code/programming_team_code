@@ -3,7 +3,7 @@
 //! Disjoint RMQ is like normal RMQ except
 //!   the 2 query ranges never overlap.
 //! @code
-//!   disjoint_rmq dis_rmq1(a, [&](int x, int y) {
+//!   disjoint_rmq rmq(a, [&](int x, int y) {
 //!     return 1LL*x*y%10;
 //!   });
 //! @endcode

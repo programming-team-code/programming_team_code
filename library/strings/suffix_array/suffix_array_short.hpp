@@ -2,10 +2,17 @@
 //! https://github.com/atcoder/ac-library/blob/master/atcoder/string.hpp
 //! @code
 //!   // requires s[i]>=0
+<<<<<<< HEAD
 //!   string s2;
 //!   auto [sa2, sa_inv2, lcp2] = sa_short(s2);
 //!   vi s_vec2;
 //!   auto [sa3, sa_inv3, lcp3] = sa_short(s_vec2);
+=======
+//!   string s;
+//!   auto [sa, sa_inv, lcp] = sa_short(s);
+//!   vi s_vec;
+//!   auto [sa1, sa_inv1, lcp1] = sa_short(s_vec);
+>>>>>>> dev
 //! @endcode
 //! runs in ~1.5s for 5e5
 //! @time O(n * log^2(n))
