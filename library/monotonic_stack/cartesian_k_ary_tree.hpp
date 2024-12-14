@@ -20,9 +20,9 @@
 //! p[5] = 9
 //!
 //! @code
-//!     auto l = mono_st(a, less()), p =
-//!     cart_k_ary_tree(a, l); // min cart tree auto l =
-//!     mono_st(a, greater()), p = cart_k_ary_tree(a, l);
+//!     auto le = mono_st(a, less()), p =
+//!     cart_k_ary_tree(a, le); // min cart tree auto le =
+//!     mono_st(a, greater()), p = cart_k_ary_tree(a, le);
 //!     // max cart tree bool is_node = (p[i] < i || a[i]
 //!     != a[p[i]]);
 //! @endcode

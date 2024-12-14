@@ -1,11 +1,8 @@
 #pragma once
 //! https://codeforces.com/blog/entry/118682
 //! @code
-//!   tree_inc st3(n, int{}, ranges::min);
-//!   tree_inc st4(n, pii{}, [&](pii x, pii y) -> pii {
-//!     return min(x, y);
-//!   });
-//!   rep(i, 0, n) st3.update(i, a[i]);
+//!   tree_inc st(n, int{}, ranges::min);
+//!   rep(i, 0, n) st.update(i, a[i]);
 //! @endcode
 //! @time O(n + q log n)
 //! @space O(n)

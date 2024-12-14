@@ -1,7 +1,7 @@
 #pragma once
 //! @code
-//!   seg_tree st2(n);
-//!   st2.find_last(l, r, [&](ll x, int tl, int tr) ->
+//!   seg_tree st(n);
+//!   st.find_last(l, r, [&](ll x, int tl, int tr) ->
 //!   bool {
 //!   });
 //! @endcode

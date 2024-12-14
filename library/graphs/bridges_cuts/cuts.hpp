@@ -1,16 +1,16 @@
 #pragma once
 //! https://cp-algorithms.com/graph/cutpoints.html
 //! @code
-//!   vector<vector<pii>> adj_c(n);
+//!   vector<vector<pii>> adj(n);
 //!   rep (i, 0, m) {
 //!     int u, v;
 //!     cin >> u >> v;
 //!     u--, v--;
 //!     //self edges not allowed
-//!     adj_c[u].emplace_back(v, i);
-//!     adj_c[v].emplace_back(u, i);
+//!     adj[u].emplace_back(v, i);
+//!     adj[v].emplace_back(u, i);
 //!   }
-//!   auto [num_bccs, is_cut, bcc_id] = cuts(adj_c, m);
+//!   auto [num_bccs, is_cut, bcc_id] = cuts(adj, m);
 //! @endcode
 //! is_cut[v] = 1 iff cut node
 //! bcc_id[edge id] = id, 0<=id<num_bccs

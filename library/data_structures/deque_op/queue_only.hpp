@@ -1,7 +1,7 @@
 #pragma once
 //! https://github.com/suisen-cp/cp-library-cpp/blob/main/library/datastructure/deque_aggregation.hpp
 //! @code
-//!   deq dq(a, [](auto x, auto y) {return min(x, y);});
+//!   deq dq(a, ranges::min);
 //! @endcode
 //! @time operations are O(1) ammortized
 //! @space O(n)

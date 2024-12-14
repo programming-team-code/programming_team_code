@@ -1,5 +1,6 @@
 #pragma once
 //! @code
+//!   vector<vi> adj(n);
 //!   auto cc_id = get_complement_graph_ccs(adj);
 //! @endcode
 //! 0<=cc_id[v]<number of connected components
