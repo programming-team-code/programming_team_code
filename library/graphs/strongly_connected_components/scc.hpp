@@ -7,25 +7,34 @@
 //! for each edge u -> v: scc_id[u] >= scc_id[v]
 //! @time O(n + m)
 //! @space O(n)
-struct sccs {
-  int num_sccs = 0;
-  vi scc_id;
-  sccs(const vector<vi>& adj): scc_id(sz(adj), -1) {
-    int n = sz(adj), timer = 1;
-    vi tin(n), st;
-    auto dfs = [&](auto&& self, int v) -> int {
-      int low = tin[v] = timer++, siz = sz(st);
-      st.push_back(v);
-      for (int u : adj[v])
-        if (scc_id[u] < 0)
-          low = min(low, tin[u] ? tin[u] : self(self, u));
-      if (tin[v] == low) {
-        rep(i, siz, sz(st)) scc_id[st[i]] = num_sccs;
-        st.resize(siz);
-        num_sccs++;
+pair<int, vector<int>> sccs(const vector<vector<int>>& adj) {
+  int num_sccs = 0, n = ssize(adj), timer = 0;
+  vector<int> scc_id(n, -1), tin(n), low(n), st, e(n), p(n, -1);
+  for (int i = 0; i < n; i++)
+    if (!tin[i]) {
+      int v = i;
+      while (v >= 0) {
+        if (e[v]) {
+          int u = adj[v][e[v] - 1];
+          if (scc_id[u] == -1) low[v] = min(low[v], low[u]);
+        } else {
+          low[v] = tin[v] = ++timer;
+          st.push_back(v);
+        }
+        if (e[v] < ssize(adj[v])) {
+          int u = adj[v][e[v]++];
+          if (!tin[u]) p[u] = v, v = u;
+        } else {
+          if (low[v] == tin[v]) {
+            while (scc_id[v] == -1) {
+              scc_id[st.back()] = num_sccs;
+              st.pop_back();
+            }
+            num_sccs++;
+          }
+          v = p[v];
+        }
       }
-      return low;
-    };
-    rep(i, 0, n) if (!tin[i]) dfs(dfs, i);
-  }
-};
+    }
+  return {num_sccs, scc_id};
+}
