@@ -7,7 +7,7 @@
 //!   auto [sa, sa_inv, lcp] = get_sa(s, 256);
 //!   sa_query saq(s, sa, sa_inv, lcp);
 //!   vi s_vec;
-//!   auto [sa1, sa_inv1, lcp1] = sa_short(s_vec, 100'001);
+//!   auto [sa1, sa_inv1, lcp1] = sa_short(s_vec);
 //!   sa_query saq1(s_vec, sa1, sa_inv1, lcp1);
 //! @endcode
 template<class T> struct sa_query {
