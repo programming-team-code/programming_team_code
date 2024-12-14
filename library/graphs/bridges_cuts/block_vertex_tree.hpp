@@ -20,7 +20,7 @@
 //! @time O(n)
 template<class G>
 vector<vi> block_vertex_tree(const G& adj,
-  const cuts& cc) {
+  const cuts<G>& cc) {
   int n = sz(adj);
   vector<vi> bvt(n + cc.num_bccs);
   vector<bool> vis(cc.num_bccs);

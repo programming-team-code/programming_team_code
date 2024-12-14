@@ -10,8 +10,9 @@
 //! @endcode
 //! @time O(n + m)
 //! @space O(n)
-vector<vi> bridge_tree(const vector<vector<pii>>& adj,
-  const bridges& br) {
+template<class G>
+vector<vi> bridge_tree(const G& adj,
+  const bridges<G>& br) {
   vector<vi> tree(br.num_ccs);
   rep(i, 0, sz(adj)) for (auto [u, e_id] : adj[i]) if (
     br.is_bridge[e_id]) tree[br.br_id[i]]
