@@ -31,7 +31,7 @@ git submodule update
 
 {
 	cat entire_library_without_main
-	sed --quiet '/\/\/! @code$/,/\/\/! @endcode$/{//!p;}' entire_library_without_main | sed 's/\/\/!//'
+	sed --quiet '/\/\/! @code$/,/\/\/! @endcode$/p' entire_library_without_main | sed 's/\/\/! @code/{/' | sed 's/\/\/! @endcode/}/' | sed 's/\/\/!//'
 	echo "return 0;"
 	echo "}"
 } >entire_library.cpp
