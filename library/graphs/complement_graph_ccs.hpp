@@ -1,7 +1,9 @@
 #pragma once
 //! @code
 //!   vector<vi> adj(n);
-//!   auto cc_id = get_complement_graph_ccs(adj);
+//!   vi cc_id = get_complement_graph_ccs(adj);
+//!   vector<basic_string<int>> adj1;
+//!   vi cc_id2 = get_complement_graph_ccs(adj1);
 //! @endcode
 //! 0<=cc_id[v]<number of connected components
 //!   in the complement graph
@@ -9,7 +11,8 @@
 //!   cc in the compliment graph
 //! @time O(n + m)
 //! @space O(n)
-vi get_complement_graph_ccs(const vector<vi> &adj) {
+template<class G>
+vi get_complement_graph_ccs(const G& adj) {
   int n = sz(adj);
   vi cc_id(n), unseen(n);
   iota(all(unseen), 0);

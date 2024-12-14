@@ -2,12 +2,14 @@
 //! @code
 //!   vector<vector<pair<int, ll>>> adj(n);
 //!   auto d = dijkstra(adj, source);
+//!   vector<basic_string<array<int, 2>>> adj1(n);
+//!   auto d1 = dijkstra(adj1, source);
 //! @endcode
 //! d[v] = min dist from source->..->v
 //! @time O(n + (m log m))
 //! @space O(n + m)
-vector<ll> dijkstra(
-  const vector<vector<pair<int, ll>>>& adj, int s) {
+template<class G>
+vector<ll> dijkstra(const G& adj, int s) {
   using p = pair<ll, int>;
   priority_queue<p, vector<p>, greater<>> pq;
   pq.emplace(0, s);

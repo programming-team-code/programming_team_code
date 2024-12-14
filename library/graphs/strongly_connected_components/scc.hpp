@@ -3,15 +3,17 @@
 //! @code
 //!   vector<vi> adj(n);
 //!   auto [num_sccs, scc_id] = sccs(adj);
+//!   vector<basic_string<int>> adj1(n);
+//!   auto [num_sccs1, scc_id1] = sccs(adj1);
 //! @endcode
 //! scc_id[v] = id, 0<=id<num_sccs
 //! for each edge u -> v: scc_id[u] >= scc_id[v]
 //! @time O(n + m)
 //! @space O(n)
-struct sccs {
+template<class G> struct sccs {
   int num_sccs = 0;
   vi scc_id;
-  sccs(const vector<vi>& adj): scc_id(sz(adj), -1) {
+  sccs(const G& adj): scc_id(sz(adj), -1) {
     int n = sz(adj), timer = 1;
     vi tin(n), st;
     auto dfs = [&](auto&& self, int v) -> int {

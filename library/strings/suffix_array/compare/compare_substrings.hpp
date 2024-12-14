@@ -1,6 +1,7 @@
 #pragma once
 #include "compare_suffixes.hpp"
 //! @code
+//!   string s;
 //!   auto [sa, sa_inv, lcp] = get_sa(s, 256);
 //!   sa_query saq(s, sa, sa_inv, lcp);
 //!   int cmp = saq.cmp_substrs(l1,r1,l2,r2);
