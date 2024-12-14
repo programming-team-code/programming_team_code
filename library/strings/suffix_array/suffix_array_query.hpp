@@ -3,6 +3,7 @@
 #include "../../data_structures/rmq.hpp"
 #include "find/match.hpp"
 //! @code
+//!                       //or sa_short
 //!   auto [sa, sa_inv, lcp] = get_sa(s, 256);
 //!   sa_query saq(s, sa, sa_inv, lcp);
 //! @endcode
