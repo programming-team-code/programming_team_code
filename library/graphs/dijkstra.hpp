@@ -6,7 +6,8 @@
 //! d[v] = min dist from source->..->v
 //! @time O(n + (m log m))
 //! @space O(n + m)
-template <class G> vector<ll> dijkstra(const G& adj, int s) {
+template<class G>
+vector<ll> dijkstra(const G& adj, int s) {
   using p = pair<ll, int>;
   priority_queue<p, vector<p>, greater<>> pq;
   pq.emplace(0, s);

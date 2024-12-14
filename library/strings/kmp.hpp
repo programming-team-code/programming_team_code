@@ -5,17 +5,17 @@
 //!   KMP kmp(t);
 //!   auto match = kmp.find_str(s);
 //!   vi s_vec,t_vec;
-//!   KMP kmp2(t_vec);
-//!   auto match2 = kmp2.find_str(s_vec);
+//!   KMP kmp1(t_vec);
+//!   auto match2 = kmp1.find_str(s_vec);
 //! @endcode
 //! if match[i] == 1 then s[i,sz(t)) == t
 //! @time O(|s| + |t|)
 //! @space O(|s| + |t|)
 // NOLINTNEXTLINE(readability-identifier-naming)
-template <class T> struct KMP {
+template<class T> struct KMP {
   T t;
   vi pi;
-  KMP(const T& t) : t(t), pi(prefix_function(t)) {}
+  KMP(const T& t): t(t), pi(prefix_function(t)) {}
   vector<bool> find_str(const T& s) {
     vector<bool> is_m(sz(s));
     int j = 0;

@@ -1,10 +1,10 @@
 #pragma once
 //! https://codeforces.com/blog/entry/12143#comment-324162
 //! @code
-//!   string s6;
-//!   auto man = manacher(s6);
-//!   vi s_vec6;
-//!   auto man2 = manacher(s_vec6);
+//!   string s;
+//!   auto man = manacher(s);
+//!   vi s_vec;
+//!   auto man1 = manacher(s_vec);
 //! @endcode
 //!
 //! man[center] = index of start of longest
@@ -16,16 +16,16 @@
 //!
 //! @time O(n)
 //! @space O(n)
-template <class T> vi manacher(const T& s) {
+template<class T> vi manacher(const T& s) {
   int n = sz(s), p = 0;
-  vi man(max(0, 2 * n - 1));
+  vi man(2 * n - 1);
   rep(i, 0, 2 * n - 1) {
     int r = i <= 2 * (p - man[p])
-                ? p - max(man[2 * p - i], man[p])
-                : i / 2;
+      ? p - max(man[2 * p - i], man[p])
+      : i / 2;
     man[i] = i - r;
     while (
-        man[i] > 0 && r + 1 < n && s[man[i] - 1] == s[r + 1])
+      man[i] > 0 && r + 1 < n && s[man[i] - 1] == s[r + 1])
       man[i]--, r++, p = i;
   }
   return man;

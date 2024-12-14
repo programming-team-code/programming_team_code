@@ -25,17 +25,16 @@
 //! lcp = {1, 3, 0, 0, 2}
 //!
 //! @code
-//!   string s1;
-//!   auto [sa, sa_inv, lcp] = get_sa(s1, 256);
-//!   vi s_vec1;
-//!   auto [sa1, sa_inv1, lcp1] = get_sa(s_vec1, 100'001);
+//!   // requires 0<=s[i]<max_num
+//!   string s;
+//!   auto [sa, sa_inv, lcp] = get_sa(s, 256);
+//!   vi s_vec;
+//!   auto [sa1, sa_inv1, lcp1] = get_sa(s_vec, 100'001);
 //! @endcode
-//!
-//! requires 0<=s[i]<max_num
 //!
 //! @time O(nlogn + max_num)
 //! @space O(n + max_num)
-template <class T>
+template<class T>
 array<vi, 3> get_sa(const T& s, int max_num) {
   int n = sz(s);
   vi sa(n), sa_inv(all(s)), lcp(n - 1);
@@ -44,7 +43,7 @@ array<vi, 3> get_sa(const T& s, int max_num) {
     vi y(sa_inv), freq(max_num);
     iota(all(sa_inv), n - i);
     ranges::copy_if(sa, begin(sa_inv) + i,
-                    [&](int& x) { return (x -= i) >= 0; });
+      [&](int& x) { return (x -= i) >= 0; });
     for (int x : y) freq[x]++;
     partial_sum(all(freq), begin(freq));
     for (int x : sa_inv | views::reverse)
