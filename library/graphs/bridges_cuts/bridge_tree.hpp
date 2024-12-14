@@ -1,12 +1,14 @@
 #pragma once
 #include "bridges.hpp"
 //! @code
-//!   vector<vector<pii>> adj(n);
+//!   {
+//!     vector<vector<pii>> adj(n);
+//!     bridges br(adj, m);
+//!     vector<vi> bt = bridge_tree(adj, br);
+//!   }
+//!   vector<basic_string<array<int, 2>>> adj(n);
 //!   bridges br(adj, m);
 //!   vector<vi> bt = bridge_tree(adj, br);
-//!   vector<basic_string<array<int, 2>>> adj1(n);
-//!   bridges br1(adj1, m);
-//!   vector<vi> bt1 = bridge_tree(adj1, br1);
 //! @endcode
 //! @time O(n + m)
 //! @space O(n)
