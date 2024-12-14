@@ -21,7 +21,7 @@ git submodule update
 	echo "vl left,bottom;"
 	echo "vector<pii> edges;"
 	echo "vector<array<int,2>> eds;"
-	echo "vector<array<int,3>> w_eds;"
+	echo "vector<array<int,3>> w_eds, queries;"
 	echo "vector<mint> rhs;"
 	echo "vector<vector<mint>> mat;"
 	echo "vector<vector<bool>> grid;"
