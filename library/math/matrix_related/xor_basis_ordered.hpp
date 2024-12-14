@@ -2,9 +2,9 @@
 //! https://codeforces.com/blog/entry/68953
 //! https://github.com/ssk4988/Hackpack/blob/main/content/numerical/XORBasis.h
 //! @code
-//!   basis_ordered<int> b3;
-//!   basis_ordered<ll> b4;
-//!   basis_ordered<bitset<lg>> b5;
+//!   basis_ordered<int> b1;
+//!   basis_ordered<ll> b2;
+//!   basis_ordered<bitset<lg>> b3;
 //! @endcode
 const int lg = 60;
 template<class T> struct basis_ordered {

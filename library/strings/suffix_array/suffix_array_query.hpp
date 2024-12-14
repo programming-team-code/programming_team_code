@@ -3,8 +3,8 @@
 #include "../../data_structures/rmq.hpp"
 #include "find/match.hpp"
 //! @code
-//!   auto [sa1, sa_inv1, lcp1] = get_sa(s, 256);
-//!   sa_query saq(s, sa1, sa_inv1, lcp1);
+//!   auto [sa, sa_inv, lcp] = get_sa(s, 256);
+//!   sa_query saq(s, sa, sa_inv, lcp);
 //! @endcode
 template<class T> struct sa_query {
   int n;

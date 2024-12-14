@@ -1,6 +1,7 @@
 #pragma once
 //! @code
-//!   auto d = dijkstra(adj_w, source);
+//!   vector<vector<pair<int, ll>>> adj(n);
+//!   auto d = dijkstra(adj, source);
 //! @endcode
 //! d[v] = min dist from source->..->v
 //! @time O(n + (m log m))

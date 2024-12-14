@@ -1,7 +1,7 @@
 #pragma once
 #include "../mod_int.hpp"
 //! @code
-//!   auto [rank1, det1] = row_reduce(mat, cols);
+//!   auto [rank, det] = row_reduce(mat, cols);
 //! @endcode
 //! columns [0,cols) of mat represent a matrix
 //! columns [cols,m) of mat are also

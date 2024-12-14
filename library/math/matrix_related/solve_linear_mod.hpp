@@ -1,7 +1,7 @@
 #pragma once
 #include "row_reduce.hpp"
 //! @code
-//!   auto [rank2, det2, sol] = solve_linear_mod(mat, rhs);
+//!   auto [rank, det, sol] = solve_linear_mod(mat, rhs);
 //! @endcode
 //! for each i, 0<=i<n:
 //!   rhs[i] == sum over j of (mat[i][j]*sol[j])
