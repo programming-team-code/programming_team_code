@@ -1,15 +1,20 @@
 #pragma once
 //! https://codeforces.com/blog/entry/125371
+//! @code
+//!   vector<vi> adj(n);
+//!   linear_lca llca(adj);
+//!   vector<basic_string<int>> adj1(n);
+//!   linear_lca llca1(adj1);
+//! @endcode
 //! @time O(n + q)
 //! @space O(n)
-struct linear_lca {
+template<class G> struct linear_lca {
   struct node {
     int d, label, asc;
   };
   vector<node> t;
   vi head;
-  linear_lca(const vector<vi>& adj):
-    t(sz(adj)), head(sz(t) + 1) {
+  linear_lca(const G& adj): t(sz(adj)), head(sz(t) + 1) {
     vector<pii> order;
     auto dfs = [&](auto&& self, int v, int p) -> void {
       order.emplace_back(v, p);

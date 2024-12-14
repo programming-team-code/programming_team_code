@@ -25,10 +25,12 @@
 //! lcp = {1, 3, 0, 0, 2}
 //!
 //! @code
+//!   // requires 0<=s[i]<max_num
+//!   string s;
 //!   auto [sa, sa_inv, lcp] = get_sa(s, 256);
+//!   vi s_vec;
+//!   auto [sa1, sa_inv1, lcp1] = get_sa(s_vec, 100'001);
 //! @endcode
-//!
-//! requires 0<=s[i]<max_num
 //!
 //! @time O(nlogn + max_num)
 //! @space O(n + max_num)

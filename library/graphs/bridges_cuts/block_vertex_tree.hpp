@@ -4,6 +4,9 @@
 //!   vector<vector<pii>> adj(n);
 //!   cuts cc(adj, m);
 //!   vector<vi> bvt = block_vertex_tree(adj, cc);
+//!   vector<basic_string<array<int, 2>>> adj1(n);
+//!   cuts cc1(adj1, m);
+//!   vector<vi> bvt1 = block_vertex_tree(adj1, cc1);
 //!   //to loop over each unique bcc containing a node u:
 //!   for (int bccid : bvt[v]) {
 //!     bccid -= n;
@@ -15,8 +18,9 @@
 //! [n, n + num_bccs) are BCC nodes
 //! @time O(n + m)
 //! @time O(n)
-vector<vi> block_vertex_tree(
-  const vector<vector<pii>>& adj, const cuts& cc) {
+template<class G>
+vector<vi> block_vertex_tree(const G& adj,
+  const cuts<G>& cc) {
   int n = sz(adj);
   vector<vi> bvt(n + cc.num_bccs);
   vector<bool> vis(cc.num_bccs);

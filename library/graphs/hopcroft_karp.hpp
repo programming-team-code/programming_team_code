@@ -5,6 +5,8 @@
 //!   adj[l].push_back(r); // add edge l <-> r
 //!   auto [matching_size, to_r, to_l,
 //!     mvc_l, mvc_r] = hopcroft_karp(adj, rsz);
+//!   vector<basic_string<int>> adj1(lsz);
+//!   hopcroft_karp match(adj1, rsz);
 //! @endcode
 //! 0<=l<lsz; 0<=r<rsz
 //! l <-> to_r[l] in matching if to_r[l]!=-1
@@ -13,11 +15,11 @@
 //! mvc_r[r] is 1 if r in Min Vertex Cover
 //! @time O(n + m * sqrt(n)) n = lsz + rsz
 //! @space O(n)
-struct hopcroft_karp {
+template<class G> struct hopcroft_karp {
   int m_sz = 0;
   vi to_r, to_l;
   vector<bool> mvc_l, mvc_r;
-  hopcroft_karp(const vector<vi>& adj, int rsz):
+  hopcroft_karp(const G& adj, int rsz):
     to_r(sz(adj), -1), to_l(rsz, -1) {
     int lsz = sz(adj);
     while (1) {

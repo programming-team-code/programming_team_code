@@ -1,8 +1,16 @@
 #pragma once
 #include "../../data_structures/bit.hpp"
 #include "lcs_dp.hpp"
-//! Given tuples (s_r, t_le, t_ri), find:
-//!   size(LCS(s[0,s_r), t[t_le,t_ri)))
+//! @code
+//!   string s,t;
+//!   vi lcs_len = lcs_queries(s, t, queries);
+//!   vi s_vec,t_vec;
+//!   vi lcs_len1 = lcs_queries(s_vec, t_vec, queries);
+//! @endcode
+//! lcs_len[i] = size(LCS(
+//!   s[0,queries[i][0]),
+//!   t[queries[i][1],queries[i][2])
+//! ))
 //! @time O(n*m*log(m) + q*log(m) + q*log(q))
 //! @space O(n + m + q)
 template<class T>

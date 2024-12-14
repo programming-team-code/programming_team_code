@@ -10,16 +10,19 @@
 //!     adj[v].emplace_back(u, i);
 //!   }
 //!   auto [num_ccs, is_bridge, br_id] = bridges(adj, m);
+//!   vector<basic_string<array<int,2>>> adj1(n);
+//!   auto [num_ccs1, is_bridge1, br_id1] = bridges(adj1,
+//!   m);
 //! @endcode
 //! is_bridge[edge id] = 1 iff bridge edge
 //! br_id[v] = id, 0<=id<num_ccs
 //! @time O(n + m)
 //! @space O(n + m)
-struct bridges {
+template<class G> struct bridges {
   int num_ccs = 0;
   vector<bool> is_bridge;
   vi br_id;
-  bridges(const vector<vector<pii>>& adj, int m):
+  bridges(const G& adj, int m):
     is_bridge(m), br_id(sz(adj), -1) {
     int n = sz(adj), timer = 1;
     vi tin(n), st;

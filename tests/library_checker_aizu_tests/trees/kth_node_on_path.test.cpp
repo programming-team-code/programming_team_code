@@ -2,7 +2,6 @@
   "https://judge.yosupo.jp/problem/jump_on_tree"
 #include "../template.hpp"
 #include "../../../library/contest/random.hpp"
-#include "../../../library/monotonic_stack/monotonic_stack.hpp"
 #include "../../../library/trees/tree_lift/tree_lift.hpp"
 #include "../../../library/trees/lca_rmq/lca_rmq.hpp"
 #include "../../../library/trees/linear_lca.hpp"
@@ -12,7 +11,7 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n, q;
   cin >> n >> q;
-  vector<vector<int>> adj(n);
+  vector<vi> adj(n);
   for (int i = 0; i < n - 1; i++) {
     int u, v;
     cin >> u >> v;

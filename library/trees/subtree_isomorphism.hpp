@@ -3,16 +3,18 @@
 //!   vector<vi> adj(n);
 //!   auto [num_distinct_subtrees, iso_id] =
 //!     subtree_iso(adj);
+//!   vector<basic_string<int>> adj1(n);
+//!   subtree_iso iso(adj1);
 //! @endcode
 //! - 0 <= iso_id[v] < num_distinct_subtrees
 //! - iso_id[u] == iso_id[v] iff subtree u is
 //!     isomorphic to subtree v
 //! @time O(n log n)
 //! @space O(n)
-struct subtree_iso {
+template<class G> struct subtree_iso {
   int num_distinct_subtrees;
   vi iso_id;
-  subtree_iso(const vector<vi>& adj): iso_id(sz(adj), -1) {
+  subtree_iso(const G& adj): iso_id(sz(adj), -1) {
     map<vi, int> hashes;
     auto dfs = [&](auto&& self, int v, int p) -> int {
       vi ch_ids;

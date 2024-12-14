@@ -11,16 +11,18 @@
 //!     adj[v].emplace_back(u, i);
 //!   }
 //!   auto [num_bccs, is_cut, bcc_id] = cuts(adj, m);
+//!   vector<basic_string<array<int,2>>> adj1(n);
+//!   auto [num_bccs1, is_cut1, bcc_id1] = cuts(adj1, m);
 //! @endcode
 //! is_cut[v] = 1 iff cut node
 //! bcc_id[edge id] = id, 0<=id<num_bccs
 //! @time O(n + m)
 //! @space O(n + m)
-struct cuts {
+template<class G> struct cuts {
   int num_bccs = 0;
   vector<bool> is_cut;
   vi bcc_id;
-  cuts(const vector<vector<pii>>& adj, int m):
+  cuts(const G& adj, int m):
     is_cut(sz(adj)), bcc_id(m, -1) {
     int n = sz(adj), timer = 1;
     vi tin(n), st;
