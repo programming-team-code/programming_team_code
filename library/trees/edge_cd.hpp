@@ -11,15 +11,19 @@
 //!     // subtrees of suffix [split, sz(adj[cent]))
 //!     //   of adj[cent] are the second edge-set
 //!   });
+//!   vector<basic_string<int>> adj1(n);
+//!   edge_cd(adj1, [&](
+//!     const vector<basic_string<int>>& adj1,
+//!     int cent, int split) {});
 //! @endcode
 //! handle single-edge-paths separately
 //! @time O(n log1.5 n)
 //! @space O(n)
-template<class F> struct edge_cd {
-  vector<vi> adj;
+template<class F, class G> struct edge_cd {
+  G adj;
   F f;
   vi sub_sz;
-  edge_cd(const vector<vi>& adj, F f):
+  edge_cd(const G& adj, F f):
     adj(adj), f(f), sub_sz(sz(adj)) {
     dfs(0, sz(adj));
   }

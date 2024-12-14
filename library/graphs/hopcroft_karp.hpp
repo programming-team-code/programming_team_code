@@ -5,6 +5,8 @@
 //!   adj[l].push_back(r); // add edge l <-> r
 //!   auto [matching_size, to_r, to_l,
 //!     mvc_l, mvc_r] = hopcroft_karp(adj, rsz);
+//!   vector<basic_string<int>> adj1(lsz);
+//!   hopcroft_karp match(adj1);
 //! @endcode
 //! 0<=l<lsz; 0<=r<rsz
 //! l <-> to_r[l] in matching if to_r[l]!=-1

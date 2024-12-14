@@ -4,17 +4,19 @@
 //! @code
 //!   vector<vi> adj(n);
 //!   LCA lca(adj);
+//!   vector<basic_string<int>> adj1(n);
+//!   LCA lca1(adj1);
 //! @endcode
 //! @time O(nlogn + q)
 //! @space O(nlogn)
 // NOLINTNEXTLINE(readability-identifier-naming)
-struct LCA {
+template<class G> struct LCA {
   struct node {
     int in, sub_sz = 1, d, p = -1;
   };
   vector<node> t;
   RMQ<int, function<int(int, int)>> rmq = {{}, NULL};
-  LCA(const vector<vi>& adj): t(sz(adj)) {
+  LCA(const G& adj): t(sz(adj)) {
     vi order;
     auto dfs = [&](auto&& self, int v) -> void {
       t[v].in = sz(order), order.push_back(v);

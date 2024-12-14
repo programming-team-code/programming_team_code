@@ -1,21 +1,23 @@
 #pragma once
 //! https://codeforces.com/blog/entry/126580
 //! @code
+//!   vector<vi> adj(n);
 //!   linear_kth_par kp(adj);
 //!   int kth_par = kp.kth_par(v, k);
+//!   vector<basic_string<int>> adj1(n);
+//!   linear_kth_par kp1(adj1);
 //! @endcode
 //! kth_par = a node k edges up from v
 //! @time O(n + q)
 //! @space O(n)
-struct linear_kth_par {
+template<class G> struct linear_kth_par {
   struct node {
     int d, p = -1, dl, idx_j, idx_l;
   };
   vector<node> t;
   vector<pii> j;
   vi l;
-  linear_kth_par(const vector<vi>& adj):
-    t(sz(adj)), j(2 * sz(t)) {
+  linear_kth_par(const G& adj): t(sz(adj)), j(2 * sz(t)) {
     vi st;
     int pos = 1;
     auto add_j = [&]() -> void {
