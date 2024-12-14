@@ -15,7 +15,7 @@ vi offline_incremental_scc(vector<array<int, 2>> eds,
   int m = sz(eds);
   vi ids(n, -1), joins(m, m), idx(m), vs(n), scc_id;
   iota(all(idx), 0);
-  vector<vi> adj;
+  vector<basic_string<int>> adj;
   auto divide_and_conquer = [&](auto&& self, auto el,
                                 auto er, int tl, int tr) {
     adj.clear();
