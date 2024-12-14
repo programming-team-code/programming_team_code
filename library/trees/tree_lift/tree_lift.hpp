@@ -1,6 +1,7 @@
 #pragma once
 //! https://github.com/ucf-programming-team/hackpack-cpp/blob/master/content/graphs/TreeLifting.h
 //! @code
+//!   vector<vi> adj(n);
 //!   tree_lift tree_l(adj);
 //!   int kth_p = tree_l.kth_par(v, k);
 //! @endcode

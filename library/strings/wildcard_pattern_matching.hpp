@@ -1,6 +1,7 @@
 #pragma once
 //! https://codeforces.com/blog/entry/111380
 //! @code
+//!   vi s_vec, t_vec;
 //!   auto mtch = wildcard_pattern_matching(
 //!     s_vec, t_vec, conv);
 //! @endcode
