@@ -16,7 +16,7 @@ int main() {
     adj_edge_id[u].emplace_back(v, i);
   }
   scc_asserts(adj);
-  sccs scc(adj);
+  auto [num_sccs, scc_id] = sccs(adj);
   vector<int> color(n);
   vector<
     pair<int /*edge id*/, int /*node closer to root*/>>
@@ -35,7 +35,7 @@ int main() {
           auto [curr_edge_id, curr_node] =
             edge_stack.back();
           edge_stack.pop_back();
-          assert(scc.scc_id[curr_node] == scc.scc_id[u]);
+          assert(scc_id[curr_node] == scc_id[u]);
           res.push_back(curr_edge_id);
           if (curr_node == v) break;
         }
@@ -53,7 +53,7 @@ int main() {
       color[i] = 2;
     }
   }
-  assert(scc.num_sccs == n);
+  assert(num_sccs == n);
   cout << -1 << '\n';
   return 0;
 }

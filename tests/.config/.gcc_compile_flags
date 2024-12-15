@@ -1,7 +1,6 @@
 -Wall
 -Wextra
 -Wunused
--Wpedantic
 -Wlogical-op
 -Wformat=2
 -Wfloat-equal

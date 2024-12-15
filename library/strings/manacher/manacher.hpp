@@ -16,7 +16,7 @@
 //!
 //! @time O(n)
 //! @space O(n)
-template<class T> vi manacher(const T& s) {
+vi manacher(const auto& s) {
   int n = sz(s), p = 0;
   vi man(2 * n - 1);
   rep(i, 0, 2 * n - 1) {

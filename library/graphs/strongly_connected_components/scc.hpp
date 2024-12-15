@@ -12,25 +12,22 @@
 //! for each edge u -> v: scc_id[u] >= scc_id[v]
 //! @time O(n + m)
 //! @space O(n)
-template<class G> struct sccs {
-  int num_sccs = 0;
-  vi scc_id;
-  sccs(const G& adj): scc_id(sz(adj), -1) {
-    int n = sz(adj), timer = 1;
-    vi tin(n), st;
-    auto dfs = [&](auto&& self, int v) -> int {
-      int low = tin[v] = timer++, siz = sz(st);
-      st.push_back(v);
-      for (int u : adj[v])
-        if (scc_id[u] < 0)
-          low = min(low, tin[u] ? tin[u] : self(self, u));
-      if (tin[v] == low) {
-        rep(i, siz, sz(st)) scc_id[st[i]] = num_sccs;
-        st.resize(siz);
-        num_sccs++;
-      }
-      return low;
-    };
-    rep(i, 0, n) if (!tin[i]) dfs(dfs, i);
-  }
-};
+auto sccs(const auto& adj) {
+  int n = sz(adj), num_sccs = 0, timer = 0;
+  vi scc_id(n, -1), tin(n), st;
+  auto dfs = [&](auto&& self, int v) -> int {
+    int low = tin[v] = ++timer, siz = sz(st);
+    st.push_back(v);
+    for (int u : adj[v])
+      if (scc_id[u] < 0)
+        low = min(low, tin[u] ?: self(self, u));
+    if (tin[v] == low) {
+      rep(i, siz, sz(st)) scc_id[st[i]] = num_sccs;
+      st.resize(siz);
+      num_sccs++;
+    }
+    return low;
+  };
+  rep(i, 0, n) if (!tin[i]) dfs(dfs, i);
+  return pair{num_sccs, scc_id};
+}

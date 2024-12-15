@@ -13,8 +13,7 @@
 //! ))
 //! @time O(n*m*log(m) + q*log(m) + q*log(q))
 //! @space O(n + m + q)
-template<class T>
-vi lcs_queries(const T& s, const T& t,
+vi lcs_queries(const auto& s, const auto& t,
   const vector<array<int, 3>>& queries) {
   int n = sz(s), m = sz(t), q = sz(queries);
   vector<vector<array<int, 3>>> qs(n);

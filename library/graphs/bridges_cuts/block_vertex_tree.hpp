@@ -3,12 +3,14 @@
 //! @code
 //!   {
 //!     vector<vector<pii>> adj(n);
-//!     cuts cc(adj, m);
-//!     vector<vi> bvt = block_vertex_tree(adj, cc);
+//!     auto [num_bccs, bcc_id, is_cut] = cuts(adj, m);
+//!     vector<vi> bvt = block_vertex_tree(adj,
+//!       num_bccs, bcc_id);
 //!   }
 //!   vector<basic_string<array<int, 2>>> adj(n);
-//!   cuts cc(adj, m);
-//!   vector<vi> bvt = block_vertex_tree(adj, cc);
+//!   auto [num_bccs, bcc_id, is_cut] = cuts(adj, m);
+//!   vector<vi> bvt = block_vertex_tree(adj,
+//!     num_bccs, bcc_id);
 //!
 //!   //to loop over each unique bcc containing a node u:
 //!   for (int bccid : bvt[v]) {
@@ -21,15 +23,14 @@
 //! [n, n + num_bccs) are BCC nodes
 //! @time O(n + m)
 //! @time O(n)
-template<class G>
-vector<vi> block_vertex_tree(const G& adj,
-  const cuts<G>& cc) {
+vector<vi> block_vertex_tree(const auto& adj, int num_bccs,
+  const vi& bcc_id) {
   int n = sz(adj);
-  vector<vi> bvt(n + cc.num_bccs);
-  vector<bool> vis(cc.num_bccs);
+  vector<vi> bvt(n + num_bccs);
+  vector<bool> vis(num_bccs);
   rep(i, 0, n) {
     for (auto [_, e_id] : adj[i]) {
-      int bccid = cc.bcc_id[e_id];
+      int bccid = bcc_id[e_id];
       if (!vis[bccid]) {
         vis[bccid] = 1;
         bvt[i].push_back(bccid + n);
