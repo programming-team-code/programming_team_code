@@ -2,7 +2,7 @@
   "https://judge.yosupo.jp/problem/incremental_scc"
 #include "../template.hpp"
 #include "../../../kactl/content/data-structures/UnionFind.h"
-#include "../../../library/graphs/strongly_connected_components/offline_incremental_scc.hpp"
+#include "../../../library/graphs/scc/offline_incremental_scc.hpp"
 #include "../../../library/math/mod_int.hpp"
 int main() {
   cin.tie(0)->sync_with_stdio(0);

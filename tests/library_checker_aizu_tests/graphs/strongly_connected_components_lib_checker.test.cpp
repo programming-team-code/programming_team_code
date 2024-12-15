@@ -1,7 +1,7 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/scc"
 #include "../template.hpp"
 #include "../scc_asserts.hpp"
-#include "../../../library/graphs/strongly_connected_components/add_edges_strongly_connected.hpp"
+#include "../../../library/graphs/scc/add_edges_strongly_connected.hpp"
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n, m;
