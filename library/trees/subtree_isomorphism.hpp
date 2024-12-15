@@ -6,7 +6,8 @@
 //!       subtree_iso(adj);
 //!   }
 //!   vector<basic_string<int>> adj(n);
-//!   subtree_iso iso(adj);
+//!   auto [num_distinct_subtrees, iso_id] =
+//!     subtree_iso(adj);
 //! @endcode
 //! - 0 <= iso_id[v] < num_distinct_subtrees
 //! - iso_id[u] == iso_id[v] iff subtree u is

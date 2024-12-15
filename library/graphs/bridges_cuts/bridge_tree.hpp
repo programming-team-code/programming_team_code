@@ -3,12 +3,14 @@
 //! @code
 //!   {
 //!     vector<vector<pii>> adj(n);
-//!     bridges br(adj, m);
-//!     vector<vi> bt = bridge_tree(adj, br);
+//!     auto [num_ccs, br_id, is_br] = bridges(adj, m);
+//!     vector<vi> bt = bridge_tree(adj,
+//!       num_ccs, br_id, is_br);
 //!   }
 //!   vector<basic_string<array<int, 2>>> adj(n);
-//!   bridges br(adj, m);
-//!   vector<vi> bt = bridge_tree(adj, br);
+//!   auto [num_ccs, br_id, is_br] = bridges(adj, m);
+//!   vector<vi> bt = bridge_tree(adj,
+//!     num_ccs, br_id, is_br);
 //! @endcode
 //! @time O(n + m)
 //! @space O(n)

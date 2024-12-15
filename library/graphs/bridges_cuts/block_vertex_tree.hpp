@@ -3,12 +3,14 @@
 //! @code
 //!   {
 //!     vector<vector<pii>> adj(n);
-//!     cuts cc(adj, m);
-//!     vector<vi> bvt = block_vertex_tree(adj, cc);
+//!     auto [num_bccs, bcc_id, is_cut] = cuts(adj, m);
+//!     vector<vi> bvt = block_vertex_tree(adj,
+//!       num_bccs, bcc_id);
 //!   }
 //!   vector<basic_string<array<int, 2>>> adj(n);
-//!   cuts cc(adj, m);
-//!   vector<vi> bvt = block_vertex_tree(adj, cc);
+//!   auto [num_bccs, bcc_id, is_cut] = cuts(adj, m);
+//!   vector<vi> bvt = block_vertex_tree(adj,
+//!     num_bccs, bcc_id);
 //!
 //!   //to loop over each unique bcc containing a node u:
 //!   for (int bccid : bvt[v]) {
