@@ -69,6 +69,7 @@
 "tests/library_checker_aizu_tests/handmade_tests/fib_matrix_expo.test.cpp": "2024-11-17 14:04:03 -0600",
 "tests/library_checker_aizu_tests/handmade_tests/functional_graph.test.cpp": "2024-12-05 10:41:42 -0600",
 "tests/library_checker_aizu_tests/handmade_tests/lca_ladder_forest.test.cpp": "2024-12-14 17:23:34 -0600",
+"tests/library_checker_aizu_tests/handmade_tests/manacher.test.cpp": "2024-12-14 18:40:37 -0600",
 "tests/library_checker_aizu_tests/handmade_tests/merge_st_and_wavelet.test.cpp": "2024-11-19 08:31:51 -0600",
 "tests/library_checker_aizu_tests/handmade_tests/mobius.test.cpp": "2024-11-17 14:04:03 -0600",
 "tests/library_checker_aizu_tests/handmade_tests/mod_int.test.cpp": "2024-11-17 14:04:03 -0600",
