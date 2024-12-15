@@ -13,17 +13,16 @@
 //! @time O(n + m)
 //! @space O(n)
 auto sccs(const auto& adj) {
-  int n = sz(adj), num_sccs = 0, timer = 0;
-  vi scc_id(n, -1), tin(n), st;
+  int n = sz(adj), num_sccs = 0, q = 0, s = 0;
+  vi scc_id(n, -1), tin(n), st(n);
   auto dfs = [&](auto&& self, int v) -> int {
-    int low = tin[v] = ++timer, siz = sz(st);
-    st.push_back(v);
+    int low = tin[v] = ++q;
+    st[s++] = v;
     for (int u : adj[v])
       if (scc_id[u] < 0)
         low = min(low, tin[u] ?: self(self, u));
     if (tin[v] == low) {
-      rep(i, siz, sz(st)) scc_id[st[i]] = num_sccs;
-      st.resize(siz);
+      while (scc_id[v] < 0) scc_id[st[--s]] = num_sccs;
       num_sccs++;
     }
     return low;

@@ -20,18 +20,17 @@
 //! @time O(n + m)
 //! @space O(n + m)
 auto bridges(const auto& adj, int m) {
-  int n = sz(adj), num_ccs = 0, timer = 0;
-  vi br_id(n, -1), is_br(m), tin(n), st;
-  auto dfs = [&](auto&& self, int v, int p_id) -> int {
-    int low = tin[v] = ++timer, siz = sz(st);
-    st.push_back(v);
-    for (auto [u, e_id] : adj[v])
-      if (e_id != p_id && br_id[u] < 0)
-        low = min(low, tin[u] ?: self(self, u, e_id));
+  int n = sz(adj), num_ccs = 0, q = 0, s = 0;
+  vi br_id(n, -1), is_br(m), tin(n), st(n);
+  auto dfs = [&](auto&& self, int v, int p) -> int {
+    int low = tin[v] = ++q;
+    st[s++] = v;
+    for (auto [u, e] : adj[v])
+      if (e != p && br_id[u] < 0)
+        low = min(low, tin[u] ?: self(self, u, e));
     if (tin[v] == low) {
-      if (p_id != -1) is_br[p_id] = 1;
-      rep(i, siz, sz(st)) br_id[st[i]] = num_ccs;
-      st.resize(siz);
+      if (p != -1) is_br[p] = 1;
+      while (br_id[v] < 0) br_id[st[--s]] = num_ccs;
       num_ccs++;
     }
     return low;
