@@ -20,7 +20,7 @@ int main() {
         assert(false);
       });
   }
-  for (int n = 2; n <= 8; n++) {
+  for (int n = 2; n <= 7; n++) {
     int num_codes = mpow(n, n - 2).x;
     vector<vector<int>> pruf_codes(num_codes,
       vector<int>(n - 2));

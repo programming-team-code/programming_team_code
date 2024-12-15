@@ -10,28 +10,33 @@ echo "DON'T PUSH ANY OF THESE CHANGES TO THE REPO!!!!!!!!"
 echo "if you push these changes, I'll slap your butt"
 
 # remove some files not suitable for PDF:
-rm ../library/data_structures/bit_uncommon/rupq.hpp
-rm ../library/data_structures/bit_uncommon/rurq.hpp
-rm ../library/data_structures/seg_tree.png
-rm ../library/data_structures/seg_tree_uncommon/distinct_query.hpp
-rm ../library/data_structures/seg_tree_uncommon/implicit.hpp
-rm ../library/data_structures/seg_tree_uncommon/kth_smallest_query.hpp
-rm ../library/data_structures/uncommon/mode_query.hpp
-rm ../library/data_structures/uncommon/priority_queue_of_updates.hpp
-rm ../library/graphs/strongly_connected_components/add_edges_strongly_connected.hpp
-rm ../library/graphs/functional_graph_processor.hpp
-rm ../library/math/derangements.hpp
-rm ../library/math/num_distinct_subsequences.hpp
-rm ../library/math/partitions.hpp
-rm ../library/monotonic_stack/cartesian_k_ary_tree.hpp
-rm ../library/monotonic_stack/max_rect_histogram.hpp
-rm ../library/monotonic_stack/cartesian_binary_tree_after.png
-rm ../library/monotonic_stack/mono_stack_ri.png
-rm ../library/strings/manacher/longest_palindrome_query.hpp
-rm -rf ../library/trees/centroid_decomp_uncommon/
-rm -rf ../library/trees/edge_centroid_decomp_uncommon/
-rm -rf ../library/trees/ladder_decomposition/ladder_decomposition.hpp
-rm ../library/trees/linear_kth_path.hpp
+rm ../library/data_structures/bit_uncommon/rupq.hpp || exit 1
+rm ../library/data_structures/bit_uncommon/rurq.hpp || exit 1
+rm ../library/data_structures/seg_tree.png || exit 1
+rm ../library/data_structures/seg_tree_uncommon/distinct_query.hpp || exit 1
+rm ../library/data_structures/seg_tree_uncommon/implicit.hpp || exit 1
+rm ../library/data_structures/seg_tree_uncommon/kth_smallest_query.hpp || exit 1
+rm ../library/data_structures/uncommon/mode_query.hpp || exit 1
+rm ../library/data_structures/uncommon/priority_queue_of_updates.hpp || exit 1
+rm ../library/graphs/scc/add_edges_strongly_connected.hpp || exit 1
+rm ../library/graphs/functional_graph_processor.hpp || exit 1
+rm ../library/math/derangements.hpp || exit 1
+rm ../library/math/num_distinct_subsequences.hpp || exit 1
+rm ../library/math/partitions.hpp || exit 1
+rm ../library/monotonic_stack/cartesian_k_ary_tree.hpp || exit 1
+rm ../library/monotonic_stack/max_rect_histogram.hpp || exit 1
+rm ../library/monotonic_stack/cartesian_binary_tree_after.png || exit 1
+rm ../library/monotonic_stack/mono_stack_ri.png || exit 1
+rm ../library/strings/manacher/longest_palindrome_query.hpp || exit 1
+rm ../library/trees/centroid_decomp_uncommon/count_paths_per_length.hpp || exit 1
+rm ../library/trees/centroid_decomp_uncommon/count_paths_per_node.hpp || exit 1
+rm ../library/trees/edge_centroid_decomp_uncommon/README.md || exit 1
+rm ../library/trees/edge_centroid_decomp_uncommon/contour_range_query.hpp || exit 1
+rm ../library/trees/edge_centroid_decomp_uncommon/contour_range_update.hpp || exit 1
+rm ../library/trees/edge_centroid_decomp_uncommon/count_paths_per_length.hpp || exit 1
+rm ../library/trees/edge_centroid_decomp_uncommon/sum_adjacent.hpp || exit 1
+rm ../library/trees/ladder_decomposition/ladder_decomposition.hpp || exit 1
+rm ../library/trees/linear_kth_path.hpp || exit 1
 
 # remove links in comments: these aren't useful in the PDF, and are usually the
 # longest words which extend into the next column

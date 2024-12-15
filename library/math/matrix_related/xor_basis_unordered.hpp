@@ -4,7 +4,6 @@
 //! @code
 //!   basis<int> b1;
 //!   basis<ll> b2;
-//!   basis<dynamic_bitset<>> b3;
 //! @endcode
 //! b.shrink(v) == b.shrink(b.shrink(v))
 //! for x in b.b: (bit_floor(x)&b.shrink(v))==0
@@ -12,7 +11,7 @@
 //! @time O(32) or O(64)
 //! @space O(32) or O(64)
 template<class T> struct basis {
-  vector<T> b;
+  basic_string<T> b;
   T shrink(T v) {
     for (T x : b) v = min(v, v ^ x);
     return v;

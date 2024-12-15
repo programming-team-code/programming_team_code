@@ -6,8 +6,8 @@
 template<class T>
 basis<T> intersection(const basis<T>& u,
   const basis<T>& v) {
-  vector<array<T, 2>> w(sz(u.b));
-  rep(i, 0, sz(w)) w[i] = {u.b[i], u.b[i]};
+  basic_string<array<T, 2>> w;
+  for (T e : u.b) w.push_back({e, e});
   basis<T> res;
   for (T e : v.b) {
     T s = 0;

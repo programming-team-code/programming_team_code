@@ -6,6 +6,7 @@
 #include "../../../library/data_structures/dsu/dsu_restorable.hpp"
 #include "../../../library/trees/tree_lift/tree_lift.hpp"
 #include "../../../library/trees/centroid_decomp_uncommon/count_paths_per_length.hpp"
+#include "../cd_asserts.hpp"
 vector<vector<ll>> naive(const vector<vector<int>>& adj,
   dsu_restorable& dsu) {
   tree_lift tl(adj);
@@ -37,6 +38,7 @@ int main() {
         adj[v].push_back(u);
       }
     }
+    cd_asserts(adj);
     vector<vector<ll>> cnts_naive = naive(adj, dsu);
     for (int k = 1; k <= n; k++)
       assert(

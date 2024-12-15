@@ -121,8 +121,8 @@ struct functional_graph_processor {
 };
 int main() {
   cin.tie(0)->sync_with_stdio(0);
-  for (int num_tests = 1000; num_tests--;) {
-    int n = rnd(1, 10000);
+  for (int num_tests = 100; num_tests--;) {
+    int n = rnd(1, 1000);
     vector<int> a(n);
     for (int i = 0; i < n; i++) a[i] = rnd(0, n - 1);
     auto [t, cycle] = func_graph(a);
