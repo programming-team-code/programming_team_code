@@ -28,8 +28,8 @@ vector<ll> count_paths_per_length(const vector<vi>& adj) {
           swap(q, new_q);
         }
       }
-      ranges::sort(child_depths,
-        [&](auto& x, auto& y) { return sz(x) < sz(y); });
+      ranges::sort(child_depths, {},
+        [&](auto& x) { return sz(x); });
       vector total_depth(1, 1.0);
       for (auto& cnt_depth : child_depths) {
         auto prod = conv(total_depth, cnt_depth);

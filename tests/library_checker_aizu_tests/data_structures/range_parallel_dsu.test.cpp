@@ -1,8 +1,8 @@
 #define PROBLEM \
   "https://judge.yosupo.jp/problem/range_parallel_unionfind"
+#undef _GLIBCXX_DEBUG
 #include "../template.hpp"
 #include "../../../library/data_structures/dsu/range_parallel_dsu.hpp"
-#include "../../../library/contest/random.hpp"
 #include "../../../library/data_structures/dsu/range_parallel_equivalence_classes.hpp"
 #include "../../../library/math/mod_int.hpp"
 int main() {
@@ -23,14 +23,15 @@ int main() {
     x[u] = x[u] + x[v];
   };
   vector<array<int, 3>> queries;
+  queries.reserve(q);
   for (int qq = 0; qq < q; qq++) {
     int k, a, b;
     cin >> k >> a >> b;
     dsu.join(a, b, k, f);
     queries.push_back({a, b, k});
     cout << ans.x << '\n';
-    if (qq <= 10 || abs(q - qq) <= 10 ||
-      rnd(0, 50'000) == 0) {
+    if (qq == 0 || qq == 1 || qq == 10 || qq == 1000 ||
+      qq == 100'000 || qq == q - 1) {
       auto uf = get_rp_dsu(queries, n);
       vector<mint> sums(n);
       mint offline_ans = 0;

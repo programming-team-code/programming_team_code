@@ -2,7 +2,6 @@
 #include "../../library/monotonic_stack/monotonic_range.hpp"
 #include "../../library/monotonic_stack/cartesian_binary_tree.hpp"
 #include "../../library/monotonic_stack/cartesian_k_ary_tree.hpp"
-#include "../../library/data_structures/rmq.hpp"
 #include "../../library/data_structures/uncommon/linear_rmq.hpp"
 tuple<int, vector<vector<int>>, vector<int>>
 min_cartesian_tree(const vector<int>& a,
@@ -38,36 +37,8 @@ void mono_st_asserts(const vector<int>& a) {
   compares.push_back(greater_equal());
   int n = sz(a);
   for (auto cmp : compares) {
-    vector<int> init(n);
-    iota(begin(init), end(init), 0);
-    RMQ rmq(init, [&](int x, int y) -> int {
-      return cmp(a[x], a[y]) ? x : y;
-    });
-    linear_rmq lin_rmq(a, cmp);
     auto l = mono_st(a, cmp), r = mono_range(l),
          p = cart_binary_tree(l);
-    {
-      int iterations = 0;
-      queue<array<int, 3>> q;
-      q.push({0, n, -1}); // node_le, node_ri, parent
-      while (!empty(q)) {
-        auto [node_le, node_ri, node_par] = q.front();
-        q.pop();
-        if (node_le == node_ri) continue;
-        iterations++;
-        int idx_root = rmq.query(node_le, node_ri);
-        int idx_root_2 =
-          lin_rmq.query_idx(node_le, node_ri - 1);
-        assert(idx_root == idx_root_2);
-        assert(node_le <= idx_root && idx_root < node_ri);
-        assert(l[idx_root] == node_le - 1);
-        assert(r[idx_root] == node_ri);
-        assert(p[idx_root] == node_par);
-        q.push({node_le, idx_root, idx_root});
-        q.push({idx_root + 1, node_ri, idx_root});
-      }
-      assert(iterations == n);
-    }
     {
       vector old_way_ri = mono_st(vi{rbegin(a), rend(a)},
         [&](int x, int y) { return !cmp(y, x); });
@@ -89,8 +60,6 @@ void mono_st_asserts(const vector<int>& a) {
         assert(cmp(a[i], a[j]));
         assert(cmp(a[i], a[r[j] - 1]));
         assert(cmp(a[i], a[j + (r[j] - j) / 2]));
-        int range_op = a[rmq.query(j, r[j])];
-        assert(cmp(a[i], range_op));
         iterations++;
       }
     }

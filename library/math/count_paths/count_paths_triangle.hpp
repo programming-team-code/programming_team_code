@@ -6,7 +6,8 @@
 vl divide_and_conquer(vl h, vl bottom) {
   {
     int start =
-      find_if(all(h), [](ll x) { return x; }) - begin(h);
+      ranges::find_if(h, [](ll x) { return x; }) -
+      begin(h);
     h.erase(begin(h), begin(h) + start);
     bottom.erase(begin(bottom), begin(bottom) + start);
   }

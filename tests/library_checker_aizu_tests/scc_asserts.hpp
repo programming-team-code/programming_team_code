@@ -1,7 +1,7 @@
 #pragma once
 #include "../../library/contest/random.hpp"
-#include "../../library/graphs/strongly_connected_components/add_edges_strongly_connected.hpp"
-#include "../../library/graphs/strongly_connected_components/offline_incremental_scc.hpp"
+#include "../../library/graphs/scc/add_edges_strongly_connected.hpp"
+#include "../../library/graphs/scc/offline_incremental_scc.hpp"
 void scc_asserts(const vector<vector<int>>& adj) {
   int n = sz(adj);
   auto [num_sccs, scc_id] = sccs(adj);

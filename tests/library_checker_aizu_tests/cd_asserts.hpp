@@ -2,11 +2,14 @@
 #include "../../library/trees/centroid_decomp.hpp"
 void cd_asserts(const vector<vector<int>>& adj) {
   vector<int> decomp_size(sz(adj), -1);
+  vector<int> naive_par_decomp(sz(adj), -1);
   centroid(adj,
     [&](const vector<vector<int>>& cd_adj, int cent,
       int par_cent) -> void {
+      assert(naive_par_decomp[cent] == par_cent);
       assert(decomp_size[cent] == -1);
       auto dfs = [&](auto&& self, int u, int p) -> int {
+        naive_par_decomp[u] = cent;
         int sub_size = 1;
         for (int v : cd_adj[u])
           if (v != p) sub_size += self(self, v, u);
