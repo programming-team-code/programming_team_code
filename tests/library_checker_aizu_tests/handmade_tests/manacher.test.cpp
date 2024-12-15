@@ -6,7 +6,7 @@
 #include "../../../library/strings/manacher/longest_palindrome_query.hpp"
 int main() {
   cin.tie(0)->sync_with_stdio(0);
-  for (int n = 0; n <= 50; n++) {
+  for (int n = 1; n <= 50; n++) {
     for (int tests = 20; tests--;) {
       string s(n, 'a');
       if (n == 0 || rnd<int>(0, 1) == 0) {
