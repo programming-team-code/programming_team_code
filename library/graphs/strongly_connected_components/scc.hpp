@@ -12,7 +12,7 @@
 //! for each edge u -> v: scc_id[u] >= scc_id[v]
 //! @time O(n + m)
 //! @space O(n)
-template<class G> auto sccs(const G& adj) {
+auto sccs(const auto& adj) {
   int n = sz(adj), num_sccs = 0, timer = 0;
   vi scc_id(n, -1), tin(n), st;
   auto dfs = [&](auto&& self, int v) -> int {
