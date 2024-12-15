@@ -18,11 +18,11 @@
 //! mvc_r[r] is 1 if r in Min Vertex Cover
 //! @time O(n + m * sqrt(n)) n = lsz + rsz
 //! @space O(n)
-template<class G> struct hopcroft_karp {
+struct hopcroft_karp {
   int m_sz = 0;
   vi to_r, to_l;
   vector<bool> mvc_l, mvc_r;
-  hopcroft_karp(const G& adj, int rsz):
+  hopcroft_karp(const auto& adj, int rsz):
     to_r(sz(adj), -1), to_l(rsz, -1) {
     int lsz = sz(adj);
     while (1) {

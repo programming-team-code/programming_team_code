@@ -12,12 +12,12 @@
 //! kth_p = a node k edges up from v
 //! @time O(n + q log n)
 //! @space O(n)
-template<class G> struct tree_lift {
+struct tree_lift {
   struct node {
     int d, p = -1, j = -1;
   };
   vector<node> t;
-  tree_lift(const G& adj): t(sz(adj)) {
+  tree_lift(const auto& adj): t(sz(adj)) {
     auto dfs = [&](auto&& self, int v) -> void {
       int jump =
         (t[v].d + t[t[t[v].j].j].d == 2 * t[t[v].j].d)

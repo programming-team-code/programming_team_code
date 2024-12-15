@@ -10,13 +10,14 @@
 //! @endcode
 //! @time O(n + q)
 //! @space O(n)
-template<class G> struct linear_lca {
+struct linear_lca {
   struct node {
     int d, label, asc;
   };
   vector<node> t;
   vi head;
-  linear_lca(const G& adj): t(sz(adj)), head(sz(t) + 1) {
+  linear_lca(const auto& adj):
+    t(sz(adj)), head(sz(t) + 1) {
     vector<pii> order;
     auto dfs = [&](auto&& self, int v, int p) -> void {
       order.emplace_back(v, p);
