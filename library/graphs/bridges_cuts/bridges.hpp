@@ -9,9 +9,7 @@
 //!     adj[u].emplace_back(v, i);
 //!     adj[v].emplace_back(u, i);
 //!   }
-//!   auto [num_ccs, is_br, br_id] = bridges(adj, m);
 //!   vector<basic_string<array<int,2>>> adj1(n);
-//!   auto [num_ccs1, is_bridge1, br_id1] = bridges(adj1,
 //!   m);
 //! @endcode
 //! is_br[edge id] = 1 iff bridge edge
@@ -26,11 +24,8 @@ tuple<int, vi, vi> bridges(const G& adj, int m) {
     int low = tin[v] = ++timer, siz = sz(st);
     st.push_back(v);
     for (auto [u, e_id] : adj[v])
-      if (e_id != p_id) {
-        // TODO golf this
-        if (!tin[u]) low = min(low, self(self, u, e_id));
-        low = min(low, tin[u]);
-      }
+      if (e_id != p_id && br_id[u] < 0)
+        low = min(low, tin[u] ?: self(self, u, e_id));
     if (tin[v] == low) {
       if (p_id != -1) is_br[p_id] = 1;
       rep(i, siz, sz(st)) br_id[st[i]] = num_ccs;
