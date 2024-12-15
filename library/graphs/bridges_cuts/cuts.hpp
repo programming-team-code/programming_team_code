@@ -3,7 +3,7 @@
 //! @code
 //!   {
 //!     vector<vector<pii>> adj(n);
-//!     auto [num_bccs, is_cut, bcc_id] = cuts(adj, m);
+//!     auto [num_bccs, bcc_id, is_cut] = cuts(adj, m);
 //!   }
 //!   vector<basic_string<array<int, 2>>> adj(n);
 //!   rep (i, 0, m) {
@@ -14,14 +14,13 @@
 //!     adj[u].push_back({v, i});
 //!     adj[v].push_back({u, i});
 //!   }
-//!   auto [num_bccs, is_cut, bcc_id] = cuts(adj, m);
+//!   auto [num_bccs, bcc_id, is_cut] = cuts(adj, m);
 //! @endcode
 //! is_cut[v] = 1 iff cut node
 //! bcc_id[edge id] = id, 0<=id<num_bccs
 //! @time O(n + m)
 //! @space O(n + m)
-template<class G>
-tuple<int, vi, vi> cuts(const G& adj, int m) {
+template<class G> auto cuts(const G& adj, int m) {
   int n = sz(adj), num_bccs = 0, timer = 0;
   vi bcc_id(m, -1), is_cut(n), tin(n), st;
   auto dfs = [&](auto&& self, int v, int p_id) -> int {
