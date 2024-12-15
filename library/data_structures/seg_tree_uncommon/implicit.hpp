@@ -2,23 +2,23 @@
 //! @code
 //!     implicit_seg_tree<10'000'000> ist(l, r);
 //! @endcode
-template <int N> struct implicit_seg_tree {
-  using dt = array<int, 2>;  //!< min, number of mins
+template<int N> struct implicit_seg_tree {
+  using dt = array<ll, 2>; //!< min, number of mins
   static dt op(const dt& l, const dt& r) {
     if (l[0] == r[0]) return {l[0], l[1] + r[1]};
     return min(l, r);
   }
-  static constexpr dt unit{INT_MAX, 0};
+  static constexpr dt unit{LLONG_MAX, 0LL};
   struct node {
     dt num;
-    int lazy = 0;
+    ll lazy = 0;
     int lch = -1, rch = -1;
   } tree[N];
   int ptr = 0, root_l, root_r;
-  implicit_seg_tree(int l, int r) : root_l(l), root_r(r) {
+  implicit_seg_tree(int l, int r): root_l(l), root_r(r) {
     tree[ptr++].num = {0, r - l};
   }
-  void apply(int add, int v) {
+  void apply(ll add, int v) {
     tree[v].num[0] += add;
     tree[v].lazy += add;
   }
@@ -35,11 +35,11 @@ template <int N> struct implicit_seg_tree {
       tree[v].lazy = 0;
     }
   }
-  void update(int l, int r, int add) {  // [l, r)
+  void update(int l, int r, ll add) { // [l, r)
     update(l, r, add, root_l, root_r, 0);
   }
-  void update(int l, int r, int add, int tl, int tr,
-              int v) {
+  void update(int l, int r, ll add, int tl, int tr,
+    int v) {
     if (r <= tl || tr <= l) return;
     if (l <= tl && tr <= r) return apply(add, v);
     int tm = tl + (tr - tl) / 2;
@@ -47,9 +47,9 @@ template <int N> struct implicit_seg_tree {
     update(l, r, add, tl, tm, tree[v].lch);
     update(l, r, add, tm, tr, tree[v].rch);
     tree[v].num =
-        op(tree[tree[v].lch].num, tree[tree[v].rch].num);
+      op(tree[tree[v].lch].num, tree[tree[v].rch].num);
   }
-  dt query(int l, int r) {  // [l, r)
+  dt query(int l, int r) { // [l, r)
     return query(l, r, root_l, root_r, 0);
   }
   dt query(int l, int r, int tl, int tr, int v) {
@@ -58,6 +58,6 @@ template <int N> struct implicit_seg_tree {
     int tm = tl + (tr - tl) / 2;
     push(tl, tm, tr, v);
     return op(query(l, r, tl, tm, tree[v].lch),
-              query(l, r, tm, tr, tree[v].rch));
+      query(l, r, tm, tr, tree[v].rch));
   }
 };
