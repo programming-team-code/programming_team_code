@@ -17,6 +17,7 @@ int main() {
   vector<basic_string<int>> adj(n);
   vector<mint> b(n - 1), c(n - 1);
   vector<pair<int, int>> par(n, {-1, -1});
+  vector<vector<int>> base_adj(n);
   {
     vector<vector<pair<int, int>>> adj_with_id(n);
     for (int i = 0; i < n - 1; i++) {
@@ -24,6 +25,8 @@ int main() {
       cin >> u >> v >> b[i].x >> c[i].x;
       adj[u].push_back(v);
       adj[v].push_back(u);
+      base_adj[u].push_back(v);
+      base_adj[v].push_back(u);
       adj_with_id[u].emplace_back(v, i);
       adj_with_id[v].emplace_back(u, i);
       res[u] = res[u] + b[i] * a[v] + c[i];
@@ -42,7 +45,7 @@ int main() {
     assert(u_low ^ v_low);
     return u_low ? par[u].second : par[v].second;
   };
-  //{ edge_cd(adj, edge_cd_asserts); }
+  { edge_cd(base_adj, edge_cd_asserts); }
   edge_cd(adj,
     [&](const vector<basic_string<int>>& cd_adj, int cent,
       int split) -> void {
