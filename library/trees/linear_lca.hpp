@@ -6,7 +6,7 @@
 //!     linear_lca llca(adj);
 //!   }
 //!   vector<basic_string<int>> adj(n);
-//!   linear_lca llca1(adj);
+//!   linear_lca llca(adj);
 //! @endcode
 //! @time O(n + q)
 //! @space O(n)
