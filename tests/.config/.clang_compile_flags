@@ -12,3 +12,4 @@
 -O2
 -Wno-narrowing
 -Wno-deprecated-declarations
+-Wno-gnu-conditional-omitted-operand
