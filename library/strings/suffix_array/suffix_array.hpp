@@ -34,8 +34,7 @@
 //!
 //! @time O(nlogn + max_num)
 //! @space O(n + max_num)
-template<class T>
-array<vi, 3> get_sa(const T& s, int max_num) {
+auto get_sa(const auto& s, int max_num) {
   int n = sz(s);
   vi sa(n), sa_inv(all(s)), lcp(n - 1);
   iota(all(sa), 0);
@@ -67,5 +66,5 @@ array<vi, 3> get_sa(const T& s, int max_num) {
       sz++;
     lcp[sa_inv[i] - 1] = sz;
   }
-  return {sa, sa_inv, lcp};
+  return tuple{sa, sa_inv, lcp};
 }

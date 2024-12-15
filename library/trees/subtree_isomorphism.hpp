@@ -13,21 +13,18 @@
 //!     isomorphic to subtree v
 //! @time O(n log n)
 //! @space O(n)
-template<class G> struct subtree_iso {
-  int num_distinct_subtrees;
-  vi iso_id;
-  subtree_iso(const G& adj): iso_id(sz(adj), -1) {
-    map<vi, int> hashes;
-    auto dfs = [&](auto&& self, int v, int p) -> int {
-      vi ch_ids;
-      for (int u : adj[v])
-        if (u != p) ch_ids.push_back(self(self, u, v));
-      ranges::sort(ch_ids);
-      return iso_id[v] =
-               hashes.try_emplace(ch_ids, sz(hashes))
-                 .first->second;
-    };
-    rep(i, 0, sz(adj)) if (iso_id[i] == -1) dfs(dfs, i, i);
-    num_distinct_subtrees = sz(hashes);
-  }
-};
+auto subtree_iso(const auto& adj) {
+  vi iso_id(sz(adj), -1);
+  map<vi, int> hashes;
+  auto dfs = [&](auto&& self, int v, int p) -> int {
+    vi ch_ids;
+    for (int u : adj[v])
+      if (u != p) ch_ids.push_back(self(self, u, v));
+    ranges::sort(ch_ids);
+    return iso_id[v] =
+             hashes.try_emplace(ch_ids, sz(hashes))
+               .first->second;
+  };
+  rep(i, 0, sz(adj)) if (iso_id[i] == -1) dfs(dfs, i, i);
+  return pair{sz(hashes), iso_id};
+}
