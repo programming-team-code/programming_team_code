@@ -9,7 +9,7 @@
 //! @endcode
 mt19937 rng(
   chrono::steady_clock::now().time_since_epoch().count());
-template<class T> T rnd(T l, T r) {
+auto rnd(auto l, auto r) {
   assert(l <= r);
-  return uniform_int_distribution<T>(l, r)(rng);
+  return uniform_int_distribution(l, r)(rng);
 }
