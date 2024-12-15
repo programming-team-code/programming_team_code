@@ -5,7 +5,7 @@
 #include "../../library/data_structures/uncommon/linear_rmq.hpp"
 tuple<int, vector<vector<int>>, vector<int>>
 min_cartesian_tree(const vector<int>& a,
-                   const vector<int>& l, const vector<int>& r) {
+  const vector<int>& l, const vector<int>& r) {
   int n = sz(a);
   assert(sz(l) == n && sz(r) == n);
   auto is_node = [&](int i) -> bool {
@@ -23,7 +23,7 @@ min_cartesian_tree(const vector<int>& a,
       root = i;
     } else if (is_node(i)) {
       bool le_par =
-          (l[i] >= 0 && (r[i] == n || a[l[i]] > a[r[i]]));
+        (l[i] >= 0 && (r[i] == n || a[l[i]] > a[r[i]]));
       adj[to_min[le_par ? l[i] : r[i]]].push_back(i);
     }
   }
@@ -41,11 +41,11 @@ void mono_st_asserts(const vector<int>& a) {
          p = cart_binary_tree(l);
     {
       vector old_way_ri = mono_st(vi{rbegin(a), rend(a)},
-                                  [&](int x, int y) { return !cmp(y, x); });
+        [&](int x, int y) { return !cmp(y, x); });
       reverse(begin(old_way_ri), end(old_way_ri));
       transform(begin(old_way_ri), end(old_way_ri),
-                begin(old_way_ri),
-                [&](int i) { return sz(a) - i - 1; });
+        begin(old_way_ri),
+        [&](int i) { return sz(a) - i - 1; });
       assert(r == old_way_ri);
     }
     int iterations = 0;

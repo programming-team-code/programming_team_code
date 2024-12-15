@@ -30,7 +30,8 @@ int main() {
     dsu.join(a, b, k, f);
     queries.push_back({a, b, k});
     cout << ans.x << '\n';
-    if (qq == 0 || qq == 1 || qq == 10 || qq == 1000 || qq == 100'000 || qq == q - 1) {
+    if (qq == 0 || qq == 1 || qq == 10 || qq == 1000 ||
+      qq == 100'000 || qq == q - 1) {
       auto uf = get_rp_dsu(queries, n);
       vector<mint> sums(n);
       mint offline_ans = 0;

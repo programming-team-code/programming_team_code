@@ -18,7 +18,8 @@ int main() {
     assert((eds[t][0] == eds[t][1]) == (joins[t] == -1));
   vector<int> order(m);
   iota(all(order), 0);
-  ranges::sort(all(order), {}, [&](int i) { return joins[i]; });
+  ranges::sort(all(order), {},
+    [&](int i) { return joins[i]; });
   UF uf(n);
   mint sum = 0;
   for (int t = 0, it = 0; t < m; t++) {

@@ -26,12 +26,14 @@ int main() {
     {
       int w = rnd(0, n - 1);
       assert(lc.on_path(u, v, w) ==
-             (lc.dist_edges(u, w) + lc.dist_edges(w, v) ==
-              lc.dist_edges(u, v)));
+        (lc.dist_edges(u, w) + lc.dist_edges(w, v) ==
+          lc.dist_edges(u, v)));
     }
     if (u != v) {
-      assert(tl.kth_path(u, v, 1) == lc.next_on_path(u, v));
-      assert(tl.kth_path(u, v, dist_in_edges - 1) == lc.next_on_path(v, u));
+      assert(
+        tl.kth_path(u, v, 1) == lc.next_on_path(u, v));
+      assert(tl.kth_path(u, v, dist_in_edges - 1) ==
+        lc.next_on_path(v, u));
     }
   }
 }

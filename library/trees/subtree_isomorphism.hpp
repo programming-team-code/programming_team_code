@@ -22,7 +22,9 @@ auto subtree_iso(const auto& adj) {
     for (int u : adj[v])
       if (u != p) ch_ids.push_back(self(self, u, v));
     ranges::sort(ch_ids);
-    return iso_id[v] = hashes.try_emplace(ch_ids, sz(hashes)).first->second;
+    return iso_id[v] =
+             hashes.try_emplace(ch_ids, sz(hashes))
+               .first->second;
   };
   rep(i, 0, sz(adj)) if (iso_id[i] == -1) dfs(dfs, i, i);
   return pair{sz(hashes), iso_id};
