@@ -29,5 +29,5 @@ template<class G> auto sccs(const G& adj) {
     return low;
   };
   rep(i, 0, n) if (!tin[i]) dfs(dfs, i);
-  return {num_sccs, scc_id};
+  return pair{num_sccs, scc_id};
 }

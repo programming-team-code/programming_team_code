@@ -37,5 +37,5 @@ template<class G> auto bridges(const G& adj, int m) {
     return low;
   };
   rep(i, 0, n) if (!tin[i]) dfs(dfs, i, -1);
-  return {num_ccs, br_id, is_br};
+  return tuple{num_ccs, br_id, is_br};
 }

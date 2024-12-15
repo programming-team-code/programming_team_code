@@ -49,5 +49,5 @@ template<class G> auto cuts(const G& adj, int m) {
     return low;
   };
   rep(i, 0, n) if (!tin[i]) dfs(dfs, i, -1);
-  return {num_bccs, bcc_id, is_cut};
+  return tuple{num_bccs, bcc_id, is_cut};
 }
