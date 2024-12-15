@@ -1,22 +1,25 @@
 #pragma once
 //! https://cp-algorithms.com/graph/bridge-searching.html
 //! @code
-//!   vector<vector<pii>> adj(n);
+//!   {
+//!     vector<vector<pii>> adj(n);
+//!     auto [num_ccs, br_id, is_br] = bridges(adj, m);
+//!   }
+//!   vector<basic_string<array<int, 2>>> adj(n);
 //!   rep (i, 0, m) {
 //!     int u, v;
 //!     cin >> u >> v;
 //!     u--, v--;
-//!     adj[u].emplace_back(v, i);
-//!     adj[v].emplace_back(u, i);
+//!     adj[u].push_back({v, i});
+//!     adj[v].push_back({u, i});
 //!   }
-//!   vector<basic_string<array<int,2>>> adj1(n);
-//!   m);
+//!   auto [num_ccs, br_id, is_br] = bridges(adj, m);
 //! @endcode
 //! is_br[edge id] = 1 iff bridge edge
 //! br_id[v] = id, 0<=id<num_ccs
 //! @time O(n + m)
 //! @space O(n + m)
-template<class G>
+template <class G>
 tuple<int, vi, vi> bridges(const G& adj, int m) {
   int n = sz(adj), num_ccs = 0, timer = 0;
   vi br_id(n, -1), is_br(m), tin(n), st;

@@ -1,10 +1,12 @@
 #pragma once
 //! https://codeforces.com/blog/entry/125371
 //! @code
-//!   vector<vi> adj(n);
-//!   linear_lca llca(adj);
-//!   vector<basic_string<int>> adj1(n);
-//!   linear_lca llca1(adj1);
+//!   {
+//!     vector<vi> adj(n);
+//!     linear_lca llca(adj);
+//!   }
+//!   vector<basic_string<int>> adj(n);
+//!   linear_lca llca1(adj);
 //! @endcode
 //! @time O(n + q)
 //! @space O(n)
