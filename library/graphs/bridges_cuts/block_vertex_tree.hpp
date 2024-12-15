@@ -19,14 +19,14 @@
 //! @time O(n + m)
 //! @time O(n)
 template<class G>
-vector<vi> block_vertex_tree(const G& adj,
-  const cuts<G>& cc) {
+vector<vi> block_vertex_tree(const G& adj, int num_bccs,
+  const vi& bcc_id) {
   int n = sz(adj);
-  vector<vi> bvt(n + cc.num_bccs);
-  vector<bool> vis(cc.num_bccs);
+  vector<vi> bvt(n + num_bccs);
+  vector<bool> vis(num_bccs);
   rep(i, 0, n) {
     for (auto [_, e_id] : adj[i]) {
-      int bccid = cc.bcc_id[e_id];
+      int bccid = bcc_id[e_id];
       if (!vis[bccid]) {
         vis[bccid] = 1;
         bvt[i].push_back(bccid + n);
