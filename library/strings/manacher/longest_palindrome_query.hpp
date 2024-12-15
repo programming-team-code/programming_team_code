@@ -3,13 +3,13 @@
 #include "manacher.hpp"
 //! queries for longest palindromic substring of a given
 //! substring
-template<class T> struct longest_pal_query {
+struct longest_pal_query {
   vi man;
   RMQ<int, function<int(int, int)>> rmq = {{}, NULL};
   //! @param s string/vector
   //! @time O(n log n)
   //! @space O(n log n) for rmq, everything else is O(n)
-  longest_pal_query(const T& s): man(manacher(s)) {
+  longest_pal_query(const auto& s): man(manacher(s)) {
     vi init(sz(man));
     iota(all(init), 0);
     rmq = {init, [&](int i1, int i2) {

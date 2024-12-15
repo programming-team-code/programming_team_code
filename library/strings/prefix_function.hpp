@@ -2,7 +2,7 @@
 //! https://cp-algorithms.com/string/prefix-function.html#implementation
 //! @time O(n)
 //! @space O(n)
-template<class T> vi prefix_function(const T& s) {
+vi prefix_function(const auto& s) {
   vi pi(sz(s));
   rep(i, 1, sz(s)) {
     int j = pi[i - 1];

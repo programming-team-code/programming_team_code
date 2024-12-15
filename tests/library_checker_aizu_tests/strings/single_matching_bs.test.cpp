@@ -49,7 +49,7 @@ int main() {
     for (int num_tests = 10; num_tests--;) {
       vector<int> splits = {0, int(sz(t))};
       for (int num_splits = rnd(0, 4); num_splits--;)
-        splits.push_back(rnd<int>(0, sz(t) - 1));
+        splits.push_back(rnd(0, int(sz(t)) - 1));
       sort(begin(splits), end(splits));
       vector<pair<int, int>> subs;
       for (int i = 1; i < sz(splits); i++)

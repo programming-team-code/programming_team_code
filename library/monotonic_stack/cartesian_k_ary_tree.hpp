@@ -31,8 +31,7 @@
 //! @returns parent array
 //! @time O(n)
 //! @space a O(n) vector is allocated and returned
-template<class T>
-vi cart_k_ary_tree(const vector<T>& a, const vi& l) {
+vi cart_k_ary_tree(const auto& a, const vi& l) {
   vi p(l);
   for (int i = sz(a) - 1; i >= 0; i--)
     for (int j = i - 1; j != l[i]; j = l[j])

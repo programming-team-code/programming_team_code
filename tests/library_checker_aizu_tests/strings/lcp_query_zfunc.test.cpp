@@ -12,16 +12,16 @@ int main() {
   // test `*_cmp` functions
   {
     for (int num_tests = 50; num_tests--;) {
-      auto l = rnd<int>(0, sz(s) - 1);
-      auto r = rnd<int>(0, sz(s) - 1);
+      auto l = rnd(0, int(sz(s)) - 1);
+      auto r = rnd(0, int(sz(s)) - 1);
       int cmp_val = lq.cmp_sufs(l, r);
       if (cmp_val < 0) assert(s.substr(l) < s.substr(r));
       if (cmp_val == 0) assert(s.substr(l) == s.substr(r));
       if (cmp_val > 0) assert(s.substr(l) > s.substr(r));
     }
     for (int num_tests = 50; num_tests--;) {
-      auto l1 = rnd<int>(0, sz(s));
-      auto r1 = rnd<int>(0, sz(s));
+      auto l1 = rnd(0, int(sz(s)));
+      auto r1 = rnd(0, int(sz(s)));
       if (l1 > r1) swap(l1, r1);
       if (l1 == sz(s)) l1--;
       int l2, r2;
@@ -29,8 +29,8 @@ int main() {
         l2 = l1;
         r2 = r1;
       } else {
-        l2 = rnd<int>(0, sz(s));
-        r2 = rnd<int>(0, sz(s));
+        l2 = rnd(0, int(sz(s)));
+        r2 = rnd(0, int(sz(s)));
         if (l2 > r2) swap(l2, r2);
         if (l2 == sz(s)) l2--;
       }

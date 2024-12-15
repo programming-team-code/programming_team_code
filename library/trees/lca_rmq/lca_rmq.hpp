@@ -12,13 +12,13 @@
 //! @time O(nlogn + q)
 //! @space O(nlogn)
 // NOLINTNEXTLINE(readability-identifier-naming)
-template<class G> struct LCA {
+struct LCA {
   struct node {
     int in, sub_sz = 1, d, p = -1;
   };
   vector<node> t;
   RMQ<int, function<int(int, int)>> rmq = {{}, NULL};
-  LCA(const G& adj): t(sz(adj)) {
+  LCA(const auto& adj): t(sz(adj)) {
     vi order;
     auto dfs = [&](auto&& self, int v) -> void {
       t[v].in = sz(order), order.push_back(v);

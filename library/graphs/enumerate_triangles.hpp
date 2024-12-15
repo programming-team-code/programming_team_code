@@ -7,9 +7,8 @@
 //! @endcode
 //! @time O(n + m ^ (3/2))
 //! @space O(n + m)
-template<class F>
 void enumerate_triangles(const vector<pii>& edges, int n,
-  F f) {
+  auto f) {
   vi deg(n);
   for (auto [u, v] : edges) deg[u]++, deg[v]++;
   vector<vi> adj(n);

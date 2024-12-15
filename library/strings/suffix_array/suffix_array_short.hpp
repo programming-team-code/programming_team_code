@@ -10,7 +10,7 @@
 //! runs in ~1.5s for 5e5
 //! @time O(n * log^2(n))
 //! @space O(n)
-template<class T> array<vi, 3> sa_short(const T& s) {
+auto sa_short(const auto& s) {
   int n = sz(s);
   vi sa(n), sa_inv(all(s)), lcp(n - 1);
   iota(all(sa), 0);
@@ -33,5 +33,5 @@ template<class T> array<vi, 3> sa_short(const T& s) {
       sz++;
     lcp[sa_inv[i] - 1] = sz;
   }
-  return {sa, sa_inv, lcp};
+  return tuple{sa, sa_inv, lcp};
 }

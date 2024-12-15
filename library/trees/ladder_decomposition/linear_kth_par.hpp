@@ -12,14 +12,15 @@
 //! kth_par = a node k edges up from v
 //! @time O(n + q)
 //! @space O(n)
-template<class G> struct linear_kth_par {
+struct linear_kth_par {
   struct node {
     int d, p = -1, dl, idx_j, idx_l;
   };
   vector<node> t;
   vector<pii> j;
   vi l;
-  linear_kth_par(const G& adj): t(sz(adj)), j(2 * sz(t)) {
+  linear_kth_par(const auto& adj):
+    t(sz(adj)), j(2 * sz(t)) {
     vi st;
     int pos = 1;
     auto add_j = [&]() -> void {

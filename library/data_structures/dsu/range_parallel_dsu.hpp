@@ -8,16 +8,14 @@
 struct rp_dsu {
   vector<UF> ufs;
   rp_dsu(int n): ufs(bit_width(unsigned(n)), UF(n)) {}
-  template<class F>
-  void join(int l1, int l2, int len, const F& f) {
+  void join(int l1, int l2, int len, const auto& f) {
     if (len == 0) return;
     int lg = __lg(len);
     join_impl(lg, l1, l2, f);
     join_impl(lg, l1 + len - (1 << lg),
       l2 + len - (1 << lg), f);
   }
-  template<class F>
-  void join_impl(int lvl, int u, int v, const F& f) {
+  void join_impl(int lvl, int u, int v, const auto& f) {
     if (lvl == 0) {
       u = ufs[0].find(u);
       v = ufs[0].find(v);

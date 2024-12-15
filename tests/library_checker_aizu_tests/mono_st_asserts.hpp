@@ -69,9 +69,8 @@ void mono_st_asserts(const vector<int>& a) {
       assert(iterations == n);
     }
     {
-      vector old_way_ri =
-        mono_st<int>({rbegin(a), rend(a)},
-          [&](int x, int y) { return !cmp(y, x); });
+      vector old_way_ri = mono_st(vi{rbegin(a), rend(a)},
+        [&](int x, int y) { return !cmp(y, x); });
       reverse(begin(old_way_ri), end(old_way_ri));
       transform(begin(old_way_ri), end(old_way_ri),
         begin(old_way_ri),

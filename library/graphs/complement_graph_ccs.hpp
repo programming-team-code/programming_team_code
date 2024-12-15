@@ -13,8 +13,7 @@
 //!   cc in the compliment graph
 //! @time O(n + m)
 //! @space O(n)
-template<class G>
-vi get_complement_graph_ccs(const G& adj) {
+vi get_complement_graph_ccs(const auto& adj) {
   int n = sz(adj);
   vi cc_id(n), unseen(n);
   iota(all(unseen), 0);

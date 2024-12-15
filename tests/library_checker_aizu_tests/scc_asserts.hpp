@@ -34,6 +34,5 @@ void scc_asserts(const vector<vector<int>>& adj) {
     assert(u != v);
     adj_copy[u].push_back(v);
   }
-  sccs curr_res(adj_copy);
-  assert(curr_res.num_sccs == 1);
+  assert(sccs(adj_copy).first == 1);
 }

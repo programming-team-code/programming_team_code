@@ -32,7 +32,7 @@ vi offline_incremental_scc(vector<array<int, 2>> eds,
       if (*it <= mid) adj[u].push_back(v);
     }
     for (int v : vs) ids[v] = -1;
-    auto scc_id = sccs(adj).scc_id;
+    auto scc_id = sccs(adj).second;
     auto split = partition(el, er, [&](int i) {
       return scc_id[eds[i][0]] == scc_id[eds[i][1]];
     });
