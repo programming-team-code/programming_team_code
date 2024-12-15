@@ -11,11 +11,11 @@
 //! @time O(n + m)
 //! @space O(n)
 template<class G>
-vector<vi> bridge_tree(const G& adj,
-  const bridges<G>& br) {
-  vector<vi> tree(br.num_ccs);
+vector<vi> bridge_tree(const G& adj, int num_ccs,
+  const vi& br_id, const vi& is_br) {
+  vector<vi> tree(num_ccs);
   rep(i, 0, sz(adj)) for (auto [u, e_id] : adj[i]) if (
-    br.is_bridge[e_id]) tree[br.br_id[i]]
-    .push_back(br.br_id[u]);
+    is_br[e_id]) tree[br_id[i]]
+    .push_back(br_id[u]);
   return tree;
 }
