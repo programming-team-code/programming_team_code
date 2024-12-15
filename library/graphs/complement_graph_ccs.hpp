@@ -1,9 +1,11 @@
 #pragma once
 //! @code
-//!   vector<vi> adj(n);
+//!   {
+//!     vector<vi> adj(n);
+//!     vi cc_id = get_complement_graph_ccs(adj);
+//!   }
+//!   vector<basic_string<int>> adj;
 //!   vi cc_id = get_complement_graph_ccs(adj);
-//!   vector<basic_string<int>> adj1;
-//!   vi cc_id2 = get_complement_graph_ccs(adj1);
 //! @endcode
 //! 0<=cc_id[v]<number of connected components
 //!   in the complement graph

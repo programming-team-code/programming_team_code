@@ -1,9 +1,11 @@
 #pragma once
 //! @code
-//!   vector<vector<pair<int, ll>>> adj(n);
+//!   {
+//!     vector<vector<pair<int, ll>>> adj(n);
+//!     auto d = dijkstra(adj, source);
+//!   }
+//!   vector<basic_string<array<int, 2>>> adj(n);
 //!   auto d = dijkstra(adj, source);
-//!   vector<basic_string<array<int, 2>>> adj1(n);
-//!   auto d1 = dijkstra(adj1, source);
 //! @endcode
 //! d[v] = min dist from source->..->v
 //! @time O(n + (m log m))

@@ -1,12 +1,15 @@
 #pragma once
 #include "cuts.hpp"
 //! @code
-//!   vector<vector<pii>> adj(n);
+//!   {
+//!     vector<vector<pii>> adj(n);
+//!     cuts cc(adj, m);
+//!     vector<vi> bvt = block_vertex_tree(adj, cc);
+//!   }
+//!   vector<basic_string<array<int, 2>>> adj(n);
 //!   cuts cc(adj, m);
 //!   vector<vi> bvt = block_vertex_tree(adj, cc);
-//!   vector<basic_string<array<int, 2>>> adj1(n);
-//!   cuts cc1(adj1, m);
-//!   vector<vi> bvt1 = block_vertex_tree(adj1, cc1);
+//!
 //!   //to loop over each unique bcc containing a node u:
 //!   for (int bccid : bvt[v]) {
 //!     bccid -= n;

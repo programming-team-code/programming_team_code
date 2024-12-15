@@ -3,18 +3,20 @@
 //! https://codeforces.com/blog/entry/120446
 //! https://youtu.be/wDwaMo5xa-k
 //! @code
-//!   vector<vi> adj(n);
-//!   edge_cd(adj, [&](const vector<vi>& adj,
-//!     int cent, int split) {
+//!   {
+//!     vector<vi> adj(n);
+//!     edge_cd(adj, [&](
+//!       const vector<vi>& adj,
+//!       int cent, int split) {});
+//!   }
+//!   vector<basic_string<int>> adj(n);
+//!   edge_cd(adj, [&](const vector<basic_string<int>>&
+//!     adj, int cent, int split) {
 //!     // subtrees of prefix [0, split) of adj[cent]
 //!     //   are the first edge-set
 //!     // subtrees of suffix [split, sz(adj[cent]))
 //!     //   of adj[cent] are the second edge-set
 //!   });
-//!   vector<basic_string<int>> adj1(n);
-//!   edge_cd(adj1, [&](
-//!     const vector<basic_string<int>>& adj1,
-//!     int cent, int split) {});
 //! @endcode
 //! handle single-edge-paths separately
 //! @time O(n log1.5 n)

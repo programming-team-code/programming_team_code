@@ -2,10 +2,12 @@
 #include "../../data_structures/rmq.hpp"
 //! https://github.com/kth-competitive-programming/kactl/blob/main/content/graph/LCA.h
 //! @code
-//!   vector<vi> adj(n);
+//!   {
+//!     vector<vi> adj(n);
+//!     LCA lca(adj);
+//!   }
+//!   vector<basic_string<int>> adj(n);
 //!   LCA lca(adj);
-//!   vector<basic_string<int>> adj1(n);
-//!   LCA lca1(adj1);
 //! @endcode
 //! @time O(nlogn + q)
 //! @space O(nlogn)

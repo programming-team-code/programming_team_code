@@ -1,12 +1,14 @@
 #pragma once
 //! @code
-//!   vector<vi> adj(n);
-//!   centroid(adj, [&](const vector<vi>& adj,
-//!     int cent, int par_cent) {
-//!   });
-//!   vector<basic_string<int>> adj1(n);
-//!   centroid(adj1,
-//!     [&](const vector<basic_string<int>>& adj1,
+//!   {
+//!     vector<vi> adj(n);
+//!     centroid(adj, [&](const vector<vi>& adj,
+//!       int cent, int par_cent) {
+//!     });
+//!   }
+//!   vector<basic_string<int>> adj(n);
+//!   centroid(adj,
+//!     [&](const vector<basic_string<int>>& adj,
 //!     int cent, int par_cent) {});
 //! @endcode
 //! @time O(n log n)
