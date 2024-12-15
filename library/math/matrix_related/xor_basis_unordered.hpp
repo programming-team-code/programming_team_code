@@ -12,7 +12,7 @@
 //! @time O(32) or O(64)
 //! @space O(32) or O(64)
 template<class T> struct basis {
-  vector<T> b;
+  basic_string<T> b;
   T shrink(T v) {
     for (T x : b) v = min(v, v ^ x);
     return v;
