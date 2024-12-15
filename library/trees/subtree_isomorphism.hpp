@@ -1,10 +1,12 @@
 #pragma once
 //! @code
-//!   vector<vi> adj(n);
-//!   auto [num_distinct_subtrees, iso_id] =
-//!     subtree_iso(adj);
-//!   vector<basic_string<int>> adj1(n);
-//!   subtree_iso iso(adj1);
+//!   {
+//!     vector<vi> adj(n);
+//!     auto [num_distinct_subtrees, iso_id] =
+//!       subtree_iso(adj);
+//!   }
+//!   vector<basic_string<int>> adj(n);
+//!   subtree_iso iso(adj);
 //! @endcode
 //! - 0 <= iso_id[v] < num_distinct_subtrees
 //! - iso_id[u] == iso_id[v] iff subtree u is
