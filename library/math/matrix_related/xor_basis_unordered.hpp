@@ -4,7 +4,6 @@
 //! @code
 //!   basis<int> b1;
 //!   basis<ll> b2;
-//!   basis<dynamic_bitset<>> b3;
 //! @endcode
 //! b.shrink(v) == b.shrink(b.shrink(v))
 //! for x in b.b: (bit_floor(x)&b.shrink(v))==0
