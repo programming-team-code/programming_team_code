@@ -2,8 +2,8 @@
 //! https://github.com/Aeren1564/Algorithms/blob/master/Algorithm_Implementations_Cpp/Graph_Theory/Special_Graphs/functional_graph_processor.sublime-snippet
 //! @code
 //!   // 0 <= a[i] < n
-//!   auto [t2, cycle] = func_graph(a);
-//!   auto [cyc_id, cyc_pos] = t2[v].root_of;
+//!   auto [t, cycle] = func_graph(a);
+//!   auto [cyc_id, cyc_pos] = t[v].root_of;
 //!   int root = cycle[cyc_id][cyc_pos];
 //!   bool is_on_cycle = (v == root);
 //! @endcode
