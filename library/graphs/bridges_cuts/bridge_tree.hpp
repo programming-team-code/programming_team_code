@@ -12,8 +12,7 @@
 //! @endcode
 //! @time O(n + m)
 //! @space O(n)
-template<class G>
-vector<vi> bridge_tree(const G& adj, int num_ccs,
+vector<vi> bridge_tree(const auto& adj, int num_ccs,
   const vi& br_id, const vi& is_br) {
   vector<vi> tree(num_ccs);
   rep(i, 0, sz(adj)) for (auto [u, e_id] : adj[i]) if (

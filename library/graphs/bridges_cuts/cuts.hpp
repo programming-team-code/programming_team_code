@@ -20,7 +20,7 @@
 //! bcc_id[edge id] = id, 0<=id<num_bccs
 //! @time O(n + m)
 //! @space O(n + m)
-template<class G> auto cuts(const G& adj, int m) {
+auto cuts(const auto& adj, int m) {
   int n = sz(adj), num_bccs = 0, timer = 0;
   vi bcc_id(m, -1), is_cut(n), tin(n), st;
   auto dfs = [&](auto&& self, int v, int p_id) -> int {

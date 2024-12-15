@@ -21,8 +21,7 @@
 //! [n, n + num_bccs) are BCC nodes
 //! @time O(n + m)
 //! @time O(n)
-template<class G>
-vector<vi> block_vertex_tree(const G& adj, int num_bccs,
+vector<vi> block_vertex_tree(const auto& adj, int num_bccs,
   const vi& bcc_id) {
   int n = sz(adj);
   vector<vi> bvt(n + num_bccs);
