@@ -20,9 +20,9 @@
 //! p[5] = 9
 //!
 //! @code
-//!     auto l = mono_st(a, less()), p =
-//!     cart_k_ary_tree(a, l); // min cart tree auto l =
-//!     mono_st(a, greater()), p = cart_k_ary_tree(a, l);
+//!     auto le = mono_st(a, less()), p =
+//!     cart_k_ary_tree(a, le); // min cart tree auto le =
+//!     mono_st(a, greater()), p = cart_k_ary_tree(a, le);
 //!     // max cart tree bool is_node = (p[i] < i || a[i]
 //!     != a[p[i]]);
 //! @endcode
@@ -31,8 +31,7 @@
 //! @returns parent array
 //! @time O(n)
 //! @space a O(n) vector is allocated and returned
-template<class T>
-vi cart_k_ary_tree(const vector<T>& a, const vi& l) {
+vi cart_k_ary_tree(const auto& a, const vi& l) {
   vi p(l);
   for (int i = sz(a) - 1; i >= 0; i--)
     for (int j = i - 1; j != l[i]; j = l[j])

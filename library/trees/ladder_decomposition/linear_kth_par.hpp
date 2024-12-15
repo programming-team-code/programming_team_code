@@ -1,6 +1,11 @@
 #pragma once
 //! https://codeforces.com/blog/entry/126580
 //! @code
+//!   {
+//!     vector<vi> adj(n);
+//!     linear_kth_par kp(adj);
+//!   }
+//!   vector<basic_string<int>> adj(n);
 //!   linear_kth_par kp(adj);
 //!   int kth_par = kp.kth_par(v, k);
 //! @endcode
@@ -14,7 +19,7 @@ struct linear_kth_par {
   vector<node> t;
   vector<pii> j;
   vi l;
-  linear_kth_par(const vector<vi>& adj):
+  linear_kth_par(const auto& adj):
     t(sz(adj)), j(2 * sz(t)) {
     vi st;
     int pos = 1;

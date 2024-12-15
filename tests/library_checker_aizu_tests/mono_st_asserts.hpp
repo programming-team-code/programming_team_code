@@ -40,9 +40,8 @@ void mono_st_asserts(const vector<int>& a) {
     auto l = mono_st(a, cmp), r = mono_range(l),
          p = cart_binary_tree(l);
     {
-      vector old_way_ri =
-          mono_st<int>({rbegin(a), rend(a)},
-                       [&](int x, int y) { return !cmp(y, x); });
+      vector old_way_ri = mono_st(vi{rbegin(a), rend(a)},
+                                  [&](int x, int y) { return !cmp(y, x); });
       reverse(begin(old_way_ri), end(old_way_ri));
       transform(begin(old_way_ri), end(old_way_ri),
                 begin(old_way_ri),

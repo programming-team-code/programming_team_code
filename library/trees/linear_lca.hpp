@@ -1,5 +1,13 @@
 #pragma once
 //! https://codeforces.com/blog/entry/125371
+//! @code
+//!   {
+//!     vector<vi> adj(n);
+//!     linear_lca llca(adj);
+//!   }
+//!   vector<basic_string<int>> adj(n);
+//!   linear_lca llca1(adj);
+//! @endcode
 //! @time O(n + q)
 //! @space O(n)
 struct linear_lca {
@@ -8,7 +16,7 @@ struct linear_lca {
   };
   vector<node> t;
   vi head;
-  linear_lca(const vector<vi>& adj):
+  linear_lca(const auto& adj):
     t(sz(adj)), head(sz(t) + 1) {
     vector<pii> order;
     auto dfs = [&](auto&& self, int v, int p) -> void {

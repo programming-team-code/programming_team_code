@@ -4,7 +4,7 @@
 struct linear_kth_path {
   linear_lca lin_lca;
   linear_kth_par lin_kp;
-  linear_kth_path(const vector<vi>& adj):
+  linear_kth_path(const auto& adj):
     lin_lca(adj), lin_kp(adj) {}
   //! @param u,v endpoint nodes of path
   //! @param k index into path

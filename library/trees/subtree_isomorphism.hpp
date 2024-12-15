@@ -1,5 +1,11 @@
 #pragma once
 //! @code
+//!   {
+//!     vector<vi> adj(n);
+//!     auto [num_distinct_subtrees, iso_id] =
+//!       subtree_iso(adj);
+//!   }
+//!   vector<basic_string<int>> adj(n);
 //!   auto [num_distinct_subtrees, iso_id] =
 //!     subtree_iso(adj);
 //! @endcode
@@ -8,7 +14,7 @@
 //!     isomorphic to subtree v
 //! @time O(n log n)
 //! @space O(n)
-pair<int, vi> subtree_iso(const vector<vi>& adj) {
+auto subtree_iso(const auto& adj) {
   vi iso_id(sz(adj), -1);
   map<vi, int> hashes;
   auto dfs = [&](auto&& self, int v, int p) -> int {
@@ -19,5 +25,5 @@ pair<int, vi> subtree_iso(const vector<vi>& adj) {
     return iso_id[v] = hashes.try_emplace(ch_ids, sz(hashes)).first->second;
   };
   rep(i, 0, sz(adj)) if (iso_id[i] == -1) dfs(dfs, i, i);
-  return {sz(hashes), iso_id};
+  return pair{sz(hashes), iso_id};
 }

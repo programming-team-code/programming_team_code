@@ -1,12 +1,12 @@
 #pragma once
 //! @code
-//!   rmq_inc rmq3(a, ranges::min);
-//!   rmq_inc rmq4(a, [&](auto& x, auto& y) {
+//!   rmq_inc rmq1(a, ranges::min);
+//!   rmq_inc rmq2(a, [&](auto& x, auto& y) {
 //!     return min(x, y);
 //!   });
 //!   vector<rmq_inc<int, function<int(int, int)>>>
-//!     rmqs2(3, {{}, NULL});
-//!   rmqs2[1] = {a, ranges::min};
+//!     rmqs(3, {{}, NULL});
+//!   rmqs[1] = {a, ranges::min};
 //! @endcode
 //! @time O(nlogn + q)
 //! @space O(nlogn)

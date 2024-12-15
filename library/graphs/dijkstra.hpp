@@ -1,12 +1,16 @@
 #pragma once
 //! @code
-//!   auto d = dijkstra(adj_w, source);
+//!   {
+//!     vector<vector<pair<int, ll>>> adj(n);
+//!     auto d = dijkstra(adj, source);
+//!   }
+//!   vector<basic_string<array<int, 2>>> adj(n);
+//!   auto d = dijkstra(adj, source);
 //! @endcode
 //! d[v] = min dist from source->..->v
 //! @time O(n + (m log m))
 //! @space O(n + m)
-vector<ll> dijkstra(
-  const vector<vector<pair<int, ll>>>& adj, int s) {
+vector<ll> dijkstra(const auto& adj, int s) {
   using p = pair<ll, int>;
   priority_queue<p, vector<p>, greater<>> pq;
   pq.emplace(0, s);

@@ -2,7 +2,6 @@
   "https://judge.yosupo.jp/problem/cycle_detection"
 #include "../template.hpp"
 #include "../scc_asserts.hpp"
-#include "../../../library/graphs/strongly_connected_components/add_edges_strongly_connected.hpp"
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n, m;
@@ -16,44 +15,46 @@ int main() {
     adj_edge_id[u].emplace_back(v, i);
   }
   scc_asserts(adj);
-  sccs scc(adj);
-  vector<int> color(n);
-  vector<
-    pair<int /*edge id*/, int /*node closer to root*/>>
-    edge_stack;
-  auto dfs = [&](auto&& self, int u) -> void {
-    for (auto [v, e_id] : adj_edge_id[u]) {
-      if (color[v] == 0) {
-        color[v] = 1;
-        edge_stack.emplace_back(e_id, u);
-        self(self, v);
-        edge_stack.pop_back();
-        color[v] = 2;
-      } else if (color[v] == 1) {
-        vector<int> res(1, e_id);
-        while (1) {
-          auto [curr_edge_id, curr_node] =
-            edge_stack.back();
-          edge_stack.pop_back();
-          assert(scc.scc_id[curr_node] == scc.scc_id[u]);
-          res.push_back(curr_edge_id);
-          if (curr_node == v) break;
+  auto [num_sccs, scc_id] = sccs(adj);
+  if (num_sccs == n) {
+    cout << -1 << '\n';
+    return 0;
+  }
+  vi scc_siz(num_sccs);
+  vi any_node(num_sccs);
+  rep(i, 0, n) {
+    any_node[scc_id[i]] = i;
+    scc_siz[scc_id[i]]++;
+  }
+  rep(i, 0, num_sccs) {
+    if (scc_siz[i] > 1) {
+      int v = any_node[i];
+      vi vis(n);
+      while (!vis[v]) {
+        vis[v] = 1;
+        for (auto [next, _] : adj_edge_id[v]) {
+          if (scc_id[v] == scc_id[next]) {
+            v = next;
+            break;
+          }
         }
-        cout << sz(res) << '\n';
-        for (int i = sz(res) - 1; i >= 0; i--)
-          cout << res[i] << '\n';
-        exit(0);
       }
-    }
-  };
-  for (int i = 0; i < n; i++) {
-    if (color[i] == 0) {
-      color[i] = 1;
-      dfs(dfs, i);
-      color[i] = 2;
+      vi cycle;
+      while (vis[v] == 1) {
+        vis[v] = 2;
+        for (auto [next, e_id] : adj_edge_id[v]) {
+          if (scc_id[v] == scc_id[next]) {
+            cycle.push_back(e_id);
+            v = next;
+            break;
+          }
+        }
+      }
+      cout << sz(cycle) << '\n';
+      for (int node : cycle) cout << node << '\n';
+      return 0;
     }
   }
-  assert(scc.num_sccs == n);
-  cout << -1 << '\n';
+  assert(0);
   return 0;
 }

@@ -8,7 +8,7 @@
 //!   is a palindrome
 //! @time O(n)
 //! @space O(n)
-template<class T> vi longest_from_index(pal_query<T>& pq) {
+vi longest_from_index(pal_query& pq) {
   int n = (sz(pq.man) + 1) / 2;
   vector longest(n, n - 1);
   for (int i = n - 2; i >= 0; i--) {

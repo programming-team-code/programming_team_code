@@ -1,11 +1,17 @@
 #pragma once
 //! https://github.com/foreverbell/acm-icpc-cheat-sheet/blob/master/src/graph-algorithm/hopcroft-karp.cpp
 //! @code
+//!   {
+//!     vector<vi> adj(lsz);
+//!     auto [matching_size, to_r, to_l,
+//!       mvc_l, mvc_r] = hopcroft_karp(adj, rsz);
+//!   }
+//!   vector<basic_string<int>> adj(lsz);
 //!   adj[l].push_back(r); // add edge l <-> r
+//!                        // 0<=l<lsz; 0<=r<rsz
 //!   auto [matching_size, to_r, to_l,
 //!     mvc_l, mvc_r] = hopcroft_karp(adj, rsz);
 //! @endcode
-//! 0<=l<lsz; 0<=r<rsz
 //! l <-> to_r[l] in matching if to_r[l]!=-1
 //! to_l[r] <-> r in matching if to_l[r]!=-1
 //! mvc_l[l] is 1 if l in Min Vertex Cover
@@ -16,7 +22,7 @@ struct hopcroft_karp {
   int m_sz = 0;
   vi to_r, to_l;
   vector<bool> mvc_l, mvc_r;
-  hopcroft_karp(const vector<vi>& adj, int rsz):
+  hopcroft_karp(const auto& adj, int rsz):
     to_r(sz(adj), -1), to_l(rsz, -1) {
     int lsz = sz(adj);
     while (1) {

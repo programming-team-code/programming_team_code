@@ -1,7 +1,7 @@
 #pragma once
 //! @code
-//!   seg_tree st1(n);
-//!   st1.find_first(l, r, [&](ll x, int tl, int tr) ->
+//!   seg_tree st(n);
+//!   st.find_first(l, r, [&](ll x, int tl, int tr) ->
 //!   bool {
 //!   });
 //! @endcode
@@ -25,13 +25,11 @@
 //! such element exists then `r` is returned
 //! @time O(log(n))
 //! @space O(log(n)) for recursion stack
-template<class F>
-int find_first(int l, int r, const F& f) {
+int find_first(int l, int r, const auto& f) {
   return find_first_in_range(l, r, f, 0, n, 1);
 }
 //! invariant: f(tree[v], tl, tr) is 1
-template<class F>
-int find_first_in_subtree(const F& f, int tl, int tr,
+int find_first_in_subtree(const auto& f, int tl, int tr,
   int v) {
   if (v >= n) return tl;
   int tm = split(tl, tr);
@@ -40,9 +38,8 @@ int find_first_in_subtree(const F& f, int tl, int tr,
     return find_first_in_subtree(f, tl, tm, 2 * v);
   return find_first_in_subtree(f, tm, tr, 2 * v + 1);
 }
-template<class F>
-int find_first_in_range(int l, int r, const F& f, int tl,
-  int tr, int v) {
+int find_first_in_range(int l, int r, const auto& f,
+  int tl, int tr, int v) {
   if (r <= tl || tr <= l) return r;
   if (l <= tl && tr <= r)
     return f(tree[v], tl, tr)

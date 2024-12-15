@@ -2,6 +2,11 @@
 #include "../../data_structures/rmq.hpp"
 //! https://github.com/kth-competitive-programming/kactl/blob/main/content/graph/LCA.h
 //! @code
+//!   {
+//!     vector<vi> adj(n);
+//!     LCA lca(adj);
+//!   }
+//!   vector<basic_string<int>> adj(n);
 //!   LCA lca(adj);
 //! @endcode
 //! @time O(nlogn + q)
@@ -13,7 +18,7 @@ struct LCA {
   };
   vector<node> t;
   RMQ<int, function<int(int, int)>> rmq = {{}, NULL};
-  LCA(const vector<vi>& adj): t(sz(adj)) {
+  LCA(const auto& adj): t(sz(adj)) {
     vi order;
     auto dfs = [&](auto&& self, int v) -> void {
       t[v].in = sz(order), order.push_back(v);

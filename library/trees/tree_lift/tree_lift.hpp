@@ -1,6 +1,11 @@
 #pragma once
 //! https://github.com/ucf-programming-team/hackpack-cpp/blob/master/content/graphs/TreeLifting.h
 //! @code
+//!   {
+//!     vector<vi> adj(n);
+//!     tree_lift tree_l(adj);
+//!   }
+//!   vector<basic_string<int>> adj(n);
 //!   tree_lift tree_l(adj);
 //!   int kth_p = tree_l.kth_par(v, k);
 //! @endcode
@@ -12,7 +17,7 @@ struct tree_lift {
     int d, p = -1, j = -1;
   };
   vector<node> t;
-  tree_lift(const vector<vi>& adj): t(sz(adj)) {
+  tree_lift(const auto& adj): t(sz(adj)) {
     auto dfs = [&](auto&& self, int v) -> void {
       int jump =
         (t[v].d + t[t[t[v].j].j].d == 2 * t[t[v].j].d)

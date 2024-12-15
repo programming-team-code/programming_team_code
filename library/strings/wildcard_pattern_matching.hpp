@@ -1,6 +1,7 @@
 #pragma once
 //! https://codeforces.com/blog/entry/111380
 //! @code
+//!   vl s_vec, t_vec;
 //!   auto mtch = wildcard_pattern_matching(
 //!     s_vec, t_vec, conv);
 //! @endcode
@@ -18,9 +19,8 @@ vector<vl> make_powers(const vl& v) {
   }
   return pws;
 }
-template<class F>
 vector<bool> wildcard_pattern_matching(const vl& s,
-  const vl& t, F conv) {
+  const vl& t, auto conv) {
   int n = sz(s), m = sz(t);
   auto s_pws = make_powers(s);
   auto t_pws = make_powers(t);

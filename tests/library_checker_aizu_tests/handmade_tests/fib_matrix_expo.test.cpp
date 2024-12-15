@@ -31,7 +31,7 @@ int main() {
   assert(fib(5)[0] == 5);
   for (int i = 0; i < 500; i++) check(i);
   for (int tests = 1000; tests--;)
-    check(rnd<int64_t>(0, LLONG_MAX));
+    check(rnd(0LL, LLONG_MAX));
   cout << "Hello World\n";
   return 0;
 }

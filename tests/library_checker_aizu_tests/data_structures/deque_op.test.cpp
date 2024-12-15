@@ -52,7 +52,7 @@ int main() {
       assert(stl_dq.front() == dq.front());
       assert(stl_dq.back() == dq.back());
       for (int index_tests = 10; index_tests--;) {
-        int idx = rnd<int>(0, dq.siz() - 1);
+        int idx = rnd(0, dq.siz() - 1);
         assert(stl_dq[idx] == dq[idx]);
       }
     }

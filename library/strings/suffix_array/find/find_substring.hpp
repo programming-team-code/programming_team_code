@@ -1,5 +1,8 @@
 #pragma once
 //! @code
+//!   string s;
+//!   auto [sa, sa_inv, lcp] = get_sa(s, 256);
+//!   sa_query saq(s, sa, sa_inv, lcp);
 //!   auto [sa_le,sa_ri] = saq.find_substr(s_l,s_r);
 //! @endcode
 //! requires s_l < n

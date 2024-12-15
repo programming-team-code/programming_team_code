@@ -3,8 +3,15 @@
 //! https://codeforces.com/blog/entry/120446
 //! https://youtu.be/wDwaMo5xa-k
 //! @code
-//!   edge_cd(adj, [&](const vector<vi>& adj,
-//!     int cent, int split) {
+//!   {
+//!     vector<vi> adj(n);
+//!     edge_cd(adj, [&](
+//!       const vector<vi>& adj,
+//!       int cent, int split) {});
+//!   }
+//!   vector<basic_string<int>> adj(n);
+//!   edge_cd(adj, [&](const vector<basic_string<int>>&
+//!     adj, int cent, int split) {
 //!     // subtrees of prefix [0, split) of adj[cent]
 //!     //   are the first edge-set
 //!     // subtrees of suffix [split, sz(adj[cent]))
@@ -14,11 +21,11 @@
 //! handle single-edge-paths separately
 //! @time O(n log1.5 n)
 //! @space O(n)
-template<class F> struct edge_cd {
-  vector<vi> adj;
+template<class F, class G> struct edge_cd {
+  vector<G> adj;
   F f;
   vi sub_sz;
-  edge_cd(const vector<vi>& adj, F f):
+  edge_cd(const vector<G>& adj, F f):
     adj(adj), f(f), sub_sz(sz(adj)) {
     dfs(0, sz(adj));
   }
@@ -46,7 +53,7 @@ template<class F> struct edge_cd {
       return ret;
     });
     f(adj, v, it - begin(adj[v]));
-    vi oth(it, end(adj[v]));
+    G oth(it, end(adj[v]));
     adj[v].erase(it, end(adj[v]));
     dfs(v, sum + 1);
     swap(adj[v], oth);

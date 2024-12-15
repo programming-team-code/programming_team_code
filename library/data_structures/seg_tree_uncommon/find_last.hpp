@@ -1,7 +1,7 @@
 #pragma once
 //! @code
-//!   seg_tree st2(n);
-//!   st2.find_last(l, r, [&](ll x, int tl, int tr) ->
+//!   seg_tree st(n);
+//!   st.find_last(l, r, [&](ll x, int tl, int tr) ->
 //!   bool {
 //!   });
 //! @endcode
@@ -25,12 +25,11 @@
 //! such element exists then (l - 1) is returned
 //! @time O(log(n))
 //! @space O(log(n)) for recursion stack
-template<class F> int find_last(int l, int r, const F& f) {
+int find_last(int l, int r, const auto& f) {
   return find_last_in_range(l, r, f, 0, n, 1);
 }
 //! invariant: f(tree[v], tl, tr) is 1
-template<class F>
-int find_last_in_subtree(const F& f, int tl, int tr,
+int find_last_in_subtree(const auto& f, int tl, int tr,
   int v) {
   if (v >= n) return tl;
   int tm = split(tl, tr);
@@ -39,8 +38,7 @@ int find_last_in_subtree(const F& f, int tl, int tr,
     return find_last_in_subtree(f, tm, tr, 2 * v + 1);
   return find_last_in_subtree(f, tl, tm, 2 * v);
 }
-template<class F>
-int find_last_in_range(int l, int r, const F& f, int tl,
+int find_last_in_range(int l, int r, const auto& f, int tl,
   int tr, int v) {
   if (r <= tl || tr <= l) return l - 1;
   if (l <= tl && tr <= r)

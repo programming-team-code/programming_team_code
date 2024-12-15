@@ -25,15 +25,16 @@
 //! lcp = {1, 3, 0, 0, 2}
 //!
 //! @code
+//!   // requires 0<=s[i]<max_num
+//!   string s;
 //!   auto [sa, sa_inv, lcp] = get_sa(s, 256);
+//!   vi s_vec;
+//!   auto [sa1, sa_inv1, lcp1] = get_sa(s_vec, 100'001);
 //! @endcode
-//!
-//! requires 0<=s[i]<max_num
 //!
 //! @time O(nlogn + max_num)
 //! @space O(n + max_num)
-template<class T>
-array<vi, 3> get_sa(const T& s, int max_num) {
+auto get_sa(const auto& s, int max_num) {
   int n = sz(s);
   vi sa(n), sa_inv(all(s)), lcp(n - 1);
   iota(all(sa), 0);
@@ -65,5 +66,5 @@ array<vi, 3> get_sa(const T& s, int max_num) {
       sz++;
     lcp[sa_inv[i] - 1] = sz;
   }
-  return {sa, sa_inv, lcp};
+  return tuple{sa, sa_inv, lcp};
 }
