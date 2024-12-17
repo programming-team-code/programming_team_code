@@ -21,16 +21,12 @@ int main() {
       wavelet_matrix wm(arr_shifted, maxn - minn);
       for (int queries = 30; queries--;) {
         int x = rnd<int>(minn, maxn);
-        int y = rnd<int>(minn, maxn);
-        if (x > y) swap(x, y);
         for (int l = 0; l <= n; l++) {
           int cnt = 0;
           for (int r = l; r <= n; r++) {
-            assert(mst.query(l, r, x, y) == cnt);
-            assert(wm.count(l, r, y - minn) -
-                wm.count(l, r, x - minn) ==
-              cnt);
-            if (r < n && x <= arr[r] && arr[r] < y) cnt++;
+            assert(mst.query(l, r, x) == cnt);
+            assert(wm.count(l, r, x - minn) == cnt);
+            if (r < n && arr[r] < x) cnt++;
           }
         }
       }
