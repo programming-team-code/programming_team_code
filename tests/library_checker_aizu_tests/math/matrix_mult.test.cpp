@@ -7,6 +7,8 @@
 #undef _GLIBCXX_DEBUG
 #undef _GLIBCXX_DEBUG_PEDANTIC
 #undef _GLIBCXX_ASSERTIONS
+#undef _GLIBCXX_SANITIZE_VECTOR
+#undef _FORTIFY_SOURCE
 #include "../template.hpp"
 #include "../../../library/math/matrix_related/matrix_mult.hpp"
 // NOLINTNEXTLINE(readability-identifier-naming)
