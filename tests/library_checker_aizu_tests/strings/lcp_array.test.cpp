@@ -3,6 +3,10 @@
 // just because with debug mode, test runs in 30s, and
 // there's like 30 tests
 #undef _GLIBCXX_DEBUG
+#undef _GLIBCXX_SANITIZE_VECTOR
+#undef _GLIBCXX_DEBUG_PEDANTIC
+#undef _GLIBCXX_ASSERTIONS
+#undef _FORTIFY_SOURCE
 #include "../template.hpp"
 #include "../../../library/strings/suffix_array/suffix_array.hpp"
 #include "../../../library/strings/suffix_array/suffix_array_short.hpp"
