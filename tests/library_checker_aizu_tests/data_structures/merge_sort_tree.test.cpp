@@ -15,8 +15,8 @@ int main() {
   while (q--) {
     int l, r, x;
     cin >> l >> r >> x;
-    assert(mst.query(l, r, x, x) == 0);
-    cout << mst.query(l, r, x, x + 1) << '\n';
+    cout << mst.query(l, r, x + 1) - mst.query(l, r, x)
+         << '\n';
   }
   return 0;
 }
