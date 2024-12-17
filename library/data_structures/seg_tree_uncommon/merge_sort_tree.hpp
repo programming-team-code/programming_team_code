@@ -13,20 +13,20 @@ struct merge_sort_tree {
         begin(tree[i]));
     }
   }
-  //! count of i in [l, r) such that a[i] in [vl, vr)
+  //! count of i in [l, r) such that a[i] < x
   //! @time O(log(n)^2)
   //! @space O(1)
-  int query(int l, int r, int vl, int vr) {
-    return query_impl(l, r, vl, vr, 0, n, 1);
+  int query(int l, int r, int x) {
+    return query_impl(l, r, x, 0, n, 1);
   }
-  int query_impl(int l, int r, int vl, int vr, int tl,
-    int tr, int v) {
+  int query_impl(int l, int r, int x, int tl, int tr,
+    int v) {
     if (r <= tl || tr <= l) return 0;
     if (l <= tl && tr <= r)
-      return ranges::lower_bound(tree[v], vr) -
-        ranges::lower_bound(tree[v], vl);
+      return ranges::lower_bound(tree[v], x) -
+        begin(tree[v]);
     int tm = split(tl, tr);
-    return query_impl(l, r, vl, vr, tl, tm, 2 * v) +
-      query_impl(l, r, vl, vr, tm, tr, 2 * v + 1);
+    return query_impl(l, r, x, tl, tm, 2 * v) +
+      query_impl(l, r, x, tm, tr, 2 * v + 1);
   }
 };

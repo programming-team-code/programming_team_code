@@ -1,19 +1,17 @@
 #define PROBLEM \
   "https://judge.yosupo.jp/problem/prefix_substring_lcs"
-// as debug mode causes lower_bound (in MST) to be O(n)
-#undef _GLIBCXX_DEBUG
 #include "../template.hpp"
 #include "../../../library/strings/longest_common_subsequence/lcs_dp.hpp"
-#include "../../../library/data_structures/seg_tree_uncommon/merge_sort_tree.hpp"
+#include "../../../library/data_structures/seg_tree_uncommon/wavelet_matrix.hpp"
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   int q;
   string s, t;
   cin >> q >> s >> t;
-  vector<merge_sort_tree> msts;
+  vector<wavelet_matrix> msts;
   {
     lcs_dp lcs(t);
-    msts.emplace_back(lcs.dp);
+    msts.emplace_back(vector<ull>(all(lcs.dp)));
     for (char c : s) {
       lcs.push_onto_s(c);
       {
@@ -26,13 +24,13 @@ int main() {
           seen[val] = 1;
         }
       }
-      msts.emplace_back(lcs.dp);
+      msts.emplace_back(vector<ull>(all(lcs.dp)));
     }
   }
   for (int i = 0; i < q; i++) {
     int a, b, c;
     cin >> a >> b >> c;
-    cout << msts[a].query(b, c, b) << '\n';
+    cout << msts[a].count(b, c, b) << '\n';
   }
   return 0;
 }
