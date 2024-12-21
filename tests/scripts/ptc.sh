@@ -9,6 +9,8 @@ shopt -s globstar
 echo "DON'T PUSH ANY OF THESE CHANGES TO THE REPO!!!!!!!!"
 echo "if you push these changes, I'll slap your butt"
 
+make compile_commented_snippets || exit 1
+
 # remove some files not suitable for PDF:
 rm ../library/data_structures/bit_uncommon/rupq.hpp || exit 1
 rm ../library/data_structures/bit_uncommon/rurq.hpp || exit 1
@@ -55,8 +57,6 @@ cat ../library/**/*.hpp |
 
 echo "check no multiline comments. Generating hashes of file-prefixes requires this."
 grep --extended-regexp "\/\*" --recursive ../library/**/*.hpp && exit 1
-
-make compile_commented_snippets || exit 1
 
 # remove #pragma once
 sed --in-place '/^#pragma once$/d' ../library/**/*.hpp
