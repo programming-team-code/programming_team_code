@@ -1,6 +1,11 @@
 #pragma once
 //! https://codeforces.com/blog/entry/118682
 //! @code
+//!   {
+//!     tree_inc st(n, pii{}, [&](pii& l, pii& r) {
+//!       return min(l, r);
+//!     });
+//!   }
 //!   tree_inc st(n, int{}, ranges::min);
 //!   rep(i, 0, n) st.update(i, a[i]);
 //! @endcode
