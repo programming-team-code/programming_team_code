@@ -5,6 +5,8 @@ help:
 	@echo "                                     |"
 	@echo "make compile_clang                   | compile all tests with clang, -std=c++20 for warnings"
 	@echo "                                     |"
+	@echo "make compile_commented_snippets      | compile code in @code...@endcode comments"
+	@echo "                                     |"
 	@echo "make check_format_lint               | checks format with clang-format, then cppcheck"
 	@echo "                                     |"
 	@echo "make do_format                       | format with clang-format"
@@ -22,10 +24,6 @@ help:
 	@echo "                                     |   - these files are not compiled nor linted as part of ci"
 	@echo "                                     |"
 	@echo "make print_which_tests_havent_run    | mainly to check if all tests have run"
-	@echo "                                     |"
-	@echo "make finish_running_tests            | manually trigger CI every 15 minutes until all tests have run"
-	@echo "                                     |"
-	@echo "make compile_commented_snippets      | compile code in @code...@endcode comments"
 
 compile_gcc:
 	./scripts/compile_gcc.sh
@@ -56,9 +54,6 @@ update_main:
 
 print_which_tests_havent_run:
 	./scripts/print_which_tests_havent_run.sh
-
-finish_running_tests:
-	./scripts/finish_running_tests.sh
 
 compile_commented_snippets:
 	./scripts/compile_commented_snippets.sh
