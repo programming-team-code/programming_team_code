@@ -12,7 +12,7 @@ array<vl, 2> get_right_and_top(vl left, vl bottom) {
   for (vl& res : ret) {
     {
       vl tr(sz(left));
-      rep(i, 0, sz(tr)) tr[i] = C(i + sz(bottom) - 1, i);
+      rep(i, 0, sz(tr)) tr[i] = ch(i + sz(bottom) - 1, i);
       res = conv(left, tr);
       res.resize(sz(left));
     }

@@ -13,16 +13,16 @@ int main() {
   while (num_tests--) {
     int n, k;
     cin >> n >> k;
-    cout << C(n, k) << '\n';
+    cout << ch(n, k) << '\n';
     if (n > 0) {
-      assert(C(-n, k) == 0);
-      assert(C(-n, -k) == 0);
-      assert(C(k, -n) == 0);
-      assert(C(-k, -n) == 0);
+      assert(ch(-n, k) == 0);
+      assert(ch(-n, -k) == 0);
+      assert(ch(k, -n) == 0);
+      assert(ch(-k, -n) == 0);
     }
     if (k > 0) {
-      assert(C(n, -k) == 0);
-      assert(C(-k, n) == 0);
+      assert(ch(n, -k) == 0);
+      assert(ch(-k, n) == 0);
     }
   }
   for (int i = 0; i < sz(t); i++) {
