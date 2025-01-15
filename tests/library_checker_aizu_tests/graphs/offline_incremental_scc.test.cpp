@@ -1,9 +1,10 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/incremental_scc"
-#include "../../../library/graphs/strongly_connected_components/offline_incremental_scc.hpp"
+#include "../template.hpp"
 
+#include "../../../library/graphs/strongly_connected_components/offline_incremental_scc.hpp"
 #include "../../../kactl/content/data-structures/UnionFind.h"
 #include "../../../library/math/mod_int.hpp"
-#include "../template.hpp"
+
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n, m;
