@@ -21,7 +21,7 @@ unusedScopedObject:library_checker_aizu_tests/trees/cd_jump_on_tree.test.cpp:58
 arrayIndexOutOfBoundsCond:library_checker_aizu_tests/math/linear_prime_sieve.test.cpp:17
 negativeContainerIndex:../library/strings/suffix_array/burrows_wheeler.hpp:50
 useStlAlgorithm:../kactl/content/numerical/FastFourierTransform.h:53
-useStlAlgorithm:../library/graphs/scc/add_edges_strongly_connected.hpp:58
+useStlAlgorithm:../library/graphs/strongly_connected_components/add_edges_strongly_connected.hpp:58
 useStlAlgorithm:../library/math/matrix_related/row_reduce.hpp:28
 useStlAlgorithm:../library/math/count_paths/count_paths_triangle.hpp:24
 useStlAlgorithm:../library/math/matrix_related/xor_basis_unordered_intersection.hpp:10
