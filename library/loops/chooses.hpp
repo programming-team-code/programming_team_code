@@ -5,4 +5,4 @@
 //! @time O(n choose k)
 //! @space O(1)
 for (int mask = (1 << k) - 1; mask < (1 << n);
-  mask = next_subset(mask))
+     mask = next_subset(mask))

@@ -11,7 +11,7 @@ int main() {
   // bounds[version] = [left index, right index) represents
   // subarray range of queue
   for (int curr_version = 1; curr_version <= q;
-    curr_version++) {
+       curr_version++) {
     int type;
     cin >> type;
     if (type == 0) {

@@ -6,4 +6,4 @@
 //!   of every mask of size n
 //! @space O(1)
 for (int supermask = mask; supermask < (1 << n);
-  supermask = (supermask + 1) | mask)
+     supermask = (supermask + 1) | mask)

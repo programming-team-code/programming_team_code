@@ -60,7 +60,7 @@ int main() {
         }
         for (int i1 = 0; i1 < sz(unordered.b); i1++) {
           for (int i2 = i1 + 1; i2 < sz(unordered.b);
-            i2++) {
+               i2++) {
             assert(__lg(unordered.b[i1]) !=
               __lg(unordered.b[i2]));
             assert(((1LL << __lg(unordered.b[i1])) &

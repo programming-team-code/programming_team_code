@@ -29,7 +29,7 @@ auto sa_short(const auto& s) {
     if (sz > 0) sz--;
     if (sa_inv[i] == 0) continue;
     for (int j = sa[sa_inv[i] - 1];
-      max(i, j) + sz < n && s[i + sz] == s[j + sz];)
+         max(i, j) + sz < n && s[i + sz] == s[j + sz];)
       sz++;
     lcp[sa_inv[i] - 1] = sz;
   }

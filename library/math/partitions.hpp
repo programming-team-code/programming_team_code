@@ -12,7 +12,7 @@ vector<ll> partitions(int n) {
   rep(i, 1, n) {
     ll sum = 0;
     for (int j = 1, pent = 1, sign = 1; pent <= i;
-      j++, pent += 3 * j - 2, sign = -sign) {
+         j++, pent += 3 * j - 2, sign = -sign) {
       if (pent + j <= i)
         sum += dp[i - pent - j] * sign + mod;
       sum += dp[i - pent] * sign + mod;

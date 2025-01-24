@@ -5,4 +5,4 @@
 //!   of every mask of size n
 //! @space O(1)
 for (int submask = mask; submask;
-  submask = (submask - 1) & mask)
+     submask = (submask - 1) & mask)

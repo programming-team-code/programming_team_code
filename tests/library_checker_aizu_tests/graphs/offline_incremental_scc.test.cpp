@@ -1,9 +1,10 @@
-#define PROBLEM \
-  "https://judge.yosupo.jp/problem/incremental_scc"
+#define PROBLEM "https://judge.yosupo.jp/problem/incremental_scc"
 #include "../template.hpp"
+
 #include "../../../library/graphs/strongly_connected_components/offline_incremental_scc.hpp"
 #include "../../../kactl/content/data-structures/UnionFind.h"
 #include "../../../library/math/mod_int.hpp"
+
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n, m;
@@ -18,8 +19,7 @@ int main() {
     assert((eds[t][0] == eds[t][1]) == (joins[t] == -1));
   vector<int> order(m);
   iota(all(order), 0);
-  ranges::sort(all(order), {},
-    [&](int i) { return joins[i]; });
+  ranges::sort(all(order), {}, [&](int i) { return joins[i]; });
   UF uf(n);
   mint sum = 0;
   for (int t = 0, it = 0; t < m; t++) {
