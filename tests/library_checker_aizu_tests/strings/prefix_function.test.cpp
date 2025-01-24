@@ -17,8 +17,8 @@ int main() {
   for (int i = 1; i < n;) {
     int j, v;
     for (j = 1;
-         j < z[i] && (v = min(z[j], z[i] - j)) >= z[i + j];
-         j++)
+      j < z[i] && (v = min(z[j], z[i] - j)) >= z[i + j];
+      j++)
       z[i + j] = v;
     i += j;
   }

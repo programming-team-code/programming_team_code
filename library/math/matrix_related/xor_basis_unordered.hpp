@@ -17,6 +17,6 @@ template<class T> struct basis {
     return v;
   }
   bool insert(T v) {
-    return (v = shrink(v)) ? b.push_back(v), 1 : 0;
+    return (v = shrink(v)) ? b += v, 1 : 0;
   }
 };

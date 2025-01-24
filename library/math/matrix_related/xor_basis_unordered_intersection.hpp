@@ -7,13 +7,13 @@ template<class T>
 basis<T> intersection(const basis<T>& u,
   const basis<T>& v) {
   basic_string<array<T, 2>> w;
-  for (T e : u.b) w.push_back({e, e});
+  for (T e : u.b) w += {e, e};
   basis<T> res;
   for (T e : v.b) {
     T s = 0;
     for (auto [x, y] : w)
       if ((e ^ x) < e) e ^= x, s ^= y;
-    if (e) w.push_back({e, s});
+    if (e) w += {e, s};
     else res.insert(s);
   }
   return res;
