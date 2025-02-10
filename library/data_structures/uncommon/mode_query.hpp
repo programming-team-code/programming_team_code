@@ -4,7 +4,7 @@ const int b = 318; //!< sqrt(1e5)
 struct mode_query {
   int n;
   vi a, cnt, index_into_index;
-  vector<vi> index;
+  vector<basic_string<int>> index;
   vector<vector<pii>>
     mode_blocks; //!< {mode, cnt} of range of blocks
   //! @param a compressed array: 0 <= a[i] < n
@@ -16,7 +16,7 @@ struct mode_query {
       vector<pii>((n + b - 1) / b)) {
     rep(i, 0, n) {
       index_into_index[i] = sz(index[a[i]]);
-      index[a[i]].push_back(i);
+      index[a[i]] += i;
     }
     for (int start = 0; start < n; start += b) {
       int mode = a[start];
