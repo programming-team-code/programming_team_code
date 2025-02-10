@@ -9,5 +9,5 @@ git submodule init
 git submodule update
 
 find library_checker_aizu_tests/ -type f -name "*.test.cpp" |
-	parallel clang-tidy-18 --config-file=.config/.clang-tidy {} -- -std=c++20 ||
+	parallel clang-tidy-19 --config-file=.config/.clang-tidy {} -- -std=c++20 ||
 	exit 1

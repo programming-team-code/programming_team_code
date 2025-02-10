@@ -8,7 +8,7 @@ void check_condition(const basis<int>& b) {
   int n = sz(b.b);
   int or_bits = 0;
   for (int i = n - 1; i >= 0; i--) {
-    int bit_i = 1 << __lg(b.b[i]);
+    int bit_i = bit_floor(unsigned(b.b[i]));
     assert((bit_i & or_bits) == 0);
     or_bits |= b.b[i];
   }

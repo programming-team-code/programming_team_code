@@ -26,7 +26,7 @@ int main() {
       int64_t val2 = unordered.shrink(val1);
       assert(val1 == val2);
       for (int64_t v : unordered.b)
-        assert(((1LL << __lg(v)) & val2) == 0);
+        assert((bit_floor((unsigned long long)v) & val2) == 0);
       bool inserted_unordered = unordered.insert(elem);
       bool inserted_ordered_ll = ordered_ll.insert(elem);
       bool inserted_ordered_bitset =
@@ -60,7 +60,7 @@ int main() {
         }
         for (int i1 = 0; i1 < sz(unordered.b); i1++) {
           for (int i2 = i1 + 1; i2 < sz(unordered.b);
-               i2++) {
+            i2++) {
             assert(__lg(unordered.b[i1]) !=
               __lg(unordered.b[i2]));
             assert(((1LL << __lg(unordered.b[i1])) &
