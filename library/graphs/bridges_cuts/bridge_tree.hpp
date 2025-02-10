@@ -9,8 +9,7 @@
 //!   }
 //!   vector<basic_string<array<int, 2>>> adj(n);
 //!   auto [num_ccs, br_id, is_br] = bridges(adj, m);
-//!   vector<vi> bt = bridge_tree(adj,
-//!     num_ccs, br_id, is_br);
+//!   auto bt = bridge_tree(adj, num_ccs, br_id, is_br);
 //! @endcode
 //! @time O(n + m)
 //! @space O(n)
