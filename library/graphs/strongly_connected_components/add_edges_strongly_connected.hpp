@@ -21,11 +21,11 @@ vector<pii> extra_edges(const vector<vi>& adj,
   int num_sccs, const vi& scc_id) {
   if (num_sccs == 1) return {};
   int n = sz(adj);
-  vector<vi> scc_adj(num_sccs);
+  vector<basic_string<int>> scc_adj(num_sccs);
   vector<bool> zero_in(num_sccs, 1);
   rep(i, 0, n) for (int u : adj[i]) {
     if (scc_id[i] == scc_id[u]) continue;
-    scc_adj[scc_id[i]].push_back(scc_id[u]);
+    scc_adj[scc_id[i]] += scc_id[u];
     zero_in[scc_id[u]] = 0;
   }
   vector<bool> vis(num_sccs);
