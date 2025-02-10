@@ -34,7 +34,7 @@ template<class DS, class... ARGS> struct pq_updates {
     vector<upd> extra;
     int idx = sz(upd_st) - 1, lowest_pri = INT_MAX;
     for (auto it = rbegin(mp);
-         2 * sz(extra) < sz(upd_st) - idx; it++) {
+      2 * sz(extra) < sz(upd_st) - idx; it++) {
       auto [pri, idx_sk] = *it;
       extra.push_back(upd_st[idx_sk]);
       idx = min(idx, idx_sk), lowest_pri = pri;
