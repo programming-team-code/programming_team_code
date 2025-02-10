@@ -90,7 +90,8 @@ jobs:
       run: |
         sudo apt update
         sudo apt install texlive texlive-latex-extra rename nodejs npm
-        wget -qO- https://apt.llvm.org/llvm.sh | sudo bash -s -- 18
+        wget -qO- https://apt.llvm.org/llvm.sh | sudo bash -s -- 19
+        sudo apt update && sudo apt install -y clang-19
     - name: build ptc
       run: make --directory=tests/ ptc
     - uses: actions/upload-artifact@v4
