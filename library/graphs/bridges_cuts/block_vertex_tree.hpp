@@ -4,7 +4,7 @@
 //!   {
 //!     vector<vector<pii>> adj(n);
 //!     auto [num_bccs, bcc_id, is_cut] = cuts(adj, m);
-//!     vector<vi> bvt = block_vertex_tree(adj,
+//!     auto bvt = block_vertex_tree(adj,
 //!       num_bccs, bcc_id);
 //!   }
 //!   vector<basic_string<array<int, 2>>> adj(n);
