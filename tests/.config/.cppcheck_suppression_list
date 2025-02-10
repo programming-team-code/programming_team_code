@@ -7,7 +7,6 @@ constParameterReference
 unusedStructMember:../library/flow/min_cost_max_flow.hpp
 unusedStructMember:../library/flow/dinic.hpp:15
 unusedStructMember:../library/strings/suffix_array/find/match.hpp:10
-unusedScopedObject:../library/trees/centroid_decomp_uncommon/count_paths_per_node.hpp:14
 unusedScopedObject:library_checker_aizu_tests/trees/centroid_path_dist.test.cpp:29
 unusedScopedObject:library_checker_aizu_tests/trees/edge_cd_lca.test.cpp:20
 unusedScopedObject:library_checker_aizu_tests/trees/cd_jump_on_tree.test.cpp:20
@@ -52,6 +51,7 @@ constVariableReference:../kactl/content/graph/CompressTree.h:20
 constVariableReference:../library/flow/min_cost_max_flow.hpp:43
 constVariableReference:library_checker_aizu_tests/graphs/connected_components_of_complement_graph.test.cpp:21
 constVariableReference:library_checker_aizu_tests/handmade_tests/dsu_size.test.cpp:39
+constVariableReference:../library/trees/centroid_decomp_uncommon/count_paths_per_length.hpp:34
 constVariablePointer:../kactl/content/numerical/FastFourierTransform.h:39
 cstyleCast:../kactl/content/numerical/FastFourierTransform.h:39
 derefInvalidIterator:../library/data_structures/uncommon/linear_rmq.hpp:28
