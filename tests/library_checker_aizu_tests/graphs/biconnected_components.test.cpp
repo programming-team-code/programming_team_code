@@ -16,8 +16,7 @@ int main() {
     edges[i] = make_pair(u, v);
   }
   auto [num_bccs, bcc_id, is_cut] = cuts(adj, m);
-  vector<vector<int>> bvt =
-    block_vertex_tree(adj, num_bccs, bcc_id);
+  auto bvt = block_vertex_tree(adj, num_bccs, bcc_id);
   assert(
     find(begin(bcc_id), end(bcc_id), -1) == end(bcc_id));
   for (int i = 0; i < n; i++) {
