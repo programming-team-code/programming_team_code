@@ -17,8 +17,7 @@ int main() {
     edges[i] = {u, v};
   }
   auto [num_ccs, br_id, is_br] = bridges(adj, m);
-  vector<vector<int>> bt =
-    bridge_tree(adj, num_ccs, br_id, is_br);
+  auto bt = bridge_tree(adj, num_ccs, br_id, is_br);
   assert(find(begin(br_id), end(br_id), -1) == end(br_id));
   // check correctness of bridge tree
   {
