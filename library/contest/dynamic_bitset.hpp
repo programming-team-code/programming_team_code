@@ -18,7 +18,7 @@ void f() {
   bs.push_back(0);
   cerr << bs << endl;
   for (int i = bs.find_first(); i != ssize(bs);
-       i = bs.find_next(i))
+    i = bs.find_next(i))
     cerr << i << endl;
   bs -= bs; // bs &= ~bs;
 }
