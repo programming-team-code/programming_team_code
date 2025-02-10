@@ -68,8 +68,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    - name: Set up LLVM repository
+      run: wget -qO- https://apt.llvm.org/llvm.sh | sudo bash -s -- 19
     - name: Install dependencies
-      run: wget -qO- https://apt.llvm.org/llvm.sh | sudo bash -s -- 18
+      run: sudo apt update && sudo apt install -y clang-19
     - name: Compile all tests
       run: make --directory=tests/ compile_clang
 
