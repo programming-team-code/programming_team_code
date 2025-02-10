@@ -91,7 +91,7 @@ jobs:
         wget -qO- https://apt.llvm.org/llvm.sh | sudo bash -s -- 18
     - name: build ptc
       run: make --directory=tests/ ptc
-    - uses: actions/upload-artifact@v3
+    - uses: actions/upload-artifact@v4
       with:
         name: ptc
         path: tests/ptc.pdf
@@ -102,7 +102,7 @@ jobs:
     if: github.ref == 'refs/heads/dev' && github.event_name == 'push'
     steps:
     - uses: actions/checkout@v2
-    - uses: actions/download-artifact@v3
+    - uses: actions/download-artifact@v4
       with:
         name: ptc
         path: tests/ptc.pdf
