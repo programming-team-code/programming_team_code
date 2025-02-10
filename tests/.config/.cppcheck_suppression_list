@@ -1,7 +1,6 @@
 noExplicitConstructor
 missingIncludeSystem
 functionConst
-assertWithSideEffect
 unknownMacro
 constParameterReference
 unusedStructMember:../library/flow/min_cost_max_flow.hpp
