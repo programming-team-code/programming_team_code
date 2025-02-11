@@ -19,12 +19,14 @@ struct linear_kth_par {
   };
   vector<node> t;
   vector<pii> j;
-  linear_kth_par(const auto& adj) : t(sz(adj)), j(2 * sz(t)) {
+  linear_kth_par(const auto& adj):
+    t(sz(adj)), j(2 * sz(t)) {
     vi st;
     int pos = 1;
     auto add_j = [&]() -> void {
-      j[pos] = {st[max<int>(0, sz(st) - 1 - 2 * (pos & -pos))],
-                st[max<int>(0, sz(st) - 1 - 4 * (pos & -pos))]};
+      j[pos] = {
+        st[max<int>(0, sz(st) - 1 - 2 * (pos & -pos))],
+        st[max<int>(0, sz(st) - 1 - 4 * (pos & -pos))]};
       pos++;
     };
     auto dfs = [&](auto&& self, int v) -> void {
@@ -35,7 +37,8 @@ struct linear_kth_par {
         if (u != t[v].p) {
           t[u].d = t[t[u].p = v].d + 1;
           self(self, u);
-          if (t[t[u].dl].d > t[t[v].dl].d) t[v].dl = t[u].dl;
+          if (t[t[u].dl].d > t[t[v].dl].d)
+            t[v].dl = t[u].dl;
           add_j();
         }
       st.pop_back();
@@ -52,17 +55,14 @@ struct linear_kth_par {
   int kth_par(int v, int k) {
     assert(0 <= k && k <= t[v].d);
     switch (k) {
-      case 0:
-        return v;
-      case 1:
-        return t[v].p;
-      case 2:
-        return t[t[v].p].p;
-      default:
-        int i = bit_floor(unsigned(k / 3));
-        auto [j1, j2] = j[(t[v].idx_j & -i) | i];
-        int leaf = t[t[v].d - t[j2].d <= k ? j2 : j1].dl;
-        return t[leaf].lad[k + t[leaf].d - t[v].d];
+    case 0: return v;
+    case 1: return t[v].p;
+    case 2: return t[t[v].p].p;
+    default:
+      int i = bit_floor(unsigned(k / 3));
+      auto [j1, j2] = j[(t[v].idx_j & -i) | i];
+      int leaf = t[t[v].d - t[j2].d <= k ? j2 : j1].dl;
+      return t[leaf].lad[k + t[leaf].d - t[v].d];
     }
   }
 };
