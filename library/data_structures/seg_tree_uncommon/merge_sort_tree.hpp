@@ -6,10 +6,9 @@ struct merge_sort_tree {
   merge_sort_tree(const vi& a): n(sz(a)), tree(2 * n) {
     int pw2 = bit_ceil(size(a));
     rep(i, 0, n) tree[(i + pw2) % n + n] = {a[i]};
-    for (int i = n - 1; i >= 1; i--) {
+    for (int i = n - 1; i >= 1; i--)
       ranges::merge(tree[2 * i], tree[2 * i + 1],
         back_inserter(tree[i]));
-    }
   }
   //! count of i in [l, r) such that a[i] in [vl, vr)
   //! @time O(log(n)^2)
