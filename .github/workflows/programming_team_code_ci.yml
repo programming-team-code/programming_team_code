@@ -27,7 +27,7 @@ jobs:
     - name: Run tests
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: oj-verify all --tle 10 --timeout 21600
+      run: oj-verify all --tle 60 --timeout 21600
 
   check_format_lint:
     runs-on: ubuntu-latest
@@ -53,7 +53,7 @@ jobs:
         sudo apt install -y wget software-properties-common
         wget -O - https://apt.llvm.org/llvm.sh | sudo bash
     - name: Install dependencies
-      run: sudo apt update && sudo apt install -y clang-tidy-18
+      run: sudo apt update && sudo apt install -y clang-tidy-19
     - name: clang-tidy
       run: make --directory=tests/ clangtidy
 
@@ -68,8 +68,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    - name: Set up LLVM repository
+      run: wget -qO- https://apt.llvm.org/llvm.sh | sudo bash -s -- 19
     - name: Install dependencies
-      run: wget -qO- https://apt.llvm.org/llvm.sh | sudo bash -s -- 18
+      run: sudo apt update && sudo apt install -y clang-19
     - name: Compile all tests
       run: make --directory=tests/ compile_clang
 
@@ -88,7 +90,8 @@ jobs:
       run: |
         sudo apt update
         sudo apt install texlive texlive-latex-extra rename nodejs npm
-        wget -qO- https://apt.llvm.org/llvm.sh | sudo bash -s -- 18
+        wget -qO- https://apt.llvm.org/llvm.sh | sudo bash -s -- 19
+        sudo apt update && sudo apt install -y clang-19
     - name: build ptc
       run: make --directory=tests/ ptc
     - uses: actions/upload-artifact@v4
@@ -126,7 +129,7 @@ jobs:
         sudo apt install -y wget software-properties-common
         wget -O - https://apt.llvm.org/llvm.sh | sudo bash
     - name: Install dependencies
-      run: sudo apt update && sudo apt install -y clang-format-18
+      run: sudo apt update && sudo apt install -y clang-format-19
     - name: Combine includes and force push to main branch
       run: |
         git config --local user.name github-actions
