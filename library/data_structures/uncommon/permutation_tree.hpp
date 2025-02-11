@@ -17,13 +17,13 @@ struct perm_tree {
   };
   vector<node> p;
   int root;
-  vector<vi> ch;
+  vector<basic_string<int>> ch;
   bool touches(int u, int v) {
     return p[u].mn_num == p[v].mn_num + p[v].len ||
       p[v].mn_num == p[u].mn_num + p[u].len;
   }
   int allocate(int mn_i, int mn_v, int ln, bool join,
-    const vi& chs) {
+    const basic_string<int>& chs) {
     p.push_back({mn_i, mn_v, ln, join});
     ch.push_back(chs);
     return sz(ch) - 1;
@@ -50,7 +50,7 @@ struct perm_tree {
         if (!empty(ch[u]) && touches(ch[u].back(), v)) {
           p[u].mn_num = min(p[u].mn_num, p[v].mn_num);
           p[u].len += p[v].len;
-          ch[u].push_back(v);
+          ch[u] += v;
           v = u;
           st.pop_back();
           continue;
@@ -73,7 +73,7 @@ struct perm_tree {
           break;
         }
         int min_num = p[v].mn_num;
-        vi chs(1 + sz(st) - idx, v);
+        basic_string<int> chs(1 + sz(st) - idx, v);
         rep(j, idx, sz(st)) min_num =
           min(min_num, p[chs[j - idx] = st[j][0]].mn_num);
         v = allocate(l, min_num, i - l + 1, 0, chs);

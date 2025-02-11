@@ -7,7 +7,7 @@
 //!       mvc_l, mvc_r] = hopcroft_karp(adj, rsz);
 //!   }
 //!   vector<basic_string<int>> adj(lsz);
-//!   adj[l].push_back(r); // add edge l <-> r
+//!   adj[l] += r; // add edge l <-> r
 //!                        // 0<=l<lsz; 0<=r<rsz
 //!   auto [matching_size, to_r, to_l,
 //!     mvc_l, mvc_r] = hopcroft_karp(adj, rsz);

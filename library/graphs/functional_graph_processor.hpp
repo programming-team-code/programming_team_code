@@ -14,7 +14,7 @@
 struct func_graph {
   struct node {
     pii root_of;
-    vi childs;
+    basic_string<int> childs;
   };
   vector<node> t;
   vector<vi> cycle;
@@ -40,7 +40,7 @@ struct func_graph {
         int v = i;
         while (state[v] == 1) {
           t[v].root_of = t[u].root_of;
-          t[a[v]].childs.push_back(v);
+          t[a[v]].childs += v;
           state[v] = 2;
           v = a[v];
         }

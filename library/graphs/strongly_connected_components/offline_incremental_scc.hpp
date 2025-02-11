@@ -29,7 +29,7 @@ vi offline_incremental_scc(vector<array<int, 2>> eds,
         adj.emplace_back();
       }
       u = ids[u], v = ids[v];
-      if (*it <= mid) adj[u].push_back(v);
+      if (*it <= mid) adj[u] += v;
     }
     rep(i, 0, sz(adj)) ids[vs[i]] = -1;
     scc_id = sccs(adj).second;
