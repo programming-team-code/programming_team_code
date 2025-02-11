@@ -11,8 +11,8 @@
 //!     cin >> u >> v;
 //!     u--, v--;
 //!     //self edges not allowed
-//!     adj[u].push_back({v, i});
-//!     adj[v].push_back({u, i});
+//!     adj[u] += {v, i};
+//!     adj[v] += {u, i};
 //!   }
 //!   auto [num_bccs, bcc_id, is_cut] = cuts(adj, m);
 //! @endcode
