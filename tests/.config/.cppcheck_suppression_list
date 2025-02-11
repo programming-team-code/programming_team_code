@@ -61,3 +61,4 @@ unusedFunction:../kactl/content/data-structures/UnionFind.h:14
 unusedFunction:../kactl/content/number-theory/ModPow.h:13
 unusedFunction:../kactl/stress-tests/utilities/genTree.h:49
 assertWithSideEffect:library_checker_aizu_tests/math/xor_basis_intersection.test.cpp:27
+assertWithSideEffect:library_checker_aizu_tests/math/xor_basis_intersection.test.cpp:36
