@@ -17,8 +17,8 @@
 //! @time O(n + m)
 //! @space An O(n) edge list is allocated and returned, but
 //! multiple O(n + m) vectors are allocated temporarily
-vector<pii> extra_edges(const vector<vi>& adj,
-  int num_sccs, const vi& scc_id) {
+vector<pii> extra_edges(const auto& adj, int num_sccs,
+  const vi& scc_id) {
   if (num_sccs == 1) return {};
   int n = sz(adj);
   vector<basic_string<int>> scc_adj(num_sccs);
