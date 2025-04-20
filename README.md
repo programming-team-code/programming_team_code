@@ -7,7 +7,7 @@
 
 We've added links to sources when applicable. Everything is under the CC0 license; please use/take anything with no strings attached.
 
-## Other CP repos
+## Other CP Repos
 
 https://github.com/search?q=online-judge-verify-helper+path%3A.github
 
@@ -19,3 +19,7 @@ extensive | <ul><li>https://github.com/koosaga/olympiad/tree/master/Library/code
 clean | <ul><li>https://github.com/demidenko/olymp-cpp-lib</li><li>https://github.com/brunomaletta/Biblioteca</li></ul>
 lgm | <ul><li>https://github.com/ecnerwala/cp-book</li><li>https://github.com/the-tourist/algo</li><li>https://github.com/nealwu/competitive-programming</li><li>https://github.com/bqi343/cp-notebook</li><li>https://github.com/suisen-cp/cp-library-cpp</li></ul>
 python | <ul><li>https://github.com/cheran-senthil/PyRival</li></ul>
+
+## Our List of Recommended Practice Problems
+
+[gitgud.cc](https://www.gitgud.cc/)
