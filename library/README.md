@@ -1,6 +1,6 @@
 ## Other CP Repos
 
-https://github.com/search?q=online-judge-verify-helper+path%3A.github
+[All libraries tested with Library Checker](https://github.com/search?q=online-judge-verify-helper+path%3A.github)
 
 type | list
 --- | ---
