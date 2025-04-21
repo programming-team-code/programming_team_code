@@ -1,4 +1,4 @@
-# programming_team_code
+# Programming Team Code
 
 - [ptc.pdf](https://github.com/programming-team-code/programming_team_code/releases/download/ptc/ptc.pdf)
 - [template.cpp](contest/template.cpp)
