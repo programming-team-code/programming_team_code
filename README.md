@@ -5,7 +5,7 @@
 
 ## License and Attribution
 
-We've added links to sources when applicable. Everything is under the CC0 license; please use/take anything with no strings attached.
+Everything is under the CC0 license.
 
 ## Our List of Recommended Practice Problems
 
