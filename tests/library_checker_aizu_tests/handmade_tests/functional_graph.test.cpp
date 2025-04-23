@@ -1,4 +1,5 @@
-#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A"
+#define PROBLEM \
+  "https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A"
 #include "../template.hpp"
 #include "../../../library/contest/random.hpp"
 #include "../../../library/graphs/functional_graph_processor.hpp"
@@ -8,7 +9,7 @@ struct functional_graph_processor {
     init(sz(next));
     build(next);
   }
-  template <class Graph_t>
+  template<class Graph_t>
   functional_graph_processor(const Graph_t &g) {
     init(g.n);
     build(g);
@@ -100,31 +101,30 @@ struct functional_graph_processor {
   }
   int n;
   vector<vector<int>> cycle;
-  vector<int> cycle_id;        // id of the cycle it belongs to,
-                               // -1 if not part of one
-  vector<int> cycle_pos;       // position in its cycle, -1 if
-                               // not part of one
-  vector<int> cycle_prev;      // previous vertex in its cycle,
-                               // -1 if not part of one
-  vector<int> component_size;  // size of its weakly
-                               // connected component
-  vector<int> root_of;         // first reachable node in a cycle
-  vector<int> depth;           // distance to its root
-  vector<vector<int>> abr;     // forest of arborescences of reversed edges not
-                               // on the cycles
-  vector<int> order;           // dfs order of abr
-  vector<int> pos;             // pos in the dfs order
-  vector<int> end;             // [pos[u], end[u]) denotes the subtree
-  vector<int> size;            // size of the subtree in abr
+  vector<int> cycle_id; // id of the cycle it belongs to,
+                        // -1 if not part of one
+  vector<int> cycle_pos; // position in its cycle, -1 if
+                         // not part of one
+  vector<int> cycle_prev; // previous vertex in its cycle,
+                          // -1 if not part of one
+  vector<int> component_size; // size of its weakly
+                              // connected component
+  vector<int> root_of; // first reachable node in a cycle
+  vector<int> depth; // distance to its root
+  vector<vector<int>>
+    abr; // forest of arborescences of reversed edges not
+         // on the cycles
+  vector<int> order; // dfs order of abr
+  vector<int> pos; // pos in the dfs order
+  vector<int> end; // [pos[u], end[u]) denotes the subtree
+  vector<int> size; // size of the subtree in abr
 };
-
 bool equal(const basic_string<int> &a, const vi &b) {
   if (sz(a) != sz(b)) return 0;
   for (int i = 0; i < sz(a); i++)
     if (a[i] != b[i]) return 0;
   return 1;
 }
-
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   for (int num_tests = 100; num_tests--;) {
@@ -135,7 +135,8 @@ int main() {
     functional_graph_processor fgp(a);
     assert(cycle == fgp.cycle);
     for (int i = 0; i < n; i++) {
-      int root = cycle[t[i].root_of.first][t[i].root_of.second];
+      int root =
+        cycle[t[i].root_of.first][t[i].root_of.second];
       assert(root == fgp.root_of[i]);
       assert(equal(t[i].childs, fgp.abr[i]));
       assert((root == i) == (fgp.cycle_id[i] != -1));
@@ -143,11 +144,14 @@ int main() {
         assert(t[i].root_of.first == fgp.cycle_id[i]);
         assert(t[i].root_of.second == fgp.cycle_pos[i]);
         int cyc_len = ssize(cycle[t[i].root_of.first]);
-        assert(cycle[t[i].root_of.first][(t[i].root_of.second + 1) % cyc_len] ==
-               a[i]);
+        assert(
+          cycle[t[i].root_of.first]
+               [(t[i].root_of.second + 1) % cyc_len] ==
+          a[i]);
         assert(fgp.cycle_prev[i] ==
-               cycle[t[i].root_of.first]
-                    [(t[i].root_of.second - 1 + cyc_len) % cyc_len]);
+          cycle[t[i].root_of.first]
+               [(t[i].root_of.second - 1 + cyc_len) %
+                 cyc_len]);
       } else {
         assert(fgp.cycle_prev[i] == -1);
       }

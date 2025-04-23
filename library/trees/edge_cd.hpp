@@ -21,12 +21,12 @@
 //! handle single-edge-paths separately
 //! @time O(n logφ n)
 //! @space O(n)
-template <class F, class G>
-struct edge_cd {
+template<class F, class G> struct edge_cd {
   vector<G> adj;
   F f;
   vi siz;
-  edge_cd(const vector<G>& adj, F f) : adj(adj), f(f), siz(sz(adj)) {
+  edge_cd(const vector<G>& adj, F f):
+    adj(adj), f(f), siz(sz(adj)) {
     dfs(0, sz(adj) - 1);
   }
   int find_cent(int v, int p, int m) {
@@ -38,7 +38,8 @@ struct edge_cd {
         siz[v] += siz[u];
       }
     if (p == -1) return v;
-    return 2 * siz[v] > m ? siz[p] = m + 1 - siz[v], v : -1;
+    return 2 * siz[v] > m     ? siz[p] = m + 1 - siz[v],
+                            v : -1;
   }
   void dfs(int v, int m) {
     if (m < 2) return;
