@@ -12,12 +12,14 @@ void edge_cd_asserts(const vector<vi>& adj, int cent,
   assert(sz_all >= 3);
   array<int, 2> cnts = {0, 0};
   array<int, 2> max_cnt = {0, 0};
+  array<int, 2> number_of_cnts = {0, 0};
   for (int i = 0; i < sz(adj[cent]); i++) {
     int sz_subtree = dfs(dfs, adj[cent][i], cent);
     assert(2 * sz_subtree <= sz_all);
     cnts[i < split] += sz_subtree;
     max_cnt[i < split] =
       max(max_cnt[i < split], sz_subtree);
+    number_of_cnts[i < split]++;
   }
   assert(cnts[0] + cnts[1] + 1 == sz_all);
   if (sz_all == 4) return;
@@ -32,8 +34,10 @@ void edge_cd_asserts(const vector<vi>& adj, int cent,
   if (cnts[0] > cnts[1]) {
     swap(cnts[0], cnts[1]);
     swap(max_cnt[0], max_cnt[1]);
+    swap(number_of_cnts[0], number_of_cnts[1]);
   }
   if (!is_balanced(cnts[0], cnts[1])) {
+    assert(number_of_cnts[1] == 2);
     int a = max_cnt[1];
     int b = cnts[1] - max_cnt[1];
     assert(a > 0);
