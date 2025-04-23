@@ -1,12 +1,12 @@
 #pragma once
 //! https://codeforces.com/blog/entry/104997
 //! https://codeforces.com/blog/entry/120446
+//! https://codeforces.com/blog/entry/142176
 //! https://youtu.be/wDwaMo5xa-k
 //! @code
 //!   {
 //!     vector<vi> adj(n);
-//!     edge_cd(adj, [&](
-//!       const vector<vi>& adj,
+//!     edge_cd(adj, [&](const vector<vi>& adj,
 //!       int cent, int split) {});
 //!   }
 //!   vector<basic_string<int>> adj(n);
