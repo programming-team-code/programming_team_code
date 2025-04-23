@@ -37,9 +37,9 @@ template<class F, class G> struct edge_cd {
         if (cent != -1) return cent;
         siz[v] += siz[u];
       }
-    if (p == -1) return v;
-    return 2 * siz[v] > m     ? siz[p] = m + 1 - siz[v],
-                            v : -1;
+    return 2 * siz[v] > m
+           ? p >= 0 && (siz[p] = m + 1 - siz[v]),
+           v : -1;
   }
   void dfs(int v, int m) {
     if (m < 2) return;
