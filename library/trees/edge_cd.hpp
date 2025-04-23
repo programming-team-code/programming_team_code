@@ -19,14 +19,14 @@
 //!   });
 //! @endcode
 //! handle single-edge-paths separately
-//! @time O(n log1.5 n)
+//! @time O(n logφ n)
 //! @space O(n)
-template<class F, class G> struct edge_cd {
+template <class F, class G>
+struct edge_cd {
   vector<G> adj;
   F f;
   vi sub_sz;
-  edge_cd(const vector<G>& adj, F f):
-    adj(adj), f(f), sub_sz(sz(adj)) {
+  edge_cd(const vector<G>& adj, F f) : adj(adj), f(f), sub_sz(sz(adj)) {
     dfs(0, sz(adj));
   }
   int find_cent(int v, int p, int siz) {
@@ -38,17 +38,16 @@ template<class F, class G> struct edge_cd {
         sub_sz[v] += sub_sz[u];
       }
     if (p == -1) return v;
-    return 2 * sub_sz[v] >= siz
-           ? sub_sz[p] = siz - sub_sz[v],
-             v : -1;
+    return 2 * sub_sz[v] >= siz ? sub_sz[p] = siz - sub_sz[v], v : -1;
   }
   void dfs(int v, int siz) {
     if (siz <= 2) return;
     v = find_cent(v, -1, siz);
     int sum = 0;
     auto it = partition(all(adj[v]), [&](int u) {
-      bool ret = 2 * sum + sub_sz[u] < siz - 1 &&
-        3 * (sum + sub_sz[u]) <= 2 * (siz - 1);
+      ll b = sum + sub_sz[u];
+      ll a = siz - 1 - b;
+      bool ret = (b * b <= a * (a + b));
       if (ret) sum += sub_sz[u];
       return ret;
     });
