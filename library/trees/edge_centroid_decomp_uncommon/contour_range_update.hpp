@@ -1,7 +1,7 @@
 #pragma once
 #include "../../data_structures/bit_uncommon/rupq.hpp"
-#include "sum_adjacent.hpp"
 #include "../edge_cd.hpp"
+#include "sum_adjacent.hpp"
 //! https://judge.yosupo.jp/problem/vertex_get_range_contour_add_on_tree
 struct contour_range_update {
   int n;
@@ -11,8 +11,8 @@ struct contour_range_update {
   vector<array<bit_rupq, 2>> bits;
   //! @param adj unrooted, undirected tree
   //! @param a a[v] = initial number for node v
-  //! @time O(n log1.5 n)
-  //! @space O(n log1.5 n) for `info` and `bits`
+  //! @time O(n logφ n)
+  //! @space O(n logφ n) for `info` and `bits`
   contour_range_update(const vector<vi>& adj,
     const vector<ll>& a):
     n(sz(a)), a(a), sum_a(adj, vector<ll>(n)), info(n) {
@@ -34,7 +34,7 @@ struct contour_range_update {
   }
   //! @param v,l,r,delta add delta to all nodes u such
   //! that l <= dist_edges(v, u) < r
-  //! @time O(log1.5(n) * log2(n))
+  //! @time O(logφ(n) * log2(n))
   //! @space O(1)
   void update(int v, int l, int r, ll delta) {
     if (l <= 0 && 0 < r) a[v] += delta;
@@ -48,7 +48,7 @@ struct contour_range_update {
   }
   //! @param v node
   //! @returns number of node v
-  //! @time O(log1.5(n) * log2(n))
+  //! @time O(logφ(n) * log2(n))
   //! @space O(1)
   ll query(int v) {
     ll sum = a[v] + sum_a.query(v);

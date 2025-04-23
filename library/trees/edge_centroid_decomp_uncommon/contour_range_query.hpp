@@ -1,7 +1,7 @@
 #pragma once
 #include "../../data_structures/bit.hpp"
-#include "sum_adjacent.hpp"
 #include "../edge_cd.hpp"
+#include "sum_adjacent.hpp"
 //! https://judge.yosupo.jp/problem/vertex_add_range_contour_sum_on_tree
 struct contour_range_query {
   int n;
@@ -10,8 +10,8 @@ struct contour_range_query {
   vector<array<BIT, 2>> bits;
   //! @param adj unrooted, undirected tree
   //! @param a a[v] = initial number for node v
-  //! @time O(n log1.5 n)
-  //! @space O(n log1.5 n) for `info` and `bits`
+  //! @time O(n logφ n)
+  //! @space O(n logφ n) for `info` and `bits`
   contour_range_query(const vector<vi>& adj,
     const vector<ll>& a):
     n(sz(a)), sum_a(adj, a), info(n) {
@@ -34,7 +34,7 @@ struct contour_range_query {
   }
   //! @param v node
   //! @param delta number to add to node v's number
-  //! @time O(log1.5(n) * log2(n))
+  //! @time O(logφ(n) * log2(n))
   //! @space O(1)
   void update(int v, ll delta) {
     sum_a.update(v, delta);
@@ -46,7 +46,7 @@ struct contour_range_query {
   //! @returns sum of node u's number over all u such that
   //! l
   //! <= dist_edges(u, v) < r
-  //! @time O(log1.5(n) * log2(n))
+  //! @time O(logφ(n) * log2(n))
   //! @space O(1)
   ll query(int v, int l, int r) {
     ll sum = 0;
