@@ -4,7 +4,7 @@
 //! @param adj unrooted, connected tree
 //! @returns array `num_paths` where `num_paths[i]` = # of
 //! paths in tree with `i` edges. `num_paths[1]` = # edges
-//! @time O(n * log1.5(n) * log2(n))
+//! @time O(n * logφ(n) * log2(n))
 //! @space this function allocates/returns various vectors
 //! which are each O(n)
 vector<ll> count_paths_per_length(const vector<vi>& adj) {

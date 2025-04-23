@@ -30,7 +30,6 @@ rm ../library/monotonic_stack/mono_stack_ri.png || exit 1
 rm ../library/strings/manacher/longest_palindrome_query.hpp || exit 1
 rm ../library/trees/centroid_decomp_uncommon/count_paths_per_length.hpp || exit 1
 rm ../library/trees/centroid_decomp_uncommon/count_paths_per_node.hpp || exit 1
-rm ../library/trees/edge_centroid_decomp_uncommon/README.md || exit 1
 rm ../library/trees/edge_centroid_decomp_uncommon/contour_range_query.hpp || exit 1
 rm ../library/trees/edge_centroid_decomp_uncommon/contour_range_update.hpp || exit 1
 rm ../library/trees/edge_centroid_decomp_uncommon/count_paths_per_length.hpp || exit 1
