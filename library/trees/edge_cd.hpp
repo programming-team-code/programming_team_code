@@ -25,37 +25,34 @@ template <class F, class G>
 struct edge_cd {
   vector<G> adj;
   F f;
-  vi sub_sz;
-  edge_cd(const vector<G>& adj, F f) : adj(adj), f(f), sub_sz(sz(adj)) {
-    dfs(0, sz(adj));
+  vi siz;
+  edge_cd(const vector<G>& adj, F f) : adj(adj), f(f), siz(sz(adj)) {
+    dfs(0, sz(adj) - 1);
   }
-  int find_cent(int v, int p, int siz) {
-    sub_sz[v] = 1;
+  int find_cent(int v, int p, int m) {
+    siz[v] = 1;
     for (int u : adj[v])
       if (u != p) {
-        int cent = find_cent(u, v, siz);
+        int cent = find_cent(u, v, m);
         if (cent != -1) return cent;
-        sub_sz[v] += sub_sz[u];
+        siz[v] += siz[u];
       }
     if (p == -1) return v;
-    return 2 * sub_sz[v] >= siz ? sub_sz[p] = siz - sub_sz[v], v : -1;
+    return 2 * siz[v] > m ? siz[p] = m + 1 - siz[v], v : -1;
   }
-  void dfs(int v, int siz) {
-    if (siz <= 2) return;
-    v = find_cent(v, -1, siz);
+  void dfs(int v, int m) {
+    if (m < 2) return;
+    v = find_cent(v, -1, m);
     int sum = 0;
     auto it = partition(all(adj[v]), [&](int u) {
-      ll b = sum + sub_sz[u];
-      ll a = siz - 1 - b;
-      bool ret = (b * b <= a * (a + b));
-      if (ret) sum += sub_sz[u];
-      return ret;
+      ll x = sum + siz[u];
+      return x * x < m * (m - x) ? sum += siz[u], 1 : 0;
     });
     f(adj, v, it - begin(adj[v]));
     G oth(it, end(adj[v]));
     adj[v].erase(it, end(adj[v]));
-    dfs(v, sum + 1);
+    dfs(v, sum);
     swap(adj[v], oth);
-    dfs(v, siz - sum);
+    dfs(v, m - sum);
   }
 };

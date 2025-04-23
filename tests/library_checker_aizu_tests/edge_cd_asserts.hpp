@@ -42,5 +42,7 @@ void edge_cd_asserts(const vector<vi>& adj, int cent, int split) {
     assert(b > 0);
     if (a > b) swap(a, b);
     assert(is_balanced(a, b));
+    assert(!is_balanced(a, cnts[0] + b));
+    assert(!is_balanced(b, cnts[0] + a));
   }
 }
