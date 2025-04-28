@@ -6,16 +6,13 @@
 //! @code
 //!   {
 //!     vector<vi> adj(n);
-//!     edge_cd(adj, [&](const vector<vi>& adj,
-//!       int cent, int split) {});
+//!     edge_cd(adj, [&](const auto& adj,
+//!       int cent, int m) {});
 //!   }
 //!   vector<basic_string<int>> adj(n);
-//!   edge_cd(adj, [&](const vector<basic_string<int>>&
-//!     adj, int cent, int split) {
-//!     // subtrees of prefix [0, split) of adj[cent]
-//!     //   are the first edge-set
-//!     // subtrees of suffix [split, sz(adj[cent]))
-//!     //   of adj[cent] are the second edge-set
+//!   edge_cd(adj, [&](const auto& adj, int cent, int m) {
+//!     // subtrees of [0, m) of adj[cent]: 1st edge-set
+//!     // subtrees of [m, sz(adj[cent])): 2nd edge-set
 //!   });
 //! @endcode
 //! handle single-edge-paths separately

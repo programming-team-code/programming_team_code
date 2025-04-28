@@ -2,13 +2,12 @@
 //! @code
 //!   {
 //!     vector<vi> adj(n);
-//!     centroid(adj, [&](const vector<vi>& adj,
+//!     centroid(adj, [&](const auto& adj,
 //!       int cent, int par_cent) {
 //!     });
 //!   }
 //!   vector<basic_string<int>> adj(n);
-//!   centroid(adj,
-//!     [&](const vector<basic_string<int>>& adj,
+//!   centroid(adj, [&](const auto& adj,
 //!     int cent, int par_cent) {});
 //! @endcode
 //! @time O(n log n)
