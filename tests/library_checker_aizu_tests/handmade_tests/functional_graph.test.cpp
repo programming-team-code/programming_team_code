@@ -131,26 +131,30 @@ int main() {
     int n = rnd(1, 1000);
     vector<int> a(n);
     for (int i = 0; i < n; i++) a[i] = rnd(0, n - 1);
-    auto [t, cycle] = func_graph(a);
+    auto [root_of, cycle, childs] = func_graph(a);
     functional_graph_processor fgp(a);
-    assert(cycle == fgp.cycle);
+    assert(sz(cycle) == sz(fgp.cycle));
+    for (int i = 0; i < sz(cycle); i++) {
+      assert(sz(cycle[i]) == sz(fgp.cycle[i]));
+      for (int j = 0; j < sz(cycle[i]); j++)
+        assert(cycle[i][j] == fgp.cycle[i][j]);
+    }
     for (int i = 0; i < n; i++) {
       int root =
-        cycle[t[i].root_of.first][t[i].root_of.second];
+        cycle[root_of[i].first][root_of[i].second];
       assert(root == fgp.root_of[i]);
-      assert(equal(t[i].childs, fgp.abr[i]));
+      assert(equal(childs[i], fgp.abr[i]));
       assert((root == i) == (fgp.cycle_id[i] != -1));
       if (root == i) {
-        assert(t[i].root_of.first == fgp.cycle_id[i]);
-        assert(t[i].root_of.second == fgp.cycle_pos[i]);
-        int cyc_len = ssize(cycle[t[i].root_of.first]);
-        assert(
-          cycle[t[i].root_of.first]
-               [(t[i].root_of.second + 1) % cyc_len] ==
+        assert(root_of[i].first == fgp.cycle_id[i]);
+        assert(root_of[i].second == fgp.cycle_pos[i]);
+        int cyc_len = ssize(cycle[root_of[i].first]);
+        assert(cycle[root_of[i].first]
+                    [(root_of[i].second + 1) % cyc_len] ==
           a[i]);
         assert(fgp.cycle_prev[i] ==
-          cycle[t[i].root_of.first]
-               [(t[i].root_of.second - 1 + cyc_len) %
+          cycle[root_of[i].first]
+               [(root_of[i].second - 1 + cyc_len) %
                  cyc_len]);
       } else {
         assert(fgp.cycle_prev[i] == -1);
