@@ -149,9 +149,8 @@ int main() {
         assert(root_of[i].first == fgp.cycle_id[i]);
         assert(root_of[i].second == fgp.cycle_pos[i]);
         int cyc_len = ssize(cycle[root_of[i].first]);
-        assert(
-          cycle[root_of[i].first]
-               [(root_of[i].second + 1) % cyc_len] ==
+        assert(cycle[root_of[i].first]
+                    [(root_of[i].second + 1) % cyc_len] ==
           a[i]);
         assert(fgp.cycle_prev[i] ==
           cycle[root_of[i].first]
