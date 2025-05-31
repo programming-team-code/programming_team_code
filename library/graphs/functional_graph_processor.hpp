@@ -12,13 +12,9 @@
 //! @time O(n)
 //! @space O(n)
 struct func_graph {
-  struct node {
-    pii root_of;
-    basic_string<int> childs;
-  };
-  vector<node> t;
-  vector<vi> cycle;
-  func_graph(const vi& a): t(sz(a)) {
+  vector<pii> root_of;
+  vector<basic_string<int>> cycle, childs;
+  func_graph(const vi& a): root_of(sz(a)), childs(sz(a)) {
     vi state(sz(a));
     rep(i, 0, sz(a)) {
       if (state[i] == 0) {
@@ -30,17 +26,16 @@ struct func_graph {
         if (state[u] == 1) {
           cycle.emplace_back();
           while (state[u] == 1) {
-            t[u].root_of = {
-              sz(cycle) - 1, sz(cycle.back())};
-            cycle.back().push_back(u);
+            root_of[u] = {sz(cycle) - 1, sz(cycle.back())};
+            cycle.back() += u;
             state[u] = 2;
             u = a[u];
           }
         }
         int v = i;
         while (state[v] == 1) {
-          t[v].root_of = t[u].root_of;
-          t[a[v]].childs += v;
+          root_of[v] = root_of[u];
+          childs[a[v]] += v;
           state[v] = 2;
           v = a[v];
         }
