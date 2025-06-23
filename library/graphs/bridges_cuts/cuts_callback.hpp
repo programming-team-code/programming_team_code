@@ -17,17 +17,15 @@ void cuts_callback(const auto& adj, auto f) {
   vi tin(n), st(n);
   auto dfs = [&](auto&& self, int v, int p) -> int {
     int low = tin[v] = ++q;
-    for (int u : adj[v])
-      if (u != p) {
-        int siz = s, lu = 0;
-        low = min(low,
-          tin[u] ?: (lu = self(self, st[s++] = u, v)));
-        if (lu >= tin[v]) {
-          st[s++] = v;
-          f(vi(siz + all(st) - n + s));
-          s = siz;
-        }
+    for (int u : adj[v]) {
+      int siz = s, lu = 0;
+      low = min(low, tin[u] ?: (lu = self(self, st[s++] = u, v)));
+      if (lu >= tin[v]) {
+        st[s++] = v;
+        f(vi(siz + all(st) - n + s));
+        s = siz;
       }
+    }
     return low;
   };
   rep(i, 0, n) if (!tin[i]) dfs(dfs, i, i);
