@@ -18,13 +18,11 @@ int main() {
   }
   vector<bool> vis(n, 0);
   vector<vector<int>> all_bccs;
-  cuts_callback(adj, [&](int v, const vi& nodes_bcc) {
-    vis[v] = 1;
-    for(int u : nodes_bcc){
-      vis[u] = 1;
+  cuts_callback(adj, [&](const vi& nodes_bcc) {
+    for(int v : nodes_bcc){
+      vis[v] = 1;
     }
     all_bccs.push_back(nodes_bcc);
-    all_bccs.back().push_back(v);
   });
   for (int i = 0; i <n; i++) {
     if(!vis[i]) {
