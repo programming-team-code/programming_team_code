@@ -7,7 +7,7 @@ help:
 	@echo "                                     |"
 	@echo "make compile_commented_snippets      | compile code in @code...@endcode comments"
 	@echo "                                     |"
-	@echo "make greps_clangformat_cppcheck      | greps to catch various bad things, clang-format, checkcpp"
+	@echo "make greps_clangformat_cppcheck      | greps to catch various bad things, clang-format, cppcheck"
 	@echo "                                     |"
 	@echo "make do_format                       | format with clang-format"
 	@echo "                                     |"
