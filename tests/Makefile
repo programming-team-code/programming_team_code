@@ -7,7 +7,7 @@ help:
 	@echo "                                     |"
 	@echo "make compile_commented_snippets      | compile code in @code...@endcode comments"
 	@echo "                                     |"
-	@echo "make check_format_lint               | checks format with clang-format, then cppcheck"
+	@echo "make greps_clangformat_cppcheck      | greps to catch various bad things, clang-format, checkcpp"
 	@echo "                                     |"
 	@echo "make do_format                       | format with clang-format"
 	@echo "                                     |"
@@ -31,8 +31,8 @@ compile_gcc:
 compile_clang:
 	./scripts/compile_clang.sh
 
-check_format_lint:
-	./scripts/check_format_lint.sh
+greps_clangformat_cppcheck:
+	./scripts/greps_clangformat_cppcheck.sh
 
 do_format:
 	./scripts/do_format.sh
