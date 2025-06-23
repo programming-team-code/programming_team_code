@@ -18,6 +18,8 @@ template<class T, class F> struct deq {
     return op(l.back()[1], r.back()[1]);
   }
   int siz() { return sz(l) + sz(r); }
+  T front() { return (empty(l) ? r[0] : l.back())[0]; }
+  T back() { return (empty(r) ? l[0] : r.back())[0]; }
   void push_back(T elem) {
     r.push_back(
       {elem, empty(r) ? elem : op(r.back()[1], elem)});
@@ -46,6 +48,4 @@ template<class T, class F> struct deq {
   }
 #include "deque.hpp"
 #include "index.hpp"
-#include "front.hpp"
-#include "back.hpp"
 };
