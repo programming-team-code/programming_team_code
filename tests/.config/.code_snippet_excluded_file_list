@@ -7,10 +7,6 @@ find_first.hpp
 find_last.hpp
 loops
 kth_path.hpp
-back.hpp
-deque.hpp
-front.hpp
-index.hpp
 compare_substrings.hpp
 compare_suffixes.hpp
 find_string_bs.hpp
