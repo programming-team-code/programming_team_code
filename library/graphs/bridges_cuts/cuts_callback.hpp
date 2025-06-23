@@ -3,7 +3,7 @@
 //! @code
 //!   {
 //!     vector<vector<int>> adj(n);
-//!     cuts_callback(adj);
+//!     cuts_callback(adj, [&](const vi& nodes) {});
 //!   }
 //!   vector<basic_string<int>> adj(n);
 //!   rep (i, 0, m) {
