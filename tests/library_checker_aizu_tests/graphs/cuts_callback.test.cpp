@@ -17,6 +17,7 @@ int main() {
   vector<bool> vis(n, 0);
   vector<vector<int>> all_bccs;
   cuts_callback(adj, [&](const vi& nodes_bcc) {
+    assert(ssize(nodes_bcc) >= 2);
     for (int v : nodes_bcc) vis[v] = 1;
     all_bccs.push_back(nodes_bcc);
   });
