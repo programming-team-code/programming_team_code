@@ -30,8 +30,7 @@ void cuts_callback(const auto& adj, auto f) {
         low = min(low,
           tin[u] ?: (lu = self(self, st[s++] = u, v)));
         if (lu >= tin[v])
-          f(st[s] = v, vi(siz + all(st) - (n - s))),
-            s = siz;
+          f(v, vi(siz + all(st) - (n - s))), s = siz;
       }
     return low;
   };
