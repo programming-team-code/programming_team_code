@@ -8,7 +8,7 @@ find_last.hpp
 loops
 kth_path.hpp
 deque.hpp
-index.hp
+index.hpp
 compare_substrings.hpp
 compare_suffixes.hpp
 find_string_bs.hpp
