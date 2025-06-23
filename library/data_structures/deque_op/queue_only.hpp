@@ -18,10 +18,8 @@ template<class T, class F> struct deq {
     return op(l.back()[1], r.back()[1]);
   }
   int siz() { return sz(l) + sz(r); }
-  void push_back(T elem) {
-    r.push_back(
-      {elem, empty(r) ? elem : op(r.back()[1], elem)});
-  }
+  T front() { return (empty(l) ? r[0] : l.back())[0]; }
+  T back() { return (empty(r) ? l[0] : r.back())[0]; }
   void pop_front() {
     if (empty(l)) {
       vector<T> a(sz(r));
@@ -30,6 +28,10 @@ template<class T, class F> struct deq {
       rebuild(a, (sz(a) + 1) / 2);
     }
     l.pop_back();
+  }
+  void push_back(T elem) {
+    r.push_back(
+      {elem, empty(r) ? elem : op(r.back()[1], elem)});
   }
   void rebuild(const vector<T>& a, int sz_le) {
     vector<T> presum(sz(a));
@@ -46,6 +48,4 @@ template<class T, class F> struct deq {
   }
 #include "deque.hpp"
 #include "index.hpp"
-#include "front.hpp"
-#include "back.hpp"
 };
