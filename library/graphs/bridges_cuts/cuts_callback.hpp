@@ -6,13 +6,6 @@
 //!     cuts_callback(adj, [&](const vi& nodes) {});
 //!   }
 //!   vector<basic_string<int>> adj(n);
-//!   rep (i, 0, m) {
-//!     int u, v;
-//!     cin >> u >> v;
-//!     u--, v--;
-//!     adj[u] += v;
-//!     adj[v] += u;
-//!   }
 //!   cuts_callback(adj, [&](const vi& nodes) {
 //!   });
 //! @endcode
