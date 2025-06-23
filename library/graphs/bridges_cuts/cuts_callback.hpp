@@ -2,19 +2,18 @@
 //! https://cp-algorithms.com/graph/cutpoints.html
 //! @code
 //!   {
-//!     vector<vector<pii>> adj(n);
-//!     auto [num_bccs, bcc_id, is_cut] = cuts(adj, m);
+//!     vector<vector<int>> adj(n);
+//!     cuts_callback(adj);
 //!   }
-//!   vector<basic_string<array<int, 2>>> adj(n);
+//!   vector<basic_string<int>> adj(n);
 //!   rep (i, 0, m) {
 //!     int u, v;
 //!     cin >> u >> v;
 //!     u--, v--;
-//!     //self edges not allowed
-//!     adj[u] += {v, i};
-//!     adj[v] += {u, i};
+//!     adj[u] += v;
+//!     adj[v] += u;
 //!   }
-//!   cuts_callback(adj, [&](int v, const vi& nodes_bcc) {
+//!   cuts_callback(adj, [&](const vi& nodes) {
 //!   });
 //! @endcode
 //! @time O(n + m)
