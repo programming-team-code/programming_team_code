@@ -31,7 +31,7 @@ void cuts_callback(const auto& adj, auto f) {
           tin[u] ?: (lu = self(self, st[s++] = u, v)));
         if (lu >= tin[v]) {
           st[s++] = v;
-          f(vi(siz + all(st) - (n - s)));
+          f(vi(siz + all(st) - n + s));
           s = siz;
         }
       }
