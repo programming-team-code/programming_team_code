@@ -20,10 +20,6 @@ template<class T, class F> struct deq {
   int siz() { return sz(l) + sz(r); }
   T front() { return (empty(l) ? r[0] : l.back())[0]; }
   T back() { return (empty(r) ? l[0] : r.back())[0]; }
-  void push_back(T elem) {
-    r.push_back(
-      {elem, empty(r) ? elem : op(r.back()[1], elem)});
-  }
   void pop_front() {
     if (empty(l)) {
       vector<T> a(sz(r));
@@ -32,6 +28,10 @@ template<class T, class F> struct deq {
       rebuild(a, (sz(a) + 1) / 2);
     }
     l.pop_back();
+  }
+  void push_back(T elem) {
+    r.push_back(
+      {elem, empty(r) ? elem : op(r.back()[1], elem)});
   }
   void rebuild(const vector<T>& a, int sz_le) {
     vector<T> presum(sz(a));
