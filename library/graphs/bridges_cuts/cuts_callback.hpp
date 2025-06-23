@@ -9,6 +9,7 @@
 //!   cuts_callback(adj, [&](const vi& nodes) {
 //!   });
 //! @endcode
+//! callback not called on components with a single node
 //! @time O(n + m)
 //! @space O(n + m)
 void cuts_callback(const auto& adj, auto f) {
