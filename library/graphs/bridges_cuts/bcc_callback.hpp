@@ -30,7 +30,8 @@
 //!       }
 //!   }
 //!
-//!   vector<basic_string<int>> adj(n), block_vertex_tree(2 * n);
+//!   vector<basic_string<int>> adj(n);
+//!   vector<basic_string<int>> block_vertex_tree(2 * n);
 //!   int bcc_id = n;
 //!   bcc_callback(adj, [&](const vi& nodes) {
 //!     for (int v : nodes) {
