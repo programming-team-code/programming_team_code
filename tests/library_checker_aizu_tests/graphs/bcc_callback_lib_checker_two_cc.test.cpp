@@ -17,33 +17,29 @@ int main() {
     adj_e_id[u] += i;
     adj_e_id[v] += i;
   }
-
   UF uf(n);
   vector<bool> seen(m);
   bcc_callback(adj, [&](const vi& nodes) {
     int cnt_edges = 0;
-    rep(i,0,sz(nodes)-1)
-      for(int e_id : adj_e_id[nodes[i]])
-        if(!seen[e_id]) {
-          seen[e_id] = 1;
-          cnt_edges++;
-        }
+    rep(i, 0, sz(nodes) - 1) for (
+      int e_id : adj_e_id[nodes[i]]) if (!seen[e_id]) {
+      seen[e_id] = 1;
+      cnt_edges++;
+    }
     if (cnt_edges >= 2)
       for (int v : nodes) uf.join(v, nodes[0]);
   });
-
   vector<basic_string<int>> two_edge_ccs(n);
-  rep(i,0,n) two_edge_ccs[uf.find(i)] += i;
+  rep(i, 0, n) two_edge_ccs[uf.find(i)] += i;
   int cnt_ccs = 0;
-  rep(i,0,n) cnt_ccs += (!empty(two_edge_ccs[i]));
-  cout<<cnt_ccs<<'\n';
-  rep(i,0,n) {
-    if(!empty(two_edge_ccs[i])) {
-      cout<<sz(two_edge_ccs[i])<<' ';
-      for(int v:two_edge_ccs[i]) cout<<v<<' ';
-      cout<<'\n';
+  rep(i, 0, n) cnt_ccs += (!empty(two_edge_ccs[i]));
+  cout << cnt_ccs << '\n';
+  rep(i, 0, n) {
+    if (!empty(two_edge_ccs[i])) {
+      cout << sz(two_edge_ccs[i]) << ' ';
+      for (int v : two_edge_ccs[i]) cout << v << ' ';
+      cout << '\n';
     }
   }
-
   return 0;
 }
