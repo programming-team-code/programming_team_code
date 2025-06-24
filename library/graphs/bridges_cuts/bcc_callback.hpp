@@ -23,7 +23,7 @@
 //!   vector<bool> seen(m);
 //!   bcc_callback(adj, [&](const vi& nodes) {
 //!     rep (i, 0, sz(nodes) - 1)
-//!       for (auto [u, e_id] : adj_edge_ids[nodes[i]])
+//!       for (auto [v, e_id] : adj_edge_ids[nodes[i]])
 //!         if (!seen[e_id]) {
 //!           seen[e_id] = 1;
 //!           // this edge is in the current BCC
