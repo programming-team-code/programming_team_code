@@ -34,8 +34,8 @@
 //!     for (int v : nodes) {
 //!       block_vertex_tree[v] += bcc_id;
 //!       block_vertex_tree[bcc_id] += v;
-//!       bcc_id++;
 //!     }
+//!     bcc_id++;
 //!   });
 //! @endcode
 //! callback not called on components with a single node
