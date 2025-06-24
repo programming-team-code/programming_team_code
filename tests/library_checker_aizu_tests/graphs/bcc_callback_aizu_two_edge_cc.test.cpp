@@ -18,8 +18,8 @@ int main() {
   bcc_callback(adj, [&](const vi& nodes) {
     assert(sz(nodes) >= 2);
     if (sz(nodes) == 2)
-      bridges.push_back({min(nodes[0], nodes[1]),
-        max(nodes[0], nodes[1])});
+      bridges.emplace_back(min(nodes[0], nodes[1]),
+        max(nodes[0], nodes[1]));
   });
   ranges::sort(bridges);
   for (auto [u, v] : bridges)
