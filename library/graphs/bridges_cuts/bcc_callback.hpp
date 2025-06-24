@@ -6,8 +6,9 @@
 //!     vector<pii> edges(m);
 //!     UF uf(n);
 //!     bcc_callback(adj, [&](const vi& nodes) {
-//!       if (sz(nodes) > 2) // assumes no multiple edges
-//!         for (int v : nodes) uf.join(v, nodes[0]);
+//!       if (sz(nodes) == 2)
+//!         return; // bridge assuming no multiple edges
+//!       for (int v : nodes) uf.join(v, nodes[0]);
 //!     });
 //!     vector<basic_string<int>> bridge_tree(n);
 //!     for (auto [u, v] : edges)
