@@ -36,13 +36,13 @@
 //! @space O(n + m)
 void bcc_callback(const auto& adj, auto f) {
   int n = sz(adj), q = 0, s = 0;
-  vi tin(n), st(n);
+  vi t(n), st(n);
   auto dfs = [&](auto&& self, int v) -> int {
-    int l = tin[v] = ++q;
+    int l = t[v] = ++q;
     for (int u : adj[v]) {
       int siz = s, lu = 0;
-      l = min(l, tin[u] ?: (lu = self(self, st[s++] = u)));
-      if (lu >= tin[v]) {
+      l = min(l, t[u] ?: (lu = self(self, st[s++] = u)));
+      if (lu >= t[v]) {
         st[s++] = v;
         f(vi(siz + all(st) - n + s));
         s = siz;
@@ -50,5 +50,5 @@ void bcc_callback(const auto& adj, auto f) {
     }
     return l;
   };
-  rep(i, 0, n) if (!tin[i]) dfs(dfs, i);
+  rep(i, 0, n) if (!t[i]) dfs(dfs, i);
 }
