@@ -40,7 +40,7 @@
 //! @endcode
 //! callback not called on components with a single node
 //! @time O(n + m)
-//! @space O(n + m)
+//! @space O(n)
 void bcc_callback(const auto& adj, auto f) {
   int n = sz(adj), q = 0, s = 0;
   vi t(n), st(n);
