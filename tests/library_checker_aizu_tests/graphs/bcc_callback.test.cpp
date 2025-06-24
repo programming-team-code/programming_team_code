@@ -1,7 +1,7 @@
 #define PROBLEM \
   "https://judge.yosupo.jp/problem/biconnected_components"
 #include "../template.hpp"
-#include "../../../library/graphs/bridges_cuts/cuts_callback.hpp"
+#include "../../../library/graphs/bridges_cuts/bcc_callback.hpp"
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n, m;
@@ -16,7 +16,7 @@ int main() {
   }
   vector<bool> vis(n, 0);
   vector<vector<int>> all_bccs;
-  cuts_callback(adj, [&](const vi& nodes_bcc) {
+  bcc_callback(adj, [&](const vi& nodes_bcc) {
     assert(ssize(nodes_bcc) >= 2);
     for (int v : nodes_bcc) vis[v] = 1;
     all_bccs.push_back(nodes_bcc);
