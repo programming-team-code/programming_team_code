@@ -1,5 +1,5 @@
 #define PROBLEM \
-  "https://onlinejudge.u-aizu.ac.jp/problems/GRL_3_A"
+  "https://onlinejudge.u-aizu.ac.jp/problems/GRL_3_B"
 #include "../template.hpp"
 #include "../../../library/graphs/bridges_cuts/bcc_callback.hpp"
 int main() {
@@ -14,11 +14,15 @@ int main() {
     adj[u] += v;
     adj[v] += u;
   }
-  vi cnt(n);
+  vector<pii> bridges;
   bcc_callback(adj, [&](const vi& nodes) {
     assert(sz(nodes) >= 2);
-    for (int v : nodes) cnt[v]++;
+    if (sz(nodes) == 2)
+      bridges.push_back({min(nodes[0], nodes[1]),
+        max(nodes[0], nodes[1])});
   });
-  rep(i, 0, n) if (cnt[i] >= 2) cout << i << '\n';
+  ranges::sort(bridges);
+  for (auto [u, v] : bridges)
+    cout << u << ' ' << v << endl;
   return 0;
 }

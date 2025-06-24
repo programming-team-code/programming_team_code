@@ -20,6 +20,7 @@ int main() {
   UF uf(n);
   vector<bool> seen(m);
   bcc_callback(adj, [&](const vi& nodes) {
+    assert(sz(nodes) >= 2);
     int cnt_edges = 0;
     rep(i, 0, sz(nodes) - 1) for (
       int e_id : adj_e_id[nodes[i]]) if (!seen[e_id]) {
