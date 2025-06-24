@@ -7,23 +7,28 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n, m;
   cin >> n >> m;
-  vector<basic_string<int>> adj(n), adj_e_id(n);
-  for (int i = 0; i < n; i++) adj[i] += i;
+  vector<basic_string<int>> adj(n);
+  vector<basic_string<array<int, 2>>> adj_e_id(n);
+  for (int i = 0; i < n; i++) {
+    adj[i] += i;
+    adj_e_id[i] += {i, i};
+  }
   for (int i = 0; i < m; i++) {
     int u, v;
     cin >> u >> v;
     adj[u] += v;
     adj[v] += u;
-    adj_e_id[u] += i;
-    adj_e_id[v] += i;
+    adj_e_id[u] += {v, n + i};
+    adj_e_id[v] += {u, n + i};
   }
   UF uf(n);
-  vector<bool> seen(m);
+  vector<bool> seen(n + m);
   bcc_callback(adj, [&](const vi& nodes) {
     assert(sz(nodes) >= 2);
     int cnt_edges = 0;
-    rep(i, 0, sz(nodes) - 1) for (
-      int e_id : adj_e_id[nodes[i]]) if (!seen[e_id]) {
+    rep(i, 0, sz(nodes) - 1) for (auto [v, e_id] :
+      adj_e_id[nodes[i]]) if (!seen[e_id] &&
+      v != nodes[i]) {
       seen[e_id] = 1;
       cnt_edges++;
     }
