@@ -3,36 +3,39 @@
 //! @code
 //!   {
 //!     vector<vector<int>> adj(n);
-//!     vector<pii> edges(m);
 //!     UF uf(n);
+//!     vector<bool> seen(n);
 //!     bcc_callback(adj, [&](const vi& nodes) {
-//!       if (sz(nodes) == 2) {
+//!       int count_edges = 0;
+//!       rep (i, 0, sz(nodes) - 1) {
+//!         seen[nodes[i]] = 1;
+//!         for (int v : adj[nodes[i]]) if (!seen[v]) {
+//!           // edge nodes[i] <=> v is in current BCC
+//!           count_edges++;
+//!         }
+//!       }
+//!       if (count_edges == 1) {
 //!         // nodes[0] <=> nodes[1] is a bridge
-//!         //   (if no multiple edges)
-//!         // if multiple edges, then join them too in uf
 //!         return;
 //!       }
 //!       for (int v : nodes) uf.join(v, nodes[0]);
 //!     });
 //!     vector<basic_string<int>> bridge_tree(n);
-//!     for (auto [u, v] : edges)
-//!       if (!uf.sameSet(u, v)) {
-//!         u = uf.find(u), v = uf.find(v);
-//!         bridge_tree[u] += v;
-//!         bridge_tree[v] += u;
-//!       }
+//!     rep (i, 0, n)
+//!       for (int v : adj[i])
+//!         if (!uf.sameSet(i, v))
+//!           bridge_tree[uf.find(i)] += uf.find(v);
 //!   }
 //!
 //!   vector<basic_string<int>> adj(n);
-//!   vector<basic_string<array<int, 2>>> adj_edge_ids(n);
-//!   vector<bool> seen(m);
+//!   vector<basic_string<int>> block_vertex_tree(2 * n);
+//!   int bcc_id = n;
 //!   bcc_callback(adj, [&](const vi& nodes) {
-//!     rep (i, 0, sz(nodes) - 1)
-//!       for (auto [v, e_id] : adj_edge_ids[nodes[i]])
-//!         if (!seen[e_id]) {
-//!           seen[e_id] = 1;
-//!           // this edge is in the current BCC
-//!         }
+//!     for (int v : nodes) {
+//!       block_vertex_tree[v] += bcc_id;
+//!       block_vertex_tree[bcc_id] += v;
+//!       bcc_id++;
+//!     }
 //!   });
 //! @endcode
 //! callback not called on components with a single node

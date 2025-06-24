@@ -8,24 +8,26 @@ int main() {
   int n, m;
   cin >> n >> m;
   vector<basic_string<int>> adj(n);
-  for (int i = 0; i < n; i++) adj[i] += i;
-  vector<array<int, 2>> edges(m);
   for (int i = 0; i < m; i++) {
     int u, v;
     cin >> u >> v;
     adj[u] += v;
     adj[v] += u;
-    if (u > v) swap(u, v);
-    edges[i] = {u, v};
   }
   UF uf(n);
-  ranges::sort(edges);
-  for (int i = 1; i < m; i++)
-    if (edges[i - 1] == edges[i])
-      uf.join(edges[i][0], edges[i][1]);
+  vector<bool> seen(n);
   bcc_callback(adj, [&](const vi& nodes) {
-    assert(sz(nodes) >= 2);
-    if (sz(nodes) == 2) return;
+    int count_edges = 0;
+    rep(i, 0, sz(nodes) - 1) {
+      seen[nodes[i]] = 1;
+      count_edges += ranges::count_if(adj[nodes[i]],
+        [&](int v) -> bool { return !seen[v]; });
+    }
+    if (count_edges == 1) {
+      assert(sz(nodes) == 2);
+      // nodes[0] <=> nodes[1] is a bridge
+      return;
+    }
     for (int v : nodes) uf.join(v, nodes[0]);
   });
   vector<basic_string<int>> two_edge_ccs(n);
