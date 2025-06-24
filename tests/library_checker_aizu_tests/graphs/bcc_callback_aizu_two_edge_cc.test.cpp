@@ -20,11 +20,8 @@ int main() {
     int count_edges = 0;
     rep(i, 0, sz(nodes) - 1) {
       seen[nodes[i]] = 1;
-      for (int v : adj[nodes[i]])
-        if (!seen[v]) {
-          // edge nodes[i] <=> v is in current BCC
-          count_edges++;
-        }
+      count_edges += ranges::count_if(adj[nodes[i]],
+        [&](int v) -> bool { return !seen[v]; });
     }
     if (count_edges == 1) {
       assert(sz(nodes) == 2);
