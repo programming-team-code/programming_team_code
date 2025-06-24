@@ -15,11 +15,26 @@ int main() {
     adj[v] += u;
   }
   vector<pii> bridges;
+  vector<bool> seen(n);
   bcc_callback(adj, [&](const vi& nodes) {
-    assert(sz(nodes) >= 2);
-    if (sz(nodes) == 2)
-      bridges.emplace_back(min(nodes[0], nodes[1]),
-        max(nodes[0], nodes[1]));
+    int count_edges = 0;
+    rep(i, 0, sz(nodes) - 1) {
+      seen[nodes[i]] = 1;
+      for (int v : adj[nodes[i]])
+        if (!seen[v]) {
+          // edge nodes[i] <=> v is in current BCC
+          count_edges++;
+        }
+    }
+    if (count_edges == 1) {
+      assert(sz(nodes) == 2);
+      pii bridge(nodes[0], nodes[1]);
+      if (bridge.first > bridge.second)
+        swap(bridge.first, bridge.second);
+      bridges.push_back(bridge);
+      // nodes[0] <=> nodes[1] is a bridge
+      return;
+    }
   });
   ranges::sort(bridges);
   for (auto [u, v] : bridges)
