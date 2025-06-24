@@ -23,6 +23,6 @@ int main() {
   });
   ranges::sort(bridges);
   for (auto [u, v] : bridges)
-    cout << u << ' ' << v << endl;
+    cout << u << ' ' << v << '\n';
   return 0;
 }
