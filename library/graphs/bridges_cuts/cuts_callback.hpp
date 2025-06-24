@@ -3,10 +3,35 @@
 //! @code
 //!   {
 //!     vector<vector<int>> adj(n);
-//!     cuts_callback(adj, [&](const vi& nodes) {});
+//!     vector<pii> edges(m);
+//!     UF uf(n);
+//!     cuts_callback(adj, [&](const vi& nodes) {
+//!       if(sz(nodes) > 2)
+//!         for (int v : nodes) uf.join(v, nodes[0]);
+//!     });
+//!     vector<basic_string<int>> bridge_tree(n);
+//!     for (auto [u, v] : edges) {
+//!       if(!uf.sameSet(u,v)) {
+//!         u = uf.find(u), v = uf.find(v);
+//!         bridge_tree[u] += v;
+//!         bridge_tree[v] += u;
+//!       }
+//!     }
 //!   }
+//!
 //!   vector<basic_string<int>> adj(n);
+//!   vector<basic_string<array<int, 2>>> adj_edge_ids(n);
+//!   vector<bool> seen(m);
 //!   cuts_callback(adj, [&](const vi& nodes) {
+//!     rep (i, 0, sz(nodes) - 1) {
+//!       int v = nodes[i];
+//!       for (auto [u, e_id] : adj_edge_ids[v]){
+//!         if(!seen[e_id]) {
+//!           seen[e_id] = 1;
+//!           // this edge is in the current BCC
+//!         }
+//!       }
+//!     }
 //!   });
 //! @endcode
 //! callback not called on components with a single node
