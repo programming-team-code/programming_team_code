@@ -51,7 +51,7 @@ void bcc_callback(const auto& adj, auto f) {
       l = min(l, t[u] ?: (lu = self(self, st[s++] = u)));
       if (lu >= t[v]) {
         st[s++] = v;
-        f(vi(siz + all(st) - n + s));
+        f({siz + all(st) - n + s});
         s = siz;
       }
     }
