@@ -10,13 +10,12 @@
 //!         for (int v : nodes) uf.join(v, nodes[0]);
 //!     });
 //!     vector<basic_string<int>> bridge_tree(n);
-//!     for (auto [u, v] : edges) {
-//!       if (!uf.sameSet(u,v)) {
+//!     for (auto [u, v] : edges)
+//!       if (!uf.sameSet(u, v)) {
 //!         u = uf.find(u), v = uf.find(v);
 //!         bridge_tree[u] += v;
 //!         bridge_tree[v] += u;
 //!       }
-//!     }
 //!   }
 //!
 //!   vector<basic_string<int>> adj(n);
