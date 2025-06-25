@@ -99,7 +99,7 @@ jobs:
         name: ptc
         path: tests/ptc.pdf
 
-  publish_ptc:
+  publish_pdf:
     runs-on: ubuntu-latest
     needs: [library_checker_aizu, grep_clangformat_cppcheck, clangtidy, compile_gcc, compile_clang, find_files_without_tests, build_pdf]
     if: github.ref == 'refs/heads/dev' && github.event_name == 'push'
