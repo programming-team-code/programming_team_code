@@ -2,7 +2,7 @@
 //! https://cp-algorithms.com/graph/cutpoints.html
 //! @code
 //!   {
-//!     vector<vector<int>> adj(n);
+//!     vector<vi> adj(n);
 //!     UF uf(n);
 //!     vector<bool> seen(n);
 //!     bcc_callback(adj, [&](const vi& nodes) {
