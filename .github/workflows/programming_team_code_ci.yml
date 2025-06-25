@@ -75,12 +75,12 @@ jobs:
     - name: Compile all tests
       run: make --directory=tests/ compile_clang
 
-  files_without_tests:
+  find_files_without_tests:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - name: files without tests
-      run: make --directory=tests/ files_without_tests
+      run: make --directory=tests/ find_files_without_tests
 
   build_pdf:
     runs-on: ubuntu-latest
@@ -101,7 +101,7 @@ jobs:
 
   publish_ptc:
     runs-on: ubuntu-latest
-    needs: [library_checker_aizu, grep_clangformat_cppcheck, clangtidy, compile_gcc, compile_clang, files_without_tests, build_pdf]
+    needs: [library_checker_aizu, grep_clangformat_cppcheck, clangtidy, compile_gcc, compile_clang, find_files_without_tests, build_pdf]
     if: github.ref == 'refs/heads/dev' && github.event_name == 'push'
     steps:
     - uses: actions/checkout@v2
@@ -119,7 +119,7 @@ jobs:
 
   update_main:
     runs-on: ubuntu-latest
-    needs: [library_checker_aizu, grep_clangformat_cppcheck, clangtidy, compile_gcc, compile_clang, files_without_tests]
+    needs: [library_checker_aizu, grep_clangformat_cppcheck, clangtidy, compile_gcc, compile_clang, find_files_without_tests]
     if: github.ref == 'refs/heads/dev' && github.event_name == 'push'
     steps:
     - uses: actions/checkout@v2
