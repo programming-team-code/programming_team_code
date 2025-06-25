@@ -13,14 +13,14 @@ help:
 	@echo "                                     |"
 	@echo "make clangtidy                       | runs clang-tidy (mainly to verify snake_case)"
 	@echo "                                     |"
-	@echo "make ptc                             | build ptc.pdf from .tex file"
+	@echo "make build_pdf                       | build build_pdf.pdf from .tex file"
 	@echo "                                     |"
 	@echo "make shellcheck_shfmt                | runs shellcheck and shfmt"
 	@echo "                                     |"
 	@echo "make update_main                     | 1) copies included files into file"
 	@echo "                                     | 2) force pushes to main branch"
 	@echo "                                     |"
-	@echo "make files_without_tests             | print list of all .hpp files included by *no* .test.cpp files"
+	@echo "make find_files_without_tests        | print list of all .hpp files included by *no* .test.cpp files"
 	@echo "                                     |   - these files are not compiled nor linted as part of ci"
 	@echo "                                     |"
 	@echo "make print_which_tests_havent_run    | mainly to check if all tests have run"
@@ -40,11 +40,11 @@ do_format:
 clangtidy:
 	./scripts/clangtidy.sh
 
-files_without_tests:
-	./scripts/files_without_tests.sh
+find_files_without_tests:
+	./scripts/find_files_without_tests.sh
 
-ptc:
-	./scripts/ptc.sh
+build_pdf:
+	./scripts/build_pdf.sh
 
 shellcheck_shfmt:
 	./scripts/shellcheck_shfmt.sh
