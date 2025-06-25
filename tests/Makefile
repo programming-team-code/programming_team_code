@@ -13,7 +13,7 @@ help:
 	@echo "                                     |"
 	@echo "make clangtidy                       | runs clang-tidy (mainly to verify snake_case)"
 	@echo "                                     |"
-	@echo "make ptc                             | build ptc.pdf from .tex file"
+	@echo "make build_pdf                       | build build_pdf.pdf from .tex file"
 	@echo "                                     |"
 	@echo "make shellcheck_shfmt                | runs shellcheck and shfmt"
 	@echo "                                     |"
@@ -43,8 +43,8 @@ clangtidy:
 files_without_tests:
 	./scripts/files_without_tests.sh
 
-ptc:
-	./scripts/ptc.sh
+build_pdf:
+	./scripts/build_pdf.sh
 
 shellcheck_shfmt:
 	./scripts/shellcheck_shfmt.sh

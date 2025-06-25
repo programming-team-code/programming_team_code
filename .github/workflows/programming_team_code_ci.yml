@@ -82,7 +82,7 @@ jobs:
     - name: files without tests
       run: make --directory=tests/ files_without_tests
 
-  build_ptc:
+  build_pdf:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -93,7 +93,7 @@ jobs:
         wget -qO- https://apt.llvm.org/llvm.sh | sudo bash -s -- 19
         sudo apt update && sudo apt install -y clang-19
     - name: build ptc
-      run: make --directory=tests/ ptc
+      run: make --directory=tests/ build_pdf
     - uses: actions/upload-artifact@v4
       with:
         name: ptc
@@ -101,7 +101,7 @@ jobs:
 
   publish_ptc:
     runs-on: ubuntu-latest
-    needs: [library_checker_aizu, grep_clangformat_cppcheck, clangtidy, compile_gcc, compile_clang, files_without_tests, build_ptc]
+    needs: [library_checker_aizu, grep_clangformat_cppcheck, clangtidy, compile_gcc, compile_clang, files_without_tests, build_pdf]
     if: github.ref == 'refs/heads/dev' && github.event_name == 'push'
     steps:
     - uses: actions/checkout@v2
