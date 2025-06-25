@@ -19,8 +19,18 @@ grep "true" --recursive ../library/ && exit 1
 echo "check 0 instead of false"
 grep "false" --recursive ../library/ && exit 1
 
-echo "check int64_t instead of long long"
+echo "check ll instead of long long or int64_t"
 grep "long long" --recursive ../library/ && exit 1
+grep "int64_t" --recursive ../library/**/*.hpp | grep "uint64_t" --invert-match && exit 1
+
+echo "check pii instead of pair<int, int>"
+grep "pair<int, int>" --recursive ../library/**/*.hpp && exit 1
+
+echo "check sz instead of ssize"
+grep "ssize" --recursive ../library/ && exit 1
+
+echo "check vi instead of vector<int>"
+grep "vector<int>" --recursive ../library/**/*.hpp && exit 1
 
 echo "check begin(arr) instead of arr.begin(), similarly for end, rbegin, rend, empty, size:"
 # TODO: remove this define filter if/when we move to -std=c++20
