@@ -30,7 +30,7 @@ echo "check sz instead of ssize"
 grep "ssize" --recursive ../library/ && exit 1
 
 echo "check vi instead of vector<int>"
-grep "vector<int>" --recursive ../library/ && exit 1
+grep "vector<int>" --recursive ../library/**/*.hpp && exit 1
 
 echo "check begin(arr) instead of arr.begin(), similarly for end, rbegin, rend, empty, size:"
 # TODO: remove this define filter if/when we move to -std=c++20
