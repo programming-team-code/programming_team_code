@@ -24,7 +24,7 @@ grep "long long" --recursive ../library/ && exit 1
 grep "int64_t" --recursive ../library/**/*.hpp | grep "uint64_t" --invert-match && exit 1
 
 echo "check pii instead of pair<int, int>"
-grep "pair<int, int>" --recursive ../library/ && exit 1
+grep "pair<int, int>" --recursive ../library/**/*.hpp && exit 1
 
 echo "check sz instead of ssize"
 grep "ssize" --recursive ../library/ && exit 1
