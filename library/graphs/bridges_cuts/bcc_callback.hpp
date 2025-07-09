@@ -32,7 +32,7 @@
 //!     vector<vi> adj(n);
 //!     vector<int> cc_id(n);
 //!     bcc_callback(adj, [&](const vi& nodes) {
-//!       if (ssize(nodes) == 2) {
+//!       if (sz(nodes) == 2) {
 //!         // nodes[0] <=> nodes[1] is a bridge
 //!         return;
 //!       }
