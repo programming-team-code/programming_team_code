@@ -27,6 +27,19 @@
 //!           bridge_tree[uf.find(i)] += uf.find(v);
 //!   }
 //!
+//!   {
+//!     // ********* IF NO MULTIPLE EDGES *********
+//!     vector<vi> adj(n);
+//!     vi cc_id(n);
+//!     bcc_callback(adj, [&](const vi& nodes) {
+//!       if (sz(nodes) == 2) {
+//!         // nodes[0] <=> nodes[1] is a bridge
+//!         return;
+//!       }
+//!       for (int v : nodes) cc_id[v] = nodes.back();
+//!     });
+//!   }
+//!
 //!   vector<basic_string<int>> adj(n);
 //!   vector<basic_string<int>> block_vertex_tree(2 * n);
 //!   int bcc_id = n;
