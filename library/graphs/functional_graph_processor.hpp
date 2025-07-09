@@ -16,9 +16,9 @@ struct func_graph {
   vector<basic_string<int>> cycle, childs;
   func_graph(const vi& a): root_of(sz(a)), childs(sz(a)) {
     vi state(sz(a));
-    rep(i, 0, sz(a)) if (state[i] == 0) {
+    rep(i, 0, sz(a)) if (!state[i]) {
       int u = i;
-      while (state[u] == 0) {
+      while (!state[u]) {
         state[u] = 1;
         u = a[u];
       }
