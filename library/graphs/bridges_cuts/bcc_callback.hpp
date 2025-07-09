@@ -30,7 +30,7 @@
 //!   {
 //!     // ********* IF NO MULTIPLE EDGES *********
 //!     vector<vi> adj(n);
-//!     vector<int> cc_id(n);
+//!     vi cc_id(n);
 //!     bcc_callback(adj, [&](const vi& nodes) {
 //!       if (sz(nodes) == 2) {
 //!         // nodes[0] <=> nodes[1] is a bridge
