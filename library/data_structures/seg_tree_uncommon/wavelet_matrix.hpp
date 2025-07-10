@@ -1,7 +1,7 @@
 #pragma once
 //! @code
 //!   vector<ull> a(n);
-//!   wavelet_matrix wm(a, 1e9 /*a[i] <= 1e9*/);
+//!   wavelet_matrix wm(a, 1e9); // requires a[i] <= 1e9
 //!   wm.kth(l, r, k); //(k+1)th smallest number in [l,r)
 //!   wm.kth(l, r, 0); //min in [l,r)
 //! @endcode
