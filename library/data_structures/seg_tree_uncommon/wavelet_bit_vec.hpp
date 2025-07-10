@@ -6,7 +6,7 @@
 //! @endcode
 //! @time O(n + q)
 //! @space O(n / 64)
-#define ull uint64_t
+using ull = uint64_t;
 struct bit_vec {
   vector<pair<ull, int>> b;
   bit_vec(const vector<bool>& a): b(sz(a) / 64 + 1) {
