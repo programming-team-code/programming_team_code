@@ -8,14 +8,12 @@ struct wavelet_matrix {
   //! @space O(n * log(max_val) / 64)
   wavelet_matrix(vector<ull> a, ull max_val):
     n(sz(a)), bv(bit_width(max_val), {{}}) {
-    vector<ull> nxt(n);
     for (int h = sz(bv); h--;) {
+      int i = 0;
       vector<bool> b(n);
-      rep(i, 0, n) b[i] = (a[i] >> h) & 1;
+      ranges::stable_partition(a,
+        [&](ull x) { return b[i++] = !((x >> h) & 1); });
       bv[h] = b;
-      array it{begin(nxt), begin(nxt) + bv[h].cnt0(n)};
-      rep(i, 0, n) * it[b[i]]++ = a[i];
-      swap(a, nxt);
     }
   }
   //! (k+1)th smallest number in [l,r)
@@ -25,11 +23,11 @@ struct wavelet_matrix {
   ull kth(int l, int r, int k) {
     ll res = 0;
     for (int h = sz(bv); h--;) {
-      int l0 = bv[h].cnt0(l), r0 = bv[h].cnt0(r);
+      int l0 = bv[h].cnt(l), r0 = bv[h].cnt(r);
       if (k < r0 - l0) l = l0, r = r0;
       else
         k -= r0 - l0, res |= 1ULL << h,
-          l += bv[h].cnt0(n) - l0, r += bv[h].cnt0(n) - r0;
+          l += bv[h].cnt(n) - l0, r += bv[h].cnt(n) - r0;
     }
     return res;
   }
