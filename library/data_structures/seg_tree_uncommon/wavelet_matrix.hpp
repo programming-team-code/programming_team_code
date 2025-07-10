@@ -1,4 +1,5 @@
 #pragma once
+#include "wavelet_bit_vec.hpp"
 //! @code
 //!   vector<ull> a(n);
 //!   wavelet_matrix wm(a, 1e9); // requires a[i] <= 1e9
@@ -7,7 +8,6 @@
 //! @endcode
 //! @time O(n * log(max_val) + q * log(max_val))
 //! @space O(n * log(max_val) / 64)
-#include "wavelet_bit_vec.hpp"
 struct wavelet_matrix {
   int n;
   vector<bit_vec> bv;
