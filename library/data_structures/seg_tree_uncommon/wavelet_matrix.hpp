@@ -17,7 +17,7 @@ struct wavelet_matrix {
       int i = 0;
       vector<bool> b(n);
       ranges::stable_partition(a,
-        [&](ull x) { return b[i++] = !((x >> h) & 1); });
+        [&](ull x) { return b[i++] = (~x >> h) & 1; });
       bv[h] = b;
     }
   }
