@@ -17,8 +17,8 @@ int main() {
   }
   tree_lift tl(adj);
   LCA lc(adj);
-  linear_lca lin_lca(adj);
   compress_tree_asserts(adj, lc);
+  linear_lca lin_lca(adj);
   for (int i = 0; i < n; i++) {
     assert(tl.lca(i, i) == i);
     assert(lc.lca(i, i) == i);
