@@ -21,7 +21,7 @@ template<class T, class F> struct linear_rmq {
     vi st{-1};
     rep(i, 0, n + 1) {
       int prev = -1;
-      while (st.back() != -1 &&
+      while (sz(st) > 1 &&
         (i == n || !cmp(a[st.back()], a[i]))) {
         if (prev != -1) head[prev] = st.back();
         int b = bit_floor((end(st)[-2] + 1u) ^ i);
