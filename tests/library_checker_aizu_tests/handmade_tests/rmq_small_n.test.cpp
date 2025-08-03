@@ -13,7 +13,7 @@ void test_all_subarrays(const vector<int>& a) {
   linear_rmq lin_rmq(a, less());
   for (int l = 0; l < n; l++) {
     for (int r = l + 1; r <= n; r++) {
-      int idx_min = lin_rmq.query_idx(l, r - 1);
+      int idx_min = lin_rmq.idx(l, r - 1);
       assert(l <= idx_min && idx_min < r);
       assert(a[idx_min] == rmq.query(l, r));
       assert(a[idx_min] == dis_rmq.query(l, r));
