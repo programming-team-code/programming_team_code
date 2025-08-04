@@ -50,7 +50,7 @@ struct perm_tree {
         if (!empty(ch[u]) && touches(ch[u].back(), v)) {
           p[u].mn_num = min(p[u].mn_num, p[v].mn_num);
           p[u].len += p[v].len;
-          ch[u] += v;
+          ch[u].push_back(v);
           v = u;
           st.pop_back();
           continue;
