@@ -119,12 +119,6 @@ struct functional_graph_processor {
   vector<int> end; // [pos[u], end[u]) denotes the subtree
   vector<int> size; // size of the subtree in abr
 };
-bool equal(const basic_string<int> &a, const vi &b) {
-  if (sz(a) != sz(b)) return 0;
-  for (int i = 0; i < sz(a); i++)
-    if (a[i] != b[i]) return 0;
-  return 1;
-}
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   for (int num_tests = 100; num_tests--;) {
@@ -133,17 +127,12 @@ int main() {
     for (int i = 0; i < n; i++) a[i] = rnd(0, n - 1);
     auto [root_of, cycle, childs] = func_graph(a);
     functional_graph_processor fgp(a);
-    assert(sz(cycle) == sz(fgp.cycle));
-    for (int i = 0; i < sz(cycle); i++) {
-      assert(sz(cycle[i]) == sz(fgp.cycle[i]));
-      for (int j = 0; j < sz(cycle[i]); j++)
-        assert(cycle[i][j] == fgp.cycle[i][j]);
-    }
+    assert(cycle == fgp.cycle);
+    assert(childs == fgp.abr);
     for (int i = 0; i < n; i++) {
       int root =
         cycle[root_of[i].first][root_of[i].second];
       assert(root == fgp.root_of[i]);
-      assert(equal(childs[i], fgp.abr[i]));
       assert((root == i) == (fgp.cycle_id[i] != -1));
       if (root == i) {
         assert(root_of[i].first == fgp.cycle_id[i]);

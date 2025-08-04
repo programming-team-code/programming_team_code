@@ -2,7 +2,7 @@
 #include "../lazy_seg_tree_midpoint.hpp"
 struct merge_sort_tree {
   int n;
-  vector<basic_string<int>> tree;
+  vector<vi> tree;
   merge_sort_tree(const vi& a): n(sz(a)), tree(2 * n) {
     int pw2 = bit_ceil(size(a));
     rep(i, 0, n) tree[(i + pw2) % n + n] = {a[i]};

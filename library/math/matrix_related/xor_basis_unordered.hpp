@@ -11,12 +11,12 @@
 //! @time O(32) or O(64)
 //! @space O(32) or O(64)
 template<class T> struct basis {
-  basic_string<T> b;
+  vector<T> b;
   T shrink(T v) {
     for (T x : b) v = min(v, v ^ x);
     return v;
   }
   bool insert(T v) {
-    return (v = shrink(v)) ? b += v, 1 : 0;
+    return (v = shrink(v)) ? b.push_back(v), 1 : 0;
   }
 };

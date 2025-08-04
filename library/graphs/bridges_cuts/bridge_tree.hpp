@@ -14,8 +14,9 @@
 //! @space O(n)
 auto bridge_tree(const auto& adj, int num_ccs,
   const vi& br_id, const vi& is_br) {
-  vector<basic_string<int>> tree(num_ccs);
+  vector<vi> tree(num_ccs);
   rep(i, 0, sz(adj)) for (auto [u, e_id] : adj[i]) if (
-    is_br[e_id]) tree[br_id[i]] += br_id[u];
+    is_br[e_id]) tree[br_id[i]]
+    .push_back(br_id[u]);
   return tree;
 }

@@ -16,11 +16,11 @@
 vi lcs_queries(const auto& s, const auto& t,
   const vector<array<int, 3>>& queries) {
   int n = sz(s), m = sz(t), q = sz(queries);
-  vector<basic_string<array<int, 3>>> qs(n);
+  vector<vector<array<int, 3>>> qs(n);
   rep(i, 0, q) {
     auto [s_r, t_le, t_ri] = queries[i];
     if (s_r == 0 || t_le == m) continue;
-    qs[s_r - 1] += {t_le, t_ri, i};
+    qs[s_r - 1].push_back({t_le, t_ri, i});
   }
   lcs_dp lcs(t);
   vi res(q);
