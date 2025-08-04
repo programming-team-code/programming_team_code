@@ -10,41 +10,35 @@
 //! @endcode
 //! @time O(n + q)
 //! @space O(n)
+int lsb(int x) { return x & -x; }
 struct linear_lca {
-  struct node {
-    int d, label, asc;
-  };
-  vector<node> t;
-  vi head;
+  int n;
+  vi d, in, asc, head;
   linear_lca(const auto& adj):
-    t(sz(adj)), head(sz(t) + 1) {
+    n(sz(adj)), d(n), in(n), asc(n), head(n + 1) {
     vector<pii> order;
     auto dfs = [&](auto&& self, int v, int p) -> void {
       order.emplace_back(v, p);
-      t[v].label = sz(order);
+      in[v] = sz(order);
       for (int u : adj[v])
         if (u != p) {
-          t[u].d = 1 + t[v].d;
+          d[u] = 1 + d[v];
           self(self, u, v);
-          head[t[u].label] = v;
-          if ((t[u].label & -t[u].label) >
-            (t[v].label & -t[v].label))
-            t[v].label = t[u].label;
+          head[in[u]] = v;
+          if (lsb(in[v]) < lsb(in[u])) in[v] = in[u];
         }
     };
-    rep(i, 0, sz(t)) if (t[i].d == 0) dfs(dfs, i, i);
-    for (auto [v, p] : order)
-      t[v].asc = t[p].asc | (t[v].label & -t[v].label);
+    dfs(dfs, 0, 0);
+    for (auto [v, p] : order) asc[v] = asc[p] | lsb(in[v]);
   }
   int lca(int u, int v) {
-    if (unsigned j = t[u].label ^ t[v].label; j) {
-      j = t[u].asc & t[v].asc & -bit_floor(j);
-      if (unsigned k = t[u].asc ^ j; k)
-        k = bit_floor(k), u = head[(t[u].label & -k) | k];
-      if (unsigned k = t[v].asc ^ j; k)
-        k = bit_floor(k), v = head[(t[v].label & -k) | k];
+    if (unsigned j = in[u] ^ in[v]; j) {
+      j = asc[u] & asc[v] & -bit_floor(j);
+      if (unsigned k = asc[u] ^ j; k)
+        k = bit_floor(k), u = head[(in[u] & -k) | k];
+      if (unsigned k = asc[v] ^ j; k)
+        k = bit_floor(k), v = head[(in[v] & -k) | k];
     }
-    return t[u].d < t[v].d ? u : v;
+    return d[u] < d[v] ? u : v;
   }
-#include "extra_members/dist_edges.hpp"
 };
