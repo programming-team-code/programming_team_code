@@ -15,7 +15,7 @@
 template<int KAPPA = 3> struct linear_kth_par {
   int n;
   vi d, leaf, pos, jmp;
-  vector<basic_string<int>> lad;
+  vector<vi> lad;
   linear_kth_par(const auto& adj):
     n(sz(adj)), d(n), leaf(n), pos(n), jmp(2 * n), lad(n) {
     static_assert(KAPPA >= 2);
@@ -42,7 +42,7 @@ template<int KAPPA = 3> struct linear_kth_par {
       len = max(len, 2 * (KAPPA - 1));
       int i = d[leaf[v]] - sz(lad[leaf[v]]);
       while (i && sz(lad[leaf[v]]) < len)
-        lad[leaf[v]] += st[i--];
+        lad[leaf[v]].push_back(st[i--]);
       assert(lad[leaf[v]].back() > 0);
     };
     dfs(dfs, 0, 0);
@@ -52,8 +52,6 @@ template<int KAPPA = 3> struct linear_kth_par {
     int j = v;
     if (unsigned b = k / KAPPA; b)
       b = bit_floor(b), j = jmp[(pos[v] & -b) | b];
-    // TODO array index out of bounds goes uncaught here
-    // because of basic_string
     return j = leaf[j], lad[j][k + d[j] - d[v]];
   }
 };
