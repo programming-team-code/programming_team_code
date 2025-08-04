@@ -25,8 +25,7 @@ template<class T, class F> struct linear_rmq {
         (i == n || !cmp(a[st.back()], a[i]))) {
         head[prev] = st.back();
         auto k = end(st)[-2] + 1u, b = bit_floor(k ^ i);
-        in[st.back()] = prev = i & -b;
-        asc[k] |= b;
+        in[st.back()] = prev = i & -b, asc[k] |= b;
         st.pop_back();
       }
       st.push_back(head[prev] = i);
