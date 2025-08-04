@@ -39,9 +39,9 @@ template<class T, class F> struct linear_rmq {
     if (unsigned j = in[l] ^ in[r]; j) {
       j = asc[l] & asc[r] & -bit_floor(j);
       if (unsigned k = asc[l] ^ j; k)
-        k = bit_floor(k), l = head[-k & in[l] | k];
+        k = bit_floor(k), l = head[k | in[l] & -k];
       if (unsigned k = asc[r] ^ j; k)
-        k = bit_floor(k), r = head[-k & in[r] | k];
+        k = bit_floor(k), r = head[k | in[r] & -k];
     }
     return cmp(a[l], a[r]) ? l : r;
   }
