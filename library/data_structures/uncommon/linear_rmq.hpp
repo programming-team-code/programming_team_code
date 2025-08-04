@@ -24,13 +24,12 @@ template<class T, class F> struct linear_rmq {
       while (sz(st) > 1 &&
         (i == n || !cmp(a[st.back()], a[i]))) {
         head[prev] = st.back();
-        int b = bit_floor((end(st)[-2] + 1u) ^ i);
+        auto k = end(st)[-2] + 1u, b = bit_floor(k ^ i);
         in[st.back()] = prev = i & -b;
+        asc[k] |= b;
         st.pop_back();
-        asc[st.back() + 1] |= b;
       }
-      head[prev] = i;
-      st.push_back(i);
+      st.push_back(head[prev] = i);
     }
     rep(i, 1, n) asc[i] =
       (asc[i] | asc[i - 1]) & -(in[i] & -in[i]);
