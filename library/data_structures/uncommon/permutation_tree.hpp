@@ -37,8 +37,8 @@ struct perm_tree {
       linear_rmq rmq_min(a_inv, less());
       linear_rmq rmq_max(a_inv, greater());
       rep(i, 1, n) {
-        mn_i[i] = a_inv[rmq_min.query_idx(a[i - 1], a[i])];
-        mx_i[i] = a_inv[rmq_max.query_idx(a[i - 1], a[i])];
+        mn_i[i] = a_inv[rmq_min.idx(a[i - 1], a[i])];
+        mx_i[i] = a_inv[rmq_max.idx(a[i - 1], a[i])];
       }
     }
     rep(i, 0, n) allocate(i, a[i], 1, 0, {});
