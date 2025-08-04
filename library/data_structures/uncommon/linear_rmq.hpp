@@ -1,10 +1,10 @@
 #pragma once
 //! https://codeforces.com/blog/entry/125371?#comment-1173604
 //! @code
-//!   linear_rmq rmq1(a, less());//right-most min
-//!   linear_rmq rmq2(a, less_equal());//left-most min
-//!   linear_rmq rmq3(a, greater());//right-most max
-//!   linear_rmq rmq4(a, greater_equal());//left-most max
+//!   linear_rmq rmq1(a, less());          //right-most min
+//!   linear_rmq rmq2(a, less_equal());    //left-most min
+//!   linear_rmq rmq3(a, greater());       //right-most max
+//!   linear_rmq rmq4(a, greater_equal()); //left-most max
 //!   linear_rmq rmq5(a, [&](auto& x, auto& y) {
 //!     return x < y;
 //!   });
@@ -12,38 +12,36 @@
 //! @time O(n + q)
 //! @space O(n)
 template<class T, class F> struct linear_rmq {
+  int n;
   vector<T> a;
   F cmp;
-  vi head;
-  vector<array<int, 2>> t;
+  vi in, asc, head;
   linear_rmq(const vector<T>& a, F cmp):
-    a(a), cmp(cmp), head(sz(a) + 1), t(sz(a)) {
+    n(sz(a)), a(a), cmp(cmp), in(n), asc(n), head(n + 1) {
     vi st{-1};
-    for (int i = 0; i <= sz(a); i++) {
-      int prev = -1;
-      while (st.back() != -1 &&
-        (i == sz(a) || !cmp(a[st.back()], a[i]))) {
-        if (prev != -1) head[prev] = st.back();
-        int pw2 = 1 << __lg((end(st)[-2] + 1) ^ i);
-        t[st.back()][0] = prev = i & -pw2;
+    rep(i, 0, n + 1) {
+      int prev = 0;
+      while (sz(st) > 1 &&
+        (i == n || !cmp(a[st.back()], a[i]))) {
+        head[prev] = st.back();
+        auto k = end(st)[-2] + 1u, b = bit_floor(k ^ i);
+        in[st.back()] = prev = i & -b, asc[k] |= b;
         st.pop_back();
-        t[st.back() + 1][1] |= pw2;
       }
-      if (prev != -1) head[prev] = i;
-      st.push_back(i);
+      st.push_back(head[prev] = i);
     }
-    rep(i, 1, sz(a)) t[i][1] =
-      (t[i][1] | t[i - 1][1]) & -(t[i][0] & -t[i][0]);
+    rep(i, 1, n) asc[i] =
+      (asc[i] | asc[i - 1]) & -(in[i] & -in[i]);
   }
-  int query_idx(int l, int r) { // [l, r]
-    if (unsigned j = t[l][0] ^ t[r][0]; j) {
-      j = t[l][1] & t[r][1] & -bit_floor(j);
-      if (unsigned k = t[l][1] ^ j; k)
-        k = bit_floor(k), l = head[(t[l][0] & -k) | k];
-      if (unsigned k = t[r][1] ^ j; k)
-        k = bit_floor(k), r = head[(t[r][0] & -k) | k];
+  int idx(int l, int r) { // [l, r]
+    if (unsigned j = in[l] ^ in[r]; j) {
+      j = asc[l] & asc[r] & -bit_floor(j);
+      if (unsigned k = asc[l] ^ j; k)
+        k = bit_floor(k), l = head[(in[l] & -k) | k];
+      if (unsigned k = asc[r] ^ j; k)
+        k = bit_floor(k), r = head[(in[r] & -k) | k];
     }
     return cmp(a[l], a[r]) ? l : r;
   }
-  T query(int l, int r) { return a[query_idx(l, r)]; }
+  T query(int l, int r) { return a[idx(l, r)]; }
 };
