@@ -25,15 +25,15 @@
 auto block_vertex_tree(const auto& adj, int num_bccs,
   const vi& bcc_id) {
   int n = sz(adj);
-  vector<basic_string<int>> bvt(n + num_bccs);
+  vector<vi> bvt(n + num_bccs);
   vector<bool> vis(num_bccs);
   rep(i, 0, n) {
     for (auto [_, e_id] : adj[i]) {
       int bccid = bcc_id[e_id];
       if (!vis[bccid]) {
         vis[bccid] = 1;
-        bvt[i] += bccid + n;
-        bvt[bccid + n] += i;
+        bvt[i].push_back(bccid + n);
+        bvt[bccid + n].push_back(i);
       }
     }
     for (int bccid : bvt[i]) vis[bccid - n] = 0;

@@ -5,7 +5,7 @@
 struct kr_tree {
   int id;
   vi p;
-  vector<basic_string<int>> adj;
+  vector<pii> adj;
   kr_tree(int n): id(n), p(2 * n, -1), adj(2 * n) {}
   int find(int v) {
     return p[v] < 0 ? v : p[v] = find(p[v]);
