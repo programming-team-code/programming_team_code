@@ -13,7 +13,7 @@
 //! @space O(n)
 struct func_graph {
   vector<pii> root_of;
-  vector<basic_string<int>> cycle, childs;
+  vector<vi> cycle, childs;
   func_graph(const vi& a): root_of(sz(a)), childs(sz(a)) {
     vi state(sz(a));
     rep(i, 0, sz(a)) if (!state[i]) {
@@ -26,7 +26,7 @@ struct func_graph {
         cycle.emplace_back();
         while (state[u] == 1) {
           root_of[u] = {sz(cycle) - 1, sz(cycle.back())};
-          cycle.back() += u;
+          cycle.back().push_back(u);
           state[u] = 2;
           u = a[u];
         }
@@ -34,7 +34,7 @@ struct func_graph {
       int v = i;
       while (state[v] == 1) {
         root_of[v] = root_of[u];
-        childs[a[v]] += v;
+        childs[a[v]].push_back(v);
         state[v] = 2;
         v = a[v];
       }
