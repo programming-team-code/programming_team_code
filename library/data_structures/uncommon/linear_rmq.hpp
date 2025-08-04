@@ -32,8 +32,8 @@ template<class T, class F> struct linear_rmq {
       head[prev] = i;
       st.push_back(i);
     }
-    rep(i, 1, n)(asc[i] |= asc[i - 1]) &=
-      -(in[i] & -in[i]);
+    rep(i, 1, n) asc[i] =
+      (asc[i] | asc[i - 1]) & -(in[i] & -in[i]);
   }
   int idx(int l, int r) { // [l, r]
     if (unsigned j = in[l] ^ in[r]; j) {
