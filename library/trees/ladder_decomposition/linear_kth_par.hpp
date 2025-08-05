@@ -21,8 +21,8 @@ template<int KAPPA = 2> struct linear_kth_par {
     static_assert(KAPPA >= 1);
     int t = 1;
     vi st(n);
-    auto calc = [&](int siz) {
-      jmp[t] = st[max(0, siz - KAPPA * (t & -t))];
+    auto calc = [&](int s) {
+      jmp[t] = st[max(0, s - KAPPA * (t & -t))];
       t++;
     };
     auto dfs = [&](auto&& self, int v, int p) -> void {
