@@ -7,10 +7,9 @@ permissions:
 
 jobs:
   library_checker_aizu:
-    # https://github.com/actions/runner-images/issues/6709#issuecomment-1441444332
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v4
     - name: Set up Python
       uses: actions/setup-python@v1
     - name: Install dependencies
@@ -33,7 +32,7 @@ jobs:
   grep_clangformat_cppcheck:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     - name: Set up LLVM repository
       run: |
         sudo apt update
@@ -47,7 +46,7 @@ jobs:
   clangtidy:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     - name: Set up LLVM repository
       run: |
         sudo apt update
@@ -61,14 +60,14 @@ jobs:
   compile_gcc:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     - name: g++ with gcc
       run: make --directory=tests/ compile_gcc
 
   compile_clang:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     - name: Set up LLVM repository
       run: wget -qO- https://apt.llvm.org/llvm.sh | sudo bash -s -- 19
     - name: Install dependencies
@@ -79,14 +78,14 @@ jobs:
   find_files_without_tests:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     - name: find files without tests
       run: make --directory=tests/ find_files_without_tests
 
   build_pdf:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     - name: Install texlive, rename, nodejs, npm, clang
       run: |
         sudo apt update
@@ -105,7 +104,7 @@ jobs:
     needs: [library_checker_aizu, grep_clangformat_cppcheck, clangtidy, compile_gcc, compile_clang, find_files_without_tests, build_pdf]
     if: github.ref == 'refs/heads/dev' && github.event_name == 'push'
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     - uses: actions/download-artifact@v4
       with:
         name: ptc
@@ -123,7 +122,7 @@ jobs:
     needs: [library_checker_aizu, grep_clangformat_cppcheck, clangtidy, compile_gcc, compile_clang, find_files_without_tests]
     if: github.ref == 'refs/heads/dev' && github.event_name == 'push'
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     - name: Set up LLVM repository
       run: |
         sudo apt update
@@ -145,7 +144,7 @@ jobs:
   shellcheck_shfmt:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     - name: Install dependencies
       run: sudo apt install shfmt shellcheck
     - name: shellcheck, shfmt
