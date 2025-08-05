@@ -29,3 +29,4 @@ Place this at the beginning of a file
 //! @time O(n + q * log n)
 //! @space O(n * \alpha(n))
 ```
+
