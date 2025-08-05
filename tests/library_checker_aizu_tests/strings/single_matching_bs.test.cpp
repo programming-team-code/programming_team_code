@@ -10,13 +10,13 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
   string s, t;
   cin >> s >> t;
-  auto [sa, sa_inv, lcp] = get_sa(s, 256);
+  auto [sa, sa_inv, lcp] = get_sa(vi(all(s)), 256);
   sa_query sf_a(s, sa, sa_inv, lcp);
   {
     auto [sa_le, sa_ri, s_l, s_r] =
-      sf_a.find_str_fast(string(""));
+      sf_a.find_str_fast(vi());
     assert(sa_le == 0 && sa_ri == sz(s));
-    pair<int, int> short_res = sf_a.find_str(string(""));
+    pair<int, int> short_res = sf_a.find_str(vi());
     assert(sa_le == short_res.first &&
       sa_ri == short_res.second);
     assert(s_r - s_l == 0);
@@ -39,8 +39,9 @@ int main() {
     string both = s + '$' + t;
     int t_start = sz(s) + 1;
     auto [both_sa, both_sa_inv, both_lcp] =
-      get_sa(both, 256);
-    sa_query lq_both(both, both_sa, both_sa_inv, both_lcp);
+      get_sa(vi(all(both)), 256);
+    sa_query lq_both(vi(all(both)), both_sa, both_sa_inv,
+      both_lcp);
     vector<vector<pii>> tests;
     if (sz(t) >= 2)
       tests.push_back({{t_start, t_start + 1},

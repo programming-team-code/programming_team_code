@@ -11,7 +11,7 @@ int main() {
     cin >> s >> t;
     array<int, 2> res;
     for (int j = 0; j < 2; j++) {
-      lcs_dp lcs(t);
+      lcs_dp lcs(vi(all(t)));
       for (char c : s) lcs.push_onto_s(c);
       res[j] = int(count(begin(lcs.dp), end(lcs.dp), -1));
       swap(s, t);

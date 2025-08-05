@@ -8,7 +8,7 @@ int main() {
   string s;
   cin >> s;
   int n = sz(s);
-  pal_query pq(s);
+  pal_query pq(vi(all(s)));
   vector<int> longest(longest_from_index(pq));
   {
     vector<pair<int, int>> tests;

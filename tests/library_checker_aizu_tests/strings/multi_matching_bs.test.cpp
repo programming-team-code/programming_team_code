@@ -9,12 +9,12 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
   string s;
   cin >> s;
-  auto [sa, sa_inv, lcp] = get_sa(s, 256);
-  sa_query sf_a(s, sa, sa_inv, lcp);
+  auto [sa, sa_inv, lcp] = get_sa(vi(all(s)), 256);
+  sa_query sf_a(vi(all(s)), sa, sa_inv, lcp);
   {
     auto [sa_le, sa_ri, s_l, s_r] =
-      sf_a.find_str_fast(string(""));
-    pair<int, int> short_res = sf_a.find_str(string(""));
+      sf_a.find_str_fast(vi());
+    pair<int, int> short_res = sf_a.find_str(vi());
     assert(sa_le == short_res.first &&
       sa_ri == short_res.second);
     assert(sa_le == 0 && sa_ri == sz(s));
@@ -25,8 +25,9 @@ int main() {
   while (q--) {
     string t;
     cin >> t;
-    auto [sa_le, sa_ri, s_l, s_r] = sf_a.find_str_fast(t);
-    pair<int, int> short_res = sf_a.find_str(t);
+    auto [sa_le, sa_ri, s_l, s_r] =
+      sf_a.find_str_fast(vi(all(t)));
+    pair<int, int> short_res = sf_a.find_str(vi(all(t)));
     assert(sa_le == short_res.first &&
       sa_ri == short_res.second);
     int str_len = s_r - s_l;

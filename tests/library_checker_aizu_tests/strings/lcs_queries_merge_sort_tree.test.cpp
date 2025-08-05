@@ -10,7 +10,7 @@ int main() {
   cin >> q >> s >> t;
   vector<merge_sort_tree> msts;
   {
-    lcs_dp lcs(t);
+    lcs_dp lcs(vi(all(t)));
     msts.emplace_back(lcs.dp);
     for (char c : s) {
       lcs.push_onto_s(c);
