@@ -19,7 +19,7 @@ shfmt | see flags in [scripts/shellcheck_shfmt.sh](scripts/shellcheck_shfmt.sh) 
 ## Doxygen
 Let's try to minimize the # of non-doxygen comments.
 
-Place this at the beginning of a file
+Place this at the beginning of a file.
 
 ```
 //! https://codeforces.com/blog/entry/69247
