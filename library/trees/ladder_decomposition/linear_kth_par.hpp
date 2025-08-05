@@ -10,8 +10,8 @@
 //!   kp.kth_par(v, k); // k edges up from v
 //!   kp.kth_par(v, 1); // v's parent
 //! @endcode
-//! @time O(n*(2*KAPPA+1)/(KAPPA-1) + n*2*(KAPPA-1) + q)
-//! @space O(n*(2*KAPPA+1)/(KAPPA-1) + n*2*(KAPPA-1))
+//! @time O(n*max((2*KAPPA+1)/(KAPPA-1),2*(KAPPA-1)) + q)
+//! @space O(n*max((2*KAPPA+1)/(KAPPA-1),2*(KAPPA-1)))
 template<int KAPPA = 3> struct linear_kth_par {
   int n;
   vi d, leaf, pos, jmp;
@@ -26,24 +26,21 @@ template<int KAPPA = 3> struct linear_kth_par {
       t++;
     };
     auto dfs = [&](auto&& self, int v, int p) -> void {
-      st[d[v]] = leaf[v] = v;
+      st[d[v]] = v;
+      int& l = leaf[v] = v;
       pos[v] = t;
       calc(d[v]);
       for (int u : adj[v])
         if (u != p) {
           d[u] = 1 + d[v];
           self(self, u, v);
-          if (d[leaf[v]] < d[leaf[u]]) leaf[v] = leaf[u];
+          if (d[l] < d[leaf[u]]) l = leaf[u];
           calc(d[v]);
         }
-      // TODO golf this further
-      int len = (d[leaf[v]] - d[v]) * (2 * KAPPA + 1) /
-        (KAPPA - 1);
-      len = max(len, 2 * (KAPPA - 1));
-      int i = d[leaf[v]] - sz(lad[leaf[v]]);
-      while (i && sz(lad[leaf[v]]) < len)
-        lad[leaf[v]].push_back(st[i--]);
-      assert(lad[leaf[v]].back() > 0);
+      int s =
+        (d[l] - d[v]) * (2 * KAPPA + 1) / (KAPPA - 1);
+      s = min(max(s, 2 * (KAPPA - 1)), d[l] + 1);
+      rep(i, sz(lad[l]), s) lad[l].push_back(st[d[l] - i]);
     };
     dfs(dfs, 0, 0);
   }
