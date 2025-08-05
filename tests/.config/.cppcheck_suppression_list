@@ -16,7 +16,6 @@ useStlAlgorithm:../kactl/content/numerical/FastFourierTransform.h:53
 useStlAlgorithm:../library/graphs/strongly_connected_components/add_edges_strongly_connected.hpp:58
 useStlAlgorithm:../library/math/matrix_related/row_reduce.hpp:28
 useStlAlgorithm:../library/math/count_paths/count_paths_triangle.hpp:24
-useStlAlgorithm:../library/math/matrix_related/xor_basis_unordered_intersection.hpp:10
 useStlAlgorithm:../library/math/matrix_related/xor_basis_unordered.hpp:16
 shadowFunction:../kactl/content/graph/BinaryLifting.h:17
 unknownMacro:../kactl/content/graph/BinaryLifting.h:18
