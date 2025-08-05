@@ -41,4 +41,5 @@ struct linear_lca {
     }
     return d[u] < d[v] ? u : v;
   }
+#include "extra_members/dist_edges.hpp"
 };
