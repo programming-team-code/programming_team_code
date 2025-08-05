@@ -10,19 +10,19 @@
 //!   kp.kth_par(v, k); // k edges up from v
 //!   kp.kth_par(v, 1); // v's parent
 //! @endcode
-//! @time O(n*max((2*KAPPA+1)/(KAPPA-1),2*(KAPPA-1)) + q)
-//! @space O(n*max((2*KAPPA+1)/(KAPPA-1),2*(KAPPA-1)))
-template<int KAPPA = 3> struct linear_kth_par {
+//! @time O(n*max((2*KAPPA+3)/KAPPA,2*KAPPA) + q)
+//! @space O(n*max((2*KAPPA+3)/KAPPA,2*KAPPA))
+template<int KAPPA = 2> struct linear_kth_par {
   int n;
   vi d, leaf, pos, jmp;
   vector<vi> lad;
   linear_kth_par(const auto& adj):
     n(sz(adj)), d(n), leaf(n), pos(n), jmp(2 * n), lad(n) {
-    static_assert(KAPPA >= 2);
+    static_assert(KAPPA >= 1);
     int t = 1;
     vi st(n);
     auto calc = [&](int siz) {
-      jmp[t] = st[max(0, siz - (KAPPA - 1) * (t & -t))];
+      jmp[t] = st[max(0, siz - KAPPA * (t & -t))];
       t++;
     };
     auto dfs = [&](auto&& self, int v, int p) -> void {
@@ -37,9 +37,8 @@ template<int KAPPA = 3> struct linear_kth_par {
           if (d[l] < d[leaf[u]]) l = leaf[u];
           calc(d[v]);
         }
-      int s =
-        (d[l] - d[v]) * (2 * KAPPA + 1) / (KAPPA - 1);
-      s = min(max(s, 2 * (KAPPA - 1)), d[l] + 1);
+      int s = (d[l] - d[v]) * (2 * KAPPA + 3) / KAPPA;
+      s = min(max(s, 2 * KAPPA), d[l] + 1);
       rep(i, sz(lad[l]), s) lad[l].push_back(st[d[l] - i]);
     };
     dfs(dfs, 0, 0);
@@ -47,7 +46,7 @@ template<int KAPPA = 3> struct linear_kth_par {
   int kth_par(int v, int k) {
     assert(0 <= k && k <= d[v]);
     int j = v;
-    if (unsigned b = k / KAPPA; b)
+    if (unsigned b = k / (KAPPA + 1); b)
       b = bit_floor(b), j = jmp[(pos[v] & -b) | b];
     return j = leaf[j], lad[j][k + d[j] - d[v]];
   }
