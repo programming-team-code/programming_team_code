@@ -8,7 +8,7 @@ permissions:
 jobs:
   library_checker_aizu:
     # https://github.com/actions/runner-images/issues/6709#issuecomment-1441444332
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
     - uses: actions/checkout@v1
     - name: Set up Python
