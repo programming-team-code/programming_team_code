@@ -13,8 +13,8 @@
 array<vi, 2> compress_tree(vi subset) {
   auto proj = [&](int v) { return in[v]; };
   ranges::sort(subset, {}, proj);
-  int siz = sz(subset);
-  rep(i, 1, siz)
+  int len = sz(subset);
+  rep(i, 1, len)
     subset.push_back(lca(subset[i - 1], subset[i]));
   ranges::sort(subset, {}, proj);
   subset.erase(unique(all(subset)), end(subset));
