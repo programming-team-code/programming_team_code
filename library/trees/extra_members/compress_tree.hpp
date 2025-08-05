@@ -11,7 +11,7 @@
 //! @time O(|subset| log |subset|)
 //! @space O(|subset|)
 array<vi, 2> compress_tree(vi subset) {
-  auto proj = [&](int v) { return t[v].in; };
+  auto proj = [&](int v) { return in[v]; };
   ranges::sort(subset, {}, proj);
   int siz = sz(subset);
   rep(i, 1, siz)

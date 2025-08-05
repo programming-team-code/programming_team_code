@@ -7,42 +7,34 @@
 //!   }
 //!   vector<basic_string<int>> adj(n);
 //!   tree_lift tree_l(adj);
-//!   int kth_p = tree_l.kth_par(v, k);
+//!   tree_l.kth_par(v, k); // k edges up from v
 //! @endcode
-//! kth_p = a node k edges up from v
 //! @time O(n + q log n)
 //! @space O(n)
 struct tree_lift {
-  struct node {
-    int d, p = -1, j = -1;
-  };
-  vector<node> t;
-  tree_lift(const auto& adj): t(sz(adj)) {
+  vi d, p, j;
+  tree_lift(const auto& adj): d(sz(adj)), p(d), j(d) {
     auto dfs = [&](auto&& self, int v) -> void {
-      int jump =
-        (t[v].d + t[t[t[v].j].j].d == 2 * t[t[v].j].d)
-        ? t[t[v].j].j
-        : v;
+      int up =
+        d[v] + d[j[j[v]]] == 2 * d[j[v]] ? j[j[v]] : v;
       for (int u : adj[v])
-        if (u != t[v].p)
-          t[u].d = t[t[u].p = v].d + 1, t[u].j = jump,
-          self(self, u);
+        if (u != p[v])
+          d[u] = d[p[u] = v] + 1, j[u] = up, self(self, u);
     };
-    rep(i, 0, sz(t)) if (t[i].j == -1) t[i].j = i,
-                                       dfs(dfs, i);
+    dfs(dfs, 0);
   }
   int kth_par(int v, int k) {
-    int anc_d = t[v].d - k;
-    while (t[v].d > anc_d)
-      v = t[t[v].j].d >= anc_d ? t[v].j : t[v].p;
+    int anc_d = d[v] - k;
+    while (d[v] > anc_d)
+      v = d[j[v]] >= anc_d ? j[v] : p[v];
     return v;
   }
   int lca(int u, int v) {
-    if (t[u].d < t[v].d) swap(u, v);
-    u = kth_par(u, t[u].d - t[v].d);
+    if (d[u] < d[v]) swap(u, v);
+    u = kth_par(u, d[u] - d[v]);
     while (u != v)
-      if (t[u].j != t[v].j) u = t[u].j, v = t[v].j;
-      else u = t[u].p, v = t[v].p;
+      if (j[u] != j[v]) u = j[u], v = j[v];
+      else u = p[u], v = p[v];
     return u;
   }
 #include "../extra_members/dist_edges.hpp"
