@@ -38,5 +38,4 @@ struct tree_lift {
     return u;
   }
 #include "../extra_members/dist_edges.hpp"
-#include "kth_path.hpp"
 };
