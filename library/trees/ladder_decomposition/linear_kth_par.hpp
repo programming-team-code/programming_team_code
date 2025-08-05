@@ -26,8 +26,7 @@ template<int KAPPA = 2> struct linear_kth_par {
       t++;
     };
     auto dfs = [&](auto&& self, int v, int p) -> void {
-      st[d[v]] = v;
-      int& l = leaf[v] = v;
+      int& l = leaf[v] = st[d[v]] = v;
       pos[v] = t;
       calc(d[v]);
       for (int u : adj[v])
