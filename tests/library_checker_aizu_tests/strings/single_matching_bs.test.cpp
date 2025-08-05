@@ -11,7 +11,7 @@ int main() {
   string s, t;
   cin >> s >> t;
   auto [sa, sa_inv, lcp] = get_sa(vi(all(s)), 256);
-  sa_query sf_a(s, sa, sa_inv, lcp);
+  sa_query sf_a(vi(all(s)), sa, sa_inv, lcp);
   {
     auto [sa_le, sa_ri, s_l, s_r] =
       sf_a.find_str_fast(vi());
@@ -21,8 +21,9 @@ int main() {
       sa_ri == short_res.second);
     assert(s_r - s_l == 0);
   }
-  auto [sa_le, sa_ri, s_l, s_r] = sf_a.find_str_fast(t);
-  pair<int, int> short_res = sf_a.find_str(t);
+  auto [sa_le, sa_ri, s_l, s_r] =
+    sf_a.find_str_fast(vi(all(t)));
+  pair<int, int> short_res = sf_a.find_str(vi(all(t)));
   assert(
     sa_le == short_res.first && sa_ri == short_res.second);
   int str_len = s_r - s_l;
