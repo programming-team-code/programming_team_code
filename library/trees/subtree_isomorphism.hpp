@@ -26,6 +26,6 @@ auto subtree_iso(const auto& adj) {
              hashes.try_emplace(ch_ids, sz(hashes))
                .first->second;
   };
-  rep(i, 0, sz(adj)) if (iso_id[i] == -1) dfs(dfs, i, i);
+  dfs(dfs, 0, 0);
   return pair{sz(hashes), iso_id};
 }

@@ -17,22 +17,29 @@ int main() {
   }
   tree_lift tl(adj);
   LCA lc(adj);
+  auto kth_path = [&](int u, int v, int k) -> int {
+    int lca_d = lc.d[lc.lca(u, v)];
+    int u_lca = lc.d[u] - lca_d;
+    int v_lca = lc.d[v] - lca_d;
+    if (k <= u_lca) return tl.kth_par(u, k);
+    if (k <= u_lca + v_lca)
+      return tl.kth_par(v, u_lca + v_lca - k);
+    return -1;
+  };
   while (q--) {
     int u, v, k;
     cin >> u >> v >> k;
-    int dist_in_edges = tl.dist_edges(u, v);
-    assert(dist_in_edges == lc.dist_edges(u, v));
-    cout << tl.kth_path(u, v, k) << '\n';
+    int dist_in_edges = tl.dist(u, v);
+    assert(dist_in_edges == lc.dist(u, v));
+    cout << kth_path(u, v, k) << '\n';
     {
       int w = rnd(0, n - 1);
       assert(lc.on_path(u, v, w) ==
-        (lc.dist_edges(u, w) + lc.dist_edges(w, v) ==
-          lc.dist_edges(u, v)));
+        (lc.dist(u, w) + lc.dist(w, v) == lc.dist(u, v)));
     }
     if (u != v) {
-      assert(
-        tl.kth_path(u, v, 1) == lc.next_on_path(u, v));
-      assert(tl.kth_path(u, v, dist_in_edges - 1) ==
+      assert(kth_path(u, v, 1) == lc.next_on_path(u, v));
+      assert(kth_path(u, v, dist_in_edges - 1) ==
         lc.next_on_path(v, u));
     }
   }

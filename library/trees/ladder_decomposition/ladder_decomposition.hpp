@@ -5,37 +5,36 @@
 //! @code
 //!   ladder ld(adj);
 //!   // KACTL functions
-//!   int kth_par = jmp(ld.b_tbl, v, k);
-//!   int curr_lca = lca(ld.b_tbl, ld.d, u, v);
+//!   int kth_par = jmp(ld.jmp, v, k);
+//!   int curr_lca = lca(ld.jmp, ld.d, u, v);
 //! @endcode
 struct ladder {
   int n;
-  vector<vi> b_tbl;
-  vi d, p, dl, idx_l, l_tbl;
+  vi d, p, leaf, idx, lad;
+  vector<vi> jmp;
   //! @param adj forest (rooted or unrooted)
   //! @time O(n log n)
-  //! @space O(n log n) for b_tbl. Everything else is O(n)
+  //! @space O(n log n) for jmp. Everything else is O(n)
   ladder(const auto& adj):
-    n(sz(adj)), d(n), p(n, -1), dl(n), idx_l(n) {
+    n(sz(adj)), d(n), p(n), leaf(n), idx(n), lad(2 * n) {
     auto dfs = [&](auto&& self, int v) -> void {
-      dl[v] = v;
+      leaf[v] = v;
       for (int u : adj[v])
         if (u != p[v]) {
           d[u] = d[p[u] = v] + 1;
           self(self, u);
-          if (d[dl[u]] > d[dl[v]]) dl[v] = dl[u];
+          if (d[leaf[v]] < d[leaf[u]]) leaf[v] = leaf[u];
         }
     };
-    rep(i, 0, n) {
-      if (p[i] == -1) p[i] = i, dfs(dfs, i);
-      if (p[i] == i || dl[p[i]] != dl[i]) {
-        int v = dl[i], len = (d[v] - d[i]) * 2;
-        idx_l[v] = sz(l_tbl) + d[v];
-        for (; v != -1 && len--; v = p[v])
-          l_tbl.push_back(v);
-      }
+    dfs(dfs, 0);
+    int pos = 0;
+    rep(i, 0, n) if (p[i] == i || leaf[p[i]] != leaf[i]) {
+      int l = leaf[i];
+      int len = min((d[l] - d[i]) * 2, d[l] + 1);
+      idx[l] = pos;
+      for (; len--; l = p[l]) lad[pos++] = l;
     }
-    b_tbl = treeJump(p);
+    jmp = treeJump(p);
   }
   //! @param v query node
   //! @param k number of edges
@@ -47,11 +46,11 @@ struct ladder {
     assert(0 <= k && k <= d[v]);
     if (k == 0) return v;
     int bit = __lg(k);
-    v = b_tbl[bit][v], k -= (1 << bit);
-    int l = idx_l[dl[v]] - d[v];
-    assert(l_tbl[l] == v);
-    // subarray [l, l+k] of l_tbl corresponds to the rest
+    v = jmp[bit][v], k -= (1 << bit);
+    int l = idx[leaf[v]] + d[leaf[v]] - d[v];
+    assert(lad[l] == v);
+    // subarray [l, l+k] of lad corresponds to the rest
     // of the jump
-    return l_tbl[l + k];
+    return lad[l + k];
   }
 };

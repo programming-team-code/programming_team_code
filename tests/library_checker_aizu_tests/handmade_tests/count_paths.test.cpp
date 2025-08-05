@@ -3,23 +3,20 @@
 #include "../template.hpp"
 #include "../../../library/contest/random.hpp"
 #include "../../../library/trees/centroid_decomp_uncommon/count_paths_per_node.hpp"
-#include "../../../library/data_structures/dsu/dsu_restorable.hpp"
-#include "../../../library/trees/tree_lift/tree_lift.hpp"
+#include "../../../library/trees/lca_rmq/lca_rmq.hpp"
 #include "../../../library/trees/centroid_decomp_uncommon/count_paths_per_length.hpp"
 #include "../cd_asserts.hpp"
-vector<vector<ll>> naive(const vector<vector<int>>& adj,
-  dsu_restorable& dsu) {
-  tree_lift tl(adj);
+vector<vector<ll>> naive(const vector<vi>& adj) {
+  LCA lc(adj);
   int n = sz(adj);
   vector<vector<ll>> cnts_naive(n + 1, vector<ll>(n, 0));
   for (int u = 0; u < n; u++) {
     for (int v = u; v < n; v++) {
-      if (dsu.same_set(u, v)) {
-        int path_length_edges = tl.dist_edges(u, v);
-        for (int i = 0; i <= path_length_edges; i++)
-          cnts_naive[path_length_edges]
-                    [tl.kth_path(u, v, i)]++;
-      }
+      int path_length_edges = lc.dist(u, v);
+      for (int node = u; node != v;
+        node = lc.next_on_path(node, v))
+        cnts_naive[path_length_edges][node]++;
+      cnts_naive[path_length_edges][v]++;
     }
   }
   return cnts_naive;
@@ -27,19 +24,14 @@ vector<vector<ll>> naive(const vector<vector<int>>& adj,
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   for (int n = 1; n <= 100; n++) {
-    vector<vector<int>> adj(n);
-    dsu_restorable dsu(n);
-    for (int i = 0; i < n - 2; i++) {
-      int u = rnd<int>(0, n - 1);
-      int v = rnd<int>(0, n - 1);
-      if (u == v) continue;
-      if (dsu.join(u, v)) {
-        adj[u].push_back(v);
-        adj[v].push_back(u);
-      }
+    vector<vi> adj(n);
+    for (int i = 1; i < n; i++) {
+      int par = rnd<int>(0, i - 1);
+      adj[par].push_back(i);
+      adj[i].push_back(par);
     }
     cd_asserts(adj);
-    vector<vector<ll>> cnts_naive = naive(adj, dsu);
+    vector<vector<ll>> cnts_naive = naive(adj);
     for (int k = 1; k <= n; k++)
       assert(
         count_paths_per_node(adj, k) == cnts_naive[k]);

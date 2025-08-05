@@ -13,29 +13,27 @@
 //! @space O(nlogn)
 // NOLINTNEXTLINE(readability-identifier-naming)
 struct LCA {
-  struct node {
-    int in, sub_sz = 1, d, p = -1;
-  };
-  vector<node> t;
+  int n;
+  vi in, siz, d, p;
   RMQ<int, function<int(int, int)>> rmq = {{}, NULL};
-  LCA(const auto& adj): t(sz(adj)) {
+  LCA(const auto& adj):
+    n(sz(adj)), in(n), siz(n, 1), d(n), p(n) {
     vi order;
     auto dfs = [&](auto&& self, int v) -> void {
-      t[v].in = sz(order), order.push_back(v);
+      in[v] = sz(order), order.push_back(v);
       for (int u : adj[v])
-        if (u != t[v].p)
-          t[u].d = t[t[u].p = v].d + 1, self(self, u),
-          t[v].sub_sz += t[u].sub_sz;
+        if (u != p[v])
+          d[u] = d[p[u] = v] + 1, self(self, u),
+          siz[v] += siz[u];
     };
-    rep(i, 0, sz(t)) if (t[i].p == -1) dfs(dfs, i);
-    rmq = {order, [&](int u, int v) {
-             return t[u].d < t[v].d ? u : v;
-           }};
+    dfs(dfs, 0);
+    rmq = {order,
+      [&](int u, int v) { return d[u] < d[v] ? u : v; }};
   }
   int lca(int u, int v) {
     if (u == v) return u;
-    auto [x, y] = minmax(t[u].in, t[v].in);
-    return t[rmq.query(x + 1, y + 1)].p;
+    auto [x, y] = minmax(in[u], in[v]);
+    return p[rmq.query(x + 1, y + 1)];
   }
 #include "../extra_members/dist_edges.hpp"
 #include "../extra_members/in_subtree.hpp"
