@@ -7,62 +7,47 @@
 //!   }
 //!   vector<basic_string<int>> adj(n);
 //!   linear_kth_par kp(adj);
-//!   int kth_par = kp.kth_par(v, k);
+//!   kp.kth_par(v, k); // k edges up from v
+//!   kp.kth_par(v, 1); // v's parent
 //! @endcode
-//! kth_par = a node k edges up from v
-//! @time O(n + q)
-//! @space O(n)
-struct linear_kth_par {
-  struct node {
-    int d, p = -1, dl, idx_j;
-    basic_string<int> lad;
-  };
-  vector<node> t;
-  vector<pii> j;
+//! @time O(n*max((2*KAPPA+3)/KAPPA,2*KAPPA) + q)
+//! @space O(n*max((2*KAPPA+3)/KAPPA,2*KAPPA))
+template<int KAPPA = 2> struct linear_kth_par {
+  int n;
+  vi d, leaf, pos, jmp;
+  vector<vi> lad;
   linear_kth_par(const auto& adj):
-    t(sz(adj)), j(2 * sz(t)) {
-    vi st;
-    int pos = 1;
-    auto add_j = [&]() -> void {
-      j[pos] = {
-        st[max<int>(0, sz(st) - 1 - 2 * (pos & -pos))],
-        st[max<int>(0, sz(st) - 1 - 4 * (pos & -pos))]};
-      pos++;
+    n(sz(adj)), d(n), leaf(n), pos(n), jmp(2 * n), lad(n) {
+    static_assert(KAPPA >= 1);
+    int t = 1;
+    vi st(n);
+    auto calc = [&](int siz) {
+      jmp[t] = st[max(0, siz - KAPPA * (t & -t))];
+      t++;
     };
-    auto dfs = [&](auto&& self, int v) -> void {
-      st.push_back(v);
-      t[v].idx_j = pos, t[v].dl = v;
-      add_j();
+    auto dfs = [&](auto&& self, int v, int p) {
+      st[d[v]] = v;
+      int& l = leaf[v] = v;
+      pos[v] = t;
+      calc(d[v]);
       for (int u : adj[v])
-        if (u != t[v].p) {
-          t[u].d = t[t[u].p = v].d + 1;
-          self(self, u);
-          if (t[t[u].dl].d > t[t[v].dl].d)
-            t[v].dl = t[u].dl;
-          add_j();
+        if (u != p) {
+          d[u] = 1 + d[v];
+          self(self, u, v);
+          if (d[l] < d[leaf[u]]) l = leaf[u];
+          calc(d[v]);
         }
-      st.pop_back();
+      int s = (d[l] - d[v]) * (2 * KAPPA + 3) / KAPPA;
+      s = min(max(s, 2 * KAPPA), d[l] + 1);
+      rep(i, sz(lad[l]), s) lad[l].push_back(st[d[l] - i]);
     };
-    rep(i, 0, sz(t)) {
-      if (t[i].p == -1) dfs(dfs, i);
-      if (t[i].p == -1 || t[t[i].p].dl != t[i].dl) {
-        int v = t[i].dl, len = (t[v].d - t[i].d) * 2;
-        auto& lad = t[v].lad;
-        for (; v != -1 && len--; v = t[v].p) lad += v;
-      }
-    }
+    dfs(dfs, 0, 0);
   }
   int kth_par(int v, int k) {
-    assert(0 <= k && k <= t[v].d);
-    switch (k) {
-    case 0: return v;
-    case 1: return t[v].p;
-    case 2: return t[t[v].p].p;
-    default:
-      int i = bit_floor(unsigned(k / 3));
-      auto [j1, j2] = j[(t[v].idx_j & -i) | i];
-      int leaf = t[t[v].d - t[j2].d <= k ? j2 : j1].dl;
-      return t[leaf].lad[k + t[leaf].d - t[v].d];
-    }
+    assert(0 <= k && k <= d[v]);
+    int j = v;
+    if (unsigned b = k / (KAPPA + 1); b)
+      b = bit_floor(b), j = jmp[(pos[v] & -b) | b];
+    return j = leaf[j], lad[j][k + d[j] - d[v]];
   }
 };

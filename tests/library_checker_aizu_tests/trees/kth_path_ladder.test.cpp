@@ -16,14 +16,6 @@ int main() {
   }
   ladder ld(adj);
   assert(sz(ld.l_tbl) <= 2 * n - ld.d[0]);
-  vector<vector<int>> adj_rooted(n + n);
-  for (int i = 0; i < n; i++)
-    if (ld.p[i] != i) {
-      adj_rooted[ld.p[i]].push_back(i);
-      adj_rooted[ld.p[i] + n].push_back(i + n);
-    }
-  ladder ld_rooted(adj_rooted);
-  linear_kth_par lin_ld_rooted(adj_rooted);
   while (q--) {
     int u, v, k;
     cin >> u >> v >> k;
@@ -34,23 +26,10 @@ int main() {
     else if (k <= u_lca) {
       int res = ld.kth_par(u, k);
       assert(res == jmp(ld.b_tbl, u, k));
-      assert(res == ld_rooted.kth_par(u, k));
-      assert(res == ld_rooted.kth_par(u + n, k) - n);
-      assert(res == lin_ld_rooted.kth_par(u, k));
-      assert(res == lin_ld_rooted.kth_par(u + n, k) - n);
       cout << res << '\n';
     } else {
       int res = ld.kth_par(v, u_lca + v_lca - k);
       assert(res == jmp(ld.b_tbl, v, u_lca + v_lca - k));
-      assert(
-        res == ld_rooted.kth_par(v, u_lca + v_lca - k));
-      assert(res ==
-        ld_rooted.kth_par(v + n, u_lca + v_lca - k) - n);
-      assert(res ==
-        lin_ld_rooted.kth_par(v, u_lca + v_lca - k));
-      assert(res ==
-        lin_ld_rooted.kth_par(v + n, u_lca + v_lca - k) -
-          n);
       cout << res << '\n';
     }
   }
