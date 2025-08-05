@@ -25,7 +25,7 @@ template<int KAPPA = 2> struct linear_kth_par {
       jmp[t] = st[max(0, siz - KAPPA * (t & -t))];
       t++;
     };
-    auto dfs = [&](auto&& self, int v, int p) -> void {
+    auto dfs = [&](auto&& self, int v, int p) {
       st[d[v]] = v;
       int& l = leaf[v] = v;
       pos[v] = t;
