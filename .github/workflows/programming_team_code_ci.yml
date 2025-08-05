@@ -7,6 +7,9 @@ permissions:
 
 jobs:
   library_checker_aizu:
+    # https://stackoverflow.com/a/76359456
+    strategy:
+      fail-fast: false
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
@@ -27,7 +30,7 @@ jobs:
     - name: Run library checker and aizu tests
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: oj-verify all --tle 60 --timeout 900
+      run: oj-verify all --tle 60 --timeout 21600
 
   grep_clangformat_cppcheck:
     runs-on: ubuntu-latest
