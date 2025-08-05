@@ -35,7 +35,6 @@ rm ../library/trees/edge_centroid_decomp_uncommon/contour_range_update.hpp || ex
 rm ../library/trees/edge_centroid_decomp_uncommon/count_paths_per_length.hpp || exit 1
 rm ../library/trees/edge_centroid_decomp_uncommon/sum_adjacent.hpp || exit 1
 rm ../library/trees/ladder_decomposition/ladder_decomposition.hpp || exit 1
-rm ../library/trees/linear_kth_path.hpp || exit 1
 
 # remove links in comments: these aren't useful in the PDF, and are usually the
 # longest words which extend into the next column

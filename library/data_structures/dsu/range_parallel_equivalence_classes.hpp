@@ -7,11 +7,11 @@
 UF get_rp_dsu(const vector<array<int, 3>>& rests, int n) {
   vector<vector<pii>> rests_by_len(n + 1);
   for (auto [l1, l2, len] : rests)
-    rests_by_len[len].push_back({l1, l2});
+    rests_by_len[len].emplace_back(l1, l2);
   UF uf(n);
   for (int len = n; len > 0; len--)
     for (auto [l1, l2] : rests_by_len[len])
       if (uf.join(l1, l2))
-        rests_by_len[len - 1].push_back({l1 + 1, l2 + 1});
+        rests_by_len[len - 1].emplace_back(l1 + 1, l2 + 1);
   return uf;
 }
