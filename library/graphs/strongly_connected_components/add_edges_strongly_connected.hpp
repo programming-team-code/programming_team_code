@@ -1,5 +1,5 @@
 #pragma once
-#include "scc.hpp"
+#include "../scc.hpp"
 //! https://codeforces.com/blog/entry/15102
 //! Add minimum extra directed edges to directed graph to
 //! make it strongly connected. If the directed graph is

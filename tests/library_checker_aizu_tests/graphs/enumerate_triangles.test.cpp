@@ -1,7 +1,7 @@
 #define PROBLEM \
   "https://judge.yosupo.jp/problem/enumerate_triangles"
 #include "../template.hpp"
-#include "../../../library/graphs/enumerate_triangles.hpp"
+#include "../../../library/graphs/uncommon/enumerate_triangles.hpp"
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n, m;
