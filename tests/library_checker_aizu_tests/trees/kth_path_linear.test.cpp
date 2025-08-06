@@ -2,8 +2,8 @@
   "https://judge.yosupo.jp/problem/jump_on_tree"
 #include "../template.hpp"
 #include "../../../library/trees/linear_lca.hpp"
-#include "../../../library/trees/ladder_decomposition/linear_kth_par.hpp"
-#include "../../../library/trees/lca_rmq/lca_rmq.hpp"
+#include "../../../library/trees/linear_kth_par.hpp"
+#include "../../../library/trees/lca_rmq.hpp"
 #include "../compress_tree_asserts.hpp"
 int main() {
   cin.tie(0)->sync_with_stdio(0);
