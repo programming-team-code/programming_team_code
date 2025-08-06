@@ -14,13 +14,13 @@
 // NOLINTNEXTLINE(readability-identifier-naming)
 struct LCA {
   int n;
-  vi in, siz, d, p;
+  vi tin, siz, d, p;
   RMQ<int, function<int(int, int)>> rmq = {{}, NULL};
   LCA(const auto& adj):
-    n(sz(adj)), in(n), siz(n, 1), d(n), p(n) {
+    n(sz(adj)), tin(n), siz(n, 1), d(n), p(n) {
     vi order;
     auto dfs = [&](auto&& self, int v) -> void {
-      in[v] = sz(order), order.push_back(v);
+      tin[v] = sz(order), order.push_back(v);
       for (int u : adj[v])
         if (u != p[v])
           d[u] = d[p[u] = v] + 1, self(self, u),
@@ -32,7 +32,7 @@ struct LCA {
   }
   int lca(int u, int v) {
     if (u == v) return u;
-    auto [x, y] = minmax(in[u], in[v]);
+    auto [x, y] = minmax(tin[u], tin[v]);
     return p[rmq.query(x + 1, y + 1)];
   }
 #include "../extra_members/dist_edges.hpp"
