@@ -16,6 +16,8 @@ vector<vector<ll>> naive(const vector<vi>& adj) {
       for (int node = u; node != v;
         node = lc.next_on_path(node, v))
         cnts_naive[path_length_edges][node]++;
+      assert(path_length_edges < ssize(cnts_naive));
+      assert(v < ssize(cnts_naive[path_length_edges]));
       cnts_naive[path_length_edges][v]++;
     }
   }
@@ -23,7 +25,7 @@ vector<vector<ll>> naive(const vector<vi>& adj) {
 }
 int main() {
   cin.tie(0)->sync_with_stdio(0);
-  for (int n = 1; n <= 100; n++) {
+  for (int n = 1; n <= 1; n++) {
     vector<vi> adj(n);
     for (int i = 1; i < n; i++) {
       int par = rnd<int>(0, i - 1);

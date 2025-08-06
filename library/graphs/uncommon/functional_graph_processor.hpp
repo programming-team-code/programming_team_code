@@ -15,28 +15,20 @@ struct func_graph {
   vector<pii> root_of;
   vector<vi> cycle, childs;
   func_graph(const vi& a): root_of(sz(a)), childs(sz(a)) {
-    vi state(sz(a));
-    rep(i, 0, sz(a)) if (!state[i]) {
+    vi vis(sz(a));
+    rep(i, 0, sz(a)) if (!vis[i]) {
       int u = i;
-      while (!state[u]) {
-        state[u] = 1;
-        u = a[u];
-      }
-      if (state[u] == 1) {
-        cycle.emplace_back();
-        while (state[u] == 1) {
+      for (; !vis[u]; u = a[u]) vis[u] = 1;
+      if (vis[u] == 1)
+        for (cycle.emplace_back(); vis[u] == 1; u = a[u]) {
           root_of[u] = {sz(cycle) - 1, sz(cycle.back())};
           cycle.back().push_back(u);
-          state[u] = 2;
-          u = a[u];
+          vis[u] = 2;
         }
-      }
-      int v = i;
-      while (state[v] == 1) {
+      for (int v = i; vis[v] == 1; v = a[v]) {
         root_of[v] = root_of[u];
         childs[a[v]].push_back(v);
-        state[v] = 2;
-        v = a[v];
+        vis[v] = 2;
       }
     }
   }
