@@ -1,10 +1,9 @@
 #define PROBLEM \
   "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_5_C"
 #include "../template.hpp"
-#include "../../../library/monotonic_stack/monotonic_stack.hpp"
-#include "../../../library/trees/tree_lift/tree_lift.hpp"
+#include "../../../library/trees/tree_lift.hpp"
 #include "../../../library/trees/linear_lca.hpp"
-#include "../../../library/trees/lca_rmq/lca_rmq.hpp"
+#include "../../../library/trees/lca_rmq.hpp"
 #include "../compress_tree_asserts.hpp"
 int main() {
   cin.tie(0)->sync_with_stdio(0);
@@ -25,8 +24,8 @@ int main() {
     assert(tl.lca(i, i) == i);
     assert(lc.lca(i, i) == i);
     assert(lin_lca.lca(i, i) == i);
-    assert(lc.in[lc.rmq.dp[0][i]] == i &&
-      lc.rmq.dp[0][lc.in[i]] == i);
+    assert(lc.tin[lc.rmq.dp[0][i]] == i &&
+      lc.rmq.dp[0][lc.tin[i]] == i);
   }
   int q;
   cin >> q;

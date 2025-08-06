@@ -1,4 +1,3 @@
-#include "../../monotonic_stack/monotonic_stack.hpp"
 //! https://github.com/kth-competitive-programming/kactl/blob/main/content/graph/CompressTree.h
 //! @code
 //!   vector<vi> adj(n);
@@ -11,7 +10,7 @@
 //! @time O(|subset| log |subset|)
 //! @space O(|subset|)
 array<vi, 2> compress_tree(vi subset) {
-  auto proj = [&](int v) { return in[v]; };
+  auto proj = [&](int v) { return tin[v]; };
   ranges::sort(subset, {}, proj);
   int len = sz(subset);
   rep(i, 1, len)
