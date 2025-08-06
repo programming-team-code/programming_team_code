@@ -37,5 +37,5 @@ struct tree_lift {
       else u = p[u], v = p[v];
     return u;
   }
-#include "../extra_members/dist_edges.hpp"
+#include "extra_members/dist.hpp"
 };
