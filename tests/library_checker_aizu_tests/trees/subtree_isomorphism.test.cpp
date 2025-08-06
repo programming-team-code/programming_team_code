@@ -3,7 +3,7 @@
 // as std::map insert takes O(n) time in debug mode
 #undef _GLIBCXX_DEBUG
 #include "../template.hpp"
-#include "../../../library/trees/subtree_isomorphism.hpp"
+#include "../../../library/trees/uncommon/subtree_isomorphism.hpp"
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n;
