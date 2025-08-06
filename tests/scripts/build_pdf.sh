@@ -28,13 +28,12 @@ rm ../library/monotonic_stack/max_rect_histogram.hpp || exit 1
 rm ../library/monotonic_stack/cartesian_binary_tree_after.png || exit 1
 rm ../library/monotonic_stack/mono_stack_ri.png || exit 1
 rm ../library/strings/manacher/longest_palindrome_query.hpp || exit 1
-rm ../library/trees/centroid_decomp_uncommon/count_paths_per_length.hpp || exit 1
-rm ../library/trees/centroid_decomp_uncommon/count_paths_per_node.hpp || exit 1
-rm ../library/trees/edge_centroid_decomp_uncommon/contour_range_query.hpp || exit 1
-rm ../library/trees/edge_centroid_decomp_uncommon/contour_range_update.hpp || exit 1
-rm ../library/trees/edge_centroid_decomp_uncommon/count_paths_per_length.hpp || exit 1
-rm ../library/trees/edge_centroid_decomp_uncommon/sum_adjacent.hpp || exit 1
-rm ../library/trees/ladder_decomposition/ladder_decomposition.hpp || exit 1
+rm ../library/trees/uncommon/count_paths_per_length.hpp || exit 1
+rm ../library/trees/uncommon/count_paths_per_node.hpp || exit 1
+rm ../library/trees/uncommon/contour_range_query.hpp || exit 1
+rm ../library/trees/uncommon/contour_range_update.hpp || exit 1
+rm ../library/trees/uncommon/sum_adjacent.hpp || exit 1
+rm ../library/trees/uncommon/ladder_decomposition.hpp || exit 1
 
 # remove links in comments: these aren't useful in the PDF, and are usually the
 # longest words which extend into the next column

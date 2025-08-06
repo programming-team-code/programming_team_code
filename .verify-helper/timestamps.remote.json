@@ -124,5 +124,5 @@
 "tests/library_checker_aizu_tests/strings/suffix_array.test.cpp": "2025-08-06 09:59:41 -0600",
 "tests/library_checker_aizu_tests/strings/suffix_array_short.test.cpp": "2025-08-05 19:19:23 -0600",
 "tests/library_checker_aizu_tests/strings/trie.test.cpp": "2024-12-05 10:41:42 -0600",
-"tests/library_checker_aizu_tests/strings/wildcard_pattern_matching.test.cpp": "2025-08-05 19:19:23 -0600",
+"tests/library_checker_aizu_tests/strings/wildcard_pattern_matching.test.cpp": "2025-08-05 19:19:23 -0600"
 }
