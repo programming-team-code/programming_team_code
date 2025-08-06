@@ -34,11 +34,11 @@ template<class T, class F> struct linear_rmq {
       (asc[i] | asc[i - 1]) & -(in[i] & -in[i]);
   }
   int idx(int l, int r) { // [l, r]
-    if (unsigned a = in[l] ^ in[r]; a) {
-      a = asc[l] & asc[r] & -bit_floor(a);
-      if (unsigned b = asc[l] ^ a; b)
+    if (unsigned i = in[l] ^ in[r]; i) {
+      i = asc[l] & asc[r] & -bit_floor(i);
+      if (unsigned b = asc[l] ^ i; b)
         b = bit_floor(b), l = head[(in[l] & -b) | b];
-      if (unsigned b = asc[r] ^ a; b)
+      if (unsigned b = asc[r] ^ i; b)
         b = bit_floor(b), r = head[(in[r] & -b) | b];
     }
     return cmp(a[l], a[r]) ? l : r;

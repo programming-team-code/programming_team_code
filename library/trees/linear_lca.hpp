@@ -32,11 +32,11 @@ struct linear_lca {
     for (auto [v, p] : order) asc[v] = asc[p] | lsb(in[v]);
   }
   int lca(int u, int v) {
-    if (unsigned a = in[u] ^ in[v]; a) {
-      a = asc[u] & asc[v] & -bit_floor(a);
-      if (unsigned b = asc[u] ^ a; b)
+    if (unsigned i = in[u] ^ in[v]; i) {
+      i = asc[u] & asc[v] & -bit_floor(i);
+      if (unsigned b = asc[u] ^ i; b)
         b = bit_floor(b), u = head[(in[u] & -b) | b];
-      if (unsigned b = asc[v] ^ a; b)
+      if (unsigned b = asc[v] ^ i; b)
         b = bit_floor(b), v = head[(in[v] & -b) | b];
     }
     return d[u] < d[v] ? u : v;
