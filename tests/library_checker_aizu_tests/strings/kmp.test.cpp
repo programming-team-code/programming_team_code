@@ -6,8 +6,8 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
   string haystack, needle;
   cin >> haystack >> needle;
-  KMP kmp(needle);
-  vector<bool> is_m = kmp.find_str(haystack);
+  KMP kmp(vi(all(needle)));
+  vector<bool> is_m = kmp.find_str(vi(all(haystack)));
   for (int i = 0; i < sz(is_m); i++)
     if (is_m[i]) cout << i << '\n';
   return 0;
