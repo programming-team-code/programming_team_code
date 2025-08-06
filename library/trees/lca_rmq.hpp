@@ -1,4 +1,5 @@
 #pragma once
+#include "../../monotonic_stack/monotonic_stack.hpp"
 #include "../../data_structures/rmq.hpp"
 //! https://github.com/kth-competitive-programming/kactl/blob/main/content/graph/LCA.h
 //! @code
@@ -39,5 +40,5 @@ struct LCA {
 #include "../extra_members/in_subtree.hpp"
 #include "../extra_members/on_path.hpp"
 #include "next_on_path.hpp"
-#include "../extra_members/compress_tree.hpp"
+#include "../extra_members/virtual_tree.hpp"
 };

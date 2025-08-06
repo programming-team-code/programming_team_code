@@ -1,4 +1,3 @@
-#include "../../monotonic_stack/monotonic_stack.hpp"
 //! https://github.com/kth-competitive-programming/kactl/blob/main/content/graph/CompressTree.h
 //! @code
 //!   vector<vi> adj(n);
