@@ -19,7 +19,11 @@ rm ../library/data_structures/seg_tree_uncommon/kth_smallest_query.hpp || exit 1
 rm ../library/data_structures/uncommon/mode_query.hpp || exit 1
 rm ../library/data_structures/uncommon/priority_queue_of_updates.hpp || exit 1
 rm ../library/graphs/strongly_connected_components/add_edges_strongly_connected.hpp || exit 1
-rm ../library/graphs/functional_graph_processor.hpp || exit 1
+rm ../library/graphs/strongly_connected_components/offline_incremental_scc.hpp || exit 1
+rm ../library/graphs/uncommon/bridges.hpp || exit 1
+rm ../library/graphs/uncommon/cuts.hpp || exit 1
+rm ../library/graphs/uncommon/block_vertex_tree.hpp || exit 1
+rm ../library/graphs/uncommon/bridge_tree.hpp || exit 1
 rm ../library/math/derangements.hpp || exit 1
 rm ../library/math/num_distinct_subsequences.hpp || exit 1
 rm ../library/math/partitions.hpp || exit 1

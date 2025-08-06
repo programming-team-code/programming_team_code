@@ -1,7 +1,7 @@
 #define PROBLEM \
   "https://judge.yosupo.jp/problem/biconnected_components"
 #include "../template.hpp"
-#include "../../../library/graphs/bridges_cuts/bcc_callback.hpp"
+#include "../../../library/graphs/bcc_callback.hpp"
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n, m;
