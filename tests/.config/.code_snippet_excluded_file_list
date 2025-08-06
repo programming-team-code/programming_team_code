@@ -1,7 +1,7 @@
-dist_edges.hpp
+dist.hpp
 in_subtree.hpp
 on_path.hpp
-compress_tree.hpp
+virtual_tree.hpp
 prime_sieve
 find_first.hpp
 find_last.hpp
