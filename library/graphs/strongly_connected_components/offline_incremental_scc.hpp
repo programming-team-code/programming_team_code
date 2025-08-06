@@ -1,5 +1,5 @@
 #pragma once
-#include "scc.hpp"
+#include "../scc.hpp"
 //! https://codeforces.com/blog/entry/91608
 //! @code
 //!   auto joins = offline_incremental_scc(eds, n);

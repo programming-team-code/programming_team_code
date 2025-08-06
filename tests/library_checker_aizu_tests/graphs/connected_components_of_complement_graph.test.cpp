@@ -1,7 +1,7 @@
 #define PROBLEM \
   "https://judge.yosupo.jp/problem/connected_components_of_complement_graph"
 #include "../template.hpp"
-#include "../../../library/graphs/complement_graph_ccs.hpp"
+#include "../../../library/graphs/uncommon/complement_graph_ccs.hpp"
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n, m;
