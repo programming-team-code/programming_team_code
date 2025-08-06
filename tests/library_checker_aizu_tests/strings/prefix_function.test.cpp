@@ -7,7 +7,7 @@ int main() {
   string s;
   cin >> s;
   int n = sz(s);
-  vector<int> pi = prefix_function(s);
+  vector<int> pi = prefix_function(vi(all(s)));
   // prefix -> z func conversion
   // source:
   // https://codeforces.com/blog/entry/9612#comment-217621

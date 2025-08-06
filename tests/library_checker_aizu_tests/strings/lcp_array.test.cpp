@@ -19,8 +19,8 @@ int main() {
   string s;
   cin >> s;
   int n = sz(s);
-  auto [sa, sa_inv, lcp] = get_sa(s, 256);
-  auto [sa1, sa_inv1, lcp1] = sa_short(s);
+  auto [sa, sa_inv, lcp] = get_sa(vi(all(s)), 256);
+  auto [sa1, sa_inv1, lcp1] = sa_short(vi(all(s)));
   assert(sa == sa1);
   assert(sa_inv == sa_inv1);
   assert(lcp == lcp1);

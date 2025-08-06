@@ -9,6 +9,7 @@
 //! s_vec[i]=0 or t_vec[i]=0 for a wildcard
 //! @time O((n+m) log (n+m))
 //! @space O(n+m)
+using vl = vector<ll>;
 vector<vl> make_powers(const vl& v) {
   int n = sz(v);
   vector<vl> pws(3, vl(n));

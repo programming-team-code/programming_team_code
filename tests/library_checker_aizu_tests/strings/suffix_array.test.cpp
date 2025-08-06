@@ -6,15 +6,15 @@
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   {
-    string s = "a";
+    vi s(1, 'a');
     auto [_, _sa_inv, lcp] = get_sa(s, 256);
     assert(empty(lcp));
   }
   string s;
   cin >> s;
   int n = sz(s);
-  auto [sa, sa_inv, lcp] = get_sa(s, 256);
-  sa_query sf_a(s, sa, sa_inv, lcp);
+  auto [sa, sa_inv, lcp] = get_sa(vi(all(s)), 256);
+  sa_query sf_a(vi(all(s)), sa, sa_inv, lcp);
   mono_st_asserts(lcp);
   assert(sz(sa) == n);
   assert(sz(sa_inv) == n);

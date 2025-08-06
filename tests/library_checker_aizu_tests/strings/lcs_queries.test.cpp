@@ -13,7 +13,8 @@ int main() {
     cin >> a >> b >> c;
     queries[i] = {a, b, c};
   }
-  vector<int> res = lcs_queries(s, t, queries);
+  vector<int> res =
+    lcs_queries(vi(all(s)), vi(all(t)), queries);
   for (int val : res) cout << val << '\n';
   return 0;
 }
