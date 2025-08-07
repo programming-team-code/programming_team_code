@@ -1,10 +1,10 @@
 //! Requires s[i] >= 0
-//! max pos such that sum of [0,pos) < sum, or -1
+//! max r such that sum of [0,r) < sum, or -1
 int walk(ll sum) {
   if (sum <= 0) return -1;
-  int pos = 0;
+  int r = 0;
   for (int pw = bit_floor(size(s)); pw; pw >>= 1)
-    if (pos + pw <= sz(s) && s[pos + pw - 1] < sum)
-      pos += pw, sum -= s[pos - 1];
-  return pos;
+    if (r + pw <= sz(s) && s[r + pw - 1] < sum)
+      sum -= s[(r += pw) - 1];
+  return r;
 }
