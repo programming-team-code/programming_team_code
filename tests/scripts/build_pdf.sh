@@ -18,6 +18,7 @@ rm ../library/data_structures/seg_tree_uncommon/implicit.hpp || exit 1
 rm ../library/data_structures/seg_tree_uncommon/kth_smallest_query.hpp || exit 1
 rm ../library/data_structures/uncommon/mode_query.hpp || exit 1
 rm ../library/data_structures/uncommon/priority_queue_of_updates.hpp || exit 1
+rm ../library/data_structures/uncommon/deque_op.hpp || exit 1
 rm ../library/graphs/strongly_connected_components/add_edges_strongly_connected.hpp || exit 1
 rm ../library/graphs/strongly_connected_components/offline_incremental_scc.hpp || exit 1
 rm ../library/graphs/uncommon/bridges.hpp || exit 1
