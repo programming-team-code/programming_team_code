@@ -17,9 +17,30 @@ template<class T, class F> struct deq {
     if (empty(r)) return l.back()[1];
     return op(l.back()[1], r.back()[1]);
   }
-  int siz() { return sz(l) + sz(r); }
+  T operator[](int i) {
+    return (
+      i < sz(l) ? l[sz(l) - i - 1] : r[i - sz(l)])[0];
+  }
   T front() { return (empty(l) ? r[0] : l.back())[0]; }
   T back() { return (empty(r) ? l[0] : r.back())[0]; }
+  int siz() { return sz(l) + sz(r); }
+  void push_back(T elem) {
+    r.push_back(
+      {elem, empty(r) ? elem : op(r.back()[1], elem)});
+  }
+  void pop_back() {
+    if (empty(r)) {
+      vector<T> a(sz(l));
+      transform(all(l), rbegin(a),
+        [](dt& x) { return x[0]; });
+      rebuild(a, sz(a) / 2);
+    }
+    r.pop_back();
+  }
+  void push_front(T elem) {
+    l.push_back(
+      {elem, empty(l) ? elem : op(elem, l.back()[1])});
+  }
   void pop_front() {
     if (empty(l)) {
       vector<T> a(sz(r));
@@ -28,10 +49,6 @@ template<class T, class F> struct deq {
       rebuild(a, (sz(a) + 1) / 2);
     }
     l.pop_back();
-  }
-  void push_back(T elem) {
-    r.push_back(
-      {elem, empty(r) ? elem : op(r.back()[1], elem)});
   }
   void rebuild(const vector<T>& a, int sz_le) {
     vector<T> presum(sz(a));
@@ -46,6 +63,4 @@ template<class T, class F> struct deq {
     transform(sz_le + all(a), begin(presum) + sz_le,
       begin(r), [](T x, T y) { return dt{x, y}; });
   }
-#include "deque.hpp"
-#include "index.hpp"
 };
