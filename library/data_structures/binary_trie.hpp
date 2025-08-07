@@ -3,7 +3,7 @@
 //!   binary_trie bt;
 //!   bt.update(num, 1); // insert
 //!   bt.update(num, -1); // erase
-//! @endco
+//! @endcode
 //! @time O(q * mx_bit)
 //! @space O(q * mx_bit)
 const ll mx_bit = 1LL << 60;
