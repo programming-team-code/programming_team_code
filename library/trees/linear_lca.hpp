@@ -14,7 +14,7 @@ int lsb(int x) { return x & -x; }
 struct linear_lca {
   int n;
   vi d, in, asc, head;
-  linear_lca(const auto& adj):
+  linear_lca(const vector<basic_string<int>>& adj):
     n(sz(adj)), d(n), in(n), asc(n), head(n + 1) {
     vector<pii> order;
     auto dfs = [&](auto&& self, int v, int p) -> void {

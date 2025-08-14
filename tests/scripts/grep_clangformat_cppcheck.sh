@@ -32,7 +32,7 @@ grep "ssize" --recursive ../library/ && exit 1
 echo "check vi instead of vector<int>"
 grep "vector<int>" --recursive ../library/**/*.hpp && exit 1
 
-echo "check no basic_string"
+echo "check no basic_string, excluding @code example inits"
 grep "[[:space:]]*//\!" --recursive --invert-match ../library/**/*.hpp library_checker_aizu_tests/**/*.test.cpp | grep "basic_string" && exit 1
 
 echo "check begin(arr) instead of arr.begin(), similarly for end, rbegin, rend, empty, size:"
