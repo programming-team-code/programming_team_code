@@ -1,10 +1,6 @@
 #pragma once
 //! https://codeforces.com/blog/entry/126580
 //! @code
-//!   {
-//!     vector<vi> adj(n);
-//!     linear_kth_par kp(adj);
-//!   }
 //!   vector<basic_string<int>> adj(n);
 //!   linear_kth_par kp(adj);
 //!   kp.kth_par(v, k); // k edges up from v

@@ -1,9 +1,5 @@
 #pragma once
 //! @code
-//!   {
-//!     vector<vector<pair<int, ll>>> adj(n);
-//!     auto d = dijkstra(adj, source);
-//!   }
 //!   vector<basic_string<array<int, 2>>> adj(n);
 //!   auto d = dijkstra(adj, source);
 //! @endcode

@@ -1,10 +1,6 @@
 #pragma once
 //! https://github.com/kth-competitive-programming/kactl/blob/main/content/graph/SCC.h
 //! @code
-//!   {
-//!     vector<vi> adj(n);
-//!     auto [num_sccs, scc_id] = sccs(adj);
-//!   }
 //!   vector<basic_string<int>> adj(n);
 //!   auto [num_sccs, scc_id] = sccs(adj);
 //! @endcode

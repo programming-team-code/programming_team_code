@@ -1,12 +1,6 @@
 #pragma once
 #include "cuts.hpp"
 //! @code
-//!   {
-//!     vector<vector<pii>> adj(n);
-//!     auto [num_bccs, bcc_id, is_cut] = cuts(adj, m);
-//!     auto bvt = block_vertex_tree(adj,
-//!       num_bccs, bcc_id);
-//!   }
 //!   vector<basic_string<array<int, 2>>> adj(n);
 //!   auto [num_bccs, bcc_id, is_cut] = cuts(adj, m);
 //!   auto bvt = block_vertex_tree(adj, num_bccs, bcc_id);

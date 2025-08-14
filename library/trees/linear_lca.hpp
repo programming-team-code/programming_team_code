@@ -1,10 +1,6 @@
 #pragma once
 //! https://codeforces.com/blog/entry/125371
 //! @code
-//!   {
-//!     vector<vi> adj(n);
-//!     linear_lca llca(adj);
-//!   }
 //!   vector<basic_string<int>> adj(n);
 //!   linear_lca llca(adj);
 //! @endcode
