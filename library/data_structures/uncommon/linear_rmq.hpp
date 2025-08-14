@@ -24,8 +24,8 @@ template<class T, class F> struct linear_rmq {
       while (sz(st) > 1 &&
         (i == n || !cmp(a[st.back()], a[i]))) {
         head[prev] = st.back();
-        auto k = end(st)[-2] + 1u, b = bit_floor(k ^ i);
-        in[st.back()] = prev = i & -b, asc[k] |= b;
+        auto j = end(st)[-2] + 1u, k = bit_floor(i ^ j);
+        in[st.back()] = prev = i & -k, asc[j] |= k;
         st.pop_back();
       }
       st.push_back(head[prev] = i);
@@ -34,12 +34,12 @@ template<class T, class F> struct linear_rmq {
       (asc[i] | asc[i - 1]) & -(in[i] & -in[i]);
   }
   int idx(int l, int r) { // [l, r]
-    if (unsigned i = in[l] ^ in[r]; i) {
-      i = asc[l] & asc[r] & -bit_floor(i);
-      if (unsigned b = asc[l] ^ i; b)
-        b = bit_floor(b), l = head[(in[l] & -b) | b];
-      if (unsigned b = asc[r] ^ i; b)
-        b = bit_floor(b), r = head[(in[r] & -b) | b];
+    if (unsigned j = in[l] ^ in[r]; j) {
+      j = asc[l] & asc[r] & -bit_floor(j);
+      if (unsigned k = asc[l] ^ j; k)
+        k = bit_floor(k), l = head[(in[l] & -k) | k];
+      if (unsigned k = asc[r] ^ j; k)
+        k = bit_floor(k), r = head[(in[r] & -k) | k];
     }
     return cmp(a[l], a[r]) ? l : r;
   }

@@ -41,8 +41,8 @@ template<int KAPPA = 2> struct linear_kth_par {
   int kth_par(int v, int k) {
     assert(0 <= k && k <= d[v]);
     int anc_d = d[v] - k;
-    if (unsigned b = k / (KAPPA + 1); b)
-      b = bit_floor(b), v = jmp[(pos[v] & -b) | b];
+    if (unsigned j = k / (KAPPA + 1); j)
+      j = bit_floor(j), v = jmp[(pos[v] & -j) | j];
     return v = leaf[v], lad[v][d[v] - anc_d];
   }
 };
