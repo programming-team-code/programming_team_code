@@ -1,10 +1,5 @@
 #pragma once
 //! @code
-//!   {
-//!     vector<vi> adj(n);
-//!     auto [num_distinct_subtrees, iso_id] =
-//!       subtree_iso(adj);
-//!   }
 //!   vector<basic_string<int>> adj(n);
 //!   auto [num_distinct_subtrees, iso_id] =
 //!     subtree_iso(adj);

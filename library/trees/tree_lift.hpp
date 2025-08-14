@@ -1,13 +1,10 @@
 #pragma once
 //! https://github.com/ucf-programming-team/hackpack-cpp/blob/master/content/graphs/TreeLifting.h
 //! @code
-//!   {
-//!     vector<vi> adj(n);
-//!     tree_lift tree_l(adj);
-//!   }
 //!   vector<basic_string<int>> adj(n);
 //!   tree_lift tree_l(adj);
 //!   tree_l.kth_par(v, k); // k edges up from v
+//!   tree_l.kth_par(v, 1); // v's parent
 //! @endcode
 //! @time O(n + q log n)
 //! @space O(n)

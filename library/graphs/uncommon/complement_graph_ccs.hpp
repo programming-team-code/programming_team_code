@@ -1,9 +1,5 @@
 #pragma once
 //! @code
-//!   {
-//!     vector<vi> adj(n);
-//!     vi cc_id = get_complement_graph_ccs(adj);
-//!   }
 //!   vector<basic_string<int>> adj;
 //!   vi cc_id = get_complement_graph_ccs(adj);
 //! @endcode

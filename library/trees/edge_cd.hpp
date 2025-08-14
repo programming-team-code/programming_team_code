@@ -4,11 +4,6 @@
 //! https://codeforces.com/blog/entry/142176
 //! https://youtu.be/wDwaMo5xa-k
 //! @code
-//!   {
-//!     vector<vi> adj(n);
-//!     edge_cd(adj, [&](const auto& adj,
-//!       int cent, int m) {});
-//!   }
 //!   vector<basic_string<int>> adj(n);
 //!   edge_cd(adj, [&](const auto& adj, int cent, int m) {
 //!     // subtrees of [0, m) of adj[cent]: 1st edge-set
