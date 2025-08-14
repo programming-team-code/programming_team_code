@@ -1,10 +1,6 @@
 #pragma once
 //! https://cp-algorithms.com/graph/bridge-searching.html
 //! @code
-//!   {
-//!     vector<vector<pii>> adj(n);
-//!     auto [num_ccs, br_id, is_br] = bridges(adj, m);
-//!   }
 //!   vector<basic_string<array<int, 2>>> adj(n);
 //!   rep (i, 0, m) {
 //!     int u, v;

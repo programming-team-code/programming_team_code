@@ -1,10 +1,6 @@
 #pragma once
 //! https://cp-algorithms.com/graph/cutpoints.html
 //! @code
-//!   {
-//!     vector<vector<pii>> adj(n);
-//!     auto [num_bccs, bcc_id, is_cut] = cuts(adj, m);
-//!   }
 //!   vector<basic_string<array<int, 2>>> adj(n);
 //!   rep (i, 0, m) {
 //!     int u, v;

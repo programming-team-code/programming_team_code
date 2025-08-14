@@ -7,12 +7,12 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n, m;
   cin >> n >> m;
-  vector<basic_string<int>> adj(n);
+  vector<vi> adj(n);
   for (int i = 0; i < m; i++) {
     int u, v;
     cin >> u >> v;
-    adj[u] += v;
-    adj[v] += u;
+    adj[u].push_back(v);
+    adj[v].push_back(u);
   }
   UF uf(n);
   vector<bool> seen(n);
@@ -30,8 +30,8 @@ int main() {
     }
     for (int v : nodes) uf.join(v, nodes[0]);
   });
-  vector<basic_string<int>> two_edge_ccs(n);
-  rep(i, 0, n) two_edge_ccs[uf.find(i)] += i;
+  vector<vi> two_edge_ccs(n);
+  rep(i, 0, n) two_edge_ccs[uf.find(i)].push_back(i);
   int cnt_ccs = 0;
   rep(i, 0, n) cnt_ccs += (!empty(two_edge_ccs[i]));
   cout << cnt_ccs << '\n';
