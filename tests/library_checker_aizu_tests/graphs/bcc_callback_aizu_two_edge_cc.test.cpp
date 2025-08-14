@@ -6,13 +6,13 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n, m;
   cin >> n >> m;
-  vector<basic_string<int>> adj(n);
-  for (int i = 0; i < n; i++) adj[i] += i;
+  vector<vi> adj(n);
+  for (int i = 0; i < n; i++) adj[i].push_back(i);
   for (int i = 0; i < m; i++) {
     int u, v;
     cin >> u >> v;
-    adj[u] += v;
-    adj[v] += u;
+    adj[u].push_back(v);
+    adj[v].push_back(u);
   }
   vector<pii> bridges;
   bcc_callback(adj, [&](const vi& nodes) {

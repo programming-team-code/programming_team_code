@@ -14,7 +14,7 @@ int main() {
     cin >> a[i];
     res[i] = a[i];
   }
-  vector<basic_string<int>> adj(n);
+  vector<vi> adj(n);
   vector<mint> b(n - 1), c(n - 1);
   vector<pair<int, int>> par(n, {-1, -1});
   vector<vector<int>> base_adj(n);
@@ -47,7 +47,7 @@ int main() {
   };
   { edge_cd(base_adj, edge_cd_asserts); }
   edge_cd(adj,
-    [&](const vector<basic_string<int>>& cd_adj, int cent,
+    [&](const vector<vi>& cd_adj, int cent,
       int split) -> void {
       array<vector<array<mint, 3>>, 2> all_backwards;
       array<mint, 2> sum_forward = {0, 0};
