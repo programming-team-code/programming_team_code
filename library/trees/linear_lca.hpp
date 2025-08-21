@@ -6,7 +6,7 @@
 //! @endcode
 //! @time O(n + q)
 //! @space O(n)
-int lsb(int x) { return x & -x; }
+#define lsb(x) (x & -x)
 struct linear_lca {
   int n;
   vi d, in, asc, head;
