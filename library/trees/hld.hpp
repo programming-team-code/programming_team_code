@@ -13,7 +13,7 @@
 template<bool VALS_EDGES> struct HLD {
   int n;
   vi p, siz, rt, tin;
-  HLD(auto adj):
+  HLD(auto& adj):
     n(sz(adj)), p(n), siz(n, 1), rt(n), tin(n) {
     auto dfs1 = [&](auto&& self, int v) -> void {
       for (int& u : adj[v]) {
