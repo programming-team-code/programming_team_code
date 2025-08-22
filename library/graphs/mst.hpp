@@ -1,5 +1,5 @@
 #pragma once
-#include "../../kactl/content/data-structures/UnionFind.h"
+#include "../data_structures/dsu/dsu.hpp"
 //! @code
 //!   auto [mst_cost, ids] = mst(w_eds, n);
 //! @endcode
@@ -14,7 +14,7 @@ pair<ll, vi> mst(const vector<array<int, 3>>& w_eds,
   ranges::sort(order, [&](int i, int j) {
     return w_eds[i][2] < w_eds[j][2];
   });
-  UF uf(n);
+  dsu uf(n);
   vi ids;
   ll cost = 0;
   for (int it : order) {

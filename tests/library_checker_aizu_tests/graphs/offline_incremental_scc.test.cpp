@@ -2,7 +2,7 @@
   "https://judge.yosupo.jp/problem/incremental_scc"
 #include "../template.hpp"
 #include "../../../library/graphs/strongly_connected_components/offline_incremental_scc.hpp"
-#include "../../../kactl/content/data-structures/UnionFind.h"
+#include "../../../library/data_structures/dsu/dsu.hpp"
 #include "../../../library/math/mod_int.hpp"
 int main() {
   cin.tie(0)->sync_with_stdio(0);
@@ -20,13 +20,13 @@ int main() {
   iota(all(order), 0);
   ranges::sort(all(order), {},
     [&](int i) { return joins[i]; });
-  UF uf(n);
+  dsu uf(n);
   mint sum = 0;
   for (int t = 0, it = 0; t < m; t++) {
     while (it < m && joins[order[it]] <= t) {
       auto [u, v] = eds[order[it]];
-      u = uf.find(u);
-      v = uf.find(v);
+      u = uf.go(u);
+      v = uf.go(v);
       if (uf.e[u] > uf.e[v]) swap(u, v);
       if (u != v) {
         sum = sum + xs[u] * xs[v];
