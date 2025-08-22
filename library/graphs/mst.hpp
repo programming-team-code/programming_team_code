@@ -14,12 +14,12 @@ pair<ll, vi> mst(const vector<array<int, 3>>& w_eds,
   ranges::sort(order, [&](int i, int j) {
     return w_eds[i][2] < w_eds[j][2];
   });
-  dsu uf(n);
+  DSU dsu(n);
   vi ids;
   ll cost = 0;
   for (int it : order) {
     auto [u, v, w] = w_eds[it];
-    if (uf.join(u, v)) {
+    if (dsu.join(u, v)) {
       cost += w;
       ids.push_back(it);
     }
