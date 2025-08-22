@@ -2,7 +2,7 @@
   "https://judge.yosupo.jp/problem/two_edge_connected_components"
 #include "../template.hpp"
 #include "../../../library/graphs/bcc_callback.hpp"
-#include "../../../kactl/content/data-structures/UnionFind.h"
+#include "../../../library/data_structures/dsu/dsu.hpp"
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n, m;
@@ -14,7 +14,7 @@ int main() {
     adj[u].push_back(v);
     adj[v].push_back(u);
   }
-  UF uf(n);
+  dsu uf(n);
   vector<bool> seen(n);
   bcc_callback(adj, [&](const vi& nodes) {
     int count_edges = 0;
@@ -31,7 +31,7 @@ int main() {
     for (int v : nodes) uf.join(v, nodes[0]);
   });
   vector<vi> two_edge_ccs(n);
-  rep(i, 0, n) two_edge_ccs[uf.find(i)].push_back(i);
+  rep(i, 0, n) two_edge_ccs[uf.go(i)].push_back(i);
   int cnt_ccs = 0;
   rep(i, 0, n) cnt_ccs += (!empty(two_edge_ccs[i]));
   cout << cnt_ccs << '\n';
