@@ -7,11 +7,11 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
   for (int n = 0; n <= 100; n++) {
     vector<vector<int>> adj(n);
-    dsu uf(n);
+    DSU dsu(n);
     for (int q = 0; q < n; q++) {
       int u = rnd(0, n - 1);
       int v = rnd(0, n - 1);
-      bool joined = uf.join(u, v);
+      bool joined = dsu.join(u, v);
       {
         vector<bool> vis(n);
         auto dfs = [&](auto&& self, int v) -> void {
@@ -42,7 +42,7 @@ int main() {
         };
         vis[i] = 1;
         dfs(dfs, i);
-        assert(cnt_nodes == uf.size(i));
+        assert(cnt_nodes == dsu.size(i));
       }
     }
   }

@@ -1,7 +1,8 @@
 #pragma once
-struct dsu {
+// NOLINTNEXTLINE(readability-identifier-naming)
+struct DSU {
   vi e;
-  dsu(int n): e(n, -1) {}
+  DSU(int n): e(n, -1) {}
   int size(int x) { return -e[go(x)]; }
   int go(int x) { return e[x] < 0 ? x : e[x] = go(e[x]); }
   bool join(int a, int b) {

@@ -5,12 +5,12 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n, q;
   cin >> n >> q;
-  dsu uf(n);
+  DSU dsu(n);
   while (q--) {
     int type, u, v;
     cin >> type >> u >> v;
-    if (type == 0) uf.join(u, v);
-    else cout << (uf.go(u) == uf.go(v)) << '\n';
+    if (type == 0) dsu.join(u, v);
+    else cout << (dsu.go(u) == dsu.go(v)) << '\n';
   }
   return 0;
 }
