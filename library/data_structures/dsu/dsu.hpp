@@ -7,6 +7,6 @@ struct dsu {
   bool join(int a, int b) {
     if ((a = go(a)) == (b = go(b))) return 0;
     if (e[a] > e[b]) swap(a, b);
-    return e[a] += e[b], e[b] = a;
+    return e[a] += e[b], e[b] = a, 1;
   }
 };
