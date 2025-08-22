@@ -16,27 +16,23 @@ int main() {
     adj[par].push_back(i);
     adj[i].push_back(par);
   }
-  HLD<0> hld_nodes(adj);
-  HLD<1> hld_edges(adj);
+  HLD<1> hld(adj);
   BIT bit(n);
-  for (int i = 0; i < n; i++)
-    bit.update(hld_nodes.tin[i], a[i]);
+  for (int i = 0; i < n; i++) bit.update(hld.tin[i], a[i]);
   while (q--) {
     int type;
     cin >> type;
     if (type == 0) {
       int v, x;
       cin >> v >> x;
-      bit.update(hld_nodes.tin[v], x);
+      bit.update(hld.tin[v], x);
       a[v] += x;
     } else {
       int v;
       cin >> v;
-      auto [l, r] = hld_nodes.subtree(v);
+      auto [l, r] = hld.subtree(v);
       ll res = bit.query(l, r);
-      auto [l_edges, r_edges] = hld_edges.subtree(v);
-      assert(res == bit.query(l_edges, r_edges) + a[v]);
-      cout << res << '\n';
+      cout << bit.query(l, r) + a[v] << '\n';
     }
   }
 }
