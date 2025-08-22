@@ -31,7 +31,6 @@ int main() {
       int v;
       cin >> v;
       auto [l, r] = hld.subtree(v);
-      ll res = bit.query(l, r);
       cout << bit.query(l, r) + a[v] << '\n';
     }
   }
