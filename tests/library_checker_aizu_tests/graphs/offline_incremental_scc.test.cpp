@@ -20,20 +20,20 @@ int main() {
   iota(all(order), 0);
   ranges::sort(all(order), {},
     [&](int i) { return joins[i]; });
-  dsu uf(n);
+  DSU dsu(n);
   mint sum = 0;
   for (int t = 0, it = 0; t < m; t++) {
     while (it < m && joins[order[it]] <= t) {
       auto [u, v] = eds[order[it]];
-      u = uf.go(u);
-      v = uf.go(v);
-      if (uf.e[u] > uf.e[v]) swap(u, v);
+      u = dsu.go(u);
+      v = dsu.go(v);
+      if (dsu.e[u] > dsu.e[v]) swap(u, v);
       if (u != v) {
         sum = sum + xs[u] * xs[v];
         xs[u] = xs[u] + xs[v];
         xs[v] = xs[u];
       }
-      uf.join(u, v);
+      dsu.join(u, v);
       it++;
     }
     cout << sum.x << '\n';

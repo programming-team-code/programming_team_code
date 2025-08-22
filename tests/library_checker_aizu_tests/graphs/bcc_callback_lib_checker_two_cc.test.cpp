@@ -14,7 +14,7 @@ int main() {
     adj[u].push_back(v);
     adj[v].push_back(u);
   }
-  dsu uf(n);
+  DSU dsu(n);
   vector<bool> seen(n);
   bcc_callback(adj, [&](const vi& nodes) {
     int count_edges = 0;
@@ -28,10 +28,10 @@ int main() {
       // nodes[0] <=> nodes[1] is a bridge
       return;
     }
-    for (int v : nodes) uf.join(v, nodes[0]);
+    for (int v : nodes) dsu.join(v, nodes[0]);
   });
   vector<vi> two_edge_ccs(n);
-  rep(i, 0, n) two_edge_ccs[uf.go(i)].push_back(i);
+  rep(i, 0, n) two_edge_ccs[dsu.go(i)].push_back(i);
   int cnt_ccs = 0;
   rep(i, 0, n) cnt_ccs += (!empty(two_edge_ccs[i]));
   cout << cnt_ccs << '\n';
