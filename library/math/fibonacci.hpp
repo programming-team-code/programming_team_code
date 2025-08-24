@@ -11,7 +11,7 @@
 //! @endcode
 //! @time O(log n)
 //! @space O(log n)
-const int mod = 998'244'353;
+constexpr int mod = 998'244'353;
 array<ll, 2> fib(ll n) {
   if (n == 0) return {0LL, 1LL};
   auto [x, y] = fib(n >> 1);
