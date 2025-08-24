@@ -1,5 +1,5 @@
 #pragma once
-const int mod = 998244353;
+constexpr int mod = 998244353;
 //! https://github.com/kth-competitive-programming/kactl/blob/main/content/number-theory/ModularArithmetic.h
 //! https://codeforces.com/blog/entry/122714
 struct mint {
