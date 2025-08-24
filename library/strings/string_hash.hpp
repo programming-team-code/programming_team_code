@@ -1,4 +1,5 @@
 #pragma once
+//! https://github.com/kth-competitive-programming/kactl/blob/main/content/strings/Hashing.h
 //! https://codeforces.com/blog/entry/60442
 //! https://codeforces.com/blog/entry/129538
 //! probability of collision ~= 1/((1e9+7)*(1e9+9)) = 1/p
