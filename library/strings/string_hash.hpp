@@ -22,7 +22,7 @@ struct str_hash {
       ha[i + 1][j] = (ha[i][j] * base + s[i] + 1) % md[j];
     }
   }
-  hsh subarray(int l, int r) { // [l, r)
+  hsh substr(int l, int r) { // [l, r)
     hsh res;
     rep(j, 0, 2) {
       res[j] = ha[r][j] - ha[l][j] * pw[r - l][j] % md[j];
