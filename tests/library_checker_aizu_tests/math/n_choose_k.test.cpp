@@ -3,9 +3,9 @@
 #include "../template.hpp"
 // trick to remove const so I can use arbitrary prime mode
 // here
-#define const ;
+#define constexpr ;
 #include "../../../library/math/n_choose_k/n_choose_k.hpp"
-#undef const
+#undef constexpr
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   int num_tests;

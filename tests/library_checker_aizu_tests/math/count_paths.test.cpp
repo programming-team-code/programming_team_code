@@ -1,10 +1,10 @@
 #define PROBLEM \
   "https://judge.yosupo.jp/problem/number_of_increasing_sequences_between_two_sequences"
 #include "../template.hpp"
-#define const ;
+#define constexpr ;
 #define mod mod_different_name
 #include "../../../library/math/n_choose_k/grow.hpp"
-#undef const
+#undef constexpr
 #undef mod
 #define mod mod_not_using
 #define modpow modpow_not_using

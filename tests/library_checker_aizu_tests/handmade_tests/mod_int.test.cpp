@@ -5,9 +5,9 @@
 #include "../../../kactl/content/number-theory/euclid.h"
 // trick to remove const so I can use arbitrary prime mode
 // here
-#define const ;
+#define constexpr ;
 #include "../../../library/math/mod_int_pow.hpp"
-#undef const
+#undef constexpr
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   mint val;
