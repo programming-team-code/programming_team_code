@@ -8,12 +8,17 @@ int main() {
   cin >> s;
   int n = sz(s);
   str_hash hash(s);
+  {
+    vi a(begin(s), end(s));
+    str_hash hash_vec(a);
+    assert(hash.substr(0, n) == hash_vec.substr(0, n));
+  }
   for (int i = 0; i < n; i++) {
     int start = i, end = n + 1;
     while (start + 1 < end) {
       int mid = (start + end) / 2;
       int len = mid - i;
-      if (hash.subarray(i, mid) == hash.subarray(0, len))
+      if (hash.substr(i, mid) == hash.substr(0, len))
         start = mid;
       else end = mid;
     }
