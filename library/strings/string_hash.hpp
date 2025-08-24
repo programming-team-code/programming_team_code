@@ -2,12 +2,12 @@
 //! https://codeforces.com/blog/entry/4898
 //! https://codeforces.com/blog/entry/60442
 //! https://codeforces.com/blog/entry/129538
-//! p = probability of collision ~= 1/((1e9+7)*(1e9+9))
-//! probability of collision over q comparisons ~=
-//!  (1 - (1/p))^q ~= 1 - (1/p)^q
+//! probability of collision ~= 1/((1e9+7)*(1e9+9)) = 1/p
+//! probability of no collision over q comparisons ~=
+//!   (1 - (1/p))^q ~= 1 - q/p
 //! checking if n hashes are pairwise distinct is the same
-//! as doing q = (n choose 2) ~= n^2 comparisons
-//! - use random base to avoid getting hacked on codeforces
+//!   as doing q = (n choose 2) ~= n^2 comparisons
+//! use random base to avoid getting hacked on codeforces
 //! @time O(n + q)
 //! @space O(n)
 using hsh = array<ll, 2>;
