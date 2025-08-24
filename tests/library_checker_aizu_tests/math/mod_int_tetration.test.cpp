@@ -4,9 +4,9 @@
 #include "../../../library/math/totient.hpp"
 // trick to remove const so I can use arbitrary prime mode
 // here
-#define const ;
+#define constexpr ;
 #include "../../../library/math/mod_int_pow.hpp"
-#undef const
+#undef constexpr
 int mod_int_tetration(int b, int e, int local_mod) {
   if (local_mod == 1) return 0;
   if (b == 0) return (e + 1) % 2 % local_mod;
