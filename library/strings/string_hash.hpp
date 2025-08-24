@@ -1,5 +1,4 @@
 #pragma once
-//! https://codeforces.com/blog/entry/4898
 //! https://codeforces.com/blog/entry/60442
 //! https://codeforces.com/blog/entry/129538
 //! probability of collision ~= 1/((1e9+7)*(1e9+9)) = 1/p
