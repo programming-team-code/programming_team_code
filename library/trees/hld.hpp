@@ -17,7 +17,8 @@ template<bool VALS_EDGES> struct HLD {
     n(sz(adj)), p(n), siz(n, 1), rt(n), tin(n) {
     auto dfs1 = [&](auto&& self, int v) -> void {
       for (int& u : adj[v]) {
-        adj[u].erase(find(all(adj[u]), v));
+        iter_swap(ranges::find(adj[u], v), rbegin(adj[u]));
+        adj[u].pop_back();
         p[u] = v;
         self(self, u);
         siz[v] += siz[u];
