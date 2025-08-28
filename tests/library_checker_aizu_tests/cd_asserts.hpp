@@ -1,5 +1,5 @@
 #pragma once
-#include "../../library/trees/centroid_decomp.hpp"
+#include "../../library/trees/uncommon/centroid_decomp.hpp"
 void cd_asserts(const vector<vector<int>>& adj) {
   vector<int> decomp_size(sz(adj), -1);
   vector<int> naive_par_decomp(sz(adj), -1);
