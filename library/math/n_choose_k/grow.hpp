@@ -1,5 +1,5 @@
 #pragma once
-constexpr int mod = 17; //!< must be prime
+const int mod = 17; //!< must be prime
 struct comb {
   ll inv = 1, fact = 1, inv_fact = 1;
 };

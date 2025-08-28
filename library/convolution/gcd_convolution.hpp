@@ -7,7 +7,7 @@
 //!   for all pairs (i,j) where gcd(i,j)==k
 //! @time O(n log n)
 //! @space O(n)
-constexpr int mod = 998'244'353;
+const int mod = 998'244'353;
 vi gcd_convolution(const vi& a, const vi& b) {
   int n = sz(a);
   vi c(n);

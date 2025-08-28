@@ -1,5 +1,5 @@
 #pragma once
-constexpr int mod = 998'244'353;
+const int mod = 998'244'353;
 //! https://oeis.org/A000041
 //! @code
 //!   auto p = partitions(n);
