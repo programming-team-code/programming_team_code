@@ -1,4 +1,12 @@
 #pragma once
+//! https://codeforces.com/blog/entry/125018
+//! @code
+//!   vector<basic_string<int>> adj(n);
+//!   shallowest(adj, [&](int cent) {
+//!   });
+//! @endcode
+//! @time O(n log n)
+//! @space O(n)
 void shallowest(auto& adj, auto f) {
   vector<vi> order(bit_width(size(adj)));
   auto dfs = [&](auto&& self, int v, int p) -> int {
@@ -13,13 +21,11 @@ void shallowest(auto& adj, auto f) {
     return dp;
   };
   dfs(dfs, 0, 0);
-  for (auto& vec : order | views::reverse)
-    for (int cent : vec) {
-      f(cent);
-      for (int v : adj[cent]) {
-        iter_swap(ranges::find(adj[v], cent),
-          rbegin(adj[v]));
-        adj[v].pop_back();
-      }
+  for (const auto& vec : order | views::reverse)
+    for (int v : vec) {
+      f(v);
+      for (int u : adj[v])
+        iter_swap(ranges::find(adj[u], v), rbegin(adj[u])),
+          adj[u].pop_back();
     }
 }
