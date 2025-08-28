@@ -8,7 +8,7 @@ template<int N> struct implicit_seg_tree {
     if (l[0] == r[0]) return {l[0], l[1] + r[1]};
     return min(l, r);
   }
-  static constexpr dt unit{LLONG_MAX, 0LL};
+  const dt unit{LLONG_MAX, 0LL};
   struct node {
     dt num;
     ll lazy = 0;

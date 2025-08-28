@@ -3,9 +3,9 @@
 #include "../template.hpp"
 // trick to remove const so I can use arbitrary prime mode
 // here
-#define constexpr ;
+#define const ;
 #include "../../../library/math/mod_int.hpp"
-#undef constexpr
+#undef const
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   int t;
