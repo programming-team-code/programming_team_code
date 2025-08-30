@@ -21,7 +21,7 @@ void shallowest(auto& adj, auto f) {
     return dp;
   };
   dfs(dfs, 0, 0);
-  for (const vi& vec : order | views::reverse)
+  for (vi vec : order | views::reverse)
     for (int v : vec) {
       f(v);
       for (int u : adj[v])
