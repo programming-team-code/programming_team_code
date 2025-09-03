@@ -144,7 +144,7 @@
 "tests/library_checker_aizu_tests/trees/kth_path_tree_lift.test.cpp": "2025-08-14 10:27:46 -0600",
 "tests/library_checker_aizu_tests/trees/lca_all_methods_aizu.test.cpp": "2025-08-21 12:17:27 -0600",
 "tests/library_checker_aizu_tests/trees/lca_all_methods_lib_checker.test.cpp": "2025-08-21 12:17:27 -0600",
-"tests/library_checker_aizu_tests/trees/shallowest_aizu_tree_height.test.cpp": "2025-09-03 10:28:33 -0600",
-"tests/library_checker_aizu_tests/trees/shallowest_lib_checker_tree_path_composite.test.cpp": "2025-09-03 10:28:33 -0600",
+"tests/library_checker_aizu_tests/trees/shallowest_aizu_tree_height.test.cpp": "2025-09-03 10:32:09 -0600",
+"tests/library_checker_aizu_tests/trees/shallowest_lib_checker_tree_path_composite.test.cpp": "2025-09-03 10:32:09 -0600",
 "tests/library_checker_aizu_tests/trees/subtree_isomorphism.test.cpp": "2025-08-14 10:27:46 -0600"
 }
