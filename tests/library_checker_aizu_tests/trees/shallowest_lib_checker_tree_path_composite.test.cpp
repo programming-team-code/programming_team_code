@@ -1,5 +1,6 @@
 #define PROBLEM \
   "https://judge.yosupo.jp/problem/tree_path_composite_sum"
+#undef _GLIBCXX_DEBUG
 #include "../template.hpp"
 #include "../../../library/trees/shallowest_decomp_tree.hpp"
 #include "../../../library/math/mod_int.hpp"
@@ -30,8 +31,8 @@ int main() {
     assert(ssize(adj[cent]) == ssize(weight[cent]));
     mint total_sum_evaluated = 0;
     int total_cnt_nodes = 0;
-    mint curr_sum_evaluated;
-    int curr_cnt_nodes;
+    mint curr_sum_evaluated = 0;
+    int curr_cnt_nodes = 0;
     auto dfs = [&](auto&& self, int v, int p,
                  line downwards, line upwards,
                  bool forwards) -> void {
