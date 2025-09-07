@@ -1,5 +1,5 @@
 #pragma once
-#include "../mod_int.hpp"
+#include "../mod_division.hpp"
 //! @code
 //!   auto [rank, det] = row_reduce(mat, cols);
 //! @endcode
@@ -8,28 +8,31 @@
 //!   affected by row operations
 //! @time O(n * m * min(cols, n))
 //! @space O(1)
-pair<int, mint> row_reduce(vector<vector<mint>>& mat,
+pair<int, int> row_reduce(vector<vector<int>>& mat,
   int cols) {
   int n = sz(mat), m = sz(mat[0]), rank = 0;
-  mint det = 1;
+  int det = 1;
   for (int col = 0; col < cols && rank < n; col++) {
     auto it = find_if(rank + all(mat),
-      [&](auto& v) { return v[col].x; });
+      [&](auto& v) { return v[col]; });
     if (it == end(mat)) {
       det = 0;
       continue;
     }
     if (it != begin(mat) + rank) {
-      det = mint(0) - det;
+      det = (mod - det) % mod;
       iter_swap(begin(mat) + rank, it);
     }
-    det = det * mat[rank][col];
-    mint a_inv = mint(1) / mat[rank][col];
-    for (mint& num : mat[rank]) num = num * a_inv;
-    rep(i, 0, n) if (i != rank && mat[i][col].x != 0) {
-      mint num = mat[i][col];
+    det = 1LL * det * mat[rank][col] % mod;
+    int a_inv = mod_div(1, mat[rank][col]);
+    for (int& num : mat[rank])
+      num = 1LL * num * a_inv % mod;
+    rep(i, 0, n) if (i != rank && mat[i][col] != 0) {
+      int num = mat[i][col];
       rep(j, 0, m) mat[i][j] =
-        mat[i][j] - mat[rank][j] * num;
+        ((mat[i][j] - 1LL * mat[rank][j] * num) % mod +
+          mod) %
+        mod;
     }
     rank++;
   }
