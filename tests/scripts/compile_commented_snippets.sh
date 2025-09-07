@@ -20,8 +20,8 @@ git submodule update
 	echo "vector<pii> edges;"
 	echo "vector<array<int,2>> eds;"
 	echo "vector<array<int,3>> w_eds, queries;"
-	echo "vector<mint> rhs;"
-	echo "vector<vector<mint>> mat;"
+	echo "vi rhs;"
+	echo "vector<vi> mat;"
 	echo "vector<vector<bool>> grid;"
 	echo "int n,m,k,tl,tr,l,r,l1,r1,l2,r2,s_l,s_r,root_l,root_r,source,sink,total_flow,bccid,u,v,lsz,rsz,cols,cap,num;"
 } >entire_library_without_main
