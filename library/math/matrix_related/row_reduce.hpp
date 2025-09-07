@@ -8,7 +8,7 @@
 //!   affected by row operations
 //! @time O(n * m * min(cols, n))
 //! @space O(1)
-pii row_reduce(vector<vector<int>>& mat, int cols) {
+pii row_reduce(vector<vi>& mat, int cols) {
   int n = sz(mat), m = sz(mat[0]), rank = 0;
   int det = 1;
   for (int col = 0; col < cols && rank < n; col++) {

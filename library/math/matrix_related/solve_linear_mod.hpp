@@ -12,9 +12,8 @@
 //! @space O(m)
 struct solve_linear_mod {
   int rank, det;
-  vector<int> sol;
-  solve_linear_mod(vector<vector<int>>& mat,
-    const vector<int>& rhs) {
+  vi sol;
+  solve_linear_mod(vector<vi>& mat, const vi& rhs) {
     int n = sz(mat), m = sz(mat[0]);
     rep(i, 0, n) mat[i].push_back(rhs[i]);
     tie(rank, det) = row_reduce(mat, m);
