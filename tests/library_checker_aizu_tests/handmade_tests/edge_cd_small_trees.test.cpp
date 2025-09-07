@@ -3,7 +3,6 @@
 #include "../template.hpp"
 #include "../edge_cd_asserts.hpp"
 #include "../../../kactl/stress-tests/utilities/genTree.h"
-#include "../../../library/math/mod_int_pow.hpp"
 #include "../../../library/trees/edge_cd.hpp"
 int main() {
   {
@@ -21,7 +20,9 @@ int main() {
       });
   }
   for (int n = 2; n <= 7; n++) {
-    int num_codes = mpow(n, n - 2).x;
+    int num_codes = 1;
+    for (int k = 0; k < n - 2; k++) num_codes *= n;
+    // int num_codes = mpow(n, n - 2).x;
     vector<vector<int>> pruf_codes(num_codes,
       vector<int>(n - 2));
     for (int i = 0; i < num_codes; i++) {

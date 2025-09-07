@@ -6,10 +6,10 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n;
   cin >> n;
-  vector<vector<mint>> matrix(n, vector<mint>(n));
+  vector<vector<int>> matrix(n, vector<int>(n));
   for (int i = 0; i < n; i++)
-    for (int j = 0; j < n; j++) cin >> matrix[i][j].x;
+    for (int j = 0; j < n; j++) cin >> matrix[i][j];
   auto [rank, det] = row_reduce(matrix, n);
-  cout << det.x << '\n';
+  cout << det << '\n';
   return 0;
 }

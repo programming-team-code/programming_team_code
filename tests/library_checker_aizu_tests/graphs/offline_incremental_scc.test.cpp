@@ -3,13 +3,13 @@
 #include "../template.hpp"
 #include "../../../library/graphs/strongly_connected_components/offline_incremental_scc.hpp"
 #include "../../../library/data_structures/dsu/dsu.hpp"
-#include "../../../library/math/mod_int.hpp"
+const int mod = 998244353;
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n, m;
   cin >> n >> m;
-  vector<mint> xs(n);
-  for (int i = 0; i < n; i++) cin >> xs[i].x;
+  vector<int> xs(n);
+  for (int i = 0; i < n; i++) cin >> xs[i];
   vector<array<int, 2>> eds(m);
   for (auto& [u, v] : eds) cin >> u >> v;
   auto joins = offline_incremental_scc(eds, n);
@@ -21,7 +21,7 @@ int main() {
   ranges::sort(all(order), {},
     [&](int i) { return joins[i]; });
   DSU dsu(n);
-  mint sum = 0;
+  int sum = 0;
   for (int t = 0, it = 0; t < m; t++) {
     while (it < m && joins[order[it]] <= t) {
       auto [u, v] = eds[order[it]];
@@ -29,14 +29,14 @@ int main() {
       v = dsu.go(v);
       if (dsu.e[u] > dsu.e[v]) swap(u, v);
       if (u != v) {
-        sum = sum + xs[u] * xs[v];
-        xs[u] = xs[u] + xs[v];
+        sum = (sum + 1LL * xs[u] * xs[v]) % mod;
+        xs[u] = (xs[u] + xs[v]) % mod;
         xs[v] = xs[u];
       }
       dsu.join(u, v);
       it++;
     }
-    cout << sum.x << '\n';
+    cout << sum << '\n';
   }
   return 0;
 }
