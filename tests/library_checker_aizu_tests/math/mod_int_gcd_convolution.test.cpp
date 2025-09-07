@@ -1,7 +1,6 @@
 #define PROBLEM \
   "https://judge.yosupo.jp/problem/gcd_convolution"
 #include "../template.hpp"
-#include "../../../library/math/mod_int.hpp"
 istream& operator>>(istream& is, vector<int>& v) {
   for (int i = 1; i < sz(v); i++) is >> v[i];
   return is;
