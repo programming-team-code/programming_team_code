@@ -13,19 +13,19 @@ struct linear_lca {
   linear_lca(const auto& adj):
     n(sz(adj)), d(n), in(n), asc(n), head(n + 1) {
     vector<pii> order;
-    auto dfs = [&](auto&& self, int v, int p) -> void {
-      order.emplace_back(v, p);
-      in[v] = sz(order);
-      for (int u : adj[v])
-        if (u != p) {
-          d[u] = 1 + d[v];
-          self(self, u, v);
-          head[in[u]] = v;
-          if (lsb(in[v]) < lsb(in[u])) in[v] = in[u];
+    auto dfs = [&](auto&& self, int u, int p) -> void {
+      order.emplace_back(u, p);
+      in[u] = sz(order);
+      for (int v : adj[u])
+        if (v != p) {
+          d[v] = 1 + d[u];
+          self(self, v, u);
+          head[in[v]] = u;
+          if (lsb(in[u]) < lsb(in[v])) in[u] = in[v];
         }
     };
     dfs(dfs, 0, 0);
-    for (auto [v, p] : order) asc[v] = asc[p] | lsb(in[v]);
+    for (auto [u, p] : order) asc[u] = asc[p] | lsb(in[u]);
   }
   int lca(int u, int v) {
     if (unsigned j = in[u] ^ in[v]; j) {

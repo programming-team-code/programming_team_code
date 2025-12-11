@@ -11,20 +11,20 @@
 struct tree_lift {
   vi d, p, j;
   tree_lift(const auto& adj): d(sz(adj)), p(d), j(d) {
-    auto dfs = [&](auto&& self, int v) -> void {
+    auto dfs = [&](auto&& self, int u) -> void {
       int up =
-        d[v] + d[j[j[v]]] == 2 * d[j[v]] ? j[j[v]] : v;
-      for (int u : adj[v])
-        if (u != p[v])
-          d[u] = d[p[u] = v] + 1, j[u] = up, self(self, u);
+        d[u] + d[j[j[u]]] == 2 * d[j[u]] ? j[j[u]] : u;
+      for (int v : adj[u])
+        if (v != p[u])
+          d[v] = d[p[v] = u] + 1, j[v] = up, self(self, v);
     };
     dfs(dfs, 0);
   }
-  int kth_par(int v, int k) {
-    int anc_d = d[v] - k;
-    while (d[v] > anc_d)
-      v = d[j[v]] >= anc_d ? j[v] : p[v];
-    return v;
+  int kth_par(int u, int k) {
+    int anc_d = d[u] - k;
+    while (d[u] > anc_d)
+      u = d[j[u]] >= anc_d ? j[u] : p[u];
+    return u;
   }
   int lca(int u, int v) {
     if (d[u] < d[v]) swap(u, v);
