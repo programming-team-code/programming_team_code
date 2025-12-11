@@ -5,7 +5,7 @@
 //! @code
 //!   ladder ld(adj);
 //!   // KACTL functions
-//!   int kth_par = jmp(ld.jmp, v, k);
+//!   int kth_par = jmp(ld.jmp, u, k);
 //!   int curr_lca = lca(ld.jmp, ld.d, u, v);
 //! @endcode
 struct ladder {
@@ -17,13 +17,13 @@ struct ladder {
   //! @space O(n log n) for jmp. Everything else is O(n)
   ladder(const auto& adj):
     n(sz(adj)), d(n), p(n), leaf(n), idx(n), lad(2 * n) {
-    auto dfs = [&](auto&& self, int v) -> void {
-      leaf[v] = v;
-      for (int u : adj[v])
-        if (u != p[v]) {
-          d[u] = d[p[u] = v] + 1;
-          self(self, u);
-          if (d[leaf[v]] < d[leaf[u]]) leaf[v] = leaf[u];
+    auto dfs = [&](auto&& self, int u) -> void {
+      leaf[u] = u;
+      for (int v : adj[u])
+        if (v != p[u]) {
+          d[v] = d[p[v] = u] + 1;
+          self(self, v);
+          if (d[leaf[u]] < d[leaf[v]]) leaf[u] = leaf[v];
         }
     };
     dfs(dfs, 0);
@@ -36,19 +36,19 @@ struct ladder {
     }
     jmp = treeJump(p);
   }
-  //! @param v query node
+  //! @param u query node
   //! @param k number of edges
-  //! @returns a node k edges up from v. With k=1, this
-  //! returns v's parent.
+  //! @returns a node k edges up from u. With k=1, this
+  //! returns u's parent.
   //! @time O(1)
   //! @space O(1)
-  int kth_par(int v, int k) {
-    assert(0 <= k && k <= d[v]);
-    if (k == 0) return v;
+  int kth_par(int u, int k) {
+    assert(0 <= k && k <= d[u]);
+    if (k == 0) return u;
     int bit = __lg(k);
-    v = jmp[bit][v], k -= (1 << bit);
-    int l = idx[leaf[v]] + d[leaf[v]] - d[v];
-    assert(lad[l] == v);
+    u = jmp[bit][u], k -= (1 << bit);
+    int l = idx[leaf[u]] + d[leaf[u]] - d[u];
+    assert(lad[l] == u);
     // subarray [l, l+k] of lad corresponds to the rest
     // of the jump
     return lad[l + k];

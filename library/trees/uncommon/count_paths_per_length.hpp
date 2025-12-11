@@ -13,12 +13,12 @@ vector<ll> count_paths_per_length(const vector<vi>& adj) {
   edge_cd(adj,
     [&](const vector<vi>& cd_adj, int cent, int split) {
       vector<vector<double>> cnt(2, vector<double>(1));
-      auto dfs = [&](auto&& self, int v, int p, int d,
+      auto dfs = [&](auto&& self, int u, int p, int d,
                    int side) -> void {
         if (sz(cnt[side]) == d) cnt[side].push_back(0.0);
         cnt[side][d]++;
-        for (int u : cd_adj[v])
-          if (u != p) self(self, u, v, 1 + d, side);
+        for (int c : cd_adj[u])
+          if (c != p) self(self, c, u, 1 + d, side);
       };
       rep(i, 0, sz(cd_adj[cent]))
         dfs(dfs, cd_adj[cent][i], cent, 1, i < split);

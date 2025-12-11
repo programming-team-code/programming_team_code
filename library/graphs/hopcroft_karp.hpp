@@ -29,31 +29,31 @@ struct hopcroft_karp {
       mvc_l.assign(lsz, 1);
       mvc_r.assign(rsz, 0);
       while (!empty(q)) {
-        int v = q.front();
+        int u = q.front();
         q.pop();
-        mvc_l[v] = 0;
-        for (int u : adj[v]) {
-          mvc_r[u] = 1;
-          int w = to_l[u];
+        mvc_l[u] = 0;
+        for (int v : adj[u]) {
+          mvc_r[v] = 1;
+          int w = to_l[v];
           if (w == -1) found = 1;
           else if (level[w] == -1) {
-            level[w] = level[v] + 1;
+            level[w] = level[u] + 1;
             q.push(w);
           }
         }
       }
       if (!found) break;
-      auto dfs = [&](auto&& self, int v) -> bool {
-        for (int u : adj[v]) {
-          int w = to_l[u];
+      auto dfs = [&](auto&& self, int u) -> bool {
+        for (int v : adj[u]) {
+          int w = to_l[v];
           if (w == -1 ||
-            (level[v] + 1 == level[w] && self(self, w))) {
-            to_r[v] = u;
-            to_l[u] = v;
+            (level[u] + 1 == level[w] && self(self, w))) {
+            to_r[u] = v;
+            to_l[v] = u;
             return 1;
           }
         }
-        level[v] = INT_MAX;
+        level[u] = INT_MAX;
         return 0;
       };
       rep(i, 0, lsz) m_sz +=

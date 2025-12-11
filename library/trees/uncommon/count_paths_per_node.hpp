@@ -14,16 +14,16 @@ vector<ll> count_paths_per_node(const vector<vi>& adj,
   centroid(adj,
     [&](const vector<vi>& cd_adj, int cent, int) {
       vector pre_d{1}, cur_d{0};
-      auto dfs = [&](auto&& self, int v, int p,
+      auto dfs = [&](auto&& self, int u, int p,
                    int d) -> ll {
         if (d > k) return 0LL;
         if (sz(cur_d) <= d) cur_d.push_back(0);
         cur_d[d]++;
         ll cnt = 0;
         if (k - d < sz(pre_d)) cnt += pre_d[k - d];
-        for (int u : cd_adj[v])
-          if (u != p) cnt += self(self, u, v, d + 1);
-        num_paths[v] += cnt;
+        for (int c : cd_adj[u])
+          if (c != p) cnt += self(self, c, u, d + 1);
+        num_paths[u] += cnt;
         return cnt;
       };
       auto dfs_child = [&](int child) -> ll {

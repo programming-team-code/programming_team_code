@@ -6,32 +6,32 @@ struct sum_adj {
   vector<ll> sum, sum_ch;
   vi p;
   //! @param adj undirected, unrooted tree
-  //! @param sum sum[v] = initial number for node v
+  //! @param sum sum[u] = initial number for node u
   //! @time O(n)
   //! @space various O(n) vectors are allocated; recursion
   //! stack for dfs is O(n)
   sum_adj(const vector<vi>& adj, const vector<ll>& sum):
     n(sz(sum)), sum(sum), sum_ch(n), p(n, -1) {
-    auto dfs = [&](auto&& self, int v) -> void {
-      for (int u : adj[v])
-        if (u != p[v])
-          p[u] = v, sum_ch[v] += sum[u], self(self, u);
+    auto dfs = [&](auto&& self, int u) -> void {
+      for (int c : adj[u])
+        if (c != p[u])
+          p[c] = u, sum_ch[u] += sum[c], self(self, c);
     };
     dfs(dfs, 0);
   }
-  //! @param v node
+  //! @param u node
   //! @param delta number to add
   //! @time O(1)
   //! @space O(1)
-  void update(int v, ll delta) {
-    sum[v] += delta;
-    if (p[v] != -1) sum_ch[p[v]] += delta;
+  void update(int u, ll delta) {
+    sum[u] += delta;
+    if (p[u] != -1) sum_ch[p[u]] += delta;
   }
-  //! @param v node
-  //! @returns sum of v's neighbors numbers
+  //! @param u node
+  //! @returns sum of u's neighbors numbers
   //! @time O(1)
   //! @space O(1)
-  ll query(int v) {
-    return sum_ch[v] + (p[v] != -1 ? sum[p[v]] : 0);
+  ll query(int u) {
+    return sum_ch[u] + (p[u] != -1 ? sum[p[u]] : 0);
   }
 };

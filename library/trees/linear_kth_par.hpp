@@ -21,28 +21,28 @@ template<int KAPPA = 2> struct linear_kth_par {
       jmp[t] = st[max(0, s - KAPPA * (t & -t))];
       t++;
     };
-    auto dfs = [&](auto&& self, int v, int p) -> void {
-      int& l = leaf[v] = st[d[v]] = v;
-      pos[v] = t;
-      calc(d[v]);
-      for (int u : adj[v])
-        if (u != p) {
-          d[u] = 1 + d[v];
-          self(self, u, v);
-          if (d[l] < d[leaf[u]]) l = leaf[u];
-          calc(d[v]);
+    auto dfs = [&](auto&& self, int u, int p) -> void {
+      int& l = leaf[u] = st[d[u]] = u;
+      pos[u] = t;
+      calc(d[u]);
+      for (int v : adj[u])
+        if (v != p) {
+          d[v] = 1 + d[u];
+          self(self, v, u);
+          if (d[l] < d[leaf[v]]) l = leaf[v];
+          calc(d[u]);
         }
-      int s = (d[l] - d[v]) * (2 * KAPPA + 3) / KAPPA;
+      int s = (d[l] - d[u]) * (2 * KAPPA + 3) / KAPPA;
       s = min(max(s, 2 * KAPPA), d[l] + 1);
       rep(i, sz(lad[l]), s) lad[l].push_back(st[d[l] - i]);
     };
     dfs(dfs, 0, 0);
   }
-  int kth_par(int v, int k) {
-    assert(0 <= k && k <= d[v]);
-    int anc_d = d[v] - k;
+  int kth_par(int u, int k) {
+    assert(0 <= k && k <= d[u]);
+    int anc_d = d[u] - k;
     if (unsigned j = k / (KAPPA + 1); j)
-      j = bit_floor(j), v = jmp[(pos[v] & -j) | j];
-    return v = leaf[v], lad[v][d[v] - anc_d];
+      j = bit_floor(j), u = jmp[(pos[u] & -j) | j];
+    return u = leaf[u], lad[u][d[u] - anc_d];
   }
 };
