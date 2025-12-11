@@ -5,7 +5,7 @@
 //!   HLD<0> hld(adj);
 //!   hld.path(u, v, [&](int l, int r) { // [l, r)
 //!   });
-//!   auto [l, r] = hld.subtree(v); // [l, r)
+//!   auto [l, r] = hld.subtree(u); // [l, r)
 //! @endcode
 //! @time O(n + q log^2 n)
 //! @space O(n)
@@ -15,23 +15,23 @@ template<bool VALS_EDGES> struct HLD {
   vi p, siz, rt, tin;
   HLD(auto& adj):
     n(sz(adj)), p(n), siz(n, 1), rt(n), tin(n) {
-    auto dfs1 = [&](auto&& self, int v) -> void {
-      for (int& u : adj[v]) {
-        iter_swap(ranges::find(adj[u], v), rbegin(adj[u]));
-        adj[u].pop_back();
-        p[u] = v;
-        self(self, u);
-        siz[v] += siz[u];
-        if (siz[u] > siz[adj[v][0]]) swap(u, adj[v][0]);
+    auto dfs1 = [&](auto&& self, int u) -> void {
+      for (int& v : adj[u]) {
+        iter_swap(ranges::find(adj[v], u), rbegin(adj[v]));
+        adj[v].pop_back();
+        p[v] = u;
+        self(self, v);
+        siz[u] += siz[v];
+        if (siz[v] > siz[adj[u][0]]) swap(v, adj[u][0]);
       }
     };
     dfs1(dfs1, 0);
     int tim = 0;
-    auto dfs2 = [&](auto&& self, int v) -> void {
-      tin[v] = tim++;
-      for (int u : adj[v]) {
-        rt[u] = (u == adj[v][0] ? rt[v] : u);
-        self(self, u);
+    auto dfs2 = [&](auto&& self, int u) -> void {
+      tin[u] = tim++;
+      for (int v : adj[u]) {
+        rt[v] = (v == adj[u][0] ? rt[u] : v);
+        self(self, v);
       }
     };
     dfs2(dfs2, 0);
@@ -44,7 +44,7 @@ template<bool VALS_EDGES> struct HLD {
     }
     f(tin[u] + VALS_EDGES, tin[v] + 1);
   }
-  pii subtree(int v) {
-    return {tin[v] + VALS_EDGES, tin[v] + siz[v]};
+  pii subtree(int u) {
+    return {tin[u] + VALS_EDGES, tin[u] + siz[u]};
   }
 };
