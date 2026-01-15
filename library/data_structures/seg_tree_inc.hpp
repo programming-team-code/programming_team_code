@@ -2,11 +2,11 @@
 //! https://codeforces.com/blog/entry/118682
 //! @code
 //!   {
-//!     tree_inc st(n, pii{}, [&](pii& l, pii& r) {
+//!     tree_inc st(n, pii(0, 0), [&](pii& l, pii& r) {
 //!       return min(l, r);
 //!     });
 //!   }
-//!   tree_inc st(n, int{}, ranges::min);
+//!   tree_inc st(n, int(0), ranges::min);
 //!   rep(i, 0, n) st.update(i, a[i]);
 //! @endcode
 //! @time O(n + q log n)
@@ -19,7 +19,7 @@ template<class T, class F> struct tree_inc {
   int n;
   F op;
   vector<T> s;
-  tree_inc(int n, T, F op): n(n), op(op), s(2 * n) {}
+  tree_inc(int n, T x, F op): n(n), op(op), s(2 * n, x) {}
   void update(int i, T val) {
     for (s[i += n] = val; i /= 2;)
       s[i] = op(s[2 * i], s[2 * i + 1]);
