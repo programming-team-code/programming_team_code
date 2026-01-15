@@ -1,13 +1,11 @@
 #pragma once
 //! https://codeforces.com/blog/entry/118682
 //! @code
-//!   {
-//!     tree_inc st(n, pii(0, 0), [&](pii& l, pii& r) {
-//!       return min(l, r);
-//!     });
-//!   }
-//!   tree_inc st(n, int(0), ranges::min);
-//!   rep(i, 0, n) st.update(i, a[i]);
+//!   tree_inc st1(n, pii(0, 0), [&](pii& l, pii& r) {
+//!     return min(l, r);
+//!   });
+//!   tree_inc st2(n, (int)0, ranges::min);
+//!   tree_inc st3(n, (ll)0, plus<ll>{});
 //! @endcode
 //! @time O(n + q log n)
 //! @space O(n)
