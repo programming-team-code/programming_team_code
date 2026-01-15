@@ -27,7 +27,7 @@ int main() {
       auto [u, v] = eds[order[it]];
       u = dsu.go(u);
       v = dsu.go(v);
-      if (dsu.e[u] > dsu.e[v]) swap(u, v);
+      if (dsu.p[u] > dsu.p[v]) swap(u, v);
       if (u != v) {
         sum = (sum + 1LL * xs[u] * xs[v]) % mod;
         xs[u] = (xs[u] + xs[v]) % mod;
