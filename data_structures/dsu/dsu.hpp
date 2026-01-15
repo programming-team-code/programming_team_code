@@ -1,0 +1,11 @@
+struct DSU {
+  vector<int> p;
+  DSU(int n): p(n, -1) {}
+  int size(int x) { return -p[go(x)]; }
+  int go(int x) { return p[x] < 0 ? x : p[x] = go(p[x]); }
+  bool join(int a, int b) {
+    if ((a = go(a)) == (b = go(b))) return 0;
+    if (p[a] > p[b]) swap(a, b);
+    return p[a] += p[b], p[b] = a, 1;
+  }
+};
