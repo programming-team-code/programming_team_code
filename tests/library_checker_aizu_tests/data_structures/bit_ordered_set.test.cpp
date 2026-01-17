@@ -54,7 +54,7 @@ int main() {
       else cout << compress[res] << '\n';
     } else {
       x = get_compressed_idx(x);
-      int res = bit.walk(bit.query(x - 1)) + 1;
+      int res = bit.walk(bit.query(x - 1) + 1);
       if (res == ssize(bit.s)) cout << -1 << '\n';
       else cout << compress[res] << '\n';
     }
