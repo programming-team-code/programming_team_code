@@ -49,12 +49,12 @@ int main() {
       cout << bit.query(x) << '\n';
     } else if (type == 4) {
       x = get_compressed_idx(x);
-      int res = bit.prev(x);
+      int res = bit.walk(bit.query(x));
       if (res == -1) cout << -1 << '\n';
       else cout << compress[res] << '\n';
     } else {
       x = get_compressed_idx(x);
-      int res = bit.next(x);
+      int res = bit.walk(bit.query(x - 1)) + 1;
       if (res == ssize(bit.s)) cout << -1 << '\n';
       else cout << compress[res] << '\n';
     }
