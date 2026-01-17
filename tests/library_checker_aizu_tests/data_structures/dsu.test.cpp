@@ -10,7 +10,7 @@ int main() {
     int type, u, v;
     cin >> type >> u >> v;
     if (type == 0) dsu.join(u, v);
-    else cout << (dsu.go(u) == dsu.go(v)) << '\n';
+    else cout << (dsu.f(u) == dsu.f(v)) << '\n';
   }
   return 0;
 }
