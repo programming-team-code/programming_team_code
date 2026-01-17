@@ -2,13 +2,13 @@
 //! https://github.com/kth-competitive-programming/kactl/blob/main/content/graph/SCC.h
 //! @code
 //!   vector<basic_string<int>> adj(n);
-//!   auto [num_sccs, scc_id] = sccs(adj);
+//!   auto [num_sccs, scc_id] = scc(adj);
 //! @endcode
 //! scc_id[u] = id, 0<=id<num_sccs
 //! for each edge u -> v: scc_id[u] >= scc_id[v]
 //! @time O(n + m)
 //! @space O(n)
-auto sccs(const auto& adj) {
+auto scc(const auto& adj) {
   int n = sz(adj), num_sccs = 0, q = 0, s = 0;
   vi scc_id(n, -1), tin(n), st(n);
   auto dfs = [&](auto&& self, int u) -> int {

@@ -16,7 +16,7 @@ int main() {
   }
   vector<bool> vis(n, 0);
   vector<vector<int>> all_bccs;
-  bcc_callback(adj, [&](const vi& nodes) {
+  bcc(adj, [&](const vi& nodes) {
     assert(ssize(nodes) >= 2);
     for (int v : nodes) vis[v] = 1;
     all_bccs.push_back(nodes);

@@ -13,7 +13,7 @@ int main() {
     adj[u].push_back(v);
   }
   scc_asserts(adj);
-  auto [num_sccs, scc_id] = sccs(adj);
+  auto [num_sccs, scc_id] = scc(adj);
   cout << num_sccs << '\n';
   vector<vector<int>> each_scc(num_sccs);
   for (int i = 0; i < n; i++)

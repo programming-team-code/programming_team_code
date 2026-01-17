@@ -8,7 +8,7 @@
 //! SCCs)
 //!
 //! @code
-//!   auto [num_sccs, scc_id] = sccs(adj);
+//!   auto [num_sccs, scc_id] = scc(adj);
 //!   vector<pii> edges = extra_edges(adj,
 //!     num_sccs, scc_id);
 //! @endcode

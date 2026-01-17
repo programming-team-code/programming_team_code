@@ -14,7 +14,7 @@ int main() {
     adj[u].push_back(v);
   }
   scc_asserts(adj);
-  auto [num_sccs, scc_id] = sccs(adj);
+  auto [num_sccs, scc_id] = scc(adj);
   int q;
   cin >> q;
   while (q--) {
