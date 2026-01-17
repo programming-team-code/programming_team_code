@@ -2,7 +2,7 @@
   "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A"
 #include "../template.hpp"
 #include "../../../library/contest/random.hpp"
-#include "../../../library/data_structures/lazy_seg_tree.hpp"
+#include "../../../library/data_structures_[l,r)/lazy_seg_tree.hpp"
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   for (int iters = 0; iters < 100; ++iters) {
