@@ -32,7 +32,7 @@ int main() {
       vi sums(n);
       int offline_ans = 0;
       for (int i = 0; i < n; i++) {
-        int id = uf.find(i);
+        int id = uf.f(i);
         offline_ans =
           (offline_ans + 1LL * sums[id] * y[i]) % mod;
         sums[id] = (sums[id] + y[i]) % mod;
