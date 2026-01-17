@@ -5,7 +5,7 @@ struct trie {
   struct node {
     array<int, 26> next;
     bool end_of_word = 0;
-    node() { fill(all(next), -1); }
+    node() { ranges::fill(next, -1); }
   };
   deque<node> t;
   trie(): t(1) {}
