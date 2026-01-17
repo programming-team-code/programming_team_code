@@ -1,7 +1,7 @@
 #define PROBLEM \
   "https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/all/DSL_3_D"
 #include "../template.hpp"
-#include "../../../library/data_structures/uncommon/deque_op.hpp"
+#include "../../../library/data_structures_[l,r)/uncommon/deque_op.hpp"
 int mn(int x, int y) { return min(x, y); }
 int main() {
   cin.tie(0)->sync_with_stdio(0);

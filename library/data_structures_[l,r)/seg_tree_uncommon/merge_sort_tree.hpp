@@ -1,5 +1,5 @@
 #pragma once
-#include "../lazy_seg_tree_midpoint.hpp"
+#include "../seg_tree_midpoint.hpp"
 struct merge_sort_tree {
   int n;
   vector<vi> tree;

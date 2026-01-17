@@ -1,6 +1,6 @@
 #pragma once
 #include "suffix_array.hpp"
-#include "../../data_structures/rmq.hpp"
+#include "../../data_structures_[l,r)/rmq.hpp"
 #include "find/match.hpp"
 //! @code
 //!   string s;

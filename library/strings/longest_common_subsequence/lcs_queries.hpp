@@ -1,5 +1,5 @@
 #pragma once
-#include "../../data_structures/bit.hpp"
+#include "../../data_structures_[l,r)/bit.hpp"
 #include "lcs_dp.hpp"
 //! @code
 //!   string s,t;

@@ -2,7 +2,7 @@
 #include "../../library/monotonic_stack/monotonic_range.hpp"
 #include "../../library/monotonic_stack/cartesian_binary_tree.hpp"
 #include "../../library/monotonic_stack/cartesian_k_ary_tree.hpp"
-#include "../../library/data_structures/uncommon/linear_rmq.hpp"
+#include "../../library/data_structures_[l,r]/linear_rmq.hpp"
 tuple<int, vector<vector<int>>, vector<int>>
 min_cartesian_tree(const vector<int>& a,
   const vector<int>& l, const vector<int>& r) {
