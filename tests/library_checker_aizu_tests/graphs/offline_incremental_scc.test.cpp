@@ -25,8 +25,8 @@ int main() {
   for (int t = 0, it = 0; t < m; t++) {
     while (it < m && joins[order[it]] <= t) {
       auto [u, v] = eds[order[it]];
-      u = dsu.go(u);
-      v = dsu.go(v);
+      u = dsu.f(u);
+      v = dsu.f(v);
       if (dsu.p[u] > dsu.p[v]) swap(u, v);
       if (u != v) {
         sum = (sum + 1LL * xs[u] * xs[v]) % mod;
