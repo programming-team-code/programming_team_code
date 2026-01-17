@@ -4,7 +4,7 @@
 #include "../../library/graphs/strongly_connected_components/offline_incremental_scc.hpp"
 void scc_asserts(const vector<vector<int>>& adj) {
   int n = sz(adj);
-  auto [num_sccs, scc_id] = sccs(adj);
+  auto [num_sccs, scc_id] = scc(adj);
   {
     // sanity check for reverse topo order of SCCs
     for (int i = 0; i < n; i++)
@@ -34,5 +34,5 @@ void scc_asserts(const vector<vector<int>>& adj) {
     assert(u != v);
     adj_copy[u].push_back(v);
   }
-  assert(sccs(adj_copy).first == 1);
+  assert(scc(adj_copy).first == 1);
 }

@@ -15,7 +15,7 @@ int main() {
     adj[v].push_back(u);
   }
   vector<pii> bridges;
-  bcc_callback(adj, [&](const vi& nodes) {
+  bcc(adj, [&](const vi& nodes) {
     if (sz(nodes) == 2) {
       pii bridge(nodes[0], nodes[1]);
       if (bridge.first > bridge.second)

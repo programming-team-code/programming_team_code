@@ -15,7 +15,7 @@ int main() {
     adj[v].push_back(u);
   }
   vi cnt(n);
-  bcc_callback(adj, [&](const vi& nodes) {
+  bcc(adj, [&](const vi& nodes) {
     assert(sz(nodes) >= 2);
     for (int v : nodes) cnt[v]++;
   });

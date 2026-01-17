@@ -16,7 +16,7 @@ int main() {
   }
   DSU dsu(n);
   vector<bool> seen(n);
-  bcc_callback(adj, [&](const vi& nodes) {
+  bcc(adj, [&](const vi& nodes) {
     int count_edges = 0;
     rep(i, 0, sz(nodes) - 1) {
       seen[nodes[i]] = 1;

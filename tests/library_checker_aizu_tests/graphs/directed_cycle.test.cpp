@@ -15,7 +15,7 @@ int main() {
     adj_edge_id[u].emplace_back(v, i);
   }
   scc_asserts(adj);
-  auto [num_sccs, scc_id] = sccs(adj);
+  auto [num_sccs, scc_id] = scc(adj);
   if (num_sccs == n) {
     cout << -1 << '\n';
     return 0;

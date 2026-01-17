@@ -5,7 +5,7 @@
 //!     vector<vi> adj(n);
 //!     UF uf(n);
 //!     vector<bool> seen(n);
-//!     bcc_callback(adj, [&](const vi& nodes) {
+//!     bcc(adj, [&](const vi& nodes) {
 //!       int count_edges = 0;
 //!       rep (i, 0, sz(nodes) - 1) {
 //!         seen[nodes[i]] = 1;
@@ -30,7 +30,7 @@
 //!   vector<basic_string<int>> adj(n);
 //!   vector<basic_string<int>> block_vertex_tree(2 * n);
 //!   int bcc_id = n;
-//!   bcc_callback(adj, [&](const vi& nodes) {
+//!   bcc(adj, [&](const vi& nodes) {
 //!     for (int u : nodes) {
 //!       block_vertex_tree[u] += bcc_id;
 //!       block_vertex_tree[bcc_id] += u;
@@ -41,7 +41,7 @@
 //! callback not called on components with a single node
 //! @time O(n + m)
 //! @space O(n)
-void bcc_callback(const auto& adj, auto f) {
+void bcc(const auto& adj, auto f) {
   int n = sz(adj), q = 0, s = 0;
   vi t(n), st(n);
   auto dfs = [&](auto&& self, int u) -> int {
