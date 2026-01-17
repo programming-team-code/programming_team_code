@@ -1,5 +1,5 @@
 #pragma once
-#include "../../data_structures/bit_uncommon/rupq.hpp"
+#include "../../data_structures_[l,r)/bit_uncommon/rupq.hpp"
 #include "../edge_cd.hpp"
 #include "sum_adjacent.hpp"
 //! https://judge.yosupo.jp/problem/vertex_get_range_contour_add_on_tree

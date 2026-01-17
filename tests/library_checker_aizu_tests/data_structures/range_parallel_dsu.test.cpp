@@ -2,8 +2,8 @@
   "https://judge.yosupo.jp/problem/range_parallel_unionfind"
 #undef _GLIBCXX_DEBUG
 #include "../template.hpp"
-#include "../../../library/data_structures/dsu/range_parallel_dsu.hpp"
-#include "../../../library/data_structures/dsu/range_parallel_equivalence_classes.hpp"
+#include "../../../library/dsu/range_parallel_dsu.hpp"
+#include "../../../library/dsu/range_parallel_equivalence_classes.hpp"
 const int mod = 998244353;
 int main() {
   cin.tie(0)->sync_with_stdio(0);

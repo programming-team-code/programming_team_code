@@ -2,7 +2,7 @@
   "https://judge.yosupo.jp/problem/two_edge_connected_components"
 #include "../template.hpp"
 #include "../../../library/graphs/uncommon/bridge_tree.hpp"
-#include "../../../library/data_structures/dsu/dsu_restorable.hpp"
+#include "../../../library/dsu/dsu_restorable.hpp"
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n, m;

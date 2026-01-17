@@ -2,7 +2,7 @@
   "https://judge.yosupo.jp/problem/two_edge_connected_components"
 #include "../template.hpp"
 #include "../../../library/graphs/bcc_callback.hpp"
-#include "../../../library/data_structures/dsu/dsu.hpp"
+#include "../../../library/dsu/dsu.hpp"
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n, m;

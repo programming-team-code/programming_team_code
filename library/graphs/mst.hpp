@@ -1,5 +1,5 @@
 #pragma once
-#include "../data_structures/dsu/dsu.hpp"
+#include "../dsu/dsu.hpp"
 //! @code
 //!   auto [mst_cost, ids] = mst(w_eds, n);
 //! @endcode
