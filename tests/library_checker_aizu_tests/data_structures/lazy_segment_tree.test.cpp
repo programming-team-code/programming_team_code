@@ -1,7 +1,7 @@
 #define PROBLEM \
   "https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/all/DSL_2_G"
 #include "../template.hpp"
-#include "../../../library/data_structures/lazy_seg_tree.hpp"
+#include "../../../library/data_structures_[l,r)/lazy_seg_tree.hpp"
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   {
