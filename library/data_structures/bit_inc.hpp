@@ -16,6 +16,4 @@ struct bit_inc {
     return query(r) - query(l - 1);
   }
 #include "bit_uncommon/walk.hpp"
-#include "bit_uncommon/prev.hpp"
-#include "bit_uncommon/next.hpp"
 };
