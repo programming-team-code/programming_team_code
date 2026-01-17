@@ -1,7 +1,7 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/staticrmq"
 #include "../template.hpp"
 #include "../mono_st_asserts.hpp"
-#include "../../../library/data_structures/rmq.hpp"
+#include "../../../library/data_structures_[l,r)/rmq.hpp"
 int mn(int x, int y) { return min(x, y); }
 int main() {
   cin.tie(0)->sync_with_stdio(0);

@@ -5,7 +5,7 @@
 struct BIT {
   vector<ll> s;
   BIT(int n): s(n) {}
-#include "bit_uncommon/vector_constructor.hpp"
+#include "../data_structures_[l,r)/bit_uncommon/vector_constructor.hpp"
   void update(int i, ll d) {
     for (; i < sz(s); i |= i + 1) s[i] += d;
   }
@@ -17,5 +17,5 @@ struct BIT {
   ll query(int l, int r) { // [l, r]
     return query(r) - query(l - 1);
   }
-#include "bit_uncommon/walk.hpp"
+#include "../data_structures_[l,r)/bit_uncommon/walk.hpp"
 };

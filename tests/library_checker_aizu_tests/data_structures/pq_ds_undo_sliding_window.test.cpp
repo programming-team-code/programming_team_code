@@ -4,7 +4,7 @@
 // operations to be O(n)
 #undef _GLIBCXX_DEBUG
 #include "../template.hpp"
-#include "../../../library/data_structures/uncommon/priority_queue_of_updates.hpp"
+#include "../../../library/data_structures_[l,r)/uncommon/priority_queue_of_updates.hpp"
 struct stack_with_get_max {
   vector<pair<int, int>> st;
   void join(int val) {

@@ -1,7 +1,7 @@
 #define PROBLEM \
   "https://judge.yosupo.jp/problem/static_range_mode_query"
 #include "../template.hpp"
-#include "../../../library/data_structures/uncommon/mode_query.hpp"
+#include "../../../library/data_structures_[l,r)/uncommon/mode_query.hpp"
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n, q;
