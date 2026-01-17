@@ -31,7 +31,7 @@ int main() {
     for (int v : nodes) dsu.join(v, nodes[0]);
   });
   vector<vi> two_edge_ccs(n);
-  rep(i, 0, n) two_edge_ccs[dsu.go(i)].push_back(i);
+  rep(i, 0, n) two_edge_ccs[dsu.f(i)].push_back(i);
   int cnt_ccs = 0;
   rep(i, 0, n) cnt_ccs += (!empty(two_edge_ccs[i]));
   cout << cnt_ccs << '\n';
