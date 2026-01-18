@@ -14,8 +14,6 @@ struct BIT {
     for (; r > 0; r &= r - 1) ret += s[r - 1];
     return ret;
   }
-  ll query(int l, int r) {
-    return query(r) - query(l);
-  }
+  ll query(int l, int r) { return query(r) - query(l); }
 #include "bit_uncommon/walk.hpp"
 };
