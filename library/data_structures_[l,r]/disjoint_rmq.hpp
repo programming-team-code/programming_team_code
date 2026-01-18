@@ -25,7 +25,7 @@ template<class T, class F> struct disjoint_rmq {
       }
     }
   }
-  T query(int l, int r) { // [l, r]
+  T query(int l, int r) {
     if (l == r) return dp[0][l];
     int lg = __lg(l ^ r);
     return op(dp[lg][l], dp[lg][r]);
