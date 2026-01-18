@@ -22,7 +22,7 @@ struct seg_tree {
       lazy[v] = 0;
     }
   }
-  void update(int l, int r, ll change) { // [l, r)
+  void update(int l, int r, ll change) {
     update(l, r, change, 0, n, 1);
   }
   void update(int l, int r, ll change, int tl, int tr,
@@ -36,7 +36,7 @@ struct seg_tree {
     update(l, r, change, tm, tr, 2 * v + 1);
     tree[v] = op(tree[2 * v], tree[2 * v + 1]);
   }
-  ll query(int l, int r) { // [l, r)
+  ll query(int l, int r) {
     return query(l, r, 0, n, 1);
   }
   ll query(int l, int r, int tl, int tr, int v) {
