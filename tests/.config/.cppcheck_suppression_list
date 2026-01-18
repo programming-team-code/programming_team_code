@@ -52,7 +52,7 @@ constVariableReference:library_checker_aizu_tests/handmade_tests/dsu_size.test.c
 constVariableReference:../library/trees/centroid_decomp_uncommon/count_paths_per_length.hpp:34
 constVariablePointer:../kactl/content/numerical/FastFourierTransform.h:39
 cstyleCast:../kactl/content/numerical/FastFourierTransform.h:39
-derefInvalidIterator:../library/data_structures/uncommon/linear_rmq.hpp:27
+derefInvalidIterator:../library/data_structures_[l,r]/uncommon/linear_rmq.hpp:27
 derefInvalidIterator:library_checker_aizu_tests/handmade_tests/n_choose_k.test.cpp:13
 unreadVariable:library_checker_aizu_tests/handmade_tests/permutation_tree_small.test.cpp:12
 uninitvar:library_checker_aizu_tests/handmade_tests/seg_tree_find_small.test.cpp:41
