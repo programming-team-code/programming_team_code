@@ -16,8 +16,8 @@ struct merge_sort_tree {
   int query(int l, int r, int vl, int vr) {
     return query(l, r, vl, vr, 0, n, 1);
   }
-  int query(int l, int r, int vl, int vr, int tl,
-    int tr, int v) {
+  int query(int l, int r, int vl, int vr, int tl, int tr,
+    int v) {
     if (r <= tl || tr <= l) return 0;
     if (l <= tl && tr <= r)
       return ranges::lower_bound(tree[v], vr) -
