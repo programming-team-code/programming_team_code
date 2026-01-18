@@ -22,29 +22,29 @@ struct seg_tree {
       lazy[v] = 0;
     }
   }
-  void update(int l, int r, ll change) { // [l, r]
-    update_impl(l, r, change, 0, n - 1, 1);
+  void update(int l, int r, ll change) {
+    update(l, r, change, 0, n - 1, 1);
   }
-  void update_impl(int l, int r, ll change, int tl, int tr,
+  void update(int l, int r, ll change, int tl, int tr,
     int v) {
     if (r < tl || tr < l) return;
     if (l <= tl && tr <= r)
       return apply(change, tl, tr, v);
     int tm = split(tl, tr);
     push(tl, tm, tr, v);
-    update_impl(l, r, change, tl, tm, 2 * v);
-    update_impl(l, r, change, tm + 1, tr, 2 * v + 1);
+    update(l, r, change, tl, tm, 2 * v);
+    update(l, r, change, tm + 1, tr, 2 * v + 1);
     tree[v] = op(tree[2 * v], tree[2 * v + 1]);
   }
-  ll query(int l, int r) { // [l, r]
-    return query_impl(l, r, 0, n - 1, 1);
+  ll query(int l, int r) {
+    return query(l, r, 0, n - 1, 1);
   }
-  ll query_impl(int l, int r, int tl, int tr, int v) {
+  ll query(int l, int r, int tl, int tr, int v) {
     if (r < tl || tr < l) return 0;
     if (l <= tl && tr <= r) return tree[v];
     int tm = split(tl, tr);
     push(tl, tm, tr, v);
-    return op(query_impl(l, r, tl, tm, 2 * v),
-      query_impl(l, r, tm + 1, tr, 2 * v + 1));
+    return op(query(l, r, tl, tm, 2 * v),
+      query(l, r, tm + 1, tr, 2 * v + 1));
   }
 };
