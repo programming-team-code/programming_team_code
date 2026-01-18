@@ -18,7 +18,7 @@ git submodule update
 	cat | grep --invert-match --file=.config/.code_snippet_excluded_file_list | sort | sed 's/^/#include "/; s/$/"/' | cpp -nostdinc -C -P | grep --invert-match --extended-regexp "const int mod = |const ll mod = "
 	echo "int main() {"
 	echo "vi a,b,subset;"
-	echo "vl left,bottom;"
+	echo "vector<ll> left,bottom;"
 	echo "vector<pii> edges;"
 	echo "vector<array<int,2>> eds;"
 	echo "vector<array<int,3>> w_eds, queries;"
