@@ -36,9 +36,7 @@ struct seg_tree {
     update(l, r, change, tm, tr, 2 * v + 1);
     tree[v] = op(tree[2 * v], tree[2 * v + 1]);
   }
-  ll query(int l, int r) {
-    return query(l, r, 0, n, 1);
-  }
+  ll query(int l, int r) { return query(l, r, 0, n, 1); }
   ll query(int l, int r, int tl, int tr, int v) {
     if (r <= tl || tr <= l) return 0;
     if (l <= tl && tr <= r) return tree[v];
