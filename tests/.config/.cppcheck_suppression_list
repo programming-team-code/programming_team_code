@@ -60,3 +60,7 @@ unusedFunction:../kactl/content/data-structures/UnionFind.h:14
 unusedFunction:../kactl/content/number-theory/ModPow.h:13
 unusedFunction:../kactl/stress-tests/utilities/genTree.h:49
 containerOutOfBounds:../library/data_structures/uncommon/permutation_tree.hpp:85
+ctuOneDefinitionRuleViolation:../library/data_structures_[l,r)/bit.hpp:5
+ctuOneDefinitionRuleViolation:../library/data_structures_[l,r]/bit.hpp:5
+ctuOneDefinitionRuleViolation:../library/data_structures_[l,r)/lazy_seg_tree.hpp:4
+ctuOneDefinitionRuleViolation:../library/data_structures_[l,r]/lazy_seg_tree.hpp:4
