@@ -5,7 +5,7 @@
 struct BIT {
   vector<ll> s;
   BIT(int n): s(n) {}
-#include "../data_structures_[l,r)/bit_uncommon/vector_constructor.hpp"
+#include "../data_structures_[l,r)/bit_uncommon/init.hpp"
   void update(int i, ll d) {
     for (; i < sz(s); i |= i + 1) s[i] += d;
   }
