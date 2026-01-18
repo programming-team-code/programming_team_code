@@ -1,13 +1,13 @@
 #define PROBLEM \
   "https://judge.yosupo.jp/problem/point_set_range_composite"
 #include "../template.hpp"
-#include "../../../library/data_structures/seg_tree_inc.hpp"
+#include "../../../library/data_structures_[l,r]/seg_tree.hpp"
 const int mod = 998'244'353;
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n, q;
   cin >> n >> q;
-  tree_inc st(n, array<int, 2>{},
+  tree st(n, array<int, 2>{},
     [&](const array<int, 2>& l,
       const array<int, 2>& r) -> array<int, 2> {
       return {int(1LL * l[0] * r[0] % mod),

@@ -2,7 +2,7 @@
   "https://judge.yosupo.jp/problem/vertex_add_path_sum"
 #include "../template.hpp"
 #include "../../../library/trees/hld.hpp"
-#include "../../../library/data_structures/bit.hpp"
+#include "../../../library/data_structures_[l,r)/bit.hpp"
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n, q;

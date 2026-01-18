@@ -1,8 +1,8 @@
 #define PROBLEM \
   "https://judge.yosupo.jp/problem/minimum_spanning_tree"
 #include "../template.hpp"
-#include "../../../library/data_structures/dsu/line_tree.hpp"
-#include "../../../library/data_structures/dsu/kruskal_tree.hpp"
+#include "../../../library/dsu/line_tree.hpp"
+#include "../../../library/dsu/kruskal_tree.hpp"
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n, m;

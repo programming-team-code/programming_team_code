@@ -1,19 +1,20 @@
 #pragma once
 //! @code
-//!   rmq_inc rmq1(a, ranges::min);
-//!   rmq_inc rmq2(a, [&](auto& x, auto& y) {
+//!   RMQ rmq1(a, ranges::min);
+//!   RMQ rmq2(a, [&](auto& x, auto& y) {
 //!     return min(x, y);
 //!   });
-//!   vector<rmq_inc<int, function<int(int, int)>>>
+//!   vector<RMQ<int, function<int(int, int)>>>
 //!     rmqs(3, {{}, NULL});
 //!   rmqs[1] = {a, ranges::min};
 //! @endcode
 //! @time O(nlogn + q)
 //! @space O(nlogn)
-template<class T, class F> struct rmq_inc {
+// NOLINTNEXTLINE(readability-identifier-naming)
+template<class T, class F> struct RMQ {
   vector<vector<T>> dp;
   F op;
-  rmq_inc(const vector<T>& a, F op): dp(1, a), op(op) {
+  RMQ(const vector<T>& a, F op): dp(1, a), op(op) {
     for (int i = 0; (2 << i) <= sz(a); i++) {
       dp.emplace_back(sz(a) - (2 << i) + 1);
       ranges::transform(dp[i], dp[i] | views::drop(1 << i),

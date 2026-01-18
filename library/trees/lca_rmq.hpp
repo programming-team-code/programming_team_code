@@ -1,6 +1,6 @@
 #pragma once
 #include "../monotonic_stack/monotonic_stack.hpp"
-#include "../data_structures/rmq.hpp"
+#include "../data_structures_[l,r)/rmq.hpp"
 //! https://github.com/kth-competitive-programming/kactl/blob/main/content/graph/LCA.h
 //! @code
 //!   vector<basic_string<int>> adj(n);

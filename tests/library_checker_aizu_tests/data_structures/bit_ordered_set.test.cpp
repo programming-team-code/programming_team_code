@@ -1,7 +1,7 @@
 #define PROBLEM \
   "https://judge.yosupo.jp/problem/ordered_set"
 #include "../template.hpp"
-#include "../../../library/data_structures/bit_inc.hpp"
+#include "../../../library/data_structures_[l,r]/bit.hpp"
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n, q;
@@ -18,7 +18,7 @@ int main() {
   }
   ranges::sort(compress);
   compress.erase(unique(all(compress)), end(compress));
-  bit_inc bit(ssize(compress));
+  BIT bit(ssize(compress));
   auto get_compressed_idx = [&](int val) -> int {
     int l = 0, r = ssize(compress);
     while (l + 1 < r) {

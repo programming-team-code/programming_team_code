@@ -2,7 +2,7 @@
   "https://onlinejudge.u-aizu.ac.jp/problems/GRL_5_E"
 #include "../template.hpp"
 #include "../../../library/trees/hld.hpp"
-#include "../../../library/data_structures/lazy_seg_tree.hpp"
+#include "../../../library/data_structures_[l,r)/lazy_seg_tree.hpp"
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n;

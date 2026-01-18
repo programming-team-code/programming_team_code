@@ -10,15 +10,15 @@ echo "DON'T PUSH ANY OF THESE CHANGES TO THE REPO!!!!!!!!"
 echo "if you push these changes, I'll slap your butt"
 
 # remove some files not suitable for PDF:
-rm ../library/data_structures/bit_uncommon/rupq.hpp || exit 1
-rm ../library/data_structures/bit_uncommon/rurq.hpp || exit 1
-rm ../library/data_structures/seg_tree.png || exit 1
-rm ../library/data_structures/seg_tree_uncommon/distinct_query.hpp || exit 1
-rm ../library/data_structures/seg_tree_uncommon/implicit.hpp || exit 1
-rm ../library/data_structures/seg_tree_uncommon/kth_smallest_query.hpp || exit 1
-rm ../library/data_structures/uncommon/mode_query.hpp || exit 1
-rm ../library/data_structures/uncommon/priority_queue_of_updates.hpp || exit 1
-rm ../library/data_structures/uncommon/deque_op.hpp || exit 1
+rm "../library/data_structures_[l,r)/bit_uncommon/rupq.hpp" || exit 1
+rm "../library/data_structures_[l,r)/bit_uncommon/rurq.hpp" || exit 1
+rm "../library/data_structures_[l,r)/uncommon/seg_tree.png" || exit 1
+rm "../library/data_structures_[l,r)/seg_tree_uncommon/distinct_query.hpp" || exit 1
+rm "../library/data_structures_[l,r)/seg_tree_uncommon/implicit.hpp" || exit 1
+rm "../library/data_structures_[l,r)/seg_tree_uncommon/kth_smallest_query.hpp" || exit 1
+rm "../library/data_structures_[l,r)/uncommon/mode_query.hpp" || exit 1
+rm "../library/data_structures_[l,r)/uncommon/priority_queue_of_updates.hpp" || exit 1
+rm "../library/data_structures_[l,r)/uncommon/deque_op.hpp" || exit 1
 rm ../library/graphs/strongly_connected_components/add_edges_strongly_connected.hpp || exit 1
 rm ../library/graphs/strongly_connected_components/offline_incremental_scc.hpp || exit 1
 rm ../library/graphs/uncommon/bridges.hpp || exit 1
@@ -58,7 +58,10 @@ cat ../library/**/*.hpp |
 echo "check no multiline comments. Generating hashes of file-prefixes requires this."
 grep --extended-regexp "\/\*" --recursive ../library/**/*.hpp && exit 1
 
-make compile_commented_snippets || exit 1
+find ../library/ -path "../library/data_structures_\[l,r\]" -prune -o -type f -name "*.hpp" -print | ./scripts/compile_commented_snippets.sh || exit 1
+rm entire_library_without_main || exit 1
+rm entire_library.cpp || exit 1
+find "../library/data_structures_[l,r]" -type f -name "*.hpp" | ./scripts/compile_commented_snippets.sh || exit 1
 
 # remove #pragma once
 sed --in-place '/^#pragma once$/d' ../library/**/*.hpp

@@ -1,5 +1,5 @@
 #pragma once
-#include "../../data_structures/rmq.hpp"
+#include "../../data_structures_[l,r)/rmq.hpp"
 #include "manacher.hpp"
 //! queries for longest palindromic substring of a given
 //! substring

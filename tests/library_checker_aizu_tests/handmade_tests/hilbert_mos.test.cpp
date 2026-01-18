@@ -2,7 +2,7 @@
   "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A"
 #include "../template.hpp"
 #include "../../../library/contest/random.hpp"
-#include "../../../library/data_structures/uncommon/hilbert_mos.hpp"
+#include "../../../library/data_structures_[l,r)/uncommon/hilbert_mos.hpp"
 const vector<int> di = {1, -1, 0, 0};
 const vector<int> dj = {0, 0, 1, -1};
 void test(int i, int j) {

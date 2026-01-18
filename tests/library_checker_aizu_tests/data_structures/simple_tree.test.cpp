@@ -1,7 +1,7 @@
 #define PROBLEM \
   "https://onlinejudge.u-aizu.ac.jp/problems/DSL_2_A"
 #include "../template.hpp"
-#include "../../../library/data_structures/seg_tree.hpp"
+#include "../../../library/data_structures_[l,r)/seg_tree.hpp"
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n, q;

@@ -4,8 +4,8 @@
 // operations to be O(n)
 #undef _GLIBCXX_DEBUG
 #include "../template.hpp"
-#include "../../../library/data_structures/dsu/dsu_restorable.hpp"
-#include "../../../library/data_structures/uncommon/priority_queue_of_updates.hpp"
+#include "../../../library/dsu/dsu_restorable.hpp"
+#include "../../../library/data_structures_[l,r)/uncommon/priority_queue_of_updates.hpp"
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n, q;

@@ -1,5 +1,5 @@
 #pragma once
-#include "lazy_seg_tree_midpoint.hpp"
+#include "seg_tree_midpoint.hpp"
 ll op(ll vl, ll vr) { return vl + vr; }
 struct seg_tree {
   int n;

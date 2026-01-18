@@ -2,7 +2,7 @@
   "https://judge.yosupo.jp/problem/prefix_substring_lcs"
 #include "../template.hpp"
 #include "../../../library/strings/longest_common_subsequence/lcs_dp.hpp"
-#include "../../../library/data_structures/seg_tree_uncommon/merge_sort_tree.hpp"
+#include "../../../library/data_structures_[l,r)/seg_tree_uncommon/merge_sort_tree.hpp"
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   int q;

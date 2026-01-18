@@ -2,7 +2,7 @@
   "https://judge.yosupo.jp/problem/deque_operate_all_composite"
 #include "../template.hpp"
 #include "../../../library/contest/random.hpp"
-#include "../../../library/data_structures/uncommon/deque_op.hpp"
+#include "../../../library/data_structures_[l,r)/uncommon/deque_op.hpp"
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   const int mod = 998'244'353;

@@ -2,7 +2,7 @@
   "https://judge.yosupo.jp/problem/incremental_scc"
 #include "../template.hpp"
 #include "../../../library/graphs/strongly_connected_components/offline_incremental_scc.hpp"
-#include "../../../library/data_structures/dsu/dsu.hpp"
+#include "../../../library/dsu/dsu.hpp"
 const int mod = 998244353;
 int main() {
   cin.tie(0)->sync_with_stdio(0);

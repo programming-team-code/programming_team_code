@@ -4,7 +4,7 @@
 // to `lower_bound`, causing TLE.
 #undef _GLIBCXX_DEBUG
 #include "../template.hpp"
-#include "../../../library/data_structures/seg_tree_uncommon/persistent.hpp"
+#include "../../../library/data_structures_[l,r)/seg_tree_uncommon/persistent.hpp"
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n, q;
