@@ -35,7 +35,7 @@ template<int N> struct implicit_seg_tree {
       tree[v].lazy = 0;
     }
   }
-  void update(int l, int r, ll add) { // [l, r)
+  void update(int l, int r, ll add) {
     update(l, r, add, root_l, root_r, 0);
   }
   void update(int l, int r, ll add, int tl, int tr,
@@ -49,7 +49,7 @@ template<int N> struct implicit_seg_tree {
     tree[v].num =
       op(tree[tree[v].lch].num, tree[tree[v].rch].num);
   }
-  dt query(int l, int r) { // [l, r)
+  dt query(int l, int r) {
     return query(l, r, root_l, root_r, 0);
   }
   dt query(int l, int r, int tl, int tr, int v) {
