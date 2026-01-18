@@ -41,7 +41,7 @@ struct PST {
       rch);
     return sz(tree) - 1;
   }
-  ll query(int l, int r, int version) { // [l, r)
+  ll query(int l, int r, int version) {
     return query_impl(l, r, root_l, root_r,
       roots[version]);
   }
