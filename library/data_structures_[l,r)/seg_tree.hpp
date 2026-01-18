@@ -19,7 +19,7 @@ template<class T, class F> struct tree {
     for (s[i += n] = val; i /= 2;)
       s[i] = op(s[2 * i], s[2 * i + 1]);
   }
-  T query(int l, int r) { // [l, r)
+  T query(int l, int r) {
     T x = unit, y = unit;
     for (l += n, r += n; l < r; l /= 2, r /= 2) {
       if (l % 2) x = op(x, s[l++]);
