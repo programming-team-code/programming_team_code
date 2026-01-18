@@ -5,8 +5,7 @@ struct seg_tree {
   int n;
   vector<ll> tree, lazy;
   seg_tree(int n): n(n), tree(2 * n), lazy(n) {}
-  seg_tree(const vi& a):
-    n(sz(a)), tree(2 * n), lazy(n) {
+  seg_tree(const vi& a): n(sz(a)), tree(2 * n), lazy(n) {
     int pw2 = bit_ceil(size(a));
     rep(i, 0, n) tree[(i + pw2) % n + n] = a[i];
     for (int i = n - 1; i >= 1; i--)
