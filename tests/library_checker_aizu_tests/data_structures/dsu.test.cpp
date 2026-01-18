@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/unionfind"
 #include "../template.hpp"
-#include "../../../library/data_structures/dsu/dsu.hpp"
+#include "../../../library/dsu/dsu.hpp"
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n, q;

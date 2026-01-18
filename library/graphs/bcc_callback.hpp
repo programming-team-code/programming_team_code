@@ -3,7 +3,7 @@
 //! @code
 //!   {
 //!     vector<vi> adj(n);
-//!     UF uf(n);
+//!     DSU dsu(n);
 //!     vector<bool> seen(n);
 //!     bcc(adj, [&](const vi& nodes) {
 //!       int count_edges = 0;
@@ -18,13 +18,13 @@
 //!         // nodes[0] <=> nodes[1] is a bridge
 //!         return;
 //!       }
-//!       for (int u : nodes) uf.join(u, nodes[0]);
+//!       for (int u : nodes) dsu.join(u, nodes[0]);
 //!     });
 //!     vector<basic_string<int>> bridge_tree(n);
 //!     rep (i, 0, n)
 //!       for (int u : adj[i])
-//!         if (!uf.sameSet(i, u))
-//!           bridge_tree[uf.find(i)] += uf.find(u);
+//!         if (dsu.f(i) != dsu.f(u))
+//!           bridge_tree[dsu.f(i)] += dsu.f(u);
 //!   }
 //!
 //!   vector<basic_string<int>> adj(n);

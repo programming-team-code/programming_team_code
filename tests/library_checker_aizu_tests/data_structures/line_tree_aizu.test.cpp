@@ -1,8 +1,8 @@
 #define PROBLEM \
   "https://onlinejudge.u-aizu.ac.jp/problems/ALDS1_12_A"
 #include "../template.hpp"
-#include "../../../library/data_structures/dsu/line_tree.hpp"
-#include "../../../library/data_structures/rmq.hpp"
+#include "../../../library/dsu/line_tree.hpp"
+#include "../../../library/data_structures_[l,r)/rmq.hpp"
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n;

@@ -1,7 +1,7 @@
 #define PROBLEM \
   "https://judge.yosupo.jp/problem/static_range_sum"
 #include "../template.hpp"
-#include "../../../library/data_structures/uncommon/disjoint_rmq.hpp"
+#include "../../../library/data_structures_[l,r]/disjoint_rmq.hpp"
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n, q;
@@ -12,6 +12,6 @@ int main() {
   while (q--) {
     int l, r;
     cin >> l >> r;
-    cout << rmq.query(l, r) << '\n';
+    cout << rmq.query(l, r - 1) << '\n';
   }
 }

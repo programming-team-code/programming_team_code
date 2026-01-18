@@ -1,5 +1,5 @@
 #pragma once
-#include "../../data_structures/bit.hpp"
+#include "../../data_structures_[l,r)/bit.hpp"
 #include "../edge_cd.hpp"
 #include "sum_adjacent.hpp"
 //! https://judge.yosupo.jp/problem/vertex_add_range_contour_sum_on_tree

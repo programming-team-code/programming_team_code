@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/staticrmq"
 #include "../template.hpp"
-#include "../../../library/data_structures/uncommon/linear_rmq.hpp"
+#include "../../../library/data_structures_[l,r]/linear_rmq.hpp"
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n, q;

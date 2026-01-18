@@ -1,6 +1,6 @@
 #pragma once
-#include "../../library/data_structures/rmq.hpp"
-#include "../../library/data_structures/uncommon/permutation_tree.hpp"
+#include "../../library/data_structures_[l,r)/rmq.hpp"
+#include "../../library/data_structures_[l,r)/uncommon/permutation_tree.hpp"
 perm_tree perm_tree_asserts(const vector<int>& a) {
   int n = sz(a);
   perm_tree pt(a);

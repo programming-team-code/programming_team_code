@@ -1,9 +1,11 @@
 #pragma once
 //! @time O(n + q log n)
 //! @space O(n)
-struct bit_inc {
+// NOLINTNEXTLINE(readability-identifier-naming)
+struct BIT {
   vector<ll> s;
-  bit_inc(int n): s(n) {}
+  BIT(int n): s(n) {}
+#include "../data_structures_[l,r)/bit_uncommon/init.hpp"
   void update(int i, ll d) {
     for (; i < sz(s); i |= i + 1) s[i] += d;
   }
@@ -15,5 +17,5 @@ struct bit_inc {
   ll query(int l, int r) { // [l, r]
     return query(r) - query(l - 1);
   }
-#include "bit_uncommon/walk.hpp"
+#include "../data_structures_[l,r)/bit_uncommon/walk.hpp"
 };

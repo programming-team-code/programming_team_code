@@ -1,7 +1,7 @@
 #define PROBLEM \
   "https://judge.yosupo.jp/problem/range_kth_smallest"
 #include "../template.hpp"
-#include "../../../library/data_structures/seg_tree_uncommon/wavelet_matrix.hpp"
+#include "../../../library/data_structures_[l,r)/seg_tree_uncommon/wavelet_matrix.hpp"
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n, q;

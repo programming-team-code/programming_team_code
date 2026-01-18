@@ -2,8 +2,8 @@
   "https://judge.yosupo.jp/problem/range_parallel_unionfind"
 #undef _GLIBCXX_DEBUG
 #include "../template.hpp"
-#include "../../../library/data_structures/dsu/range_parallel_dsu.hpp"
-#include "../../../library/data_structures/dsu/range_parallel_equivalence_classes.hpp"
+#include "../../../library/dsu/range_parallel_dsu.hpp"
+#include "../../../library/dsu/range_parallel_equivalence_classes.hpp"
 const int mod = 998244353;
 int main() {
   cin.tie(0)->sync_with_stdio(0);
@@ -32,7 +32,7 @@ int main() {
       vi sums(n);
       int offline_ans = 0;
       for (int i = 0; i < n; i++) {
-        int id = uf.find(i);
+        int id = uf.f(i);
         offline_ans =
           (offline_ans + 1LL * sums[id] * y[i]) % mod;
         sums[id] = (sums[id] + y[i]) % mod;

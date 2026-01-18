@@ -2,7 +2,7 @@
   "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A"
 #include "../template.hpp"
 #include "../../../library/contest/random.hpp"
-#include "../../../library/data_structures/dsu/dsu.hpp"
+#include "../../../library/dsu/dsu.hpp"
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   for (int n = 0; n <= 100; n++) {

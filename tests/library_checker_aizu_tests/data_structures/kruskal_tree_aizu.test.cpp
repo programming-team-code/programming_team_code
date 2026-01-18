@@ -1,7 +1,7 @@
 #define PROBLEM \
   "https://onlinejudge.u-aizu.ac.jp/problems/ALDS1_12_A"
 #include "../template.hpp"
-#include "../../../library/data_structures/dsu/kruskal_tree.hpp"
+#include "../../../library/dsu/kruskal_tree.hpp"
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n;

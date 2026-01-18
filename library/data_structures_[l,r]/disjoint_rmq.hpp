@@ -9,10 +9,10 @@
 //! @endcode
 //! @time O(nlogn + q)
 //! @space O(nlogn)
-template<class T, class F> struct disjoint_rmq_inc {
+template<class T, class F> struct disjoint_rmq {
   vector<vector<T>> dp;
   F op;
-  disjoint_rmq_inc(const vector<T>& a, F op): op(op) {
+  disjoint_rmq(const vector<T>& a, F op): op(op) {
     for (int len = 1, n = sz(a); len <= n; len *= 2) {
       dp.emplace_back(n);
       for (int l = 0; l < n; l += 2 * len) {

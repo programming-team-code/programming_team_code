@@ -1,7 +1,7 @@
 #define PROBLEM \
   "https://judge.yosupo.jp/problem/queue_operate_all_composite"
 #include "../template.hpp"
-#include "../../../library/data_structures/uncommon/disjoint_rmq_inc.hpp"
+#include "../../../library/data_structures_[l,r]/disjoint_rmq.hpp"
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   const ll mod = 998'244'353;
@@ -20,7 +20,7 @@ int main() {
       lines.emplace_back(queries[i].a, queries[i].b);
     } else if (queries[i].type == 2) cin >> queries[i].x;
   }
-  disjoint_rmq_inc rmq(lines,
+  disjoint_rmq rmq(lines,
     [](const auto& a, const auto& b) {
       // f1(x) = a.first * x + a.second
       // f2(x) = b.first * x + b.second

@@ -1,5 +1,5 @@
 #pragma once
-#include "linear_rmq.hpp"
+#include "../../data_structures_[l,r]/linear_rmq.hpp"
 //! https://codeforces.com/blog/entry/78898
 //! @code
 //!   auto [p, root, ch] = perm_tree(a);

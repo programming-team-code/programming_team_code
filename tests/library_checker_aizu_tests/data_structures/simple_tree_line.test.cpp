@@ -1,7 +1,7 @@
 #define PROBLEM \
   "https://judge.yosupo.jp/problem/point_set_range_composite"
 #include "../template.hpp"
-#include "../../../library/data_structures/seg_tree.hpp"
+#include "../../../library/data_structures_[l,r)/seg_tree.hpp"
 const int mod = 998'244'353;
 int main() {
   cin.tie(0)->sync_with_stdio(0);

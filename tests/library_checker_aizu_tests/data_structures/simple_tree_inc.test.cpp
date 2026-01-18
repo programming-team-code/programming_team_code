@@ -1,12 +1,12 @@
 #define PROBLEM \
   "https://onlinejudge.u-aizu.ac.jp/problems/DSL_2_A"
 #include "../template.hpp"
-#include "../../../library/data_structures/seg_tree_inc.hpp"
+#include "../../../library/data_structures_[l,r]/seg_tree.hpp"
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n, q;
   cin >> n >> q;
-  tree_inc st(n, int{}, ranges::min);
+  tree st(n, int{}, ranges::min);
   rep(i, 0, n) st.update(i, INT_MAX);
   while (q--) {
     int type;

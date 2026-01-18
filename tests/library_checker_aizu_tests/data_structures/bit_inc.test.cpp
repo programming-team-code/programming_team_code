@@ -1,12 +1,12 @@
 #define PROBLEM \
   "https://judge.yosupo.jp/problem/point_add_range_sum"
 #include "../template.hpp"
-#include "../../../library/data_structures/bit_inc.hpp"
+#include "../../../library/data_structures_[l,r]/bit.hpp"
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n, q;
   cin >> n >> q;
-  bit_inc bit(n);
+  BIT bit(n);
   for (int i = 0; i < n; i++) {
     int val;
     cin >> val;
