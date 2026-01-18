@@ -22,11 +22,10 @@ struct PST {
     root_l(root_l), root_r(root_r), roots(1),
     tree(1, {0LL, 0, 0}) {}
   void update(int idx, ll change, int version) {
-    roots.push_back(update_impl(idx, change, root_l,
-      root_r, roots[version]));
+    roots.push_back(
+      update(idx, change, root_l, root_r, roots[version]));
   }
-  int update_impl(int idx, ll change, int tl, int tr,
-    int v) {
+  int update(int idx, ll change, int tl, int tr, int v) {
     if (tr - tl == 1) {
       tree.emplace_back(tree[v].sum + change, 0, 0);
       return sz(tree) - 1;
@@ -34,22 +33,20 @@ struct PST {
     int tm = tl + (tr - tl) / 2;
     int lch = tree[v].lch;
     int rch = tree[v].rch;
-    if (idx < tm)
-      lch = update_impl(idx, change, tl, tm, lch);
-    else rch = update_impl(idx, change, tm, tr, rch);
+    if (idx < tm) lch = update(idx, change, tl, tm, lch);
+    else rch = update(idx, change, tm, tr, rch);
     tree.emplace_back(tree[lch].sum + tree[rch].sum, lch,
       rch);
     return sz(tree) - 1;
   }
   ll query(int l, int r, int version) {
-    return query_impl(l, r, root_l, root_r,
-      roots[version]);
+    return query(l, r, root_l, root_r, roots[version]);
   }
-  ll query_impl(int l, int r, int tl, int tr, int v) {
+  ll query(int l, int r, int tl, int tr, int v) {
     if (v == 0 || r <= tl || tr <= l) return 0;
     if (l <= tl && tr <= r) return tree[v].sum;
     int tm = tl + (tr - tl) / 2;
-    return query_impl(l, r, tl, tm, tree[v].lch) +
-      query_impl(l, r, tm, tr, tree[v].rch);
+    return query(l, r, tl, tm, tree[v].lch) +
+      query(l, r, tm, tr, tree[v].rch);
   }
 };
