@@ -5,8 +5,6 @@ help:
 	@echo "                                     |"
 	@echo "make compile_clang                   | compile all tests with clang, -std=c++20 for warnings"
 	@echo "                                     |"
-	@echo "make compile_commented_snippets      | compile code in @code...@endcode comments"
-	@echo "                                     |"
 	@echo "make grep_clangformat_cppcheck       | various greps to catch certain things, clang-format, cppcheck"
 	@echo "                                     |"
 	@echo "make do_format                       | format with clang-format"
@@ -54,6 +52,3 @@ update_main:
 
 print_which_tests_havent_run:
 	./scripts/print_which_tests_havent_run.sh
-
-compile_commented_snippets:
-	./scripts/compile_commented_snippets.sh

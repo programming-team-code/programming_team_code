@@ -5,7 +5,9 @@ shopt -s globstar
 git submodule init
 git submodule update
 
-# build cpp file with everything in the library with all code in @code ...
+# Intended usage:
+# find ../library/ -type f -name "*.hpp" | ./scripts/compile_commented_snippets.sh
+# build cpp file with all files passed in via stdin and with all code in @code ...
 # @endcode comments in main
 
 {
@@ -13,7 +15,7 @@ git submodule update
 	echo "using namespace std;"
 	cat library_checker_aizu_tests/kactl_macros.hpp
 	echo "const ll mod = (119 << 23) + 1, root = 62;"
-	find ../library/ -type f -name "*.hpp" | grep --invert-match --file=.config/.code_snippet_excluded_file_list | sort | sed 's/^/#include "/; s/$/"/' | cpp -nostdinc -C -P | grep --invert-match --extended-regexp "const int mod = |const ll mod = "
+	cat | grep --invert-match --file=.config/.code_snippet_excluded_file_list | sort | sed 's/^/#include "/; s/$/"/' | cpp -nostdinc -C -P | grep --invert-match --extended-regexp "const int mod = |const ll mod = "
 	echo "int main() {"
 	echo "vi a,b,subset;"
 	echo "vl left,bottom;"
