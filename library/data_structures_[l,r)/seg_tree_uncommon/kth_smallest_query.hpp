@@ -20,18 +20,18 @@ struct kth_smallest {
   //! @space O(log(maxv - minv)) for recursion stack; no
   //! new nodes are allocated
   int query(int l, int r, int k) {
-    return query_impl(k, pst.root_l, pst.root_r,
-      pst.roots[l], pst.roots[r]);
+    return query(k, pst.root_l, pst.root_r, pst.roots[l],
+      pst.roots[r]);
   }
-  int query_impl(int k, int tl, int tr, int vl, int vr) {
+  int query(int k, int tl, int tr, int vl, int vr) {
     if (tr - tl == 1) return tl;
     int tm = tl + (tr - tl) / 2;
     int left_count = pst.tree[pst.tree[vr].lch].sum -
       pst.tree[pst.tree[vl].lch].sum;
     if (left_count >= k)
-      return query_impl(k, tl, tm, pst.tree[vl].lch,
+      return query(k, tl, tm, pst.tree[vl].lch,
         pst.tree[vr].lch);
-    return query_impl(k - left_count, tm, tr,
-      pst.tree[vl].rch, pst.tree[vr].rch);
+    return query(k - left_count, tm, tr, pst.tree[vl].rch,
+      pst.tree[vr].rch);
   }
 };
