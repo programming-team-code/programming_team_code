@@ -4,7 +4,7 @@
 #include "../../../library/math/matrix_related/xor_basis_unordered_intersection.hpp"
 // checking the condition: for 0 <= i < j < sz(b):
 // (bit_floor(b[i]) & b[j]) == 0
-void check_condition(const basis<int>& b) {
+void check_condition(const basis& b) {
   int n = sz(b.b);
   int or_bits = 0;
   for (int i = n - 1; i >= 0; i--) {
@@ -20,7 +20,7 @@ int main() {
   while (t--) {
     int n;
     cin >> n;
-    basis<int> basis1;
+    basis basis1;
     for (int i = 0; i < n; i++) {
       int val;
       cin >> val;
@@ -29,14 +29,14 @@ int main() {
     check_condition(basis1);
     int m;
     cin >> m;
-    basis<int> basis2;
+    basis basis2;
     for (int j = 0; j < m; j++) {
       int val;
       cin >> val;
       assert(basis2.insert(val));
     }
     check_condition(basis2);
-    basis<int> inter = intersection<int>(basis1, basis2);
+    basis inter = intersection(basis1, basis2);
     check_condition(inter);
     cout << sz(inter.b) << " ";
     for (int val : inter.b) cout << val << " ";
