@@ -1,9 +1,10 @@
 #pragma once
 //! https://codeforces.com/blog/entry/68953
 //! https://codeforces.com/blog/entry/100066?#comment-887897
-//! b.shrink(v) == b.shrink(b.shrink(v))
-//! for x in b: (bit_floor(x)&b.shrink(v))==0
-//! for 0<=i<j<sz(b): (bit_floor(b[i])&b[j])==0
+//! properties:
+//! - shrink(v) == shrink(shrink(v))
+//! - for x in b: (bit_floor(x) & shrink(v)) == 0
+//! - for 0 <= i < j < sz(b): (bit_floor(b[i]) & b[j]) == 0
 //! @time O(32)
 //! @space O(32)
 struct basis {
