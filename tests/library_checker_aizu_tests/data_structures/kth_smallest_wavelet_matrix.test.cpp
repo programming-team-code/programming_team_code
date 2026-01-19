@@ -6,12 +6,12 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n, q;
   cin >> n >> q;
-  vector<ull> a(n);
+  vector<ll> a(n);
   for (int i = 0; i < n; i++) {
     cin >> a[i];
     a[i] <<= 23;
   }
-  wavelet_matrix wm(a, 1'000'000'000LL << 23);
+  wavelet_matrix wm(a, 30 + 23);
   while (q--) {
     int l, r, k;
     cin >> l >> r >> k;
