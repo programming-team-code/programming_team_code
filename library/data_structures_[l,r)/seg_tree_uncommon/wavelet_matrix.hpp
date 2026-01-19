@@ -3,7 +3,7 @@
 //! https://nyaannyaan.github.io/library/data-structure-2d/wavelet-matrix.hpp
 //! @code
 //!   vector<ll> a(n);
-//!   wavelet_matrix wm(a, 30); // 0 <= a[i] < (1LL<<30)
+//!   wavelet_matrix wm(a, 30); // 0 <= a[i] < (1<<30)
 //!   wm.kth(l, r, k); //(k+1)th smallest number in [l,r)
 //!   wm.kth(l, r, 0); //min in [l,r)
 //! @endcode
