@@ -6,8 +6,8 @@
 //! @endcode
 //! @time O(n + q)
 //! @space O(n / 64)
-using ull = uint64_t;
 struct bit_vec {
+  using ull = uint64_t;
   vector<pair<ull, int>> b;
   bit_vec(const vector<bool>& a): b(sz(a) / 64 + 1) {
     rep(i, 0, sz(a)) {
