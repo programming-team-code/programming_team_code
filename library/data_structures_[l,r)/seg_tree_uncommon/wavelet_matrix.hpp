@@ -11,11 +11,23 @@
 struct wavelet_matrix {
   int n;
   vector<bit_vec> bv;
+<<<<<<< HEAD
   wavelet_matrix(vector<ll> a, int lg):
     n(sz(a)), bv(lg, {{}}) {
     for (int h = sz(bv); h--;) {
       vector<bool> b(n);
       rep(i, 0, n) b[i] = (~a[i] >> h) & 1;
+=======
+  wavelet_matrix(const vector<ull>& a, ull max_val):
+    n(sz(a)), bv(bit_width(max_val), {{}}) {
+    vi idx(n);
+    iota(all(idx), 0);
+    for (int h = sz(bv); h--;) {
+      vector<bool> b(n);
+      rep(i, 0, n) b[i] = (~a[idx[i]] >> h) & 1;
+      ranges::stable_partition(idx,
+        [&](int i) { return b[i]; });
+>>>>>>> d33c8d6ad7b529d498b855449a3b9d57f04e402c
       bv[h] = b;
       ranges::stable_partition(a,
         [&](ll x) { return (~x >> h) & 1; });
