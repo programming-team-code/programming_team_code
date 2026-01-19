@@ -28,7 +28,7 @@ struct wavelet_matrix {
       int l0 = bv[h].cnt(l), r0 = bv[h].cnt(r);
       if (k < r0 - l0) l = l0, r = r0;
       else
-        k -= r0 - l0, res |= 1ULL << h,
+        k -= r0 - l0, res |= 1LL << h,
           l += bv[h].cnt(n) - l0, r += bv[h].cnt(n) - r0;
     }
     return res;
