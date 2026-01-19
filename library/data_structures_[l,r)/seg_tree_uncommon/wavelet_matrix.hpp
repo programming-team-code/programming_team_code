@@ -11,7 +11,8 @@
 struct wavelet_matrix {
   int n;
   vector<bit_vec> bv;
-  wavelet_matrix(vector<ll> a, int lg): n(sz(a)), bv(lg, {{}}) {
+  wavelet_matrix(vector<ll> a, int lg):
+    n(sz(a)), bv(lg, {{}}) {
     for (int h = sz(bv); h--;) {
       vector<bool> b(n);
       rep(i, 0, n) b[i] = (~a[i] >> h) & 1;
