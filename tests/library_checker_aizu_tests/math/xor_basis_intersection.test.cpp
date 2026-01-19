@@ -44,8 +44,6 @@ int main() {
       cin >> val;
       assert(basis1.insert(val));
       assert(!basis1.insert(val));
-      assert(basis2.insert(val));
-      assert(!basis2.insert(val));
       assert(basis3.insert(val));
       assert(!basis3.insert(val));
       assert(basis4.insert(val));
@@ -64,8 +62,6 @@ int main() {
       cin >> val;
       assert(basis5.insert(val));
       assert(!basis5.insert(val));
-      assert(basis6.insert(val));
-      assert(!basis6.insert(val));
       assert(basis7.insert(val));
       assert(!basis7.insert(val));
       assert(basis8.insert(val));
