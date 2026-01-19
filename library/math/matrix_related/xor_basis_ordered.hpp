@@ -5,6 +5,7 @@
 //!   basis_ordered<int> b1;
 //!   basis_ordered<ll> b2;
 //!   basis_ordered<bitset<lg>> b3;
+//!   b2.insert(x); // 0 <= x < (1LL<<lg)
 //! @endcode
 //! @time O(lg)
 //! @space O(lg)
