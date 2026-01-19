@@ -36,7 +36,8 @@ int main() {
     int n;
     cin >> n;
     basis basis1;
-    basis_ordered<int> basis2;
+    basis_ordered<int> basis2; // to check that it compiles
+    assert(empty(basis2.b)); // remove unused var warning
     basis_ordered<ll> basis3;
     basis_ordered<bitset<lg>> basis4;
     for (int i = 0; i < n; i++) {
@@ -54,7 +55,7 @@ int main() {
     int m;
     cin >> m;
     basis basis5;
-    basis_ordered<int> basis6; // to check that it compiles
+    basis_ordered<int> basis6;
     basis_ordered<ll> basis7;
     basis_ordered<bitset<lg>> basis8;
     for (int j = 0; j < m; j++) {
