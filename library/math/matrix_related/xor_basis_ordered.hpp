@@ -6,6 +6,8 @@
 //!   basis_ordered<ll> b2;
 //!   basis_ordered<bitset<lg>> b3;
 //! @endcode
+//! @time O(lg)
+//! @space O(lg)
 const int lg = 60;
 template<class T> struct basis_ordered {
   T b[lg]{};

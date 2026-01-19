@@ -1,8 +1,8 @@
 #pragma once
 #include "xor_basis_unordered.hpp"
 //! https://github.com/suisen-cp/cp-library-cpp/blob/main/library/linear_algebra/xor_base.hpp
-//! @time O(32^2) or O(64^2);
-//! @space O(32) or O(64)
+//! @time O(32^2)
+//! @space O(32)
 basis intersection(const basis& u, const basis& v) {
   vector<pii> w(sz(u.b));
   rep(i, 0, sz(w)) w[i] = {u.b[i], u.b[i]};
