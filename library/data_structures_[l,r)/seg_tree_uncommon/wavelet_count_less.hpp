@@ -1,6 +1,6 @@
 #pragma once
 //! count of i in [l..r) such that a[i] < ub
-//! @time O(log(max_val))
+//! @time O(lg)
 //! @space O(1)
 int count(int l, int r, ll ub) {
   int res = 0;
