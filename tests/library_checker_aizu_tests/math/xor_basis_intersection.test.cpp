@@ -54,7 +54,7 @@ int main() {
     int m;
     cin >> m;
     basis basis5;
-    basis_ordered<int> basis6;
+    basis_ordered<int> basis6; // to check that it compiles
     basis_ordered<ll> basis7;
     basis_ordered<bitset<lg>> basis8;
     for (int j = 0; j < m; j++) {
