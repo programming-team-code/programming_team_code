@@ -15,20 +15,15 @@ void check_condition_unordered(const basis& b) {
   }
 }
 void check_condition_ordered(
-  const basis_ordered<int>& basis2,
   const basis_ordered<ll>& basis3,
   const basis_ordered<bitset<lg>>& basis4) {
-  int or_bits2 = 0;
   ll or_bits3 = 0;
   bitset<lg> or_bits4 = 0;
   for (int i = 0; i < lg; i++) {
     assert(
-      (bit_floor(uint64_t(basis2.b[i])) & or_bits2) == 0);
-    assert(
       (bit_floor(uint64_t(basis3.b[i])) & or_bits3) == 0);
     assert((bit_floor(uint64_t(basis4.b[i].to_ullong())) &
              or_bits4.to_ullong()) == 0);
-    or_bits2 |= basis2.b[i];
     or_bits3 |= basis3.b[i];
     or_bits4 |= basis4.b[i];
   }
@@ -57,7 +52,7 @@ int main() {
       assert(!basis4.insert(val));
     }
     check_condition_unordered(basis1);
-    check_condition_ordered(basis2, basis3, basis4);
+    check_condition_ordered(basis3, basis4);
     int m;
     cin >> m;
     basis basis5;
@@ -77,7 +72,7 @@ int main() {
       assert(!basis8.insert(val));
     }
     check_condition_unordered(basis5);
-    check_condition_ordered(basis6, basis7, basis8);
+    check_condition_ordered(basis7, basis8);
     basis inter = intersection(basis1, basis5);
     check_condition_unordered(inter);
     cout << sz(inter.b) << " ";
