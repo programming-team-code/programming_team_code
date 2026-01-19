@@ -1,27 +1,27 @@
 #pragma once
 #include "wavelet_bit_vec.hpp"
 //! @code
-//!   vector<ull> a(n);
-//!   wavelet_matrix wm(a, 1e9); // requires a[i] <= 1e9
+//!   vector<ll> a(n);
+//!   wavelet_matrix wm(a, 30); // 0 <= a[i] < (1LL<<30)
 //!   wm.kth(l, r, k); //(k+1)th smallest number in [l,r)
 //!   wm.kth(l, r, 0); //min in [l,r)
 //! @endcode
-//! @time O(n * log(max_val) + q * log(max_val))
-//! @space O(n * log(max_val) / 64)
+//! @time O(n * lg + q * lg)
+//! @space O(n * lg / 64)
 struct wavelet_matrix {
   int n;
   vector<bit_vec> bv;
-  wavelet_matrix(vector<ull> a, ull max_val):
-    n(sz(a)), bv(bit_width(max_val), {{}}) {
+  wavelet_matrix(vector<ll> a, int lg):
+    n(sz(a)), bv(lg, {{}}) {
     for (int h = sz(bv); h--;) {
-      int i = 0;
       vector<bool> b(n);
-      ranges::stable_partition(a,
-        [&](ull x) { return b[i++] = (~x >> h) & 1; });
+      rep(i, 0, n) b[i] = (~a[i] >> h) & 1;
       bv[h] = b;
+      ranges::stable_partition(a,
+        [&](ll x) { return (~x >> h) & 1; });
     }
   }
-  ull kth(int l, int r, int k) {
+  ll kth(int l, int r, int k) {
     ll res = 0;
     for (int h = sz(bv); h--;) {
       int l0 = bv[h].cnt(l), r0 = bv[h].cnt(r);
