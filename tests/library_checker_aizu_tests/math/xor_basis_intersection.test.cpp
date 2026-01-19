@@ -20,6 +20,8 @@ void check_condition_ordered(
   ll or_bits3 = 0;
   bitset<lg> or_bits4 = 0;
   for (int i = 0; i < lg; i++) {
+    assert(basis3.b[i] == 0 ||
+      bit_floor(1ULL * basis3.b[i]) == (1ULL << i));
     assert(
       (bit_floor(uint64_t(basis3.b[i])) & or_bits3) == 0);
     assert((bit_floor(uint64_t(basis4.b[i].to_ullong())) &
