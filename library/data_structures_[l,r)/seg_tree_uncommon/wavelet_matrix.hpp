@@ -1,5 +1,6 @@
 #pragma once
 #include "wavelet_bit_vec.hpp"
+//! https://nyaannyaan.github.io/library/data-structure-2d/wavelet-matrix.hpp
 //! @code
 //!   vector<ll> a(n);
 //!   wavelet_matrix wm(a, 30); // 0 <= a[i] < (1LL<<30)
