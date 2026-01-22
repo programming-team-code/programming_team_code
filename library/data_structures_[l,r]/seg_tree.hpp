@@ -2,12 +2,11 @@
 //! https://codeforces.com/blog/entry/118682
 //! @code
 //!   {
-//!     tree st(n, pii{}, [&](pii& l, pii& r) {
-//!       return min(l, r);
+//!     tree st(n, 0LL, [&](ll l, ll r) {
+//!       return l + r;
 //!     });
 //!   }
-//!   tree st(n, int{}, ranges::min);
-//!   rep(i, 0, n) st.update(i, a[i]);
+//!   tree st(n, INT_MAX, ranges::min);
 //! @endcode
 //! @time O(n + q log n)
 //! @space O(n)
