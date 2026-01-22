@@ -3,11 +3,11 @@
 struct DSU {
   vi p;
   DSU(int n): p(n, -1) {}
-  int size(int x) { return -p[f(x)]; }
-  int f(int x) { return p[x] < 0 ? x : p[x] = f(p[x]); }
-  bool join(int a, int b) {
-    if ((a = f(a)) == (b = f(b))) return 0;
-    if (p[a] > p[b]) swap(a, b);
-    return p[a] += p[b], p[b] = a, 1;
+  int size(int u) { return -p[f(u)]; }
+  int f(int u) { return p[u] < 0 ? u : p[u] = f(p[u]); }
+  bool join(int u, int v) {
+    if ((u = f(u)) == (v = f(v))) return 0;
+    if (p[u] > p[v]) swap(u, v);
+    return p[u] += p[v], p[v] = u, 1;
   }
 };
