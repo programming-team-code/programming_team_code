@@ -19,7 +19,7 @@ template<class T, class F> struct tree {
   int n;
   F op;
   vector<T> s;
-  tree(int n, T, F op): n(n), op(op), s(2 * n) {}
+  tree(int n, T unit, F op): n(n), op(op), s(2 * n, unit) {}
   void update(int i, T val) {
     for (s[i += n] = val; i /= 2;)
       s[i] = op(s[2 * i], s[2 * i + 1]);
