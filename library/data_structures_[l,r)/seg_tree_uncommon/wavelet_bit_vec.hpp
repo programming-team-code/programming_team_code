@@ -7,12 +7,11 @@
 //! @time O(n + q)
 //! @space O(n / 64)
 struct bit_vec {
-  using ull = uint64_t;
-  vector<pair<ull, int>> b;
+  vector<pair<uint64_t, int>> b;
   bit_vec(const vector<bool>& a): b(sz(a) / 64 + 1) {
     rep(i, 0, sz(a)) {
       auto& [x, y] = b[i >> 6];
-      x |= ull(a[i]) << (i & 63), y += a[i];
+      x |= uint64_t(a[i]) << (i & 63), y += a[i];
     }
     rep(i, 1, sz(b)) b[i].second += b[i - 1].second;
   }
