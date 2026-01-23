@@ -61,5 +61,5 @@ unusedFunction:../kactl/content/number-theory/ModPow.h:13
 unusedFunction:../kactl/stress-tests/utilities/genTree.h:49
 containerOutOfBounds:../library/data_structures_[l,r)/uncommon/permutation_tree.hpp:85
 ctuOneDefinitionRuleViolation:../library/data_structures_[l,r)/bit.hpp:5
-ctuOneDefinitionRuleViolation:../library/data_structures_[l,r)/lazy_seg_tree.hpp:4
+ctuOneDefinitionRuleViolation:../library/data_structures_[l,r)/lazy_seg_tree.hpp:3
 shiftTooManyBits:../library/math/matrix_related/xor_basis_ordered.hpp:18
