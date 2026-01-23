@@ -1,7 +1,7 @@
 #pragma once
 #include "seg_tree_midpoint.hpp"
-ll op(ll vl, ll vr) { return vl + vr; }
 struct seg_tree {
+  ll op(ll vl, ll vr) { return vl + vr; }
   int n;
   vector<ll> tree, lazy;
   seg_tree(int n): n(n), tree(2 * n), lazy(n) {}
@@ -11,9 +11,9 @@ struct seg_tree {
     for (int i = n - 1; i >= 1; i--)
       tree[i] = op(tree[2 * i], tree[2 * i + 1]);
   }
-  void apply(ll change, int tl, int tr, int v) {
-    tree[v] += (tr - tl + 1) * change;
-    if (v < n) lazy[v] += change;
+  void apply(ll d, int tl, int tr, int v) {
+    tree[v] += (tr - tl + 1) * d;
+    if (v < n) lazy[v] += d;
   }
   void push(int tl, int tm, int tr, int v) {
     if (lazy[v]) {
@@ -22,18 +22,16 @@ struct seg_tree {
       lazy[v] = 0;
     }
   }
-  void update(int l, int r, ll change) {
-    update(l, r, change, 0, n - 1, 1);
+  void update(int l, int r, ll d) {
+    update(l, r, d, 0, n - 1, 1);
   }
-  void update(int l, int r, ll change, int tl, int tr,
-    int v) {
+  void update(int l, int r, ll d, int tl, int tr, int v) {
     if (r < tl || tr < l) return;
-    if (l <= tl && tr <= r)
-      return apply(change, tl, tr, v);
+    if (l <= tl && tr <= r) return apply(d, tl, tr, v);
     int tm = split(tl, tr);
     push(tl, tm, tr, v);
-    update(l, r, change, tl, tm, 2 * v);
-    update(l, r, change, tm + 1, tr, 2 * v + 1);
+    update(l, r, d, tl, tm, 2 * v);
+    update(l, r, d, tm + 1, tr, 2 * v + 1);
     tree[v] = op(tree[2 * v], tree[2 * v + 1]);
   }
   ll query(int l, int r) {
