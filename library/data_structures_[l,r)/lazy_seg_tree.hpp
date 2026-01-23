@@ -27,8 +27,7 @@ struct seg_tree {
   }
   void update(int l, int r, ll d, int tl, int tr, int v) {
     if (r <= tl || tr <= l) return;
-    if (l <= tl && tr <= r)
-      return apply(d, tl, tr, v);
+    if (l <= tl && tr <= r) return apply(d, tl, tr, v);
     int tm = split(tl, tr);
     push(tl, tm, tr, v);
     update(l, r, d, tl, tm, 2 * v);
