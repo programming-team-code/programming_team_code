@@ -1,7 +1,7 @@
 #pragma once
 #include "seg_tree_midpoint.hpp"
+ll op(ll vl, ll vr) { return vl + vr; }
 struct seg_tree {
-  ll op(ll vl, ll vr) { return vl + vr; }
   int n;
   vector<ll> tree, lazy;
   seg_tree(int n): n(n), tree(2 * n), lazy(n) {}
