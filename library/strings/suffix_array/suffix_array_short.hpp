@@ -11,13 +11,18 @@
 //! @time O(n * log^2(n))
 //! @space O(n)
 auto sa_short(const auto& s) {
+  const int K = 4;
   int n = sz(s);
   vi sa(n), sa_inv(all(s)), lcp(n - 1);
   iota(all(sa), 0);
-  for (int k = 1; k <= n; k *= 2) {
+  for (int j = 1; j <= n; j *= K) {
     vi x(sa_inv);
     auto proj = [&](int i) {
-      return pair(x[i], i + k < n ? x[i + k] : -1);
+      array<int, K> res;
+      rep (k, 0, K)
+        res[k] = i + j * k < n ? x[i + j * k] : -1;
+      return res;
+      //return pair(x[i], i + j < n ? x[i + j] : -1);
     };
     ranges::sort(sa, {}, proj);
     sa_inv[sa[0]] = 0;
