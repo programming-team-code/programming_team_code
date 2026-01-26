@@ -35,7 +35,7 @@ auto sa_short(const auto& s) {
           }
         }
       } else {
-        lcp[i] = j * K;
+        lcp[i] = min({j * K, n - sa[i], n - sa[i + 1]});
       }
     }
   }
