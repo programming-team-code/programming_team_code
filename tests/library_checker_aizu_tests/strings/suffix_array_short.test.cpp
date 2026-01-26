@@ -16,7 +16,7 @@ int main() {
   }
   vi lcp_kasai(sz(s) - 1);
   int sz = 0;
-  rep(i, 0, n) {
+  rep(i, 0, sz(s)) {
     if (sz > 0) sz--;
     if (sa_inv[i] == 0) continue;
     for (int j = sa[sa_inv[i] - 1];
