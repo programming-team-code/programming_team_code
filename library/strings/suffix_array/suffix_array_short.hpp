@@ -15,7 +15,8 @@ auto sa_short(const auto& s) {
   vi sa(n), sa_inv(all(s)), lcp(n - 1);
   iota(all(sa), 0);
   for (int j = 1; j <= n; j *= K) {
-    vi x(sa_inv), y(lcp);
+    vi x(sa_inv), y(n, -1);
+    rep (i, 0, n - 1) y[sa[i]] = lcp[i];
     int val;
     auto cmp = [&](int i1, int i2) {
       val = 0;
@@ -23,9 +24,7 @@ auto sa_short(const auto& s) {
         int a = i1 + j * k < n ? x[i1 + j * k] : -1;
         int b = i2 + j * k < n ? x[i2 + j * k] : -1;
         if (a != b) {
-          if (a != -1) {
-            if(a<n-1)val += y[a];
-          } else val = n - i1;
+          if (a != -1) val += y[i1 + j * k];
           return a < b;
         }
         val += j;
