@@ -31,6 +31,7 @@ auto sa_short(const auto& s) {
         rep (k, 0, K) {
           if (f(sa[i + 1])[k] != f(sa[i])[k]) {
             lcp[i] = j * k + (sa[i] + j * k < n ? y[x[sa[i] + j * k]] : 0);
+            break;
           }
         }
       } else {
