@@ -22,7 +22,11 @@ auto sa_short(const auto& s) {
       rep (k, 0, K) {
         int a = i1 + j * k < n ? x[i1 + j * k] : -1;
         int b = i2 + j * k < n ? x[i2 + j * k] : -1;
-        if (a != b) return val += y[b], a < b;
+        if (a != b) {
+          if (a != -1) val += y[a];
+          else val = n - i1;
+          return a < b;
+        }
         val += j;
       }
       return false;
