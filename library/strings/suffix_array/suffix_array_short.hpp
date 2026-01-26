@@ -16,27 +16,22 @@ auto sa_short(const auto& s) {
   iota(all(sa), 0);
   for (int j = 1; j <= n; j *= K) {
     vi x(sa_inv), y(lcp);
-    auto f = [&](int i) {
-      array<int, K> res;
-      rep (k, 0, K)
-        res[k] = i + j * k < n ? x[i + j * k] : -1;
-      return res;
+    int val;
+    auto cmp = [&](int i1, int i2) {
+      val = 0;
+      rep (k, 0, K) {
+        int a = i1 + j * k < n ? x[i1 + j * k] : -1;
+        int b = i2 + j * k < n ? x[i2 + j * k] : -1;
+        if (a != b) return val += y[b], a < b;
+        val += j;
+      }
+      return false;
     };
-    ranges::sort(sa, {}, f);
+    ranges::sort(sa, cmp);
     sa_inv[sa[0]] = 0;
     rep(i, 0, n - 1) {
-      sa_inv[sa[i + 1]] = sa_inv[sa[i]];
-      if (f(sa[i + 1]) != f(sa[i])) {
-        sa_inv[sa[i + 1]]++;
-        rep (k, 0, K) {
-          if (f(sa[i + 1])[k] != f(sa[i])[k]) {
-            lcp[i] = j * k + (sa[i] + j * k < n ? y[x[sa[i] + j * k]] : 0);
-            break;
-          }
-        }
-      } else {
-        lcp[i] = min({j * K, n - sa[i], n - sa[i + 1]});
-      }
+      sa_inv[sa[i + 1]] = sa_inv[sa[i]] + cmp(sa[i], sa[i + 1]);
+      lcp[i] = val;
     }
   }
   return tuple{sa, sa_inv, lcp};
