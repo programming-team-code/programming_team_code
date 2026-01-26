@@ -11,32 +11,32 @@
 //! @time O(n * log^2(n))
 //! @space O(n)
 auto sa_short(const auto& s) {
-  const int K = 4;
-  int n = sz(s);
+  const int n = sz(s), K = 4;
   vi sa(n), sa_inv(all(s)), lcp(n - 1);
   iota(all(sa), 0);
   for (int j = 1; j <= n; j *= K) {
-    vi x(sa_inv);
-    auto proj = [&](int i) {
+    vi x(sa_inv), y(lcp);
+    auto f = [&](int i) {
       array<int, K> res;
       rep (k, 0, K)
         res[k] = i + j * k < n ? x[i + j * k] : -1;
       return res;
-      //return pair(x[i], i + j < n ? x[i + j] : -1);
     };
-    ranges::sort(sa, {}, proj);
+    ranges::sort(sa, {}, f);
     sa_inv[sa[0]] = 0;
-    rep(i, 1, n) sa_inv[sa[i]] =
-      sa_inv[sa[i - 1]] + (proj(sa[i - 1]) != proj(sa[i]));
-  }
-  int sz = 0;
-  rep(i, 0, n) {
-    if (sz > 0) sz--;
-    if (sa_inv[i] == 0) continue;
-    for (int j = sa[sa_inv[i] - 1];
-      max(i, j) + sz < n && s[i + sz] == s[j + sz];)
-      sz++;
-    lcp[sa_inv[i] - 1] = sz;
+    rep(i, 0, n - 1) {
+      sa_inv[sa[i + 1]] = sa_inv[sa[i]];
+      if (f(sa[i + 1]) != f(sa[i])) {
+        sa_inv[sa[i]]++;
+        rep (k, 0, K) {
+          if (f(sa[i + 1])[k] != f(sa[i])[k]) {
+            lcp[i] = j * k + (i + j * k < n ? y[i + j * k] : 0);
+          }
+        }
+      } else {
+        lcp[i] = j * K;
+      }
+    }
   }
   return tuple{sa, sa_inv, lcp};
 }
