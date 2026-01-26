@@ -27,10 +27,10 @@ auto sa_short(const auto& s) {
     rep(i, 0, n - 1) {
       sa_inv[sa[i + 1]] = sa_inv[sa[i]];
       if (f(sa[i + 1]) != f(sa[i])) {
-        sa_inv[sa[i]]++;
+        sa_inv[sa[i + 1]]++;
         rep (k, 0, K) {
           if (f(sa[i + 1])[k] != f(sa[i])[k]) {
-            lcp[i] = j * k + (i + j * k < n ? y[i + j * k] : 0);
+            lcp[i] = j * k + (sa[i] + j * k < n ? y[sa_inv[sa[i] + j * k]] : 0);
           }
         }
       } else {
