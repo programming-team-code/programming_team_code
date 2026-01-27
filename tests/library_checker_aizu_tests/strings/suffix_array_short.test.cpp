@@ -10,7 +10,7 @@ int main() {
   string s;
   cin >> s;
   auto [sa, sa_inv, lcp] = sa_short(vi(all(s)));
-  rep (i, 0, sz(s)) {
+  rep(i, 0, sz(s)) {
     assert(sa[sa_inv[i]] == i);
     assert(sa_inv[sa[i]] == i);
   }
