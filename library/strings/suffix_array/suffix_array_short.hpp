@@ -18,9 +18,9 @@ auto sa_short(const auto& s) {
     vi x(sa_inv);
     auto cmp = [&](int i1, int i2) {
       rep(k, 0, b) {
-        int a = i1 + j * k < n ? x[i1 + j * k] : -1;
-        int b = i2 + j * k < n ? x[i2 + j * k] : -1;
-        if (a != b) return a < b;
+        int y = i1 + j * k < n ? x[i1 + j * k] : -1;
+        int z = i2 + j * k < n ? x[i2 + j * k] : -1;
+        if (y != z) return y < z;
       }
       return false;
     };
