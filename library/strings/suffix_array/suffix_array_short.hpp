@@ -7,11 +7,11 @@
 //!   vi s_vec;
 //!   auto [sa1, sa_inv1, lcp1] = sa_short(s_vec);
 //! @endcode
-//! runs in ~0.5s for 5e5
+//! about 2-3x slower than KACTL
 //! @time O(n * log^2(n))
 //! @space O(n)
 auto sa_short(const auto& s) {
-  const int n = sz(s), b = 6;
+  int n = sz(s), b = 6;
   vi sa(n), sa_inv(all(s)), lcp(n - 1);
   iota(all(sa), 0);
   for (int j = 1; j <= n; j *= b) {
@@ -24,7 +24,7 @@ auto sa_short(const auto& s) {
       }
       return false;
     };
-    sort(all(sa), cmp);
+    stable_sort(all(sa), cmp);
     sa_inv[sa[0]] = 0;
     rep(i, 1, n) sa_inv[sa[i]] =
       sa_inv[sa[i - 1]] + cmp(sa[i - 1], sa[i]);
