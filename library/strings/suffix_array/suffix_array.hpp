@@ -57,14 +57,13 @@ auto get_sa(const auto& s, int max_num) {
     }
     if (max_num == n) break;
   }
-  int sz = 0;
+  int l = 0;
   rep(i, 0, n) {
-    if (sz > 0) sz--;
+    if (l > 0) l--;
     if (sa_inv[i] == 0) continue;
-    for (int j = sa[sa_inv[i] - 1];
-      max(i, j) + sz < n && s[i + sz] == s[j + sz];)
-      sz++;
-    lcp[sa_inv[i] - 1] = sz;
+    int j = sa[sa_inv[i] - 1];
+    while (max(i, j) + l < n && s[i + l] == s[j + l]) l++;
+    lcp[sa_inv[i] - 1] = l;
   }
   return tuple{sa, sa_inv, lcp};
 }
