@@ -11,13 +11,13 @@
 //! @time O(n * log^2(n))
 //! @space O(n)
 auto sa_short(const auto& s) {
-  const int n = sz(s), K = 6;
+  const int n = sz(s), x = 6;
   vi sa(n), sa_inv(all(s)), lcp(n - 1);
   iota(all(sa), 0);
-  for (int j = 1; j <= n; j *= K) {
+  for (int j = 1; j <= n; j *= x) {
     vi x(sa_inv);
     auto cmp = [&](int i1, int i2) {
-      rep(k, 0, K) {
+      rep(k, 0, x) {
         int a = i1 + j * k < n ? x[i1 + j * k] : -1;
         int b = i2 + j * k < n ? x[i2 + j * k] : -1;
         if (a != b) return a < b;
