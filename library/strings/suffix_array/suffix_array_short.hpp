@@ -12,10 +12,10 @@
 //! @space O(n)
 auto sa_short(const auto& s) {
   int n = sz(s), b = 6;
-  vi sa(n), sa_inv(all(s)), lcp(n - 1);
+  vi sa(n), sa_inv(all(s)), lcp(n - 1), x;
   iota(all(sa), 0);
   for (int j = 1; j <= n; j *= b) {
-    vi x(sa_inv);
+    swap(x, sa_inv);
     auto cmp = [&](int i1, int i2) {
       rep(k, 0, b) {
         int y = i1 + j * k < n ? x[i1 + j * k] : -1;
