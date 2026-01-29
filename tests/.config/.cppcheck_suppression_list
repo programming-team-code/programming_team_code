@@ -29,7 +29,7 @@ constParameter:../library/data_structures/wavelet_merge/wavelet_tree_updates.hpp
 constParameter:../library/data_structures/wavelet_merge/wavelet_tree_updates.hpp:53
 constParameter:../hackpack-cpp/content/number-theory/ModInt.h:45
 constParameter:library_checker_aizu_tests/data_structures/rmq_inc.test.cpp:11
-variableScope:../kactl/content/number-theory/Factor.h:47
+variableScope:../kactl/content/number-theory/Factor.h:55
 syntaxError:../library/math/n_choose_k/pascals_identity.hpp:4
 syntaxError:../library/math/prime_sieve/calc_sieve.hpp:6
 syntaxError:../library/math/prime_sieve/calc_linear_sieve.hpp:6
