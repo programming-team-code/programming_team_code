@@ -11,7 +11,7 @@ void check(int64_t n) {
   using mat_2_by_2 = Matrix<mi, 2>;
   mat_2_by_2 mat;
   mat.d = {{{{1, 1}}, {{1, 0}}}};
-  vector<mi> vec = {1, 0};
+  array<mi, 2> vec = {1, 0};
   int64_t res = fib(n)[0];
   assert(res == int(((mat ^ n) * vec)[1]));
 }
