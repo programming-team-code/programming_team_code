@@ -15,6 +15,7 @@ template<class T, class F> struct tree {
   vector<T> s;
   tree(int n, T unit, F op):
     n(n), unit(unit), op(op), s(2 * n, unit) {}
+#include "seg_tree_uncommon/init.hpp"
   void update(int i, T val) {
     for (s[i += n] = val; i /= 2;)
       s[i] = op(s[2 * i], s[2 * i + 1]);
