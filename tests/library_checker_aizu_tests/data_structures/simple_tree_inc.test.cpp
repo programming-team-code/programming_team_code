@@ -6,8 +6,7 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n, q;
   cin >> n >> q;
-  tree st(n, int{}, ranges::min);
-  rep(i, 0, n) st.update(i, INT_MAX);
+  tree st(n, INT_MAX, ranges::min);
   while (q--) {
     int type;
     cin >> type;
