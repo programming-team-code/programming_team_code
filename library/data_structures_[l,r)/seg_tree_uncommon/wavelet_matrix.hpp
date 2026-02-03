@@ -25,11 +25,11 @@ struct wavelet_matrix {
   ll kth(int l, int r, int k) {
     ll res = 0;
     for (int h = sz(bv); h--;) {
-      int l0 = bv[h].cnt(l), r0 = bv[h].cnt(r);
-      if (k < r0 - l0) l = l0, r = r0;
+      int x = bv[h].cnt(l), y = bv[h].cnt(r);
+      if (k < y - x) l = x, r = y;
       else
-        k -= r0 - l0, res |= 1LL << h,
-          l += bv[h].cnt(n) - l0, r += bv[h].cnt(n) - r0;
+        k -= y - x, res += 1LL << h, l += bv[h].cnt(n) - x,
+          r += bv[h].cnt(n) - y;
     }
     return res;
   }
