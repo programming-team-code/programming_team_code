@@ -1,4 +1,4 @@
-T walk(int l, int r, function<bool(T)> f) {
+T walk(int l, int r, const auto& f) {
   for (l += n, r += n; l <= r;)
     if (int u = nxt(l, r); f(s[u])) {
       while (u < n)
