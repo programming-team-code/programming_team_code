@@ -2,11 +2,19 @@
 //! https://codeforces.com/blog/entry/118682
 //! @code
 //!   {
-//!     tree st(n, 0LL, [&](ll l, ll r) {
-//!       return l + r;
+//!     tree st(a, [&](int vl, int vr) {
+//!       return vl & vr;
 //!     });
 //!   }
-//!   tree st(n, INT_MAX, ranges::min);
+//!   {
+//!     tree st(n, 0LL, plus<ll>{});
+//!   }
+//!   {
+//!     tree st(n, INT_MAX, ranges::min);
+//!     int idx = st.walk(l, r, [&](int value) {
+//!       return value <= x;
+//!     }); // smallest index in [l, r] s.t. f is true
+//!   }
 //! @endcode
 //! @time O(n + q log n)
 //! @space O(n)
@@ -30,4 +38,5 @@ template<class T, class F> struct tree {
     while (l <= r) x = op(x, s[nxt(l, r)]);
     return x;
   }
+#include "seg_tree_uncommon/walk.hpp"
 };
