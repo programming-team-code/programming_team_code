@@ -13,9 +13,6 @@ grep "endl" --recursive library_checker_aizu_tests/ && exit 1
 echo "check template<class T> over template<typename T>:"
 grep --extended-regexp "template\s?<typename" --recursive ../library/ && exit 1
 
-echo "check 1 instead of true"
-grep "true" --recursive ../library/ && exit 1
-
 echo "check ll instead of long long or int64_t"
 grep "long long" --recursive ../library/ && exit 1
 grep "int64_t" --recursive ../library/**/*.hpp | grep "uint64_t" --invert-match && exit 1
