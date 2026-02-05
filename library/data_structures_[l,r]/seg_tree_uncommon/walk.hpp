@@ -2,8 +2,8 @@ int walk(int l, int r, const auto& f) {
   for (l += n, r += n; l <= r;)
     if (int u = nxt(l, r); f(s[u])) {
       while (u < n)
-        if (f(s[2 * u])) u = 2 * u;
-        else u = 2 * u + 1;
+        if (f(s[2 * u])) u *= 2;
+        else (u *= 2)++;
       return u - n;
     }
   return -1;
