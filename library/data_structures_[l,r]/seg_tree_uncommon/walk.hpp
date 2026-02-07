@@ -13,9 +13,9 @@ int walk(int l, int r, const auto& f) {
       return u - n;
     }
   */
-  bool good=0;
-  while (l < r) {
-    int u = l + n, x = __lg(min(u & -u, r - l));
+  int good=0;
+  while (l <= r) {
+    int u = l + n, x = __lg(min(u & -u, r - l +1-good));
     if (f(s[u >> x])) good=1,r = l + (1 << x) - 1;
     else l += 1 << x;
   }
