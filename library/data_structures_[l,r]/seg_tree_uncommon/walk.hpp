@@ -19,6 +19,6 @@ int walk(int l, int r, const auto& f) {
     if (f(s[u >> x])) good=1,r = l + (1 << x) - 1;
     else l += 1 << x;
   }
-  return good ? l ; -1;
+  return good ? l : -1;
  // return l;
 }
