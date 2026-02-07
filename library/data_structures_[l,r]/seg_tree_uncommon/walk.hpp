@@ -14,7 +14,7 @@ int walk(int l, int r, const auto& f) {
     }
   */
   int good=0;
-  while (l <= r) {
+  while (l <= r-good) {
     int u = l + n, x = __lg(min(u & -u, r - l +1-good));
     if (f(s[u >> x])) good=1,r = l + (1 << x) - 1;
     else l += 1 << x;
