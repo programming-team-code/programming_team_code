@@ -26,7 +26,7 @@ int main() {
         return sum == 0;
       });
       if(idx == n) idx = -1;
-      cout<<idx<<'\n';
+      cout << idx << '\n';
     } else {
       assert(type == 4);
       int total = st.query(0, k);
