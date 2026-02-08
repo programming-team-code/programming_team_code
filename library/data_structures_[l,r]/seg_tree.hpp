@@ -13,7 +13,7 @@
 //!     tree st(n, INT_MAX, ranges::min);
 //!     int idx = st.walk(l, r, [&](int value) {
 //!       return value <= x;
-//!     }); // smallest index in [l, r] s.t. f is true
+//!     }); // smallest index in [l, r] s.t. f is false
 //!   }
 //! @endcode
 //! @time O(n + q log n)

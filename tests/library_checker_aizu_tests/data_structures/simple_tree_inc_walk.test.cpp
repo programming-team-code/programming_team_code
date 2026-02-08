@@ -22,9 +22,10 @@ int main() {
       cout << st.query(k, k) << '\n';
     } else if (type == 3) {
       // returns first element in [k,n-1] such that sum > 0
-      cout << st.walk(k, n - 1, [&](int sum) {
-        return sum > 0;
-      }) << '\n';
+      int idx = st.walk(k, n - 1,
+        [&](int sum) { return sum == 0; });
+      if (idx == n) idx = -1;
+      cout << idx << '\n';
     } else {
       assert(type == 4);
       int total = st.query(0, k);
@@ -33,8 +34,10 @@ int main() {
       } else {
         int pref_sum = 0;
         cout << st.walk(0, k, [&](int sum) {
-          if (pref_sum + sum == total) return 1;
-          pref_sum += sum;
+          if (pref_sum + sum < total) {
+            pref_sum += sum;
+            return 1;
+          }
           return 0;
         }) << '\n';
       }
