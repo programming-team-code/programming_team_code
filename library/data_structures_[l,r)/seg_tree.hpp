@@ -1,10 +1,14 @@
 #pragma once
 //! https://github.com/kth-competitive-programming/kactl/blob/main/content/data-structures/SegmentTree.h
+//! https://codeforces.com/blog/entry/118682
 //! @code
 //!   tree st1(n, INT_MAX, ranges::min);
 //!   tree st2(n, INT_MAX, [&](int x, int y) -> int {
 //!     return min(x, y);
 //!   });
+//!   int idx = st2.walk(l, r, [&](int value) {
+//!     return value > x;
+//!   }); // min idx in [l, r) such that f is false
 //! @endcode
 //! @time O(n + q log n)
 //! @space O(n)
@@ -27,4 +31,5 @@ template<class T, class F> struct tree {
     }
     return op(x, y);
   }
+#include "seg_tree_uncommon/walk.hpp"
 };
