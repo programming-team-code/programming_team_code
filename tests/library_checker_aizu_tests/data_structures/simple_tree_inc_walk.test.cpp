@@ -22,9 +22,8 @@ int main() {
       cout << st.query(k, k) << '\n';
     } else if (type == 3) {
       // returns first element in [k,n-1] such that sum > 0
-      int idx = st.walk(k, n - 1, [&](int sum) {
-        return sum == 0;
-      });
+      int idx = st.walk(k, n - 1,
+        [&](int sum) { return sum == 0; });
       if (idx == n) idx = -1;
       cout << idx << '\n';
     } else {
