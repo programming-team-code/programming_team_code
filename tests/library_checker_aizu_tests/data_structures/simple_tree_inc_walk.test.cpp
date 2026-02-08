@@ -25,7 +25,7 @@ int main() {
       int idx = st.walk(k, n - 1, [&](int sum) {
         return sum == 0;
       });
-      if(idx == n) idx = -1;
+      if (idx == n) idx = -1;
       cout << idx << '\n';
     } else {
       assert(type == 4);
