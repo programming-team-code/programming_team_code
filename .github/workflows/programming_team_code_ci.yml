@@ -15,7 +15,7 @@ jobs:
     - name: Install dependencies
       run: |
         pip install setuptools
-        pip install -U onlinejudge-verify-helper
+        pip install -U online-judge-verify-helper
     - name: Set up Rust (nightly)
       run: |
         rustup set profile minimal
