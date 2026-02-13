@@ -1,8 +1,9 @@
 int walk(int l, int r, const auto& f) {
+  T x = unit;
   while (l < r) {
-    int u = l + n, x = __lg(min(u & -u, r - l));
-    if (f(s[u >> x])) l += 1 << x;
-    else r = l + (1 << x) - 1;
+    int u = l + n, v = __lg(min(u & -u, r - l));
+    if (T y = op(x, s[u >> v]); f(y)) x = y, l += 1 << v;
+    else r = l + (1 << v) - 1;
   }
   return l;
 }

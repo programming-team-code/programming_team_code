@@ -31,11 +31,8 @@ int main() {
       if (total == 0) {
         cout << -1 << '\n';
       } else {
-        int pref_sum = 0;
         cout << st.walk(0, k + 1, [&](int sum) {
-          if (pref_sum + sum < total)
-            return pref_sum += sum, 1;
-          return 0;
+          return sum < total;
         }) << '\n';
       }
     }
