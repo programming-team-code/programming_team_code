@@ -9,15 +9,18 @@ jobs:
   library_checker_aizu:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v4
     - name: Set up Python
-      uses: actions/setup-python@v1
+      uses: actions/setup-python@v5
+      with:
+          python-version: '3.12'
     - name: Install dependencies
-      run: pip3 install online-judge-verify-helper
+      run: pip3 install -U online-judge-verify-helper
     - name: Set up Rust (nightly)
       run: |
         rustup set profile minimal
-        rustup install stable
+        rustup install nightly
+        rustup override set nightly
     - name: Set up git submodules
       run: |
         git submodule init
