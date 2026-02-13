@@ -1,8 +1,8 @@
 int walk(int l, int r, const auto& f) {
   while (l <= r) {
-    int u = l + n, x = __lg(min(u & -u, r - l + 1));
-    if (f(s[u >> x])) l += 1 << x;
-    else r = l + (1 << x) - 2;
+    int u = l + n, v = __lg(min(u & -u, r - l + 1));
+    if (f(s[u >> v])) l += 1 << v;
+    else r = l + (1 << v) - 2;
   }
   return l;
 }
