@@ -13,7 +13,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v1
     - name: Install dependencies
-      run: pip3 install -U online-judge-verify-helper
+      run: pip3 install -U setuptools online-judge-verify-helper
     - name: Set up Rust (nightly)
       run: |
         rustup set profile minimal
