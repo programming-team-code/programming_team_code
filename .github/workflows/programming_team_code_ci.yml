@@ -9,12 +9,12 @@ jobs:
   library_checker_aizu:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v1
     - name: Set up Python
-      uses: actions/setup-python@v5
+      uses: actions/setup-python@v1
     - name: Install dependencies
       run: |
-        pip install setuptools
+        pip install "setuptools<81"
         pip install -U online-judge-verify-helper
     - name: Set up Rust (nightly)
       run: |
