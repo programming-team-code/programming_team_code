@@ -1,7 +1,6 @@
 #define PROBLEM \
   "https://judge.yosupo.jp/problem/predecessor_problem"
 #include "../template.hpp"
-int __lg(unsigned x) { return bit_width(x) - 1; }
 #include "../../../library/data_structures_[l,r]/seg_tree.hpp"
 int main() {
   cin.tie(0)->sync_with_stdio(0);
