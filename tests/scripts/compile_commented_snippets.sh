@@ -25,7 +25,7 @@ git submodule update
 	echo "vi rhs;"
 	echo "vector<vi> mat;"
 	echo "vector<vector<bool>> grid;"
-	echo "int n,m,k,tl,tr,l,r,l1,r1,l2,r2,s_l,s_r,root_l,root_r,source,sink,total_flow,bccid,u,v,lsz,rsz,cols,cap,num,x,y,i1,i2,j1,j2;"
+	echo "int n,m,k,tl,tr,l,r,l1,r1,l2,r2,s_l,s_r,root_l,root_r,source,sink,total_flow,bccid,u,v,lsz,rsz,cols,cap,num,x,y,i,j,i1,i2,j1,j2;"
 } >entire_library_without_main
 
 {
