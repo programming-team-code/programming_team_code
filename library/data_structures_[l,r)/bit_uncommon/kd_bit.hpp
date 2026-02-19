@@ -1,3 +1,13 @@
+#pragma once
+//! https://github.com/ucf-programming-team/hackpack-cpp/blob/master/content/data-structures/KDBIT.h
+//! @code
+//!   KD_BIT<2> bit(n, m);
+//!   bit.update(i, j, 5);
+//!   bit.query(i1, i2, j1, j2));
+//! @endcode
+//! @time O(n^k + q * log^k n)
+//! @space O(n^k)
+// NOLINTNEXTLINE(readability-identifier-naming)
 template<int K> struct KD_BIT;
 template<> struct KD_BIT<0> {
   ll s = 0;
