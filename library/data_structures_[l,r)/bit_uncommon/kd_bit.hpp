@@ -4,6 +4,8 @@
 //!   KD_BIT<2> bit(n, m);
 //!   bit.update(i, j, 5);
 //!   bit.query(i1, i2, j1, j2);
+//!   // 0 <= i1 <= i2 <= n
+//!   // 0 <= j1 <= j2 <= m
 //! @endcode
 //! @time O(n^k + q * log^k n)
 //! @space O(n^k)
