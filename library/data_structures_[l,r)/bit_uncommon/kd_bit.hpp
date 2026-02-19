@@ -12,12 +12,6 @@
 //! @time O(n^k + q * log^k n)
 //! @space O(n^k)
 // NOLINTNEXTLINE(readability-identifier-naming)
-template<int K> struct KD_BIT;
-template<> struct KD_BIT<0> {
-  ll s = 0;
-  void update(ll v) { s += v; }
-  ll query() { return s; }
-};
 template<int K> struct KD_BIT {
   vector<KD_BIT<K - 1>> s;
   template<class... A>
@@ -31,4 +25,9 @@ template<int K> struct KD_BIT {
     for (; r < l; l &= l - 1) ans -= s[l - 1].query(a...);
     return ans;
   }
+};
+template<> struct KD_BIT<0> {
+  ll s = 0;
+  void update(ll v) { s += v; }
+  ll query() { return s; }
 };
