@@ -32,13 +32,8 @@ int main() {
       if (total == 0) {
         cout << -1 << '\n';
       } else {
-        int pref_sum = 0;
         cout << st.walk(0, k, [&](int sum) {
-          if (pref_sum + sum < total) {
-            pref_sum += sum;
-            return 1;
-          }
-          return 0;
+          return sum < total;
         }) << '\n';
       }
     }
