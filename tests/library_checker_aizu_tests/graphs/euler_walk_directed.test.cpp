@@ -1,7 +1,7 @@
 #define PROBLEM \
   "https://judge.yosupo.jp/problem/eulerian_trail_directed"
 #include "../template.hpp"
-#include "../../../library/graphs/euler_walk.hpp"
+#include "../../../library/graphs/euler_path.hpp"
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   int t;
@@ -31,7 +31,7 @@ int main() {
     auto it = ranges::find(deg, 1);
     if (it != end(deg)) s = it - begin(deg);
     else if (s == -1) s = 0;
-    vector<pii> res = euler_walk(adj, m, s);
+    vector<pii> res = euler_path(adj, m, s);
     if (ssize(res) != m + 1) {
       cout << "No" << '\n';
       continue;

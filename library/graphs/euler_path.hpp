@@ -7,11 +7,11 @@
 //!     u--, v--;
 //!     adj[u] += {v, i};
 //!   }
-//!   vector<pii> path = euler_walk(adj, m, s);
+//!   vector<pii> path = euler_path(adj, m, s);
 //! @endcode
 //! @time O(n + m)
 //! @space O(n + m)
-vector<pii> euler_walk(auto& adj, int m, int s) {
+vector<pii> euler_path(auto& adj, int m, int s) {
   vi vis(m);
   vector<pii> path;
   auto dfs = [&](auto&& self, int u, int eu) -> void {
