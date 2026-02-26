@@ -10,9 +10,9 @@ int main() {
     int n, m;
     cin >> n >> m;
     vector<vector<pii>> adj(n);
-    vector<int> deg(n);
+    vi deg(n);
     int s = -1;
-    for (int i = 0; i < m; i++) {
+    rep(i, 0, m) {
       int u, v;
       cin >> u >> v;
       s = u;
@@ -37,11 +37,9 @@ int main() {
       continue;
     }
     cout << "Yes" << '\n';
-    for (int i = 0; i < ssize(res); i++)
-      cout << res[i].first << ' ';
+    rep(i, 0, sz(res)) cout << res[i].first << ' ';
     cout << '\n';
-    for (int i = 1; i < ssize(res); i++)
-      cout << res[i].second << ' ';
+    rep(i, 1, sz(res)) cout << res[i].second << ' ';
     cout << '\n';
   }
   return 0;
