@@ -1,11 +1,13 @@
 #pragma once
 //! @code
 //!   vector<basic_string<array<int, 2>>> adj(n);
+//!   vector<pii> edges(m);
 //!   rep(i, 0, m) {
 //!     int u, v;
 //!     cin >> u >> v;
 //!     u--, v--;
 //!     adj[u] += {v, i};
+//!     edges[i] = {u, v};
 //!   }
 //!   vector<pii> path = euler_path(adj, m, source);
 //! @endcode
