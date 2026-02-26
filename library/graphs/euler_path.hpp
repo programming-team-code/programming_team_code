@@ -7,7 +7,7 @@
 //!     u--, v--;
 //!     adj[u] += {v, i};
 //!   }
-//!   vector<pii> path = euler_path(adj, m, s);
+//!   vector<pii> path = euler_path(adj, m, source);
 //! @endcode
 //! @time O(n + m)
 //! @space O(n + m)
