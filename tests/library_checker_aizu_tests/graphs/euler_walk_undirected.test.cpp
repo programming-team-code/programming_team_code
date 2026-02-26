@@ -16,8 +16,8 @@ int main() {
       int u, v;
       cin >> u >> v;
       s = u;
-      adj[u].push_back({v, i});
-      adj[v].push_back({u, i});
+      adj[u].emplace_back(v, i);
+      adj[v].emplace_back(u, i);
       deg[u] ^= 1;
       deg[v] ^= 1;
     }
