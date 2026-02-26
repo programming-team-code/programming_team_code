@@ -1,4 +1,16 @@
 #pragma once
+//! @code
+//!   vector<basic_string<array<int, 2>>> adj(n);
+//!   rep(i, 0, m) {
+//!     int u, v;
+//!     cin >> u >> v;
+//!     u--, v--;
+//!     adj[u] += {v, i};
+//!   }
+//!   vector<pii> path = euler_walk(adj, m, s);
+//! @endcode
+//! @time O(n + m)
+//! @space O(n + m)
 vector<pii> euler_walk(auto& adj, int m, int s) {
   vi vis(m);
   vector<pii> path;
