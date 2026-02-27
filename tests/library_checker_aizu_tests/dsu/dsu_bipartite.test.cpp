@@ -43,7 +43,7 @@ int main() {
       adj[u].push_back(v);
       adj[v].push_back(u);
     } else cout << (dsu.f(u) == dsu.f(v)) << '\n';
-    if (rnd<int>(0, 20'000) == 0) check();
+    if (i <= 20 || rnd<int>(0, 20'000) == 0) check();
   }
   check();
   return 0;
