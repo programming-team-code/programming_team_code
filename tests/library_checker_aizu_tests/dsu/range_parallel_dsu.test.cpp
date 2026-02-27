@@ -18,17 +18,16 @@ int main() {
     ans = (ans + 1LL * x[u] * x[v]) % mod;
     x[u] = (x[u] + x[v]) % mod;
   };
-  vector<array<int, 3>> queries;
-  queries.reserve(q);
+  vector<vector<pii>> joins(n + 1);
   for (int qq = 0; qq < q; qq++) {
     int k, a, b;
     cin >> k >> a >> b;
-    dsu.join(a, b, k, f);
-    queries.push_back({a, b, k});
+    if (k) dsu.join(a, b, k, f);
+    joins[k].emplace_back(a, b);
     cout << ans << '\n';
     if (qq == 0 || qq == 1 || qq == 10 || qq == 1000 ||
       qq == 100'000 || qq == q - 1) {
-      auto uf = get_rp_dsu(queries, n);
+      auto uf = get_rp_dsu(joins, n);
       vi sums(n);
       int offline_ans = 0;
       for (int i = 0; i < n; i++) {

@@ -1,31 +1,28 @@
 #pragma once
 #include "dsu.hpp"
-//! Given l1,l2,len; joins (l1,l2), (l1+1,l2+1),
-//!   ..., (l1+len-1,l2+len-1)
+//! Given u,v,len; joins (u,v), (u+1,v+1),
+//!   ..., (u+len-1,v+len-1)
 //! `f` is called at most n-1 times
 //! @time O(n*log(n)*\alpha(n) + q)
 //! @space O(n log n)
 struct rp_dsu {
   vector<DSU> dsus;
   rp_dsu(int n): dsus(bit_width(unsigned(n)), DSU(n)) {}
-  void join(int l1, int l2, int len, const auto& f) {
-    if (len == 0) return;
-    int lg = __lg(len);
-    join_impl(lg, l1, l2, f);
-    join_impl(lg, l1 + len - (1 << lg),
-      l2 + len - (1 << lg), f);
+  void join(int u, int v, int len, const auto& f) {
+    int i = __lg(len);
+    join(u, v, f, i);
+    join(u + len - (1 << i), v + len - (1 << i), f, i);
   }
-  void join_impl(int lvl, int u, int v, const auto& f) {
-    if (lvl == 0) {
+  void join(int u, int v, const auto& f, int i) {
+    if (i == 0) {
       u = dsus[0].f(u);
       v = dsus[0].f(v);
       if (!dsus[0].join(v, u)) return;
       int w = dsus[0].f(u);
       return f(w, u ^ v ^ w);
     }
-    if (!dsus[lvl].join(u, v)) return;
-    join_impl(lvl - 1, u, v, f);
-    join_impl(lvl - 1, u + (1 << (lvl - 1)),
-      v + (1 << (lvl - 1)), f);
+    if (!dsus[i].join(u, v)) return;
+    join(u, v, f, i - 1);
+    join(u + (1 << (i - 1)), v + (1 << (i - 1)), f, i - 1);
   }
 };
