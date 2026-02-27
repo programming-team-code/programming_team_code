@@ -2,7 +2,7 @@
   "https://judge.yosupo.jp/problem/two_edge_connected_components"
 #include "../template.hpp"
 #include "../../../library/graphs/uncommon/bridge_tree.hpp"
-#include "../../../library/dsu/dsu_restorable.hpp"
+#include "../../../library/dsu/dsu.hpp"
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n, m;
@@ -33,7 +33,7 @@ int main() {
       accumulate(begin(is_br), end(is_br), 0);
     assert(sum_deg % 2 == 0 && sum_deg / 2 == cnt_bridges);
   }
-  dsu_restorable dsu(n);
+  DSU dsu(n);
   int num_sets_dsu = n;
   for (int i = 0; i < m; i++) {
     if (!is_br[i]) {
@@ -45,12 +45,11 @@ int main() {
   for (int i = 0; i < m; i++) {
     if (is_br[i]) {
       auto [u, v] = edges[i];
-      bool same_set = dsu.same_set(u, v);
-      assert(!same_set);
+      assert(dsu.f(u) != dsu.f(v));
     }
   }
   for (int i = 0; i < n; i++) {
-    int par_of_cc = dsu.find(i);
+    int par_of_cc = dsu.f(i);
     assert(br_id[i] == br_id[par_of_cc]);
   }
   for (int i = 0; i < m; i++) {
