@@ -7,14 +7,14 @@ struct dsu_bipartite {
   vi p, is_bi, parity;
   dsu_bipartite(int n):
     num_sets(n), p(n, -1), is_bi(n, 1), parity(n) {}
-  int find(int v) {
+  int f(int v) {
     if (p[v] < 0) return v;
-    int root = find(p[v]);
+    int root = f(p[v]);
     parity[v] ^= parity[p[v]];
     return p[v] = root;
   }
   bool join(int u, int v) {
-    int root_u = find(u), root_v = find(v);
+    int root_u = f(u), root_v = f(v);
     if (root_u == root_v) {
       if (parity[u] == parity[v]) is_bi[root_u] = 0;
       return 0;
@@ -28,9 +28,6 @@ struct dsu_bipartite {
     p[root_u] += p[root_v], p[root_v] = root_u, num_sets--;
     return 1;
   }
-  int size(int v) { return -p[find(v)]; }
-  bool same_set(int u, int v) {
-    return find(u) == find(v);
-  }
-  bool is_bipartite(int v) { return is_bi[find(v)]; }
+  int size(int v) { return -p[f(v)]; }
+  bool is_bipartite(int v) { return is_bi[f(v)]; }
 };
