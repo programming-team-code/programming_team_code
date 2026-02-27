@@ -2,11 +2,11 @@
   "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A"
 #include "../template.hpp"
 #include "../../../library/contest/random.hpp"
-#include "../../../library/dsu/dsu_restorable.hpp"
+#include "../../../library/dsu/dsu.hpp"
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   for (int n = 1; n < 100; n++) {
-    dsu_restorable dsu(n);
+    DSU dsu(n);
     vector<vector<int>> adj(n);
     vector<pair<int, int>> edge_st;
     for (int q = 0; q < 100; q++) {
