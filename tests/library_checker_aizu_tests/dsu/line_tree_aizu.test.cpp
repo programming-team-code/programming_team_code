@@ -28,7 +28,7 @@ int main() {
   int mst_sum = 0;
   vector<int> edge_weights;
   vector<int> to_time(n);
-  for (int v = lt.find(0), timer = 1;
+  for (int v = lt.f(0), timer = 1;
     lt.edge[v] != pii{-1, -1};
     v = lt.edge[v].first, timer++) {
     edge_weights.push_back(w_eds[lt.edge[v].second][0]);

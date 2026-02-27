@@ -42,8 +42,8 @@ int main() {
       dsu.join(u, v);
       adj[u].push_back(v);
       adj[v].push_back(u);
-    } else cout << dsu.same_set(u, v) << '\n';
-    if (rnd<int>(0, 20'000) == 0) check();
+    } else cout << (dsu.f(u) == dsu.f(v)) << '\n';
+    if (i <= 20 || rnd<int>(0, 20'000) == 0) check();
   }
   check();
   return 0;
