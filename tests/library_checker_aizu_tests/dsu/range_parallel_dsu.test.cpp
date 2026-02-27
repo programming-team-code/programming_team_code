@@ -9,20 +9,26 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n, q;
   cin >> n >> q;
-  rp_dsu dsu(n);
+  rp_dsu r_dsu(n);
   vi y(n);
   for (int i = 0; i < n; i++) cin >> y[i];
   vi x = y;
   int ans = 0;
+  DSU dsu(n);
   auto f = [&](int u, int v) {
-    ans = (ans + 1LL * x[u] * x[v]) % mod;
-    x[u] = (x[u] + x[v]) % mod;
+    u = dsu.f(u);
+    v = dsu.f(v);
+    assert(dsu.join(u, v));
+    int root = dsu.f(u);
+    int other = root ^ u ^ v;
+    ans = (ans + 1LL * x[root] * x[other]) % mod;
+    x[root] = (x[root] + x[other]) % mod;
   };
   vector<vector<pii>> joins(n + 1);
   for (int qq = 0; qq < q; qq++) {
     int k, a, b;
     cin >> k >> a >> b;
-    if (k) dsu.join(a, b, k, f);
+    if (k) r_dsu.join(a, b, k, f);
     joins[k].emplace_back(a, b);
     cout << ans << '\n';
     if (qq == 0 || qq == 1 || qq == 10 || qq == 1000 ||
