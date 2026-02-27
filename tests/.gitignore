@@ -1,9 +1,0 @@
-*.out
-html/
-latex/
-ptc.pdf
-input
-output
-entire_library_without_main
-entire_library.cpp
-.verify-helper/
