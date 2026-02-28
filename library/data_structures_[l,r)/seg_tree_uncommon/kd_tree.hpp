@@ -11,6 +11,11 @@ template<int K> struct KD_SEG {
     s[i += n].update(a...);
     while (i /= 2) s[i].pull(s[2 * i], s[2 * i + 1], a...);
   }
+  void pull(const KD_SEG<K>& l, const KD_SEG<K>& r, int i,
+    auto... a) {
+    s[i += n].pull(l.s[i], r.s[i], a...);
+    while (i /= 2) s[i].pull(s[2 * i], s[2 * i + 1], a...);
+  }
   T query(int l, int r, auto... a) {
     T x = unit, y = unit;
     for (l += n, r += n; l < r; l /= 2, r /= 2) {
@@ -18,11 +23,6 @@ template<int K> struct KD_SEG {
       if (r % 2) y = op(s[--r].query(a...), y);
     }
     return op(x, y);
-  }
-  void pull(const KD_SEG<K>& l, const KD_SEG<K>& r, int i,
-    auto... a) {
-    s[i += n].pull(l.s[i], r.s[i], a...);
-    while (i /= 2) s[i].pull(s[2 * i], s[2 * i + 1], a...);
   }
 };
 template<> struct KD_SEG<0> {
