@@ -20,6 +20,7 @@
 "tests/library_checker_aizu_tests/data_structures/distinct_query.test.cpp": "2026-01-18 11:15:41 +0000",
 "tests/library_checker_aizu_tests/data_structures/implicit_seg_tree.test.cpp": "2026-01-18 11:15:41 +0000",
 "tests/library_checker_aizu_tests/data_structures/kd_bit_1d.test.cpp": "2026-02-19 18:06:52 -0700",
+"tests/library_checker_aizu_tests/data_structures/kd_bit_and_tree.test.cpp": "2026-02-27 18:32:14 -0700",
 "tests/library_checker_aizu_tests/data_structures/kth_smallest_pst.test.cpp": "2026-01-18 11:15:41 +0000",
 "tests/library_checker_aizu_tests/data_structures/kth_smallest_wavelet_matrix.test.cpp": "2026-02-04 02:50:53 +0000",
 "tests/library_checker_aizu_tests/data_structures/lazy_segment_tree.test.cpp": "2026-01-23 04:31:29 +0000",
