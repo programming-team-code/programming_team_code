@@ -8,10 +8,8 @@ template<int K> struct KD_SEG {
   KD_SEG(int n, auto... a):
     n(n), s(2 * n, KD_SEG<K - 1>(a...)) {}
   void update(int p, auto... a) {
-    p += n;
-    s[p].update(a...);
-    for (; p /= 2;)
-      s[p].pull(s[2 * p], s[2 * p + 1], a...);
+    s[p += n].update(a...);
+    while (p /= 2) s[p].pull(s[2 * p], s[2 * p + 1], a...);
   }
   T query(int l, int r, auto... a) {
     T x = unit, y = unit;
@@ -23,10 +21,8 @@ template<int K> struct KD_SEG {
   }
   void pull(const KD_SEG<K>& left, const KD_SEG<K>& right,
     int p, auto... a) {
-    p += n;
-    s[p].pull(left.s[p], right.s[p], a...);
-    for (; p /= 2;)
-      s[p].pull(s[2 * p], s[2 * p + 1], a...);
+    s[p += n].pull(left.s[p], right.s[p], a...);
+    while (p /= 2) s[p].pull(s[2 * p], s[2 * p + 1], a...);
   }
 };
 template<> struct KD_SEG<0> {
