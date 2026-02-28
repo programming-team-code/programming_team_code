@@ -7,9 +7,9 @@ template<int K> struct KD_SEG {
   vector<KD_SEG<K - 1>> s;
   KD_SEG(int n, auto... a):
     n(n), s(2 * n, KD_SEG<K - 1>(a...)) {}
-  void update(int p, auto... a) {
-    s[p += n].update(a...);
-    while (p /= 2) s[p].pull(s[2 * p], s[2 * p + 1], a...);
+  void update(int i, auto... a) {
+    s[i += n].update(a...);
+    while (i /= 2) s[i].pull(s[2 * i], s[2 * i + 1], a...);
   }
   T query(int l, int r, auto... a) {
     T x = unit, y = unit;
@@ -19,18 +19,18 @@ template<int K> struct KD_SEG {
     }
     return op(x, y);
   }
-  void pull(const KD_SEG<K>& left, const KD_SEG<K>& right,
-    int p, auto... a) {
-    s[p += n].pull(left.s[p], right.s[p], a...);
-    while (p /= 2) s[p].pull(s[2 * p], s[2 * p + 1], a...);
+  void pull(const KD_SEG<K>& l, const KD_SEG<K>& r, int i,
+    auto... a) {
+    s[i += n].pull(l.s[i], r.s[i], a...);
+    while (i /= 2) s[i].pull(s[2 * i], s[2 * i + 1], a...);
   }
 };
 template<> struct KD_SEG<0> {
   T val = unit;
   void update(T v) { val = v; }
   T query() { return val; }
-  void pull(const KD_SEG<0>& left, const KD_SEG<0>& right,
+  void pull(const KD_SEG<0>& l, const KD_SEG<0>& r,
     auto...) {
-    val = op(left.val, right.val);
+    val = op(l.val, r.val);
   }
 };
