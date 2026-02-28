@@ -7,13 +7,6 @@ int main() {
   int n, m;
   cin >> n >> m;
   KD_BIT<2> bit(n, m);
-  //!   KD_BIT<2> bit(n, m);
-  //!   bit.update(i, j, 5);
-  //!   // 0 <= i < n
-  //!   // 0 <= j < m
-  //!   bit.query(i1, i2, j1, j2);
-  //!   // 0 <= i1 <= i2 <= n
-  //!   // 0 <= j1 <= j2 <= m
   for (int i = 0; i < n; i++) {
     for (int j = 0; j < m; j++) {
       int c;
