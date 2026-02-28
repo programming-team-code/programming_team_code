@@ -1,7 +1,7 @@
 #pragma once
 using T = int64_t;
-const T unit = 0;
-T op(T a, T b) { return a + b; }
+const T unit = LLONG_MIN;
+T op(T a, T b) { return max(a, b); }
 template<int K> struct KD_SEG {
   int n;
   vector<KD_SEG<K - 1>> s;
@@ -10,7 +10,7 @@ template<int K> struct KD_SEG {
   void update(int p, auto... a) {
     p += n;
     s[p].update(a...);
-    for (p /= 2; p > 0; p /= 2)
+    for (; p /= 2;)
       s[p].pull(s[2 * p], s[2 * p + 1], a...);
   }
   T query(int l, int r, auto... a) {
@@ -25,7 +25,7 @@ template<int K> struct KD_SEG {
     int p, auto... a) {
     p += n;
     s[p].pull(left.s[p], right.s[p], a...);
-    for (p /= 2; p > 0; p /= 2)
+    for (; p /= 2;)
       s[p].pull(s[2 * p], s[2 * p + 1], a...);
   }
 };

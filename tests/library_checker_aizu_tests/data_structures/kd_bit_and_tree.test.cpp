@@ -13,10 +13,8 @@ int main() {
     for (int j = 0; j < m; j++) {
       int c;
       cin >> c;
-      if (c) {
-	      bit.update(i, j, 1);
-	      tree.update(i, j, 1);
-      }
+      tree.update(i, j, c);
+      if (c) bit.update(i, j, 1);
     }
   }
   int res = 0;
@@ -25,10 +23,10 @@ int main() {
       int start = 0, end = min(n - i, m - j) + 1;
       while (start + 1 < end) {
         int mid = (start + end) / 2;
-	int sum = bit.query(i, i + mid, j, j + mid);
-	assert(sum == tree.query(i, i + mid, j, j + mid));
-        if (sum == 0)
-          start = mid;
+        int sum = bit.query(i, i + mid, j, j + mid);
+        assert(
+          (sum > 0) == tree.query(i, i + mid, j, j + mid));
+        if (sum == 0) start = mid;
         else end = mid;
       }
       res = max(res, start);
