@@ -38,5 +38,5 @@ template<class T, class F> struct tree {
     while (l <= r) x = op(x, s[nxt(l, r)]);
     return x;
   }
-#include "seg_tree_uncommon/walk.hpp"
+#include "seg_tree_uncommon/max_right.hpp"
 };

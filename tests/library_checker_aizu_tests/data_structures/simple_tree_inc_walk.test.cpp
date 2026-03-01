@@ -22,7 +22,7 @@ int main() {
       cout << st.query(k, k) << '\n';
     } else if (type == 3) {
       // returns first element in [k,n-1] such that sum > 0
-      int idx = st.walk(k, n - 1,
+      int idx = st.max_right(k, n - 1,
         [&](int sum) { return sum == 0; });
       if (idx == n) idx = -1;
       cout << idx << '\n';
@@ -32,7 +32,7 @@ int main() {
       if (total == 0) {
         cout << -1 << '\n';
       } else {
-        cout << st.walk(0, k, [&](int sum) {
+        cout << st.max_right(0, k, [&](int sum) {
           return sum < total;
         }) << '\n';
       }
