@@ -39,4 +39,5 @@ template<class T, class F> struct tree {
     return x;
   }
 #include "seg_tree_uncommon/max_right.hpp"
+#include "seg_tree_uncommon/min_left.hpp"
 };
