@@ -1,4 +1,4 @@
-int max_right(int l, int r, const auto& f) {
+int min_left(int l, int r, const auto& f) {
   if (T x = s[r + n]; f(x))
     while (l < r) {
       int u = r + n, v = __lg(min(u & -u, r - l));
