@@ -16,8 +16,8 @@
 //!     return value <= x;
 //!   });
 //!   // idx in [l, r]
-//!   // f(op(a[idx+1], ..., a[r-2], a[r-1])) is true
-//!   // f(op(a[idx], ..., a[r-2], a[r-1])) is false
+//!   // f(op(a[idx], ..., a[r-2], a[r-1])) is true
+//!   // f(op(a[idx-1], ..., a[r-2], a[r-1])) is false
 //! @endcode
 //! @time O(n + q log n)
 //! @space O(n)
