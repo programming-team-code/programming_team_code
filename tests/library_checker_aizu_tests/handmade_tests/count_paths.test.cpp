@@ -2,6 +2,10 @@
   "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A"
 #include "../template.hpp"
 #include "../../../library/contest/random.hpp"
+#include "../../../library/trees/lca_rmq.hpp"
+#include "../cd_asserts.hpp"
+#include "../../../kactl/content/numerical/FastFourierTransform.h"
+#include "../../../library/trees/edge_cd.hpp"
 //! @param adj unrooted, connected forest
 //! @param k number of edges
 //! @returns array `num_paths` where `num_paths[i]` =
@@ -43,8 +47,6 @@ vector<ll> count_paths_per_node(const vector<vi>& adj,
     });
   return num_paths;
 }
-#include "../../../library/trees/lca_rmq.hpp"
-#include "../cd_asserts.hpp"
 vector<vector<ll>> naive(const vector<vi>& adj) {
   LCA lc(adj);
   int n = sz(adj);
@@ -60,8 +62,6 @@ vector<vector<ll>> naive(const vector<vi>& adj) {
   }
   return cnts_naive;
 }
-#include "../../../kactl/content/numerical/FastFourierTransform.h"
-#include "../../../library/trees/edge_cd.hpp"
 //! @param adj unrooted, connected tree
 //! @returns array `num_paths` where `num_paths[i]` = # of
 //! paths in tree with `i` edges. `num_paths[1]` = # edges
