@@ -22,3 +22,5 @@ prev.hpp
 next.hpp
 wavelet_count_less.hpp
 dynamic_bitset.hpp
+max_right.hpp
+min_left.hpp

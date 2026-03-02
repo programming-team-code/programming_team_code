@@ -7,7 +7,8 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n, q;
   cin >> n >> q;
-  tree st(n, array<int, 2>{1, 0},
+  const array<int, 2> unit = {1, 0};
+  tree st(n, unit,
     [&](const array<int, 2>& l,
       const array<int, 2>& r) -> array<int, 2> {
       return {int(1LL * l[0] * r[0] % mod),
@@ -30,8 +31,48 @@ int main() {
       cin >> l >> r >> x;
       assert(st.query(l, l) == st.unit);
       assert(st.query(r, r) == st.unit);
-      auto [slope, y_int] = st.query(l, r);
-      cout << (1LL * slope * x + y_int) % mod << '\n';
+      array<int, 2> res = st.query(l, r);
+      {
+        array<int, 2> walk_res = {1, 0};
+        int idx = st.max_right(l, r,
+          [&](const array<int, 2>& curr_line) -> bool {
+            walk_res = curr_line;
+            return 1;
+          });
+        assert(res == walk_res);
+        assert(idx == r);
+      }
+      {
+        array<int, 2> walk_res = unit;
+        int idx = st.max_right(l, r,
+          [&](const array<int, 2>& curr_line) -> bool {
+            walk_res = curr_line;
+            return 0;
+          });
+        assert(walk_res == st.query(l, l + 1));
+        assert(idx == l);
+      }
+      {
+        array<int, 2> walk_res = unit;
+        int idx = st.min_left(l, r,
+          [&](const array<int, 2>& curr_line) -> bool {
+            walk_res = curr_line;
+            return 1;
+          });
+        assert(walk_res == res);
+        assert(idx == l);
+      }
+      {
+        array<int, 2> walk_res = unit;
+        int idx = st.min_left(l, r,
+          [&](const array<int, 2>& curr_line) -> bool {
+            walk_res = curr_line;
+            return 0;
+          });
+        assert(walk_res == st.query(r - 1, r));
+        assert(idx == r);
+      }
+      cout << (1LL * res[0] * x + res[1]) % mod << '\n';
     }
   }
   return 0;

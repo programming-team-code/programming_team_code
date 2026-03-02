@@ -15,6 +15,7 @@ int main() {
       return {int(1LL * l[0] * r[0] % mod),
         int((1LL * r[0] * l[1] + r[1]) % mod)};
     });
+  const array<int, 2> unit = {1, 0};
   while (q--) {
     int type;
     cin >> type;
@@ -25,8 +26,49 @@ int main() {
     } else {
       int l, r, x;
       cin >> l >> r >> x;
-      auto [slope, y_int] = st.query(l, r - 1);
-      cout << (1LL * slope * x + y_int) % mod << '\n';
+      r--;
+      array<int, 2> res = st.query(l, r);
+      {
+        array<int, 2> walk_res = {1, 0};
+        int idx = st.max_right(l, r,
+          [&](const array<int, 2>& curr_line) -> bool {
+            walk_res = curr_line;
+            return 1;
+          });
+        assert(res == walk_res);
+        assert(idx == r + 1);
+      }
+      {
+        array<int, 2> walk_res = unit;
+        int idx = st.max_right(l, r,
+          [&](const array<int, 2>& curr_line) -> bool {
+            walk_res = curr_line;
+            return 0;
+          });
+        assert(walk_res == st.query(l, l));
+        assert(idx == l);
+      }
+      {
+        array<int, 2> walk_res = unit;
+        int idx = st.min_left(l, r,
+          [&](const array<int, 2>& curr_line) -> bool {
+            walk_res = curr_line;
+            return 1;
+          });
+        assert(walk_res == res);
+        assert(idx == l - 1);
+      }
+      {
+        array<int, 2> walk_res = unit;
+        int idx = st.min_left(l, r,
+          [&](const array<int, 2>& curr_line) -> bool {
+            walk_res = curr_line;
+            return 0;
+          });
+        assert(walk_res == st.query(r, r));
+        assert(idx == r);
+      }
+      cout << (1LL * res[0] * x + res[1]) % mod << '\n';
     }
   }
   return 0;
