@@ -5,5 +5,5 @@ int min_left(int l, int r, const auto& f) {
       r -= 1 << v, x = y;
     else l = r - (1 << v) + 1;
   }
-  return l;
+  return r;
 }
