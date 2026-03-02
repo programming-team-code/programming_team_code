@@ -4,7 +4,7 @@ int min_left(int l, int r, const auto& f) {
       int u = r + 1 + n, v = __lg(min(u & -u, r - l + 1));
       if (T y = op(s[(u - 1) >> v], x); f(y))
         r -= 1 << v, x = y;
-      else l = r - (1 << v) + 1;
+      else l = r - (1 << v) + 2;
     }
   return r;
 }
