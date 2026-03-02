@@ -2,7 +2,7 @@
   "https://judge.yosupo.jp/problem/jump_on_tree"
 #include "../template.hpp"
 #include "../../../library/trees/linear_lca.hpp"
-#include "../../../library/trees/linear_kth_par.hpp"
+#include "../../../library/trees/uncommon/linear_kth_par.hpp"
 #include "../../../library/trees/lca_rmq.hpp"
 #include "../compress_tree_asserts.hpp"
 int main() {
