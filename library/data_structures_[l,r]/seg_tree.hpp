@@ -1,20 +1,22 @@
 #pragma once
 //! https://codeforces.com/blog/entry/118682
 //! @code
-//!   {
-//!     tree st(a, [&](int vl, int vr) {
-//!       return vl & vr;
-//!     });
-//!   }
-//!   {
-//!     tree st(n, 0LL, plus<ll>{});
-//!   }
-//!   {
-//!     tree st(n, INT_MAX, ranges::min);
-//!     int idx = st.walk(l, r, [&](int value) {
-//!       return value <= x;
-//!     }); // smallest index in [l, r] s.t. f is false
-//!   }
+//!   tree st1(n, 0, [&](int vl, int vr) {
+//!     return vl + vr;
+//!   });
+//!   tree st(a, ranges::min);
+//!   int idx = st.max_right(l, r, [&](int value) {
+//!     return value <= x;
+//!   });
+//!   // idx in [l, r+1]
+//!   // f(op(a[l], a[l+1], ..., a[idx-1])) is true
+//!   // f(op(a[l], a[l+1], ..., a[idx])) is false
+//!   idx = st.min_left(l, r, [&](int value) {
+//!     return value <= x;
+//!   });
+//!   // idx in [l-1, r]
+//!   // f(op(a[idx+1], ..., a[r-1], a[r])) is true
+//!   // f(op(a[idx], ..., a[r-1], a[r])) is false
 //! @endcode
 //! @time O(n + q log n)
 //! @space O(n)
@@ -38,5 +40,6 @@ template<class T, class F> struct tree {
     while (l <= r) x = op(x, s[nxt(l, r)]);
     return x;
   }
-#include "seg_tree_uncommon/walk.hpp"
+#include "seg_tree_uncommon/max_right.hpp"
+#include "seg_tree_uncommon/min_left.hpp"
 };

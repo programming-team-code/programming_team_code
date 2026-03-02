@@ -10,7 +10,7 @@ int main() {
   cin >> s;
   vector<int> init(n);
   for (int i = 0; i < n; i++) init[i] = s[i] - '0';
-  tree st(init, plus<int>{});
+  tree st(init, ranges::max);
   while (q--) {
     int type, k;
     cin >> type >> k;
@@ -21,21 +21,16 @@ int main() {
     } else if (type == 2) {
       cout << st.query(k, k) << '\n';
     } else if (type == 3) {
-      // returns first element in [k,n-1] such that sum > 0
-      int idx = st.walk(k, n - 1,
-        [&](int sum) { return sum == 0; });
+      // returns first element in [k,n-1] such that mx > 0
+      int idx = st.max_right(k, n - 1,
+        [&](int mx) { return mx == 0; });
       if (idx == n) idx = -1;
       cout << idx << '\n';
     } else {
       assert(type == 4);
-      int total = st.query(0, k);
-      if (total == 0) {
-        cout << -1 << '\n';
-      } else {
-        cout << st.walk(0, k, [&](int sum) {
-          return sum < total;
-        }) << '\n';
-      }
+      cout << st.min_left(0, k, [&](int mx) {
+        return mx == 0;
+      }) << '\n';
     }
   }
   return 0;
