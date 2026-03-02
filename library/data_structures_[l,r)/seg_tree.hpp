@@ -5,7 +5,7 @@
 //!   tree st1(n, 0, [&](int vl, int vr) {
 //!     return vl + vr;
 //!   });
-//!   tree st(a, INT_MAX, ranges::min);
+//!   tree st(n, INT_MAX, ranges::min);
 //!   int idx = st.max_right(l, r, [&](int value) {
 //!     return value <= x;
 //!   });
