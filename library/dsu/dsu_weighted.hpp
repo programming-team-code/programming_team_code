@@ -3,7 +3,7 @@
 //!   dsu_weighted dsu(n);
 //!   dsu.join(u, v, w);
 //!   // we now know a[u] = a[v] + w
-//!   ll w = dsu.diff(u, v)
+//!   ll w = dsu.diff(u, v);
 //!   // satisfies a[u] = a[v] + w based on prior joins
 //! @endcode
 //! @time O(n + q * \alpha(n))
