@@ -13,16 +13,16 @@ struct dsu_bipartite {
   int size(int v) { return -p[f(v)]; }
   bool is_bipartite(int v) { return is_bi[f(v)]; }
   bool join(int u, int v) {
-    int root_u = f(u), root_v = f(v);
+    int x = f(u), y = f(v);
     int new_parity = parity[u] ^ parity[v];
-    if ((u = root_u) == (v = root_v)) {
-      is_bi[u] &= new_parity;
+    if (x == y) {
+      is_bi[x] &= new_parity;
       return 0;
     }
-    if (p[u] > p[v]) swap(u, v);
-    is_bi[u] &= is_bi[v];
-    parity[v] = new_parity ^ 1;
-    p[u] += p[v], p[v] = u;
+    if (p[x] > p[y]) swap(x, y);
+    is_bi[x] &= is_bi[y];
+    parity[y] = new_parity ^ 1;
+    p[x] += p[y], p[y] = x;
     return 1;
   }
 };
