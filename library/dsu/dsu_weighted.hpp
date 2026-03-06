@@ -23,8 +23,8 @@ struct dsu_weighted {
   }
   bool join(int u, int v, ll w) {
     int x = f(u), y = f(v);
-    w += d[u] - d[v];
     if (x == y) return 0;
+    w += d[u] - d[v];
     if (p[x] > p[y]) swap(x, y), w = -w;
     return p[x] += p[y], p[y] = x, d[y] = w, 1;
   }
