@@ -16,7 +16,7 @@ void fwht(int n, vi& a) {
         a[i + j + k] = (x - y + mod) % mod;
       }
 }
-vi xor_conv(vi& a, vi& b) {
+vi xor_conv(vi a, vi b) {
   int n = sz(a), inv = mod_div(1, n);
   fwht(n, a);
   fwht(n, b);
