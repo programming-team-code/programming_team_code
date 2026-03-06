@@ -22,8 +22,9 @@ struct dsu_weighted {
     return f(u) == f(v) ? d[v] - d[u] : 1e18;
   }
   bool join(int u, int v, ll w) {
+    int root_u = f(u), root_v = f(v);
     w += d[u] - d[v];
-    if ((u = f(u)) == (v = f(v))) return 0;
+    if ((u = root_u) == (v = root_v)) return 0;
     if (p[u] > p[v]) swap(u, v), w = -w;
     return p[u] += p[v], p[v] = u, d[v] = w, 1;
   }

@@ -8,14 +8,14 @@ struct dsu_bipartite {
   int f(int v) {
     if (p[v] < 0) return v;
     int root = f(p[v]);
-    parity[v] ^= parity[p[v]];
-    return p[v] = root;
+    return parity[v] ^= parity[p[v]], p[v] = root;
   }
+  int size(int v) { return -p[f(v)]; }
+  bool is_bipartite(int v) { return is_bi[f(v)]; }
   bool join(int u, int v) {
     int root_u = f(u), root_v = f(v);
-    int new_parity = parity[v] ^ parity[u];
-    u = root_u, v = root_v;
-    if (u == v) {
+    int new_parity = parity[u] ^ parity[v];
+    if ((u = root_u) == (v = root_v)) {
       is_bi[u] &= new_parity;
       return 0;
     }
@@ -25,6 +25,4 @@ struct dsu_bipartite {
     p[u] += p[v], p[v] = u;
     return 1;
   }
-  int size(int v) { return -p[f(v)]; }
-  bool is_bipartite(int v) { return is_bi[f(v)]; }
 };
