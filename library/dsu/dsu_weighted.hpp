@@ -14,8 +14,8 @@ struct dsu_weighted {
   dsu_weighted(int n): p(n, -1), d(n) {}
   int f(int u) {
     if (p[u] < 0) return u;
-    int root = f(p[u]);
-    return d[u] += d[p[u]], p[u] = root;
+    int x = f(p[u]);
+    return d[u] += d[p[u]], p[u] = x;
   }
   int size(int u) { return -p[f(u)]; }
   ll diff(int u, int v) {

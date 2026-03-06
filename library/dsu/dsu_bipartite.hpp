@@ -5,13 +5,13 @@
 struct dsu_bipartite {
   vi p, is_bi, parity;
   dsu_bipartite(int n): p(n, -1), is_bi(n, 1), parity(n) {}
-  int f(int v) {
-    if (p[v] < 0) return v;
-    int root = f(p[v]);
-    return parity[v] ^= parity[p[v]], p[v] = root;
+  int f(int u) {
+    if (p[u] < 0) return u;
+    int x = f(p[u]);
+    return parity[u] ^= parity[p[u]], p[u] = x;
   }
-  int size(int v) { return -p[f(v)]; }
-  bool is_bipartite(int v) { return is_bi[f(v)]; }
+  int size(int u) { return -p[f(u)]; }
+  bool is_bipartite(int u) { return is_bi[f(u)]; }
   bool join(int u, int v) {
     int x = f(u), y = f(v);
     int new_parity = parity[u] ^ parity[v];
