@@ -26,7 +26,7 @@ int main() {
       assert(dsu.size(v) == dsu_w.size(v));
     } else {
       ll curr_diff = dsu_w.diff(u, v);
-      if (curr_diff == 1e18) cout << -1 << '\n';
+      if (curr_diff == ll(1e18)) cout << -1 << '\n';
       else cout << (curr_diff % mod + mod) % mod << '\n';
       assert(dsu.size(u) == dsu_w.size(u));
       assert(dsu.size(v) == dsu_w.size(v));
