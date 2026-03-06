@@ -16,12 +16,10 @@ int main() {
     if (type == 0) {
       int w;
       cin >> w;
-      ll curr_diff = dsu_w.diff(u, v);
-      if (curr_diff == 1e18) {
-        assert(dsu_w.join(u, v, w));
-        cout << 1 << '\n';
-      } else
-        cout << ((curr_diff % mod + mod) % mod == w)
+      bool joined = dsu_w.join(u, v, w);
+      if (joined) cout << 1 << '\n';
+      else
+        cout << ((dsu_w.diff(u, v) % mod + mod) % mod == w)
              << '\n';
       dsu.join(u, v);
       assert(dsu.size(u) == dsu_w.size(u));
