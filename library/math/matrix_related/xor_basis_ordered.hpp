@@ -11,8 +11,8 @@
 //! @space O(lg)
 const int lg = 60;
 template<class T> struct basis_ordered {
-  T b[lg]{};
   int siz = 0;
+  T b[lg]{};
   int shrink(T& v) {
     for (int i = lg - 1; i >= 0; i--)
       if (((v >> i) & T(1)) != T(0)) {
