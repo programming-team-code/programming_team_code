@@ -1,4 +1,12 @@
 #pragma once
+//! @code
+//!   dsu_weighted dsu(n);
+//!   dsu.join(u, v, w);
+//!   // we now know a[u] == a[v] +
+//!   wdflasndoasdinvoasdiinfasd
+//! @endcode
+//! @time O(n + q * \alpha(n))
+//! @space O(n)
 struct dsu_weighted {
   vi p;
   vector<ll> d;
