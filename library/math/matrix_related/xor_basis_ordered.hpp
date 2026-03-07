@@ -25,4 +25,14 @@ template<class T> struct basis_ordered {
     int i = shrink(v);
     return i >= 0 ? b[i] = v, ++siz : 0;
   }
+  T walk(T k) {
+    T res{};
+    for (int i = lg - 1, j = siz - 1; i >= 0; i--)
+      if (b[i] != T(0)) {
+        if ((((res >> i) ^ (k >> j)) & T(1)) != T(0))
+          res ^= b[i];
+        j--;
+      }
+    return res;
+  }
 };
