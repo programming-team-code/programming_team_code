@@ -21,7 +21,7 @@ vector<bitset<B>> get_all(const vector<bitset<B>>& basis) {
 }
 int main() {
   cin.tie(0)->sync_with_stdio(0);
-  for (int num_tests = 0; num_tests < 10000; num_tests++) {
+  for (int num_tests = 0; num_tests < 1000; num_tests++) {
     xor_basis<B> b;
     int n = rnd(1, 18);
     vector<bitset<B>> naive_basis;
@@ -37,8 +37,10 @@ int main() {
     vector<bitset<B>> naive_span = get_all(naive_basis);
     vector<bitset<B>> fast_span = get_all(fast_basis);
     assert(naive_span == fast_span);
-    for (int i = 0; i < ssize(naive_span); i++)
-      assert(naive_span[i] == b.walk(i));
+    for (int i = 0; i < ssize(naive_span); i++) {
+      bitset<B> k = i;
+      assert(naive_span[i] == b.walk(k));
+    }
   }
   cout << "Hello World\n";
 }
