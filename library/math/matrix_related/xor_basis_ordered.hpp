@@ -5,7 +5,7 @@
 //!   const int B = 30;
 //!   xor_basis<B> b;
 //!   bitset<B> v;
-//!   bool in_span = b.shrink(v) >= 0;
+//!   bool in_span = b.shrink(v) == -1;
 //!   b.insert(v);
 //!   bitset<B> k = 5; // 0 <= k < (1 << npivot)
 //!   bitset<B> kth = b.walk(k);
