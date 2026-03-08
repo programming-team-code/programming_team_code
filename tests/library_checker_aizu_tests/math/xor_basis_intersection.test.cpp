@@ -14,10 +14,9 @@ void check_condition_unordered(const basis& b) {
     or_bits |= b.b[i];
   }
 }
-const int B = 30;
-void check_condition_ordered(const xor_basis<B>& basis2) {
-  bitset<B> or_bits2;
-  for (int i = 0; i < B; i++) {
+void check_condition_ordered(const xor_basis<30>& basis2) {
+  bitset<30> or_bits2;
+  for (int i = 0; i < 30; i++) {
     assert(basis2.basis[i].none() ||
       bit_floor(basis2.basis[i].to_ulong()) ==
         (1ULL << i));
@@ -34,13 +33,13 @@ int main() {
     int n;
     cin >> n;
     basis basis1;
-    xor_basis<B> basis2;
-    for (int i = 0; i < B; i++)
+    xor_basis<30> basis2;
+    for (int i = 0; i < 30; i++)
       assert(basis2.basis[i].none());
     for (int i = 0; i < n; i++) {
       int val;
       cin >> val;
-      bitset<B> v = val;
+      bitset<30> v = val;
       assert(basis1.insert(val));
       assert(!basis1.insert(val));
       assert(basis2.insert(v));
@@ -51,11 +50,11 @@ int main() {
     int m;
     cin >> m;
     basis basis3;
-    xor_basis<B> basis4;
+    xor_basis<30> basis4;
     for (int j = 0; j < m; j++) {
       int val;
       cin >> val;
-      bitset<B> v = val;
+      bitset<30> v = val;
       assert(basis3.insert(val));
       assert(!basis3.insert(val));
       assert(basis4.insert(v));
