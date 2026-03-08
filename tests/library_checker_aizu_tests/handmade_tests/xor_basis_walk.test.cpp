@@ -3,7 +3,8 @@
 #include "../template.hpp"
 #include "../../../library/contest/random.hpp"
 #include "../../../library/math/matrix_related/xor_basis_ordered.hpp"
-vector<bitset<18>> get_all(const vector<bitset<18>>& basis) {
+vector<bitset<18>> get_all(
+  const vector<bitset<18>>& basis) {
   int n = ssize(basis);
   vector<bitset<18>> span;
   for (int mask = 0; mask < (1 << n); mask++) {
