@@ -2,10 +2,14 @@
 //! https://codeforces.com/blog/entry/68953
 //! https://github.com/ssk4988/Hackpack/blob/main/content/numerical/XORBasis.h
 //! @code
-//!   basis_ordered<int> b1;
-//!   basis_ordered<ll> b2;
-//!   basis_ordered<bitset<lg>> b3;
-//!   b2.insert(x); // 0 <= x < (1LL<<B)
+//!   const int B = 30;
+//!   xor_basis<B> b;
+//!   bool in_span = b.shrink(x) >= 0;
+//!   b.insert(x);
+//!   bitset<B> k = 5; // 0 <= k < (1 << npivot)
+//!   bitset<B> kth = b.walk(k);
+//!   // (k+1)-th smallest vector in span
+//!   // k=0 gives smallest vector in span
 //! @endcode
 //! @time O(q * B^2/32)
 //! @space O(B^2/32)
