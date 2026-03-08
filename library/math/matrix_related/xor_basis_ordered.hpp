@@ -15,7 +15,7 @@ template<int B> struct xor_basis {
   int shrink(bitset<B>& v) {
     for (int i = B; i--;)
       if (v[i]) {
-        if (basis[i][i]) return i;
+        if (!basis[i][i]) return i;
         v ^= basis[i];
       }
     return -1;

@@ -14,20 +14,16 @@ void check_condition_unordered(const basis& b) {
     or_bits |= b.b[i];
   }
 }
-void check_condition_ordered(
-  const basis_ordered<ll>& basis3,
-  const basis_ordered<bitset<lg>>& basis4) {
-  ll or_bits3 = 0;
-  bitset<lg> or_bits4 = 0;
-  for (int i = 0; i < lg; i++) {
-    assert(basis3.b[i] == 0 ||
-      bit_floor(1ULL * basis3.b[i]) == (1ULL << i));
-    assert(
-      (bit_floor(uint64_t(basis3.b[i])) & or_bits3) == 0);
-    assert((bit_floor(uint64_t(basis4.b[i].to_ullong())) &
-             or_bits4.to_ullong()) == 0);
-    or_bits3 |= basis3.b[i];
-    or_bits4 |= basis4.b[i];
+const int B = 30;
+void check_condition_ordered(const xor_basis<B>& basis2) {
+  bitset<B> or_bits2;
+  for (int i = 0; i < B; i++) {
+    assert(basis2.basis[i].none() ||
+      bit_floor(basis2.basis[i].to_ulong()) ==
+        (1ULL << i));
+    assert((bit_floor(basis2.basis[i].to_ulong()) &
+             or_bits2.to_ulong()) == 0);
+    or_bits2 |= basis2.basis[i];
   }
 }
 int main() {
@@ -38,43 +34,36 @@ int main() {
     int n;
     cin >> n;
     basis basis1;
-    basis_ordered<int> basis2; // to check that it compiles
-    assert(
-      sz(basis2.b) == lg); // remove unused var warning
-    basis_ordered<ll> basis3;
-    basis_ordered<bitset<lg>> basis4;
+    xor_basis<B> basis2;
+    for (int i = 0; i < B; i++)
+      assert(basis2.basis[i].none());
     for (int i = 0; i < n; i++) {
       int val;
       cin >> val;
+      bitset<B> v = val;
       assert(basis1.insert(val));
       assert(!basis1.insert(val));
-      assert(basis3.insert(val));
-      assert(!basis3.insert(val));
-      assert(basis4.insert(val));
-      assert(!basis4.insert(val));
+      assert(basis2.insert(v));
+      assert(!basis2.insert(v));
     }
     check_condition_unordered(basis1);
-    check_condition_ordered(basis3, basis4);
+    check_condition_ordered(basis2);
     int m;
     cin >> m;
-    basis basis5;
-    basis_ordered<int> basis6;
-    assert(sz(basis6.b) == lg);
-    basis_ordered<ll> basis7;
-    basis_ordered<bitset<lg>> basis8;
+    basis basis3;
+    xor_basis<B> basis4;
     for (int j = 0; j < m; j++) {
       int val;
       cin >> val;
-      assert(basis5.insert(val));
-      assert(!basis5.insert(val));
-      assert(basis7.insert(val));
-      assert(!basis7.insert(val));
-      assert(basis8.insert(val));
-      assert(!basis8.insert(val));
+      bitset<B> v = val;
+      assert(basis3.insert(val));
+      assert(!basis3.insert(val));
+      assert(basis4.insert(v));
+      assert(!basis4.insert(v));
     }
-    check_condition_unordered(basis5);
-    check_condition_ordered(basis7, basis8);
-    basis inter = intersection(basis1, basis5);
+    check_condition_unordered(basis3);
+    check_condition_ordered(basis4);
+    basis inter = intersection(basis1, basis3);
     check_condition_unordered(inter);
     cout << sz(inter.b) << " ";
     for (int val : inter.b) cout << val << " ";
