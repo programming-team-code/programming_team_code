@@ -28,14 +28,16 @@ int main() {
     for (int i = 0; i < n; i++) {
       bitset<B> val = rnd(0, (1 << n) - 1);
       if (b.insert(val)) naive_basis.push_back(val);
+      assert(b.npivot + b.nfree == i + 1);
     }
     vector<bitset<B>> fast_basis;
     for (int i = 0; i < B; i++)
-      if (b.basis[i].any())
-        fast_basis.push_back(b.basis[i]);
+      if (b.basis[i][i]) fast_basis.push_back(b.basis[i]);
     vector<bitset<B>> naive_span = get_all(naive_basis);
     vector<bitset<B>> fast_span = get_all(fast_basis);
     assert(naive_span == fast_span);
+    for (int i = 0; i < ssize(naive_span); i++)
+      assert(naive_span[i] == b.walk(i));
   }
   cout << "Hello World\n";
 }
