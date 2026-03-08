@@ -5,34 +5,24 @@
 //!   basis_ordered<int> b1;
 //!   basis_ordered<ll> b2;
 //!   basis_ordered<bitset<lg>> b3;
-//!   b2.insert(x); // 0 <= x < (1LL<<lg)
+//!   b2.insert(x); // 0 <= x < (1LL<<B)
 //! @endcode
-//! @time O(lg)
-//! @space O(lg)
-const int lg = 60;
-template<class T> struct basis_ordered {
-  int siz = 0;
-  T b[lg]{};
-  int shrink(T& v) {
-    for (int i = lg - 1; i >= 0; i--)
-      if (((v >> i) & T(1)) != T(0)) {
-        if (b[i] == T(0)) return i;
-        v ^= b[i];
+//! @time O(q * B^2/32)
+//! @space O(B^2/32)
+template<int B> struct xor_basis {
+  bitset<B> basis[B];
+  int npivot = 0, nfree = 0;
+  int shrink(bitset<B>& v) {
+    for (int i = B; i--;)
+      if (v[i]) {
+        if (basis[i][i]) return i;
+        v ^= basis[i];
       }
     return -1;
   }
-  bool insert(T v) {
+  bool insert(bitset<B>& v) {
     int i = shrink(v);
-    return i >= 0 ? b[i] = v, ++siz : 0;
+    return i >= 0 ? basis[i] = v, ++npivot : !++nfree;
   }
-  T walk(T k) {
-    T res{};
-    for (int i = lg - 1, j = siz - 1; i >= 0; i--)
-      if (b[i] != T(0)) {
-        if ((((res >> i) ^ (k >> j)) & T(1)) != T(0))
-          res ^= b[i];
-        j--;
-      }
-    return res;
-  }
+#include "walk.hpp"
 };
