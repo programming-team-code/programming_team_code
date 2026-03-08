@@ -30,6 +30,7 @@ int main() {
       if (b.insert(val)) naive_basis.push_back(val);
       assert(b.npivot + b.nfree == i + 1);
     }
+    assert(ssize(naive_basis) == b.npivot);
     vector<bitset<B>> fast_basis;
     for (int i = 0; i < B; i++)
       if (b.basis[i][i]) fast_basis.push_back(b.basis[i]);
