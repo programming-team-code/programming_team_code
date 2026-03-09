@@ -30,9 +30,9 @@ struct linear_lca {
   int lca(int u, int v) {
     if (unsigned j = in[u] ^ in[v]) {
       j = asc[u] & asc[v] & -bit_floor(j);
-      if (unsigned k = bit_floor(asc[u] ^ j))
+      if (auto k = bit_floor(asc[u] ^ j))
         u = head[(in[u] & -k) | k];
-      if (unsigned k = bit_floor(asc[v] ^ j))
+      if (auto k = bit_floor(asc[v] ^ j))
         v = head[(in[v] & -k) | k];
     }
     return d[u] < d[v] ? u : v;
