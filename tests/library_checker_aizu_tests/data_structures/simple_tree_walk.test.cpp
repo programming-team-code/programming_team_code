@@ -21,15 +21,22 @@ int main() {
       cout << st.query(k, k + 1) << '\n';
     } else if (type == 3) {
       // returns first element in [k,n) such that mx > 0
-      int idx = st.max_right(k, n,
-        [&](int mx) { return mx == 0; });
-      if (idx == n) idx = -1;
+      int idx = -1;
+      st.max_right(k, n, [&](int m, int mx) {
+        if (mx == 0) return 1;
+        idx = m - 1;
+        return 0;
+      });
       cout << idx << '\n';
     } else {
       assert(type == 4);
-      cout << st.min_left(0, k + 1,
-                [&](int mx) { return mx == 0; }) -
-          1 << '\n';
+      int idx = -1;
+      st.min_left(0, k + 1, [&](int m, int mx) {
+        if (mx == 0) return 1;
+        idx = m;
+        return 0;
+      });
+      cout << idx << '\n';
     }
   }
   return 0;

@@ -6,18 +6,14 @@
 //!     return vl + vr;
 //!   });
 //!   tree st(n, INT_MAX, ranges::min);
-//!   int idx = st.max_right(l, r, [&](int value) {
+//!   int idx = st.max_right(l, r, [&](int m, int value) {
+//!     // value = op(a[l], a[l+1], ..., a[m-1])
 //!     return value <= x;
 //!   });
-//!   // idx in [l, r]
-//!   // f(op(a[l], a[l+1], ..., a[idx-1])) is true
-//!   // f(op(a[l], a[l+1], ..., a[idx])) is false
-//!   idx = st.min_left(l, r, [&](int value) {
+//!   idx = st.min_left(l, r, [&](int m, int value) {
+//!     // value = op(a[m], ..., a[r-2], a[r-1])
 //!     return value <= x;
 //!   });
-//!   // idx in [l, r]
-//!   // f(op(a[idx], ..., a[r-2], a[r-1])) is true
-//!   // f(op(a[idx-1], ..., a[r-2], a[r-1])) is false
 //! @endcode
 //! @time O(n + q log n)
 //! @space O(n)
