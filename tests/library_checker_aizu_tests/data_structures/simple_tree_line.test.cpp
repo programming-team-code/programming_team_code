@@ -34,9 +34,12 @@ int main() {
       array<int, 2> res = st.query(l, r);
       {
         array<int, 2> walk_res = {1, 0};
-        int idx = st.max_right(l, r,
-          [&](const array<int, 2>& curr_line) -> bool {
+        int idx = -1;
+        st.max_right(l, r,
+          [&](int m,
+            const array<int, 2>& curr_line) -> bool {
             walk_res = curr_line;
+            idx = m;
             return 1;
           });
         assert(res == walk_res);
@@ -44,19 +47,25 @@ int main() {
       }
       {
         array<int, 2> walk_res = unit;
-        int idx = st.max_right(l, r,
-          [&](const array<int, 2>& curr_line) -> bool {
+        int idx = -1;
+        st.max_right(l, r,
+          [&](int m,
+            const array<int, 2>& curr_line) -> bool {
             walk_res = curr_line;
+            idx = m;
             return 0;
           });
         assert(walk_res == st.query(l, l + 1));
-        assert(idx == l);
+        assert(idx == l + 1);
       }
       {
         array<int, 2> walk_res = unit;
-        int idx = st.min_left(l, r,
-          [&](const array<int, 2>& curr_line) -> bool {
+        int idx = -1;
+        st.min_left(l, r,
+          [&](int m,
+            const array<int, 2>& curr_line) -> bool {
             walk_res = curr_line;
+            idx = m;
             return 1;
           });
         assert(walk_res == res);
@@ -64,13 +73,16 @@ int main() {
       }
       {
         array<int, 2> walk_res = unit;
-        int idx = st.min_left(l, r,
-          [&](const array<int, 2>& curr_line) -> bool {
+        int idx = -1;
+        st.min_left(l, r,
+          [&](int m,
+            const array<int, 2>& curr_line) -> bool {
             walk_res = curr_line;
+            idx = m;
             return 0;
           });
         assert(walk_res == st.query(r - 1, r));
-        assert(idx == r);
+        assert(idx == r - 1);
       }
       cout << (1LL * res[0] * x + res[1]) % mod << '\n';
     }
