@@ -23,7 +23,7 @@ int main() {
     } else if (type == 3) {
       // returns first element in [k,n-1] such that mx > 0
       int idx = -1;
-      st.max_right(k, n - 1, [&](int mx, int m) {
+      st.max_right(k, n - 1, [&](int m, int mx) {
         if (mx == 0) return 1;
         idx = m;
         return 0;
@@ -32,7 +32,7 @@ int main() {
     } else {
       assert(type == 4);
       int idx = -1;
-      cout << st.min_left(0, k, [&](int mx, int m) {
+      cout << st.min_left(0, k, [&](int m, int mx) {
         if (mx == 0) return 1;
         idx = m;
         return 0;

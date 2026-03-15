@@ -32,8 +32,8 @@ int main() {
         array<int, 2> walk_res = {1, 0};
         int idx = -1;
         st.max_right(l, r,
-          [&](const array<int, 2>& curr_line,
-            int m) -> bool {
+          [&](int m,
+            const array<int, 2>& curr_line) -> bool {
             idx = m;
             walk_res = curr_line;
             return 1;
@@ -45,8 +45,8 @@ int main() {
         array<int, 2> walk_res = unit;
         int idx = -1;
         st.max_right(l, r,
-          [&](const array<int, 2>& curr_line,
-            int m) -> bool {
+          [&](int m,
+            const array<int, 2>& curr_line) -> bool {
             walk_res = curr_line;
             idx = m;
             return 0;
@@ -58,8 +58,8 @@ int main() {
         array<int, 2> walk_res = unit;
         int idx = -1;
         st.min_left(l, r,
-          [&](const array<int, 2>& curr_line,
-            int m) -> bool {
+          [&](int m,
+            const array<int, 2>& curr_line) -> bool {
             walk_res = curr_line;
             idx = m;
             return 1;
@@ -71,8 +71,8 @@ int main() {
         array<int, 2> walk_res = unit;
         int idx = -1;
         st.min_left(l, r,
-          [&](const array<int, 2>& curr_line,
-            int m) -> bool {
+          [&](int m,
+            const array<int, 2>& curr_line) -> bool {
             walk_res = curr_line;
             idx = m;
             return 0;
