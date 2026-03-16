@@ -14,25 +14,25 @@ template<class F, class G> struct centroid {
     adj(adj), f(f), siz(sz(adj), -1) {
     dfs(0, -1);
   }
-  void calc_sz(int v, int p) {
-    siz[v] = 1;
-    for (int u : adj[v])
-      if (u != p) calc_sz(u, v), siz[v] += siz[u];
+  void calc_sz(int u, int p) {
+    siz[u] = 1;
+    for (int v : adj[u])
+      if (v != p) calc_sz(v, u), siz[u] += siz[v];
   }
-  void dfs(int v, int p) {
-    calc_sz(v, -1);
-    for (int w = -1, sz_root = siz[v];;) {
-      auto big_ch = ranges::find_if(adj[v], [&](int u) {
-        return u != w && 2 * siz[u] > sz_root;
+  void dfs(int u, int p) {
+    calc_sz(u, -1);
+    for (int w = -1, sz_root = siz[u];;) {
+      auto big_ch = ranges::find_if(adj[u], [&](int v) {
+        return v != w && 2 * siz[v] > sz_root;
       });
-      if (big_ch == end(adj[v])) break;
-      w = v, v = *big_ch;
+      if (big_ch == end(adj[u])) break;
+      w = u, u = *big_ch;
     }
-    f(adj, v, p);
-    for (int u : adj[v]) {
-      iter_swap(ranges::find(adj[u], v), rbegin(adj[u]));
-      adj[u].pop_back();
-      dfs(u, v);
+    f(adj, u, p);
+    for (int v : adj[u]) {
+      iter_swap(ranges::find(adj[v], u), rbegin(adj[v]));
+      adj[v].pop_back();
+      dfs(v, u);
     }
   }
 };
