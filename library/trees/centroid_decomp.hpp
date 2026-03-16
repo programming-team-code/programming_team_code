@@ -1,8 +1,7 @@
 #pragma once
 //! @code
 //!   vector<basic_string<int>> adj(n);
-//!   centroid(adj, [&](const auto& adj,
-//!     int cent, int par_cent) {});
+//!   centroid(adj, [&](int cent, int par_cent) {});
 //! @endcode
 //! @time O(n log n)
 //! @space O(n)
