@@ -1,7 +1,6 @@
 #define PROBLEM \
   "https://judge.yosupo.jp/problem/vertex_get_range_contour_add_on_tree"
 #include "../template.hpp"
-#include "../edge_cd_asserts.hpp"
 #include "../../../library/data_structures_[l,r)/bit_uncommon/rupq.hpp"
 #include "../../../library/trees/edge_cd.hpp"
 struct sum_adj {
@@ -49,24 +48,23 @@ struct contour_range_update {
   //! @param a a[u] = initial number for node u
   //! @time O(n logφ n)
   //! @space O(n logφ n) for `info` and `bits`
-  contour_range_update(const vector<vi>& adj,
+  contour_range_update(vector<vi> adj,
     const vector<ll>& a):
     n(sz(a)), a(a), sum_a(adj, vector<ll>(n)), info(n) {
-    edge_cd(adj,
-      [&](const vector<vi>& cd_adj, int cent, int split) {
-        array<int, 2> mx_d = {0, 0};
-        auto dfs = [&](auto&& self, int u, int p, int d,
-                     int side) -> void {
-          mx_d[side] = max(mx_d[side], d);
-          info[u].push_back({int(sz(bits)), d, side});
-          for (int v : cd_adj[u])
-            if (v != p) self(self, v, u, 1 + d, side);
-        };
-        rep(i, 0, sz(cd_adj[cent]))
-          dfs(dfs, cd_adj[cent][i], cent, 1, i < split);
-        bits.push_back(
-          {bit_rupq(mx_d[0] + 1), bit_rupq(mx_d[1] + 1)});
-      });
+    edge_cd(adj, [&](int cent, int split) {
+      array<int, 2> mx_d = {0, 0};
+      auto dfs = [&](auto&& self, int u, int p, int d,
+                   int side) -> void {
+        mx_d[side] = max(mx_d[side], d);
+        info[u].push_back({int(sz(bits)), d, side});
+        for (int v : adj[u])
+          if (v != p) self(self, v, u, 1 + d, side);
+      };
+      rep(i, 0, sz(adj[cent]))
+        dfs(dfs, adj[cent][i], cent, 1, i < split);
+      bits.push_back(
+        {bit_rupq(mx_d[0] + 1), bit_rupq(mx_d[1] + 1)});
+    });
   }
   //! @param u,l,r,delta add delta to all nodes v such
   //! that l <= dist(u, v) < r
@@ -106,8 +104,11 @@ int main() {
     adj[u].push_back(v);
     adj[v].push_back(u);
   }
-  { edge_cd(adj, edge_cd_asserts); }
   contour_range_update cu(adj, a);
+  {
+#include "../edge_cd_asserts.hpp"
+    edge_cd(adj, edge_cd_asserts);
+  }
   while (q--) {
     int type;
     cin >> type;

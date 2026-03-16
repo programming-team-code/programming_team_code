@@ -1,23 +1,16 @@
 #define PROBLEM \
   "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A"
 #include "../template.hpp"
-#include "../edge_cd_asserts.hpp"
 #include "../../../kactl/stress-tests/utilities/genTree.h"
 #include "../../../library/trees/edge_cd.hpp"
 int main() {
   {
     vector<vector<int>> adj;
-    edge_cd(adj,
-      [&](const vector<vector<int>>&, int, int) -> void {
-        assert(false);
-      });
+    edge_cd(adj, [&](int, int) -> void { assert(false); });
   }
   {
     vector<vector<int>> adj(1);
-    edge_cd(adj,
-      [&](const vector<vector<int>>&, int, int) -> void {
-        assert(false);
-      });
+    edge_cd(adj, [&](int, int) -> void { assert(false); });
   }
   for (int n = 2; n <= 7; n++) {
     int num_codes = 1;
@@ -42,6 +35,7 @@ int main() {
         adj[u].push_back(v);
         adj[v].push_back(u);
       }
+#include "../edge_cd_asserts.hpp"
       edge_cd(adj, edge_cd_asserts);
     }
   }
