@@ -1,6 +1,5 @@
 #pragma once
-void edge_cd_asserts(const vector<vi>& adj, int cent,
-  int split) {
+auto edge_cd_asserts = [&](int cent, int split) -> void {
   assert(0 < split && split < sz(adj[cent]));
   auto dfs = [&](auto&& self, int u, int p) -> int {
     int siz = 1;
@@ -47,4 +46,4 @@ void edge_cd_asserts(const vector<vi>& adj, int cent,
     assert(!is_balanced(a, cnts[0] + b));
     assert(!is_balanced(b, cnts[0] + a));
   }
-}
+};
