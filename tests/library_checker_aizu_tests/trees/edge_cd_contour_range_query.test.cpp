@@ -1,7 +1,6 @@
 #define PROBLEM \
   "https://judge.yosupo.jp/problem/vertex_add_range_contour_sum_on_tree"
 #include "../template.hpp"
-#include "../edge_cd_asserts.hpp"
 #include "../../../library/data_structures_[l,r)/bit.hpp"
 #include "../../../library/trees/edge_cd.hpp"
 struct sum_adj {
@@ -47,25 +46,23 @@ struct contour_range_query {
   //! @param a a[u] = initial number for node u
   //! @time O(n logφ n)
   //! @space O(n logφ n) for `info` and `bits`
-  contour_range_query(const vector<vi>& adj,
-    const vector<ll>& a):
+  contour_range_query(vector<vi> adj, const vector<ll>& a):
     n(sz(a)), sum_a(adj, a), info(n) {
-    edge_cd(adj,
-      [&](const vector<vi>& cd_adj, int cent, int split) {
-        vector<vector<ll>> sum_num(2, vector<ll>(1));
-        auto dfs = [&](auto&& self, int u, int p, int d,
-                     int side) -> void {
-          info[u].push_back({int(sz(bits)), d, side});
-          if (sz(sum_num[side]) == d)
-            sum_num[side].push_back(0);
-          sum_num[side][d] += a[u];
-          for (int c : cd_adj[u])
-            if (c != p) self(self, c, u, 1 + d, side);
-        };
-        rep(i, 0, sz(cd_adj[cent]))
-          dfs(dfs, cd_adj[cent][i], cent, 1, i < split);
-        bits.push_back({BIT(sum_num[0]), BIT(sum_num[1])});
-      });
+    edge_cd(adj, [&](int cent, int split) {
+      vector<vector<ll>> sum_num(2, vector<ll>(1));
+      auto dfs = [&](auto&& self, int u, int p, int d,
+                   int side) -> void {
+        info[u].push_back({int(sz(bits)), d, side});
+        if (sz(sum_num[side]) == d)
+          sum_num[side].push_back(0);
+        sum_num[side][d] += a[u];
+        for (int c : adj[u])
+          if (c != p) self(self, c, u, 1 + d, side);
+      };
+      rep(i, 0, sz(adj[cent]))
+        dfs(dfs, adj[cent][i], cent, 1, i < split);
+      bits.push_back({BIT(sum_num[0]), BIT(sum_num[1])});
+    });
   }
   //! @param u node
   //! @param delta number to add to node u's number
@@ -108,8 +105,11 @@ int main() {
     adj[u].push_back(v);
     adj[v].push_back(u);
   }
-  { edge_cd(adj, edge_cd_asserts); }
   contour_range_query cq(adj, a);
+  {
+#include "../edge_cd_asserts.hpp"
+    edge_cd(adj, edge_cd_asserts);
+  }
   while (q--) {
     int type;
     cin >> type;
