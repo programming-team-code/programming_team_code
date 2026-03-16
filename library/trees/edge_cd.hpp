@@ -21,31 +21,31 @@ template<class F, class G> struct edge_cd {
     adj(adj), f(f), siz(sz(adj)) {
     dfs(0, sz(adj) - 1);
   }
-  int find_cent(int v, int p, int m) {
-    siz[v] = 1;
-    for (int u : adj[v])
-      if (u != p) {
-        int cent = find_cent(u, v, m);
+  int find_cent(int u, int p, int m) {
+    siz[u] = 1;
+    for (int v : adj[u])
+      if (v != p) {
+        int cent = find_cent(v, u, m);
         if (cent != -1) return cent;
-        siz[v] += siz[u];
+        siz[u] += siz[v];
       }
-    return 2 * siz[v] > m
-           ? p >= 0 && (siz[p] = m + 1 - siz[v]),
-           v : -1;
+    return 2 * siz[u] > m
+           ? p >= 0 && (siz[p] = m + 1 - siz[u]),
+           u : -1;
   }
-  void dfs(int v, int m) {
+  void dfs(int u, int m) {
     if (m < 2) return;
-    v = find_cent(v, -1, m);
+    u = find_cent(u, -1, m);
     int sum = 0;
-    auto it = partition(all(adj[v]), [&](int u) {
-      ll x = sum + siz[u];
-      return x * x < m * (m - x) ? sum += siz[u], 1 : 0;
+    auto it = partition(all(adj[u]), [&](int v) {
+      ll x = sum + siz[v];
+      return x * x < m * (m - x) ? sum += siz[v], 1 : 0;
     });
-    f(adj, v, it - begin(adj[v]));
-    G oth(it, end(adj[v]));
-    adj[v].erase(it, end(adj[v]));
-    dfs(v, sum);
-    swap(adj[v], oth);
-    dfs(v, m - sum);
+    f(adj, u, it - begin(adj[u]));
+    G oth(it, end(adj[u]));
+    adj[u].erase(it, end(adj[u]));
+    dfs(u, sum);
+    swap(adj[u], oth);
+    dfs(u, m - sum);
   }
 };
