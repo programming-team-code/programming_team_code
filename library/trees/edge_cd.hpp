@@ -5,7 +5,7 @@
 //! https://youtu.be/wDwaMo5xa-k
 //! @code
 //!   vector<basic_string<int>> adj(n);
-//!   edge_cd(adj, [&](const auto& adj, int cent, int m) {
+//!   edge_cd(adj, [&](int cent, int m) {
 //!     // subtrees of [0, m) of adj[cent]: 1st edge-set
 //!     // subtrees of [m, sz(adj[cent])): 2nd edge-set
 //!   });
