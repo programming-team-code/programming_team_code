@@ -13,39 +13,36 @@
 //! handle single-edge-paths separately
 //! @time O(n logφ n)
 //! @space O(n)
-template<class F, class G> struct edge_cd {
-  vector<G> adj;
-  F f;
-  vi siz;
-  edge_cd(const vector<G>& adj, F f):
-    adj(adj), f(f), siz(sz(adj)) {
-    dfs(0, sz(adj) - 1);
-  }
-  int find_cent(int u, int p, int m) {
+template<class G>
+void edge_cd(vector<G>& adj, const auto& f) {
+  vi siz(sz(adj));
+  auto find_cent = [&](auto&& self, int u, int p,
+                     int m) -> int {
     siz[u] = 1;
     for (int v : adj[u])
       if (v != p) {
-        int cent = find_cent(v, u, m);
+        int cent = self(self, v, u, m);
         if (cent != -1) return cent;
         siz[u] += siz[v];
       }
     return 2 * siz[u] > m
            ? p >= 0 && (siz[p] = m + 1 - siz[u]),
            u : -1;
-  }
-  void dfs(int u, int m) {
+  };
+  auto dfs = [&](auto&& self, int u, int m) -> void {
     if (m < 2) return;
-    u = find_cent(u, -1, m);
+    u = find_cent(find_cent, u, -1, m);
     int sum = 0;
     auto it = partition(all(adj[u]), [&](int v) {
       ll x = sum + siz[v];
       return x * x < m * (m - x) ? sum += siz[v], 1 : 0;
     });
-    f(adj, u, it - begin(adj[u]));
+    f(u, it - begin(adj[u]));
     G oth(it, end(adj[u]));
     adj[u].erase(it, end(adj[u]));
-    dfs(u, sum);
+    self(self, u, sum);
     swap(adj[u], oth);
-    dfs(u, m - sum);
-  }
+    self(self, u, m - sum);
+  };
+  dfs(dfs, 0, sz(adj) - 1);
 };
