@@ -3,9 +3,34 @@
 #include "../template.hpp"
 #include "../../../library/contest/random.hpp"
 #include "../../../library/trees/lca_rmq.hpp"
-#include "../cd_asserts.hpp"
 #include "../../../kactl/content/numerical/FastFourierTransform.h"
 #include "../../../library/trees/edge_cd.hpp"
+#include "../../../library/trees/centroid_decomp.hpp"
+void cd_asserts(vector<vector<int>> adj) {
+  vector<int> decomp_size(sz(adj), -1);
+  vector<int> naive_par_decomp(sz(adj), -1);
+  centroid(adj, [&](int cent, int par_cent) -> void {
+    assert(naive_par_decomp[cent] == par_cent);
+    assert(decomp_size[cent] == -1);
+    auto dfs = [&](auto&& self, int u, int p) -> int {
+      naive_par_decomp[u] = cent;
+      int sub_size = 1;
+      for (int v : adj[u])
+        if (v != p) sub_size += self(self, v, u);
+      return sub_size;
+    };
+    decomp_size[cent] = dfs(dfs, cent, -1);
+    if (par_cent != -1)
+      assert(1 <= decomp_size[cent] &&
+        2 * decomp_size[cent] <= decomp_size[par_cent]);
+    for (int u : adj[cent]) {
+      int sz_subtree = dfs(dfs, u, cent);
+      assert(1 <= sz_subtree &&
+        2 * sz_subtree <= decomp_size[cent]);
+    }
+  });
+  rep(i, 0, sz(adj)) assert(decomp_size[i] >= 1);
+}
 //! @param adj unrooted, connected forest
 //! @param k number of edges
 //! @returns array `num_paths` where `num_paths[i]` =
@@ -14,37 +39,35 @@
 //! @time O(n log n)
 //! @space this function allocates/returns various vectors
 //! which are all O(n)
-vector<ll> count_paths_per_node(const vector<vi>& adj,
-  int k) {
+vector<ll> count_paths_per_node(vector<vi> adj, int k) {
   vector<ll> num_paths(sz(adj));
-  centroid(adj,
-    [&](const vector<vi>& cd_adj, int cent, int) {
-      vector pre_d{1}, cur_d{0};
-      auto dfs = [&](auto&& self, int u, int p,
-                   int d) -> ll {
-        if (d > k) return 0LL;
-        if (sz(cur_d) <= d) cur_d.push_back(0);
-        cur_d[d]++;
-        ll cnt = 0;
-        if (k - d < sz(pre_d)) cnt += pre_d[k - d];
-        for (int c : cd_adj[u])
-          if (c != p) cnt += self(self, c, u, d + 1);
-        num_paths[u] += cnt;
-        return cnt;
-      };
-      auto dfs_child = [&](int child) -> ll {
-        ll cnt = dfs(dfs, child, cent, 1);
-        pre_d.resize(sz(cur_d));
-        for (int i = 1; i < sz(cur_d) && cur_d[i]; i++)
-          pre_d[i] += cur_d[i], cur_d[i] = 0;
-        return cnt;
-      };
-      for (int child : cd_adj[cent])
-        num_paths[cent] += dfs_child(child);
-      pre_d = cur_d = {0};
-      for (int child : cd_adj[cent] | views::reverse)
-        dfs_child(child);
-    });
+  centroid(adj, [&](int cent, int) {
+    vector pre_d{1}, cur_d{0};
+    auto dfs = [&](auto&& self, int u, int p,
+                 int d) -> ll {
+      if (d > k) return 0LL;
+      if (sz(cur_d) <= d) cur_d.push_back(0);
+      cur_d[d]++;
+      ll cnt = 0;
+      if (k - d < sz(pre_d)) cnt += pre_d[k - d];
+      for (int c : adj[u])
+        if (c != p) cnt += self(self, c, u, d + 1);
+      num_paths[u] += cnt;
+      return cnt;
+    };
+    auto dfs_child = [&](int child) -> ll {
+      ll cnt = dfs(dfs, child, cent, 1);
+      pre_d.resize(sz(cur_d));
+      for (int i = 1; i < sz(cur_d) && cur_d[i]; i++)
+        pre_d[i] += cur_d[i], cur_d[i] = 0;
+      return cnt;
+    };
+    for (int child : adj[cent])
+      num_paths[cent] += dfs_child(child);
+    pre_d = cur_d = {0};
+    for (int child : adj[cent] | views::reverse)
+      dfs_child(child);
+  });
   return num_paths;
 }
 vector<vector<ll>> naive(const vector<vi>& adj) {
