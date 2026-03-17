@@ -53,16 +53,16 @@ int main() {
           assert(l < m && m <= r);
           assert(val == rmq.query(l, m - 1));
           if (which == 0) return 0;
-          else if (which == 1) return 1;
-          else return rnd(0, 1);
+          if (which == 1) return 1;
+          return rnd(0, 1);
         });
       st.min_left(l, r,
         [&](int m, const array<int, 2>& val) -> bool {
           assert(l <= m && m < r);
           assert(val == rmq.query(m, r - 1));
           if (which == 0) return 0;
-          else if (which == 1) return 1;
-          else return rnd(0, 1);
+          if (which == 1) return 1;
+          return rnd(0, 1);
         });
       if (l == r) cout << x << '\n';
       else {
