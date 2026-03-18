@@ -1,15 +1,15 @@
 #pragma once
 //! https://codeforces.com/blog/entry/118682
 //! @code
-//!   tree st1(n, 0, [&](int vl, int vr) {
+//!   tree st1(a, [&](int vl, int vr) {
 //!     return vl + vr;
 //!   });
-//!   tree st(a, ranges::min);
-//!   st.max_right(l, r, [&](int m, int value) {
+//!   tree st(n, LLONG_MAX, ranges::min);
+//!   st.max_right(l, r, [&](int m, ll value) {
 //!     // value = op(a[l], a[l+1], ..., a[m])
 //!     return value <= x;
 //!   });
-//!   st.min_left(l, r, [&](int m, int value) {
+//!   st.min_left(l, r, [&](int m, ll value) {
 //!     // value = op(a[m], ..., a[r-1], a[r])
 //!     return value <= x;
 //!   });
