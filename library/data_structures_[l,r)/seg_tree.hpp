@@ -5,12 +5,12 @@
 //!   tree st1(n, 0, [&](int vl, int vr) {
 //!     return vl + vr;
 //!   });
-//!   tree st(n, INT_MAX, ranges::min);
-//!   st.max_right(l, r, [&](int m, int value) {
+//!   tree st(n, LLONG_MAX, ranges::min);
+//!   st.max_right(l, r, [&](int m, ll value) {
 //!     // value = op(a[l], a[l+1], ..., a[m-1])
 //!     return value <= x;
 //!   });
-//!   st.min_left(l, r, [&](int m, int value) {
+//!   st.min_left(l, r, [&](int m, ll value) {
 //!     // value = op(a[m], ..., a[r-2], a[r-1])
 //!     return value <= x;
 //!   });
