@@ -11,25 +11,25 @@
 //! t[v].childs = forest of reversed edges not in cycles
 //! @time O(n)
 //! @space O(n)
-struct func_graph {
-  vector<pii> root_of;
-  vector<vi> cycle, childs;
-  func_graph(const vi& a): root_of(sz(a)), childs(sz(a)) {
-    vi vis(sz(a));
-    rep(i, 0, sz(a)) if (!vis[i]) {
-      int u = i;
-      for (; !vis[u]; u = a[u]) vis[u] = 1;
-      if (vis[u] == 1)
-        for (cycle.emplace_back(); vis[u] == 1; u = a[u]) {
-          root_of[u] = {sz(cycle) - 1, sz(cycle.back())};
-          cycle.back().push_back(u);
-          vis[u] = 2;
-        }
-      for (int v = i; vis[v] == 1; v = a[v]) {
-        root_of[v] = root_of[u];
-        childs[a[v]].push_back(v);
-        vis[v] = 2;
+auto func_graph(const vi& a) {
+  int n = sz(a);
+  vector<pii> root_of(n);
+  vector<vi> cycle, childs(n);
+  vi vis(n);
+  rep(i, 0, n) if (!vis[i]) {
+    int u = i;
+    for (; !vis[u]; u = a[u]) vis[u] = 1;
+    if (vis[u] == 1)
+      for (cycle.emplace_back(); vis[u] == 1; u = a[u]) {
+        root_of[u] = {sz(cycle) - 1, sz(cycle.back())};
+        cycle.back().push_back(u);
+        vis[u] = 2;
       }
+    for (int v = i; vis[v] == 1; v = a[v]) {
+      root_of[v] = root_of[u];
+      childs[a[v]].push_back(v);
+      vis[v] = 2;
     }
   }
-};
+  return tuple{root_of, cycle, childs};
+}
