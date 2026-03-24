@@ -19,8 +19,8 @@
 //! @time O(n + q log n)
 //! @space O(n)
 int nxt(int& l, int r) {
-  int x = l, y = __lg(min(l & -l, r - l + 1));
-  return l += 1 << y, x >> y;
+  int u = l, v = __lg(min(l & -l, r - l + 1));
+  return l += 1 << v, u >> v;
 }
 template<class T, class F> struct tree {
   int n;
