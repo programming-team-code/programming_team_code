@@ -9,12 +9,10 @@
 //!   st.max_right(l, r, [&](int m, ll value) {
 //!     // l < m <= r
 //!     // value = op(a[l], a[l+1], ..., a[m-1])
-//!     return value <= x;
 //!   });
 //!   st.min_left(l, r, [&](int m, ll value) {
 //!     // l <= m < r
 //!     // value = op(a[m], ..., a[r-2], a[r-1])
-//!     return value <= x;
 //!   });
 //! @endcode
 //! @time O(n + q log n)
