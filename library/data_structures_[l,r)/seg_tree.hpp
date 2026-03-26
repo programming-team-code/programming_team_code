@@ -6,11 +6,11 @@
 //!     return vl + vr;
 //!   });
 //!   tree st(n, LLONG_MAX, ranges::min);
-//!   st.max_right(l, r, [&](int m, ll value) {
+//!   st.max_right(l, r, [&](int m, ll value) -> bool {
 //!     // l < m <= r
 //!     // value = op(a[l], a[l+1], ..., a[m-1])
 //!   });
-//!   st.min_left(l, r, [&](int m, ll value) {
+//!   st.min_left(l, r, [&](int m, ll value) -> bool {
 //!     // l <= m < r
 //!     // value = op(a[m], ..., a[r-2], a[r-1])
 //!   });
