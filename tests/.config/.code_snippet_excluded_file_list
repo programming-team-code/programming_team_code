@@ -18,6 +18,7 @@ find_substrings_concatenated.hpp
 pascals_identity.hpp
 binary_search.hpp
 walk.hpp
+walk_lambda.hpp
 prev.hpp
 next.hpp
 wavelet_count_less.hpp
