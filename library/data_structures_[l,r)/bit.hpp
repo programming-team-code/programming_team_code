@@ -1,5 +1,6 @@
 #pragma once
 //! @code
+//!   BIT bit(n);
 //!   bit.walk([&](int r, ll sum) -> bool {
 //!     // sum = a[0] + a[1] + ... + a[r - 1]
 //!   });
