@@ -47,7 +47,7 @@ int main() {
         }
         return 1;
       };
-      int res = bit.walk(order + 1);
+      int res = bit.walk2(order + 1);
       assert(res == st.find_first(0, n, f));
       assert(res ==
         st.find_first(k, n,
@@ -55,6 +55,15 @@ int main() {
             return x > 0;
           }));
       if (res == n) res = -1;
+      int res_lambda = -1;
+      bit.walk([&](int r, ll sum) {
+        if (sum > order) {
+          res_lambda = r - 1;
+          return 0;
+        }
+        return 1;
+      });
+      assert(res == res_lambda);
       cout << res << '\n';
     } else {
       if (bit.query(k, k + 1) == 1) {
@@ -71,13 +80,25 @@ int main() {
         }
         return 1;
       };
-      int res = bit.walk(order);
+      int res = bit.walk2(order);
       assert(max(res, 0) == st.find_first(0, n, f));
       assert(res ==
         st.find_last(0, k + 1,
           [&](int64_t x, int, int) -> bool {
             return x > 0;
           }));
+      int res_lambda = -1;
+      if (order) {
+        bit.walk([&](int r, ll sum) {
+          if (sum < order) {
+            res_lambda = r;
+            return 1;
+          }
+          res_lambda = r - 1;
+          return 0;
+        });
+      }
+      assert(res == res_lambda);
       cout << res << '\n';
     }
   }
