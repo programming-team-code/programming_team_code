@@ -40,7 +40,7 @@ int main() {
       x = get_compressed_idx(x);
       if (bit.query(x, x) == 1) bit.update(x, -1);
     } else if (type == 2) {
-      int res = bit.walk(x);
+      int res = bit.walk2(x);
       if (res == -1 || res == ssize(compress))
         cout << -1 << '\n';
       else cout << compress[res] << '\n';
@@ -49,12 +49,12 @@ int main() {
       cout << bit.query(x) << '\n';
     } else if (type == 4) {
       x = get_compressed_idx(x);
-      int res = bit.walk(bit.query(x));
+      int res = bit.walk2(bit.query(x));
       if (res == -1) cout << -1 << '\n';
       else cout << compress[res] << '\n';
     } else {
       x = get_compressed_idx(x);
-      int res = bit.walk(bit.query(x - 1) + 1);
+      int res = bit.walk2(bit.query(x - 1) + 1);
       if (res == ssize(bit.s)) cout << -1 << '\n';
       else cout << compress[res] << '\n';
     }

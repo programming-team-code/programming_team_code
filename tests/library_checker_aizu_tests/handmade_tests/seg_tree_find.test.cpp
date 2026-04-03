@@ -38,7 +38,7 @@ int main() {
       rngs.push_back({tl, tr, 1});
       return 1;
     };
-    int pos = min(bit.walk(bit.query(l) + sum), r);
+    int pos = min(bit.walk2(bit.query(l) + sum), r);
     reset();
     assert(pos == seg.find_first(l, r, f));
     assert(!empty(rngs));
