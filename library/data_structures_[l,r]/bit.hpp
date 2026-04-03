@@ -1,4 +1,12 @@
 #pragma once
+//! @code
+//!   bit.walk([&](int r, ll sum) -> bool {
+//!     // sum = a[0] + a[1] + ... + a[r]
+//!   });
+//!   int r = bit.walk2(sum);
+//!   // Returns min r s.t. sum of [0,r] >= sum
+//!   // Returns n if sum of [0,n-1] < sum
+//! @endcode
 //! @time O(n + q log n)
 //! @space O(n)
 // NOLINTNEXTLINE(readability-identifier-naming)
