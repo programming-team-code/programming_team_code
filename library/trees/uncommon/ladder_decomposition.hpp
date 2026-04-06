@@ -3,7 +3,7 @@
 //! https://codeforces.com/blog/entry/71567#comment-559299
 //! https://youtu.be/0rCFkuQS968
 //! @code
-//!   ladder ld(adj);
+//!   ladder ld(g);
 //!   // KACTL functions
 //!   int kth_par = jmp(ld.jmp, u, k);
 //!   int curr_lca = lca(ld.jmp, ld.d, u, v);
@@ -12,14 +12,14 @@ struct ladder {
   int n;
   vi d, p, leaf, idx, lad;
   vector<vi> jmp;
-  //! @param adj forest (rooted or unrooted)
+  //! @param g forest (rooted or unrooted)
   //! @time O(n log n)
   //! @space O(n log n) for jmp. Everything else is O(n)
-  ladder(const auto& adj):
-    n(sz(adj)), d(n), p(n), leaf(n), idx(n), lad(2 * n) {
+  ladder(const auto& g):
+    n(sz(g)), d(n), p(n), leaf(n), idx(n), lad(2 * n) {
     auto dfs = [&](auto&& dfs, int u) -> void {
       leaf[u] = u;
-      for (int v : adj[u])
+      for (int v : g[u])
         if (v != p[u]) {
           d[v] = d[p[v] = u] + 1;
           dfs(dfs, v);
