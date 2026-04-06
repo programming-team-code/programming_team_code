@@ -7,13 +7,13 @@
 //! @space O(n)
 void centroid(auto& adj, auto f) {
   vi siz(sz(adj));
-  auto calc_sz = [&](auto&& self, int u, int p) -> void {
+  auto dfs_sz = [&](auto&& dfs_sz, int u, int p) -> void {
     siz[u] = 1;
     for (int v : adj[u])
-      if (v != p) self(self, v, u), siz[u] += siz[v];
+      if (v != p) dfs_sz(dfs_sz, v, u), siz[u] += siz[v];
   };
-  auto dfs = [&](auto&& self, int u, int p) -> void {
-    calc_sz(calc_sz, u, -1);
+  auto dfs = [&](auto&& dfs, int u, int p) -> void {
+    dfs_sz(dfs_sz, u, -1);
     for (int w = -1, sz_root = siz[u];;) {
       auto big_ch = ranges::find_if(adj[u], [&](int v) {
         return v != w && 2 * siz[v] > sz_root;
@@ -25,7 +25,7 @@ void centroid(auto& adj, auto f) {
     for (int v : adj[u]) {
       iter_swap(ranges::find(adj[v], u), rbegin(adj[v]));
       adj[v].pop_back();
-      self(self, v, u);
+      dfs(dfs, v, u);
     }
   };
   dfs(dfs, 0, -1);

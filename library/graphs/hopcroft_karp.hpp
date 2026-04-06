@@ -43,11 +43,11 @@ struct hopcroft_karp {
         }
       }
       if (!found) break;
-      auto dfs = [&](auto&& self, int u) -> bool {
+      auto dfs = [&](auto&& dfs, int u) -> bool {
         for (int v : adj[u]) {
           int w = to_l[v];
           if (w == -1 ||
-            (level[u] + 1 == level[w] && self(self, w))) {
+            (level[u] + 1 == level[w] && dfs(dfs, w))) {
             to_r[u] = v;
             to_l[v] = u;
             return 1;

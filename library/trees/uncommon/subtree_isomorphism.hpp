@@ -12,10 +12,10 @@
 auto subtree_iso(const auto& adj) {
   vi iso_id(sz(adj), -1);
   map<vi, int> hashes;
-  auto dfs = [&](auto&& self, int u, int p) -> int {
+  auto dfs = [&](auto&& dfs, int u, int p) -> int {
     vi ch_ids;
     for (int v : adj[u])
-      if (v != p) ch_ids.push_back(self(self, v, u));
+      if (v != p) ch_ids.push_back(dfs(dfs, v, u));
     ranges::sort(ch_ids);
     return iso_id[u] =
              hashes.try_emplace(ch_ids, sz(hashes))

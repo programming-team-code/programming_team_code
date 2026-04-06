@@ -16,11 +16,11 @@
 vector<pii> euler_path(auto& adj, int m, int s) {
   vi vis(m);
   vector<pii> path;
-  auto dfs = [&](auto&& self, int u, int eu) -> void {
+  auto dfs = [&](auto&& dfs, int u, int eu) -> void {
     while (!empty(adj[u])) {
       auto [v, ev] = adj[u].back();
       adj[u].pop_back();
-      if (!vis[ev]) vis[ev] = 1, self(self, v, ev);
+      if (!vis[ev]) vis[ev] = 1, dfs(dfs, v, ev);
     }
     path.emplace_back(u, eu);
   };

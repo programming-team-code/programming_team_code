@@ -19,14 +19,14 @@
 auto cuts(const auto& adj, int m) {
   int n = sz(adj), num_bccs = 0, q = 0, s = 0;
   vi bcc_id(m, -1), is_cut(n), tin(n), st(m);
-  auto dfs = [&](auto&& self, int u, int p) -> int {
+  auto dfs = [&](auto&& dfs, int u, int p) -> int {
     int low = tin[u] = ++q;
     for (auto [v, e] : adj[u]) {
       assert(u != v);
       if (e == p) continue;
       if (tin[v] < tin[u]) st[s++] = e;
       int lu = -1;
-      low = min(low, tin[v] ?: (lu = self(self, v, e)));
+      low = min(low, tin[v] ?: (lu = dfs(dfs, v, e)));
       if (lu >= tin[u]) {
         is_cut[u] = p >= 0 || tin[u] + 1 < tin[v];
         while (bcc_id[e] < 0) bcc_id[st[--s]] = num_bccs;
