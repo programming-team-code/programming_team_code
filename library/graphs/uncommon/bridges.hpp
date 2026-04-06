@@ -18,12 +18,12 @@
 auto bridges(const auto& adj, int m) {
   int n = sz(adj), num_ccs = 0, q = 0, s = 0;
   vi br_id(n, -1), is_br(m), tin(n), st(n);
-  auto dfs = [&](auto&& self, int u, int p) -> int {
+  auto dfs = [&](auto&& dfs, int u, int p) -> int {
     int low = tin[u] = ++q;
     st[s++] = u;
     for (auto [v, e] : adj[u])
       if (e != p && br_id[v] < 0)
-        low = min(low, tin[v] ?: self(self, v, e));
+        low = min(low, tin[v] ?: dfs(dfs, v, e));
     if (tin[u] == low) {
       if (p != -1) is_br[p] = 1;
       while (br_id[u] < 0) br_id[st[--s]] = num_ccs;

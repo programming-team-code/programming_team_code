@@ -15,23 +15,23 @@ template<bool VALS_EDGES> struct HLD {
   vi p, siz, rt, tin;
   HLD(auto& adj):
     n(sz(adj)), p(n), siz(n, 1), rt(n), tin(n) {
-    auto dfs1 = [&](auto&& self, int u) -> void {
+    auto dfs1 = [&](auto&& dfs1, int u) -> void {
       for (int& v : adj[u]) {
         iter_swap(ranges::find(adj[v], u), rbegin(adj[v]));
         adj[v].pop_back();
         p[v] = u;
-        self(self, v);
+        dfs1(dfs1, v);
         siz[u] += siz[v];
         if (siz[v] > siz[adj[u][0]]) swap(v, adj[u][0]);
       }
     };
     dfs1(dfs1, 0);
     int tim = 0;
-    auto dfs2 = [&](auto&& self, int u) -> void {
+    auto dfs2 = [&](auto&& dfs2, int u) -> void {
       tin[u] = tim++;
       for (int v : adj[u]) {
         rt[v] = (v == adj[u][0] ? rt[u] : v);
-        self(self, v);
+        dfs2(dfs2, v);
       }
     };
     dfs2(dfs2, 0);
