@@ -1,9 +1,9 @@
 #pragma once
 #include "cuts.hpp"
 //! @code
-//!   vector<basic_string<array<int, 2>>> adj(n);
-//!   auto [num_bccs, bcc_id, is_cut] = cuts(adj, m);
-//!   auto bvt = block_vertex_tree(adj, num_bccs, bcc_id);
+//!   vector<basic_string<array<int, 2>>> g(n);
+//!   auto [num_bccs, bcc_id, is_cut] = cuts(g, m);
+//!   auto bvt = block_vertex_tree(g, num_bccs, bcc_id);
 //!
 //!   //to loop over each unique bcc containing a node u:
 //!   for (int bccid : bvt[v]) {
@@ -16,13 +16,13 @@
 //! [n, n + num_bccs) are BCC nodes
 //! @time O(n + m)
 //! @time O(n)
-auto block_vertex_tree(const auto& adj, int num_bccs,
+auto block_vertex_tree(const auto& g, int num_bccs,
   const vi& bcc_id) {
-  int n = sz(adj);
+  int n = sz(g);
   vector<vi> bvt(n + num_bccs);
   vector<bool> vis(num_bccs);
   rep(i, 0, n) {
-    for (auto [_, e_id] : adj[i]) {
+    for (auto [_, e_id] : g[i]) {
       int bccid = bcc_id[e_id];
       if (!vis[bccid]) {
         vis[bccid] = 1;

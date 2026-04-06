@@ -1,8 +1,8 @@
 #pragma once
 //! https://codeforces.com/blog/entry/126580
 //! @code
-//!   vector<basic_string<int>> adj(n);
-//!   linear_kth_par kp(adj);
+//!   vector<basic_string<int>> g(n);
+//!   linear_kth_par kp(g);
 //!   kp.kth_par(v, k); // k edges up from v
 //!   kp.kth_par(v, 1); // v's parent
 //! @endcode
@@ -12,8 +12,8 @@ template<int KAPPA = 2> struct linear_kth_par {
   int n;
   vi d, leaf, pos, jmp;
   vector<vi> lad;
-  linear_kth_par(const auto& adj):
-    n(sz(adj)), d(n), leaf(n), pos(n), jmp(2 * n), lad(n) {
+  linear_kth_par(const auto& g):
+    n(sz(g)), d(n), leaf(n), pos(n), jmp(2 * n), lad(n) {
     static_assert(KAPPA >= 1);
     int t = 1;
     vi st(n);
@@ -25,7 +25,7 @@ template<int KAPPA = 2> struct linear_kth_par {
       int& l = leaf[u] = st[d[u]] = u;
       pos[u] = t;
       calc(d[u]);
-      for (int v : adj[u])
+      for (int v : g[u])
         if (v != p) {
           d[v] = 1 + d[u];
           dfs(dfs, v, u);

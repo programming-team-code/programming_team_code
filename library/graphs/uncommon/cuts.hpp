@@ -1,27 +1,27 @@
 #pragma once
 //! https://cp-algorithms.com/graph/cutpoints.html
 //! @code
-//!   vector<basic_string<array<int, 2>>> adj(n);
+//!   vector<basic_string<array<int, 2>>> g(n);
 //!   rep (i, 0, m) {
 //!     int u, v;
 //!     cin >> u >> v;
 //!     u--, v--;
 //!     //self edges not allowed
-//!     adj[u] += {v, i};
-//!     adj[v] += {u, i};
+//!     g[u] += {v, i};
+//!     g[v] += {u, i};
 //!   }
-//!   auto [num_bccs, bcc_id, is_cut] = cuts(adj, m);
+//!   auto [num_bccs, bcc_id, is_cut] = cuts(g, m);
 //! @endcode
 //! is_cut[v] = 1 iff cut node
 //! bcc_id[edge id] = id, 0<=id<num_bccs
 //! @time O(n + m)
 //! @space O(n + m)
-auto cuts(const auto& adj, int m) {
-  int n = sz(adj), num_bccs = 0, q = 0, s = 0;
+auto cuts(const auto& g, int m) {
+  int n = sz(g), num_bccs = 0, q = 0, s = 0;
   vi bcc_id(m, -1), is_cut(n), tin(n), st(m);
   auto dfs = [&](auto&& dfs, int u, int p) -> int {
     int low = tin[u] = ++q;
-    for (auto [v, e] : adj[u]) {
+    for (auto [v, e] : g[u]) {
       assert(u != v);
       if (e == p) continue;
       if (tin[v] < tin[u]) st[s++] = e;

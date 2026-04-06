@@ -3,8 +3,8 @@
 #include "../data_structures_[l,r)/rmq.hpp"
 //! https://github.com/kth-competitive-programming/kactl/blob/main/content/graph/LCA.h
 //! @code
-//!   vector<basic_string<int>> adj(n);
-//!   LCA lca(adj);
+//!   vector<basic_string<int>> g(n);
+//!   LCA lca(g);
 //! @endcode
 //! @time O(nlogn + q)
 //! @space O(nlogn)
@@ -13,12 +13,12 @@ struct LCA {
   int n;
   vi tin, siz, d, p;
   RMQ<int, function<int(int, int)>> rmq = {{}, NULL};
-  LCA(const auto& adj):
-    n(sz(adj)), tin(n), siz(n, 1), d(n), p(n) {
+  LCA(const auto& g):
+    n(sz(g)), tin(n), siz(n, 1), d(n), p(n) {
     vi order;
     auto dfs = [&](auto&& dfs, int u) -> void {
       tin[u] = sz(order), order.push_back(u);
-      for (int v : adj[u])
+      for (int v : g[u])
         if (v != p[u])
           d[v] = d[p[v] = u] + 1, dfs(dfs, v),
           siz[u] += siz[v];
