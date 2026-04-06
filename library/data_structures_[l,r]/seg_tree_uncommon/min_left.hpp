@@ -1,4 +1,4 @@
-int min_left(int l, int r, const auto& f) {
+int min_left(int l, int r, auto f) {
   if (T x = s[r + n]; f(r, x))
     for (r--; l <= r;) {
       int u = r + 1 + n, v = __lg(min(u & -u, r - l + 1)),

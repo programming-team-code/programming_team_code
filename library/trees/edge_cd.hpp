@@ -13,8 +13,7 @@
 //! handle single-edge-paths separately
 //! @time O(n logφ n)
 //! @space O(n)
-template<class G>
-void edge_cd(vector<G>& adj, const auto& f) {
+template<class G> void edge_cd(vector<G>& adj, auto f) {
   vi siz(sz(adj));
   auto find_cent = [&](auto&& self, int u, int p,
                      int m) -> int {
