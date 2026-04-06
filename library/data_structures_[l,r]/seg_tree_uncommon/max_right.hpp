@@ -1,4 +1,4 @@
-void max_right(int l, int r, const auto& f) {
+void max_right(int l, int r, auto f) {
   if (T x = s[l + n]; f(l, x))
     for (l++; l <= r;) {
       int u = l + n, v = __lg(min(u & -u, r - l + 1)),

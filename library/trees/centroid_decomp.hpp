@@ -5,7 +5,7 @@
 //! @endcode
 //! @time O(n log n)
 //! @space O(n)
-void centroid(auto& g, const auto& f) {
+void centroid(auto& g, auto f) {
   vi siz(sz(g));
   auto calc_sz = [&](auto&& self, int u, int p) -> void {
     siz[u] = 1;
