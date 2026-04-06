@@ -15,24 +15,24 @@ vi offline_incremental_scc(vector<array<int, 2>> eds,
   int m = sz(eds);
   vi ids(n, -1), joins(m, m), idx(m), vs(n), scc_id;
   iota(all(idx), 0);
-  vector<vi> adj;
+  vector<vi> g;
   auto divide_and_conquer = [&](auto&& self, auto el,
                               auto er, int tl, int tr) {
-    adj.clear();
+    g.clear();
     int mid = midpoint(tl, tr);
     for (auto it = el; it != er; it++) {
       auto& [u, v] = eds[*it];
       for (int w : {u, v}) {
         if (ids[w] != -1) continue;
-        ids[w] = sz(adj);
-        vs[sz(adj)] = w;
-        adj.emplace_back();
+        ids[w] = sz(g);
+        vs[sz(g)] = w;
+        g.emplace_back();
       }
       u = ids[u], v = ids[v];
-      if (*it <= mid) adj[u].push_back(v);
+      if (*it <= mid) g[u].push_back(v);
     }
-    rep(i, 0, sz(adj)) ids[vs[i]] = -1;
-    scc_id = scc(adj).second;
+    rep(i, 0, sz(g)) ids[vs[i]] = -1;
+    scc_id = scc(g).second;
     auto split = partition(el, er, [&](int i) {
       return scc_id[eds[i][0]] == scc_id[eds[i][1]];
     });

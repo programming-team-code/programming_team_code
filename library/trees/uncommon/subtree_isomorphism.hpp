@@ -1,20 +1,20 @@
 #pragma once
 //! @code
-//!   vector<basic_string<int>> adj(n);
+//!   vector<basic_string<int>> g(n);
 //!   auto [num_distinct_subtrees, iso_id] =
-//!     subtree_iso(adj);
+//!     subtree_iso(g);
 //! @endcode
 //! - 0 <= iso_id[v] < num_distinct_subtrees
 //! - iso_id[u] == iso_id[v] iff subtree u is
 //!     isomorphic to subtree v
 //! @time O(n log n)
 //! @space O(n)
-auto subtree_iso(const auto& adj) {
-  vi iso_id(sz(adj), -1);
+auto subtree_iso(const auto& g) {
+  vi iso_id(sz(g), -1);
   map<vi, int> hashes;
   auto dfs = [&](auto&& self, int u, int p) -> int {
     vi ch_ids;
-    for (int v : adj[u])
+    for (int v : g[u])
       if (v != p) ch_ids.push_back(self(self, v, u));
     ranges::sort(ch_ids);
     return iso_id[u] =

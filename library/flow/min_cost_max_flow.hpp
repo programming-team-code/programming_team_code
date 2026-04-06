@@ -17,14 +17,14 @@ struct mcmf {
   };
   int n;
   vector<edge> e;
-  vector<vi> adj;
-  mcmf(int n): n(n), adj(n) {}
+  vector<vi> g;
+  mcmf(int n): n(n), g(n) {}
   void add_edge(int u, int v, ll cap, ll cost) {
-    edge e1 = {u, v, cap, cost, 0, sz(adj[v])};
-    edge e2 = {v, u, 0, -cost, 0, sz(adj[u])};
-    adj[u].push_back(sz(e));
+    edge e1 = {u, v, cap, cost, 0, sz(g[v])};
+    edge e2 = {v, u, 0, -cost, 0, sz(g[u])};
+    g[u].push_back(sz(e));
     e.push_back(e1);
-    adj[v].push_back(sz(e));
+    g[v].push_back(sz(e));
     e.push_back(e2);
   }
   array<ll, 2> get_flow(int s, int t, ll total_flow) {
@@ -39,8 +39,8 @@ struct mcmf {
         int u = q[qh++];
         id[u] = 2;
         if (qh == n) qh = 0;
-        rep(i, 0, sz(adj[u])) {
-          edge& r = e[adj[u][i]];
+        rep(i, 0, sz(g[u])) {
+          edge& r = e[g[u][i]];
           if (r.flow < r.cap && d[u] + r.cost < d[r.v]) {
             d[r.v] = d[u] + r.cost;
             if (id[r.v] == 0) {
@@ -61,14 +61,14 @@ struct mcmf {
       for (int u = t; u != s; u = p[u]) {
         int pv = p[u], pr = p_edge[u];
         addflow = min(addflow,
-          e[adj[pv][pr]].cap - e[adj[pv][pr]].flow);
+          e[g[pv][pr]].cap - e[g[pv][pr]].flow);
       }
       for (int u = t; u != s; u = p[u]) {
         int pv = p[u], pr = p_edge[u],
-            r = e[adj[pv][pr]].back;
-        e[adj[pv][pr]].flow += addflow;
-        e[adj[u][r]].flow -= addflow;
-        cost += e[adj[pv][pr]].cost * addflow;
+            r = e[g[pv][pr]].back;
+        e[g[pv][pr]].flow += addflow;
+        e[g[u][r]].flow -= addflow;
+        cost += e[g[pv][pr]].cost * addflow;
       }
       flow += addflow;
     }

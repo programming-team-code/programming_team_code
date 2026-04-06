@@ -1,11 +1,11 @@
 #pragma once
 //! https://github.com/foreverbell/acm-icpc-cheat-sheet/blob/master/src/graph-algorithm/hopcroft-karp.cpp
 //! @code
-//!   vector<basic_string<int>> adj(lsz);
-//!   adj[l] += r; // add edge l <-> r
+//!   vector<basic_string<int>> g(lsz);
+//!   g[l] += r; // add edge l <-> r
 //!                // 0<=l<lsz; 0<=r<rsz
 //!   auto [matching_size, to_r, to_l,
-//!     mvc_l, mvc_r] = hopcroft_karp(adj, rsz);
+//!     mvc_l, mvc_r] = hopcroft_karp(g, rsz);
 //! @endcode
 //! l <-> to_r[l] in matching if to_r[l]!=-1
 //! to_l[r] <-> r in matching if to_l[r]!=-1
@@ -17,9 +17,9 @@ struct hopcroft_karp {
   int m_sz = 0;
   vi to_r, to_l;
   vector<bool> mvc_l, mvc_r;
-  hopcroft_karp(const auto& adj, int rsz):
-    to_r(sz(adj), -1), to_l(rsz, -1) {
-    int lsz = sz(adj);
+  hopcroft_karp(const auto& g, int rsz):
+    to_r(sz(g), -1), to_l(rsz, -1) {
+    int lsz = sz(g);
     while (1) {
       queue<int> q;
       vi level(lsz, -1);
@@ -32,7 +32,7 @@ struct hopcroft_karp {
         int u = q.front();
         q.pop();
         mvc_l[u] = 0;
-        for (int v : adj[u]) {
+        for (int v : g[u]) {
           mvc_r[v] = 1;
           int w = to_l[v];
           if (w == -1) found = 1;
@@ -44,7 +44,7 @@ struct hopcroft_karp {
       }
       if (!found) break;
       auto dfs = [&](auto&& self, int u) -> bool {
-        for (int v : adj[u]) {
+        for (int v : g[u]) {
           int w = to_l[v];
           if (w == -1 ||
             (level[u] + 1 == level[w] && self(self, w))) {

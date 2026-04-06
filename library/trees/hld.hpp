@@ -1,8 +1,8 @@
 #pragma once
 //! https://github.com/kth-competitive-programming/kactl/blob/main/content/graph/HLD.h
 //! @code
-//!   vector<basic_string<int>> adj(n);
-//!   HLD<0> hld(adj);
+//!   vector<basic_string<int>> g(n);
+//!   HLD<0> hld(g);
 //!   hld.path(u, v, [&](int l, int r) { // [l, r)
 //!   });
 //!   auto [l, r] = hld.subtree(u); // [l, r)
@@ -13,24 +13,23 @@
 template<bool VALS_EDGES> struct HLD {
   int n;
   vi p, siz, rt, tin;
-  HLD(auto& adj):
-    n(sz(adj)), p(n), siz(n, 1), rt(n), tin(n) {
+  HLD(auto& g): n(sz(g)), p(n), siz(n, 1), rt(n), tin(n) {
     auto dfs1 = [&](auto&& self, int u) -> void {
-      for (int& v : adj[u]) {
-        iter_swap(ranges::find(adj[v], u), rbegin(adj[v]));
-        adj[v].pop_back();
+      for (int& v : g[u]) {
+        iter_swap(ranges::find(g[v], u), rbegin(g[v]));
+        g[v].pop_back();
         p[v] = u;
         self(self, v);
         siz[u] += siz[v];
-        if (siz[v] > siz[adj[u][0]]) swap(v, adj[u][0]);
+        if (siz[v] > siz[g[u][0]]) swap(v, g[u][0]);
       }
     };
     dfs1(dfs1, 0);
     int tim = 0;
     auto dfs2 = [&](auto&& self, int u) -> void {
       tin[u] = tim++;
-      for (int v : adj[u]) {
-        rt[v] = (v == adj[u][0] ? rt[u] : v);
+      for (int v : g[u]) {
+        rt[v] = (v == g[u][0] ? rt[u] : v);
         self(self, v);
       }
     };
