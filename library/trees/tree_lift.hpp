@@ -11,12 +11,12 @@
 struct tree_lift {
   vi d, p, j;
   tree_lift(const auto& adj): d(sz(adj)), p(d), j(d) {
-    auto dfs = [&](auto&& self, int u) -> void {
+    auto dfs = [&](auto&& dfs, int u) -> void {
       int up =
         d[u] + d[j[j[u]]] == 2 * d[j[u]] ? j[j[u]] : u;
       for (int v : adj[u])
         if (v != p[u])
-          d[v] = d[p[v] = u] + 1, j[v] = up, self(self, v);
+          d[v] = d[p[v] = u] + 1, j[v] = up, dfs(dfs, v);
     };
     dfs(dfs, 0);
   }

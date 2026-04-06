@@ -11,12 +11,12 @@
 auto scc(const auto& adj) {
   int n = sz(adj), num_sccs = 0, q = 0, s = 0;
   vi scc_id(n, -1), tin(n), st(n);
-  auto dfs = [&](auto&& self, int u) -> int {
+  auto dfs = [&](auto&& dfs, int u) -> int {
     int low = tin[u] = ++q;
     st[s++] = u;
     for (int v : adj[u])
       if (scc_id[v] < 0)
-        low = min(low, tin[v] ?: self(self, v));
+        low = min(low, tin[v] ?: dfs(dfs, v));
     if (tin[u] == low) {
       while (scc_id[u] < 0) scc_id[st[--s]] = num_sccs;
       num_sccs++;

@@ -15,22 +15,22 @@
 //! @space O(n)
 template<class G> void edge_cd(vector<G>& adj, auto f) {
   vi siz(sz(adj));
-  auto find_cent = [&](auto&& self, int u, int p,
-                     int m) -> int {
+  auto cent = [&](auto&& cent, int u, int p,
+                int m) -> int {
     siz[u] = 1;
     for (int v : adj[u])
       if (v != p) {
-        int cent = self(self, v, u, m);
-        if (cent != -1) return cent;
+        int c = cent(cent, v, u, m);
+        if (c != -1) return c;
         siz[u] += siz[v];
       }
     return 2 * siz[u] > m
            ? p >= 0 && (siz[p] = m + 1 - siz[u]),
            u : -1;
   };
-  auto dfs = [&](auto&& self, int u, int m) -> void {
+  auto dfs = [&](auto&& dfs, int u, int m) -> void {
     if (m < 2) return;
-    u = find_cent(find_cent, u, -1, m);
+    u = cent(cent, u, -1, m);
     int sum = 0;
     auto it = partition(all(adj[u]), [&](int v) {
       ll x = sum + siz[v];
@@ -39,9 +39,9 @@ template<class G> void edge_cd(vector<G>& adj, auto f) {
     f(u, it - begin(adj[u]));
     G oth(it, end(adj[u]));
     adj[u].erase(it, end(adj[u]));
-    self(self, u, sum);
+    dfs(dfs, u, sum);
     swap(adj[u], oth);
-    self(self, u, m - sum);
+    dfs(dfs, u, m - sum);
   };
   dfs(dfs, 0, sz(adj) - 1);
 };
