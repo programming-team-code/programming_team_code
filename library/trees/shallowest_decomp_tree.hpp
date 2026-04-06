@@ -1,17 +1,17 @@
 #pragma once
 //! https://codeforces.com/blog/entry/125018
 //! @code
-//!   vector<basic_string<int>> adj(n);
-//!   shallowest(adj, [&](int cent) {
+//!   vector<basic_string<int>> g(n);
+//!   shallowest(g, [&](int cent) {
 //!   });
 //! @endcode
 //! @time O(n log n)
 //! @space O(n)
-void shallowest(auto& adj, auto f) {
-  vector<vi> order(bit_width(size(adj)));
+void shallowest(auto& g, auto f) {
+  vector<vi> order(bit_width(size(g)));
   auto dfs = [&](auto&& dfs, int u, int p) -> int {
     int once = 0, twice = 0;
-    for (int v : adj[u])
+    for (int v : g[u])
       if (v != p) {
         int dp = dfs(dfs, v, u);
         twice |= once & dp, once |= dp;
@@ -24,8 +24,8 @@ void shallowest(auto& adj, auto f) {
   for (const vi& vec : order | views::reverse)
     for (int u : vec) {
       f(u);
-      for (int v : adj[u])
-        iter_swap(ranges::find(adj[v], u), rbegin(adj[v])),
-          adj[v].pop_back();
+      for (int v : g[u])
+        iter_swap(ranges::find(g[v], u), rbegin(g[v])),
+          g[v].pop_back();
     }
 }

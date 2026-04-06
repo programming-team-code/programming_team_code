@@ -8,30 +8,30 @@
 //! SCCs)
 //!
 //! @code
-//!   auto [num_sccs, scc_id] = scc(adj);
-//!   vector<pii> edges = extra_edges(adj,
+//!   auto [num_sccs, scc_id] = scc(g);
+//!   vector<pii> edges = extra_edges(g,
 //!     num_sccs, scc_id);
 //! @endcode
-//! @param adj,num_sccs,scc_id directed graph and its SCCs
+//! @param g,num_sccs,scc_id directed graph and its SCCs
 //! @returns directed edge list: edges[i][0] -> edges[i][1]
 //! @time O(n + m)
 //! @space An O(n) edge list is allocated and returned, but
 //! multiple O(n + m) vectors are allocated temporarily
-vector<pii> extra_edges(const auto& adj, int num_sccs,
+vector<pii> extra_edges(const auto& g, int num_sccs,
   const vi& scc_id) {
   if (num_sccs == 1) return {};
-  int n = sz(adj);
-  vector<vi> scc_adj(num_sccs);
+  int n = sz(g);
+  vector<vi> scc_g(num_sccs);
   vector<bool> zero_in(num_sccs, 1);
-  rep(i, 0, n) for (int v : adj[i]) {
+  rep(i, 0, n) for (int v : g[i]) {
     if (scc_id[i] == scc_id[v]) continue;
-    scc_adj[scc_id[i]].push_back(scc_id[v]);
+    scc_g[scc_id[i]].push_back(scc_id[v]);
     zero_in[scc_id[v]] = 0;
   }
   vector<bool> vis(num_sccs);
   auto dfs = [&](auto&& dfs, int u) {
-    if (empty(scc_adj[u])) return u;
-    for (int v : scc_adj[u])
+    if (empty(scc_g[u])) return u;
+    for (int v : scc_g[u])
       if (!vis[v]) {
         vis[v] = 1;
         int zero_out = dfs(dfs, v);
@@ -49,7 +49,7 @@ vector<pii> extra_edges(const auto& adj, int num_sccs,
   }
   rep(i, 1, sz(edges))
     swap(edges[i].first, edges[i - 1].first);
-  rep(i, 0, num_sccs) if (empty(scc_adj[i]) && !vis[i]) {
+  rep(i, 0, num_sccs) if (empty(scc_g[i]) && !vis[i]) {
     if (!empty(in_unused)) {
       edges.emplace_back(i, in_unused.back());
       in_unused.pop_back();

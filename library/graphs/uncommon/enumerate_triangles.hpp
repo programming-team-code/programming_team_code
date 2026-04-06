@@ -11,16 +11,16 @@ void enumerate_triangles(const vector<pii>& edges, int n,
   auto f) {
   vi deg(n);
   for (auto [u, v] : edges) deg[u]++, deg[v]++;
-  vector<vi> adj(n);
+  vector<vi> g(n);
   for (auto [u, v] : edges) {
     if (tie(deg[u], u) > tie(deg[v], v)) swap(u, v);
-    adj[u].push_back(v);
+    g[u].push_back(v);
   }
   vector<bool> seen(n);
   for (auto [u, v] : edges) {
-    for (int w : adj[u]) seen[w] = 1;
-    for (int w : adj[v])
+    for (int w : g[u]) seen[w] = 1;
+    for (int w : g[v])
       if (seen[w]) f(u, v, w);
-    for (int w : adj[u]) seen[w] = 0;
+    for (int w : g[u]) seen[w] = 0;
   }
 }

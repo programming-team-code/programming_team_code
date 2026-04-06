@@ -1,7 +1,7 @@
 #pragma once
 //! @code
-//!   vector<basic_string<int>> adj;
-//!   vi cc_id = get_complement_graph_ccs(adj);
+//!   vector<basic_string<int>> g;
+//!   vi cc_id = get_complement_graph_ccs(g);
 //! @endcode
 //! 0<=cc_id[v]<number of connected components
 //!   in the complement graph
@@ -9,11 +9,11 @@
 //!   cc in the compliment graph
 //! @time O(n + m)
 //! @space O(n)
-vi get_complement_graph_ccs(const auto& adj) {
-  int n = sz(adj);
+vi get_complement_graph_ccs(const auto& g) {
+  int n = sz(g);
   vi cc_id(n), unseen(n);
   iota(all(unseen), 0);
-  vector<bool> is_adj(n);
+  vector<bool> is_g(n);
   for (int cnt = 0; !empty(unseen); cnt++) {
     int s = unseen.back();
     unseen.pop_back();
@@ -21,10 +21,10 @@ vi get_complement_graph_ccs(const auto& adj) {
     for (queue<int> q({s}); !empty(q);) {
       int v = q.front();
       q.pop();
-      for (int u : adj[v]) is_adj[u] = 1;
+      for (int u : g[v]) is_g[u] = 1;
       vi nxt_unseen;
       for (int u : unseen) {
-        if (is_adj[u]) {
+        if (is_g[u]) {
           nxt_unseen.push_back(u);
         } else {
           cc_id[u] = cnt;
@@ -32,7 +32,7 @@ vi get_complement_graph_ccs(const auto& adj) {
         }
       }
       swap(unseen, nxt_unseen);
-      for (int u : adj[v]) is_adj[u] = 0;
+      for (int u : g[v]) is_g[u] = 0;
     }
   }
   return cc_id;

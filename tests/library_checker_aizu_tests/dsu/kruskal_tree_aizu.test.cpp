@@ -31,7 +31,7 @@ int main() {
   vector<int> depth(2 * n);
   vector<int> actual_par(2 * n, -1);
   auto dfs = [&](auto&& self, int v) -> void {
-    for (int u : kt.adj[v]) {
+    for (int u : kt.g[v]) {
       depth[u] = 1 + depth[v];
       actual_par[u] = v;
       self(self, u);

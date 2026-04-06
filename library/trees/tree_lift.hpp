@@ -1,8 +1,8 @@
 #pragma once
 //! https://github.com/ucf-programming-team/hackpack-cpp/blob/master/content/graphs/TreeLifting.h
 //! @code
-//!   vector<basic_string<int>> adj(n);
-//!   tree_lift tree_l(adj);
+//!   vector<basic_string<int>> g(n);
+//!   tree_lift tree_l(g);
 //!   tree_l.kth_par(v, k); // k edges up from v
 //!   tree_l.kth_par(v, 1); // v's parent
 //! @endcode
@@ -10,11 +10,11 @@
 //! @space O(n)
 struct tree_lift {
   vi d, p, j;
-  tree_lift(const auto& adj): d(sz(adj)), p(d), j(d) {
+  tree_lift(const auto& g): d(sz(g)), p(d), j(d) {
     auto dfs = [&](auto&& dfs, int u) -> void {
       int up =
         d[u] + d[j[j[u]]] == 2 * d[j[u]] ? j[j[u]] : u;
-      for (int v : adj[u])
+      for (int v : g[u])
         if (v != p[u])
           d[v] = d[p[v] = u] + 1, j[v] = up, dfs(dfs, v);
     };

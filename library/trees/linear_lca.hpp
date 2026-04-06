@@ -1,8 +1,8 @@
 #pragma once
 //! https://codeforces.com/blog/entry/125371
 //! @code
-//!   vector<basic_string<int>> adj(n);
-//!   linear_lca llca(adj);
+//!   vector<basic_string<int>> g(n);
+//!   linear_lca llca(g);
 //! @endcode
 //! @time O(n + q)
 //! @space O(n)
@@ -10,13 +10,13 @@ int lsb(int x) { return x & -x; }
 struct linear_lca {
   int n;
   vi d, in, asc, head;
-  linear_lca(const auto& adj):
-    n(sz(adj)), d(n), in(n), asc(n), head(n + 1) {
+  linear_lca(const auto& g):
+    n(sz(g)), d(n), in(n), asc(n), head(n + 1) {
     vector<pii> order;
     auto dfs = [&](auto&& dfs, int u, int p) -> void {
       order.emplace_back(u, p);
       in[u] = sz(order);
-      for (int v : adj[u])
+      for (int v : g[u])
         if (v != p) {
           d[v] = 1 + d[u];
           dfs(dfs, v, u);

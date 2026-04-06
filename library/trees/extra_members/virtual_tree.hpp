@@ -1,7 +1,7 @@
 //! https://github.com/kth-competitive-programming/kactl/blob/main/content/graph/CompressTree.h
 //! @code
-//!   vector<vi> adj(n);
-//!   LCA lca(adj);
+//!   vector<vi> g(n);
+//!   LCA lca(g);
 //!   auto [par, orig_node] =
 //!     lca.compress_tree(subset);
 //! @endcode
