@@ -1,0 +1,5 @@
+---
+Language: Cpp
+BasedOnStyle: file:base.clang-format
+ColumnLimit: 59
+...
