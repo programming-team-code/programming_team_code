@@ -1,5 +1,4 @@
 Language: Cpp
-BasedOnStyle: Google
 AccessModifierOffset: -2
 AlignAfterOpenBracket: DontAlign
 AlignConsecutiveAssignments: false
