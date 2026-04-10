@@ -7,8 +7,6 @@ help:
 	@echo "                                     |"
 	@echo "make grep_clangformat_cppcheck       | various greps to catch certain things, clang-format, cppcheck"
 	@echo "                                     |"
-	@echo "make do_format                       | format with clang-format"
-	@echo "                                     |"
 	@echo "make clangtidy                       | runs clang-tidy (mainly to verify snake_case)"
 	@echo "                                     |"
 	@echo "make build_pdf                       | build build_pdf.pdf from .tex file"
@@ -31,9 +29,6 @@ compile_clang:
 
 grep_clangformat_cppcheck:
 	./scripts/grep_clangformat_cppcheck.sh
-
-do_format:
-	./scripts/do_format.sh
 
 clangtidy:
 	./scripts/clangtidy.sh

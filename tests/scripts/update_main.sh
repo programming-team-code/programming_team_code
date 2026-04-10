@@ -25,5 +25,6 @@ done
 
 # the cpp preprocessor sometimes leaves blank empty lines
 sed --in-place '/^[[:space:]]*$/d' ../**/*.hpp
+
 # cpp command messes up formatting
-make do_format
+clang-format-19 -i --style=file:.config/main.clang-format ../**/*.hpp ../**/*.cpp

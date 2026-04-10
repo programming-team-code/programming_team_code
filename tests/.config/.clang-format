@@ -2,7 +2,6 @@
 Language: Cpp
 BasedOnStyle: Google
 AccessModifierOffset: -2
-AlignAfterOpenBracket: DontAlign
 AlignConsecutiveAssignments: false
 AlignConsecutiveBitFields: None
 AlignConsecutiveDeclarations: None
@@ -30,7 +29,6 @@ BreakBeforeTernaryOperators: true
 BreakConstructorInitializers: AfterColon
 BreakInheritanceList: AfterColon
 BreakStringLiterals: false
-ColumnLimit: 59
 CompactNamespaces: true
 ConstructorInitializerAllOnOneLineOrOnePerLine: false
 ConstructorInitializerIndentWidth: 2
