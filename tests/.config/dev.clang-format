@@ -1,3 +1,0 @@
-BasedOnStyle: InheritParentConfig
-ColumnLimit: 59
-AlignAfterOpenBracket: DontAlign
