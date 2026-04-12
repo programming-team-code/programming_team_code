@@ -3,6 +3,7 @@ runs:
   using: "composite"
   steps:
     - name: Install LLVM
+      shell: bash
       run: |
         wget https://apt.llvm.org/llvm.sh
         chmod +x llvm.sh
