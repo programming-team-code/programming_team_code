@@ -46,7 +46,6 @@ jobs:
       run: |
         clang-22 --version
         clang-format-22 --version
-        clang-tidy-22 --version
     - name: grep, clang-format, cppcheck
       run: make --directory=tests/ grep_clangformat_cppcheck
 
@@ -54,13 +53,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - name: Set up LLVM repository
+    - name: Install LLVM
       run: |
-        sudo apt update
-        sudo apt install -y wget software-properties-common
-        wget -O - https://apt.llvm.org/llvm.sh | sudo bash
+        wget https://apt.llvm.org/llvm.sh
+        chmod +x llvm.sh
+        sudo ./llvm.sh 22
     - name: Install dependencies
       run: sudo apt update && sudo apt install -y clang-tidy-22
+    - name: Verify
+      run: |
+        clang-22 --version
+        clang-tidy-22 --version
     - name: clang-tidy
       run: make --directory=tests/ clangtidy
 
