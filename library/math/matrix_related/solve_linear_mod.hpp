@@ -18,9 +18,8 @@ struct solve_linear_mod {
     rep(i, 0, n) mat[i].push_back(rhs[i]);
     tie(rank, det) = row_reduce(mat, m);
     if (any_of(rank + all(mat),
-          [](vi& v) { return v.back(); })) {
+          [](vi& v) { return v.back(); }))
       return;
-    }
     sol.resize(m);
     int j = 0;
     for_each(begin(mat), begin(mat) + rank, [&](vi& v) {

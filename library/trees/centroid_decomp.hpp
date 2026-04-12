@@ -22,11 +22,7 @@ void centroid(auto& g, auto f) {
       w = u, u = *big_ch;
     }
     f(u, p);
-    for (int v : g[u]) {
-      iter_swap(ranges::find(g[v], u), rbegin(g[v]));
-      g[v].pop_back();
-      dfs(dfs, v, u);
-    }
+    for (int v : g[u]) erase(g[v], u), dfs(dfs, v, u);
   };
   dfs(dfs, 0, -1);
 }

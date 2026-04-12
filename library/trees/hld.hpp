@@ -16,9 +16,7 @@ template<bool VALS_EDGES> struct HLD {
   HLD(auto& g): n(sz(g)), p(n), siz(n, 1), rt(n), tin(n) {
     auto dfs1 = [&](auto&& dfs1, int u) -> void {
       for (int& v : g[u]) {
-        iter_swap(ranges::find(g[v], u), rbegin(g[v]));
-        g[v].pop_back();
-        p[v] = u;
+        erase(g[v], p[v] = u);
         dfs1(dfs1, v);
         siz[u] += siz[v];
         if (siz[v] > siz[g[u][0]]) swap(v, g[u][0]);
