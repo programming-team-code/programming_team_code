@@ -87,8 +87,7 @@ int main() {
     for (int v : adj[cent]) {
       for (int i = 0; i < ssize(adj[v]); i++) {
         if (adj[v][i] == cent) {
-          swap(weight[v][i], weight[v].back());
-          weight[v].pop_back();
+          weight[v].erase(begin(weight[v]) + i);
           break;
         }
       }

@@ -48,7 +48,7 @@ int main() {
       assert(res == bit_rr.query(l, r));
       cout << res << '\n';
     }
-    auto sum = rnd<ll>(0LL, (ll)(1e12));
+    auto sum = rnd<ll>(0LL, (ll)1e12);
     auto need = sum;
     auto f = [&](ll x, int tl, int tr) -> bool {
       assert(tl <= tr);

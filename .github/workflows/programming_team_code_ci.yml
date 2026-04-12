@@ -35,17 +35,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - name: Install LLVM
-      run: |
-        wget https://apt.llvm.org/llvm.sh
-        chmod +x llvm.sh
-        sudo ./llvm.sh 22
+    - uses: ./.github/actions/setup
     - name: Install dependencies
-      run: sudo apt install -y clang-format-22 cppcheck
-    - name: Verify
-      run: |
-        clang-22 --version
-        clang-format-22 --version
+      run: sudo apt install -y cppcheck
     - name: grep, clang-format, cppcheck
       run: make --directory=tests/ grep_clangformat_cppcheck
 
@@ -53,17 +45,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - name: Install LLVM
-      run: |
-        wget https://apt.llvm.org/llvm.sh
-        chmod +x llvm.sh
-        sudo ./llvm.sh 22
-    - name: Install dependencies
-      run: sudo apt install -y clang-tidy-22
-    - name: Verify
-      run: |
-        clang-22 --version
-        clang-tidy-22 --version
+    - uses: ./.github/actions/setup
     - name: clang-tidy
       run: make --directory=tests/ clangtidy
 
@@ -78,14 +60,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - name: Install LLVM
-      run: |
-        wget https://apt.llvm.org/llvm.sh
-        chmod +x llvm.sh
-        sudo ./llvm.sh 22
-    - name: Verify
-      run: |
-        clang-22 --version
+    - uses: ./.github/actions/setup
     - name: g++ with clang
       run: make --directory=tests/ compile_clang
 
@@ -100,17 +75,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
+    - uses: ./.github/actions/setup
     - name: Install texlive, rename, nodejs, npm
-      run: |
-        sudo apt install texlive texlive-latex-extra rename nodejs npm
-    - name: Install LLVM
-      run: |
-        wget https://apt.llvm.org/llvm.sh
-        chmod +x llvm.sh
-        sudo ./llvm.sh 22
-    - name: Verify
-      run: |
-        clang-22 --version
+      run: sudo apt install texlive texlive-latex-extra rename nodejs npm
     - name: build pdf
       run: make --directory=tests/ build_pdf
     - uses: actions/upload-artifact@v4
@@ -142,17 +109,7 @@ jobs:
     if: github.ref == 'refs/heads/dev' && github.event_name == 'push'
     steps:
     - uses: actions/checkout@v4
-    - name: Install LLVM
-      run: |
-        wget https://apt.llvm.org/llvm.sh
-        chmod +x llvm.sh
-        sudo ./llvm.sh 22
-    - name: Install dependencies
-      run: sudo apt install -y clang-format-22 cppcheck
-    - name: Verify
-      run: |
-        clang-22 --version
-        clang-format-22 --version
+    - uses: ./.github/actions/setup
     - name: Combine includes and force push to main branch
       run: |
         git config --local user.name github-actions
