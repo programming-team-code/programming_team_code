@@ -5,7 +5,7 @@
 "tests/library_checker_aizu_tests/convolution/xor_convolution.test.cpp": "2026-03-06 12:17:28 -0700",
 "tests/library_checker_aizu_tests/data_structures/binary_search_example.test.cpp": "2024-11-18 10:51:39 -0600",
 "tests/library_checker_aizu_tests/data_structures/binary_trie.test.cpp": "2026-01-18 02:20:40 +0000",
-"tests/library_checker_aizu_tests/data_structures/bit.test.cpp": "2026-04-12 11:07:55 -0600",
+"tests/library_checker_aizu_tests/data_structures/bit.test.cpp": "2026-04-12 12:49:55 -0600",
 "tests/library_checker_aizu_tests/data_structures/bit_inc.test.cpp": "2026-04-06 12:17:32 -0600",
 "tests/library_checker_aizu_tests/data_structures/bit_inc_walk.test.cpp": "2026-04-06 12:17:32 -0600",
 "tests/library_checker_aizu_tests/data_structures/bit_ordered_set.test.cpp": "2026-04-06 12:17:32 -0600",
@@ -146,5 +146,7 @@
 "tests/library_checker_aizu_tests/trees/kth_path_tree_lift.test.cpp": "2026-04-06 14:41:55 -0600",
 "tests/library_checker_aizu_tests/trees/lca_all_methods_aizu.test.cpp": "2026-04-06 14:41:55 -0600",
 "tests/library_checker_aizu_tests/trees/lca_all_methods_lib_checker.test.cpp": "2026-04-06 14:41:55 -0600",
-"tests/library_checker_aizu_tests/trees/shallowest_aizu_tree_height.test.cpp": "2026-04-12 10:51:29 -0600"
+"tests/library_checker_aizu_tests/trees/shallowest_aizu_tree_height.test.cpp": "2026-04-12 10:51:29 -0600",
+"tests/library_checker_aizu_tests/trees/shallowest_lib_checker_tree_path_composite.test.cpp": "2026-04-12 12:49:55 -0600",
+"tests/library_checker_aizu_tests/trees/subtree_isomorphism.test.cpp": "2026-04-06 14:41:55 -0600"
 }
