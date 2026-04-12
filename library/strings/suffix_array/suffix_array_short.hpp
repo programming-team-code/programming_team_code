@@ -24,7 +24,7 @@ auto sa_short(const auto& s) {
       }
       return false;
     };
-    stable_sort(all(sa), cmp);
+    ranges::stable_sort(sa, cmp);
     sa_inv[sa[0]] = 0;
     rep(i, 1, n) sa_inv[sa[i]] =
       sa_inv[sa[i - 1]] + cmp(sa[i - 1], sa[i]);
