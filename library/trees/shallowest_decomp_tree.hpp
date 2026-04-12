@@ -9,7 +9,7 @@
 //! @space O(n)
 void shallowest(auto& g, auto f) {
   vector<vi> order(bit_width(size(g)));
-  auto dfs = [&](auto dfs, int u, int p) -> int {
+  auto dfs = [&](auto dfs, int u, int p) {
     int once = 0, twice = 0;
     for (int v : g[u])
       if (v != p) {

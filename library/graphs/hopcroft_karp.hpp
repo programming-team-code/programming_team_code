@@ -43,7 +43,7 @@ struct hopcroft_karp {
         }
       }
       if (!found) break;
-      auto dfs = [&](auto dfs, int u) -> bool {
+      auto dfs = [&](auto dfs, int u) {
         for (int v : g[u]) {
           int w = to_l[v];
           if (w == -1 ||

@@ -17,7 +17,7 @@ struct ladder {
   //! @space O(n log n) for jmp. Everything else is O(n)
   ladder(const auto& g):
     n(sz(g)), d(n), p(n), leaf(n), idx(n), lad(2 * n) {
-    auto dfs = [&](auto dfs, int u) -> void {
+    auto dfs = [&](auto dfs, int u) {
       leaf[u] = u;
       for (int v : g[u])
         if (v != p[u]) {
