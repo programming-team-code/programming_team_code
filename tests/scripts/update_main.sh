@@ -27,4 +27,4 @@ done
 sed --in-place '/^[[:space:]]*$/d' ../**/*.hpp
 
 # cpp command messes up formatting
-clang-format-19 -i --style=file:.config/main.clang-format ../**/*.hpp ../**/*.cpp
+clang-format-22 -i --style=file:.config/main.clang-format ../**/*.hpp ../**/*.cpp

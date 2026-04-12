@@ -41,7 +41,7 @@ jobs:
         sudo apt install -y wget software-properties-common
         wget -O - https://apt.llvm.org/llvm.sh | sudo bash
     - name: Install dependencies
-      run: sudo apt update && sudo apt install -y clang-format-19 cppcheck
+      run: sudo apt update && sudo apt install -y clang-format-22 cppcheck
     - name: grep, clang-format, cppcheck
       run: make --directory=tests/ grep_clangformat_cppcheck
 
@@ -55,7 +55,7 @@ jobs:
         sudo apt install -y wget software-properties-common
         wget -O - https://apt.llvm.org/llvm.sh | sudo bash
     - name: Install dependencies
-      run: sudo apt update && sudo apt install -y clang-tidy-19
+      run: sudo apt update && sudo apt install -y clang-tidy-22
     - name: clang-tidy
       run: make --directory=tests/ clangtidy
 
@@ -71,9 +71,9 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Set up LLVM repository
-      run: wget -qO- https://apt.llvm.org/llvm.sh | sudo bash -s -- 19
+      run: wget -qO- https://apt.llvm.org/llvm.sh | sudo bash -s -- 22
     - name: Install dependencies
-      run: sudo apt update && sudo apt install -y clang-19
+      run: sudo apt update && sudo apt install -y clang-22
     - name: g++ with clang
       run: make --directory=tests/ compile_clang
 
@@ -92,8 +92,8 @@ jobs:
       run: |
         sudo apt update
         sudo apt install texlive texlive-latex-extra rename nodejs npm
-        wget -qO- https://apt.llvm.org/llvm.sh | sudo bash -s -- 19
-        sudo apt update && sudo apt install -y clang-19
+        wget -qO- https://apt.llvm.org/llvm.sh | sudo bash -s -- 22
+        sudo apt update && sudo apt install -y clang-22
     - name: build pdf
       run: make --directory=tests/ build_pdf
     - uses: actions/upload-artifact@v4
@@ -131,7 +131,7 @@ jobs:
         sudo apt install -y wget software-properties-common
         wget -O - https://apt.llvm.org/llvm.sh | sudo bash
     - name: Install dependencies
-      run: sudo apt update && sudo apt install -y clang-format-19
+      run: sudo apt update && sudo apt install -y clang-format-22
     - name: Combine includes and force push to main branch
       run: |
         git config --local user.name github-actions
