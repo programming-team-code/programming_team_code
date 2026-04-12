@@ -7,7 +7,7 @@
 //! @space O(n)
 void centroid(auto& g, auto f) {
   vi siz(sz(g));
-  auto ctd = [&](auto ctd, int u, int p, int n) {
+  auto ctd = [&](auto ctd, int u, int p, int n) -> int {
     siz[u] = 1;
     for (int v : g[u])
       if (v != p) {
