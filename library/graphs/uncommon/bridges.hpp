@@ -18,7 +18,7 @@
 auto bridges(const auto& g, int m) {
   int n = sz(g), num_ccs = 0, q = 0, s = 0;
   vi br_id(n, -1), is_br(m), tin(n), st(n);
-  auto dfs = [&](auto&& dfs, int u, int p) -> int {
+  auto dfs = [&](auto dfs, int u, int p) -> int {
     int low = tin[u] = ++q;
     st[s++] = u;
     for (auto [v, e] : g[u])
