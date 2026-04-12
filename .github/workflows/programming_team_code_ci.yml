@@ -5,18 +5,6 @@ on: push
 permissions:
   contents: write
 
-x-llvm-install: &llvm-install
-  name: Install LLVM
-  run: |
-    wget https://apt.llvm.org/llvm.sh
-    chmod +x llvm.sh
-    sudo ./llvm.sh 22
-    sudo apt-get update
-    sudo apt-get install -y clang-format-22 clang-tidy-22
-    clang-22 --version
-    clang-format-22 --version
-    clang-tidy-22 --version
-
 jobs:
   library_checker_aizu:
     runs-on: ubuntu-latest
@@ -47,7 +35,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - *llvm-install
+    - uses: ./.github/actions/setup
     - name: Install dependencies
       run: sudo apt install -y cppcheck
     - name: grep, clang-format, cppcheck
@@ -57,7 +45,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - *llvm-install
+    - uses: ./.github/actions/setup
     - name: clang-tidy
       run: make --directory=tests/ clangtidy
 
@@ -72,7 +60,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - *llvm-install
+    - uses: ./.github/actions/setup
     - name: g++ with clang
       run: make --directory=tests/ compile_clang
 
@@ -87,7 +75,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - *llvm-install
+    - uses: ./.github/actions/setup
     - name: Install texlive, rename, nodejs, npm
       run: sudo apt install texlive texlive-latex-extra rename nodejs npm
     - name: build pdf
@@ -121,7 +109,7 @@ jobs:
     if: github.ref == 'refs/heads/dev' && github.event_name == 'push'
     steps:
     - uses: actions/checkout@v4
-    - *llvm-install
+    - uses: ./.github/actions/setup
     - name: Combine includes and force push to main branch
       run: |
         git config --local user.name github-actions
