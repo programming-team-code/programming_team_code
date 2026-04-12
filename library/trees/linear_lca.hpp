@@ -14,8 +14,7 @@ struct linear_lca {
     n(sz(g)), d(n), in(n), asc(n), head(n + 1) {
     vector<pii> order;
     auto dfs = [&](auto&& dfs, int u, int p) -> void {
-      order.emplace_back(u, p);
-      in[u] = sz(order);
+      order.emplace_back(u, p), in[u] = sz(order);
       for (int v : g[u])
         if (v != p) {
           d[v] = 1 + d[u];
