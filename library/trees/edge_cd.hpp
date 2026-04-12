@@ -19,8 +19,7 @@ template<class G> void edge_cd(vector<G>& g, auto f) {
     siz[u] = 1;
     for (int v : g[u])
       if (v != p) {
-        int c = cnt(cnt, v, u, m);
-        if (c != -1) return c;
+        if (int c = cnt(cnt, v, u, m); c != -1) return c;
         siz[u] += siz[v];
       }
     return 2 * siz[u] > m ? siz[p] = m + 1 - siz[u],

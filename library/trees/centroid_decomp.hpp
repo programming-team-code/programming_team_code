@@ -11,8 +11,7 @@ void centroid(auto& g, auto f) {
     siz[u] = 1;
     for (int v : g[u])
       if (v != p) {
-        int c = cnt(cnt, v, u, n);
-        if (c != -1) return c;
+        if (int c = cnt(cnt, v, u, n); c != -1) return c;
         siz[u] += siz[v];
       }
     return 2 * siz[u] >= n ? siz[p] = n - siz[u], u : -1;
