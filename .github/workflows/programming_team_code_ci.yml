@@ -35,13 +35,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - name: Set up LLVM repository
+    - name: Install LLVM
       run: |
-        sudo apt update
-        sudo apt install -y wget software-properties-common
-        wget -O - https://apt.llvm.org/llvm.sh | sudo bash
+        wget https://apt.llvm.org/llvm.sh
+        chmod +x llvm.sh
+        sudo ./llvm.sh 22
     - name: Install dependencies
-      run: sudo apt update && sudo apt install -y clang-format-19 cppcheck
+      run: sudo apt install -y clang-format-22 cppcheck
+    - name: Verify
+      run: |
+        clang-22 --version
+        clang-format-22 --version
     - name: grep, clang-format, cppcheck
       run: make --directory=tests/ grep_clangformat_cppcheck
 
@@ -49,13 +53,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - name: Set up LLVM repository
+    - name: Install LLVM
       run: |
-        sudo apt update
-        sudo apt install -y wget software-properties-common
-        wget -O - https://apt.llvm.org/llvm.sh | sudo bash
+        wget https://apt.llvm.org/llvm.sh
+        chmod +x llvm.sh
+        sudo ./llvm.sh 22
     - name: Install dependencies
-      run: sudo apt update && sudo apt install -y clang-tidy-19
+      run: sudo apt install -y clang-tidy-22
+    - name: Verify
+      run: |
+        clang-22 --version
+        clang-tidy-22 --version
     - name: clang-tidy
       run: make --directory=tests/ clangtidy
 
@@ -70,10 +78,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - name: Set up LLVM repository
-      run: wget -qO- https://apt.llvm.org/llvm.sh | sudo bash -s -- 19
-    - name: Install dependencies
-      run: sudo apt update && sudo apt install -y clang-19
+    - name: Install LLVM
+      run: |
+        wget https://apt.llvm.org/llvm.sh
+        chmod +x llvm.sh
+        sudo ./llvm.sh 22
+    - name: Verify
+      run: |
+        clang-22 --version
     - name: g++ with clang
       run: make --directory=tests/ compile_clang
 
@@ -88,12 +100,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - name: Install texlive, rename, nodejs, npm, clang
+    - name: Install texlive, rename, nodejs, npm
       run: |
-        sudo apt update
         sudo apt install texlive texlive-latex-extra rename nodejs npm
-        wget -qO- https://apt.llvm.org/llvm.sh | sudo bash -s -- 19
-        sudo apt update && sudo apt install -y clang-19
+    - name: Install LLVM
+      run: |
+        wget https://apt.llvm.org/llvm.sh
+        chmod +x llvm.sh
+        sudo ./llvm.sh 22
+    - name: Verify
+      run: |
+        clang-22 --version
     - name: build pdf
       run: make --directory=tests/ build_pdf
     - uses: actions/upload-artifact@v4
@@ -125,13 +142,17 @@ jobs:
     if: github.ref == 'refs/heads/dev' && github.event_name == 'push'
     steps:
     - uses: actions/checkout@v4
-    - name: Set up LLVM repository
+    - name: Install LLVM
       run: |
-        sudo apt update
-        sudo apt install -y wget software-properties-common
-        wget -O - https://apt.llvm.org/llvm.sh | sudo bash
+        wget https://apt.llvm.org/llvm.sh
+        chmod +x llvm.sh
+        sudo ./llvm.sh 22
     - name: Install dependencies
-      run: sudo apt update && sudo apt install -y clang-format-19
+      run: sudo apt install -y clang-format-22 cppcheck
+    - name: Verify
+      run: |
+        clang-22 --version
+        clang-format-22 --version
     - name: Combine includes and force push to main branch
       run: |
         git config --local user.name github-actions
