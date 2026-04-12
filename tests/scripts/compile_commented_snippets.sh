@@ -39,4 +39,4 @@ echo "compiling code in @code ... @endcode comments with g++"
 g++ -std=c++20 entire_library.cpp || exit 1
 
 echo "compiling code in @code ... @endcode comments with clang++"
-clang++-19 -std=c++20 entire_library.cpp || exit 1
+clang++-22 -std=c++20 entire_library.cpp || exit 1

@@ -81,15 +81,12 @@ int main() {
       dfs(dfs, adj[cent][i], cent, {b[e_id], c[e_id]},
         {b[e_id], c[e_id]}, i < split);
     }
-    for (int side = 0; side < 2; side++) {
-      for (
-        auto [u, curr_b, curr_c] : all_backwards[side]) {
+    for (int side = 0; side < 2; side++)
+      for (auto [u, curr_b, curr_c] : all_backwards[side])
         res[u] =
           (res[u] + 1LL * curr_b * sum_forward[!side] +
             1LL * curr_c * cnt_nodes[!side]) %
           mod;
-      }
-    }
   });
   swap(base_adj, adj);
   {

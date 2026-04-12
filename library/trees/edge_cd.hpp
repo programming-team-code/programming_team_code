@@ -24,17 +24,16 @@ template<class G> void edge_cd(vector<G>& g, auto f) {
         if (c != -1) return c;
         siz[u] += siz[v];
       }
-    return 2 * siz[u] > m
-           ? p >= 0 && (siz[p] = m + 1 - siz[u]),
-           u : -1;
+    return 2 * siz[u] > m ? siz[p] = m + 1 - siz[u],
+                            u : -1;
   };
   auto dfs = [&](auto&& dfs, int u, int m) -> void {
     if (m < 2) return;
-    u = cent(cent, u, -1, m);
+    u = cent(cent, u, u, m);
     int sum = 0;
     auto it = partition(all(g[u]), [&](int v) {
       ll x = sum + siz[v];
-      return x * x < m * (m - x) ? sum += siz[v], 1 : 0;
+      return x * x < m * (m - x) ? sum = x : 0;
     });
     f(u, it - begin(g[u]));
     G oth(it, end(g[u]));

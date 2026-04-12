@@ -59,10 +59,9 @@ int main() {
       for (int i = 0; i < ssize(adj[v]); i++) {
         int u = adj[v][i];
         line curr_line = weight[v][i];
-        if (u != p) {
+        if (u != p)
           self(self, u, v, compose(downwards, curr_line),
             compose(curr_line, upwards), forwards);
-        }
       }
     };
     for (int i = 0; i < ssize(adj[cent]); i++) {

@@ -24,8 +24,6 @@ void shallowest(auto& g, auto f) {
   for (const vi& vec : order | views::reverse)
     for (int u : vec) {
       f(u);
-      for (int v : g[u])
-        iter_swap(ranges::find(g[v], u), rbegin(g[v])),
-          g[v].pop_back();
+      for (int v : g[u]) erase(g[v], u);
     }
 }
