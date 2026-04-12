@@ -15,12 +15,11 @@
 //! @space O(n)
 template<class G> void edge_cd(vector<G>& g, auto f) {
   vi siz(sz(g));
-  auto cent = [&](auto&& cent, int u, int p,
-                int m) -> int {
+  auto cnt = [&](auto&& cnt, int u, int p, int m) -> int {
     siz[u] = 1;
     for (int v : g[u])
       if (v != p) {
-        int c = cent(cent, v, u, m);
+        int c = cnt(cnt, v, u, m);
         if (c != -1) return c;
         siz[u] += siz[v];
       }
@@ -29,7 +28,7 @@ template<class G> void edge_cd(vector<G>& g, auto f) {
   };
   auto dfs = [&](auto&& dfs, int u, int m) -> void {
     if (m < 2) return;
-    u = cent(cent, u, u, m);
+    u = cnt(cnt, u, u, m);
     int sum = 0;
     auto it = partition(all(g[u]), [&](int v) {
       ll x = sum + siz[v];
