@@ -46,7 +46,7 @@ jobs:
         clang-format-22 --version
         clang-tidy-22 --version
     - name: Install dependencies
-      run: sudo apt install -y cppcheck
+      run: sudo apt install -y clang-format-22 cppcheck
     - name: grep, clang-format, cppcheck
       run: make --directory=tests/ grep_clangformat_cppcheck
 
