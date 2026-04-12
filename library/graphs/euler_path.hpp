@@ -16,7 +16,7 @@
 vector<pii> euler_path(auto& g, int m, int s) {
   vi vis(m);
   vector<pii> path;
-  auto dfs = [&](auto dfs, int u, int eu) {
+  auto dfs = [&](auto dfs, int u, int eu) -> void {
     while (!empty(g[u])) {
       auto [v, ev] = g[u].back();
       g[u].pop_back();

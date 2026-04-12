@@ -19,7 +19,7 @@
 auto cuts(const auto& g, int m) {
   int n = sz(g), num_bccs = 0, q = 0, s = 0;
   vi bcc_id(m, -1), is_cut(n), tin(n), st(m);
-  auto dfs = [&](auto dfs, int u, int p) {
+  auto dfs = [&](auto dfs, int u, int p) -> int {
     int low = tin[u] = ++q;
     for (auto [v, e] : g[u]) {
       assert(u != v);

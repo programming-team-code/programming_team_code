@@ -16,7 +16,7 @@ void centroid(auto& g, auto f) {
       }
     return 2 * siz[u] >= n ? siz[p] = n - siz[u], u : -1;
   };
-  auto dfs = [&](auto dfs, int u, int p, int n) {
+  auto dfs = [&](auto dfs, int u, int p, int n) -> void {
     f(u = ctd(ctd, u, u, n), p);
     for (int v : g[u])
       erase(g[v], u), dfs(dfs, v, u, siz[v]);

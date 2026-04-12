@@ -11,7 +11,7 @@
 auto scc(const auto& g) {
   int n = sz(g), num_sccs = 0, q = 0, s = 0;
   vi scc_id(n, -1), tin(n), st(n);
-  auto dfs = [&](auto dfs, int u) {
+  auto dfs = [&](auto dfs, int u) -> int {
     int low = tin[u] = ++q;
     st[s++] = u;
     for (int v : g[u])
