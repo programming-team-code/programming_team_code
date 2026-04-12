@@ -16,7 +16,7 @@ vi offline_incremental_scc(vector<array<int, 2>> eds,
   vi ids(n, -1), joins(m, m), idx(m), vs(n), scc_id;
   iota(all(idx), 0);
   vector<vi> g;
-  auto dnc = [&](auto&& dnc, auto el, auto er, int tl,
+  auto dnc = [&](auto dnc, auto el, auto er, int tl,
                int tr) {
     g.clear();
     int mid = midpoint(tl, tr);

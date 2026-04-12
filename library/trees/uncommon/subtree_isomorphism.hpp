@@ -12,7 +12,7 @@
 auto subtree_iso(const auto& g) {
   vi iso_id(sz(g), -1);
   map<vi, int> hashes;
-  auto dfs = [&](auto&& dfs, int u, int p) -> int {
+  auto dfs = [&](auto dfs, int u, int p) -> int {
     vi ch_ids;
     for (int v : g[u])
       if (v != p) ch_ids.push_back(dfs(dfs, v, u));

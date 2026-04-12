@@ -9,8 +9,8 @@ vi min_plus(const vi& convex, const vi& arbitrary) {
   int n = sz(convex);
   int m = sz(arbitrary);
   vi res(n + m - 1, INT_MAX);
-  auto dnc = [&](auto&& dnc, int res_le, int res_ri,
-               int arb_le, int arb_ri) -> void {
+  auto dnc = [&](auto dnc, int res_le, int res_ri,
+               int arb_le, int arb_ri) {
     if (res_le >= res_ri) return;
     int mid_res = (res_le + res_ri) / 2;
     int op_arb = arb_le;
