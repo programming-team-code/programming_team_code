@@ -115,7 +115,7 @@ jobs:
         git config --local user.name github-actions
         git config --local user.email 160645609+programming-team-code@users.noreply.github.com
         make --directory=tests/ update_main
-        git rm -rf library/ tests/ .verify-helper/ .gitmodules kactl/ hackpack-cpp/ notebook-generator/ .github/
+        git rm -rf library/ tests/ .verify-helper/ .gitmodules kactl/ hackpack-cpp/ notebook-generator/ .github/ llvm.sh
         git add --all
         git commit --message "programming_team_code"
         git checkout -b main
