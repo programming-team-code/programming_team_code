@@ -1,4 +1,5 @@
 #pragma once
+//! https://codeforces.com/blog/entry/153134
 //! https://codeforces.com/blog/entry/125371?#comment-1173604
 //! @code
 //!   linear_rmq rmq1(a, less());          //right-most min
