@@ -1,5 +1,5 @@
 #pragma once
-//! https://codeforces.com/blog/entry/125371
+//! https://codeforces.com/blog/entry/153134
 //! @code
 //!   vector<basic_string<int>> g(n);
 //!   linear_lca llca(g);
