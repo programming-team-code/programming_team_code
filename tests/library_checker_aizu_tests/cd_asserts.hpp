@@ -15,12 +15,14 @@ void cd_asserts(vector<vector<int>> adj) {
     decomp_size[cent] = dfs(dfs, cent, -1);
     for (int u : adj[cent]) {
       int sz_subtree = dfs(dfs, u, cent);
-      assert(1 <= sz_subtree && 2 * sz_subtree <= decomp_size[cent]);
+      assert(1 <= sz_subtree &&
+        2 * sz_subtree <= decomp_size[cent]);
     }
   });
   assert(par == naive_par_decomp);
   rep(i, 0, sz(adj)) {
     assert(decomp_size[i] >= 1);
-    if (par[i] != -1) assert(2 * decomp_size[i] <= decomp_size[par[i]]);
+    if (par[i] != -1)
+      assert(2 * decomp_size[i] <= decomp_size[par[i]]);
   }
 }
