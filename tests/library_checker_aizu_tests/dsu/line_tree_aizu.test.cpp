@@ -19,8 +19,8 @@ int main() {
       w_eds.push_back({mat[i][j], i, j});
     }
   }
-  rep(k, 0, n) rep(i, 0, n) rep(j, 0, n) mat[i][j] =
-    min(mat[i][j], max(mat[i][k], mat[k][j]));
+  rep(k, 0, n) rep(i, 0, n) rep(j, 0, n)
+    mat[i][j] = min(mat[i][j], max(mat[i][k], mat[k][j]));
   sort(all(w_eds));
   line_tree lt(n);
   for (auto [w, u, v] : w_eds) lt.join(u, v);

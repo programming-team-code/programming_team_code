@@ -18,7 +18,7 @@ int main() {
     assert(sa_le == 0 && sa_ri == sz(s));
     pair<int, int> short_res = sf_a.find_str(vi());
     assert(sa_le == short_res.first &&
-      sa_ri == short_res.second);
+           sa_ri == short_res.second);
     assert(s_r - s_l == 0);
   }
   auto [sa_le, sa_ri, s_l, s_r] =
@@ -30,7 +30,7 @@ int main() {
   assert(s.substr(s_l, str_len) == t.substr(0, str_len));
   assert(str_len <= sz(t));
   assert(str_len == sz(t) || s_r == sz(s) ||
-    t[str_len] != s[s_r]);
+         t[str_len] != s[s_r]);
   assert((sa_le < sa_ri) == (str_len == sz(t)));
   vector<int> matches(begin(sf_a.sa) + sa_le,
     begin(sf_a.sa) + sa_ri);
@@ -65,7 +65,7 @@ int main() {
       pair<int, int> short_res2 =
         lq_both.find_substr(t_start, sz(both));
       assert(sa_le2 == short_res2.first &&
-        sa_ri2 == short_res2.second);
+             sa_ri2 == short_res2.second);
       assert(both.substr(s_le2, s_ri2 - s_le2) == t);
       assert(sa_ri2 - sa_le2 == 1 + sa_ri - sa_le);
       vector<int> matches_other(begin(lq_both.sa) + sa_le2,

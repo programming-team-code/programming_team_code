@@ -21,9 +21,9 @@ struct merge_sort_tree {
     if (r <= tl || tr <= l) return 0;
     if (l <= tl && tr <= r)
       return ranges::lower_bound(tree[v], vr) -
-        ranges::lower_bound(tree[v], vl);
+             ranges::lower_bound(tree[v], vl);
     int tm = split(tl, tr);
     return query(l, r, vl, vr, tl, tm, 2 * v) +
-      query(l, r, vl, vr, tm, tr, 2 * v + 1);
+           query(l, r, vl, vr, tm, tr, 2 * v + 1);
   }
 };

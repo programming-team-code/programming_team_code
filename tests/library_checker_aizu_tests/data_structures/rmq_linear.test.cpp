@@ -18,15 +18,15 @@ int main() {
     cin >> l >> r;
     int idx_right_min = rmq_less.idx(l, r - 1);
     assert(idx_right_min + 1 == r ||
-      rmq_less.query(idx_right_min + 1, r - 1) >
-        a[idx_right_min]);
+           rmq_less.query(idx_right_min + 1, r - 1) >
+             a[idx_right_min]);
     assert(l <= idx_right_min && idx_right_min < r);
     assert(rmq_less.query(l, r - 1) == a[idx_right_min]);
     assert(idx_right_min == rmq_greater.idx(l, r - 1));
     int idx_left_min = rmq_less_equal.idx(l, r - 1);
     assert(l == idx_left_min ||
-      rmq_less_equal.query(l, idx_left_min - 1) >
-        a[idx_left_min]);
+           rmq_less_equal.query(l, idx_left_min - 1) >
+             a[idx_left_min]);
     assert(l <= idx_left_min && idx_left_min < r);
     assert(
       idx_left_min == rmq_greater_equal.idx(l, r - 1));

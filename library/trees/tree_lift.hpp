@@ -12,8 +12,8 @@ struct tree_lift {
   vi d, p, j;
   tree_lift(const auto& g): d(sz(g)), p(d), j(d) {
     auto dfs = [&](auto dfs, int u) -> void {
-      int up =
-        d[u] + d[j[j[u]]] == 2 * d[j[u]] ? j[j[u]] : u;
+      int up = d[u] + d[j[j[u]]] == 2 * d[j[u]] ? j[j[u]]
+                                                : u;
       for (int v : g[u])
         if (v != p[u])
           d[v] = d[p[v] = u] + 1, j[v] = up, dfs(dfs, v);

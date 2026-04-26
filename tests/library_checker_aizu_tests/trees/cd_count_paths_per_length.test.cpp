@@ -36,8 +36,8 @@ vector<ll> count_paths_per_length(vector<vi> adj) {
       auto prod = conv(total_depth, cnt_depth);
       rep(i, 1, sz(prod)) num_paths[i] += llround(prod[i]);
       total_depth.resize(sz(cnt_depth));
-      rep(i, 1, sz(cnt_depth)) total_depth[i] +=
-        cnt_depth[i];
+      rep(i, 1, sz(cnt_depth))
+        total_depth[i] += cnt_depth[i];
     }
   });
   return num_paths;

@@ -68,11 +68,11 @@ int main() {
         array<int, 2> curr_forw = {
           int(1LL * forwards[0] * b[e_id] % mod),
           int((1LL * forwards[0] * c[e_id] + forwards[1]) %
-            mod)};
+              mod)};
         array<int, 2> curr_backw = {
           int(1LL * backwards[0] * b[e_id] % mod),
           int((1LL * backwards[1] * b[e_id] + c[e_id]) %
-            mod)};
+              mod)};
         self(self, v, u, curr_forw, curr_backw, side);
       }
     };

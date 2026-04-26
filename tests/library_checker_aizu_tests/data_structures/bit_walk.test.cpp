@@ -49,11 +49,10 @@ int main() {
       };
       int res = bit.walk2(order + 1);
       assert(res == st.find_first(0, n, f));
-      assert(res ==
-        st.find_first(k, n,
-          [&](int64_t x, int, int) -> bool {
-            return x > 0;
-          }));
+      assert(res == st.find_first(k, n,
+                      [&](int64_t x, int, int) -> bool {
+                        return x > 0;
+                      }));
       if (res == n) res = -1;
       int res_lambda = -1;
       bit.walk([&](int r, ll sum) {
@@ -82,11 +81,10 @@ int main() {
       };
       int res = bit.walk2(order);
       assert(max(res, 0) == st.find_first(0, n, f));
-      assert(res ==
-        st.find_last(0, k + 1,
-          [&](int64_t x, int, int) -> bool {
-            return x > 0;
-          }));
+      assert(res == st.find_last(0, k + 1,
+                      [&](int64_t x, int, int) -> bool {
+                        return x > 0;
+                      }));
       int res_lambda = -1;
       if (order) {
         bit.walk([&](int r, ll sum) {

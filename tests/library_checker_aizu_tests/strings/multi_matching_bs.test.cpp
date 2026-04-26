@@ -16,7 +16,7 @@ int main() {
       sf_a.find_str_fast(vi());
     pair<int, int> short_res = sf_a.find_str(vi());
     assert(sa_le == short_res.first &&
-      sa_ri == short_res.second);
+           sa_ri == short_res.second);
     assert(sa_le == 0 && sa_ri == sz(s));
     assert(s_r - s_l == 0);
   }
@@ -29,12 +29,12 @@ int main() {
       sf_a.find_str_fast(vi(all(t)));
     pair<int, int> short_res = sf_a.find_str(vi(all(t)));
     assert(sa_le == short_res.first &&
-      sa_ri == short_res.second);
+           sa_ri == short_res.second);
     int str_len = s_r - s_l;
     assert(str_len <= sz(t));
     assert(s.substr(s_l, str_len) == t.substr(0, str_len));
     assert(str_len == sz(t) || s_r == sz(s) ||
-      t[str_len] != s[s_r]);
+           t[str_len] != s[s_r]);
     assert((sa_le < sa_ri) == (str_len == sz(t)));
     cout << (!!(sa_ri - sa_le > 0)) << '\n';
   }

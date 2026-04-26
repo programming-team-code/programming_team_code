@@ -19,7 +19,7 @@ int main() {
       else end = mid;
     }
     assert(0 <= start && start < sz(comp) &&
-      comp[start] == val);
+           comp[start] == val);
     val = start;
   }
   mode_query mq(a);

@@ -47,7 +47,7 @@ struct hopcroft_karp {
         for (int v : g[u]) {
           int w = to_l[v];
           if (w == -1 ||
-            (level[u] + 1 == level[w] && dfs(dfs, w))) {
+              (level[u] + 1 == level[w] && dfs(dfs, w))) {
             to_r[u] = v;
             to_l[v] = u;
             return 1;
@@ -56,8 +56,8 @@ struct hopcroft_karp {
         level[u] = INT_MAX;
         return 0;
       };
-      rep(i, 0, lsz) m_sz +=
-        (to_r[i] == -1 && dfs(dfs, i));
+      rep(i, 0, lsz)
+        m_sz += (to_r[i] == -1 && dfs(dfs, i));
     }
   }
 };

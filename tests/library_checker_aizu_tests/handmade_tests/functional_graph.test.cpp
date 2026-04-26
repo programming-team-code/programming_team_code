@@ -140,11 +140,11 @@ int main() {
         int cyc_len = ssize(cycle[root_of[i].first]);
         assert(cycle[root_of[i].first]
                     [(root_of[i].second + 1) % cyc_len] ==
-          a[i]);
+               a[i]);
         assert(fgp.cycle_prev[i] ==
-          cycle[root_of[i].first]
-               [(root_of[i].second - 1 + cyc_len) %
-                 cyc_len]);
+               cycle[root_of[i].first]
+                    [(root_of[i].second - 1 + cyc_len) %
+                      cyc_len]);
       } else {
         assert(fgp.cycle_prev[i] == -1);
       }

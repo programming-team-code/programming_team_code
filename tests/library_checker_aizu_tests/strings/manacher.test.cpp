@@ -22,7 +22,8 @@ int main() {
     }
     for (auto [l, r] : tests) {
       string substr = s.substr(l, r - l + 1);
-      assert(pq.is_pal(l, r) ==
+      assert(
+        pq.is_pal(l, r) ==
         (substr == string(rbegin(substr), rend(substr))));
     }
   }
@@ -41,7 +42,7 @@ int main() {
     int r = i - pq.man[i];
     assert(r + 1 == pq.man[i] || pq.is_pal(pq.man[i], r));
     assert(pq.man[i] == 0 || r == n - 1 ||
-      !pq.is_pal(pq.man[i] - 1, r + 1));
+           !pq.is_pal(pq.man[i] - 1, r + 1));
     cout << i - 2 * pq.man[i] + 1 << " ";
   }
   return 0;

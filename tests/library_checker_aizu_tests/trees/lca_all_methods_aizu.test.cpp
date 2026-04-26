@@ -25,7 +25,7 @@ int main() {
     assert(lc.lca(i, i) == i);
     assert(lin_lca.lca(i, i) == i);
     assert(lc.tin[lc.rmq.dp[0][i]] == i &&
-      lc.rmq.dp[0][lc.tin[i]] == i);
+           lc.rmq.dp[0][lc.tin[i]] == i);
   }
   int q;
   cin >> q;

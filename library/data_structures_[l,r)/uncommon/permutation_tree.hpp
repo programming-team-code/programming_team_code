@@ -20,7 +20,7 @@ struct perm_tree {
   vector<vi> ch;
   bool touches(int u, int v) {
     return p[u].mn_num == p[v].mn_num + p[v].len ||
-      p[v].mn_num == p[u].mn_num + p[u].len;
+           p[v].mn_num == p[u].mn_num + p[u].len;
   }
   int allocate(int mn_i, int mn_v, int ln, bool join,
     const vi& chs) {

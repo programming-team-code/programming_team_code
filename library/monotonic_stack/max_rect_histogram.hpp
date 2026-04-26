@@ -7,7 +7,7 @@
 ll max_rect_histogram(const vi& a) {
   vi l(mono_st(a, less())), r(mono_range(l));
   ll max_area = 0;
-  rep(i, 0, sz(a)) max_area =
-    max(max_area, ll(a[i]) * (r[i] - l[i] - 1));
+  rep(i, 0, sz(a))
+    max_area = max(max_area, ll(a[i]) * (r[i] - l[i] - 1));
   return max_area;
 }

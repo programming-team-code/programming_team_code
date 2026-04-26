@@ -47,6 +47,6 @@ struct PST {
     if (l <= tl && tr <= r) return tree[v].sum;
     int tm = tl + (tr - tl) / 2;
     return query(l, r, tl, tm, tree[v].lch) +
-      query(l, r, tm, tr, tree[v].rch);
+           query(l, r, tm, tr, tree[v].rch);
   }
 };

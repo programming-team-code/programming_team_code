@@ -24,7 +24,7 @@ int main() {
     assert(lc.in_subtree(i, i));
     assert(lin_lca.lca(i, i) == i);
     assert(lc.tin[lc.rmq.dp[0][i]] == i &&
-      lc.rmq.dp[0][lc.tin[i]] == i);
+           lc.rmq.dp[0][lc.tin[i]] == i);
   }
   while (q--) {
     int u, v;

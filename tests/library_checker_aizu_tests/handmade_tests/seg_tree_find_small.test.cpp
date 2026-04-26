@@ -46,10 +46,10 @@ int main() {
         };
         st_walk_sum = 0;
         assert(smallest_index_greater_sum ==
-          seg.find_first(l, r, f));
+               seg.find_first(l, r, f));
         st_walk_sum = 0;
         assert(largest_index_greater_sum ==
-          seg.find_last(l, r, f));
+               seg.find_last(l, r, f));
       }
     }
   }

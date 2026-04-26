@@ -13,10 +13,9 @@ int main() {
   const int mod = 998'244'353;
   int64_t sum = 0;
   auto enumerate = [&](int u, int v, int w) {
-    sum =
-      (sum +
-        1LL * vals[u] * vals[v] % mod * vals[w] % mod) %
-      mod;
+    sum = (sum + 1LL * vals[u] * vals[v] % mod * vals[w] %
+                   mod) %
+          mod;
   };
   enumerate_triangles(edges, n, enumerate);
   cout << sum << '\n';
