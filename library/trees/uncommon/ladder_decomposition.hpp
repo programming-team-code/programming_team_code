@@ -19,8 +19,10 @@ struct ladder {
   ladder(const auto& g):
     n(sz(g)), d(n), p(n), idx(n), lad(2 * n) {
     int i = 0;
+    vi st(n);
     auto dfs = [&](auto dfs, int u) -> vi {
       vi path;
+      st[d[u]] = u;
       for (int v : g[u])
         if (v != p[u]) {
           d[v] = d[p[v] = u] + 1;
@@ -28,8 +30,8 @@ struct ladder {
           if (sz(x) > sz(path)) swap(x, path);
           for (int y : x) idx[y] = i;
           for (int y : x) lad[i++] = y;
-          rep(j, 0, min<int>(sz(x), d[v])) lad[i] =
-            p[lad[i - 1]], i++;
+          rep(j, 0, min<int>(sz(x), d[v])) lad[i++] =
+            st[d[u] - j];
         }
       path.push_back(u);
       return path;
