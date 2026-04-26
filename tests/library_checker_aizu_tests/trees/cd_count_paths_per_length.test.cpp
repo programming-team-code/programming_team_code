@@ -11,7 +11,7 @@
 //! which are each O(n)
 vector<ll> count_paths_per_length(vector<vi> adj) {
   vector<ll> num_paths(sz(adj));
-  centroid(adj, [&](int cent, int) {
+  cd(adj, [&](int cent) {
     vector<vector<double>> child_depths;
     for (int v : adj[cent]) {
       child_depths.emplace_back(1, 0.0);
