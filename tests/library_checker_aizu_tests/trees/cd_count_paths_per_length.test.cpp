@@ -11,7 +11,7 @@
 //! which are each O(n)
 vector<ll> count_paths_per_length(vector<vi> adj) {
   vector<ll> num_paths(sz(adj));
-  centroid(adj, [&](int cent, int) {
+  cd(adj, [&](int cent) {
     vector<vector<double>> child_depths;
     for (int v : adj[cent]) {
       child_depths.emplace_back(1, 0.0);
@@ -29,15 +29,13 @@ vector<ll> count_paths_per_length(vector<vi> adj) {
         swap(q, new_q);
       }
     }
-    sort(all(child_depths),
-      [&](auto& x, auto& y) { return sz(x) < sz(y); });
+    sort(all(child_depths), [&](auto& x, auto& y) { return sz(x) < sz(y); });
     vector total_depth(1, 1.0);
     for (const auto& cnt_depth : child_depths) {
       auto prod = conv(total_depth, cnt_depth);
       rep(i, 1, sz(prod)) num_paths[i] += llround(prod[i]);
       total_depth.resize(sz(cnt_depth));
-      rep(i, 1, sz(cnt_depth)) total_depth[i] +=
-        cnt_depth[i];
+      rep(i, 1, sz(cnt_depth)) total_depth[i] += cnt_depth[i];
     }
   });
   return num_paths;
