@@ -5,9 +5,9 @@
 //! @space O(n + m)
 vl divide_and_conquer(vl h, vl bottom) {
   {
-    int start =
-      ranges::find_if(h, [](ll x) { return x; }) -
-      begin(h);
+    int start = ranges::find_if(h, [](ll x) {
+      return x;
+    }) - begin(h);
     h.erase(begin(h), begin(h) + start);
     bottom.erase(begin(bottom), begin(bottom) + start);
   }

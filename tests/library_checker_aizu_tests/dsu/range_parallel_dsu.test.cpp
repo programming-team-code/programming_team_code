@@ -32,7 +32,7 @@ int main() {
     joins[k].emplace_back(a, b);
     cout << ans << '\n';
     if (qq == 0 || qq == 1 || qq == 10 || qq == 1000 ||
-      qq == 100'000 || qq == q - 1) {
+        qq == 100'000 || qq == q - 1) {
       auto uf = get_rp_dsu(joins, n);
       vi sums(n);
       int offline_ans = 0;

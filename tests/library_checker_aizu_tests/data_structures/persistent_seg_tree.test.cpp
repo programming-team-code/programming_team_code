@@ -24,10 +24,10 @@ int main() {
     cin >> l >> down >> r >> up;
     l = int(lower_bound(begin(points), end(points),
               array<int, 3>({l, -1, -1})) -
-      begin(points));
+            begin(points));
     r = int(lower_bound(begin(points), end(points),
               array<int, 3>({r, -1, -1})) -
-      begin(points));
+            begin(points));
     cout << pst.query(down, up, r) - pst.query(down, up, l)
          << '\n';
   }

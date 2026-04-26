@@ -34,13 +34,14 @@ int main() {
     cout << kth_path(u, v, k) << '\n';
     {
       int w = rnd(0, n - 1);
-      assert(lc.on_path(u, v, w) ==
+      assert(
+        lc.on_path(u, v, w) ==
         (lc.dist(u, w) + lc.dist(w, v) == lc.dist(u, v)));
     }
     if (u != v) {
       assert(kth_path(u, v, 1) == lc.next_on_path(u, v));
       assert(kth_path(u, v, dist_in_edges - 1) ==
-        lc.next_on_path(v, u));
+             lc.next_on_path(v, u));
     }
   }
 }

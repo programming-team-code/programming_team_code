@@ -24,8 +24,9 @@ int main() {
         for (int l = 0; l + len <= n; l++) {
           int r = l + len;
           if (len >= 2)
-            is_pal_naive[l][r] = (s[l] == s[r - 1] &&
-              is_pal_naive[l + 1][r - 1]);
+            is_pal_naive[l][r] =
+              (s[l] == s[r - 1] &&
+                is_pal_naive[l + 1][r - 1]);
         }
       }
       for (int i = 0; i < n; i++)
@@ -47,7 +48,8 @@ int main() {
       for (int len = 2; len <= n; len++) {
         for (int l = 0; l + len <= n; l++) {
           int r = l + len;
-          count_pals_naive[l][r] = pq.is_pal(l, r - 1) +
+          count_pals_naive[l][r] =
+            pq.is_pal(l, r - 1) +
             count_pals_naive[l + 1][r] +
             count_pals_naive[l][r - 1] -
             count_pals_naive[l + 1][r - 1];

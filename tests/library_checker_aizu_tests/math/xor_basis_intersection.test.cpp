@@ -18,8 +18,8 @@ void check_condition_ordered(const xor_basis<30>& basis2) {
   bitset<30> or_bits2;
   for (int i = 0; i < 30; i++) {
     assert(basis2.basis[i].none() ||
-      bit_floor(basis2.basis[i].to_ulong()) ==
-        (1ULL << i));
+           bit_floor(basis2.basis[i].to_ulong()) ==
+             (1ULL << i));
     assert((bit_floor(basis2.basis[i].to_ulong()) &
              or_bits2.to_ulong()) == 0);
     or_bits2 |= basis2.basis[i];

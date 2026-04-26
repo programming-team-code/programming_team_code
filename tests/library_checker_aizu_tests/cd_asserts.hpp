@@ -16,7 +16,7 @@ void cd_asserts(vector<vector<int>> adj) {
     for (int u : adj[cent]) {
       int sz_subtree = dfs(dfs, u, cent);
       assert(1 <= sz_subtree &&
-        2 * sz_subtree <= decomp_size[cent]);
+             2 * sz_subtree <= decomp_size[cent]);
     }
   });
   assert(par == naive_par_decomp);

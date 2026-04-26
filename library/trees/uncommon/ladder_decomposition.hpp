@@ -30,8 +30,8 @@ struct ladder {
           if (sz(x) > sz(path)) swap(x, path);
           for (int y : x) idx[y] = i;
           for (int y : x) lad[i++] = y;
-          rep(j, 0, min<int>(sz(x), d[v])) lad[i++] =
-            st[d[u] - j];
+          rep(j, 0, min<int>(sz(x), d[v]))
+            lad[i++] = st[d[u] - j];
         }
       path.push_back(u);
       return path;

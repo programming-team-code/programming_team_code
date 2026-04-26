@@ -23,6 +23,6 @@ match find_str_fast(const T& t) {
               [&](int i, int) -> bool {
                 return len_lcp(s_l, i) >= sz(t);
               }) -
-      begin(sa);
+            begin(sa);
   return {sa_le, sa_ri, s_l, s_l + s_len};
 }

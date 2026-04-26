@@ -30,7 +30,7 @@ int main() {
     if (u == s) return 1;
     for (auto [v, w] : adj_inv[u]) {
       if (!vis[v] && len[v] != LLONG_MAX &&
-        len[v] + w == len[u]) {
+          len[v] + w == len[u]) {
         vis[v] = 1;
         if (self(self, v)) {
           path.push_back({v, u});

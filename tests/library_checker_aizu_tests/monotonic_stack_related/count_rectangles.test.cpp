@@ -46,7 +46,7 @@ int main() {
       for (int i = 0; i + rows <= n; i++) {
         for (int j = 0; j + cols <= m; j++)
           if (sm.sum(i, j, i + rows, j + cols) ==
-            rows * cols)
+              rows * cols)
             cnt++;
       }
       assert(size_counts[rows][cols] == cnt);

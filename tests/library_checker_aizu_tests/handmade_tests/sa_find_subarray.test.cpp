@@ -20,25 +20,25 @@ int main() {
             lq.find_substrs_concated({{i, j}});
           pair<int, int> short_res = lq.find_substr(i, j);
           assert(sa_le == short_res.first &&
-            sa_ri == short_res.second);
+                 sa_ri == short_res.second);
           assert(s.substr(i, j - i) ==
-            s.substr(s_l, s_r - s_l));
+                 s.substr(s_l, s_r - s_l));
           if (i == j) {
             assert(sa_le == 0 && sa_ri == n);
             assert(s_l == s_r);
           }
           if (i < n)
             assert(0 <= sa_le && sa_le <= lq.sa_inv[i] &&
-              lq.sa_inv[i] < sa_ri && sa_ri <= n);
+                   lq.sa_inv[i] < sa_ri && sa_ri <= n);
           for (int idx = sa_le; idx < sa_ri; idx++)
             assert(s.substr(lq.sa[idx], j - i) ==
-              s.substr(i, j - i));
+                   s.substr(i, j - i));
           assert(sa_le == 0 ||
-            s.substr(lq.sa[sa_le - 1], j - i) !=
-              s.substr(i, j - i));
-          assert(sa_ri == n ||
-            s.substr(lq.sa[sa_ri], j - i) !=
-              s.substr(i, j - i));
+                 s.substr(lq.sa[sa_le - 1], j - i) !=
+                   s.substr(i, j - i));
+          assert(
+            sa_ri == n || s.substr(lq.sa[sa_ri], j - i) !=
+                            s.substr(i, j - i));
         }
       }
       for (int i = 0; i < n; i++) {

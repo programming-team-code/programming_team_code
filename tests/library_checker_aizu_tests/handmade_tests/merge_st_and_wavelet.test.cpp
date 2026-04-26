@@ -28,8 +28,8 @@ int main() {
           for (int r = l; r <= n; r++) {
             assert(mst.query(l, r, x, y) == cnt);
             assert(wm.count(l, r, y - minn) -
-                wm.count(l, r, x - minn) ==
-              cnt);
+                     wm.count(l, r, x - minn) ==
+                   cnt);
             if (r < n && x <= arr[r] && arr[r] < y) cnt++;
           }
         }

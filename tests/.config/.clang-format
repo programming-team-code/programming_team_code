@@ -6,7 +6,7 @@ AlignConsecutiveAssignments: false
 AlignConsecutiveBitFields: None
 AlignConsecutiveDeclarations: None
 AlignConsecutiveMacros: None
-AlignOperands: DontAlign
+AlignOperands: Align
 AlignTrailingComments: false
 AllowShortBlocksOnASingleLine: Always
 AllowShortCaseLabelsOnASingleLine: true
@@ -51,7 +51,7 @@ KeepEmptyLinesAtTheStartOfBlocks: false
 MaxEmptyLinesToKeep: 0
 NamespaceIndentation: None
 PackConstructorInitializers: BinPack
-PenaltyBreakAssignment: 1
+PenaltyBreakAssignment: 10
 PenaltyBreakBeforeFirstCallParameter: 1
 # PenaltyBreakComment: 300
 PenaltyBreakFirstLessLess: 1

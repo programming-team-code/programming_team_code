@@ -42,8 +42,8 @@ int find_first_in_range(int l, int r, auto f, int tl,
   if (r <= tl || tr <= l) return r;
   if (l <= tl && tr <= r)
     return f(tree[v], tl, tr)
-      ? find_first_in_subtree(f, tl, tr, v)
-      : r;
+             ? find_first_in_subtree(f, tl, tr, v)
+             : r;
   int tm = split(tl, tr);
   push(tl, tm, tr, v);
   int res = find_first_in_range(l, r, f, tl, tm, 2 * v);

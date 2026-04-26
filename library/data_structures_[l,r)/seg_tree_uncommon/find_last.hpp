@@ -42,8 +42,8 @@ int find_last_in_range(int l, int r, auto f, int tl,
   if (r <= tl || tr <= l) return l - 1;
   if (l <= tl && tr <= r)
     return f(tree[v], tl, tr)
-      ? find_last_in_subtree(f, tl, tr, v)
-      : l - 1;
+             ? find_last_in_subtree(f, tl, tr, v)
+             : l - 1;
   int tm = split(tl, tr);
   push(tl, tm, tr, v);
   int res = find_last_in_range(l, r, f, tm, tr, 2 * v + 1);

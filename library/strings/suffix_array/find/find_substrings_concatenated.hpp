@@ -26,10 +26,10 @@ match find_substrs_concated(const vector<pii>& substrs) {
   for (auto [l, r] : substrs) {
     sa_le = lower_bound(begin(sa) + sa_le,
               begin(sa) + sa_ri, dt{l, r - l, 0}, cmp) -
-      begin(sa);
+            begin(sa);
     sa_ri = lower_bound(begin(sa) + sa_le,
               begin(sa) + sa_ri, dt{l, r - l, 1}, cmp) -
-      begin(sa);
+            begin(sa);
     sum_len += r - l;
   }
   return {sa_le, sa_ri, s_l, s_r};

@@ -26,6 +26,6 @@ int main() {
   assert(lcp == lcp1);
   assert(sz(lcp) == n - 1);
   cout << 1LL * n * (n + 1) / 2 -
-      accumulate(begin(lcp), end(lcp), 0LL)
+            accumulate(begin(lcp), end(lcp), 0LL)
        << '\n';
 }

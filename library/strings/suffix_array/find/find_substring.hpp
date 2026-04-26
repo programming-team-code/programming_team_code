@@ -18,8 +18,8 @@ pii find_substr(int s_l, int s_r) {
   };
   int l = lower_bound(begin(sa), begin(sa) + sa_inv[s_l],
             0, cmp) -
-    begin(sa);
+          begin(sa);
   int r = lower_bound(sa_inv[s_l] + 1 + all(sa), 1, cmp) -
-    begin(sa);
+          begin(sa);
   return {l, r};
 }

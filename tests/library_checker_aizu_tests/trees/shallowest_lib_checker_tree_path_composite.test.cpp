@@ -45,7 +45,7 @@ int main() {
       if (forwards) {
         res[v] = (res[v] + 1LL * upwards[0] * a[cent] +
                    upwards[1]) %
-          mod;
+                 mod;
         res[cent] =
           (res[cent] + 1LL * downwards[0] * a[v] +
             downwards[1]) %

@@ -53,7 +53,7 @@ struct mode_query {
     for (int i = l / b * b + b - 1; i >= l; i--) {
       int idx = index_into_index[i];
       if (idx + res.second < sz(index[a[i]]) &&
-        index[a[i]][idx + res.second] < r)
+          index[a[i]][idx + res.second] < r)
         res = {a[i], cnt[a[i]] + res.second};
       cnt[a[i]]--;
     }
@@ -61,7 +61,7 @@ struct mode_query {
     rep(i, (r - 1) / b * b, r) {
       int idx = index_into_index[i];
       if (idx >= res.second &&
-        index[a[i]][idx - res.second] >= l)
+          index[a[i]][idx - res.second] >= l)
         res = {a[i], cnt[a[i]] + res.second};
       cnt[a[i]]--;
     }

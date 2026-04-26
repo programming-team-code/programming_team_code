@@ -15,6 +15,6 @@
 int cmp_substrs(int l1, int r1, int l2, int r2) {
   int len1 = r1 - l1, len2 = r2 - l2;
   return len_lcp(l1, l2) >= min(len1, len2)
-    ? len1 - len2
-    : cmp_sufs(l1, l2);
+           ? len1 - len2
+           : cmp_sufs(l1, l2);
 }

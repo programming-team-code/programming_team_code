@@ -17,7 +17,7 @@ int main() {
         }
         assert(n <= v && v < 2 * n);
         assert(depth_leaf == max_depth ||
-          depth_leaf == max_depth - 1);
+               depth_leaf == max_depth - 1);
         if ((n & (n - 1)) == 0)
           assert(depth_leaf == max_depth);
       } else {
@@ -29,25 +29,26 @@ int main() {
           if (tl + pow_2 < tr - pow_2 / 2) {
             assert(pow_2 != tr - tl);
             assert(pow_2 / 2 < tr - tl - pow_2 &&
-              tr - tl - pow_2 < pow_2);
-            assert(pow_2 <= 2 * (tr - tl - pow_2) - 1 &&
+                   tr - tl - pow_2 < pow_2);
+            assert(
+              pow_2 <= 2 * (tr - tl - pow_2) - 1 &&
               2 * (tr - tl - pow_2) - 1 < 2 * pow_2 - 1);
             assert(__lg(pow_2) ==
-                __lg(2 * ((tr - tl) - pow_2) - 1) &&
-              __lg(pow_2) == __lg(2 * pow_2 - 1));
+                     __lg(2 * ((tr - tl) - pow_2) - 1) &&
+                   __lg(pow_2) == __lg(2 * pow_2 - 1));
           } else if (pow_2 < tr - tl) {
             assert(pow_2 / 2 < tr - tl - pow_2 / 2 &&
-              tr - tl - pow_2 / 2 <= pow_2);
+                   tr - tl - pow_2 / 2 <= pow_2);
             assert(
               pow_2 <= 2 * ((tr - tl) - pow_2 / 2) - 1 &&
               2 * ((tr - tl) - pow_2 / 2) - 1 <=
                 2 * pow_2 - 1);
             assert(__lg(2 * (tr - tl - pow_2 / 2) - 1) ==
-              __lg(2 * pow_2 - 1));
+                   __lg(2 * pow_2 - 1));
             assert(__lg(2 * ((tr - tl) - pow_2 / 2) - 1) ==
-              __lg(pow_2));
+                   __lg(pow_2));
             assert(__lg(pow_2) ==
-              1 + __lg(2 * (pow_2 / 2) - 1));
+                   1 + __lg(2 * (pow_2 / 2) - 1));
           }
         }
         int tm = split(tl, tr);

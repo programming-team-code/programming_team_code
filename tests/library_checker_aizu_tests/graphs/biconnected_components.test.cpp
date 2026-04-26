@@ -25,18 +25,16 @@ int main() {
     bool curr_is_cut = 0;
     for (int j = 0; j < sz(adj[i]); j++)
       if (bcc_id[adj[i][0].second] !=
-        bcc_id[adj[i][j].second])
+          bcc_id[adj[i][j].second])
         curr_is_cut = 1;
     assert(curr_is_cut == is_cut[i]);
   }
   // check correctness of block vertex tree
   for (int i = 0; i < n; i++) {
-    assert(sz(adj[i]) >=
-      sz(bvt[i])); // in particular, if empty(adj[i]), then
-                   // empty(bct[i])
-    assert(is_cut[i] ==
-      (sz(bvt[i]) >
-        1)); // is cut means non-leaf in block vertex tree
+    // in particular, if empty(adj[i]), then empty(bct[i])
+    assert(sz(adj[i]) >= sz(bvt[i]));
+    // is cut means non-leaf in block vertex tree
+    assert(is_cut[i] == (sz(bvt[i]) > 1));
   }
   {
     vector<set<int>> bcc_to_nodes(num_bccs),

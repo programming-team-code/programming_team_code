@@ -48,7 +48,7 @@ struct longest_pal_query {
     int pal_len = *ranges::partition_point(
       views::iota(0, r - l), [&](int x) {
         return len(rmq.query(2 * l + x, 2 * r - x - 1)) >
-          x;
+               x;
       });
     int best_center =
       rmq.query(2 * l + pal_len - 1, 2 * r - pal_len);
