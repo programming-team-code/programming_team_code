@@ -17,7 +17,7 @@
 //! which are all O(n)
 vector<ll> count_paths_per_node(vector<vi> adj, int k) {
   vector<ll> num_paths(sz(adj));
-  centroid(adj, [&](int cent, int) {
+  cd(adj, [&](int cent) {
     vector pre_d{1}, cur_d{0};
     auto dfs = [&](auto&& self, int u, int p,
                  int d) -> ll {
