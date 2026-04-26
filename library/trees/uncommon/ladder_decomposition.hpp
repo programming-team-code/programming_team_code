@@ -16,9 +16,6 @@ struct ladder {
   int n;
   vi d, p, idx, l;
   vector<vi> jmp;
-  //! @param g forest (rooted or unrooted)
-  //! @time O(n log n)
-  //! @space O(n log n) for jmp. Everything else is O(n)
   ladder(const auto& g):
     n(sz(g)), d(n), p(n), idx(n), l(2 * n) {
     int i = 0;
