@@ -2,6 +2,7 @@
 #include "../../../kactl/content/graph/BinaryLifting.h"
 //! https://codeforces.com/blog/entry/71567#comment-559299
 //! https://youtu.be/0rCFkuQS968
+//! https://codeforces.com/blog/entry/153250
 //! @code
 //!   ladder ld(g);
 //!   ld.kth_par(u, k); // kth parent of u
