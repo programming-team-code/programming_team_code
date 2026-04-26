@@ -48,8 +48,7 @@ struct ladder {
     u = jmp[bit][u], k -= (1 << bit);
     int i = idx[u], j = i + d[lad[i]] - d[u];
     assert(lad[j] == u);
-    // subarray [j, j+k] of lad corresponds to the rest
-    // of the jump
+    // subarray [j, j+k] of lad -> remainder of path
     return lad[j + k];
   }
 };
