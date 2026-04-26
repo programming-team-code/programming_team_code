@@ -1,6 +1,7 @@
 #define PROBLEM \
   "https://judge.yosupo.jp/problem/jump_on_tree"
 #include "../template.hpp"
+#undef sz
 #define sz(x) (int)ssize(x)
 #include "../../../library/trees/uncommon/ladder_decomposition.hpp"
 int main() {
