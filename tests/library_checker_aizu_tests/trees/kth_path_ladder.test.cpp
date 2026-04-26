@@ -1,8 +1,9 @@
 #define PROBLEM \
   "https://judge.yosupo.jp/problem/jump_on_tree"
 #include "../template.hpp"
+#undef sz
+#define sz(x) (int)ssize(x)
 #include "../../../library/trees/uncommon/ladder_decomposition.hpp"
-#include "../../../library/trees/uncommon/linear_kth_par.hpp"
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n, q;
