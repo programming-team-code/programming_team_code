@@ -5,32 +5,31 @@
 //! https://youtu.be/wDwaMo5xa-k
 //! @code
 //!   vector<basic_string<int>> g(n);
-//!   edge_cd(g, [&](int cent, int m) {
-//!     // subtrees of [0, m) of g[cent]: 1st edge-set
-//!     // subtrees of [m, sz(g[cent])): 2nd edge-set
+//!   edge_cd(g, [&](int c, int m) {
+//!     // subtrees of [0, m) of g[c]: 1st edge-set
+//!     // subtrees of [m, sz(g[c])): 2nd edge-set
 //!   });
 //! @endcode
 //! handle single-edge-paths separately
 //! @time O(n logφ n)
 //! @space O(n)
 template<class G> void edge_cd(vector<G>& g, auto f) {
-  vi siz(sz(g));
+  vi s(sz(g));
   auto ctd = [&](auto ctd, int u, int p, int m) -> int {
-    siz[u] = 1;
+    s[u] = 1;
     for (int v : g[u])
       if (v != p) {
         if (int c = ctd(ctd, v, u, m); c != -1) return c;
-        siz[u] += siz[v];
+        s[u] += s[v];
       }
-    return 2 * siz[u] > m ? siz[p] = m + 1 - siz[u],
-                            u : -1;
+    return 2 * s[u] > m ? s[p] = m + 1 - s[u], u : -1;
   };
   auto dfs = [&](auto dfs, int u, int m) {
     if (m < 2) return;
     u = ctd(ctd, u, u, m);
     int sum = 0;
     auto it = partition(all(g[u]), [&](int v) {
-      ll x = sum + siz[v];
+      ll x = sum + s[v];
       return x * x < m * (m - x) ? sum = x : 0;
     });
     f(u, it - begin(g[u]));
