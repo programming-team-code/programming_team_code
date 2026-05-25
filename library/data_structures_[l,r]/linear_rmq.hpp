@@ -20,8 +20,7 @@ template<class T, class F> struct linear_rmq {
   linear_rmq(const vector<T>& a, F cmp):
     n(sz(a)), a(a), cmp(cmp), in(n), asc(n), head(n + 1) {
     vi st(n + 1, -1);
-    int t = 0;
-    rep(i, 0, n + 1) {
+    for (int i = 0, t = 0; i <= n; i++) {
       int prev = 0;
       while (t && (i == n || !cmp(a[st[t]], a[i]))) {
         head[prev] = st[t];
