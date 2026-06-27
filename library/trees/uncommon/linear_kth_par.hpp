@@ -1,5 +1,6 @@
 #pragma once
 //! https://link.springer.com/chapter/10.1007/978-3-032-29003-8_29
+//! https://codeforces.com/blog/entry/153250
 //! @code
 //!   vector<basic_string<int>> g(n);
 //!   linear_kth_par kp(g);
