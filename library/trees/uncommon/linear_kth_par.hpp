@@ -18,20 +18,20 @@ struct linear_kth_par {
     lad(2 * n), jmp(2 * n) {
     int i = 0, t = 1;
     vi st(n);
-    auto calc = [&](int u) {
-      for (int k = 1; k <= min(t & -t, d[u]); k *= 2)
-        jmp[t] += st[d[u] - k];
-      d_tour[t++] = d[u];
+    auto calc = [&](int du) {
+      for (int k = 1; k <= min(t & -t, du); k *= 2)
+        jmp[t] += st[du - k];
+      d_tour[t++] = du;
     };
     auto dfs = [&](auto dfs, int u, int p) -> vi {
       vi path;
       tin[st[d[u]] = u] = t;
-      calc(u);
+      calc(d[u]);
       for (int v : g[u])
         if (v != p) {
           d[v] = d[u] + 1;
           vi x = dfs(dfs, v, u);
-          calc(u);
+          calc(d[u]);
           if (sz(x) > sz(path)) swap(x, path);
           for (int y : x) idx[y] = i;
           for (int y : x) lad[i++] = y;
