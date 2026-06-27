@@ -2,17 +2,17 @@
 //! https://codeforces.com/blog/entry/126580
 //! @code
 //!   vector<basic_string<int>> g(n);
-//!   linear_kth_par kp(g);
+//!   hagerup kp(g);
 //!   kp.kth_par(v, k); // k edges up from v
 //!   kp.kth_par(v, 1); // v's parent
 //! @endcode
 //! @time O(n*max((2*K+3)/K,2*K) + q)
 //! @space O(n*max((2*K+3)/K,2*K))
-template<int K = 2> struct linear_kth_par {
+template<int K = 2> struct hagerup {
   int n;
   vi d, leaf, pos, jmp;
   vector<vi> lad;
-  linear_kth_par(const auto& g):
+  hagerup(const auto& g):
     n(sz(g)), d(n), leaf(n), pos(n), jmp(2 * n), lad(n) {
     static_assert(K >= 1);
     int t = 1;

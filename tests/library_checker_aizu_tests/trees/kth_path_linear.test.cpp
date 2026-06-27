@@ -2,7 +2,7 @@
   "https://judge.yosupo.jp/problem/jump_on_tree"
 #include "../template.hpp"
 #include "../../../library/trees/linear_lca.hpp"
-#include "../../../library/trees/uncommon/linear_kth_par.hpp"
+#include "../../../library/trees/uncommon/hagerup_kth_par.hpp"
 #include "../../../library/trees/lca_rmq.hpp"
 #include "../compress_tree_asserts.hpp"
 int main() {
@@ -17,10 +17,10 @@ int main() {
     adj[v].push_back(u);
   }
   linear_lca lin_lca(adj);
-  linear_kth_par<1> lin_kp_1(adj);
-  linear_kth_par<2> lin_kp_2(adj);
-  linear_kth_par<3> lin_kp_3(adj);
-  linear_kth_par<4> lin_kp_4(adj);
+  hagerup<1> lin_kp_1(adj);
+  hagerup<2> lin_kp_2(adj);
+  hagerup<3> lin_kp_3(adj);
+  hagerup<4> lin_kp_4(adj);
   LCA lc(adj);
   compress_tree_asserts(adj, lc);
   auto get_kth_par = [&](int v, int k) -> int {
