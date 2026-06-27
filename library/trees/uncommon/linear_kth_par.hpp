@@ -11,22 +11,21 @@
 //! @space O(n)
 struct linear_kth_par {
   int n;
-  vi d, et_i, et_d, idx, lad;
+  vi d, d_tour, tin, idx, lad;
   vector<basic_string<int>> jmp;
   linear_kth_par(const auto& g):
-    n(sz(g)), d(n), et_i(n), et_d(2 * n), idx(n),
+    n(sz(g)), d(n), d_tour(2 * n), tin(n), idx(n),
     lad(2 * n), jmp(2 * n) {
-    int i = 0, j = 1;
+    int i = 0, t = 1;
     vi st(n);
     auto calc = [&](int u) {
-      et_d[et_i[u] = j] = d[u];
-      for (int k = 1; k <= min(j & -j, d[u]); k *= 2)
-        jmp[j] += st[d[u] - k];
-      j++;
+      for (int k = 1; k <= min(t & -t, d[u]); k *= 2)
+        jmp[t] += st[d[u] - k];
+      d_tour[t++] = d[u];
     };
     auto dfs = [&](auto dfs, int u, int p) -> vi {
       vi path;
-      st[d[u]] = u;
+      tin[st[d[u]] = u] = t;
       calc(u);
       for (int v : g[u])
         if (v != p) {
@@ -50,8 +49,8 @@ struct linear_kth_par {
     assert(0 <= k && k <= d[u]);
     if (k == 0) return u;
     int anc_d = d[u] - k, bc = bit_ceil(k + 0u);
-    int j = (et_i[u] + bc / 2) & -bc;
-    int i = idx[jmp[j].at(__lg(et_d[j] - anc_d))];
+    int t = (tin[u] + bc / 2) & -bc;
+    int i = idx[jmp[t].at(__lg(d_tour[t] - anc_d))];
     return lad[i + d[lad[i]] - anc_d];
   }
 };
