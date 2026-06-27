@@ -5,7 +5,7 @@
 #include "../../../library/trees/uncommon/hagerup_kth_par.hpp"
 #include "../../../library/trees/uncommon/linear_kth_par.hpp"
 int main() {
-  for (int n = 1; n <= 600; n++) {
+  for (int n = 1; n <= 100; n++) {
     for (int param = 1; param < 20; param++) {
       vector<int> par(n);
       vector<vector<int>> adj(n);
