@@ -81,6 +81,7 @@
 "tests/library_checker_aizu_tests/handmade_tests/functional_graph.test.cpp": "2026-04-26 11:38:07 -0600",
 "tests/library_checker_aizu_tests/handmade_tests/hilbert_mos.test.cpp": "2026-01-18 02:20:40 +0000",
 "tests/library_checker_aizu_tests/handmade_tests/kd_bit.test.cpp": "2026-02-19 18:06:52 -0700",
+"tests/library_checker_aizu_tests/handmade_tests/kth_par.test.cpp": "2026-06-27 13:00:50 -0500",
 "tests/library_checker_aizu_tests/handmade_tests/manacher.test.cpp": "2026-04-26 11:38:07 -0600",
 "tests/library_checker_aizu_tests/handmade_tests/merge_st_and_wavelet.test.cpp": "2026-04-26 11:38:07 -0600",
 "tests/library_checker_aizu_tests/handmade_tests/mobius.test.cpp": "2025-02-10 14:50:36 -0700",
