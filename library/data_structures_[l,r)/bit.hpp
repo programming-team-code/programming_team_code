@@ -19,9 +19,9 @@ struct BIT {
     for (; i < sz(s); i |= i + 1) s[i] += d;
   }
   ll query(int r) {
-    ll ret = 0;
-    for (; r > 0; r &= r - 1) ret += s[r - 1];
-    return ret;
+    ll res = 0;
+    for (; r > 0; r &= r - 1) res += s[r - 1];
+    return res;
   }
   ll query(int l, int r) { return query(r) - query(l); }
 #include "bit_uncommon/walk_lambda.hpp"

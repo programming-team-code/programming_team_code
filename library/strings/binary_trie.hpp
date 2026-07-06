@@ -10,7 +10,7 @@ const ll mx_bit = 1LL << 60;
 struct binary_trie {
   struct node {
     int siz = 0;
-    array<int, 2> next = {-1, -1};
+    array<int, 2> nxt = {-1, -1};
   };
   deque<node> t;
   binary_trie(): t(1) {}
@@ -18,11 +18,11 @@ struct binary_trie {
     int v = 0;
     for (ll bit = mx_bit; bit; bit /= 2) {
       bool b = num & bit;
-      if (t[v].next[b] == -1) {
-        t[v].next[b] = sz(t);
+      if (t[v].nxt[b] == -1) {
+        t[v].nxt[b] = sz(t);
         t.emplace_back();
       }
-      v = t[v].next[b];
+      v = t[v].nxt[b];
       t[v].siz += delta;
     }
   }
@@ -31,9 +31,9 @@ struct binary_trie {
     ll res = 0;
     for (ll bit = mx_bit; bit; bit /= 2) {
       bool b = num & bit;
-      int u = t[v].next[b];
+      int u = t[v].nxt[b];
       if (u != -1 && t[u].siz > 0) v = u, res |= num & bit;
-      else v = t[v].next[!b], res |= (~num) & bit;
+      else v = t[v].nxt[!b], res |= (~num) & bit;
     }
     return res;
   }

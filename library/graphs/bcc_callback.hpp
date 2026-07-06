@@ -4,17 +4,17 @@
 //!   {
 //!     vector<vi> g(n);
 //!     DSU dsu(n);
-//!     vector<bool> seen(n);
+//!     vector<bool> vis(n);
 //!     bcc(g, [&](const vi& nodes) {
-//!       int count_edges = 0;
+//!       int cnt_edges = 0;
 //!       rep (i, 0, sz(nodes) - 1) {
-//!         seen[nodes[i]] = 1;
-//!         for (int u : g[nodes[i]]) if (!seen[u]) {
+//!         vis[nodes[i]] = 1;
+//!         for (int u : g[nodes[i]]) if (!vis[u]) {
 //!           // edge nodes[i] <=> u is in current BCC
-//!           count_edges++;
+//!           cnt_edges++;
 //!         }
 //!       }
-//!       if (count_edges == 1) {
+//!       if (cnt_edges == 1) {
 //!         // nodes[0] <=> nodes[1] is a bridge
 //!         return;
 //!       }

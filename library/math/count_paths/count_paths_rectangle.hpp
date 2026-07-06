@@ -8,13 +8,13 @@
 //! @time O((n + m)log(n + m))
 //! @space O(n + m)
 array<vl, 2> get_right_and_top(vl left, vl bottom) {
-  array<vl, 2> ret;
-  for (vl& res : ret) {
+  array<vl, 2> res;
+  for (vl& cur : res) {
     {
       vl tr(sz(left));
       rep(i, 0, sz(tr)) tr[i] = C(i + sz(bottom) - 1, i);
-      res = conv(left, tr);
-      res.resize(sz(left));
+      cur = conv(left, tr);
+      cur.resize(sz(left));
     }
     {
       vl tr(sz(left) + sz(bottom));
@@ -23,13 +23,13 @@ array<vl, 2> get_right_and_top(vl left, vl bottom) {
       vl dp(sz(bottom));
       rep(i, 0, sz(dp)) dp[i] =
         bottom[i] * t[sz(dp) - 1 - i].inv_fact % mod;
-      vl tmp_res = conv(dp, tr);
-      rep(i, 0, sz(res))
-        res[i] = (res[i] + tmp_res[i + sz(bottom) - 1] *
+      vl tmp = conv(dp, tr);
+      rep(i, 0, sz(cur))
+        cur[i] = (cur[i] + tmp[i + sz(bottom) - 1] *
                              t[i].inv_fact) %
                  mod;
     }
     swap(left, bottom);
   }
-  return ret;
+  return res;
 }
