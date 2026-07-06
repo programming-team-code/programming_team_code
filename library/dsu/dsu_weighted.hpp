@@ -19,7 +19,7 @@ struct dsu_weighted {
   }
   int size(int u) { return -p[f(u)]; }
   ll diff(int u, int v) {
-    return f(u) == f(v) ? d[v] - d[u] : 1e18;
+    return f(u) == f(v) ? d[v] - d[u] : ll(1e18);
   }
   bool join(int u, int v, ll w) {
     int x = f(u), y = f(v);

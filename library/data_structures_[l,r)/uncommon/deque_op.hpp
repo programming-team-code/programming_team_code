@@ -3,7 +3,7 @@
 //! @code
 //!   deq dq(a, ranges::min);
 //! @endcode
-//! @time operations are O(1) ammortized
+//! @time operations are O(1) amortized
 //! @space O(n)
 template<class T, class F> struct deq {
   using dt = array<T, 2>;
