@@ -1,7 +1,7 @@
 #pragma once
 //! https://e-maxx.ru/algo/assignment_hungary
 //! @code
-//!   vector cost(n+1,vector(m+1,(ll)0));
+//!   vector cost(n+1,vector(m+1,ll(0)));
 //!   auto [min_weight, l_to_r] = hungarian(cost);
 //! @endcode
 //! cost[i][j] = edge weight, 1<=i<=n<=m; 1<=j<=m

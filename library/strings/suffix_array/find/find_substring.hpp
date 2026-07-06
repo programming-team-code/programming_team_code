@@ -16,10 +16,11 @@ pii find_substr(int s_l, int s_r) {
   auto cmp = [&](int i, bool flip) -> bool {
     return flip ^ (len_lcp(i, s_l) < s_r - s_l);
   };
-  int l = lower_bound(begin(sa), begin(sa) + sa_inv[s_l],
-            0, cmp) -
+  int l = ranges::lower_bound(
+            sa | views::take(sa_inv[s_l]), 0, cmp) -
           begin(sa);
-  int r = lower_bound(sa_inv[s_l] + 1 + all(sa), 1, cmp) -
+  int r = ranges::lower_bound(
+            sa | views::drop(sa_inv[s_l] + 1), 1, cmp) -
           begin(sa);
   return {l, r};
 }

@@ -41,7 +41,7 @@ template<class DS, class... ARGS> struct pq_updates {
     auto it = remove_if(idx + all(upd_st), [&](auto& cur) {
       return cur.second->first >= lowest_pri;
     });
-    reverse_copy(all(extra), it);
+    ranges::reverse_copy(extra, it);
     rep(i, idx, sz(upd_st)) ds.undo();
     upd_st.pop_back();
     mp.erase(prev(end(mp)));
