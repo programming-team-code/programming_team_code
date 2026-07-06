@@ -28,10 +28,10 @@ template<class G> void edge_cd(vector<G>& g, auto f) {
     if (m < 2) return;
     u = ctd(ctd, u, u, m);
     int sum = 0;
-    auto it = begin(ranges::partition(g[u], [&](int v) {
+    auto it = partition(all(g[u]), [&](int v) {
       ll x = sum + s[v];
       return x * x < m * (m - x) ? sum = x : 0;
-    }));
+    });
     f(u, it - begin(g[u]));
     G oth(it, end(g[u]));
     g[u].erase(it, end(g[u]));
