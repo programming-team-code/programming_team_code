@@ -5,7 +5,7 @@
 //!     return min(x, y);
 //!   });
 //!   vector<RMQ<int, function<int(int, int)>>>
-//!     rmqs(3, {{}, NULL});
+//!     rmqs(3, {{}, nullptr});
 //!   rmqs[1] = {a, ranges::min};
 //! @endcode
 //! @time O(nlogn + q)
