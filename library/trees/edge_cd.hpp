@@ -15,7 +15,7 @@
 //! @space O(n)
 template<class G> void edge_cd(vector<G>& g, auto f) {
   vi s(sz(g));
-  auto ctd = [&](auto ctd, int u, int p, int m) -> int {
+  auto ctd = [&](auto&& ctd, int u, int p, int m) -> int {
     s[u] = 1;
     for (int v : g[u])
       if (v != p) {
@@ -24,7 +24,7 @@ template<class G> void edge_cd(vector<G>& g, auto f) {
       }
     return 2 * s[u] > m ? s[p] = m + 1 - s[u], u : -1;
   };
-  auto dfs = [&](auto dfs, int u, int m) {
+  auto dfs = [&](auto&& dfs, int u, int m) {
     if (m < 2) return;
     u = ctd(ctd, u, u, m);
     int sum = 0;
