@@ -12,7 +12,7 @@
 struct LCA {
   int n;
   vi tin, siz, d, p;
-  RMQ<int, function<int(int, int)>> rmq = {{}, nullptr};
+  RMQ<int, function<int(int, int)>> rmq = {{}, NULL};
   LCA(const auto& g):
     n(sz(g)), tin(n), siz(n, 1), d(n), p(n) {
     vi order;
