@@ -25,7 +25,7 @@ vector<bool> wildcard_pattern_matching(const vl& s,
   int n = sz(s), m = sz(t);
   auto s_pws = make_powers(s);
   auto t_pws = make_powers(t);
-  for (auto& t_pw : t_pws) reverse(all(t_pw));
+  for (auto& t_pw : t_pws) ranges::reverse(t_pw);
   vector<vl> res(3);
   rep(pw_hay, 0, 3)
     res[pw_hay] = conv(s_pws[pw_hay], t_pws[2 - pw_hay]);

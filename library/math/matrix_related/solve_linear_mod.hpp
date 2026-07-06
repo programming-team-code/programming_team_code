@@ -17,12 +17,12 @@ struct solve_linear_mod {
     int n = sz(mat), m = sz(mat[0]);
     rep(i, 0, n) mat[i].push_back(rhs[i]);
     tie(rank, det) = row_reduce(mat, m);
-    if (any_of(rank + all(mat),
+    if (ranges::any_of(mat | views::drop(rank),
           [](vi& v) { return v.back(); }))
       return;
     sol.resize(m);
     int j = 0;
-    for_each(begin(mat), begin(mat) + rank, [&](vi& v) {
+    ranges::for_each(mat | views::take(rank), [&](vi& v) {
       while (!v[j]) j++;
       sol[j] = v.back();
     });
