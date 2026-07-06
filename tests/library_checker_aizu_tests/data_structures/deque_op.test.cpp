@@ -8,7 +8,7 @@ int main() {
   const int mod = 998'244'353;
   int q;
   cin >> q;
-  using line = pair<int, int>;
+  using line = pii;
   // f1 = begin, f2 = second after begin
   // we want op(f1, f2) = the function f2(f1(x))
   deq dq(vector<line>(),
@@ -42,8 +42,8 @@ int main() {
       cin >> x;
       if (dq.siz() == 0) cout << x << '\n';
       else {
-        line curr = dq.query();
-        cout << (1LL * curr.first * x + curr.second) % mod
+        line cur = dq.query();
+        cout << (1LL * cur.first * x + cur.second) % mod
              << '\n';
       }
     }

@@ -8,14 +8,14 @@ int main() {
   for (int iters = 0; iters < 100; ++iters) {
     int n = 1'000;
     seg_tree seg(n);
-    vector<int> a(n);
-    for (int q = 0; q < 1'000; q++) {
+    vi a(n);
+    rep(q, 0, 1'000) {
       if (rnd(0, 1) == 0) {
         int l = rnd(0, n - 1);
         int r = rnd(l + 1, n);
         int diff = rnd(0, 10);
         seg.update(l, r, diff);
-        for (int i = l; i < r; i++) a[i] += diff;
+        rep(i, l, r) a[i] += diff;
       } else {
         int l = rnd(0, n - 1);
         int r = rnd(l + 1, n);
@@ -37,7 +37,7 @@ int main() {
           }
         }
         int st_walk_sum;
-        auto f = [&](int64_t x, int, int) -> bool {
+        auto f = [&](ll x, int, int) -> bool {
           if (st_walk_sum + x <= target_sum) {
             st_walk_sum += x;
             return 0;

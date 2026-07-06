@@ -8,20 +8,20 @@ int main() {
   int n, m;
   cin >> n >> m;
   vector<vi> adj(n);
-  for (int i = 0; i < m; i++) {
+  rep(i, 0, m) {
     int u, v;
     cin >> u >> v;
     adj[u].push_back(v);
     adj[v].push_back(u);
   }
   DSU dsu(n);
-  vector<bool> seen(n);
+  vector<bool> vis(n);
   bcc(adj, [&](const vi& nodes) {
     int count_edges = 0;
     rep(i, 0, sz(nodes) - 1) {
-      seen[nodes[i]] = 1;
+      vis[nodes[i]] = 1;
       count_edges += ranges::count_if(adj[nodes[i]],
-        [&](int v) -> bool { return !seen[v]; });
+        [&](int v) -> bool { return !vis[v]; });
     }
     if (count_edges == 1) {
       assert(sz(nodes) == 2);

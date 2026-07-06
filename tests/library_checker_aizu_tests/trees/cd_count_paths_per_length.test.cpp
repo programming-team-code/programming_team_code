@@ -29,7 +29,7 @@ vector<ll> count_paths_per_length(vector<vi> adj) {
         swap(q, new_q);
       }
     }
-    sort(all(child_depths),
+    ranges::sort(child_depths,
       [&](auto& x, auto& y) { return sz(x) < sz(y); });
     vector total_depth(1, 1.0);
     for (const auto& cnt_depth : child_depths) {
@@ -46,8 +46,8 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n;
   cin >> n;
-  vector<vector<int>> adj(n);
-  for (int i = 0; i < n - 1; i++) {
+  vector<vi> adj(n);
+  rep(i, 0, n - 1) {
     int u, v;
     cin >> u >> v;
     adj[u].push_back(v);
@@ -55,7 +55,7 @@ int main() {
   }
   cd_asserts(adj);
   vector<ll> cnt_len = count_paths_per_length(adj);
-  for (int i = 1; i < n; i++) cout << cnt_len[i] << " ";
+  rep(i, 1, n) cout << cnt_len[i] << " ";
   cout << '\n';
   return 0;
 }

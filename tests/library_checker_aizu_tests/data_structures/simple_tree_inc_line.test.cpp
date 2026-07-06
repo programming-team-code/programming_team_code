@@ -8,7 +8,7 @@ int main() {
   int n, q;
   cin >> n >> q;
   vector<array<int, 2>> a(n);
-  for (int i = 0; i < n; i++) cin >> a[i][0] >> a[i][1];
+  rep(i, 0, n) cin >> a[i][0] >> a[i][1];
   tree st(a,
     [&](const array<int, 2>& l,
       const array<int, 2>& r) -> array<int, 2> {

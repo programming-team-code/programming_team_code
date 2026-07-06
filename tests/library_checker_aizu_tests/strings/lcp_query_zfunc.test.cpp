@@ -42,8 +42,7 @@ int main() {
       else assert(sub1 > sub2);
     }
   }
-  for (int i = 0; i < sz(s); i++)
-    cout << lq.len_lcp(i, 0) << " ";
+  rep(i, 0, sz(s)) cout << lq.len_lcp(i, 0) << " ";
   cout << '\n';
   return 0;
 }

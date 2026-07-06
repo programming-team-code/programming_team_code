@@ -6,9 +6,9 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n;
   cin >> n;
-  vector<vector<int>> adj(n);
-  map<pair<int, int>, int> weight;
-  for (int i = 0; i < n - 1; i++) {
+  vector<vi> adj(n);
+  map<pii, int> weight;
+  rep(i, 0, n - 1) {
     int u, v, w;
     cin >> u >> v >> w;
     weight[{u, v}] = w;
@@ -16,7 +16,7 @@ int main() {
     adj[u].push_back(v);
     adj[v].push_back(u);
   }
-  vector<int> res(n);
+  vi res(n);
   shallowest(adj, [&](int cent) {
     int lowest = 0;
     int curr_lowest = 0;
@@ -41,5 +41,5 @@ int main() {
       lowest = max(lowest, curr_lowest);
     }
   });
-  for (int i = 0; i < n; i++) cout << res[i] << '\n';
+  rep(i, 0, n) cout << res[i] << '\n';
 }

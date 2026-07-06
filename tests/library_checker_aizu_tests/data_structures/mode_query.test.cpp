@@ -6,11 +6,11 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n, q;
   cin >> n >> q;
-  vector<int> a(n);
-  for (int i = 0; i < n; i++) cin >> a[i];
-  vector<int> comp(a);
-  sort(begin(comp), end(comp));
-  comp.erase(unique(begin(comp), end(comp)), end(comp));
+  vi a(n);
+  rep(i, 0, n) cin >> a[i];
+  vi comp(a);
+  ranges::sort(comp);
+  comp.erase(unique(all(comp)), end(comp));
   for (int& val : a) {
     int start = 0, end = sz(comp);
     while (start + 1 < end) {

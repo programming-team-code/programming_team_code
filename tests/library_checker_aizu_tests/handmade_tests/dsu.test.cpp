@@ -6,9 +6,9 @@
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   for (int n = 0; n <= 100; n++) {
-    vector<vector<int>> adj(n);
+    vector<vi> adj(n);
     DSU dsu(n);
-    for (int q = 0; q < n; q++) {
+    rep(q, 0, n) {
       int u = rnd(0, n - 1);
       int v = rnd(0, n - 1);
       bool joined = dsu.join(u, v);
@@ -28,7 +28,7 @@ int main() {
       }
       adj[u].push_back(v);
       adj[v].push_back(u);
-      for (int i = 0; i < n; i++) {
+      rep(i, 0, n) {
         vector<bool> vis(n);
         int cnt_nodes = 0;
         auto dfs = [&](auto&& self, int v) -> void {

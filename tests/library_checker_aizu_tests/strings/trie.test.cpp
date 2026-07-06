@@ -7,7 +7,7 @@ int main() {
   int n;
   cin >> n;
   trie tr;
-  for (int i = 0; i < n; i++) {
+  rep(i, 0, n) {
     string type, s;
     cin >> type >> s;
     if (type == "insert") tr.insert(s);

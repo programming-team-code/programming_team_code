@@ -8,10 +8,9 @@ int main() {
   int n, q;
   string s;
   cin >> n >> q >> s;
-  vector<int> init(n);
+  vi init(n);
   vector<ll> init_ll(n);
-  for (int i = 0; i < n; i++)
-    init[i] = init_ll[i] = s[i] - '0';
+  rep(i, 0, n) init[i] = init_ll[i] = s[i] - '0';
   BIT bit(init_ll);
   seg_tree st(init);
   while (q--) {
@@ -39,7 +38,7 @@ int main() {
       }
       int order = bit.query(k);
       int need = order + 1;
-      auto f = [&](int64_t x, int tl, int tr) -> bool {
+      auto f = [&](ll x, int tl, int tr) -> bool {
         assert(tl <= tr);
         if (x < need) {
           need -= x;
@@ -50,7 +49,7 @@ int main() {
       int res = bit.walk2(order + 1);
       assert(res == st.find_first(0, n, f));
       assert(res == st.find_first(k, n,
-                      [&](int64_t x, int, int) -> bool {
+                      [&](ll x, int, int) -> bool {
                         return x > 0;
                       }));
       if (res == n) res = -1;
@@ -71,7 +70,7 @@ int main() {
       }
       int order = bit.query(k);
       int need = order;
-      auto f = [&](int64_t x, int tl, int tr) -> bool {
+      auto f = [&](ll x, int tl, int tr) -> bool {
         assert(tl <= tr);
         if (x < need) {
           need -= x;
@@ -82,7 +81,7 @@ int main() {
       int res = bit.walk2(order);
       assert(max(res, 0) == st.find_first(0, n, f));
       assert(res == st.find_last(0, k + 1,
-                      [&](int64_t x, int, int) -> bool {
+                      [&](ll x, int, int) -> bool {
                         return x > 0;
                       }));
       int res_lambda = -1;

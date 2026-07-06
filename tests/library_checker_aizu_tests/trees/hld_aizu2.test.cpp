@@ -7,11 +7,11 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n;
   cin >> n;
-  vector<vector<int>> adj(n);
-  for (int i = 0; i < n; i++) {
+  vector<vi> adj(n);
+  rep(i, 0, n) {
     int k;
     cin >> k;
-    for (int j = 0; j < k; j++) {
+    rep(j, 0, k) {
       int v;
       cin >> v;
       assert(v != 0);

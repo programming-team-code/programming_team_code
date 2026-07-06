@@ -7,7 +7,7 @@ int main() {
   int n, q;
   cin >> n >> q;
   vector<ll> a(n);
-  for (int i = 0; i < n; i++) {
+  rep(i, 0, n) {
     cin >> a[i];
     a[i] <<= 23;
   }

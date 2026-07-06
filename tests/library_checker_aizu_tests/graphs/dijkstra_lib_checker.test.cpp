@@ -11,7 +11,7 @@ int main() {
   int n, m, s, t;
   cin >> n >> m >> s >> t;
   vector<vector<pair<int, ll>>> adj(n), adj_inv(n);
-  for (int i = 0; i < m; i++) {
+  rep(i, 0, m) {
     int u, v, w;
     cin >> u >> v >> w;
     adj[u].emplace_back(v, w);

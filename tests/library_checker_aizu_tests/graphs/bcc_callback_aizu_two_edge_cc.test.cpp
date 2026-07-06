@@ -7,8 +7,8 @@ int main() {
   int n, m;
   cin >> n >> m;
   vector<vi> adj(n);
-  for (int i = 0; i < n; i++) adj[i].push_back(i);
-  for (int i = 0; i < m; i++) {
+  rep(i, 0, n) adj[i].push_back(i);
+  rep(i, 0, m) {
     int u, v;
     cin >> u >> v;
     adj[u].push_back(v);

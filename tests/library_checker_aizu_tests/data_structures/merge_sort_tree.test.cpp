@@ -9,8 +9,8 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n, q;
   cin >> n >> q;
-  vector<int> arr(n);
-  for (int i = 0; i < n; i++) cin >> arr[i];
+  vi arr(n);
+  rep(i, 0, n) cin >> arr[i];
   merge_sort_tree mst(arr);
   while (q--) {
     int l, r, x;

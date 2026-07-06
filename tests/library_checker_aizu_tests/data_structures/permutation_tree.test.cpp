@@ -7,14 +7,14 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n;
   cin >> n;
-  vector<int> a(n);
-  for (int i = 0; i < n; i++) cin >> a[i];
+  vi a(n);
+  rep(i, 0, n) cin >> a[i];
   perm_tree pt = perm_tree_asserts(a);
   auto root = pt.root;
   auto ch = pt.ch;
   cout << sz(ch) << '\n';
   int curr_time = 0;
-  vector<int> node_to_time(sz(ch), -1);
+  vi node_to_time(sz(ch), -1);
   auto dfs = [&](auto&& self, int u, int p) -> void {
     node_to_time[u] = curr_time++;
     cout << (p == -1 ? p : node_to_time[p]) << " "

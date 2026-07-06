@@ -6,7 +6,7 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
   int q;
   cin >> q;
-  deq dq(vector<int>(),
+  deq dq(vi(),
     [](int x, int y) -> int { return min(x, y); });
   while (q--) {
     int type;

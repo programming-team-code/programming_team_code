@@ -5,31 +5,30 @@
 #include "../../../library/trees/edge_cd.hpp"
 int main() {
   {
-    vector<vector<int>> adj;
+    vector<vi> adj;
     edge_cd(adj, [&](int, int) -> void { assert(false); });
   }
   {
-    vector<vector<int>> adj(1);
+    vector<vi> adj(1);
     edge_cd(adj, [&](int, int) -> void { assert(false); });
   }
   for (int n = 2; n <= 7; n++) {
     int num_codes = 1;
-    for (int k = 0; k < n - 2; k++) num_codes *= n;
+    rep(k, 0, n - 2) num_codes *= n;
     // int num_codes = mpow(n, n - 2).x;
-    vector<vector<int>> pruf_codes(num_codes,
-      vector<int>(n - 2));
-    for (int i = 0; i < num_codes; i++) {
+    vector<vi> pruf_codes(num_codes, vi(n - 2));
+    rep(i, 0, num_codes) {
       int val = i;
-      for (int j = 0; j < n - 2; j++) {
+      rep(j, 0, n - 2) {
         int digit = val % n;
         val /= n;
         pruf_codes[i][j] = digit + 1;
       }
     }
-    for (vector<int>& code : pruf_codes) {
+    for (vi& code : pruf_codes) {
       auto edges = pruferCodeToTree(code);
       assert(sz(edges) == n - 1);
-      vector<vector<int>> adj(n);
+      vector<vi> adj(n);
       for (auto [u, v] : edges) {
         u--, v--;
         adj[u].push_back(v);

@@ -8,7 +8,7 @@ int main() {
   string s;
   cin >> n >> q >> s;
   vector<ll> init(n);
-  for (int i = 0; i < n; i++) init[i] = s[i] - '0';
+  rep(i, 0, n) init[i] = s[i] - '0';
   BIT bit(init);
   while (q--) {
     int type, k;

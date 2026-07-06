@@ -9,7 +9,7 @@ int main() {
 #define mod mod_2
 #include "../../../library/math/n_choose_k/pascals_identity.hpp"
 #undef mod
-  for (int i = 0; i < sz(ch); i++) {
+  rep(i, 0, sz(ch)) {
     assert(ch[i][0] == 1 && end(ch[i])[-1] == 1);
     assert(lucas(i, -1) == 0);
     assert(c_small_k(i, -1) == 0);
@@ -20,13 +20,13 @@ int main() {
     assert(lucas(i, i - 1) == i % mod);
     if (i - 1 < mod)
       assert(c_small_k(i, i - 1) == i % mod);
-    for (int j = 0; j < sz(ch[i]); j++) {
+    rep(j, 0, sz(ch[i])) {
       assert(lucas(i, j) == ch[i][j]);
       if (j < mod) assert(c_small_k(i, j) == ch[i][j]);
     }
   }
   for (int tests = 100'000; tests--;) {
-    auto n = rnd(int64_t(-1e18), int64_t(1e18));
+    auto n = rnd(ll(-1e18), ll(1e18));
     auto k = rnd(-mod, mod - 1);
     assert(lucas(n, k) == c_small_k(n, k));
   }

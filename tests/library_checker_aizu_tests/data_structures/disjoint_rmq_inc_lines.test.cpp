@@ -13,7 +13,7 @@ int main() {
   };
   vector<query> queries(q);
   vector<pair<ll, ll>> lines;
-  for (int i = 0; i < q; i++) {
+  rep(i, 0, q) {
     cin >> queries[i].type;
     if (queries[i].type == 0) {
       cin >> queries[i].a >> queries[i].b;
@@ -32,14 +32,14 @@ int main() {
         (b.first * a.second + b.second) % mod);
     });
   int l = 0, r = 0; // range [l, r)
-  for (const auto& curr : queries) {
-    if (curr.type == 0) r++;
-    else if (curr.type == 1) l++;
+  for (const auto& cur : queries) {
+    if (cur.type == 0) r++;
+    else if (cur.type == 1) l++;
     else {
-      if (l == r) cout << curr.x << '\n';
+      if (l == r) cout << cur.x << '\n';
       else {
         auto [slope, y_int] = rmq.query(l, r - 1);
-        cout << (slope * curr.x + y_int) % mod << '\n';
+        cout << (slope * cur.x + y_int) % mod << '\n';
       }
     }
   }

@@ -8,8 +8,8 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n;
   cin >> n;
-  vector<vector<int>> adj(n);
-  for (int i = 1; i < n; i++) {
+  vector<vi> adj(n);
+  rep(i, 1, n) {
     int p;
     cin >> p;
     adj[p].push_back(i);
@@ -17,7 +17,7 @@ int main() {
   }
   auto [num_distinct_subtrees, iso_id] = subtree_iso(adj);
   cout << num_distinct_subtrees << '\n';
-  for (int i = 0; i < n; i++) cout << iso_id[i] << " ";
+  rep(i, 0, n) cout << iso_id[i] << " ";
   cout << '\n';
   return 0;
 }

@@ -6,7 +6,7 @@ int main() {
   int n, q;
   cin >> n >> q;
   vi a(n);
-  for (int i = 0; i < n; i++) cin >> a[i];
+  rep(i, 0, n) cin >> a[i];
   disjoint_rmq rmq(a,
     [](int x, int y) { return min(x, y); });
   while (q--) {

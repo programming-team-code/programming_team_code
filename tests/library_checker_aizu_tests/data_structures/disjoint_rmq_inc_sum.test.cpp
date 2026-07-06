@@ -6,9 +6,9 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n, q;
   cin >> n >> q;
-  vector<int64_t> arr(n);
-  for (int i = 0; i < n; i++) cin >> arr[i];
-  disjoint_rmq rmq(arr, plus<int64_t>{});
+  vector<ll> arr(n);
+  rep(i, 0, n) cin >> arr[i];
+  disjoint_rmq rmq(arr, plus<ll>{});
   while (q--) {
     int l, r;
     cin >> l >> r;

@@ -17,14 +17,12 @@ int main() {
   int n, m, k;
   cin >> n >> m >> k;
   vector<vector<mi>> m1(n, vector<mi>(m));
-  for (int i = 0; i < n; i++)
-    for (int j = 0; j < m; j++) cin >> m1[i][j];
+  rep(i, 0, n) rep(j, 0, m) cin >> m1[i][j];
   vector<vector<mi>> m2(m, vector<mi>(k));
-  for (int i = 0; i < m; i++)
-    for (int j = 0; j < k; j++) cin >> m2[i][j];
+  rep(i, 0, m) rep(j, 0, k) cin >> m2[i][j];
   auto prod = m1 * m2;
-  for (int i = 0; i < n; i++) {
-    for (int j = 0; j < k; j++) cout << prod[i][j] << " ";
+  rep(i, 0, n) {
+    rep(j, 0, k) cout << prod[i][j] << " ";
     cout << '\n';
   }
   return 0;

@@ -8,7 +8,7 @@ int main() {
     // test empty seg tree
     seg_tree st(0);
     st.update(0, 0, 1);
-    int64_t res = st.query(0, 0);
+    ll res = st.query(0, 0);
     assert(res == 0);
   }
   int n, q;
@@ -19,7 +19,7 @@ int main() {
     cin >> type >> l >> r;
     l--;
     if (type == 0) {
-      int64_t x;
+      ll x;
       cin >> x;
       st.update(l, r, x);
       st.update(l, l, 1);
@@ -28,11 +28,11 @@ int main() {
       assert(type == 1);
       cout << st.query(l, r) << '\n';
       {
-        int64_t res = st.query(l, l);
+        ll res = st.query(l, l);
         assert(res == 0);
       }
       {
-        int64_t res = st.query(r, r);
+        ll res = st.query(r, r);
         assert(res == 0);
       }
     }

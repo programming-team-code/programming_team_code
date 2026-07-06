@@ -11,7 +11,7 @@ int main() {
   cin >> q;
   vector<array<int, 3>> queries(q);
   vector<array<int, 2>> init;
-  for (int i = 0; i < q; i++) {
+  rep(i, 0, q) {
     int type;
     cin >> type;
     if (type == 0) {
@@ -35,7 +35,7 @@ int main() {
   tree st(init, f);
   disjoint_rmq rmq(init, f);
   int l = 0, r = 0; //[l,r)
-  for (int i = 0; i < q; i++) {
+  rep(i, 0, q) {
     int type = queries[i][0];
     if (type == 0) {
       r++;

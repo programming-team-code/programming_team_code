@@ -10,22 +10,22 @@ int main() {
   int n, q;
   cin >> n >> q;
   vector<array<int, 3>> points(n);
-  for (int i = 0; i < n; i++) {
+  rep(i, 0, n) {
     int x, y, w;
     cin >> x >> y >> w;
     points[i] = {x, y, w};
   }
-  sort(begin(points), end(points));
+  ranges::sort(points);
   PST pst(-5, 1'000'000'000);
   for (const auto& point : points)
     pst.update(point[1], point[2], sz(pst.roots) - 1);
   while (q--) {
     int l, down, r, up;
     cin >> l >> down >> r >> up;
-    l = int(lower_bound(begin(points), end(points),
+    l = int(ranges::lower_bound(points,
               array<int, 3>({l, -1, -1})) -
             begin(points));
-    r = int(lower_bound(begin(points), end(points),
+    r = int(ranges::lower_bound(points,
               array<int, 3>({r, -1, -1})) -
             begin(points));
     cout << pst.query(down, up, r) - pst.query(down, up, l)

@@ -6,20 +6,20 @@ int main() {
   int n, k;
   cin >> n >> k;
   int mask = 0;
-  for (int i = 0; i < k; i++) {
+  rep(i, 0, k) {
     int bit;
     cin >> bit;
     mask |= 1 << bit;
   }
-  vector<int> sup_msks;
+  vi sup_msks;
   {
 #include "../../../library/loops/supermasks.hpp"
     sup_msks.push_back(supermask);
   }
   for (auto supermask : sup_msks) {
     cout << supermask << ':';
-    for (int bit = 0; bit < n; bit++)
-      if ((supermask >> bit) & 1) cout << ' ' << bit;
+    rep(bit, 0, n) if ((supermask >> bit) & 1) cout << ' '
+                                                    << bit;
     cout << '\n';
   }
   return 0;

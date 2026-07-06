@@ -8,9 +8,9 @@ int main() {
   int n, q;
   cin >> n >> q;
   vector<ll> a(n);
-  for (int i = 0; i < n; i++) cin >> a[i];
-  vector<vector<int>> adj(n);
-  for (int i = 1; i < n; i++) {
+  rep(i, 0, n) cin >> a[i];
+  vector<vi> adj(n);
+  rep(i, 1, n) {
     int par;
     cin >> par;
     adj[par].push_back(i);
@@ -18,7 +18,7 @@ int main() {
   }
   HLD<1> hld(adj);
   BIT bit(n);
-  for (int i = 0; i < n; i++) bit.update(hld.tin[i], a[i]);
+  rep(i, 0, n) bit.update(hld.tin[i], a[i]);
   while (q--) {
     int type;
     cin >> type;

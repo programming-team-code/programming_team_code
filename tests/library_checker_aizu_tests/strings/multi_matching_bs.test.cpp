@@ -14,7 +14,7 @@ int main() {
   {
     auto [sa_le, sa_ri, s_l, s_r] =
       sf_a.find_str_fast(vi());
-    pair<int, int> short_res = sf_a.find_str(vi());
+    pii short_res = sf_a.find_str(vi());
     assert(sa_le == short_res.first &&
            sa_ri == short_res.second);
     assert(sa_le == 0 && sa_ri == sz(s));
@@ -27,7 +27,7 @@ int main() {
     cin >> t;
     auto [sa_le, sa_ri, s_l, s_r] =
       sf_a.find_str_fast(vi(all(t)));
-    pair<int, int> short_res = sf_a.find_str(vi(all(t)));
+    pii short_res = sf_a.find_str(vi(all(t)));
     assert(sa_le == short_res.first &&
            sa_ri == short_res.second);
     int str_len = s_r - s_l;

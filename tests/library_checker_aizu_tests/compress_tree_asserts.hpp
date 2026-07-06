@@ -5,23 +5,22 @@
 #undef RMQ
 #undef LCA
 #include "../../library/contest/random.hpp"
-void compress_tree_asserts(vector<vector<int>> adj,
-  LCA& lc_rm) {
+void compress_tree_asserts(vector<vi> adj, LCA& lc_rm) {
   int n = sz(adj);
-  vector<bool> used(n);
+  vector<bool> vis(n);
   KACTL_LCA kactl_lca(adj);
   {
     auto [parent, to_node] = lc_rm.compress_tree({});
     assert(empty(parent) && empty(to_node));
   }
-  for (int tests = 0; tests < 10; tests++) {
-    vector<int> subset;
+  rep(tests, 0, 10) {
+    vi subset;
     {
       int subset_size = rnd(1, min(n, 10));
       while (subset_size--) {
         int u = rnd(0, n - 1);
-        if (!used[u]) {
-          used[u] = 1;
+        if (!vis[u]) {
+          vis[u] = 1;
           subset.push_back(u);
         }
       }
@@ -30,13 +29,13 @@ void compress_tree_asserts(vector<vector<int>> adj,
     auto [lc_rm_parent, lc_rm_to_node] =
       lc_rm.compress_tree(subset);
     assert(sz(lc_rm_parent) == sz(kactl_res));
-    for (int i = 0; i < sz(lc_rm_parent); i++) {
+    rep(i, 0, sz(lc_rm_parent)) {
       assert(lc_rm_to_node[i] == kactl_res[i].second);
       assert(lc_rm_parent[i] < i);
       if (i > 0)
         assert(lc_rm_parent[i] == kactl_res[i].first);
       else assert(lc_rm_parent[i] == -1);
     }
-    for (int u : subset) used[u] = 0;
+    for (int u : subset) vis[u] = 0;
   }
 }

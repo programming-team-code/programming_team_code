@@ -8,8 +8,8 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n, q;
   cin >> n >> q;
-  vector<vector<int>> adj(n);
-  for (int i = 1; i < n; i++) {
+  vector<vi> adj(n);
+  rep(i, 1, n) {
     int par;
     cin >> par;
     adj[par].push_back(i);
@@ -18,7 +18,7 @@ int main() {
   LCA lc(adj);
   linear_lca lin_lca(adj);
   compress_tree_asserts(adj, lc);
-  for (int i = 0; i < n; i++) {
+  rep(i, 0, n) {
     assert(tl.lca(i, i) == i);
     assert(lc.lca(i, i) == i);
     assert(lc.in_subtree(i, i));

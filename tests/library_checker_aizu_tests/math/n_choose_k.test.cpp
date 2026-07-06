@@ -25,7 +25,7 @@ int main() {
       assert(C(-k, n) == 0);
     }
   }
-  for (int i = 0; i < sz(t); i++) {
+  rep(i, 0, sz(t)) {
     if (i) assert(i * t[i].inv % mod == 1);
     assert(t[i].fact * t[i].inv_fact % mod == 1);
   }

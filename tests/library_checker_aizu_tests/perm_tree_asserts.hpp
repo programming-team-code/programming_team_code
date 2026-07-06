@@ -1,13 +1,13 @@
 #pragma once
 #include "../../library/data_structures_[l,r)/rmq.hpp"
 #include "../../library/data_structures_[l,r)/uncommon/permutation_tree.hpp"
-perm_tree perm_tree_asserts(const vector<int>& a) {
+perm_tree perm_tree_asserts(const vi& a) {
   int n = sz(a);
   perm_tree pt(a);
   {
-    vector<int> a_reverse(rbegin(a), rend(a));
+    vi a_reverse(rbegin(a), rend(a));
     perm_tree pt_reverse(a_reverse);
-    queue<pair<int, int>> q;
+    queue<pii> q;
     q.push({pt.root, pt_reverse.root});
     while (!empty(q)) {
       auto [u, u_reverse] = q.front();
@@ -21,11 +21,10 @@ perm_tree perm_tree_asserts(const vector<int>& a) {
       assert(pt.p[u].mn_idx ==
              n - (pt_reverse.p[u_reverse].mn_idx +
                    pt_reverse.p[u_reverse].len));
-      for (int i = 0; i < sz(pt.ch[u]); i++)
-        q.push({pt.ch[u][i],
-          pt_reverse
-            .ch[u_reverse]
-               [sz(pt_reverse.ch[u_reverse]) - i - 1]});
+      rep(i, 0, sz(pt.ch[u])) q.push({pt.ch[u][i],
+        pt_reverse
+          .ch[u_reverse]
+             [sz(pt_reverse.ch[u_reverse]) - i - 1]});
     }
   }
   RMQ rmq_min(a, [](int x, int y) { return min(x, y); });
@@ -36,7 +35,7 @@ perm_tree perm_tree_asserts(const vector<int>& a) {
          pt.p[root].mn_num == 0 && pt.p[root].len == n);
   if (n == 1) assert(sz(ch) == 1);
   else assert(n + 1 <= sz(ch) && sz(ch) < 2 * n);
-  for (int u = 0; u < sz(ch); u++) {
+  rep(u, 0, sz(ch)) {
     {
       int mn_num_rmq = rmq_min.query(pt.p[u].mn_idx,
         pt.p[u].mn_idx + pt.p[u].len);
@@ -71,20 +70,20 @@ perm_tree perm_tree_asserts(const vector<int>& a) {
           pt.p[u].mn_num + pt.p[u].len ==
             pt.p[ch[u].back()].mn_num +
               pt.p[ch[u].back()].len));
-      for (int i = 1; i < sz(ch[u]); i++) {
-        int prev = ch[u][i - 1], curr = ch[u][i];
-        assert(pt.p[prev].mn_idx + pt.p[prev].len ==
-               pt.p[curr].mn_idx);
-        assert(pt.p[u].is_join == pt.touches(prev, curr));
+      rep(i, 1, sz(ch[u])) {
+        int prv = ch[u][i - 1], cur = ch[u][i];
+        assert(pt.p[prv].mn_idx + pt.p[prv].len ==
+               pt.p[cur].mn_idx);
+        assert(pt.p[u].is_join == pt.touches(prv, cur));
       }
       if (sz(ch[u]) <= 10) {
-        for (int i = 0; i < sz(ch[u]); i++) {
+        rep(i, 0, sz(ch[u])) {
           int node_le = ch[u][i];
           int running_min = pt.p[node_le].mn_num;
           int running_max =
             pt.p[node_le].mn_num + pt.p[node_le].len;
           int running_sum = pt.p[node_le].len;
-          for (int j = i + 1; j < sz(ch[u]); j++) {
+          rep(j, i + 1, sz(ch[u])) {
             int node_ri = ch[u][j];
             running_min =
               min(running_min, pt.p[node_ri].mn_num);

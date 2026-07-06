@@ -6,8 +6,8 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n, m;
   cin >> n >> m;
-  vector<vector<int>> adj(n);
-  for (int i = 0; i < m; i++) {
+  vector<vi> adj(n);
+  rep(i, 0, m) {
     int u, v;
     cin >> u >> v;
     adj[u].push_back(v);
@@ -15,9 +15,8 @@ int main() {
   scc_asserts(adj);
   auto [num_sccs, scc_id] = scc(adj);
   cout << num_sccs << '\n';
-  vector<vector<int>> each_scc(num_sccs);
-  for (int i = 0; i < n; i++)
-    each_scc[scc_id[i]].push_back(i);
+  vector<vi> each_scc(num_sccs);
+  rep(i, 0, n) each_scc[scc_id[i]].push_back(i);
   for (int i = num_sccs - 1; i >= 0; i--) {
     cout << sz(each_scc[i]) << " ";
     for (auto node : each_scc[i]) cout << node << " ";

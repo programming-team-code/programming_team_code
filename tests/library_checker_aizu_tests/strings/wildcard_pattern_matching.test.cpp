@@ -15,9 +15,10 @@ ll modpow(ll a, ll e) {
 vl to_vec(const string& s) {
   int n = sz(s);
   vl res(n);
-  for (int i = 0; i < n; i++)
+  rep(i, 0, n) {
     if (s[i] == '*') res[i] = 0;
     else res[i] = s[i] - 'a' + 1;
+  }
   return res;
 }
 int main() {

@@ -6,10 +6,10 @@
 #include "../../../library/trees/uncommon/linear_kth_par.hpp"
 int main() {
   for (int n = 1; n <= 100; n++) {
-    for (int param = 1; param < 20; param++) {
-      vector<int> par(n);
-      vector<vector<int>> adj(n);
-      for (int i = 1; i < n; i++) {
+    rep(param, 1, 20) {
+      vi par(n);
+      vector<vi> adj(n);
+      rep(i, 1, n) {
         if (param == 19) par[i] = rnd(0, i - 1);
         else par[i] = rnd(max(0, i - param), i - 1);
         adj[par[i]].push_back(i);
@@ -17,7 +17,7 @@ int main() {
       }
       hagerup<2> hagerup_kth_par(adj);
       linear_kth_par lin_kth_par(adj);
-      for (int i = 0; i < n; i++) {
+      rep(i, 0, n) {
         for (int k = 0, kth_parent_naive = i;
           k <= hagerup_kth_par.d[i];
           k++, kth_parent_naive = par[kth_parent_naive]) {

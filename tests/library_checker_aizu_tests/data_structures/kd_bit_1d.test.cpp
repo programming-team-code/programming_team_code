@@ -8,7 +8,7 @@ int main() {
   cin >> n >> q;
   KD_BIT<1> bit1(n);
   KD_BIT<2> bit2(1, n);
-  for (int i = 0; i < n; i++) {
+  rep(i, 0, n) {
     int val;
     cin >> val;
     bit1.update(i, val);

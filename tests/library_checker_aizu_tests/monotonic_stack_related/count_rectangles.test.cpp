@@ -10,29 +10,26 @@ int main() {
   int n, m;
   cin >> n >> m;
   vector<vector<bool>> grid(n, vector<bool>(m));
-  for (int i = 0; i < n; i++) {
-    for (int j = 0; j < m; j++) {
+  rep(i, 0, n) {
+    rep(j, 0, m) {
       bool val;
       cin >> val;
       grid[i][j] = !val;
     }
   }
   {
-    vector<int> h(m);
-    for (int i = 0; i < n; i++) {
-      for (int j = 0; j < m; j++)
-        h[j] = (!grid[i][j]) * (h[j] + 1);
+    vi h(m);
+    rep(i, 0, n) {
+      rep(j, 0, m) h[j] = (!grid[i][j]) * (h[j] + 1);
       mono_st_asserts(h);
     }
   }
-  vector<vector<int>> size_counts = count_rectangles(grid);
+  vector<vi> size_counts = count_rectangles(grid);
   {
-    vector<vector<int>> temp_grid(n, vector<int>(m));
-    for (int i = 0; i < n; i++)
-      for (int j = 0; j < m; j++)
-        temp_grid[i][j] = grid[i][j];
+    vector<vi> temp_grid(n, vi(m));
+    rep(i, 0, n) rep(j, 0, m) temp_grid[i][j] = grid[i][j];
     SubMatrix<int> sm(temp_grid);
-    vector<pair<int, int>> tests;
+    vector<pii> tests;
     {
       for (int i = 1; i <= min(5, n); i++)
         for (int j = 1; j <= min(5, m); j++)

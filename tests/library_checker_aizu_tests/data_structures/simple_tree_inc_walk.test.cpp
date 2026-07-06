@@ -8,8 +8,8 @@ int main() {
   cin >> n >> q;
   string s;
   cin >> s;
-  vector<int> init(n);
-  for (int i = 0; i < n; i++) init[i] = s[i] - '0';
+  vi init(n);
+  rep(i, 0, n) init[i] = s[i] - '0';
   tree st(init, ranges::max);
   while (q--) {
     int type, k;
