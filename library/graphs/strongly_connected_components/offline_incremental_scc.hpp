@@ -33,9 +33,10 @@ vi offline_incremental_scc(vector<array<int, 2>> eds,
     }
     rep(i, 0, sz(g)) ids[vs[i]] = -1;
     scc_id = scc(g).second;
-    auto split = partition(el, er, [&](int i) {
-      return scc_id[eds[i][0]] == scc_id[eds[i][1]];
-    });
+    auto split = begin(ranges::partition(
+      ranges::subrange(el, er), [&](int i) {
+        return scc_id[eds[i][0]] == scc_id[eds[i][1]];
+      }));
     for (auto it = el; it != split; it++) joins[*it] = mid;
     if (tr - tl == 1) return;
     for (auto it = split; it != er; it++) {

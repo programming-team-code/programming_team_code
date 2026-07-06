@@ -58,9 +58,10 @@ template<class T, class F> struct deq {
     partial_sum(sz_le + all(a), begin(presum) + sz_le, op);
     l.resize(sz_le);
     r.resize(sz(a) - sz_le);
-    transform(begin(a), begin(a) + sz_le, begin(presum),
+    ranges::transform(a | views::take(sz_le), presum,
       rbegin(l), [](T x, T y) { return dt{x, y}; });
-    transform(sz_le + all(a), begin(presum) + sz_le,
-      begin(r), [](T x, T y) { return dt{x, y}; });
+    ranges::transform(a | views::drop(sz_le),
+      presum | views::drop(sz_le), begin(r),
+      [](T x, T y) { return dt{x, y}; });
   }
 };

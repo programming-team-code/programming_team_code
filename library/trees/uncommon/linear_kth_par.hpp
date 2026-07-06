@@ -50,7 +50,8 @@ struct linear_kth_par {
     if (k == 0) return u;
     int anc_d = d[u] - k, bc = bit_ceil(k + 0u);
     int t = (tin[u] + bc / 2) & -bc;
-    int i = idx[jmp[t].at(__lg(d_tour[t] - anc_d))];
+    int i = idx[jmp[t].at(
+      bit_width(d_tour[t] - anc_d + 0u) - 1)];
     return lad[i + d[lad[i]] - anc_d];
   }
 };

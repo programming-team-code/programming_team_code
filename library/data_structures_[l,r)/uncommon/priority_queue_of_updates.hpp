@@ -38,9 +38,10 @@ template<class DS, class... ARGS> struct pq_updates {
       extra.push_back(upd_st[idx_sk]);
       idx = min(idx, idx_sk), lowest_pri = pri;
     }
-    auto it = remove_if(idx + all(upd_st), [&](auto& cur) {
-      return cur.second->first >= lowest_pri;
-    });
+    auto it = begin(ranges::remove_if(
+      upd_st | views::drop(idx), [&](auto& cur) {
+        return cur.second->first >= lowest_pri;
+      }));
     ranges::reverse_copy(extra, it);
     rep(i, idx, sz(upd_st)) ds.undo();
     upd_st.pop_back();

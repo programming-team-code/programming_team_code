@@ -23,7 +23,7 @@ template<class T, class F> struct RMQ {
   }
   T query(int l, int r) {
     assert(l < r);
-    int lg = __lg(r - l);
+    int lg = bit_width(r - l + 0u) - 1;
     return op(dp[lg][l], dp[lg][r - (1 << lg)]);
   }
 };
