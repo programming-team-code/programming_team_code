@@ -17,6 +17,9 @@ int main() {
     adj[u].emplace_back(v, w);
   }
   vector<ll> len = dijkstra(adj, s);
-  rep(i, 0, n) if (len[i] == LLONG_MAX) cout << "INF\n";
-  else cout << len[i] << '\n'; return 0;
+  rep(i, 0, n) {
+    if (len[i] == LLONG_MAX) cout << "INF\n";
+    else cout << len[i] << '\n';
+  }
+  return 0;
 }
