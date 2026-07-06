@@ -31,7 +31,7 @@ template<class T, class F> struct deq {
   void pop_back() {
     if (empty(r)) {
       vector<T> a(sz(l));
-      transform(all(l), rbegin(a),
+      ranges::transform(l, rbegin(a),
         [](dt& x) { return x[0]; });
       rebuild(a, sz(a) / 2);
     }
@@ -44,7 +44,7 @@ template<class T, class F> struct deq {
   void pop_front() {
     if (empty(l)) {
       vector<T> a(sz(r));
-      transform(all(r), begin(a),
+      ranges::transform(r, begin(a),
         [](dt& x) { return x[0]; });
       rebuild(a, (sz(a) + 1) / 2);
     }
