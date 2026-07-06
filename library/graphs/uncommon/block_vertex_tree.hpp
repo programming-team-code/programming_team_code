@@ -15,7 +15,7 @@
 //! [0, n) are original nodes
 //! [n, n + num_bccs) are BCC nodes
 //! @time O(n + m)
-//! @time O(n)
+//! @space O(n)
 auto block_vertex_tree(const auto& g, int num_bccs,
   const vi& bcc_id) {
   int n = sz(g);

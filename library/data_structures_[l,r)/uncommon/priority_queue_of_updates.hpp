@@ -1,13 +1,12 @@
 #pragma once
 //! https://codeforces.com/blog/entry/111117
 //! @code
-//!     dsu_restorable dsu_r(n);
-//!     pq_updates<dsu_restorable, int, int> pq(dsu_r);
-//!     rep (i, 0, n) pq.ds.add(i, initial_nums[i]);
-//!     //or
-//!     pq.ds.subtree = initial_nums;
-//!     pq.push_update(u, v, curr_pri);
-//!     cout << pq.ds.sum(v) << '\n';
+//!   // DS = any struct with member functions join, undo
+//!   DS ds;
+//!   // int = argument type of DS::join
+//!   pq_updates<DS, int> pq(ds);
+//!   pq.push_update(val, priority);
+//!   pq.pop_update();
 //! @endcode
 //! @time n interweaved calls to pop_update, push_update
 //! take O(T(n)*nlogn) where O(T(n)) = time complexity of
