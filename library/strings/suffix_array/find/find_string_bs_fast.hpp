@@ -16,7 +16,7 @@ match find_str_fast(const T& t) {
     return lexicographical_compare(it_s, end(s), it_t,
       end(t));
   };
-  int sa_le = lower_bound(all(sa), 0, cmp) - begin(sa),
+  int sa_le = ranges::lower_bound(sa, 0, cmp) - begin(sa),
       sa_ri = sa_le;
   if (s_len == sz(t))
     sa_ri = lower_bound(sa_le + all(sa), 0,
