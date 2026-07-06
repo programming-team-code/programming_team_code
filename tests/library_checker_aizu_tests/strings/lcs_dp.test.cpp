@@ -13,7 +13,7 @@ int main() {
     rep(j, 0, 2) {
       lcs_dp lcs(vi(all(t)));
       for (char c : s) lcs.push_onto_s(c);
-      res[j] = int(count(begin(lcs.dp), end(lcs.dp), -1));
+      res[j] = int(ranges::count(lcs.dp, -1));
       swap(s, t);
     }
     assert(res[0] == res[1]);
