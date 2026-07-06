@@ -7,10 +7,10 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n, q;
   cin >> n >> q;
-  vector<int> a(n);
-  for (int i = 0; i < n; i++) cin >> a[i];
-  vector<vector<int>> adj(n);
-  for (int i = 0; i < n - 1; i++) {
+  vi a(n);
+  rep(i, 0, n) cin >> a[i];
+  vector<vi> adj(n);
+  rep(i, 0, n - 1) {
     int u, v;
     cin >> u >> v;
     adj[u].push_back(v);
@@ -18,7 +18,7 @@ int main() {
   }
   HLD<0> hld(adj);
   BIT bit(n);
-  for (int i = 0; i < n; i++) bit.update(hld.tin[i], a[i]);
+  rep(i, 0, n) bit.update(hld.tin[i], a[i]);
   while (q--) {
     int type;
     cin >> type;

@@ -50,8 +50,8 @@ vector<vector<ll>> naive(const vector<vi>& adj) {
   LCA lc(adj);
   int n = sz(adj);
   vector<vector<ll>> cnts_naive(n + 1, vector<ll>(n, 0));
-  for (int u = 0; u < n; u++) {
-    for (int v = u; v < n; v++) {
+  rep(u, 0, n) {
+    rep(v, u, n) {
       int path_length_edges = lc.dist(u, v);
       for (int node = u; node != v;
         node = lc.next_on_path(node, v))
@@ -90,7 +90,7 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
   for (int n = 1; n <= 100; n++) {
     vector<vi> adj(n);
-    for (int i = 1; i < n; i++) {
+    rep(i, 1, n) {
       int par = rnd<int>(0, i - 1);
       adj[par].push_back(i);
       adj[i].push_back(par);
@@ -101,7 +101,7 @@ int main() {
       assert(
         count_paths_per_node(adj, k) == cnts_naive[k]);
     vector<ll> num_paths_len = count_paths_per_length(adj);
-    for (int k = 1; k < n; k++) {
+    rep(k, 1, n) {
       vector<ll> count_paths =
         count_paths_per_node(adj, k);
       ll total_paths = accumulate(begin(count_paths),

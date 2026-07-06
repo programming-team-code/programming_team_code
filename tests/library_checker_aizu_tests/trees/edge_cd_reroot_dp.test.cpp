@@ -7,19 +7,19 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n;
   cin >> n;
-  vector<int> a(n);
-  vector<int> res(n);
-  for (int i = 0; i < n; i++) {
+  vi a(n);
+  vi res(n);
+  rep(i, 0, n) {
     cin >> a[i];
     res[i] = a[i];
   }
   vector<vi> adj(n);
-  vector<int> b(n - 1), c(n - 1);
-  vector<pair<int, int>> par(n, {-1, -1});
-  vector<vector<int>> base_adj(n);
+  vi b(n - 1), c(n - 1);
+  vector<pii> par(n, {-1, -1});
+  vector<vi> base_adj(n);
   {
-    vector<vector<pair<int, int>>> adj_with_id(n);
-    for (int i = 0; i < n - 1; i++) {
+    vector<vector<pii>> adj_with_id(n);
+    rep(i, 0, n - 1) {
       int u, v;
       cin >> u >> v >> b[i] >> c[i];
       adj[u].push_back(v);
@@ -76,24 +76,23 @@ int main() {
         self(self, v, u, curr_forw, curr_backw, side);
       }
     };
-    for (int i = 0; i < sz(adj[cent]); i++) {
+    rep(i, 0, sz(adj[cent])) {
       int e_id = edge_id(cent, adj[cent][i]);
       dfs(dfs, adj[cent][i], cent, {b[e_id], c[e_id]},
         {b[e_id], c[e_id]}, i < split);
     }
-    for (int side = 0; side < 2; side++)
-      for (auto [u, curr_b, curr_c] : all_backwards[side])
-        res[u] =
-          (res[u] + 1LL * curr_b * sum_forward[!side] +
-            1LL * curr_c * cnt_nodes[!side]) %
-          mod;
+    rep(side, 0, 2) for (auto [u, curr_b, curr_c] :
+      all_backwards[side]) res[u] =
+      (res[u] + 1LL * curr_b * sum_forward[!side] +
+        1LL * curr_c * cnt_nodes[!side]) %
+      mod;
   });
   swap(base_adj, adj);
   {
 #include "../edge_cd_asserts.hpp"
     edge_cd(adj, edge_cd_asserts);
   }
-  for (int i = 0; i < n; i++) cout << res[i] << ' ';
+  rep(i, 0, n) cout << res[i] << ' ';
   cout << '\n';
   return 0;
 }

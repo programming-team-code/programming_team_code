@@ -8,13 +8,12 @@ int main() {
   string s, t;
   cin >> q >> s >> t;
   vector<array<int, 3>> queries(q);
-  for (int i = 0; i < q; i++) {
+  rep(i, 0, q) {
     int a, b, c;
     cin >> a >> b >> c;
     queries[i] = {a, b, c};
   }
-  vector<int> res =
-    lcs_queries(vi(all(s)), vi(all(t)), queries);
+  vi res = lcs_queries(vi(all(s)), vi(all(t)), queries);
   for (int val : res) cout << val << '\n';
   return 0;
 }

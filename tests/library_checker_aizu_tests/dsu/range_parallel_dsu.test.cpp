@@ -11,9 +11,9 @@ int main() {
   cin >> n >> q;
   rp_dsu r_dsu(n);
   vi y(n);
-  for (int i = 0; i < n; i++) cin >> y[i];
+  rep(i, 0, n) cin >> y[i];
   vi x = y;
-  int ans = 0;
+  int res = 0;
   DSU dsu(n);
   auto f = [&](int u, int v) {
     u = dsu.f(u);
@@ -21,28 +21,28 @@ int main() {
     assert(dsu.join(u, v));
     int root = dsu.f(u);
     int other = root ^ u ^ v;
-    ans = (ans + 1LL * x[root] * x[other]) % mod;
+    res = (res + 1LL * x[root] * x[other]) % mod;
     x[root] = (x[root] + x[other]) % mod;
   };
   vector<vector<pii>> joins(n + 1);
-  for (int qq = 0; qq < q; qq++) {
+  rep(qq, 0, q) {
     int k, a, b;
     cin >> k >> a >> b;
     if (k) r_dsu.join(a, b, k, f);
     joins[k].emplace_back(a, b);
-    cout << ans << '\n';
+    cout << res << '\n';
     if (qq == 0 || qq == 1 || qq == 10 || qq == 1000 ||
         qq == 100'000 || qq == q - 1) {
       auto uf = get_rp_dsu(joins, n);
       vi sums(n);
       int offline_ans = 0;
-      for (int i = 0; i < n; i++) {
+      rep(i, 0, n) {
         int id = uf.f(i);
         offline_ans =
           (offline_ans + 1LL * sums[id] * y[i]) % mod;
         sums[id] = (sums[id] + y[i]) % mod;
       }
-      assert(ans == offline_ans);
+      assert(res == offline_ans);
     }
   }
   return 0;

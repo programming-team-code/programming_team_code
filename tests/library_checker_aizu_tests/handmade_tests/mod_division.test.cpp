@@ -7,8 +7,8 @@
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   for (mod = 1; mod < 500; mod++) {
-    for (int x = 0; x < mod; x++) {
-      for (int y = 0; y < mod; y++) {
+    rep(x, 0, mod) {
+      rep(y, 0, mod) {
         if (gcd(y, mod) == 1) {
           int quotient = mod_div(x, y);
           assert(1LL * quotient * y % mod == x);

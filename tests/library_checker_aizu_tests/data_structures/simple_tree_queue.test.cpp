@@ -11,7 +11,7 @@ int main() {
   cin >> q;
   vector<array<int, 3>> queries(q);
   vector<array<int, 2>> init;
-  for (int i = 0; i < q; i++) {
+  rep(i, 0, q) {
     int type;
     cin >> type;
     if (type == 0) {
@@ -33,12 +33,11 @@ int main() {
       int((1LL * r[0] * l[1] + r[1]) % mod)};
   };
   const array<int, 2> unit = {1, 0};
-  tree st(ssize(init), unit, f);
-  for (int i = 0; i < ssize(init); i++)
-    st.update(i, init[i]);
+  tree st(sz(init), unit, f);
+  rep(i, 0, sz(init)) st.update(i, init[i]);
   disjoint_rmq rmq(init, f);
   int l = 0, r = 0; //[l,r)
-  for (int i = 0; i < q; i++) {
+  rep(i, 0, q) {
     int type = queries[i][0];
     if (type == 0) {
       r++;

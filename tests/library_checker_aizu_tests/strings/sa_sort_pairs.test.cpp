@@ -6,12 +6,11 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n;
   cin >> n;
-  vector<int> arr(2 * n);
+  vi arr(2 * n);
   for (int& x : arr) cin >> x;
-  vector<int> compress(arr);
-  sort(begin(compress), end(compress));
-  compress.erase(unique(begin(compress), end(compress)),
-    end(compress));
+  vi compress(arr);
+  ranges::sort(compress);
+  compress.erase(unique(all(compress)), end(compress));
   for (int& x : arr) {
     int l = -1, r = int(sz(compress));
     while (r - l > 1) {
@@ -24,9 +23,9 @@ int main() {
   }
   auto [sa, sa_inv, lcp] = get_sa(arr, int(sz(compress)));
   sa_query lq(arr, sa, sa_inv, lcp);
-  vector<int> idxs(n);
-  iota(begin(idxs), end(idxs), 0);
-  sort(begin(idxs), end(idxs), [&](int i, int j) -> bool {
+  vi idxs(n);
+  iota(all(idxs), 0);
+  ranges::sort(idxs, [&](int i, int j) -> bool {
     return lq.cmp_substrs(2 * i, 2 * (i + 1), 2 * j,
              2 * (j + 1)) < 0;
   });

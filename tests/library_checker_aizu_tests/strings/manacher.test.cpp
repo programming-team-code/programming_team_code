@@ -9,13 +9,12 @@ int main() {
   cin >> s;
   int n = sz(s);
   pal_query pq(vi(all(s)));
-  vector<int> longest(longest_from_index(pq));
+  vi longest(longest_from_index(pq));
   {
-    vector<pair<int, int>> tests;
-    for (int i = 0; i < n; i++)
-      for (int j = i; j < min(n, i + 10); j++)
-        tests.emplace_back(i, j);
-    for (int i = 0; i < 30; i++) {
+    vector<pii> tests;
+    rep(i, 0, n) rep(j, i, min(n, i + 10))
+      tests.emplace_back(i, j);
+    rep(i, 0, 30) {
       int l = rnd(0, n - 1), r = rnd(0, n - 1);
       if (l > r) swap(l, r);
       tests.emplace_back(l, r);
@@ -27,7 +26,7 @@ int main() {
         (substr == string(rbegin(substr), rend(substr))));
     }
   }
-  for (int i = 0; i < n; i++) {
+  rep(i, 0, n) {
     assert(longest[i] < n);
     assert(pq.is_pal(i, longest[i]));
     if (longest[i] + 1 < n) {
@@ -38,7 +37,7 @@ int main() {
       }
     }
   }
-  for (int i = 0; i < sz(pq.man); i++) {
+  rep(i, 0, sz(pq.man)) {
     int r = i - pq.man[i];
     assert(r + 1 == pq.man[i] || pq.is_pal(pq.man[i], r));
     assert(pq.man[i] == 0 || r == n - 1 ||

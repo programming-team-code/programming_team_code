@@ -4,11 +4,11 @@
 #include "../../../library/contest/random.hpp"
 #include "../../../library/data_structures_[l,r)/rmq.hpp"
 #include "../../../library/data_structures_[l,r]/linear_rmq.hpp"
-void test_all_subarrays(const vector<int>& a) {
+void test_all_subarrays(const vi& a) {
   auto n = sz(a);
   RMQ rmq(a, [](auto x, auto y) { return min(x, y); });
   linear_rmq lin_rmq(a, less());
-  for (int l = 0; l < n; l++) {
+  rep(l, 0, n) {
     for (int r = l + 1; r <= n; r++) {
       int idx_min = lin_rmq.idx(l, r - 1);
       assert(l <= idx_min && idx_min < r);
@@ -19,17 +19,16 @@ void test_all_subarrays(const vector<int>& a) {
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   for (int n = 1; n <= 8; n++) {
-    vector<int> perm(n);
-    iota(begin(perm), end(perm), 0);
+    vi perm(n);
+    iota(all(perm), 0);
     do {
       test_all_subarrays(perm);
-    } while (next_permutation(begin(perm), end(perm)));
+    } while (next_permutation(all(perm)));
   }
   for (int n = 1; n <= 100; n++) {
-    for (int times = 0; times < 40; times++) {
-      vector<int> a(n);
-      for (int i = 0; i < n; i++)
-        a[i] = rnd<int>(INT_MIN, INT_MAX);
+    rep(times, 0, 40) {
+      vi a(n);
+      rep(i, 0, n) a[i] = rnd<int>(INT_MIN, INT_MAX);
       test_all_subarrays(a);
     }
   }

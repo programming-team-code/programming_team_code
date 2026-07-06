@@ -3,13 +3,13 @@
 #include "../template.hpp"
 #include "../../../library/contest/random.hpp"
 #include "../../../library/data_structures_[l,r)/uncommon/hilbert_mos.hpp"
-const vector<int> di = {1, -1, 0, 0};
-const vector<int> dj = {0, 0, 1, -1};
+const vi di = {1, -1, 0, 0};
+const vi dj = {0, 0, 1, -1};
 void test(int i, int j) {
   ll res = hilbert(i, j);
   int cnt_prev = 0;
   int cnt_next = 0;
-  for (int k = 0; k < 4; k++) {
+  rep(k, 0, 4) {
     int to_i = i + di[k];
     int to_j = j + dj[k];
     if (to_i >= 0 && to_j >= 0) {
@@ -23,8 +23,7 @@ void test(int i, int j) {
 }
 int main() {
   cin.tie(0)->sync_with_stdio(0);
-  for (int i = 0; i < 3000; i++)
-    for (int j = 0; j < 3000; j++) test(i, j);
+  rep(i, 0, 3000) rep(j, 0, 3000) test(i, j);
   for (int iter = 50000; iter--;) {
     int i = rnd(0, 1'000'000'000);
     int j = rnd(0, 1'000'000'000);

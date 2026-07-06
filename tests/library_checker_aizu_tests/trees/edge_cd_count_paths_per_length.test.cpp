@@ -32,8 +32,8 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n;
   cin >> n;
-  vector<vector<int>> adj(n);
-  for (int i = 0; i < n - 1; i++) {
+  vector<vi> adj(n);
+  rep(i, 0, n - 1) {
     int u, v;
     cin >> u >> v;
     adj[u].push_back(v);
@@ -44,7 +44,7 @@ int main() {
 #include "../edge_cd_asserts.hpp"
     edge_cd(adj, edge_cd_asserts);
   }
-  for (int i = 1; i < n; i++) cout << cnt_len[i] << " ";
+  rep(i, 1, n) cout << cnt_len[i] << " ";
   cout << '\n';
   return 0;
 }

@@ -14,7 +14,7 @@ int main() {
       return {int(1LL * l[0] * r[0] % mod),
         int((1LL * r[0] * l[1] + r[1]) % mod)};
     });
-  for (int i = 0; i < n; i++) {
+  rep(i, 0, n) {
     int a, b;
     cin >> a >> b;
     st.update(i, {a, b});

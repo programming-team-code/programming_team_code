@@ -12,7 +12,7 @@ auto edge_cd_asserts = [&](int cent, int split) -> void {
   array<int, 2> cnts = {0, 0};
   array<int, 2> max_cnt = {0, 0};
   array<int, 2> number_of_cnts = {0, 0};
-  for (int i = 0; i < sz(adj[cent]); i++) {
+  rep(i, 0, sz(adj[cent])) {
     int sz_subtree = dfs(dfs, adj[cent][i], cent);
     assert(2 * sz_subtree <= sz_all);
     cnts[i < split] += sz_subtree;

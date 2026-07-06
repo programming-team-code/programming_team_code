@@ -9,7 +9,7 @@ int main() {
   tree st(n, INT_MIN, ranges::max);
   string s;
   cin >> s;
-  for (int i = 0; i < n; i++) st.update(i, s[i] - '0');
+  rep(i, 0, n) st.update(i, s[i] - '0');
   while (q--) {
     int type, k;
     cin >> type >> k;

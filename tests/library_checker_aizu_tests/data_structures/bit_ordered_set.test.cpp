@@ -6,11 +6,11 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n, q;
   cin >> n >> q;
-  vector<int> init(n);
-  for (int i = 0; i < n; i++) cin >> init[i];
-  vector<int> compress(init);
+  vi init(n);
+  rep(i, 0, n) cin >> init[i];
+  vi compress(init);
   vector<array<int, 2>> query(q);
-  for (int i = 0; i < q; i++) {
+  rep(i, 0, q) {
     int type, x;
     cin >> type >> x;
     query[i] = {type, x};
@@ -18,9 +18,9 @@ int main() {
   }
   ranges::sort(compress);
   compress.erase(unique(all(compress)), end(compress));
-  BIT bit(ssize(compress));
+  BIT bit(sz(compress));
   auto get_compressed_idx = [&](int val) -> int {
-    int l = 0, r = ssize(compress);
+    int l = 0, r = sz(compress);
     while (l + 1 < r) {
       int m = (l + r) / 2;
       if (compress[m] <= val) l = m;
@@ -28,7 +28,7 @@ int main() {
     }
     return l;
   };
-  for (int i = 0; i < n; i++) {
+  rep(i, 0, n) {
     int val = get_compressed_idx(init[i]);
     bit.update(val, 1);
   }
@@ -41,7 +41,7 @@ int main() {
       if (bit.query(x, x) == 1) bit.update(x, -1);
     } else if (type == 2) {
       int res = bit.walk2(x);
-      if (res == -1 || res == ssize(compress))
+      if (res == -1 || res == sz(compress))
         cout << -1 << '\n';
       else cout << compress[res] << '\n';
     } else if (type == 3) {
@@ -55,7 +55,7 @@ int main() {
     } else {
       x = get_compressed_idx(x);
       int res = bit.walk2(bit.query(x - 1) + 1);
-      if (res == ssize(bit.s)) cout << -1 << '\n';
+      if (res == sz(bit.s)) cout << -1 << '\n';
       else cout << compress[res] << '\n';
     }
   }

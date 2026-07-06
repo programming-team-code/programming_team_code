@@ -3,11 +3,11 @@
 #include "../template.hpp"
 int main() {
   cin.tie(0)->sync_with_stdio(0);
-  int64_t n;
+  ll n;
   cin >> n;
-  vector<int64_t> quots;
+  vector<ll> quots;
   {
-    int64_t prev_ri = 0;
+    ll prev_ri = 0;
 #include "../../../library/loops/quotients.hpp"
     {
       assert(n / l == n / r);

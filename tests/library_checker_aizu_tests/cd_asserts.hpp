@@ -1,8 +1,8 @@
 #pragma once
 #include "../../library/trees/centroid_decomp.hpp"
-void cd_asserts(vector<vector<int>> adj) {
-  vector<int> decomp_size(sz(adj), -1);
-  vector<int> naive_par_decomp(sz(adj), -1);
+void cd_asserts(vector<vi> adj) {
+  vi decomp_size(sz(adj), -1);
+  vi naive_par_decomp(sz(adj), -1);
   vi par = cd(adj, [&](int cent) -> void {
     assert(decomp_size[cent] == -1);
     auto dfs = [&](auto&& self, int u, int p) -> int {

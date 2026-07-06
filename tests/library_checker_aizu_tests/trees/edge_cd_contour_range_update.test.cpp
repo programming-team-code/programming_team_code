@@ -96,9 +96,9 @@ int main() {
   int n, q;
   cin >> n >> q;
   vector<ll> a(n);
-  for (int i = 0; i < n; i++) cin >> a[i];
-  vector<vector<int>> adj(n);
-  for (int i = 0; i < n - 1; i++) {
+  rep(i, 0, n) cin >> a[i];
+  vector<vi> adj(n);
+  rep(i, 0, n - 1) {
     int u, v;
     cin >> u >> v;
     adj[u].push_back(v);

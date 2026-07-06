@@ -15,19 +15,19 @@ int main() {
     for (char c : s) {
       lcs.push_onto_s(c);
       {
-        vector<bool> seen(sz(t));
-        for (int i = 0; i < sz(t); i++) {
+        vector<bool> vis(sz(t));
+        rep(i, 0, sz(t)) {
           int val = lcs.dp[i];
           assert(val <= i);
           if (val == -1) continue;
-          assert(!seen[val]);
-          seen[val] = 1;
+          assert(!vis[val]);
+          vis[val] = 1;
         }
       }
       msts.emplace_back(lcs.dp);
     }
   }
-  for (int i = 0; i < q; i++) {
+  rep(i, 0, q) {
     int a, b, c;
     cin >> a >> b >> c;
     cout << msts[a].query(b, c, -1, b) << '\n';

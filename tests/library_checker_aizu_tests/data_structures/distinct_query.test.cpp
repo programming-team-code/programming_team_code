@@ -6,8 +6,8 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n, q;
   cin >> n >> q;
-  vector<int> a(n);
-  for (int i = 0; i < n; i++) cin >> a[i];
+  vi a(n);
+  rep(i, 0, n) cin >> a[i];
   distinct_query dq(a);
   while (q--) {
     int l, r;

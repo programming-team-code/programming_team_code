@@ -10,8 +10,8 @@ int main() {
   int n, q;
   cin >> n >> q;
   vector<ll> arr(n);
-  vector<int> arr_int(n);
-  for (int i = 0; i < n; i++) {
+  vi arr_int(n);
+  rep(i, 0, n) {
     cin >> arr[i];
     arr_int[i] = int(arr[i]);
   }
@@ -21,7 +21,7 @@ int main() {
   vector<ll> suf_sum(n);
   partial_sum(rbegin(arr), rend(arr), rbegin(suf_sum));
   bit_rupq bit_i(suf_sum);
-  for (int i = 0; i < n; i++) {
+  rep(i, 0, n) {
     assert(arr[i] == bit.query(i, i + 1));
     assert(bit_i.get_index(i) == bit.query(i, n));
     assert(bit_i.get_index(i) == suf_sum[i]);

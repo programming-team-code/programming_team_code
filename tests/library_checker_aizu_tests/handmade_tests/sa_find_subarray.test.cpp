@@ -9,16 +9,16 @@ int main() {
     for (int tests = 10; tests--;) {
       string s(n, 'a');
       int mx_char = rnd<int>(0, 5);
-      generate(begin(s), end(s), [&]() {
+      ranges::generate(s, [&]() {
         return char('a' + rnd<int>(0, mx_char));
       });
       auto [sa, sa_inv, lcp] = get_sa(s, 256);
       sa_query lq(s, sa, sa_inv, lcp);
-      for (int i = 0; i < n; i++) {
+      rep(i, 0, n) {
         for (int j = i; j <= n; j++) {
           auto [sa_le, sa_ri, s_l, s_r] =
             lq.find_substrs_concated({{i, j}});
-          pair<int, int> short_res = lq.find_substr(i, j);
+          pii short_res = lq.find_substr(i, j);
           assert(sa_le == short_res.first &&
                  sa_ri == short_res.second);
           assert(s.substr(i, j - i) ==
@@ -30,7 +30,7 @@ int main() {
           if (i < n)
             assert(0 <= sa_le && sa_le <= lq.sa_inv[i] &&
                    lq.sa_inv[i] < sa_ri && sa_ri <= n);
-          for (int idx = sa_le; idx < sa_ri; idx++)
+          rep(idx, sa_le, sa_ri)
             assert(s.substr(lq.sa[idx], j - i) ==
                    s.substr(i, j - i));
           assert(sa_le == 0 ||
@@ -41,8 +41,8 @@ int main() {
                             s.substr(i, j - i));
         }
       }
-      for (int i = 0; i < n; i++) {
-        for (int k = 0; k < n; k++) {
+      rep(i, 0, n) {
+        rep(k, 0, n) {
           for (int j = i; j <= n; j++) {
             for (int l = k; l <= n; l++) {
               int cmp_val = lq.cmp_substrs(i, j, k, l);

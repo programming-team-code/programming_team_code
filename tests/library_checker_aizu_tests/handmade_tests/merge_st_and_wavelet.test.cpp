@@ -12,8 +12,8 @@ int main() {
       int minn = rnd<int>(-1000, 1000);
       int maxn = rnd<int>(-1000, 1000);
       if (minn > maxn) swap(minn, maxn);
-      vector<int> arr(n);
-      generate(begin(arr), end(arr),
+      vi arr(n);
+      ranges::generate(arr,
         [&]() { return rnd<int>(minn, maxn); });
       merge_sort_tree mst(arr);
       vector<ll> arr_shifted(n);

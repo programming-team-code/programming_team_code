@@ -2,15 +2,16 @@
   "https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A"
 #include "../template.hpp"
 #include "../../../library/data_structures_[l,r)/seg_tree_midpoint.hpp"
+int lg(int x) { return bit_width(x + 0u) - 1; }
 int main() {
   cin.tie(0)->sync_with_stdio(0);
-  for (int n = 1; n < 5000; n++) {
+  rep(n, 1, 5000) {
     auto dfs = [&](auto&& self, int tl, int tr,
                  int v) -> void {
       assert((v >= n) == ((tr - tl) == 1));
       if (v >= n) { // leaf node
-        const int depth_leaf = __lg(v),
-                  max_depth = __lg(2 * n - 1);
+        const int depth_leaf = lg(v),
+                  max_depth = lg(2 * n - 1);
         if (tl == 0) { // left-most leaf
           assert(v == (1 << max_depth));
           assert(depth_leaf == max_depth);
@@ -25,7 +26,7 @@ int main() {
         if (((tr - tl) & (tr - tl - 1)) == 0)
           assert(split(tl, tr) == (tl + tr) / 2);
         {
-          int pow_2 = 1 << __lg(tr - tl);
+          int pow_2 = bit_floor(tr - tl + 0u);
           if (tl + pow_2 < tr - pow_2 / 2) {
             assert(pow_2 != tr - tl);
             assert(pow_2 / 2 < tr - tl - pow_2 &&
@@ -33,9 +34,9 @@ int main() {
             assert(
               pow_2 <= 2 * (tr - tl - pow_2) - 1 &&
               2 * (tr - tl - pow_2) - 1 < 2 * pow_2 - 1);
-            assert(__lg(pow_2) ==
-                     __lg(2 * ((tr - tl) - pow_2) - 1) &&
-                   __lg(pow_2) == __lg(2 * pow_2 - 1));
+            assert(lg(pow_2) ==
+                     lg(2 * ((tr - tl) - pow_2) - 1) &&
+                   lg(pow_2) == lg(2 * pow_2 - 1));
           } else if (pow_2 < tr - tl) {
             assert(pow_2 / 2 < tr - tl - pow_2 / 2 &&
                    tr - tl - pow_2 / 2 <= pow_2);
@@ -43,12 +44,12 @@ int main() {
               pow_2 <= 2 * ((tr - tl) - pow_2 / 2) - 1 &&
               2 * ((tr - tl) - pow_2 / 2) - 1 <=
                 2 * pow_2 - 1);
-            assert(__lg(2 * (tr - tl - pow_2 / 2) - 1) ==
-                   __lg(2 * pow_2 - 1));
-            assert(__lg(2 * ((tr - tl) - pow_2 / 2) - 1) ==
-                   __lg(pow_2));
-            assert(__lg(pow_2) ==
-                   1 + __lg(2 * (pow_2 / 2) - 1));
+            assert(lg(2 * (tr - tl - pow_2 / 2) - 1) ==
+                   lg(2 * pow_2 - 1));
+            assert(lg(2 * ((tr - tl) - pow_2 / 2) - 1) ==
+                   lg(pow_2));
+            assert(
+              lg(pow_2) == 1 + lg(2 * (pow_2 / 2) - 1));
           }
         }
         int tm = split(tl, tr);
