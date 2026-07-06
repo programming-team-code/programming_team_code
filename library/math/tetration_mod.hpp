@@ -7,7 +7,7 @@
 //!
 //! returns b ^ (b ^ (... ^ b))) % mod, where
 //!   the height of the tower is e.
-//
+//!
 //! @time O(sqrt(mod) * log(mod))
 //! @space O(log(mod))
 ll bin_exp(ll b, ll e, int mod) {

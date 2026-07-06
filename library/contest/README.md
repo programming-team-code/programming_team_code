@@ -9,7 +9,7 @@ freopen("output.txt", "w", stdout);
 If you changed something for debugging, add a `cout << "don't submit" << endl;`
 or `assert(0);` at the end of the code
 
-for policy base DS:
+for policy-based DS:
 ```
 #include <bits/extc++.h>
 ```
@@ -25,7 +25,7 @@ don't use cin for doubles/floats, it's slow, read into string, then convert to d
 cin.exceptions(cin.failbit);
 ```
 
-- use pramgas for C++ speed boost
+- use pragmas for C++ speed boost
 ```
 #pragma GCC optimize("O3,unroll-loops")
 #pragma GCC target("avx2,bmi,bmi2,lzcnt,popcnt")
