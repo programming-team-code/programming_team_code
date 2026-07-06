@@ -5,10 +5,10 @@
 //!   line_tree lt(n);
 //!   for (auto [w, u, v] : w_eds) lt.join(u, v);
 //!   for (int v = lt.f(0); v != -1;) {
-//!     auto [next, e_id] = lt.edge[v];
+//!     auto [nxt, e_id] = lt.edge[v];
 //!     int w = w_eds[e_id][0];
 //!     //
-//!     v = next;
+//!     v = nxt;
 //!   }
 //! @endcode
 //! lt.f(v) = head of linked list
