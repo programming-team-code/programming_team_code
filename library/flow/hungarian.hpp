@@ -18,18 +18,18 @@ pair<ll, vi> hungarian(const vector<vector<ll>>& cost) {
     p[0] = i;
     int j0 = 0;
     vector minv(m, LLONG_MAX);
-    vi used(m);
+    vi vis(m);
     do {
-      used[j0] = 1;
+      vis[j0] = 1;
       int i0 = p[j0], j1 = 0;
       ll delta = LLONG_MAX;
-      rep(j, 1, m) if (!used[j]) {
+      rep(j, 1, m) if (!vis[j]) {
         ll cur = cost[i0][j] - u[i0] - v[j];
         if (cur < minv[j]) minv[j] = cur, way[j] = j0;
         if (minv[j] < delta) delta = minv[j], j1 = j;
       }
       rep(j, 0, m) {
-        if (used[j]) u[p[j]] += delta, v[j] -= delta;
+        if (vis[j]) u[p[j]] += delta, v[j] -= delta;
         else minv[j] -= delta;
       }
       j0 = j1;

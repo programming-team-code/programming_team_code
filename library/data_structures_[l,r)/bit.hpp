@@ -7,6 +7,7 @@
 //!   int r = bit.walk2(sum);
 //!   // Returns min r s.t. sum of [0,r] >= sum
 //!   // Returns n if sum of [0,n-1] < sum
+//!   // Returns -1 if sum <= 0
 //! @endcode
 //! @time O(n + q log n)
 //! @space O(n)
@@ -19,9 +20,9 @@ struct BIT {
     for (; i < sz(s); i |= i + 1) s[i] += d;
   }
   ll query(int r) {
-    ll ret = 0;
-    for (; r > 0; r &= r - 1) ret += s[r - 1];
-    return ret;
+    ll res = 0;
+    for (; r > 0; r &= r - 1) res += s[r - 1];
+    return res;
   }
   ll query(int l, int r) { return query(r) - query(l); }
 #include "bit_uncommon/walk_lambda.hpp"

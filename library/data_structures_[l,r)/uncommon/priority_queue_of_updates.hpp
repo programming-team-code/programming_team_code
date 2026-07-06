@@ -1,13 +1,12 @@
 #pragma once
 //! https://codeforces.com/blog/entry/111117
 //! @code
-//!     dsu_restorable dsu_r(n);
-//!     pq_updates<dsu_restorable, int, int> pq(dsu_r);
-//!     rep (i, 0, n) pq.ds.add(i, initial_nums[i]);
-//!     //or
-//!     pq.ds.subtree = initial_nums;
-//!     pq.push_update(u, v, curr_pri);
-//!     cout << pq.ds.sum(v) << '\n';
+//!   // DS = any struct with member functions join, undo
+//!   DS ds;
+//!   // int = argument type of DS::join
+//!   pq_updates<DS, int> pq(ds);
+//!   pq.push_update(val, pri);
+//!   pq.pop_update();
 //! @endcode
 //! @time n interweaved calls to pop_update, push_update
 //! take O(T(n)*nlogn) where O(T(n)) = time complexity of
@@ -39,10 +38,9 @@ template<class DS, class... ARGS> struct pq_updates {
       extra.push_back(upd_st[idx_sk]);
       idx = min(idx, idx_sk), lowest_pri = pri;
     }
-    auto it =
-      remove_if(idx + all(upd_st), [&](auto& curr) {
-        return curr.second->first >= lowest_pri;
-      });
+    auto it = remove_if(idx + all(upd_st), [&](auto& cur) {
+      return cur.second->first >= lowest_pri;
+    });
     ranges::reverse_copy(extra, it);
     rep(i, idx, sz(upd_st)) ds.undo();
     upd_st.pop_back();
@@ -54,13 +52,13 @@ template<class DS, class... ARGS> struct pq_updates {
     }
   }
   //! @param args arguments to DS::join
-  //! @param priority must be distinct, can be negative
+  //! @param pri must be distinct, can be negative
   //! @time O(log(n) + T(n))
   //! @space an new update is allocated, inserted into
   //! `upd_st`, `mp` member variables
-  void push_update(ARGS... args, int priority) {
+  void push_update(ARGS... args, int pri) {
     ds.join(args...);
-    auto [it, ins] = mp.emplace(priority, sz(upd_st));
+    auto [it, ins] = mp.emplace(pri, sz(upd_st));
     assert(ins);
     upd_st.emplace_back(make_tuple(args...), it);
   }

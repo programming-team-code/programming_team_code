@@ -24,9 +24,9 @@ template<class T, class F> struct deq {
   T front() { return (empty(l) ? r[0] : l.back())[0]; }
   T back() { return (empty(r) ? l[0] : r.back())[0]; }
   int siz() { return sz(l) + sz(r); }
-  void push_back(T elem) {
+  void push_back(T val) {
     r.push_back(
-      {elem, empty(r) ? elem : op(r.back()[1], elem)});
+      {val, empty(r) ? val : op(r.back()[1], val)});
   }
   void pop_back() {
     if (empty(r)) {
@@ -37,9 +37,9 @@ template<class T, class F> struct deq {
     }
     r.pop_back();
   }
-  void push_front(T elem) {
+  void push_front(T val) {
     l.push_back(
-      {elem, empty(l) ? elem : op(elem, l.back()[1])});
+      {val, empty(l) ? val : op(val, l.back()[1])});
   }
   void pop_front() {
     if (empty(l)) {
