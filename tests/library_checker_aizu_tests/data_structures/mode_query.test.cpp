@@ -10,7 +10,7 @@ int main() {
   rep(i, 0, n) cin >> a[i];
   vi comp(a);
   ranges::sort(comp);
-  comp.erase(begin(ranges::unique(comp)), end(comp));
+  comp.erase(unique(all(comp)), end(comp));
   for (int& val : a) {
     int start = 0, end = sz(comp);
     while (start + 1 < end) {

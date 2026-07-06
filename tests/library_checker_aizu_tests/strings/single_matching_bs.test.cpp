@@ -70,8 +70,8 @@ int main() {
       vi matches_other(begin(lq_both.sa) + sa_le2,
         begin(lq_both.sa) + sa_ri2);
       matches_other.erase(
-        begin(ranges::remove_if(matches_other,
-          [&](int val) { return val >= sz(s) + 1; })),
+        remove_if(all(matches_other),
+          [&](int val) { return val >= sz(s) + 1; }),
         end(matches_other));
       ranges::sort(matches_other);
       assert(matches == matches_other);
