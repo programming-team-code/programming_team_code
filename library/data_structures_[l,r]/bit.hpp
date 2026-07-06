@@ -20,9 +20,9 @@ struct BIT {
     for (; i < sz(s); i |= i + 1) s[i] += d;
   }
   ll query(int i) {
-    ll ret = 0;
-    for (; i >= 0; (i &= i + 1)--) ret += s[i];
-    return ret;
+    ll res = 0;
+    for (; i >= 0; (i &= i + 1)--) res += s[i];
+    return res;
   }
   ll query(int l, int r) {
     return query(r) - query(l - 1);

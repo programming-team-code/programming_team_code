@@ -19,10 +19,10 @@ template<int K> struct KD_BIT {
     for (; i < sz(s); i |= i + 1) s[i].update(a...);
   }
   ll query(int l, int r, auto... a) {
-    ll ans = 0;
-    for (; l < r; r &= r - 1) ans += s[r - 1].query(a...);
-    for (; r < l; l &= l - 1) ans -= s[l - 1].query(a...);
-    return ans;
+    ll res = 0;
+    for (; l < r; r &= r - 1) res += s[r - 1].query(a...);
+    for (; r < l; l &= l - 1) res -= s[l - 1].query(a...);
+    return res;
   }
 };
 template<> struct KD_BIT<0> {

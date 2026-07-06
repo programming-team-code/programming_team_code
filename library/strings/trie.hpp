@@ -3,9 +3,9 @@
 const int mn = 'A';
 struct trie {
   struct node {
-    array<int, 26> next;
+    array<int, 26> nxt;
     bool end_of_word = 0;
-    node() { ranges::fill(next, -1); }
+    node() { ranges::fill(nxt, -1); }
   };
   deque<node> t;
   trie(): t(1) {}
@@ -13,11 +13,11 @@ struct trie {
     int v = 0;
     for (char ch : s) {
       int u = ch - mn;
-      if (t[v].next[u] == -1) {
-        t[v].next[u] = sz(t);
+      if (t[v].nxt[u] == -1) {
+        t[v].nxt[u] = sz(t);
         t.emplace_back();
       }
-      v = t[v].next[u];
+      v = t[v].nxt[u];
     }
     t[v].end_of_word = 1;
   }
@@ -25,8 +25,8 @@ struct trie {
     int v = 0;
     for (char ch : s) {
       int u = ch - mn;
-      if (t[v].next[u] == -1) return 0;
-      v = t[v].next[u];
+      if (t[v].nxt[u] == -1) return 0;
+      v = t[v].nxt[u];
     }
     return t[v].end_of_word;
   }

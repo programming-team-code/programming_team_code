@@ -18,11 +18,10 @@ int main() {
     int type, x;
     cin >> type >> x;
     if (type == 0) {
-      if (
-        bt.t[bt.t[0].next[0]].siz == 0 || bt.walk(x) != x)
+      if (bt.t[bt.t[0].nxt[0]].siz == 0 || bt.walk(x) != x)
         bt.update(x, 1);
     } else if (type == 1) {
-      if (bt.t[bt.t[0].next[0]].siz > 0 && bt.walk(x) == x)
+      if (bt.t[bt.t[0].nxt[0]].siz > 0 && bt.walk(x) == x)
         bt.update(x, -1);
     } else {
       assert(type == 2);

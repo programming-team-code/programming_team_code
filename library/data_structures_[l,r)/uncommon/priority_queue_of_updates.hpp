@@ -5,7 +5,7 @@
 //!   DS ds;
 //!   // int = argument type of DS::join
 //!   pq_updates<DS, int> pq(ds);
-//!   pq.push_update(val, priority);
+//!   pq.push_update(val, pri);
 //!   pq.pop_update();
 //! @endcode
 //! @time n interweaved calls to pop_update, push_update
@@ -38,10 +38,9 @@ template<class DS, class... ARGS> struct pq_updates {
       extra.push_back(upd_st[idx_sk]);
       idx = min(idx, idx_sk), lowest_pri = pri;
     }
-    auto it =
-      remove_if(idx + all(upd_st), [&](auto& curr) {
-        return curr.second->first >= lowest_pri;
-      });
+    auto it = remove_if(idx + all(upd_st), [&](auto& cur) {
+      return cur.second->first >= lowest_pri;
+    });
     reverse_copy(all(extra), it);
     rep(i, idx, sz(upd_st)) ds.undo();
     upd_st.pop_back();
@@ -53,13 +52,13 @@ template<class DS, class... ARGS> struct pq_updates {
     }
   }
   //! @param args arguments to DS::join
-  //! @param priority must be distinct, can be negative
+  //! @param pri must be distinct, can be negative
   //! @time O(log(n) + T(n))
   //! @space an new update is allocated, inserted into
   //! `upd_st`, `mp` member variables
-  void push_update(ARGS... args, int priority) {
+  void push_update(ARGS... args, int pri) {
     ds.join(args...);
-    auto [it, ins] = mp.emplace(priority, sz(upd_st));
+    auto [it, ins] = mp.emplace(pri, sz(upd_st));
     assert(ins);
     upd_st.emplace_back(make_tuple(args...), it);
   }

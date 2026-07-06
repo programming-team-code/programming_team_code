@@ -3,20 +3,20 @@ const int b = 318; //!< sqrt(1e5)
 //! https://noshi91.hatenablog.com/entry/2020/10/26/140105
 struct mode_query {
   int n;
-  vi a, cnt, index_into_index;
-  vector<vi> index;
+  vi a, cnt, pos_idx;
+  vector<vi> pos;
   vector<vector<pii>>
     mode_blocks; //!< {mode, cnt} of range of blocks
   //! @param a compressed array: 0 <= a[i] < n
   //! @time O(n * sqrt(n))
   //! @space O(n)
   mode_query(const vi& a):
-    n(sz(a)), a(a), cnt(n), index_into_index(n), index(n),
+    n(sz(a)), a(a), cnt(n), pos_idx(n), pos(n),
     mode_blocks((n + b - 1) / b,
       vector<pii>((n + b - 1) / b)) {
     rep(i, 0, n) {
-      index_into_index[i] = sz(index[a[i]]);
-      index[a[i]].push_back(i);
+      pos_idx[i] = sz(pos[a[i]]);
+      pos[a[i]].push_back(i);
     }
     for (int start = 0; start < n; start += b) {
       int mode = a[start];
@@ -51,17 +51,17 @@ struct mode_query {
     for (int i = l / b * b + b - 1; i >= l; i--)
       cnt[a[i]]++;
     for (int i = l / b * b + b - 1; i >= l; i--) {
-      int idx = index_into_index[i];
-      if (idx + res.second < sz(index[a[i]]) &&
-          index[a[i]][idx + res.second] < r)
+      int idx = pos_idx[i];
+      if (idx + res.second < sz(pos[a[i]]) &&
+          pos[a[i]][idx + res.second] < r)
         res = {a[i], cnt[a[i]] + res.second};
       cnt[a[i]]--;
     }
     rep(i, (r - 1) / b * b, r) cnt[a[i]]++;
     rep(i, (r - 1) / b * b, r) {
-      int idx = index_into_index[i];
+      int idx = pos_idx[i];
       if (idx >= res.second &&
-          index[a[i]][idx - res.second] >= l)
+          pos[a[i]][idx - res.second] >= l)
         res = {a[i], cnt[a[i]] + res.second};
       cnt[a[i]]--;
     }
