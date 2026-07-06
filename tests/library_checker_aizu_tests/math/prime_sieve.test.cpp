@@ -6,8 +6,7 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
 #include "../../../library/math/prime_sieve/calc_sieve.hpp"
 #include "../../../library/math/prime_sieve/is_prime.hpp"
-  for (int i = 1; i < sz(sieve); i++)
-    assert(isPrime(i) == is_prime(i));
+  rep(i, 1, sz(sieve)) assert(isPrime(i) == is_prime(i));
   {
 #define sieve linear_sieve
 #include "../../../library/math/prime_sieve/calc_linear_sieve.hpp"
@@ -20,17 +19,17 @@ int main() {
   while (n--) {
     int num;
     cin >> num;
-    map<int, int> curr;
+    map<int, int> cur;
     {
       int prev_prime = -1;
 #include "../../../library/math/prime_sieve/get_prime_factors.hpp"
       {
         assert(p >= prev_prime);
         prev_prime = p;
-        curr[p]++;
+        cur[p]++;
       }
     }
-    for (auto [p, e] : curr)
+    for (auto [p, e] : cur)
       prime_to_max_exponent[p] =
         max(prime_to_max_exponent[p], e);
   }

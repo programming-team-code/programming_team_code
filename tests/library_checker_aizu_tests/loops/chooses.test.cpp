@@ -9,8 +9,8 @@ int main() {
 #include "../../../library/loops/chooses.hpp"
   {
     cout << mask << ':';
-    for (int bit = 0; bit < n; bit++)
-      if ((mask >> bit) & 1) cout << ' ' << bit;
+    rep(bit, 0, n) if ((mask >> bit) & 1) cout << ' '
+                                               << bit;
     cout << '\n';
   }
   return 0;

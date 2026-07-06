@@ -10,11 +10,9 @@ int main() {
   s = s + '$' + string(rbegin(s), rend(s));
   auto [sa, sa_inv, lcp] = get_sa(vi(all(s)), 256);
   sa_query lq(vi(all(s)), sa, sa_inv, lcp);
-  for (int i = 0; i < n; i++)
-    for (int j = i; j < min(i + 2, n); j++)
-      cout << lq.len_lcp(j, (n - i - 1) + n + 1) * 2 -
-                (i == j)
-           << " ";
+  rep(i, 0, n) rep(j, i, min(i + 2, n)) cout
+    << lq.len_lcp(j, (n - i - 1) + n + 1) * 2 - (i == j)
+    << " ";
   cout << '\n';
   return 0;
 }

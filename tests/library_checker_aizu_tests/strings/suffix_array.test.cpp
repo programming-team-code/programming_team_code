@@ -28,7 +28,7 @@ int main() {
   {
     auto [sa_le, sa_ri, s_l, s_r] =
       sf_a.find_substrs_concated({{0, 0}});
-    pair<int, int> short_res = sf_a.find_substr(0, 0);
+    pii short_res = sf_a.find_substr(0, 0);
     assert(sa_le == short_res.first &&
            sa_ri == short_res.second);
     assert(sa_le == 0 && sa_ri == n);
@@ -37,14 +37,13 @@ int main() {
   {
     auto [sa_le, sa_ri, s_l, s_r] =
       sf_a.find_substrs_concated({{0, 0}, {n - 1, n - 1}});
-    pair<int, int> short_res =
-      sf_a.find_substr(n - 1, n - 1);
+    pii short_res = sf_a.find_substr(n - 1, n - 1);
     assert(sa_le == short_res.first &&
            sa_ri == short_res.second);
     assert(sa_le == 0 && sa_ri == n);
     assert(s_r - s_l == 0);
   }
-  for (int i = 0; i < n; i++) {
+  rep(i, 0, n) {
     assert(sa[sa_inv[i]] == i);
     assert(sa_inv[sa[i]] == i);
   }

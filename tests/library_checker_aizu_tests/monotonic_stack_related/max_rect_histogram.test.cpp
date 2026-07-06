@@ -7,8 +7,8 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n;
   cin >> n;
-  vector<int> a(n);
-  for (int i = 0; i < n; i++) cin >> a[i];
+  vi a(n);
+  rep(i, 0, n) cin >> a[i];
   mono_st_asserts(a);
   cout << max_rect_histogram(a) << '\n';
   return 0;

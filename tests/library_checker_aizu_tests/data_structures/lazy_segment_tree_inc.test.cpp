@@ -12,7 +12,7 @@ int main() {
     cin >> type >> l >> r;
     l--, r--;
     if (type == 0) {
-      int64_t x;
+      ll x;
       cin >> x;
       st.update(l, r, x);
     } else {

@@ -7,8 +7,8 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n, m;
   cin >> n >> m;
-  vector<vector<int>> adj(n);
-  for (int i = 0; i < m; i++) {
+  vector<vi> adj(n);
+  rep(i, 0, m) {
     int u, v;
     cin >> u >> v;
     adj[u].push_back(v);

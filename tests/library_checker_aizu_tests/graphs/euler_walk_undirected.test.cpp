@@ -29,7 +29,7 @@ int main() {
     if (it != end(deg)) s = it - begin(deg);
     else if (s == -1) s = 0;
     vector<pii> res = euler_path(adj, m, s);
-    if (ssize(res) != m + 1) {
+    if (sz(res) != m + 1) {
       cout << "No" << '\n';
       continue;
     }

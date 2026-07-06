@@ -10,11 +10,10 @@ int main() {
   }
   int n, s;
   cin >> n >> s;
-  vector<int> a(n);
-  for (int i = 0; i < n; i++) cin >> a[i];
-  vector<int> pref_sum(a);
-  for (int i = 1; i < n; i++)
-    pref_sum[i] += pref_sum[i - 1];
+  vi a(n);
+  rep(i, 0, n) cin >> a[i];
+  vi pref_sum(a);
+  rep(i, 1, n) pref_sum[i] += pref_sum[i - 1];
   auto sum = [&](int l, int r) -> int { //[l,r]
     int res = pref_sum[r];
     if (l) res -= pref_sum[l - 1];
@@ -25,11 +24,11 @@ int main() {
     return 0;
   }
   int res = n;
-  for (int i = 0; i < n; i++) {
+  rep(i, 0, n) {
     if (sum(i, n - 1) < s) break;
-    int curr = *ranges::partition_point(views::iota(i, n),
+    int cur = *ranges::partition_point(views::iota(i, n),
       [&](int x) -> bool { return sum(i, x) < s; });
-    res = min(res, curr - i + 1);
+    res = min(res, cur - i + 1);
   }
   cout << res << '\n';
   return 0;

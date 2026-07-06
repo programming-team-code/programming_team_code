@@ -16,14 +16,14 @@ int main() {
     auto [sa_le, sa_ri, s_l, s_r] =
       sf_a.find_str_fast(vi());
     assert(sa_le == 0 && sa_ri == sz(s));
-    pair<int, int> short_res = sf_a.find_str(vi());
+    pii short_res = sf_a.find_str(vi());
     assert(sa_le == short_res.first &&
            sa_ri == short_res.second);
     assert(s_r - s_l == 0);
   }
   auto [sa_le, sa_ri, s_l, s_r] =
     sf_a.find_str_fast(vi(all(t)));
-  pair<int, int> short_res = sf_a.find_str(vi(all(t)));
+  pii short_res = sf_a.find_str(vi(all(t)));
   assert(
     sa_le == short_res.first && sa_ri == short_res.second);
   int str_len = s_r - s_l;
@@ -32,9 +32,9 @@ int main() {
   assert(str_len == sz(t) || s_r == sz(s) ||
          t[str_len] != s[s_r]);
   assert((sa_le < sa_ri) == (str_len == sz(t)));
-  vector<int> matches(begin(sf_a.sa) + sa_le,
+  vi matches(begin(sf_a.sa) + sa_le,
     begin(sf_a.sa) + sa_ri);
-  sort(begin(matches), end(matches));
+  ranges::sort(matches);
   {
     // test find_substrs_concated
     string both = s + '$' + t;
@@ -49,32 +49,31 @@ int main() {
         {t_start + 1, t_start + 1},
         {t_start + 1, t_start + sz(t)}});
     for (int num_tests = 10; num_tests--;) {
-      vector<int> splits = {0, int(sz(t))};
+      vi splits = {0, int(sz(t))};
       for (int num_splits = rnd(0, 4); num_splits--;)
         splits.push_back(rnd(0, int(sz(t)) - 1));
-      sort(begin(splits), end(splits));
-      vector<pair<int, int>> subs;
-      for (int i = 1; i < sz(splits); i++)
-        subs.emplace_back(splits[i - 1] + t_start,
-          splits[i] + t_start);
+      ranges::sort(splits);
+      vector<pii> subs;
+      rep(i, 1, sz(splits)) subs.emplace_back(
+        splits[i - 1] + t_start, splits[i] + t_start);
       tests.push_back(subs);
     }
     for (const vector<pii>& subs : tests) {
       auto [sa_le2, sa_ri2, s_le2, s_ri2] =
         lq_both.find_substrs_concated(subs);
-      pair<int, int> short_res2 =
+      pii short_res2 =
         lq_both.find_substr(t_start, sz(both));
       assert(sa_le2 == short_res2.first &&
              sa_ri2 == short_res2.second);
       assert(both.substr(s_le2, s_ri2 - s_le2) == t);
       assert(sa_ri2 - sa_le2 == 1 + sa_ri - sa_le);
-      vector<int> matches_other(begin(lq_both.sa) + sa_le2,
+      vi matches_other(begin(lq_both.sa) + sa_le2,
         begin(lq_both.sa) + sa_ri2);
       matches_other.erase(
-        remove_if(begin(matches_other), end(matches_other),
-          [&](int val) { return val >= sz(s) + 1; }),
+        begin(ranges::remove_if(matches_other,
+          [&](int val) { return val >= sz(s) + 1; })),
         end(matches_other));
-      sort(begin(matches_other), end(matches_other));
+      ranges::sort(matches_other);
       assert(matches == matches_other);
     }
   }

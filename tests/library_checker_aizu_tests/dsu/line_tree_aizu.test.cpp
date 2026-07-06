@@ -8,9 +8,9 @@ int main() {
   int n;
   cin >> n;
   vector<array<int, 3>> w_eds;
-  vector<vector<int>> mat(n, vector<int>(n));
-  for (int i = 0; i < n; i++) {
-    for (int j = 0; j < n; j++) {
+  vector<vi> mat(n, vi(n));
+  rep(i, 0, n) {
+    rep(j, 0, n) {
       cin >> mat[i][j];
       if (mat[i][j] == -1) {
         mat[i][j] = INT_MAX;
@@ -21,13 +21,13 @@ int main() {
   }
   rep(k, 0, n) rep(i, 0, n) rep(j, 0, n)
     mat[i][j] = min(mat[i][j], max(mat[i][k], mat[k][j]));
-  sort(all(w_eds));
+  ranges::sort(w_eds);
   line_tree lt(n);
   for (auto [w, u, v] : w_eds) lt.join(u, v);
   assert(lt.size(0) == n);
   int mst_sum = 0;
-  vector<int> edge_weights;
-  vector<int> to_time(n);
+  vi edge_weights;
+  vi to_time(n);
   for (int v = lt.f(0), timer = 1;
     lt.edge[v] != pii{-1, -1};
     v = lt.edge[v].first, timer++) {

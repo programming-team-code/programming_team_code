@@ -11,14 +11,12 @@ int main() {
   int n, m, s;
   cin >> n >> m >> s;
   vector<vector<pair<int, ll>>> adj(n);
-  for (int i = 0; i < m; i++) {
+  rep(i, 0, m) {
     int u, v, w;
     cin >> u >> v >> w;
     adj[u].emplace_back(v, w);
   }
   vector<ll> len = dijkstra(adj, s);
-  for (int i = 0; i < n; i++)
-    if (len[i] == LLONG_MAX) cout << "INF\n";
-    else cout << len[i] << '\n';
-  return 0;
+  rep(i, 0, n) if (len[i] == LLONG_MAX) cout << "INF\n";
+  else cout << len[i] << '\n'; return 0;
 }

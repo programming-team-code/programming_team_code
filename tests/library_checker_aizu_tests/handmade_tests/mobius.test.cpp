@@ -7,7 +7,7 @@ int main() {
 #include "../../../library/math/prime_sieve/mobius.hpp"
 #include "../../../library/math/prime_sieve/is_prime.hpp"
   assert(is_prime(2));
-  for (int i = 1; i < sz(mobius); i++) {
+  rep(i, 1, sz(mobius)) {
     int val = i;
     map<ull, int> factors;
     for (auto prime_factor : factor(val))

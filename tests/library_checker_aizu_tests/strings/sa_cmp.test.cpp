@@ -6,15 +6,15 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n;
   cin >> n;
-  vector<int> arr;
-  for (int i = 0; i < n; i++) {
+  vi arr;
+  rep(i, 0, n) {
     int val;
     cin >> val;
     arr.push_back(val);
   }
   int m;
   cin >> m;
-  for (int i = 0; i < m; i++) {
+  rep(i, 0, m) {
     int val;
     cin >> val;
     arr.push_back(val);

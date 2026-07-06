@@ -7,7 +7,7 @@ int main() {
   int n, q;
   cin >> n >> q;
   BIT bit(n);
-  for (int i = 0; i < n; i++) {
+  rep(i, 0, n) {
     int val;
     cin >> val;
     bit.update(i, val);

@@ -11,7 +11,7 @@ int main() {
       string s(n, 'a');
       if (n == 0 || rnd<int>(0, 1) == 0) {
         int mx_char = rnd<int>(0, 5);
-        generate(begin(s), end(s), [&]() {
+        ranges::generate(s, [&]() {
           return char('a' + rnd<int>(0, mx_char));
         });
       } else {
@@ -29,20 +29,17 @@ int main() {
                 is_pal_naive[l + 1][r - 1]);
         }
       }
-      for (int i = 0; i < n; i++)
-        for (int j = i; j < n; j++)
-          assert(
-            pq.is_pal(i, j) == is_pal_naive[i][j + 1]);
-      vector<int> longest(longest_from_index(pq));
-      for (int l = 0; l < n; l++) {
+      rep(i, 0, n) rep(j, i, n)
+        assert(pq.is_pal(i, j) == is_pal_naive[i][j + 1]);
+      vi longest(longest_from_index(pq));
+      rep(l, 0, n) {
         bool seen_pal = 0;
         for (int r = n; r >= l; r--) {
           seen_pal |= is_pal_naive[l][r];
           assert((longest[l] + 1 >= r) == seen_pal);
         }
       }
-      vector<vector<int>> count_pals_naive(n + 1,
-        vector<int>(n + 1, 0));
+      vector<vi> count_pals_naive(n + 1, vi(n + 1, 0));
       for (int l = 0; l + 1 <= n; l++)
         count_pals_naive[l][l + 1] = 1;
       for (int len = 2; len <= n; len++) {
@@ -55,8 +52,7 @@ int main() {
             count_pals_naive[l + 1][r - 1];
         }
       }
-      vector<vector<int>> longest_pal(n + 1,
-        vector<int>(n + 1, 0));
+      vector<vi> longest_pal(n + 1, vi(n + 1, 0));
       longest_pal_query lp(s);
       for (int len = 1; len <= n; len++) {
         for (int l = 0; l + len <= n; l++) {

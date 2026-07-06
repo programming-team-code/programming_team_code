@@ -12,10 +12,10 @@
 #undef mod
 #undef modpow
 ll modpow(ll b, ll e) {
-  ll ans = 1;
+  ll res = 1;
   for (; e; b = b * b % 998'244'353, e /= 2)
-    if (e & 1) ans = ans * b % 998'244'353;
-  return ans;
+    if (e & 1) res = res * b % 998'244'353;
+  return res;
 }
 #include "../../../library/math/count_paths/count_paths_triangle.hpp"
 ll count_between_two_sequences(const vl& a, const vl& b) {
@@ -26,7 +26,7 @@ ll count_between_two_sequences(const vl& a, const vl& b) {
     int j = i;
     {
       vl h(b[i] - a[i]);
-      for (int num = a[i]; num < b[i]; num++) {
+      rep(num, a[i], b[i]) {
         while (j < n && a[j] <= num) j++;
         h[num - a[i]] = j - i;
       }
@@ -36,7 +36,7 @@ ll count_between_two_sequences(const vl& a, const vl& b) {
     }
     {
       vl h(j - i);
-      for (int k = i; k < j; k++) h[k - i] = b[k] - b[i];
+      rep(k, i, j) h[k - i] = b[k] - b[i];
       if (h.back() == 0) break;
       dp = divide_and_conquer(h, dp);
       if (j < n)
@@ -52,12 +52,12 @@ int main() {
   int n, m;
   cin >> n >> m;
   vl a(n), b(n);
-  for (int i = 0; i < n; i++) cin >> a[i];
-  for (int i = 0; i < n; i++) cin >> b[i];
-  for (int i = 1; i < n; i++) a[i] = max(a[i], a[i - 1]);
+  rep(i, 0, n) cin >> a[i];
+  rep(i, 0, n) cin >> b[i];
+  rep(i, 1, n) a[i] = max(a[i], a[i - 1]);
   for (int i = n - 2; i >= 0; i--)
     b[i] = min(b[i], b[i + 1]);
-  for (int i = 0; i < n; i++) {
+  rep(i, 0, n) {
     if (a[i] >= b[i]) {
       cout << 0 << '\n';
       return 0;

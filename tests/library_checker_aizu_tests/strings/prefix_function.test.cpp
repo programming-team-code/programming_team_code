@@ -7,13 +7,12 @@ int main() {
   string s;
   cin >> s;
   int n = sz(s);
-  vector<int> pi = prefix_function(vi(all(s)));
+  vi pi = prefix_function(vi(all(s)));
   // prefix -> z func conversion
   // source:
   // https://codeforces.com/blog/entry/9612#comment-217621
-  vector<int> z(n, 0);
-  for (int i = 1; i < n; i++)
-    if (pi[i]) z[i - pi[i] + 1] = pi[i];
+  vi z(n, 0);
+  rep(i, 1, n) if (pi[i]) z[i - pi[i] + 1] = pi[i];
   for (int i = 1; i < n;) {
     int j, v;
     for (j = 1;
@@ -23,7 +22,7 @@ int main() {
     i += j;
   }
   z[0] = n;
-  for (int i = 0; i < n; i++) cout << z[i] << " ";
+  rep(i, 0, n) cout << z[i] << " ";
   cout << '\n';
   return 0;
 }

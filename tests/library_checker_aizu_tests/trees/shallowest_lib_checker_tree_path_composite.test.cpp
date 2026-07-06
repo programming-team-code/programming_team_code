@@ -14,11 +14,11 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n;
   cin >> n;
-  vector<int> a(n);
-  for (int i = 0; i < n; i++) cin >> a[i];
-  vector<vector<int>> adj(n);
+  vi a(n);
+  rep(i, 0, n) cin >> a[i];
+  vector<vi> adj(n);
   vector<vector<line>> weight(n);
-  for (int i = 0; i < n - 1; i++) {
+  rep(i, 0, n - 1) {
     int u, v, b, c;
     cin >> u >> v >> b >> c;
     adj[u].push_back(v);
@@ -26,9 +26,9 @@ int main() {
     weight[u].push_back({b, c});
     weight[v].push_back({b, c});
   }
-  vector<int> res(a);
+  vi res(a);
   shallowest(adj, [&](int cent) {
-    assert(ssize(adj[cent]) == ssize(weight[cent]));
+    assert(sz(adj[cent]) == sz(weight[cent]));
     int total_sum_evaluated = 0;
     int total_cnt_nodes = 0;
     int curr_sum_evaluated = 0;
@@ -56,7 +56,7 @@ int main() {
         (curr_sum_evaluated + 1LL * downwards[0] * a[v] +
           downwards[1]) %
         mod;
-      for (int i = 0; i < ssize(adj[v]); i++) {
+      rep(i, 0, sz(adj[v])) {
         int u = adj[v][i];
         line curr_line = weight[v][i];
         if (u != p)
@@ -64,7 +64,7 @@ int main() {
             compose(curr_line, upwards), forwards);
       }
     };
-    for (int i = 0; i < ssize(adj[cent]); i++) {
+    rep(i, 0, sz(adj[cent])) {
       curr_sum_evaluated = 0;
       curr_cnt_nodes = 0;
       dfs(dfs, adj[cent][i], cent, weight[cent][i],
@@ -75,7 +75,7 @@ int main() {
     }
     total_sum_evaluated = 0;
     total_cnt_nodes = 0;
-    for (int i = ssize(adj[cent]) - 1; i >= 0; i--) {
+    for (int i = sz(adj[cent]) - 1; i >= 0; i--) {
       curr_sum_evaluated = 0;
       curr_cnt_nodes = 0;
       dfs(dfs, adj[cent][i], cent, weight[cent][i],
@@ -85,7 +85,7 @@ int main() {
       total_cnt_nodes += curr_cnt_nodes;
     }
     for (int v : adj[cent]) {
-      for (int i = 0; i < ssize(adj[v]); i++) {
+      rep(i, 0, sz(adj[v])) {
         if (adj[v][i] == cent) {
           weight[v].erase(begin(weight[v]) + i);
           break;
@@ -93,6 +93,6 @@ int main() {
       }
     }
   });
-  for (int i = 0; i < n; i++) cout << res[i] << ' ';
+  rep(i, 0, n) cout << res[i] << ' ';
   cout << '\n';
 }

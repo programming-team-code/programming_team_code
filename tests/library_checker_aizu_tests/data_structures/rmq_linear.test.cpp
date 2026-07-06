@@ -5,12 +5,12 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n, q;
   cin >> n >> q;
-  vector<int> a(n);
-  for (int i = 0; i < n; i++) cin >> a[i];
+  vi a(n);
+  rep(i, 0, n) cin >> a[i];
   linear_rmq rmq_less(a, less());
   linear_rmq rmq_less_equal(a, less_equal());
-  vector<int> neg_a(n);
-  for (int i = 0; i < n; i++) neg_a[i] = -a[i];
+  vi neg_a(n);
+  rep(i, 0, n) neg_a[i] = -a[i];
   linear_rmq rmq_greater(neg_a, greater());
   linear_rmq rmq_greater_equal(neg_a, greater_equal());
   while (q--) {

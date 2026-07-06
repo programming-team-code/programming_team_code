@@ -6,12 +6,11 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n, q;
   cin >> n >> q;
-  vector<int> arr(n);
-  for (int i = 0; i < n; i++) cin >> arr[i];
-  vector<int> sorted(arr);
-  sort(begin(sorted), end(sorted));
-  sorted.erase(unique(begin(sorted), end(sorted)),
-    end(sorted));
+  vi arr(n);
+  rep(i, 0, n) cin >> arr[i];
+  vi sorted(arr);
+  ranges::sort(sorted);
+  sorted.erase(begin(ranges::unique(sorted)), end(sorted));
   for (int& val : arr) {
     int start = 0, end = sz(sorted);
     while (start + 1 < end) {
@@ -23,7 +22,7 @@ int main() {
     val = start - 50;
   }
   kth_smallest st(arr, -50, sz(sorted) - 50);
-  for (int i = 0; i < n; i++) {
+  rep(i, 0, n) {
     int mx = arr[i];
     for (int j = i + 1; j <= min(i + 5, n); j++) {
       mx = max(mx, arr[j - 1]);

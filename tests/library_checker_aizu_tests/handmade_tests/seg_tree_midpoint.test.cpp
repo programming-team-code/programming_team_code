@@ -4,7 +4,7 @@
 #include "../../../library/data_structures_[l,r)/seg_tree_midpoint.hpp"
 int main() {
   cin.tie(0)->sync_with_stdio(0);
-  for (int n = 1; n < 5000; n++) {
+  rep(n, 1, 5000) {
     auto dfs = [&](auto&& self, int tl, int tr,
                  int v) -> void {
       assert((v >= n) == ((tr - tl) == 1));

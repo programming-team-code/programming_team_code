@@ -8,7 +8,6 @@ int main() {
   cin >> haystack >> needle;
   KMP kmp(vi(all(needle)));
   vector<bool> is_m = kmp.find_str(vi(all(haystack)));
-  for (int i = 0; i < sz(is_m); i++)
-    if (is_m[i]) cout << i << '\n';
+  rep(i, 0, sz(is_m)) if (is_m[i]) cout << i << '\n';
   return 0;
 }

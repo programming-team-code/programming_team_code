@@ -8,19 +8,19 @@ int main() {
   cin >> n >> m >> k;
   const int mx_n = 1 << 12;
   array<bitset<mx_n>, mx_n> m1, m2;
-  for (int i = 0; i < n; i++) {
+  rep(i, 0, n) {
     string row;
     cin >> row;
-    for (int j = 0; j < m; j++) m1[i][j] = row[j] - '0';
+    rep(j, 0, m) m1[i][j] = row[j] - '0';
   }
-  for (int i = 0; i < m; i++) {
+  rep(i, 0, m) {
     string row;
     cin >> row;
-    for (int j = 0; j < k; j++) m2[i][j] = row[j] - '0';
+    rep(j, 0, k) m2[i][j] = row[j] - '0';
   }
   auto prod = m1 * m2;
-  for (int i = 0; i < n; i++) {
-    for (int j = 0; j < k; j++) cout << prod[i][j];
+  rep(i, 0, n) {
+    rep(j, 0, k) cout << prod[i][j];
     cout << '\n';
   }
   return 0;

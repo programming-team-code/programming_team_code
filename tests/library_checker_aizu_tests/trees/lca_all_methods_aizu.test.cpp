@@ -9,8 +9,8 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n;
   cin >> n;
-  vector<vector<int>> adj(n);
-  for (int i = 0; i < n; i++) {
+  vector<vi> adj(n);
+  rep(i, 0, n) {
     int k;
     cin >> k;
     adj[i].resize(k);
@@ -20,7 +20,7 @@ int main() {
   LCA lc(adj);
   linear_lca lin_lca(adj);
   compress_tree_asserts(adj, lc);
-  for (int i = 0; i < n; i++) {
+  rep(i, 0, n) {
     assert(tl.lca(i, i) == i);
     assert(lc.lca(i, i) == i);
     assert(lin_lca.lca(i, i) == i);

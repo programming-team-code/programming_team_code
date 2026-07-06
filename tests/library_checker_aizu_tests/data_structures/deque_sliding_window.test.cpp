@@ -7,12 +7,12 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n, l;
   cin >> n >> l;
-  vector<int> arr(n);
-  for (int i = 0; i < n; i++) cin >> arr[i];
-  vector<int> init(begin(arr), begin(arr) + l);
+  vi arr(n);
+  rep(i, 0, n) cin >> arr[i];
+  vi init(begin(arr), begin(arr) + l);
   deq dq(init, mn);
   cout << dq.query();
-  for (int i = l; i < n; i++) {
+  rep(i, l, n) {
     dq.push_back(arr[i]);
     dq.pop_front();
     cout << " " << dq.query();

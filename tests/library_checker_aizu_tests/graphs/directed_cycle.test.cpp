@@ -6,9 +6,9 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
   int n, m;
   cin >> n >> m;
-  vector<vector<int>> adj(n);
-  vector<vector<pair<int, int>>> adj_edge_id(n);
-  for (int i = 0; i < m; i++) {
+  vector<vi> adj(n);
+  vector<vector<pii>> adj_edge_id(n);
+  rep(i, 0, m) {
     int u, v;
     cin >> u >> v;
     adj[u].push_back(v);
@@ -32,9 +32,9 @@ int main() {
       vi vis(n);
       while (!vis[v]) {
         vis[v] = 1;
-        for (auto [next, _] : adj_edge_id[v]) {
-          if (scc_id[v] == scc_id[next]) {
-            v = next;
+        for (auto [nxt, _] : adj_edge_id[v]) {
+          if (scc_id[v] == scc_id[nxt]) {
+            v = nxt;
             break;
           }
         }
@@ -42,10 +42,10 @@ int main() {
       vi cycle;
       while (vis[v] == 1) {
         vis[v] = 2;
-        for (auto [next, e_id] : adj_edge_id[v]) {
-          if (scc_id[v] == scc_id[next]) {
+        for (auto [nxt, e_id] : adj_edge_id[v]) {
+          if (scc_id[v] == scc_id[nxt]) {
             cycle.push_back(e_id);
-            v = next;
+            v = nxt;
             break;
           }
         }
