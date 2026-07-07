@@ -30,7 +30,7 @@ struct PST {
       tree.emplace_back(tree[v].sum + change, 0, 0);
       return sz(tree) - 1;
     }
-    int tm = tl + (tr - tl) / 2;
+    int tm = midpoint(tl, tr);
     int lch = tree[v].lch;
     int rch = tree[v].rch;
     if (idx < tm) lch = update(idx, change, tl, tm, lch);
@@ -45,7 +45,7 @@ struct PST {
   ll query(int l, int r, int tl, int tr, int v) {
     if (v == 0 || r <= tl || tr <= l) return 0;
     if (l <= tl && tr <= r) return tree[v].sum;
-    int tm = tl + (tr - tl) / 2;
+    int tm = midpoint(tl, tr);
     return query(l, r, tl, tm, tree[v].lch) +
            query(l, r, tm, tr, tree[v].rch);
   }
