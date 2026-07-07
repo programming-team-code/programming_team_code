@@ -14,6 +14,7 @@ template<bool VALS_EDGES> struct HLD {
   int n;
   vi p, siz, rt, tin;
   HLD(auto& g): n(sz(g)), p(n), siz(n, 1), rt(n), tin(n) {
+    // pass-self, not deducing this: gcc bug 118291
     auto dfs1 = [&](auto dfs1, int u) -> void {
       for (int& v : g[u]) {
         erase(g[v], p[v] = u);
