@@ -26,13 +26,13 @@ int main() {
   vector<bool> vis(n);
   vis[t] = 1;
   vector<array<int, 2>> path;
-  auto dfs = [&](auto&& self, int u) -> bool {
+  auto dfs = [&](this auto&& self, int u) -> bool {
     if (u == s) return 1;
     for (auto [v, w] : adj_inv[u]) {
       if (!vis[v] && len[v] != LLONG_MAX &&
           len[v] + w == len[u]) {
         vis[v] = 1;
-        if (self(self, v)) {
+        if (self(v)) {
           path.push_back({v, u});
           return 1;
         }
@@ -40,7 +40,7 @@ int main() {
     }
     return 0;
   };
-  assert(dfs(dfs, t));
+  assert(dfs(t));
   cout << len[t] << " " << sz(path) << '\n';
   for (auto [u, v] : path) cout << u << " " << v << '\n';
   return 0;

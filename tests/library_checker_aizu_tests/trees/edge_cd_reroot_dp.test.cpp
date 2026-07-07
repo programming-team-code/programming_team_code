@@ -31,12 +31,11 @@ int main() {
       res[u] = (res[u] + 1LL * b[i] * a[v] + c[i]) % mod;
       res[v] = (res[v] + 1LL * b[i] * a[u] + c[i]) % mod;
     }
-    auto dfs = [&](auto&& self, int u) -> void {
+    auto dfs = [&](this auto&& self, int u) -> void {
       for (auto [v, e_id] : adj_with_id[u])
-        if (v != par[u].first)
-          par[v] = {u, e_id}, self(self, v);
+        if (v != par[u].first) par[v] = {u, e_id}, self(v);
     };
-    dfs(dfs, 0);
+    dfs(0);
   }
   auto edge_id = [&](int u, int v) -> int {
     bool u_low = (par[u].first == v);
@@ -48,7 +47,7 @@ int main() {
     array<vector<array<int, 3>>, 2> all_backwards;
     array<int, 2> sum_forward = {0, 0};
     array<int, 2> cnt_nodes = {0, 0};
-    auto dfs = [&](auto&& self, int u, int p,
+    auto dfs = [&](this auto&& self, int u, int p,
                  array<int, 2> forwards,
                  array<int, 2> backwards,
                  int side) -> void {
@@ -73,12 +72,12 @@ int main() {
           int(1LL * backwards[0] * b[e_id] % mod),
           int((1LL * backwards[1] * b[e_id] + c[e_id]) %
               mod)};
-        self(self, v, u, curr_forw, curr_backw, side);
+        self(v, u, curr_forw, curr_backw, side);
       }
     };
     rep(i, 0, sz(adj[cent])) {
       int e_id = edge_id(cent, adj[cent][i]);
-      dfs(dfs, adj[cent][i], cent, {b[e_id], c[e_id]},
+      dfs(adj[cent][i], cent, {b[e_id], c[e_id]},
         {b[e_id], c[e_id]}, i < split);
     }
     rep(side, 0, 2) for (auto [u, curr_b, curr_c] :

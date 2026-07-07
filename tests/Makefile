@@ -1,9 +1,9 @@
 help:
 	@echo "command                              | explanation"
 	@echo "------------------------------------ | -----------"
-	@echo "make compile_gcc                     | compile all tests with -std=c++20 for warnings"
+	@echo "make compile_gcc                     | compile all tests with -std=c++23 for warnings"
 	@echo "                                     |"
-	@echo "make compile_clang                   | compile all tests with clang, -std=c++20 for warnings"
+	@echo "make compile_clang                   | compile all tests with clang, -std=c++23 for warnings"
 	@echo "                                     |"
 	@echo "make grep_clangformat_cppcheck       | various greps to catch certain things, clang-format, cppcheck"
 	@echo "                                     |"

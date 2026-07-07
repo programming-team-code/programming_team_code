@@ -30,14 +30,14 @@ int main() {
   rep(i, n, kt.id) mst_sum += weight[i];
   vi depth(2 * n);
   vi actual_par(2 * n, -1);
-  auto dfs = [&](auto&& self, int v) -> void {
+  auto dfs = [&](this auto&& self, int v) -> void {
     for (int u : kt.g[v]) {
       depth[u] = 1 + depth[v];
       actual_par[u] = v;
-      self(self, u);
+      self(u);
     }
   };
-  dfs(dfs, kt.id - 1);
+  dfs(kt.id - 1);
   rep(i, 0, n) rep(j, i + 1, n) {
     int u = i, v = j;
     while (u != v)

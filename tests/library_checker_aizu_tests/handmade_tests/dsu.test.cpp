@@ -14,16 +14,16 @@ int main() {
       bool joined = dsu.join(u, v);
       {
         vector<bool> vis(n);
-        auto dfs = [&](auto&& self, int v) -> void {
+        auto dfs = [&](this auto&& self, int v) -> void {
           for (int u : adj[v]) {
             if (!vis[u]) {
               vis[u] = 1;
-              self(self, u);
+              self(u);
             }
           }
         };
         vis[u] = 1;
-        dfs(dfs, u);
+        dfs(u);
         assert(vis[v] != joined);
       }
       adj[u].push_back(v);
@@ -31,17 +31,17 @@ int main() {
       rep(i, 0, n) {
         vector<bool> vis(n);
         int cnt_nodes = 0;
-        auto dfs = [&](auto&& self, int v) -> void {
+        auto dfs = [&](this auto&& self, int v) -> void {
           cnt_nodes++;
           for (int u : adj[v]) {
             if (!vis[u]) {
               vis[u] = 1;
-              self(self, u);
+              self(u);
             }
           }
         };
         vis[i] = 1;
-        dfs(dfs, i);
+        dfs(i);
         assert(cnt_nodes == dsu.size(i));
       }
     }

@@ -1,19 +1,19 @@
 #pragma once
 auto edge_cd_asserts = [&](int cent, int split) -> void {
   assert(0 < split && split < sz(adj[cent]));
-  auto dfs = [&](auto&& self, int u, int p) -> int {
+  auto dfs = [&](this auto&& self, int u, int p) -> int {
     int siz = 1;
     for (int v : adj[u])
-      if (v != p) siz += self(self, v, u);
+      if (v != p) siz += self(v, u);
     return siz;
   };
-  int sz_all = dfs(dfs, cent, -1);
+  int sz_all = dfs(cent, -1);
   assert(sz_all >= 3);
   array<int, 2> cnts = {0, 0};
   array<int, 2> max_cnt = {0, 0};
   array<int, 2> number_of_cnts = {0, 0};
   rep(i, 0, sz(adj[cent])) {
-    int sz_subtree = dfs(dfs, adj[cent][i], cent);
+    int sz_subtree = dfs(adj[cent][i], cent);
     assert(2 * sz_subtree <= sz_all);
     cnts[i < split] += sz_subtree;
     max_cnt[i < split] =

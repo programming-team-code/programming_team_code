@@ -36,7 +36,7 @@ git submodule update
 } >entire_library.cpp
 
 echo "compiling code in @code ... @endcode comments with g++"
-g++ -std=c++20 entire_library.cpp || exit 1
+g++ -std=c++23 entire_library.cpp || exit 1
 
 echo "compiling code in @code ... @endcode comments with clang++"
-clang++-22 -std=c++20 entire_library.cpp || exit 1
+clang++-22 -std=c++23 entire_library.cpp || exit 1

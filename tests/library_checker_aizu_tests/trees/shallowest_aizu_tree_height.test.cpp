@@ -20,24 +20,23 @@ int main() {
   shallowest(adj, [&](int cent) {
     int lowest = 0;
     int curr_lowest = 0;
-    auto dfs = [&](auto&& self, int v, int p,
+    auto dfs = [&](this auto&& self, int v, int p,
                  int height) -> void {
       res[v] = max(res[v], height + lowest);
       res[cent] = max(res[cent], height);
       curr_lowest = max(curr_lowest, height);
       for (int u : adj[v])
-        if (u != p)
-          self(self, u, v, height + weight[{u, v}]);
+        if (u != p) self(u, v, height + weight[{u, v}]);
     };
     for (int v : adj[cent]) {
       curr_lowest = 0;
-      dfs(dfs, v, cent, weight[{v, cent}]);
+      dfs(v, cent, weight[{v, cent}]);
       lowest = max(lowest, curr_lowest);
     }
     lowest = 0;
     for (int v : adj[cent] | views::reverse) {
       curr_lowest = 0;
-      dfs(dfs, v, cent, weight[{v, cent}]);
+      dfs(v, cent, weight[{v, cent}]);
       lowest = max(lowest, curr_lowest);
     }
   });

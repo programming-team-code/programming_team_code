@@ -15,7 +15,7 @@ int main() {
   cout << sz(ch) << '\n';
   int curr_time = 0;
   vi node_to_time(sz(ch), -1);
-  auto dfs = [&](auto&& self, int u, int p) -> void {
+  auto dfs = [&](this auto&& self, int u, int p) -> void {
     node_to_time[u] = curr_time++;
     cout << (p == -1 ? p : node_to_time[p]) << " "
          << pt.p[u].mn_idx << " "
@@ -23,8 +23,8 @@ int main() {
          << (pt.p[u].is_join || empty(ch[u]) ? "linear"
                                              : "prime")
          << '\n';
-    for (int v : ch[u]) self(self, v, u);
+    for (int v : ch[u]) self(v, u);
   };
-  dfs(dfs, root, -1);
+  dfs(root, -1);
   return 0;
 }

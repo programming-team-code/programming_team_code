@@ -10,4 +10,4 @@
 -Wduplicated-cond
 -Werror
 -O2
--std=c++20
+-std=c++23

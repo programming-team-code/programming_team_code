@@ -19,7 +19,7 @@ vector<ll> count_paths_per_node(vector<vi> adj, int k) {
   vector<ll> num_paths(sz(adj));
   cd(adj, [&](int cent) {
     vector pre_d{1}, cur_d{0};
-    auto dfs = [&](auto&& self, int u, int p,
+    auto dfs = [&](this auto&& self, int u, int p,
                  int d) -> ll {
       if (d > k) return 0LL;
       if (sz(cur_d) <= d) cur_d.push_back(0);
@@ -27,12 +27,12 @@ vector<ll> count_paths_per_node(vector<vi> adj, int k) {
       ll cnt = 0;
       if (k - d < sz(pre_d)) cnt += pre_d[k - d];
       for (int c : adj[u])
-        if (c != p) cnt += self(self, c, u, d + 1);
+        if (c != p) cnt += self(c, u, d + 1);
       num_paths[u] += cnt;
       return cnt;
     };
     auto dfs_child = [&](int child) -> ll {
-      ll cnt = dfs(dfs, child, cent, 1);
+      ll cnt = dfs(child, cent, 1);
       pre_d.resize(sz(cur_d));
       for (int i = 1; i < sz(cur_d) && cur_d[i]; i++)
         pre_d[i] += cur_d[i], cur_d[i] = 0;
@@ -72,15 +72,15 @@ vector<ll> count_paths_per_length(vector<vi> adj) {
   if (sz(adj) >= 2) num_paths[1] = sz(adj) - 1;
   edge_cd(adj, [&](int cent, int split) {
     vector<vector<double>> cnt(2, vector<double>(1));
-    auto dfs = [&](auto&& self, int u, int p, int d,
+    auto dfs = [&](this auto&& self, int u, int p, int d,
                  int side) -> void {
       if (sz(cnt[side]) == d) cnt[side].push_back(0.0);
       cnt[side][d]++;
       for (int c : adj[u])
-        if (c != p) self(self, c, u, 1 + d, side);
+        if (c != p) self(c, u, 1 + d, side);
     };
     rep(i, 0, sz(adj[cent]))
-      dfs(dfs, adj[cent][i], cent, 1, i < split);
+      dfs(adj[cent][i], cent, 1, i < split);
     vector<double> prod = conv(cnt[0], cnt[1]);
     rep(i, 0, sz(prod)) num_paths[i] += llround(prod[i]);
   });
