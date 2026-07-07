@@ -46,6 +46,6 @@ git submodule init
 git submodule update
 
 cppcheck --enable=all --inconclusive --suppressions-list=.config/.cppcheck_suppression_list \
-	--force --language=c++ --error-exitcode=1 --std=c++20 --max-ctu-depth=50 \
+	--force --language=c++ --error-exitcode=1 --std=c++23 --max-ctu-depth=50 \
 	library_checker_aizu_tests/**/*.hpp library_checker_aizu_tests/**/*.test.cpp ../library/**/*.hpp ../library/**/*.cpp ||
 	exit 1

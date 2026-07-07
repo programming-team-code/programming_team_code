@@ -14,15 +14,15 @@ vector<ll> count_paths_per_length(vector<vi> adj) {
   if (sz(adj) >= 2) num_paths[1] = sz(adj) - 1;
   edge_cd(adj, [&](int cent, int split) {
     vector<vector<double>> cnt(2, vector<double>(1));
-    auto dfs = [&](auto&& self, int u, int p, int d,
+    auto dfs = [&](this auto&& self, int u, int p, int d,
                  int side) -> void {
       if (sz(cnt[side]) == d) cnt[side].push_back(0.0);
       cnt[side][d]++;
       for (int c : adj[u])
-        if (c != p) self(self, c, u, 1 + d, side);
+        if (c != p) self(c, u, 1 + d, side);
     };
     rep(i, 0, sz(adj[cent]))
-      dfs(dfs, adj[cent][i], cent, 1, i < split);
+      dfs(adj[cent][i], cent, 1, i < split);
     vector<double> prod = conv(cnt[0], cnt[1]);
     rep(i, 0, sz(prod)) num_paths[i] += llround(prod[i]);
   });

@@ -33,7 +33,7 @@ int main() {
     int total_cnt_nodes = 0;
     int curr_sum_evaluated = 0;
     int curr_cnt_nodes = 0;
-    auto dfs = [&](auto&& self, int v, int p,
+    auto dfs = [&](this auto&& self, int v, int p,
                  line downwards, line upwards,
                  bool forwards) -> void {
       // f(x) + f(y) + f(z) = b*x+c + b*y+c + b*z+c =
@@ -60,14 +60,14 @@ int main() {
         int u = adj[v][i];
         line curr_line = weight[v][i];
         if (u != p)
-          self(self, u, v, compose(downwards, curr_line),
+          self(u, v, compose(downwards, curr_line),
             compose(curr_line, upwards), forwards);
       }
     };
     rep(i, 0, sz(adj[cent])) {
       curr_sum_evaluated = 0;
       curr_cnt_nodes = 0;
-      dfs(dfs, adj[cent][i], cent, weight[cent][i],
+      dfs(adj[cent][i], cent, weight[cent][i],
         weight[cent][i], 1);
       total_sum_evaluated =
         (total_sum_evaluated + curr_sum_evaluated) % mod;
@@ -78,7 +78,7 @@ int main() {
     for (int i = sz(adj[cent]) - 1; i >= 0; i--) {
       curr_sum_evaluated = 0;
       curr_cnt_nodes = 0;
-      dfs(dfs, adj[cent][i], cent, weight[cent][i],
+      dfs(adj[cent][i], cent, weight[cent][i],
         weight[cent][i], 0);
       total_sum_evaluated =
         (total_sum_evaluated + curr_sum_evaluated) % mod;
