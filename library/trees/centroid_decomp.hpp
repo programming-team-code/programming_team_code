@@ -2,7 +2,7 @@
 //! https://codeforces.com/blog/entry/125866?#comment-1117826
 //! @code
 //!   vector<basic_string<int>> g(n);
-//!   vi p = cd(g, [&](int c) {});
+//!   vector<int> p = cd(g, [&](int c) {});
 //! @endcode
 //! @time O(n log n)
 //! @space O(n)

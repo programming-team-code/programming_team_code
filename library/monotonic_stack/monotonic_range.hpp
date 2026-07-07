@@ -1,7 +1,8 @@
 #pragma once
 #include "monotonic_stack.hpp"
 //! @code
-//!   vi le = mono_st(a, less()), ri = mono_range(le);
+//!   vector<int> le = mono_st(a, less()),
+//!     ri = mono_range(le);
 //!   // less_equal(), greater(), greater_equal()
 //! @endcode
 //! when cmp == less():

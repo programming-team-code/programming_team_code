@@ -1,6 +1,6 @@
 #pragma once
 //! @code
-//!   vi le = mono_st(a, less());
+//!   vector<int> le = mono_st(a, less());
 //!   // less_equal(), greater(), greater_equal()
 //! @endcode
 //! when cmp == less():

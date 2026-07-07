@@ -7,7 +7,7 @@
 //! [p[v].mn_idx, p[v].mn_idx+p[v].len) index range
 //! [p[v].mn_num, p[v].mn_num+p[v].len) number range
 //! indexes [0, n) of ch are leaves
-//! indexes [n, sz(ch)) of ch are internal nodes
+//! indexes [n, ssize(ch)) of ch are internal nodes
 //! @time O(n)
 //! @space O(n)
 struct perm_tree {

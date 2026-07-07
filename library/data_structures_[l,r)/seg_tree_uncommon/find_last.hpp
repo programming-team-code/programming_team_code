@@ -1,9 +1,9 @@
 #pragma once
 //! @code
 //!   seg_tree st(n);
-//!   st.find_last(l, r, [&](ll x, int tl, int tr) ->
-//!   bool {
-//!   });
+//!   st.find_last(l, r,
+//!     [&](int64_t x, int tl, int tr) -> bool {
+//!     });
 //! @endcode
 //! @param l,r defines range [l, r)
 //! @param f defines a function that returns 1 if the

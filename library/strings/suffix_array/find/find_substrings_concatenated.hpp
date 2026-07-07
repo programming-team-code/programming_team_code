@@ -9,7 +9,7 @@
 //!     substrs.back()[0])
 //!     - doesn't work when substrs[i][0] == n
 //! @returns see match
-//! @time O(sz(substrs) * log(|s|))
+//! @time O(ssize(substrs) * log(|s|))
 //! @space O(1)
 match find_substrs_concated(const vector<pii>& substrs) {
   using dt = array<int, 3>;

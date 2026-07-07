@@ -1,7 +1,7 @@
 #pragma once
 //! @code
 //!   BIT bit(n);
-//!   bit.walk([&](int r, ll sum) -> bool {
+//!   bit.walk([&](int r, int64_t sum) -> bool {
 //!     // sum = a[0] + a[1] + ... + a[r - 1]
 //!   });
 //!   int r = bit.walk2(sum);

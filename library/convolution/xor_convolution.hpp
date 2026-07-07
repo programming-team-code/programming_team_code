@@ -2,8 +2,8 @@
 #include "../math/mod_division.hpp"
 //! https://codeforces.com/blog/entry/127823
 //! @code
-//!   vi c = xor_conv(a, b);
-//!   // must have sz(a) == sz(b) == a power of 2
+//!   vector<int> c = xor_conv(a, b);
+//!   // must have ssize(a) == ssize(b) == a power of 2
 //!   // c[k] = sum of a[i]*b[j] where i^j==k
 //! @endcode
 //! @time O(n log n)
