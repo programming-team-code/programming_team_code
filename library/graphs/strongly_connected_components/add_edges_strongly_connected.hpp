@@ -9,7 +9,7 @@
 //!
 //! @code
 //!   auto [num_sccs, scc_id] = scc(g);
-//!   vector<pii> edges = extra_edges(g,
+//!   vector<pair<int, int>> edges = extra_edges(g,
 //!     num_sccs, scc_id);
 //! @endcode
 //! @param g,num_sccs,scc_id directed graph and its SCCs

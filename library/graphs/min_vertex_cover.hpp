@@ -1,9 +1,9 @@
 #include "../../kactl/content/graph/HopcroftKarp.h"
 //! @code
 //!   int l_sz, r_sz;
-//!   vector<vi> g(l_sz);
+//!   vector<vector<int>> g(l_sz);
 //!   g[u].push_back(v); // 0 <= u < l_sz, 0 <= v < r_sz
-//!   vi r(r_sz, -1);
+//!   vector<int> r(r_sz, -1);
 //!   int match_sz = hopcroftKarp(g, r);
 //!   // r[v] != -1 iff edge r[v] <-> v in matching
 //!   auto [mvc_l, mvc_r] = cover(g, r);

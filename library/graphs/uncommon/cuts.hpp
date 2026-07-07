@@ -2,7 +2,7 @@
 //! https://cp-algorithms.com/graph/cutpoints.html
 //! @code
 //!   vector<basic_string<array<int, 2>>> g(n);
-//!   rep (i, 0, m) {
+//!   for (int i = 0; i < m; i++) {
 //!     int u, v;
 //!     cin >> u >> v;
 //!     u--, v--;

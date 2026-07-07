@@ -1,7 +1,7 @@
 #pragma once
 #include "dsu.hpp"
 //! @code
-//!   vector<vector<pii>> joins(n + 1);
+//!   vector<vector<pair<int, int>>> joins(n + 1);
 //!   joins[len].emplace_back(u, v);
 //!   // it does:
 //!   // dsu.join(u + 0, v + 0);

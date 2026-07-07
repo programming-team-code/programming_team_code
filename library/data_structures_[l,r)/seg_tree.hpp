@@ -7,12 +7,12 @@
 //!   });
 //!   tree st(n, LLONG_MAX, ranges::min);
 //!   int m1 = st.max_right(l, r,
-//!     [&](int m, ll value) -> bool {
+//!     [&](int m, int64_t value) -> bool {
 //!       // l < m <= r
 //!       // value = op(a[l], a[l+1], ..., a[m-1])
 //!     }); // max m such that f holds; l if none
 //!   int m2 = st.min_left(l, r,
-//!     [&](int m, ll value) -> bool {
+//!     [&](int m, int64_t value) -> bool {
 //!       // l <= m < r
 //!       // value = op(a[m], ..., a[r-2], a[r-1])
 //!     }); // min m such that f holds; r if none

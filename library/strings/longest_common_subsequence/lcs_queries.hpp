@@ -3,9 +3,10 @@
 #include "lcs_dp.hpp"
 //! @code
 //!   string s,t;
-//!   vi lcs_len = lcs_queries(s, t, queries);
-//!   vi s_vec,t_vec;
-//!   vi lcs_len1 = lcs_queries(s_vec, t_vec, queries);
+//!   vector<int> lcs_len = lcs_queries(s, t, queries);
+//!   vector<int> s_vec,t_vec;
+//!   vector<int> lcs_len1 =
+//!     lcs_queries(s_vec, t_vec, queries);
 //! @endcode
 //! lcs_len[i] = size(LCS(
 //!   s[0,queries[i][0]),

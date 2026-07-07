@@ -4,11 +4,11 @@
 //!   string s,t;
 //!   KMP kmp(t);
 //!   auto match = kmp.find_str(s);
-//!   vi s_vec,t_vec;
+//!   vector<int> s_vec,t_vec;
 //!   KMP kmp1(t_vec);
 //!   auto match2 = kmp1.find_str(s_vec);
 //! @endcode
-//! if match[i] == 1 then s[i,sz(t)) == t
+//! if match[i] == 1 then s[i,ssize(t)) == t
 //! @time O(|s| + |t|)
 //! @space O(|s| + |t|)
 // NOLINTNEXTLINE(readability-identifier-naming)
