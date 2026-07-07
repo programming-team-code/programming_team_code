@@ -1,4 +1,4 @@
-void max_right(int l, int r, auto f) {
+int max_right(int l, int r, auto f) {
   if (T x = s[l + n]; f(l, x))
     for (l++; l <= r;) {
       int u = l + n,
@@ -8,4 +8,5 @@ void max_right(int l, int r, auto f) {
         l = m + 1, x = y;
       else r = m - 1;
     }
+  return l;
 }

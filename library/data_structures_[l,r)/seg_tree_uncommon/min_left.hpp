@@ -1,4 +1,4 @@
-void min_left(int l, int r, auto f) {
+int min_left(int l, int r, auto f) {
   for (T x = unit; l < r;) {
     int u = r + n,
         v = bit_width(min(u & -u, r - l) + 0u) - 1,
@@ -7,4 +7,5 @@ void min_left(int l, int r, auto f) {
       r = m, x = y;
     else l = m + 1;
   }
+  return r;
 }
