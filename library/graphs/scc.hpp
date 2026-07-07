@@ -11,18 +11,17 @@
 auto scc(const auto& g) {
   int n = sz(g), num_sccs = 0, q = 0, s = 0;
   vi scc_id(n, -1), tin(n), st(n);
-  auto dfs = [&](auto&& dfs, int u) -> int {
+  auto dfs = [&](this auto&& dfs, int u) -> int {
     int low = tin[u] = ++q;
     st[s++] = u;
     for (int v : g[u])
-      if (scc_id[v] < 0)
-        low = min(low, tin[v] ?: dfs(dfs, v));
+      if (scc_id[v] < 0) low = min(low, tin[v] ?: dfs(v));
     if (tin[u] == low) {
       while (scc_id[u] < 0) scc_id[st[--s]] = num_sccs;
       num_sccs++;
     }
     return low;
   };
-  rep(i, 0, n) if (!tin[i]) dfs(dfs, i);
+  rep(i, 0, n) if (!tin[i]) dfs(i);
   return pair{num_sccs, scc_id};
 }
