@@ -14,12 +14,12 @@ struct sum_adj {
   //! stack for dfs is O(n)
   sum_adj(const vector<vi>& adj, const vector<ll>& sum):
     n(sz(sum)), sum(sum), sum_ch(n), p(n, -1) {
-    auto dfs = [&](auto&& self, int u) -> void {
+    auto dfs = [&](this auto&& self, int u) -> void {
       for (int c : adj[u])
         if (c != p[u])
-          p[c] = u, sum_ch[u] += sum[c], self(self, c);
+          p[c] = u, sum_ch[u] += sum[c], self(c);
     };
-    dfs(dfs, 0);
+    dfs(0);
   }
   //! @param u node
   //! @param delta number to add
@@ -50,17 +50,17 @@ struct contour_range_query {
     n(sz(a)), sum_a(adj, a), info(n) {
     edge_cd(adj, [&](int cent, int split) {
       vector<vector<ll>> sum_num(2, vector<ll>(1));
-      auto dfs = [&](auto&& self, int u, int p, int d,
+      auto dfs = [&](this auto&& self, int u, int p, int d,
                    int side) -> void {
         info[u].push_back({int(sz(bits)), d, side});
         if (sz(sum_num[side]) == d)
           sum_num[side].push_back(0);
         sum_num[side][d] += a[u];
         for (int c : adj[u])
-          if (c != p) self(self, c, u, 1 + d, side);
+          if (c != p) self(c, u, 1 + d, side);
       };
       rep(i, 0, sz(adj[cent]))
-        dfs(dfs, adj[cent][i], cent, 1, i < split);
+        dfs(adj[cent][i], cent, 1, i < split);
       bits.push_back({BIT(sum_num[0]), BIT(sum_num[1])});
     });
   }

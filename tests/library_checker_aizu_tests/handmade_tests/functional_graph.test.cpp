@@ -63,33 +63,33 @@ struct functional_graph_processor {
         }
         cycle.push_back(c);
       }
-      auto dfs = [&](auto self, int u2) -> void {
+      auto dfs = [&](this auto &&self, int u2) -> void {
         if (was2[u2] == attempt) return;
         was2[u2] = attempt;
         int v2 = nxt[u2];
-        self(self, v2);
+        self(v2);
         root_of[u2] = root_of[v2];
         depth[u2] = depth[v2] + 1;
         abr[v2].push_back(u2);
       };
-      dfs(dfs, u);
+      dfs(u);
     }
     for (auto u = 0; u < n; ++u)
       if (~cycle_pos[u]) cycle_prev[nxt[u]] = u;
     for (const auto &c : cycle) {
-      auto dfs = [&](auto self, int u) -> void {
+      auto dfs = [&](this auto &&self, int u) -> void {
         size[u] = 1;
         pos[u] = sz(order);
         order.push_back(u);
         for (auto v : abr[u]) {
-          self(self, v);
+          self(v);
           size[u] += size[v];
         }
         end[u] = sz(order);
       };
       int csize = 0;
       for (auto u : c) {
-        dfs(dfs, u);
+        dfs(u);
         csize += size[u];
       }
       for (auto u : c)
