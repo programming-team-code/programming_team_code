@@ -9,12 +9,11 @@ int num_subsequences(const vi& a, int mod) {
   rep(i, 0, sz(a)) {
     int& cur = dp[i + 1] = 2 * dp[i];
     if (cur >= mod) cur -= mod;
-    auto it = last.find(a[i]);
-    if (it != end(last)) {
-      cur -= dp[it->second];
+    auto [it, ins] = last.emplace(a[i], i);
+    if (!ins) {
+      cur -= dp[exchange(it->second, i)];
       if (cur < 0) cur += mod;
-      it->second = i;
-    } else last[a[i]] = i;
+    }
   }
   return dp.back();
 }
