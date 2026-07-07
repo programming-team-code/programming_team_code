@@ -1,7 +1,8 @@
 #pragma once
 #include "count_paths_rectangle.hpp"
 //! https://noshi91.hatenablog.com/entry/2023/07/21/235339
-//! @time O((n + m)log^2(n + m)): n = sz(h); m = h.back()
+//! @time O((n + m)log^2(n + m)):
+//!   n = ssize(h); m = h.back()
 //! @space O(n + m)
 vl divide_and_conquer(vl h, vl bottom) {
   {

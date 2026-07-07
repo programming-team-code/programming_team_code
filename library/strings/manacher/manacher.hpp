@@ -3,7 +3,7 @@
 //! @code
 //!   string s;
 //!   auto man = manacher(s);
-//!   vi s_vec;
+//!   vector<int> s_vec;
 //!   auto man1 = manacher(s_vec);
 //! @endcode
 //!

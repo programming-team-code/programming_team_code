@@ -1,7 +1,7 @@
 #pragma once
 //! @code
 //!   vector<basic_string<int>> g;
-//!   vi cc_id = get_complement_graph_ccs(g);
+//!   vector<int> cc_id = get_complement_graph_ccs(g);
 //! @endcode
 //! 0<=cc_id[v]<number of connected components
 //!   in the complement graph

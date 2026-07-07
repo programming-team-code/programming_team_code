@@ -13,18 +13,22 @@ grep "endl" --recursive library_checker_aizu_tests/ && exit 1
 echo "check template<class T> over template<typename T>:"
 grep --extended-regexp "template\s?<typename" --recursive ../library/ && exit 1
 
+# comment lines are excluded from the macro checks below: doc
+# comments spell out the macros to match the expanded main branch
+comment_line="^[^:]*:[[:space:]]*//"
+
 echo "check ll instead of long long or int64_t"
-grep "long long" --recursive ../library/ && exit 1
-grep "int64_t" --recursive ../library/**/*.hpp | grep "uint64_t" --invert-match && exit 1
+grep "long long" --recursive ../library/ | grep --invert-match --extended-regexp "$comment_line" && exit 1
+grep "int64_t" --recursive ../library/**/*.hpp | grep "uint64_t" --invert-match | grep --invert-match --extended-regexp "$comment_line" && exit 1
 
 echo "check pii instead of pair<int, int>"
-grep "pair<int, int>" --recursive ../library/**/*.hpp && exit 1
+grep "pair<int, int>" --recursive ../library/**/*.hpp | grep --invert-match --extended-regexp "$comment_line" && exit 1
 
 echo "check sz instead of ssize"
-grep "ssize" --recursive ../library/ && exit 1
+grep "ssize" --recursive ../library/ | grep --invert-match --extended-regexp "$comment_line" && exit 1
 
 echo "check vi instead of vector<int>"
-grep "vector<int>" --recursive ../library/**/*.hpp && exit 1
+grep "vector<int>" --recursive ../library/**/*.hpp | grep --invert-match --extended-regexp "$comment_line" && exit 1
 
 echo "check begin(arr) instead of arr.begin(), similarly for end, rbegin, rend, empty, size:"
 grep --recursive ../library/ library_checker_aizu_tests/ --fixed-strings --regexp=".begin()" --regexp=".rbegin()" --regexp=".end()" --regexp=".rend()" --regexp=".empty()" --regexp=".size()" && exit 1

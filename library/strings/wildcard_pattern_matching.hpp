@@ -5,7 +5,7 @@
 //!   auto mtch = wildcard_pattern_matching(
 //!     s_vec, t_vec, conv);
 //! @endcode
-//! s_vec[mtch[i],sz(t_vec)) == t_vec
+//! s_vec[mtch[i],ssize(t_vec)) == t_vec
 //! s_vec[i]=0 or t_vec[i]=0 for a wildcard
 //! @time O((n+m) log (n+m))
 //! @space O(n+m)

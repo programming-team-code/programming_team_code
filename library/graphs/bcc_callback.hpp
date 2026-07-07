@@ -2,12 +2,12 @@
 //! https://cp-algorithms.com/graph/cutpoints.html
 //! @code
 //!   {
-//!     vector<vi> g(n);
+//!     vector<vector<int>> g(n);
 //!     DSU dsu(n);
 //!     vector<bool> vis(n);
-//!     bcc(g, [&](const vi& nodes) {
+//!     bcc(g, [&](const vector<int>& nodes) {
 //!       int cnt_edges = 0;
-//!       rep (i, 0, sz(nodes) - 1) {
+//!       for (int i = 0; i < ssize(nodes) - 1; i++) {
 //!         vis[nodes[i]] = 1;
 //!         for (int u : g[nodes[i]]) if (!vis[u]) {
 //!           // edge nodes[i] <=> u is in current BCC
@@ -21,7 +21,7 @@
 //!       for (int u : nodes) dsu.join(u, nodes[0]);
 //!     });
 //!     vector<basic_string<int>> bridge_tree(n);
-//!     rep (i, 0, n)
+//!     for (int i = 0; i < n; i++)
 //!       for (int u : g[i])
 //!         if (dsu.f(i) != dsu.f(u))
 //!           bridge_tree[dsu.f(i)] += dsu.f(u);
@@ -30,7 +30,7 @@
 //!   vector<basic_string<int>> g(n);
 //!   vector<basic_string<int>> block_vertex_tree(2 * n);
 //!   int bcc_id = n;
-//!   bcc(g, [&](const vi& nodes) {
+//!   bcc(g, [&](const vector<int>& nodes) {
 //!     for (int u : nodes) {
 //!       block_vertex_tree[u] += bcc_id;
 //!       block_vertex_tree[bcc_id] += u;

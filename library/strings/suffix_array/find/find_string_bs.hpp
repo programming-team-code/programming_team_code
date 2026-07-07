@@ -1,7 +1,7 @@
 #pragma once
 //! https://github.com/yosupo06/Algorithm/blob/master/src/string/suffixarray.hpp
 //! returns range [l,r) such that:
-//!   - for all i in [l,r): t==s.substr(sa[i],sz(t))
+//!   - for all i in [l,r): t==s.substr(sa[i],ssize(t))
 //!   - `r-l` is the # of matches of t in s.
 //! @time O(|t| * log(|s|))
 //! @space O(1)

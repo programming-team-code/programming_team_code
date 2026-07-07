@@ -4,7 +4,8 @@
 //! properties:
 //! - shrink(v) == shrink(shrink(v))
 //! - for x in b: (bit_floor(x) & shrink(v)) == 0
-//! - for 0 <= i < j < sz(b): (bit_floor(b[i]) & b[j]) == 0
+//! - for 0 <= i < j < ssize(b):
+//!   (bit_floor(b[i]) & b[j]) == 0
 //! @time O(32)
 //! @space O(32)
 struct basis {

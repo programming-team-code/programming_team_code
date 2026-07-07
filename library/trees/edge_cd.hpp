@@ -7,7 +7,7 @@
 //!   vector<basic_string<int>> g(n);
 //!   edge_cd(g, [&](int c, int m) {
 //!     // subtrees of [0, m) of g[c]: 1st edge-set
-//!     // subtrees of [m, sz(g[c])): 2nd edge-set
+//!     // subtrees of [m, ssize(g[c])): 2nd edge-set
 //!   });
 //! @endcode
 //! handle single-edge-paths separately

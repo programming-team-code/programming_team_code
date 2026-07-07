@@ -1,15 +1,16 @@
 #pragma once
 //! @code
 //!   vector<basic_string<array<int, 2>>> g(n);
-//!   vector<pii> edges(m);
-//!   rep(i, 0, m) {
+//!   vector<pair<int, int>> edges(m);
+//!   for (int i = 0; i < m; i++) {
 //!     int u, v;
 //!     cin >> u >> v;
 //!     u--, v--;
 //!     g[u] += {v, i};
 //!     edges[i] = {u, v};
 //!   }
-//!   vector<pii> path = euler_path(g, m, source);
+//!   vector<pair<int, int>> path =
+//!     euler_path(g, m, source);
 //! @endcode
 //! @time O(n + m)
 //! @space O(n + m)

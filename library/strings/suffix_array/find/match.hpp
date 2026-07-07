@@ -1,6 +1,6 @@
 #pragma once
 //! for all i in [sa_le,sa_ri):
-//!   - t==s.substr(sa[i],sz(t))
+//!   - t==s.substr(sa[i],ssize(t))
 //!   - `sa_ri-sa_le` is the # of matches of t in s.
 //!
 //! if sa_le==sa_ri then:

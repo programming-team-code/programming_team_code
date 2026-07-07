@@ -4,7 +4,7 @@
 //!   // requires s[i]>=0
 //!   string s;
 //!   auto [sa, sa_inv, lcp] = sa_short(s);
-//!   vi s_vec;
+//!   vector<int> s_vec;
 //!   auto [sa1, sa_inv1, lcp1] = sa_short(s_vec);
 //! @endcode
 //! about 2-3x slower than KACTL

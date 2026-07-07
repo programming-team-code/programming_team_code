@@ -2,7 +2,7 @@
 //! @code
 //!   auto lcm_conv = lcm_convolution(a, b);
 //! @endcode
-//! sz(a)==sz(b)
+//! ssize(a)==ssize(b)
 //! lcm_conv[k] = sum of (a[i]*b[j])
 //!   for all pairs (i,j) where lcm(i,j)==k
 //! @time O(n log n)

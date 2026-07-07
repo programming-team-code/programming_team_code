@@ -2,7 +2,7 @@
 //! @code
 //!   auto gcd_conv = gcd_convolution(a, b);
 //! @endcode
-//! sz(a)==sz(b)
+//! ssize(a)==ssize(b)
 //! gcd_conv[k] = sum of (a[i]*b[j])
 //!   for all pairs (i,j) where gcd(i,j)==k
 //! @time O(n log n)

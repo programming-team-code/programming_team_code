@@ -28,7 +28,7 @@
 //!   // requires 0<=s[i]<max_num
 //!   string s;
 //!   auto [sa, sa_inv, lcp] = get_sa(s, 256);
-//!   vi s_vec;
+//!   vector<int> s_vec;
 //!   auto [sa1, sa_inv1, lcp1] = get_sa(s_vec, 100'001);
 //! @endcode
 //!
