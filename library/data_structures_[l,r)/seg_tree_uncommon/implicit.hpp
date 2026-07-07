@@ -42,7 +42,7 @@ template<int N> struct implicit_seg_tree {
     int v) {
     if (r <= tl || tr <= l) return;
     if (l <= tl && tr <= r) return apply(add, v);
-    int tm = tl + (tr - tl) / 2;
+    int tm = midpoint(tl, tr);
     push(tl, tm, tr, v);
     update(l, r, add, tl, tm, tree[v].lch);
     update(l, r, add, tm, tr, tree[v].rch);
@@ -55,7 +55,7 @@ template<int N> struct implicit_seg_tree {
   dt query(int l, int r, int tl, int tr, int v) {
     if (r <= tl || tr <= l) return unit;
     if (l <= tl && tr <= r) return tree[v].num;
-    int tm = tl + (tr - tl) / 2;
+    int tm = midpoint(tl, tr);
     push(tl, tm, tr, v);
     return op(query(l, r, tl, tm, tree[v].lch),
       query(l, r, tm, tr, tree[v].rch));

@@ -25,7 +25,7 @@ struct kth_smallest {
   }
   int query(int k, int tl, int tr, int vl, int vr) {
     if (tr - tl == 1) return tl;
-    int tm = tl + (tr - tl) / 2;
+    int tm = midpoint(tl, tr);
     int cnt_l = pst.tree[pst.tree[vr].lch].sum -
                 pst.tree[pst.tree[vl].lch].sum;
     if (cnt_l >= k)
