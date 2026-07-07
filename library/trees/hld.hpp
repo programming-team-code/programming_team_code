@@ -14,24 +14,24 @@ template<bool VALS_EDGES> struct HLD {
   int n;
   vi p, siz, rt, tin;
   HLD(auto& g): n(sz(g)), p(n), siz(n, 1), rt(n), tin(n) {
-    auto dfs1 = [&](auto dfs1, int u) -> void {
+    auto dfs1 = [&](this auto&& dfs1, int u) -> void {
       for (int& v : g[u]) {
         erase(g[v], p[v] = u);
-        dfs1(dfs1, v);
+        dfs1(v);
         siz[u] += siz[v];
         if (siz[v] > siz[g[u][0]]) swap(v, g[u][0]);
       }
     };
-    dfs1(dfs1, 0);
+    dfs1(0);
     int tim = 0;
-    auto dfs2 = [&](auto dfs2, int u) -> void {
+    auto dfs2 = [&](this auto&& dfs2, int u) -> void {
       tin[u] = tim++;
       for (int v : g[u]) {
         rt[v] = (v == g[u][0] ? rt[u] : v);
-        dfs2(dfs2, v);
+        dfs2(v);
       }
     };
-    dfs2(dfs2, 0);
+    dfs2(0);
   }
   void path(int u, int v, auto f) {
     for (;; v = p[rt[v]]) {

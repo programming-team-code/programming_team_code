@@ -23,14 +23,14 @@ struct linear_kth_par {
         jmp[t] += st[du - k];
       d_tour[t++] = du;
     };
-    auto dfs = [&](auto&& dfs, int u, int p) -> vi {
+    auto dfs = [&](this auto&& dfs, int u, int p) -> vi {
       vi path;
       tin[st[d[u]] = u] = t;
       calc(d[u]);
       for (int v : g[u])
         if (v != p) {
           d[v] = d[u] + 1;
-          vi x = dfs(dfs, v, u);
+          vi x = dfs(v, u);
           calc(d[u]);
           if (sz(x) > sz(path)) swap(x, path);
           for (int y : x) idx[y] = i;
@@ -41,7 +41,7 @@ struct linear_kth_par {
       path.push_back(u);
       return path;
     };
-    vi x = dfs(dfs, 0, 0);
+    vi x = dfs(0, 0);
     for (int y : x) idx[y] = i;
     for (int y : x) lad[i++] = y;
   }

@@ -21,14 +21,14 @@ template<int K = 2> struct hagerup {
       jmp[t] = st[max(0, s - K * (t & -t))];
       t++;
     };
-    auto dfs = [&](auto&& dfs, int u, int p) -> void {
+    auto dfs = [&](this auto&& dfs, int u, int p) -> void {
       int& l = leaf[u] = st[d[u]] = u;
       pos[u] = t;
       calc(d[u]);
       for (int v : g[u])
         if (v != p) {
           d[v] = 1 + d[u];
-          dfs(dfs, v, u);
+          dfs(v, u);
           if (d[l] < d[leaf[v]]) l = leaf[v];
           calc(d[u]);
         }
@@ -36,7 +36,7 @@ template<int K = 2> struct hagerup {
       s = min(max(s, 2 * K), d[l] + 1);
       rep(i, sz(lad[l]), s) lad[l].push_back(st[d[l] - i]);
     };
-    dfs(dfs, 0, 0);
+    dfs(0, 0);
   }
   int kth_par(int u, int k) {
     assert(0 <= k && k <= d[u]);

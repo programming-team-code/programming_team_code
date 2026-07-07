@@ -44,11 +44,11 @@
 void bcc(const auto& g, auto f) {
   int n = sz(g), q = 0, s = 0;
   vi t(n), st(n);
-  auto dfs = [&](auto&& dfs, int u) -> int {
+  auto dfs = [&](this auto&& dfs, int u) -> int {
     int l = t[u] = ++q;
     for (int v : g[u]) {
       int siz = s, lu = 0;
-      l = min(l, t[v] ?: (lu = dfs(dfs, st[s++] = v)));
+      l = min(l, t[v] ?: (lu = dfs(st[s++] = v)));
       if (lu >= t[u]) {
         st[s++] = u;
         f({siz + all(st) - n + s});
@@ -57,5 +57,5 @@ void bcc(const auto& g, auto f) {
     }
     return l;
   };
-  rep(i, 0, n) if (!t[i]) dfs(dfs, i);
+  rep(i, 0, n) if (!t[i]) dfs(i);
 }

@@ -20,13 +20,13 @@ struct ladder {
     n(sz(g)), d(n), p(n), idx(n), lad(2 * n) {
     int i = 0;
     vi st(n);
-    auto dfs = [&](auto&& dfs, int u) -> vi {
+    auto dfs = [&](this auto&& dfs, int u) -> vi {
       vi path;
       st[d[u]] = u;
       for (int v : g[u])
         if (v != p[u]) {
           d[v] = d[p[v] = u] + 1;
-          vi x = dfs(dfs, v);
+          vi x = dfs(v);
           if (sz(x) > sz(path)) swap(x, path);
           for (int y : x) idx[y] = i;
           for (int y : x) lad[i++] = y;
@@ -36,7 +36,7 @@ struct ladder {
       path.push_back(u);
       return path;
     };
-    vi x = dfs(dfs, 0);
+    vi x = dfs(0);
     for (int y : x) idx[y] = i;
     for (int y : x) lad[i++] = y;
     jmp = treeJump(p);
