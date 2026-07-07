@@ -23,6 +23,7 @@ vi min_plus(const vi& convex, const vi& arbitrary) {
       }
     }
     dnc(res_le, mid_res, arb_le, min(arb_ri, op_arb + 1));
+    // NOLINTNEXTLINE(readability-suspicious-call-argument)
     dnc(mid_res + 1, res_ri, op_arb, arb_ri);
   };
   dnc(0, n + m - 1, 0, m);
