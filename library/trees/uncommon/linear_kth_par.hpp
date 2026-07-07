@@ -23,6 +23,7 @@ struct linear_kth_par {
         jmp[t] += st[du - k];
       d_tour[t++] = du;
     };
+    // pass-self, not deducing this: gcc bug 118291
     auto dfs = [&](auto&& dfs, int u, int p) -> vi {
       vi path;
       tin[st[d[u]] = u] = t;

@@ -11,6 +11,7 @@
 struct tree_lift {
   vi d, p, j;
   tree_lift(const auto& g): d(sz(g)), p(d), j(d) {
+    // pass-self, not deducing this: gcc bug 118291
     auto dfs = [&](auto&& dfs, int u) -> void {
       int up = d[u] + d[j[j[u]]] == 2 * d[j[u]] ? j[j[u]]
                                                 : u;

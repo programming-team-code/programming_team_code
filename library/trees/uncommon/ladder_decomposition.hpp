@@ -20,6 +20,7 @@ struct ladder {
     n(sz(g)), d(n), p(n), idx(n), lad(2 * n) {
     int i = 0;
     vi st(n);
+    // pass-self, not deducing this: gcc bug 118291
     auto dfs = [&](auto&& dfs, int u) -> vi {
       vi path;
       st[d[u]] = u;

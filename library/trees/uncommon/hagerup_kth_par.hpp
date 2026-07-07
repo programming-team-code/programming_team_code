@@ -21,6 +21,7 @@ template<int K = 2> struct hagerup {
       jmp[t] = st[max(0, s - K * (t & -t))];
       t++;
     };
+    // pass-self, not deducing this: gcc bug 118291
     auto dfs = [&](auto&& dfs, int u, int p) -> void {
       int& l = leaf[u] = st[d[u]] = u;
       pos[u] = t;
