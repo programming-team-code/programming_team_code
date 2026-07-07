@@ -5,14 +5,16 @@
 //!     return vl + vr;
 //!   });
 //!   tree st(n, LLONG_MAX, ranges::min);
-//!   st.max_right(l, r, [&](int m, ll value) -> bool {
-//!     // l <= m <= r
-//!     // value = op(a[l], a[l+1], ..., a[m])
-//!   });
-//!   st.min_left(l, r, [&](int m, ll value) -> bool {
-//!     // l <= m <= r
-//!     // value = op(a[m], ..., a[r-1], a[r])
-//!   });
+//!   int m1 = st.max_right(l, r,
+//!     [&](int m, ll value) -> bool {
+//!       // l <= m <= r
+//!       // value = op(a[l], a[l+1], ..., a[m])
+//!     }); // min m such that f fails; r+1 if none
+//!   int m2 = st.min_left(l, r,
+//!     [&](int m, ll value) -> bool {
+//!       // l <= m <= r
+//!       // value = op(a[m], ..., a[r-1], a[r])
+//!     }); // max m such that f fails; l-1 if none
 //! @endcode
 //! @time O(n + q log n)
 //! @space O(n)

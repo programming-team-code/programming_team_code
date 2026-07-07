@@ -20,23 +20,16 @@ int main() {
     } else if (type == 2) {
       cout << st.query(k, k + 1) << '\n';
     } else if (type == 3) {
-      // returns first element in [k,n) such that mx > 0
-      int idx = -1;
-      st.max_right(k, n, [&](int m, int mx) {
-        if (mx == 0) return 1;
-        idx = m - 1;
-        return 0;
-      });
-      cout << idx << '\n';
+      // index of first element in [k,n) such that mx > 0
+      int idx = st.max_right(k, n,
+        [&](int, int mx) { return mx == 0; });
+      cout << (idx == n ? -1 : idx) << '\n';
     } else {
       assert(type == 4);
-      int idx = -1;
-      st.min_left(0, k + 1, [&](int m, int mx) {
-        if (mx == 0) return 1;
-        idx = m;
-        return 0;
-      });
-      cout << idx << '\n';
+      // index of last element in [0,k] such that mx > 0
+      int idx = st.min_left(0, k + 1,
+        [&](int, int mx) { return mx == 0; });
+      cout << idx - 1 << '\n';
     }
   }
   return 0;
