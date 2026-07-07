@@ -16,7 +16,7 @@ vi offline_incremental_scc(vector<array<int, 2>> eds,
   vi ids(n, -1), joins(m, m), idx(m), vs(n), scc_id;
   iota(all(idx), 0);
   vector<vi> g;
-  auto dnc = [&](auto&& dnc, auto el, auto er, int tl,
+  auto dnc = [&](this auto&& dnc, auto el, auto er, int tl,
                int tr) {
     g.clear();
     int mid = midpoint(tl, tr);
@@ -42,11 +42,11 @@ vi offline_incremental_scc(vector<array<int, 2>> eds,
       auto& [u, v] = eds[*it];
       u = scc_id[u], v = scc_id[v];
     }
-    dnc(dnc, el, split, tl, mid);
-    dnc(dnc, split, er, mid, tr);
+    dnc(el, split, tl, mid);
+    dnc(split, er, mid, tr);
   };
   // uses -1 as the lower bound to correctly handle
   // self-edges
-  dnc(dnc, all(idx), -1, m);
+  dnc(all(idx), -1, m);
   return joins;
 }

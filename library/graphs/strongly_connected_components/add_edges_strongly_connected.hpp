@@ -29,12 +29,12 @@ vector<pii> extra_edges(const auto& g, int num_sccs,
     zero_in[scc_id[v]] = 0;
   }
   vector<bool> vis(num_sccs);
-  auto dfs = [&](auto&& dfs, int u) {
+  auto dfs = [&](this auto&& dfs, int u) {
     if (empty(scc_g[u])) return u;
     for (int v : scc_g[u])
       if (!vis[v]) {
         vis[v] = 1;
-        int zero_out = dfs(dfs, v);
+        int zero_out = dfs(v);
         if (zero_out != -1) return zero_out;
       }
     return -1;
@@ -43,7 +43,7 @@ vector<pii> extra_edges(const auto& g, int num_sccs,
   vi in_unused;
   rep(i, 0, num_sccs) if (zero_in[i]) {
     vis[i] = 1;
-    int zero_out = dfs(dfs, i);
+    int zero_out = dfs(i);
     if (zero_out != -1) edges.emplace_back(zero_out, i);
     else in_unused.push_back(i);
   }
