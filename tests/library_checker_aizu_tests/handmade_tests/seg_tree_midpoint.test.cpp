@@ -6,7 +6,7 @@ int lg(int x) { return bit_width(x + 0u) - 1; }
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   rep(n, 1, 5000) {
-    auto dfs = [&](auto&& self, int tl, int tr,
+    auto dfs = [&](this auto&& self, int tl, int tr,
                  int v) -> void {
       assert((v >= n) == ((tr - tl) == 1));
       if (v >= n) { // leaf node
@@ -58,11 +58,11 @@ int main() {
         assert(split(tl - 1234, tr - 1234) == tm - 1234);
         assert(split(tl - 1, tr - 1) == tm - 1);
         assert(split(tl + 50, tr + 50) == tm + 50);
-        self(self, tl, tm, 2 * v);
-        self(self, tm, tr, 2 * v + 1);
+        self(tl, tm, 2 * v);
+        self(tm, tr, 2 * v + 1);
       }
     };
-    dfs(dfs, 0, n, 1);
+    dfs(0, n, 1);
   }
   cout << "Hello World\n";
   return 0;

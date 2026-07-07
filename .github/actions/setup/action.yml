@@ -9,7 +9,9 @@ runs:
         chmod +x llvm.sh
         sudo ./llvm.sh 22
         sudo apt-get update
-        sudo apt-get install -y clang-format-22 clang-tidy-22
+        sudo apt-get install -y clang-format-22 clang-tidy-22 g++-14
+        sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-14 100
         clang-22 --version
         clang-format-22 --version
         clang-tidy-22 --version
+        g++ --version
