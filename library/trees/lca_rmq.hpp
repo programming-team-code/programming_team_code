@@ -16,13 +16,14 @@ struct LCA {
   LCA(const auto& g):
     n(sz(g)), tin(n), siz(n, 1), d(n), p(n) {
     vi order;
-    auto dfs = [&](this auto&& dfs, int u) -> void {
+    auto dfs = [&](auto&& dfs, int u) -> void {
       tin[u] = sz(order), order.push_back(u);
       for (int v : g[u])
         if (v != p[u])
-          d[v] = d[p[v] = u] + 1, dfs(v), siz[u] += siz[v];
+          d[v] = d[p[v] = u] + 1, dfs(dfs, v),
+          siz[u] += siz[v];
     };
-    dfs(0);
+    dfs(dfs, 0);
     rmq = {order,
       [&](int u, int v) { return d[u] < d[v] ? u : v; }};
   }
