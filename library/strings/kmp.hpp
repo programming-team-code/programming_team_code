@@ -9,6 +9,7 @@
 //!   auto match2 = kmp1.find_str(s_vec);
 //! @endcode
 //! if match[i] == 1 then s[i,ssize(t)) == t
+//! requires t non-empty
 //! @time O(|s| + |t|)
 //! @space O(|s| + |t|)
 // NOLINTNEXTLINE(readability-identifier-naming)

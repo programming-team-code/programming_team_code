@@ -5,6 +5,7 @@
 //!       //u, v, w form a triangle
 //!   });
 //! @endcode
+//! requires no self loops or multi edges
 //! @time O(n + m ^ (3/2))
 //! @space O(n + m)
 void enumerate_triangles(const vector<pii>& edges, int n,

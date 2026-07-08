@@ -4,6 +4,8 @@
 //!   bt.update(num, 1); // insert
 //!   bt.update(num, -1); // erase
 //! @endcode
+//! requires 0 <= num < 2^61
+//! walk requires a non-empty trie
 //! @time O(q * mx_bit)
 //! @space O(q * mx_bit)
 const ll mx_bit = 1LL << 60;

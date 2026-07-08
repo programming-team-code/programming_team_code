@@ -4,6 +4,7 @@
 //!   vector<basic_string<int>> g(n);
 //!   vector<int> p = cd(g, [&](int c) {});
 //! @endcode
+//! g is mutated (edges removed)
 //! @time O(n log n)
 //! @space O(n)
 vi cd(auto& g, auto f) {

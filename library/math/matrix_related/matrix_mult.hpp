@@ -1,5 +1,6 @@
 #pragma once
 //! https://codeforces.com/blog/entry/80195
+//! watch for overflow if T is an integer type
 //! @time O(n * m * inner)
 //! @space O(n * m)
 template<class T>

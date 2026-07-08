@@ -3,6 +3,7 @@
 //! @code
 //!   int quotient = mod_div(x, y); // returns x * y^-1
 //! @endcode
+//! requires gcd(y, mod) == 1
 //! @time O(log(y))
 //! @space O(1)
 const int mod = 998244353;

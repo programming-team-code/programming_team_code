@@ -11,6 +11,7 @@
 //!   });
 //! @endcode
 //! handle single-edge-paths separately
+//! g is mutated (edges reordered/removed)
 //! @time O(n logφ n)
 //! @space O(n)
 template<class G> void edge_cd(vector<G>& g, auto f) {
