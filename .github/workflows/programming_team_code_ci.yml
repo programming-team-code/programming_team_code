@@ -9,9 +9,9 @@ jobs:
   library_checker_aizu:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v4
     - name: Set up Python
-      uses: actions/setup-python@v1
+      uses: actions/setup-python@v5
     - name: Make preinstalled g++-14 the default g++
       run: |
         sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-14 100
@@ -102,13 +102,12 @@ jobs:
     - uses: actions/download-artifact@v4
       with:
         name: ptc
-        path: tests/ptc.pdf
-    - uses: marvinpinto/action-automatic-releases@latest
+        path: tests/
+    - uses: softprops/action-gh-release@v2
       with:
-        repo_token: ${{ secrets.GITHUB_TOKEN }}
-        automatic_release_tag: ptc
+        tag_name: ptc
+        name: ptc
         prerelease: false
-        title: ptc
         files: tests/ptc.pdf
 
   update_main:
