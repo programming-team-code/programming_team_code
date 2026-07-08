@@ -1,6 +1,6 @@
 #pragma once
 //! returns the number of distinct subsequences
-//!   of a, including the empty subsquence
+//!   of a, including the empty subsequence
 //! @time O(n log n)
 //! @space O(n)
 int num_subsequences(const vi& a, int mod) {
