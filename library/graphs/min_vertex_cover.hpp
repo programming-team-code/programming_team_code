@@ -9,8 +9,8 @@
 //!   auto [mvc_l, mvc_r] = cover(g, r);
 //!   // mvc_l[u] == 1 iff u in mvc
 //! @endcode
-//! @time O(n + q * log n)
-//! @space O(n * \alpha(n))
+//! @time O(n + m)
+//! @space O(n)
 pair<vi, vi> cover(const vector<vi>& g, vi& r) {
   int n = sz(g), t = 0;
   vi cl(n), cr(sz(r)), q(n);

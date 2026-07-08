@@ -6,6 +6,7 @@
 //! columns [0,cols) of mat represent a matrix
 //! columns [cols,m) of mat are also
 //!   affected by row operations
+//! requires mod is prime
 //! @time O(n * m * min(cols, n))
 //! @space O(1)
 pii row_reduce(vector<vi>& mat, int cols) {

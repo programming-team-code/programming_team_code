@@ -7,6 +7,7 @@
 //!   });
 //!   auto [l, r] = hld.subtree(u); // [l, r)
 //! @endcode
+//! g is mutated (parent edges removed)
 //! @time O(n + q log^2 n)
 //! @space O(n)
 // NOLINTNEXTLINE(readability-identifier-naming)

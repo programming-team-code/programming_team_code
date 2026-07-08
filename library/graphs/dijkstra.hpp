@@ -4,6 +4,7 @@
 //!   auto d = dijkstra(g, source);
 //! @endcode
 //! d[v] = min dist from source->..->v
+//! requires weights >= 0
 //! @time O(n + (m log m))
 //! @space O(n + m)
 vector<ll> dijkstra(const auto& g, int s) {

@@ -5,8 +5,8 @@
 //!     // sum = a[0] + a[1] + ... + a[r - 1]
 //!   });
 //!   int r = bit.walk2(sum);
-//!   // Returns min r s.t. sum of [0,r] >= sum
-//!   // Returns n if sum of [0,n-1] < sum
+//!   // Returns min r s.t. sum of [0,r+1) >= sum
+//!   // Returns n if sum of [0,n) < sum
 //!   // Returns -1 if sum <= 0
 //! @endcode
 //! @time O(n + q log n)

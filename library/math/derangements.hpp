@@ -4,6 +4,7 @@
 //!   auto der = derangements(n, mod);
 //! @endcode
 //! der[i] = number of permutations p with p[i]!=i
+//! requires n >= 1
 //! @time O(n)
 //! @space O(n)
 vector<ll> derangements(int n, int mod) {
