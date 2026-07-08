@@ -7,6 +7,7 @@
 //! @endcode
 //! @time O((n + m)log(n + m))
 //! @space O(n + m)
+using vl = vector<ll>;
 array<vl, 2> get_right_and_top(vl left, vl bottom) {
   array<vl, 2> res;
   for (vl& cur : res) {
