@@ -4,7 +4,7 @@ const int mod = 998'244'353;
 //! @code
 //!   auto p = partitions(n);
 //! @endcode
-//! p[i] = number of partitions of i numbers
+//! p[i] = number of partitions of i
 //! @time O(n sqrt n)
 //! @space O(n)
 vector<ll> partitions(int n) {

@@ -2,7 +2,7 @@
 //! @param convex,arbitrary arrays where convex satisfies
 //!   convex[i+1]-convex[i] <= convex[i+2]-convex[i+1]
 //! @returns array `res` where `res[k]` = the min of
-//!   (a[i]+b[j]) for all pairs (i,j) where i+j==k
+//!   (convex[j]+arbitrary[i]) over pairs with i+j==k
 //! @time O((n + m) log (n + m))
 //! @space O(n + m)
 vi min_plus(const vi& convex, const vi& arbitrary) {
