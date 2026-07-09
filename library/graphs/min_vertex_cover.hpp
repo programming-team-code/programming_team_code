@@ -4,7 +4,7 @@
 //!   vector<vector<int>> g(l_sz);
 //!   g[u].push_back(v); // 0 <= u < l_sz, 0 <= v < r_sz
 //!   vector<int> r(r_sz, -1);
-//!   int match_sz = hopcroftKarp(g, r);
+//!   int match_size = hopcroftKarp(g, r);
 //!   // r[v] != -1 iff edge r[v] <-> v in matching
 //!   auto [mvc_l, mvc_r] = cover(g, r);
 //!   // mvc_l[u] == 1 iff u in mvc
