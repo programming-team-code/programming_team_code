@@ -23,27 +23,13 @@ int main() {
       if (bit.query(k, n - 1) == 0) cout << -1 << '\n';
       else {
         ll order = bit.query(k - 1);
-        int res = -1;
-        bit.walk([&](int r, ll sum) {
-          if (sum <= order) return 1;
-          res = r;
-          return 0;
-        });
-        cout << res << '\n';
+        cout << bit.walk(order + 1) << '\n';
       }
     } else {
       if (bit.query(k) == 0) cout << -1 << '\n';
       else {
         ll order = bit.query(k);
-        int res = -1;
-        bit.walk([&](int r, ll sum) {
-          if (sum >= order) {
-            res = r;
-            return 0;
-          }
-          return 1;
-        });
-        cout << res << '\n';
+        cout << bit.walk(order) << '\n';
       }
     }
   }
