@@ -1,7 +1,6 @@
 int min_left(int l, int r, auto f) {
   for (T x = unit; l < r;) {
-    int u = r + n,
-        v = bit_width(min(u & -u, r - l) + 0u) - 1,
+    int u = r + n, v = bit_width(min(u & -u, r - l) / 2u),
         m = r - (1 << v);
     if (T y = op(s[(u - 1) >> v], x); f(m, y))
       r = m, x = y;

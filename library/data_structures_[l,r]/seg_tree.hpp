@@ -19,8 +19,7 @@
 //! @time O(n + q log n)
 //! @space O(n)
 int nxt(int& l, int r) {
-  int u = l,
-      v = bit_width(min(l & -l, r - l + 1) + 0u) - 1;
+  int u = l, v = bit_width(min(l & -l, r - l + 1) / 2u);
   return l += 1 << v, u >> v;
 }
 template<class T, class F> struct tree {

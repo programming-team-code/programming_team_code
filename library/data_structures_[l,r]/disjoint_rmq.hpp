@@ -27,7 +27,7 @@ template<class T, class F> struct disjoint_rmq {
   }
   T query(int l, int r) {
     if (l == r) return dp[0][l];
-    int lg = bit_width((l ^ r) + 0u) - 1;
+    int lg = bit_width((l ^ r) / 2u);
     return op(dp[lg][l], dp[lg][r]);
   }
 };
