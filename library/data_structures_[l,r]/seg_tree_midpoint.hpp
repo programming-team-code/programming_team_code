@@ -6,5 +6,5 @@
 //! @endcode
 int split(int tl, int tr) {
   int pw2 = bit_floor(tr - tl + 1u);
-  return min(tl + pw2 - 1, tr - pw2 / 2);
+  return min(tl + pw2 - 1, tr - (pw2 >> 1));
 }

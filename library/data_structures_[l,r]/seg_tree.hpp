@@ -30,7 +30,7 @@ template<class T, class F> struct tree {
     n(n), op(op), s(2 * n, unit) {}
 #include "seg_tree_uncommon/init.hpp"
   void update(int i, T val) {
-    for (s[i += n] = val; i /= 2;)
+    for (s[i += n] = val; i >>= 1;)
       s[i] = op(s[2 * i], s[2 * i + 1]);
   }
   T query(int l, int r) {

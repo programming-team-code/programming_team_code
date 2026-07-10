@@ -11,7 +11,7 @@
 ll hilbert(int x, int y) {
   ll d = 0, mx = 1;
   while (mx <= max(x, y)) mx *= 4;
-  for (int s = mx / 2; s; s /= 2) {
+  for (int s = mx >> 1; s; s >>= 1) {
     bool rx = x & s, ry = y & s;
     d = d * 4 | (ry * 3 ^ rx);
     if (!rx) {

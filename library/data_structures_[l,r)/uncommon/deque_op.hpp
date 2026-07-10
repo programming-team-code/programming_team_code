@@ -10,7 +10,7 @@ template<class T, class F> struct deq {
   F op;
   vector<dt> l, r;
   deq(const vector<T>& a, F op): op(op) {
-    rebuild(a, sz(a) / 2);
+    rebuild(a, sz(a) >> 1);
   }
   T query() {
     if (empty(l)) return r.back()[1];
@@ -33,7 +33,7 @@ template<class T, class F> struct deq {
       vector<T> a(sz(l));
       ranges::transform(l, rbegin(a),
         [](dt& x) { return x[0]; });
-      rebuild(a, sz(a) / 2);
+      rebuild(a, sz(a) >> 1);
     }
     r.pop_back();
   }
@@ -46,7 +46,7 @@ template<class T, class F> struct deq {
       vector<T> a(sz(r));
       ranges::transform(r, begin(a),
         [](dt& x) { return x[0]; });
-      rebuild(a, (sz(a) + 1) / 2);
+      rebuild(a, (sz(a) + 1) >> 1);
     }
     l.pop_back();
   }
