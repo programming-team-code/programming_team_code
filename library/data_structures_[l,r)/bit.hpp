@@ -25,6 +25,5 @@ struct BIT {
     return res;
   }
   ll query(int l, int r) { return query(r) - query(l); }
-#include "bit_uncommon/walk_lambda.hpp"
 #include "bit_uncommon/walk.hpp"
 };
