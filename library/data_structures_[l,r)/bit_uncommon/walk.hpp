@@ -1,4 +1,4 @@
-int walk2(ll sum) {
+int walk(ll sum) {
   if (sum <= 0) return -1;
   int r = 0;
   for (int i = bit_floor(size(s)); i; i /= 2)
