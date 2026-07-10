@@ -9,7 +9,7 @@ struct rp_dsu {
   vector<DSU> dsus;
   rp_dsu(int n): dsus(bit_width(n + 0u), DSU(n)) {}
   void join(int u, int v, int len, auto f) {
-    int i = bit_width(len + 0u) - 1;
+    int i = bit_width(len / 2u);
     join(u, v, f, i);
     join(u + len - (1 << i), v + len - (1 << i), f, i);
   }

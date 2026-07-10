@@ -45,7 +45,7 @@ struct ladder {
   int kth_par(int u, int k) {
     assert(0 <= k && k <= d[u]);
     if (k == 0) return u;
-    int bit = bit_width(k + 0u) - 1;
+    int bit = bit_width(k / 2u);
     u = jmp[bit][u], k -= (1 << bit);
     int i = idx[u], j = i + d[lad[i]] - d[u];
     assert(lad[j] == u);
