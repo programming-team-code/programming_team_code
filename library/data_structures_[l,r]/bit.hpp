@@ -1,10 +1,7 @@
 #pragma once
 //! @code
 //!   BIT bit(n);
-//!   bit.walk([&](int r, int64_t sum) -> bool {
-//!     // sum = a[0] + a[1] + ... + a[r]
-//!   });
-//!   int r = bit.walk2(sum);
+//!   int r = bit.walk(sum);
 //!   // Returns min r s.t. sum of [0,r] >= sum
 //!   // Returns n if sum of [0,n-1] < sum
 //!   // Returns -1 if sum <= 0
