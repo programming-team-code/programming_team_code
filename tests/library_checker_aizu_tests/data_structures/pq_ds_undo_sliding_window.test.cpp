@@ -22,7 +22,7 @@ int main() {
   rep(i, 0, n) cin >> arr[i];
   stack_with_get_max stm;
   pq_updates<stack_with_get_max, int> pq(stm);
-  int pri = (n - l) / 2;
+  int pri = (n - l) >> 1;
   rep(i, 0, l) pq.push_update(arr[i], pri--);
   cout << pq.ds.get_max();
   rep(i, l, n) {

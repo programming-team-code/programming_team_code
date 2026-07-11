@@ -29,7 +29,8 @@ int main() {
         return sum + sz(neighbors);
       });
     int cnt_bridges = accumulate(all(is_br), 0);
-    assert(sum_deg % 2 == 0 && sum_deg / 2 == cnt_bridges);
+    assert(
+      sum_deg % 2 == 0 && (sum_deg >> 1) == cnt_bridges);
   }
   DSU dsu(n);
   int num_sets_dsu = n;

@@ -14,7 +14,7 @@ int main() {
   for (int& x : arr) {
     int l = -1, r = int(sz(compress));
     while (r - l > 1) {
-      int mi = l + (r - l) / 2;
+      int mi = l + ((r - l) >> 1);
       if (compress[mi] >= x) r = mi;
       else l = mi;
     }

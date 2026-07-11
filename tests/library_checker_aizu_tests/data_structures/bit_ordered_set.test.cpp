@@ -22,7 +22,7 @@ int main() {
   auto get_compressed_idx = [&](int val) -> int {
     int l = 0, r = sz(compress);
     while (l + 1 < r) {
-      int m = (l + r) / 2;
+      int m = (l + r) >> 1;
       if (compress[m] <= val) l = m;
       else r = m;
     }

@@ -14,7 +14,7 @@ int main() {
   for (int& val : a) {
     int start = 0, end = sz(comp);
     while (start + 1 < end) {
-      int mid = (start + end) / 2;
+      int mid = (start + end) >> 1;
       if (comp[mid] <= val) start = mid;
       else end = mid;
     }

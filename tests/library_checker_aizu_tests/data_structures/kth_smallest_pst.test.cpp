@@ -14,7 +14,7 @@ int main() {
   for (int& val : arr) {
     int start = 0, end = sz(sorted);
     while (start + 1 < end) {
-      int mid = (start + end) / 2;
+      int mid = (start + end) >> 1;
       if (sorted[mid] <= val) start = mid;
       else end = mid;
     }
