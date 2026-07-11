@@ -25,7 +25,6 @@ int main() {
   assert(sa_inv == sa_inv1);
   assert(lcp == lcp1);
   assert(sz(lcp) == n - 1);
-  cout
-    << (1LL * n * (n + 1) >> 1) - accumulate(all(lcp), 0LL)
-    << '\n';
+  cout << 1LL * n * (n + 1) / 2 - accumulate(all(lcp), 0LL)
+       << '\n';
 }

@@ -57,7 +57,7 @@ void mono_st_asserts(const vi& a) {
         assert(j <= r[i]);
         assert(cmp(a[i], a[j]));
         assert(cmp(a[i], a[r[j] - 1]));
-        assert(cmp(a[i], a[j + ((r[j] - j) >> 1)]));
+        assert(cmp(a[i], a[j + (r[j] - j) / 2]));
         iterations++;
       }
     }

@@ -15,7 +15,7 @@ vl divide_and_conquer(vl h, vl bottom) {
   int n = sz(h);
   if (n == 0) return {};
   if (n == 1) return vl(h[0], bottom[0]);
-  int mid = n >> 1;
+  int mid = n / 2;
   auto rect_left =
     divide_and_conquer(vl(begin(h), begin(h) + mid),
       vl(begin(bottom), begin(bottom) + mid));

@@ -24,12 +24,12 @@ int main() {
       } else {
         assert(1 <= v && v < n);
         if (((tr - tl) & (tr - tl - 1)) == 0)
-          assert(split(tl, tr) == (tl + tr) >> 1);
+          assert(split(tl, tr) == (tl + tr) / 2);
         {
           int pow_2 = bit_floor(tr - tl + 0u);
-          if (tl + pow_2 < tr - (pow_2 >> 1)) {
+          if (tl + pow_2 < tr - pow_2 / 2) {
             assert(pow_2 != tr - tl);
-            assert((pow_2 >> 1) < tr - tl - pow_2 &&
+            assert(pow_2 / 2 < tr - tl - pow_2 &&
                    tr - tl - pow_2 < pow_2);
             assert(
               pow_2 <= 2 * (tr - tl - pow_2) - 1 &&
@@ -38,18 +38,18 @@ int main() {
                      lg(2 * ((tr - tl) - pow_2) - 1) &&
                    lg(pow_2) == lg(2 * pow_2 - 1));
           } else if (pow_2 < tr - tl) {
-            assert((pow_2 >> 1) < tr - tl - (pow_2 >> 1) &&
-                   tr - tl - (pow_2 >> 1) <= pow_2);
-            assert(pow_2 <=
-                     2 * ((tr - tl) - (pow_2 >> 1)) - 1 &&
-                   2 * ((tr - tl) - (pow_2 >> 1)) - 1 <=
-                     2 * pow_2 - 1);
-            assert(lg(2 * (tr - tl - (pow_2 >> 1)) - 1) ==
-                   lg(2 * pow_2 - 1));
-            assert(lg(2 * ((tr - tl) - (pow_2 >> 1)) -
-                      1) == lg(pow_2));
+            assert(pow_2 / 2 < tr - tl - pow_2 / 2 &&
+                   tr - tl - pow_2 / 2 <= pow_2);
             assert(
-              lg(pow_2) == 1 + lg(2 * (pow_2 >> 1) - 1));
+              pow_2 <= 2 * ((tr - tl) - pow_2 / 2) - 1 &&
+              2 * ((tr - tl) - pow_2 / 2) - 1 <=
+                2 * pow_2 - 1);
+            assert(lg(2 * (tr - tl - pow_2 / 2) - 1) ==
+                   lg(2 * pow_2 - 1));
+            assert(lg(2 * ((tr - tl) - pow_2 / 2) - 1) ==
+                   lg(pow_2));
+            assert(
+              lg(pow_2) == 1 + lg(2 * (pow_2 / 2) - 1));
           }
         }
         int tm = split(tl, tr);

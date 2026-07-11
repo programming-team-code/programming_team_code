@@ -9,7 +9,7 @@
 //! @time O(n)
 //! @space O(n)
 vi longest_from_index(pal_query& pq) {
-  int n = (sz(pq.man) + 1) >> 1;
+  int n = (sz(pq.man) + 1) / 2;
   vector longest(n, n - 1);
   for (int i = n - 2; i >= 0; i--) {
     longest[i] = min(longest[i + 1] + 1, n - 1);

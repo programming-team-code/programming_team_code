@@ -52,6 +52,6 @@ struct longest_pal_query {
       });
     int best_center =
       rmq.query(2 * l + pal_len - 1, 2 * r - pal_len);
-    return {(best_center + 1 - pal_len) >> 1, pal_len};
+    return {(best_center + 1 - pal_len) / 2, pal_len};
   }
 };
