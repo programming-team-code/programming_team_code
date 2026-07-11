@@ -12,7 +12,7 @@ vi min_plus(const vi& convex, const vi& arbitrary) {
   auto dnc = [&](this auto&& dnc, int res_le, int res_ri,
                int arb_le, int arb_ri) {
     if (res_le >= res_ri) return;
-    int mid_res = (res_le + res_ri) / 2;
+    int mid_res = (res_le + res_ri) >> 1;
     int op_arb = arb_le;
     rep(i, arb_le, min(mid_res + 1, arb_ri)) {
       int j = mid_res - i;

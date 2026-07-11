@@ -22,7 +22,7 @@ vi manacher(const auto& s) {
   rep(i, 0, 2 * n - 1) {
     int r = i <= 2 * (p - man[p])
               ? p - max(man[2 * p - i], man[p])
-              : i / 2;
+              : i >> 1;
     man[i] = i - r;
     while (
       man[i] > 0 && r + 1 < n && s[man[i] - 1] == s[r + 1])
