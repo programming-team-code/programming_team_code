@@ -18,7 +18,7 @@ struct binary_trie {
   binary_trie(): t(1) {}
   void update(ll num, int delta) {
     int v = 0;
-    for (ll bit = mx_bit; bit; bit /= 2) {
+    for (ll bit = mx_bit; bit; bit >>= 1) {
       bool b = num & bit;
       if (t[v].nxt[b] == -1) {
         t[v].nxt[b] = sz(t);
@@ -31,7 +31,7 @@ struct binary_trie {
   ll walk(ll num) {
     int v = 0;
     ll res = 0;
-    for (ll bit = mx_bit; bit; bit /= 2) {
+    for (ll bit = mx_bit; bit; bit >>= 1) {
       bool b = num & bit;
       int u = t[v].nxt[b];
       if (u != -1 && t[u].siz > 0) v = u, res |= num & bit;

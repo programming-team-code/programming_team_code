@@ -27,12 +27,12 @@ template<class T, class F> struct tree {
   tree(int n, T unit, F op):
     n(n), unit(unit), op(op), s(2 * n, unit) {}
   void update(int i, T val) {
-    for (s[i += n] = val; i /= 2;)
+    for (s[i += n] = val; i >>= 1;)
       s[i] = op(s[2 * i], s[2 * i + 1]);
   }
   T query(int l, int r) {
     T x = unit, y = unit;
-    for (l += n, r += n; l < r; l /= 2, r /= 2) {
+    for (l += n, r += n; l < r; l >>= 1, r >>= 1) {
       if (l % 2) x = op(x, s[l++]);
       if (r % 2) y = op(s[--r], y);
     }

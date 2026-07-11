@@ -13,7 +13,7 @@
 #undef modpow
 ll modpow(ll b, ll e) {
   ll res = 1;
-  for (; e; b = b * b % 998'244'353, e /= 2)
+  for (; e; b = b * b % 998'244'353, e >>= 1)
     if (e & 1) res = res * b % 998'244'353;
   return res;
 }

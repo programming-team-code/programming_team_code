@@ -13,7 +13,7 @@
 ll bin_exp(ll b, ll e, int mod) {
   ll res = 1;
   if ((b %= mod) < 0) b += mod;
-  for (; e; b = b * b % mod, e /= 2)
+  for (; e; b = b * b % mod, e >>= 1)
     if (e & 1) res = res * b % mod;
   return res;
 }
