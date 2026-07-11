@@ -4,7 +4,7 @@ struct trie {
   struct node {
     array<int, 26> nxt;
     bool end_of_word = 0;
-    node() { ranges::fill(nxt, -1); }
+    node() { nxt.fill(-1); }
   };
   deque<node> t;
   trie(): t(1) {}
