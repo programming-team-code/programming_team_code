@@ -8,6 +8,7 @@
 //!   auto [sa1, sa_inv1, lcp1] = sa_short(s_vec);
 //! @endcode
 //! about 2-3x slower than KACTL
+//! requires n >= 1 (lcp size n-1 underflows when n == 0)
 //! @time O(n * log^2(n))
 //! @space O(n)
 auto sa_short(const auto& s) {

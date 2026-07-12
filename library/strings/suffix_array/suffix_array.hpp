@@ -32,6 +32,7 @@
 //!   auto [sa1, sa_inv1, lcp1] = get_sa(s_vec, 100'001);
 //! @endcode
 //!
+//! requires n >= 1 (lcp size n-1 underflows when n == 0)
 //! @time O(nlogn + max_num)
 //! @space O(n + max_num)
 auto get_sa(const auto& s, int max_num) {
