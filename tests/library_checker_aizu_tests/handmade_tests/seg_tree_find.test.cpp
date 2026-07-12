@@ -51,7 +51,7 @@ int main() {
       else assert(cur_le == prv_ri);
     }
     ranges::sort(rngs);
-    assert(unique(all(rngs)) == end(rngs));
+    assert(begin(ranges::unique(rngs)) == end(rngs));
     reset();
     assert(
       pos == rv(rev.find_last(rv(r - 1), rv(l) + 1, f)));
@@ -67,7 +67,7 @@ int main() {
       else assert(prv_le == cur_ri);
     }
     ranges::sort(rngs);
-    assert(unique(all(rngs)) == end(rngs));
+    assert(begin(ranges::unique(rngs)) == end(rngs));
   }
   cout << "Hello World\n";
   return 0;

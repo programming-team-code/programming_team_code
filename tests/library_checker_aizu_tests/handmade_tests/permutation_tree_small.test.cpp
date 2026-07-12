@@ -7,10 +7,10 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
   for (int n = 1; n <= 8; n++) {
     vi a(n);
-    iota(all(a), 0);
+    ranges::iota(a, 0);
     do {
       perm_tree pt = perm_tree_asserts(a);
-    } while (next_permutation(all(a)));
+    } while (ranges::next_permutation(a).found);
   }
   cout << "Hello World\n";
   return 0;
