@@ -2,7 +2,7 @@
 //! @time O(mx)
 //! @space O(mx)
 vi primes, sieve(1001); //!< min prime factor
-iota(all(sieve), 0);
+ranges::iota(sieve, 0);
 rep(i, 2, sz(sieve)) {
   if (sieve[i] == i) primes.push_back(i);
   for (int prime : primes) {

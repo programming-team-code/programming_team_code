@@ -16,7 +16,7 @@ array<vi, 2> compress_tree(vi subset) {
   rep(i, 1, len)
     subset.push_back(lca(subset[i - 1], subset[i]));
   ranges::sort(subset, {}, proj);
-  subset.erase(unique(all(subset)), end(subset));
+  subset.erase(begin(ranges::unique(subset)), end(subset));
   return {
     mono_st(subset,
       [&](int u, int v) { return in_subtree(u, v); }),

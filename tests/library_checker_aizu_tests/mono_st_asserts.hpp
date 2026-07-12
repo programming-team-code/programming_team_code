@@ -11,7 +11,7 @@ tuple<int, vector<vi>, vi> min_cartesian_tree(const vi& a,
     return r[i] == n || a[r[i]] < a[i];
   };
   vi to_min(n);
-  iota(all(to_min), 0);
+  ranges::iota(to_min, 0);
   for (int i = n - 1; i >= 0; i--)
     if (!is_node(i)) to_min[i] = to_min[r[i]];
   vector<vi> adj(n);
