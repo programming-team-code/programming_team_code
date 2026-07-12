@@ -11,7 +11,7 @@ struct longest_pal_query {
   //! @space O(n log n) for rmq, everything else is O(n)
   longest_pal_query(const auto& s): man(manacher(s)) {
     vi init(sz(man));
-    iota(all(init), 0);
+    ranges::iota(init, 0);
     rmq = {init, [&](int i1, int i2) {
              return len(i1) < len(i2) ? i2 : i1;
            }};

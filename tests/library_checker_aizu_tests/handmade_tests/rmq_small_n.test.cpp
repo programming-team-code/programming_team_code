@@ -20,10 +20,10 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
   for (int n = 1; n <= 8; n++) {
     vi perm(n);
-    iota(all(perm), 0);
+    ranges::iota(perm, 0);
     do {
       test_all_subarrays(perm);
-    } while (next_permutation(all(perm)));
+    } while (ranges::next_permutation(perm).found);
   }
   for (int n = 1; n <= 100; n++) {
     rep(times, 0, 40) {

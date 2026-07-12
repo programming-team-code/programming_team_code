@@ -10,7 +10,7 @@ int main() {
   for (int& x : arr) cin >> x;
   vi compress(arr);
   ranges::sort(compress);
-  compress.erase(unique(all(compress)), end(compress));
+  compress.erase(begin(ranges::unique(compress)), end(compress));
   for (int& x : arr) {
     int l = -1, r = int(sz(compress));
     while (r - l > 1) {
@@ -24,7 +24,7 @@ int main() {
   auto [sa, sa_inv, lcp] = get_sa(arr, int(sz(compress)));
   sa_query lq(arr, sa, sa_inv, lcp);
   vi idxs(n);
-  iota(all(idxs), 0);
+  ranges::iota(idxs, 0);
   ranges::sort(idxs, [&](int i, int j) -> bool {
     return lq.cmp_substrs(2 * i, 2 * (i + 1), 2 * j,
              2 * (j + 1)) < 0;

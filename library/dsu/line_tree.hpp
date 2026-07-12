@@ -20,7 +20,7 @@ struct line_tree {
   vi p, last;
   vector<pii> edge;
   line_tree(int n): p(n, -1), last(n), edge(n, {-1, -1}) {
-    iota(all(last), 0);
+    ranges::iota(last, 0);
   }
   int size(int u) { return -p[f(u)]; }
   int f(int u) { return p[u] < 0 ? u : p[u] = f(p[u]); }

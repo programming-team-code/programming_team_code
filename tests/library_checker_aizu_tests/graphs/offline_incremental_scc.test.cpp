@@ -17,7 +17,7 @@ int main() {
   rep(t, 0, m)
     assert((eds[t][0] == eds[t][1]) == (joins[t] == -1));
   vi order(m);
-  iota(all(order), 0);
+  ranges::iota(order, 0);
   ranges::sort(order, {}, [&](int i) { return joins[i]; });
   DSU dsu(n);
   int sum = 0;
