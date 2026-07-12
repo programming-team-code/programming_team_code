@@ -13,7 +13,7 @@
 auto sa_short(const auto& s) {
   int n = sz(s), b = 6;
   vi sa(n), sa_inv(all(s)), lcp(n - 1), t(n);
-  iota(all(sa), 0);
+  ranges::iota(sa, 0);
   for (int j = 1; j <= n; j *= b) {
     swap(t, sa_inv);
     auto cmp = [&](int i1, int i2) {

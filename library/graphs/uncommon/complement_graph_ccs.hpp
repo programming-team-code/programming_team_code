@@ -12,7 +12,7 @@
 vi get_complement_graph_ccs(const auto& g) {
   int n = sz(g);
   vi cc_id(n), unseen(n);
-  iota(all(unseen), 0);
+  ranges::iota(unseen, 0);
   vector<bool> is_g(n);
   for (int cnt = 0; !empty(unseen); cnt++) {
     int s = unseen.back();

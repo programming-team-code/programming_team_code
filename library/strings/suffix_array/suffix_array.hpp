@@ -37,10 +37,10 @@
 auto get_sa(const auto& s, int max_num) {
   int n = sz(s);
   vi sa(n), sa_inv(all(s)), lcp(n - 1);
-  iota(all(sa), 0);
+  ranges::iota(sa, 0);
   for (int i = 0; i < n; i = max(1, 2 * i)) {
     vi y(sa_inv), freq(max_num);
-    iota(all(sa_inv), n - i);
+    ranges::iota(sa_inv, n - i);
     ranges::copy_if(sa, begin(sa_inv) + i,
       [&](int& x) { return (x -= i) >= 0; });
     for (int x : y) freq[x]++;

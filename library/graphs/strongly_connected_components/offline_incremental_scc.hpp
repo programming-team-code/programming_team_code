@@ -14,7 +14,7 @@ vi offline_incremental_scc(vector<array<int, 2>> eds,
   int n) {
   int m = sz(eds);
   vi ids(n, -1), joins(m, m), idx(m), vs(n), scc_id;
-  iota(all(idx), 0);
+  ranges::iota(idx, 0);
   vector<vi> g;
   auto dnc = [&](this auto&& dnc, auto el, auto er, int tl,
                int tr) {
