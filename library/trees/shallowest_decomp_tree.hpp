@@ -9,11 +9,11 @@
 //! @space O(n)
 void shallowest(auto& g, auto f) {
   vector<vi> order(bit_width(size(g)));
-  [&](this auto&& dfs, int u, int p) -> int {
+  [&](this auto&& self, int u, int p) -> int {
     int once = 0, twice = 0;
     for (int v : g[u])
       if (v != p) {
-        int dp = dfs(v, u);
+        int dp = self(v, u);
         twice |= once & dp, once |= dp;
       }
     auto dp = (once | (bit_ceil(twice + 1u) - 1)) + 1;
