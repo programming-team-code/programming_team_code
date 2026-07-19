@@ -62,3 +62,9 @@ unusedFunction:../kactl/stress-tests/utilities/genTree.h:49
 containerOutOfBounds:../library/data_structures_[l,r)/uncommon/permutation_tree.hpp:85
 ctuOneDefinitionRuleViolation:../library/data_structures_[l,r)/bit.hpp:12
 ctuOneDefinitionRuleViolation:../library/data_structures_[l,r)/lazy_seg_tree.hpp:4
+mismatchingContainerExpression:../library/trees/extra_members/virtual_tree.hpp:19
+mismatchingContainerExpression:library_checker_aizu_tests/data_structures/bit_ordered_set.test.cpp:20
+mismatchingContainerExpression:library_checker_aizu_tests/data_structures/kth_smallest_pst.test.cpp:13
+mismatchingContainerExpression:library_checker_aizu_tests/data_structures/mode_query.test.cpp:13
+mismatchingContainerExpression:library_checker_aizu_tests/strings/sa_sort_pairs.test.cpp:13
+mismatchingContainerExpression:library_checker_aizu_tests/strings/single_matching_bs.test.cpp:73
