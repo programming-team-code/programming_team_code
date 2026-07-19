@@ -17,15 +17,14 @@
 vector<pii> euler_path(auto& g, int m, int s) {
   vi vis(m);
   vector<pii> path;
-  auto dfs = [&](this auto&& dfs, int u, int eu) -> void {
+  [&](this auto&& self, int u, int eu) -> void {
     while (!empty(g[u])) {
       auto [v, ev] = g[u].back();
       g[u].pop_back();
-      if (!vis[ev]) vis[ev] = 1, dfs(v, ev);
+      if (!vis[ev]) vis[ev] = 1, self(v, ev);
     }
     path.emplace_back(u, eu);
-  };
-  dfs(s, -1);
+  }(s, -1);
   ranges::reverse(path);
   return path;
 }
