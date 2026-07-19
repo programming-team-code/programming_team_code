@@ -14,7 +14,8 @@
 //! string b a a b a
 //! center  1 3 5 7
 //!
-//! requires n >= 1 (2*n-1 allocation underflows when n == 0)
+//! requires n >= 1 (2*n-1 allocation underflows when n ==
+//! 0)
 //! @time O(n)
 //! @space O(n)
 vi manacher(const auto& s) {
