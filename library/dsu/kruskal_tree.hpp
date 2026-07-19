@@ -1,6 +1,7 @@
 #pragma once
 //! https://mzhang2021.github.io/cp-blog/kruskal/
-//! requires n >= 1 (2*n-1 allocation underflows when n == 0)
+//! requires n >= 1 (2*n-1 allocation underflows when n ==
+//! 0)
 //! @time O(n log n)
 //! @space O(n)
 struct kr_tree {

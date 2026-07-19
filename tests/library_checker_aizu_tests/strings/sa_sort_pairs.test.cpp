@@ -10,7 +10,8 @@ int main() {
   for (int& x : arr) cin >> x;
   vi compress(arr);
   ranges::sort(compress);
-  compress.erase(begin(ranges::unique(compress)), end(compress));
+  compress.erase(begin(ranges::unique(compress)),
+    end(compress));
   for (int& x : arr) {
     int l = -1, r = int(sz(compress));
     while (r - l > 1) {
