@@ -26,7 +26,7 @@ template<class G> void edge_cd(vector<G>& g, auto f) {
       }
     return 2 * s[u] > m ? s[p] = m + 1 - s[u], u : -1;
   };
-  auto dfs = [&](this auto&& dfs, int u, int m) {
+  [&](this auto&& self, int u, int m) {
     if (m < 2) return;
     u = ctd(u, u, m);
     int sum = 0;
@@ -37,9 +37,8 @@ template<class G> void edge_cd(vector<G>& g, auto f) {
     f(u, it - begin(g[u]));
     G oth(it, end(g[u]));
     g[u].erase(it, end(g[u]));
-    dfs(u, sum);
+    self(u, sum);
     swap(g[u], oth);
-    dfs(u, m - sum);
-  };
-  dfs(0, sz(g) - 1);
+    self(u, m - sum);
+  }(0, sz(g) - 1);
 };
