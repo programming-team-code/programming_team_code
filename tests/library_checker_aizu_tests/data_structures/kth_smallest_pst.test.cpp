@@ -10,7 +10,8 @@ int main() {
   rep(i, 0, n) cin >> arr[i];
   vi sorted(arr);
   ranges::sort(sorted);
-  sorted.erase(begin(ranges::unique(sorted)), end(sorted));
+  auto dup = ranges::unique(sorted);
+  sorted.erase(begin(dup), end(dup));
   for (int& val : arr) {
     int start = 0, end = sz(sorted);
     while (start + 1 < end) {

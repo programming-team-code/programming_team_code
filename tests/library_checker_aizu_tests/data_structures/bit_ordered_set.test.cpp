@@ -17,8 +17,8 @@ int main() {
     compress.push_back(x);
   }
   ranges::sort(compress);
-  compress.erase(begin(ranges::unique(compress)),
-    end(compress));
+  auto dup = ranges::unique(compress);
+  compress.erase(begin(dup), end(dup));
   BIT bit(sz(compress));
   auto get_compressed_idx = [&](int val) -> int {
     int l = 0, r = sz(compress);
