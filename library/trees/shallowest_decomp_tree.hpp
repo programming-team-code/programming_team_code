@@ -9,7 +9,7 @@
 //! @space O(n)
 void shallowest(auto& g, auto f) {
   vector<vi> order(bit_width(size(g)));
-  auto dfs = [&](this auto&& dfs, int u, int p) -> int {
+  [&](this auto&& dfs, int u, int p) -> int {
     int once = 0, twice = 0;
     for (int v : g[u])
       if (v != p) {
@@ -19,8 +19,7 @@ void shallowest(auto& g, auto f) {
     auto dp = (once | (bit_ceil(twice + 1u) - 1)) + 1;
     order[countr_zero(dp)].push_back(u);
     return dp;
-  };
-  dfs(0, 0);
+  }(0, 0);
   for (const vi& vec : order | views::reverse)
     for (int u : vec) {
       f(u);

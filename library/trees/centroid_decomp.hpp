@@ -19,10 +19,10 @@ vi cd(auto& g, auto f) {
       }
     return 2 * s[u] >= n ? s[p] = n - s[u], u : -1;
   };
-  auto dfs = [&](this auto&& dfs, int u) -> int {
+  [&](this auto&& dfs, int u) -> int {
     f(u = ctd(u, u, s[u]));
     for (int v : g[u]) erase(g[v], u), p[dfs(v)] = u;
     return u;
-  };
-  return dfs(0), p;
+  }(0);
+  return p;
 }
