@@ -9,7 +9,7 @@ jobs:
   library_checker_aizu:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v7
       with:
         fetch-depth: 0
     - name: Set up Python
@@ -40,7 +40,7 @@ jobs:
   grep_clangformat_cppcheck:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v7
     - uses: ./.github/actions/setup
     - name: Install dependencies
       run: sudo apt install -y cppcheck
@@ -50,7 +50,7 @@ jobs:
   clangtidy:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v7
     - uses: ./.github/actions/setup
     - name: clang-tidy
       run: make --directory=tests/ clangtidy
@@ -58,7 +58,7 @@ jobs:
   compile_gcc:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v7
     - name: Make preinstalled g++-14 the default g++
       run: |
         sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-14 100
@@ -69,7 +69,7 @@ jobs:
   compile_clang:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v7
     - uses: ./.github/actions/setup
     - name: g++ with clang
       run: make --directory=tests/ compile_clang
@@ -77,14 +77,14 @@ jobs:
   find_files_without_tests:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v7
     - name: find files without tests
       run: make --directory=tests/ find_files_without_tests
 
   build_pdf:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v7
     - uses: ./.github/actions/setup
     - name: Install texlive, rename
       run: sudo apt install texlive texlive-latex-extra rename
@@ -100,7 +100,7 @@ jobs:
     needs: [library_checker_aizu, grep_clangformat_cppcheck, clangtidy, compile_gcc, compile_clang, find_files_without_tests, build_pdf]
     if: github.ref == 'refs/heads/dev' && github.event_name == 'push'
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v7
     - uses: actions/download-artifact@v4
       with:
         name: ptc
@@ -117,7 +117,7 @@ jobs:
     needs: [library_checker_aizu, grep_clangformat_cppcheck, clangtidy, compile_gcc, compile_clang, find_files_without_tests, build_pdf]
     if: github.ref == 'refs/heads/dev' && github.event_name == 'push'
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v7
     - uses: ./.github/actions/setup
     - name: Combine includes and force push to main branch
       run: |
@@ -134,7 +134,7 @@ jobs:
   shellcheck_shfmt:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v7
     - name: Install dependencies
       run: sudo apt install shfmt
     - name: shellcheck, shfmt
