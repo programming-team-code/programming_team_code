@@ -1,10 +1,10 @@
 #pragma once
 //! @code
-//!   vector<int> le = mono_st(a, less());
+//!   vector<int> l = mono_st(a, less());
 //!   // less_equal(), greater(), greater_equal()
 //! @endcode
 //! when cmp == less():
-//!   a[le[i]] < a[i]
+//!   a[l[i]] < a[i]
 //! @time O(n)
 //! @space O(n)
 vi mono_st(const auto& a, const auto& cmp) {
