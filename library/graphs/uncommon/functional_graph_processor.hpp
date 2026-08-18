@@ -8,7 +8,7 @@
 //!   bool is_on_cycle = (v == root);
 //! @endcode
 //! root = first reachable node on cycle from v
-//! t[v].childs = forest of reversed edges not in cycles
+//! childs = forest of reversed edges not in cycles
 //! @time O(n)
 //! @space O(n)
 auto func_graph(const vi& a) {
