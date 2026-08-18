@@ -30,24 +30,29 @@ template<class DS, class... ARGS> struct pq_updates {
   //! store popped updates; size of `upd_st`, `mp` member
   //! variables decreases by 1
   void pop_update() {
-    vector<upd> extra;
+    // shortest suffix [idx, sz(upd_st)) of which at least
+    // half is `top`, the highest priority updates
+    vector<upd> top;
     int idx = sz(upd_st) - 1, lowest_pri = INT_MAX;
     for (auto it = rbegin(mp);
-      2 * sz(extra) < sz(upd_st) - idx; it++) {
-      auto [pri, idx_sk] = *it;
-      extra.push_back(upd_st[idx_sk]);
-      idx = min(idx, idx_sk), lowest_pri = pri;
+      2 * sz(top) < sz(upd_st) - idx; it++) {
+      auto [pri, i] = *it;
+      top.push_back(upd_st[i]);
+      idx = min(idx, i), lowest_pri = pri;
     }
-    auto it = remove_if(idx + all(upd_st), [&](auto& cur) {
-      return cur.second->first >= lowest_pri;
-    });
-    ranges::reverse_copy(extra, it);
     rep(i, idx, sz(upd_st)) ds.undo();
+    // move `top` to the end of the suffix, by decreasing
+    // priority, so the max is on top
+    auto mid = remove_if(idx + all(upd_st),
+      [&](const upd& u) {
+        return u.second->first >= lowest_pri;
+      });
+    ranges::reverse_copy(top, mid);
     upd_st.pop_back();
     mp.erase(prev(end(mp)));
     rep(i, idx, sz(upd_st)) {
-      apply(&DS::join,
-        tuple_cat(make_tuple(&ds), upd_st[i].first));
+      apply([&](const ARGS&... args) { ds.join(args...); },
+        upd_st[i].first);
       upd_st[i].second->second = i;
     }
   }
