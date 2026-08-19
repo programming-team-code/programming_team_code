@@ -2,8 +2,8 @@
 #include "monotonic_stack.hpp"
 //! @code
 //!   // right-most min is root
-//!   auto le = mono_st(a, less());
-//!   auto p = cart_binary_tree(le);
+//!   auto l = mono_st(a, less());
+//!   auto p = cart_binary_tree(l);
 //!
 //!   // less_equal() -> left-most min is root
 //!   // greater() -> right-most max is root

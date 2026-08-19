@@ -20,11 +20,10 @@
 //! p[5] = 9
 //!
 //! @code
-//!     auto le = mono_st(a, less()), p =
-//!     cart_k_ary_tree(a, le); // min cart tree auto le =
-//!     mono_st(a, greater()), p = cart_k_ary_tree(a, le);
-//!     // max cart tree bool is_node = (p[i] < i || a[i]
-//!     != a[p[i]]);
+//!   auto l = mono_st(a, less());    // min cart tree
+//!   auto l = mono_st(a, greater()); // max cart tree
+//!   auto p = cart_k_ary_tree(a, l);
+//!   bool is_node = (p[i] < i || a[i] != a[p[i]]);
 //! @endcode
 //!
 //! @param a,l array and its left-monotonic stack
