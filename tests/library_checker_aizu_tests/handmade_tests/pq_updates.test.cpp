@@ -17,7 +17,7 @@ int main() {
       int upd_id_counter = 0;
       rep(op, 0, 200) {
         bool do_push =
-          naive_mp.empty() ||
+          empty(naive_mp) ||
           (rnd(0, 1) == 0 && sz(naive_mp) < max_capacity);
         if (do_push) {
           int upd_id = ++upd_id_counter;
