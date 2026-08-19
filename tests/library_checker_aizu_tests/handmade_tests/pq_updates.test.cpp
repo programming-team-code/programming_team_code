@@ -37,9 +37,10 @@ int main() {
         }
         vi active_ds = ds_history;
         sort(all(active_ds));
-        vi active_naive;
+        vi active_naive(sz(naive_mp));
+        int i = 0;
         for (auto [key, id] : naive_mp)
-          active_naive.push_back(id);
+          active_naive[i++] = id;
         sort(all(active_naive));
         assert(active_ds == active_naive);
       }
