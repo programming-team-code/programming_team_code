@@ -1,10 +1,10 @@
 #pragma once
 //! https://github.com/tfg50/Competitive-Programming/blob/master/Biblioteca/Math/DivisionTrick.cpp
-//! i-th iteration gives an interval [le_i, ri_i]:
-//!   - for all i in [le_i, ri_i]: n / i is the same
-//!   - le_0 = 1
-//!   - ri_last = n
-//!   - ri_i + 1 = le_(i+1)
+//! i-th iteration gives an interval [l_i, r_i]:
+//!   - for all i in [l_i, r_i]: n / i is the same
+//!   - l_0 = 1
+//!   - r_last = n
+//!   - r_i + 1 = l_(i+1)
 //! @time O(sqrt(n))
 //! @space O(1)
 for (ll l = 1, r; l <= n && (r = n / (n / l)); l = r + 1) 

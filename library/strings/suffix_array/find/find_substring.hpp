@@ -8,7 +8,7 @@
 //! requires s_l < n
 //! for all i in [sa_le,sa_ri): s.substr(s_l,s_r-s_l)
 //!   == s.substr(sa[i],s_r-s_l)
-//!   - `r-l` is the # of matches of
+//!   - `sa_ri-sa_le` is the # of matches of
 //!       s.substr(s_l, s_r - s_l) in s.
 //! @time O(log(|s|))
 //! @space O(1)
