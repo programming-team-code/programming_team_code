@@ -27,12 +27,12 @@ int main() {
   int pri = (n - l) / 2;
   rep(i, 0, l) {
     updates.push_back(arr[i]);
-    pq.push(pri--, updates.size() - 1);
+    pq.push(pri--, size(updates) - 1);
   }
   cout << stm.get_max();
   rep(i, l, n) {
     updates.push_back(arr[i]);
-    pq.push(pri--, updates.size() - 1);
+    pq.push(pri--, size(updates) - 1);
     pq.pop();
     cout << " " << stm.get_max();
   }
