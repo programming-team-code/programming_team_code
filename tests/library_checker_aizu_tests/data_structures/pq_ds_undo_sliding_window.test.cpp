@@ -11,7 +11,7 @@ struct stack_with_get_max {
     st.emplace_back(val,
       empty(st) ? val : min(val, st.back().second));
   }
-  void undo() { st.pop_back(); }
+  void rollback(int siz) { st.resize(siz); }
   int get_max() const { return st.back().second; }
 };
 int main() {
@@ -20,15 +20,21 @@ int main() {
   cin >> n >> l;
   vi arr(n);
   rep(i, 0, n) cin >> arr[i];
+  vector<int> updates;
   stack_with_get_max stm;
-  pq_updates<stack_with_get_max, int> pq(stm);
+  pq_updates pq([&](int id) { stm.join(updates[id]); },
+    [&](int t) { stm.rollback(t); });
   int pri = (n - l) / 2;
-  rep(i, 0, l) pq.push_update(arr[i], pri--);
-  cout << pq.ds.get_max();
+  rep(i, 0, l) {
+    updates.push_back(arr[i]);
+    pq.push(pri--, updates.size() - 1);
+  }
+  cout << stm.get_max();
   rep(i, l, n) {
-    pq.push_update(arr[i], pri--);
-    pq.pop_update();
-    cout << " " << pq.ds.get_max();
+    updates.push_back(arr[i]);
+    pq.push(pri--, updates.size() - 1);
+    pq.pop();
+    cout << " " << stm.get_max();
   }
   cout << '\n';
   return 0;
