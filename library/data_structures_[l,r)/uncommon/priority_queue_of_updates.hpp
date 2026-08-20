@@ -3,25 +3,23 @@
 //! @code
 //!   RollbackUF uf(n);
 //!   vector<int> hist;
-//!   vector<pair<int, int>> updates;
-//!   pq_updates pq([&](int id) {
+//!   pq_updates pq([&](auto upd) {
 //!     hist.push_back(uf.time());
-//!     uf.join(updates[id].first, updates[id].second);
+//!     uf.join(upd.first, upd.second);
 //!   }, [&]() {
 //!     uf.rollback(hist.back());
 //!     hist.pop_back();
-//!   });
-//!   updates.push_back({u, v});
-//!   pq.push(pri, ssize(updates) - 1);
+//!   }, pair<int, int>{});
+//!   pq.push(pri, {u, v});
 //! @endcode
 //! @time O(n log n)
 //! @space O(n)
-template<class F, class G> struct pq_updates {
+template<class F, class G, class H> struct pq_updates {
   F update;
   G undo;
-  vector<pair<multimap<int, int>::iterator, int>> st, buf;
+  vector<pair<multimap<int, int>::iterator, H>> st, buf;
   multimap<int, int> mp;
-  pq_updates(F update, G undo):
+  pq_updates(F update, G undo, H):
     update(update), undo(undo) {}
   void pop() {
     buf.clear();
@@ -43,8 +41,8 @@ template<class F, class G> struct pq_updates {
       st[i].first->second = i;
     }
   }
-  void push(int pri, int update_id) {
-    update(update_id);
-    st.emplace_back(mp.emplace(pri, sz(st)), update_id);
+  void push(int pri, H upd_params) {
+    update(upd_params);
+    st.emplace_back(mp.emplace(pri, sz(st)), upd_params);
   }
 };
