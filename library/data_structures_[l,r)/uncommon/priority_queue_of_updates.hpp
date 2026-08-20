@@ -19,26 +19,25 @@
 template<class F, class G> struct pq_updates {
   F update;
   G undo;
-  using upd = pair<multimap<int, int>::iterator, int>;
-  vector<upd> st;
+  vector<pair<multimap<int, int>::iterator, int>> st, buf;
   multimap<int, int> mp;
   pq_updates(F update, G undo):
     update(update), undo(undo) {}
   void pop() {
-    vector<upd> extra;
+    buf.clear();
     int t = sz(st) - 1;
-    for (auto it = rbegin(mp); 2 * sz(extra) < sz(st) - t;
+    for (auto it = rbegin(mp); 2 * sz(buf) < sz(st) - t;
       it++) {
-      extra.push_back(st[it->second]);
+      buf.push_back(st[it->second]);
       t = min(t, it->second);
       it->second = -1;
     }
     rep(i, t, sz(st)) undo();
-    ranges::reverse_copy(extra,
+    ranges::reverse_copy(buf,
       remove_if(t + all(st),
-        [](upd& x) { return x.first->second == -1; }));
+        [](auto& x) { return x.first->second == -1; }));
     st.pop_back();
-    mp.erase(extra[0].first);
+    mp.erase(buf[0].first);
     rep(i, t, sz(st)) {
       update(st[i].second);
       st[i].first->second = i;
