@@ -1,9 +1,16 @@
 #pragma once
 //! https://codeforces.com/blog/entry/111117
 //! @code
+//!   RollbackUF uf(n);
+//!   vector<int> hist;
 //!   vector<pair<int, int>> updates;
-//!   pq_updates pq([&](int update_id) {},
-//!                 [&]() {});
+//!   pq_updates pq([&](int id) {
+//!     hist.push_back(uf.time());
+//!     uf.join(updates[id].first, updates[id].second);
+//!   }, [&]() {
+//!     uf.rollback(hist.back());
+//!     hist.pop_back();
+//!   });
 //!   updates.push_back({u, v});
 //!   pq.push(pri, ssize(updates) - 1);
 //! @endcode
