@@ -59,6 +59,7 @@ uninitvar:library_checker_aizu_tests/handmade_tests/seg_tree_find_small.test.cpp
 unusedFunction:../kactl/content/data-structures/UnionFind.h:14
 unusedFunction:../kactl/content/number-theory/ModPow.h:13
 unusedFunction:../kactl/stress-tests/utilities/genTree.h:49
+unusedFunction:../kactl/content/data-structures/UnionFindRollback.h:20
 containerOutOfBounds:../library/data_structures_[l,r)/uncommon/permutation_tree.hpp:85
 containerOutOfBounds:../library/trees/edge_cd.hpp
 ctuOneDefinitionRuleViolation:../library/data_structures_[l,r)/bit.hpp:12
