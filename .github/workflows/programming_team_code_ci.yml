@@ -13,7 +13,7 @@ jobs:
       with:
         fetch-depth: 0
     - name: Set up Python
-      uses: actions/setup-python@v5
+      uses: actions/setup-python@v7
     - name: Make preinstalled g++-14 the default g++
       run: |
         sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-14 100
