@@ -20,19 +20,14 @@ int main() {
   cin >> n >> l;
   vi arr(n);
   rep(i, 0, n) cin >> arr[i];
-  vector<int> updates;
   stack_with_get_max stm;
-  pq_updates pq([&](int id) { stm.join(updates[id]); },
-    [&]() { stm.undo(); }, int{});
+  pq_updates pq([&](pii id) { stm.join(id.first); },
+    [&]() { stm.undo(); });
   int pri = (n - l) / 2;
-  rep(i, 0, l) {
-    updates.push_back(arr[i]);
-    pq.push(pri--, size(updates) - 1);
-  }
+  rep(i, 0, l) { pq.push(pri--, {arr[i], arr[i]}); }
   cout << stm.get_max();
   rep(i, l, n) {
-    updates.push_back(arr[i]);
-    pq.push(pri--, size(updates) - 1);
+    pq.push(pri--, {arr[i], arr[i]});
     pq.pop();
     cout << " " << stm.get_max();
   }
