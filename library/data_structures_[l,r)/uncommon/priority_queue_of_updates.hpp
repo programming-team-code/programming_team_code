@@ -3,7 +3,7 @@
 //! @code
 //!   vector<pair<int, int>> updates;
 //!   pq_updates pq([&](int update_id) {},
-//!                 [&](int t) {});
+//!                 [&]() {});
 //!   updates.push_back({u, v});
 //!   pq.push(pri, ssize(updates) - 1);
 //! @endcode
@@ -11,12 +11,12 @@
 //! @space O(n)
 template<class F, class G> struct pq_updates {
   F update;
-  G rollback;
+  G undo;
   using upd = pair<multimap<int, int>::iterator, int>;
   vector<upd> st;
   multimap<int, int> mp;
-  pq_updates(F update, G rollback):
-    update(update), rollback(rollback) {}
+  pq_updates(F update, G undo):
+    update(update), undo(undo) {}
   void pop() {
     vector<upd> extra;
     int t = sz(st) - 1;
@@ -26,7 +26,7 @@ template<class F, class G> struct pq_updates {
       t = min(t, it->second);
       it->second = -1;
     }
-    rollback(t);
+    rep(i, t, sz(st)) undo();
     ranges::reverse_copy(extra,
       remove_if(t + all(st),
         [](upd& x) { return x.first->second == -1; }));

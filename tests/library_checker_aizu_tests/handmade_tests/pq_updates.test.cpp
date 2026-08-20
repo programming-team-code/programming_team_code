@@ -11,8 +11,8 @@ int main() {
       auto update = [&](int id) {
         ds_history.push_back(id);
       };
-      auto rollback = [&](int t) { ds_history.resize(t); };
-      pq_updates solver(update, rollback);
+      auto undo = [&]() { ds_history.pop_back(); };
+      pq_updates solver(update, undo);
       map<pair<int, int>, int> naive_mp;
       int upd_id_counter = 0;
       rep(op, 0, 200) {

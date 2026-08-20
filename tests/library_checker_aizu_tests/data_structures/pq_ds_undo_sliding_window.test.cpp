@@ -11,7 +11,7 @@ struct stack_with_get_max {
     st.emplace_back(val,
       empty(st) ? val : min(val, st.back().second));
   }
-  void rollback(int siz) { st.resize(siz); }
+  void undo() { st.pop_back(); }
   int get_max() const { return st.back().second; }
 };
 int main() {
@@ -23,7 +23,7 @@ int main() {
   vector<int> updates;
   stack_with_get_max stm;
   pq_updates pq([&](int id) { stm.join(updates[id]); },
-    [&](int t) { stm.rollback(t); });
+    [&]() { stm.undo(); });
   int pri = (n - l) / 2;
   rep(i, 0, l) {
     updates.push_back(arr[i]);
