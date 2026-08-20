@@ -23,7 +23,7 @@ int main() {
   vector<int> updates;
   stack_with_get_max stm;
   pq_updates pq([&](int id) { stm.join(updates[id]); },
-    [&]() { stm.undo(); });
+    [&]() { stm.undo(); }, int{});
   int pri = (n - l) / 2;
   rep(i, 0, l) {
     updates.push_back(arr[i]);

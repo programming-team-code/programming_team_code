@@ -12,7 +12,7 @@ int main() {
         ds_history.push_back(id);
       };
       auto undo = [&]() { ds_history.pop_back(); };
-      pq_updates solver(update, undo);
+      pq_updates solver(update, undo, int{});
       map<pair<int, int>, int> naive_mp;
       int upd_id_counter = 0;
       rep(op, 0, 200) {
