@@ -12,6 +12,7 @@ git submodule update
 
 {
 	echo "#include <bits/stdc++.h>"
+	echo "#include <cassert>"
 	echo "using namespace std;"
 	cat library_checker_aizu_tests/kactl_macros.hpp
 	echo "const ll mod = (119 << 23) + 1, root = 62;"
@@ -25,7 +26,7 @@ git submodule update
 	echo "vi rhs;"
 	echo "vector<vi> mat;"
 	echo "vector<vector<bool>> grid;"
-	echo "int n,m,k,tl,tr,l,r,l1,r1,l2,r2,s_l,s_r,root_l,root_r,source,sink,total_flow,bccid,u,v,w,lsz,rsz,cols,cap,num,x,y,i,j,i1,i2,j1,j2,len,sum;"
+	echo "int n,m,k,tl,tr,l,r,l1,r1,l2,r2,s_l,s_r,root_l,root_r,source,sink,total_flow,bccid,u,v,w,lsz,rsz,cols,cap,num,x,y,i,j,i1,i2,j1,j2,len,sum,pri;"
 } >entire_library_without_main
 
 {
