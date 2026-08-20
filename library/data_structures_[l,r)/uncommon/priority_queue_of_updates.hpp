@@ -1,4 +1,5 @@
 #pragma once
+#include "../../../kactl/content/data-structures/UnionFindRollback.h"
 //! https://codeforces.com/blog/entry/111117
 //! @code
 //!   RollbackUF uf(n);
