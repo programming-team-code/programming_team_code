@@ -30,11 +30,11 @@ template<class F, class G> struct pq_updates {
     int j = sz(st), t = j - 1;
     for (auto it = rbegin(mp);
       2 * (sz(st) - j) < sz(st) - t; it++) {
-      int k = it->second;
-      t = min(t, k);
-      auto a = st[--j], b = st[k];
-      st[j] = b, st[j].first->second = j;
-      st[k] = a, st[k].first->second = k;
+      t = min(t, it->second);
+      if (--j != it->second) {
+        swap(st[j], st[it->second]);
+        swap(it->second, st[it->second].first->second);
+      }
     }
     rep(i, t, sz(st)) undo();
     mp.erase(st.back().first);
