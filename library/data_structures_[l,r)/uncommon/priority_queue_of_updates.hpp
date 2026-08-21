@@ -19,7 +19,7 @@ using H = pii;
 template<class F, class G> struct pq_updates {
   F upd;
   G undo;
-  vector<pair<multimap<int, int>::iterator, H>> st, buf;
+  vector<pair<multimap<int, int>::iterator, H>> st;
   multimap<int, int> mp;
   pq_updates(F upd, G undo): upd(upd), undo(undo) {}
   void push(int pri, H upd_params) {
@@ -27,23 +27,18 @@ template<class F, class G> struct pq_updates {
     st.emplace_back(mp.emplace(pri, sz(st)), upd_params);
   }
   void pop() {
-    buf.clear();
-    int t = sz(st) - 1;
-    for (auto it = rbegin(mp); 2 * sz(buf) < sz(st) - t;
-      it++) {
-      buf.push_back(st[it->second]);
+    int j = sz(st), t = j - 1;
+    for (auto it = rbegin(mp);
+      2 * (sz(st) - j) < sz(st) - t; it++) {
       t = min(t, it->second);
-      it->second = -1;
+      if (--j != it->second) {
+        swap(st[j], st[it->second]);
+        swap(it->second, st[it->second].first->second);
+      }
     }
     rep(i, t, sz(st)) undo();
-    ranges::reverse_copy(buf,
-      remove_if(t + all(st),
-        [](auto& x) { return x.first->second == -1; }));
+    mp.erase(st.back().first);
     st.pop_back();
-    mp.erase(buf[0].first);
-    rep(i, t, sz(st)) {
-      upd(st[i].second);
-      st[i].first->second = i;
-    }
+    rep(i, t, sz(st)) upd(st[i].second);
   }
 };
