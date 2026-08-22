@@ -28,7 +28,7 @@ int main() {
   cout << stm.get_max();
   rep(i, l, n) {
     pq.push(pri++, {arr[i], arr[i]});
-    pq.pop();
+    pq.pop_min();
     cout << " " << stm.get_max();
   }
   cout << '\n';

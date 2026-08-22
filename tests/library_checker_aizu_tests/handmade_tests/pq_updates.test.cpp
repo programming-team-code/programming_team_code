@@ -31,7 +31,7 @@ int main() {
           solver.push(pri, {upd_id, upd_id});
           naive_mp[{pri, upd_id}] = upd_id;
         } else {
-          solver.pop();
+          solver.pop_min();
           auto max_it = begin(naive_mp);
           naive_mp.erase(max_it);
         }

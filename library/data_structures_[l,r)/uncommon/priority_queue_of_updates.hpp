@@ -26,7 +26,7 @@ template<class F, class G> struct pq_updates {
     upd(upd_params);
     st.emplace_back(mp.emplace(pri, sz(st)), upd_params);
   }
-  void pop() {
+  void pop_min() {
     int l = sz(st), r = l;
     for (auto& [_, i] : mp) {
       l = min(l, i);
