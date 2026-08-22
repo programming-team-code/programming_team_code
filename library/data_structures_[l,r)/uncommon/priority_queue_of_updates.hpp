@@ -30,7 +30,7 @@ template<class F, class G> struct pq_updates {
     int l = sz(st), r = l;
     for (auto& [_, i] : mp) {
       l = min(l, i);
-      if (--r != i) {
+      if (i != --r) {
         swap(st[i], st[r]);
         swap(st[i].first->second, i);
       }
