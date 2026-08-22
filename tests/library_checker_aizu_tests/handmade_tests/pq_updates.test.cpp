@@ -1,5 +1,8 @@
 #define PROBLEM \
   "https://onlinejudge.u-aizu.ac.jp/problems/ITP1_1_A"
+// swapping iterators in as part of `swap(st[i], st[--r]);`
+// leads to RTE with debug mode :(
+#undef _GLIBCXX_DEBUG
 #include "../template.hpp"
 #include "../../../library/contest/random.hpp"
 #include "../../../library/data_structures_[l,r)/uncommon/priority_queue_of_updates.hpp"
