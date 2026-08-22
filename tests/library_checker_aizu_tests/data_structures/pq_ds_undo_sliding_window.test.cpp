@@ -24,10 +24,10 @@ int main() {
   pq_updates pq([&](pii id) { stm.join(id.first); },
     [&]() { stm.undo(); });
   int pri = (n - l) / 2;
-  rep(i, 0, l) { pq.push(pri--, {arr[i], arr[i]}); }
+  rep(i, 0, l) { pq.push(pri++, {arr[i], arr[i]}); }
   cout << stm.get_max();
   rep(i, l, n) {
-    pq.push(pri--, {arr[i], arr[i]});
+    pq.push(pri++, {arr[i], arr[i]});
     pq.pop();
     cout << " " << stm.get_max();
   }
