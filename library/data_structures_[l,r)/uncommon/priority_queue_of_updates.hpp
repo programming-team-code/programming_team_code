@@ -1,5 +1,4 @@
 #pragma once
-#include "../../../kactl/content/data-structures/UnionFindRollback.h"
 //! https://codeforces.com/blog/entry/111117
 //! @code
 //!   RollbackUF uf(n);
@@ -40,3 +39,4 @@ template<class F, class G> struct pq_updates {
     rep(i, l, sz(st)) upd(st[i].second);
   }
 };
+#include "../../../kactl/content/data-structures/UnionFindRollback.h"
