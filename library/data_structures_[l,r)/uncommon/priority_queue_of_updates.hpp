@@ -19,21 +19,22 @@ using H = pii;
 template<class F, class G> struct pq_updates {
   F upd;
   G undo;
-  vector<pair<multimap<int, int>::iterator, H>> st;
   multimap<int, int> mp;
+  vector<pair<multimap<int, int>::iterator, H>> st;
   pq_updates(F upd, G undo): upd(upd), undo(undo) {}
   void push(int pri, H upd_params) {
     upd(upd_params);
     st.emplace_back(mp.emplace(pri, sz(st)), upd_params);
   }
   void pop() {
-    int r = sz(st), l = r - 1;
-    for (auto it = rbegin(mp); r - l > sz(st) - r; it++) {
-      l = min(l, it->second);
-      if (--r != it->second) {
-        swap(st[r], st[it->second]);
-        swap(it->second, st[it->second].first->second);
+    int l = sz(st), r = l;
+    for (auto& [_, i] : mp) {
+      l = min(l, i);
+      if (--r != i) {
+        swap(st[r], st[i]);
+        swap(i, st[i].first->second);
       }
+      if (r - l <= sz(st) - r) break;
     }
     rep(i, l, sz(st)) undo();
     mp.erase(st.back().first);

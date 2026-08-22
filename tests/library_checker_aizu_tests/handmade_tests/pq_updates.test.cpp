@@ -32,7 +32,7 @@ int main() {
           naive_mp[{pri, upd_id}] = upd_id;
         } else {
           solver.pop();
-          auto max_it = prev(end(naive_mp));
+          auto max_it = begin(naive_mp);
           naive_mp.erase(max_it);
         }
         vector<pii> active_ds = ds_history;
