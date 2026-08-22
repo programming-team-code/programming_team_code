@@ -20,7 +20,7 @@ template<class F, class G> struct pq_updates {
   F upd;
   G undo;
   multimap<int, int> mp;
-  vector<pair<multimap<int, int>::iterator, H>> st;
+  vector<pair<decltype(end(mp)), H>> st;
   pq_updates(F upd, G undo): upd(upd), undo(undo) {}
   void push(int pri, H upd_params) {
     upd(upd_params);
@@ -31,8 +31,8 @@ template<class F, class G> struct pq_updates {
     for (auto& [_, i] : mp) {
       l = min(l, i);
       if (--r != i) {
-        swap(st[r], st[i]);
-        swap(i, st[i].first->second);
+        swap(st[i], st[r]);
+        swap(st[i].first->second, i);
       }
       if (r - l <= sz(st) - r) break;
     }
