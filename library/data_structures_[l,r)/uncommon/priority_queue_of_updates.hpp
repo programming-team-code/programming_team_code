@@ -27,18 +27,17 @@ template<class F, class G> struct pq_updates {
     st.emplace_back(mp.emplace(pri, sz(st)), upd_params);
   }
   void pop() {
-    int j = sz(st), t = j - 1;
-    for (auto it = rbegin(mp);
-      2 * (sz(st) - j) < sz(st) - t; it++) {
-      t = min(t, it->second);
-      if (--j != it->second) {
-        swap(st[j], st[it->second]);
+    int r = sz(st), l = r - 1;
+    for (auto it = rbegin(mp); r - l > sz(st) - r; it++) {
+      l = min(l, it->second);
+      if (--r != it->second) {
+        swap(st[r], st[it->second]);
         swap(it->second, st[it->second].first->second);
       }
     }
-    rep(i, t, sz(st)) undo();
+    rep(i, l, sz(st)) undo();
     mp.erase(st.back().first);
     st.pop_back();
-    rep(i, t, sz(st)) upd(st[i].second);
+    rep(i, l, sz(st)) upd(st[i].second);
   }
 };
