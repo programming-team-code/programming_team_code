@@ -16,10 +16,10 @@ int main() {
   int res = 0;
   DSU dsu(n);
   auto f = [&](int u, int v) {
-    u = dsu.f(u);
-    v = dsu.f(v);
+    u = dsu.find(u);
+    v = dsu.find(v);
     assert(dsu.join(u, v));
-    int root = dsu.f(u);
+    int root = dsu.find(u);
     int other = root ^ u ^ v;
     res = (res + 1LL * x[root] * x[other]) % mod;
     x[root] = (x[root] + x[other]) % mod;
@@ -37,7 +37,7 @@ int main() {
       vi sums(n);
       int offline_ans = 0;
       rep(i, 0, n) {
-        int id = uf.f(i);
+        int id = uf.find(i);
         offline_ans =
           (offline_ans + 1LL * sums[id] * y[i]) % mod;
         sums[id] = (sums[id] + y[i]) % mod;

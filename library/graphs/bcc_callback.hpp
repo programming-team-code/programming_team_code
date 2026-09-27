@@ -23,8 +23,8 @@
 //!     vector<basic_string<int>> bridge_tree(n);
 //!     for (int i = 0; i < n; i++)
 //!       for (int u : g[i])
-//!         if (dsu.f(i) != dsu.f(u))
-//!           bridge_tree[dsu.f(i)] += dsu.f(u);
+//!         if (dsu.find(i) != dsu.find(u))
+//!           bridge_tree[dsu.find(i)] += dsu.find(u);
 //!   }
 //!
 //!   vector<basic_string<int>> g(n);

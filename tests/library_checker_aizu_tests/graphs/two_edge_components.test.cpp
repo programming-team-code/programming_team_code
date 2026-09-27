@@ -43,11 +43,11 @@ int main() {
   rep(i, 0, m) {
     if (is_br[i]) {
       auto [u, v] = edges[i];
-      assert(dsu.f(u) != dsu.f(v));
+      assert(dsu.find(u) != dsu.find(v));
     }
   }
   rep(i, 0, n) {
-    int par_of_cc = dsu.f(i);
+    int par_of_cc = dsu.find(i);
     assert(br_id[i] == br_id[par_of_cc]);
   }
   rep(i, 0, m) {
