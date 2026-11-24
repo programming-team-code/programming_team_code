@@ -16,10 +16,10 @@ template<class T, class F> struct linear_rmq {
   int n;
   vector<T> a;
   F cmp;
-  vi in, asc, head;
+  vi asc, head;
   linear_rmq(const vector<T>& a, F cmp):
-    n(sz(a)), a(a), cmp(cmp), in(n), asc(n), head(n + 1) {
-    vi st(n + 1, -1);
+    n(sz(a)), a(a), cmp(cmp), asc(n), head(n + 1) {
+    vi st(n + 1, -1), in(n);
     for (int i = 0, t = 0; i <= n; i++) {
       int prev = 0;
       while (t && (i == n || !cmp(a[st[t]], a[i]))) {
@@ -33,13 +33,12 @@ template<class T, class F> struct linear_rmq {
       asc[i] = (asc[i] | asc[i - 1]) & -(in[i] & -in[i]);
   }
   int idx(int l, int r) {
-    if (unsigned j = in[l] ^ in[r]) {
-      j = asc[l] & asc[r] & -bit_floor(j);
-      if (int k = bit_floor(asc[l] ^ j))
-        l = head[(in[l] & -k) | k];
-      if (int k = bit_floor(asc[r] ^ j))
-        r = head[(in[r] & -k) | k];
-    }
+    if (l == r) return l;
+    auto j = asc[l] & asc[r] & -bit_floor(l ^ r + 0u);
+    if (int k = bit_floor(asc[l] ^ j))
+      l = head[(l & -k) | k];
+    if (int k = bit_floor(asc[r] ^ j))
+      r = head[(r & -k) | k];
     return cmp(a[l], a[r]) ? l : r;
   }
   T query(int l, int r) { return a[idx(l, r)]; }
