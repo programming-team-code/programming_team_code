@@ -7,6 +7,7 @@ assertWithSideEffect
 unusedStructMember:../library/flow/min_cost_max_flow.hpp
 unusedStructMember:../library/flow/dinic.hpp:15
 unusedStructMember:../library/strings/suffix_array/find/match.hpp:10
+unusedStructMember:../library/data_structures_[l,r)/seg_tree_uncommon/persistent.hpp:18
 unusedScopedObject:library_checker_aizu_tests/trees/centroid_path_dist.test.cpp:29
 unusedScopedObject:library_checker_aizu_tests/trees/edge_cd_lca.test.cpp:20
 unusedScopedObject:library_checker_aizu_tests/trees/cd_jump_on_tree.test.cpp:20
@@ -19,6 +20,8 @@ useStlAlgorithm:../library/math/matrix_related/row_reduce.hpp:29
 useStlAlgorithm:../library/math/count_paths/count_paths_triangle.hpp:25
 useStlAlgorithm:../library/math/matrix_related/xor_basis_unordered.hpp:14
 useStlAlgorithm:library_checker_aizu_tests/dsu/kruskal_tree_aizu.test.cpp:30
+useStlAlgorithm:library_checker_aizu_tests/graphs/bcc_callback_lib_checker_two_cc.test.cpp:36
+useStlAlgorithm:library_checker_aizu_tests/graphs/hopcroft_karp_aizu.test.cpp:21
 shadowFunction:../kactl/content/graph/BinaryLifting.h:17
 unknownMacro:../kactl/content/graph/BinaryLifting.h:18
 constParameter:../kactl/content/graph/BinaryLifting.h:29
@@ -41,11 +44,14 @@ syntaxError:../library/loops/submasks.hpp:8
 syntaxError:../library/loops/supermasks.hpp:8
 syntaxError:../library/math/prime_sieve/mobius.hpp:6
 syntaxError:../library/trees/lca_rmq/iterate_subtree.hpp:6
+syntaxError:../library/convolution/xor_convolution.hpp:13
+syntaxError:../kactl/content/numerical/NumberTheoreticTransform.h:37
 knownConditionTrueFalse:../library/strings/suffix_array/suffix_array.hpp:63
 knownConditionTrueFalse:../library/strings/suffix_array/suffix_array_short.hpp:35
 knownConditionTrueFalse:../library/dsu/kruskal_tree.hpp:15
 knownConditionTrueFalse:../library/dsu/dsu.hpp:13
 knownConditionTrueFalse:../library/dsu/dsu_weighted.hpp:29
+knownConditionTrueFalse:library_checker_aizu_tests/handmade_tests/manacher.test.cpp:12
 constVariable:../kactl/content/numerical/NumberTheoreticTransform.h:30
 constVariable:../kactl/content/graph/CompressTree.h:20
 constVariableReference:../kactl/content/graph/CompressTree.h:20
@@ -58,11 +64,12 @@ cstyleCast:../kactl/content/numerical/FastFourierTransform.h:39
 derefInvalidIterator:library_checker_aizu_tests/handmade_tests/n_choose_k.test.cpp:13
 unreadVariable:library_checker_aizu_tests/handmade_tests/permutation_tree_small.test.cpp:12
 uninitvar:library_checker_aizu_tests/handmade_tests/seg_tree_find_small.test.cpp:41
-uninitvar:../library/data_structures_[l,r)/seg_tree_uncommon/persistent.hpp:21
+uninitMemberVar:../library/data_structures_[l,r)/seg_tree_uncommon/persistent.hpp:21
 unusedFunction:../kactl/content/data-structures/UnionFind.h:14
 unusedFunction:../kactl/content/number-theory/ModPow.h:13
 unusedFunction:../kactl/stress-tests/utilities/genTree.h:49
 unusedFunction:../kactl/content/data-structures/UnionFindRollback.h:20
+unusedFunction:../hackpack-cpp/content/number-theory/ModInt.h:40
 containerOutOfBounds:../library/data_structures_[l,r)/uncommon/permutation_tree.hpp:85
 containerOutOfBounds:../library/trees/edge_cd.hpp
 ctuOneDefinitionRuleViolation:../library/data_structures_[l,r)/bit.hpp:12
