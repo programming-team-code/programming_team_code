@@ -3,6 +3,7 @@ missingIncludeSystem
 functionConst
 unknownMacro
 constParameterReference
+assertWithSideEffect
 unusedStructMember:../library/flow/min_cost_max_flow.hpp
 unusedStructMember:../library/flow/dinic.hpp:15
 unusedStructMember:../library/strings/suffix_array/find/match.hpp:10
@@ -17,6 +18,7 @@ useStlAlgorithm:../library/graphs/strongly_connected_components/add_edges_strong
 useStlAlgorithm:../library/math/matrix_related/row_reduce.hpp:29
 useStlAlgorithm:../library/math/count_paths/count_paths_triangle.hpp:25
 useStlAlgorithm:../library/math/matrix_related/xor_basis_unordered.hpp:14
+useStlAlgorithm:library_checker_aizu_tests/dsu/kruskal_tree_aizu.test.cpp:30
 shadowFunction:../kactl/content/graph/BinaryLifting.h:17
 unknownMacro:../kactl/content/graph/BinaryLifting.h:18
 constParameter:../kactl/content/graph/BinaryLifting.h:29
@@ -56,6 +58,7 @@ cstyleCast:../kactl/content/numerical/FastFourierTransform.h:39
 derefInvalidIterator:library_checker_aizu_tests/handmade_tests/n_choose_k.test.cpp:13
 unreadVariable:library_checker_aizu_tests/handmade_tests/permutation_tree_small.test.cpp:12
 uninitvar:library_checker_aizu_tests/handmade_tests/seg_tree_find_small.test.cpp:41
+uninitvar:../library/data_structures_[l,r)/seg_tree_uncommon/persistent.hpp:21
 unusedFunction:../kactl/content/data-structures/UnionFind.h:14
 unusedFunction:../kactl/content/number-theory/ModPow.h:13
 unusedFunction:../kactl/stress-tests/utilities/genTree.h:49
