@@ -33,8 +33,7 @@ template<class T, class F> struct linear_rmq {
       asc[i] = (asc[i] | asc[i - 1]) & -(in[i] & -in[i]);
   }
   int idx(int l, int r) {
-    if (l == r) return l;
-    auto j = asc[l] & asc[r] & -bit_floor(l ^ r + 0u);
+    auto j = asc[l] & asc[r] & -bit_floor((l ^ r) | 1u);
     if (int k = bit_floor(asc[l] ^ j))
       l = head[(l & -k) | k];
     if (int k = bit_floor(asc[r] ^ j))
