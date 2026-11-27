@@ -19,15 +19,16 @@ template<class T, class F> struct linear_rmq {
   vi asc, head;
   linear_rmq(const vector<T>& a, F cmp):
     n(sz(a)), a(a), cmp(cmp), asc(n), head(n + 1) {
-    vi st(n + 1, -1);
-    for (int i = 0, t = 0; i <= n; i++) {
+    vi st({-1});
+    rep(i, 0, n) {
       int prev = 0;
-      while (t && (i == n || !cmp(a[st[t]], a[i]))) {
-        head[prev] = st[t];
-        auto j = st[t - 1] + 1u, k = bit_floor(i ^ j);
-        prev = i & -k, asc[j] |= k, asc[st[t--]] |= k;
+      while (sz(st) > 1 && !cmp(a[st.back()], a[i])) {
+        auto j = st.end()[-2] + 1u, k = bit_floor(i ^ j);
+        head[prev = i & -k] = j - 1;
+        asc[j] |= k, asc[st.back()] |= k;
+        st.pop_back();
       }
-      st[++t] = head[prev] = i;
+      st.push_back(head[prev] = i);
     }
     rep(i, 1, n) asc[i] |= asc[i - 1] & -asc[i];
   }
