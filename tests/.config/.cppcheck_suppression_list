@@ -4,6 +4,7 @@ functionConst
 unknownMacro
 constParameterReference
 assertWithSideEffect
+knownArgument
 unusedStructMember:../library/flow/min_cost_max_flow.hpp
 unusedStructMember:../library/flow/dinic.hpp:15
 unusedStructMember:../library/strings/suffix_array/find/match.hpp:10
@@ -12,6 +13,7 @@ unusedScopedObject:library_checker_aizu_tests/trees/centroid_path_dist.test.cpp:
 unusedScopedObject:library_checker_aizu_tests/trees/edge_cd_lca.test.cpp:20
 unusedScopedObject:library_checker_aizu_tests/trees/cd_jump_on_tree.test.cpp:20
 unusedScopedObject:library_checker_aizu_tests/trees/cd_jump_on_tree.test.cpp:58
+redundantAssignment:library_checker_aizu_tests/trees/shallowest_aizu_tree_height.test.cpp:15
 arrayIndexOutOfBoundsCond:library_checker_aizu_tests/math/linear_prime_sieve.test.cpp:17
 negativeContainerIndex:../library/strings/suffix_array/burrows_wheeler.hpp:50
 useStlAlgorithm:../kactl/content/numerical/FastFourierTransform.h:53
@@ -35,6 +37,7 @@ constParameter:../library/data_structures/wavelet_merge/wavelet_tree_updates.hpp
 constParameter:../hackpack-cpp/content/number-theory/ModInt.h:45
 constParameter:library_checker_aizu_tests/data_structures/rmq_inc.test.cpp:11
 variableScope:../kactl/content/number-theory/Factor.h:55
+variableScope:../library/flow/hungarian.hpp:24
 syntaxError:../library/math/n_choose_k/pascals_identity.hpp:4
 syntaxError:../library/math/prime_sieve/calc_sieve.hpp:6
 syntaxError:../library/math/prime_sieve/calc_linear_sieve.hpp:6
@@ -62,6 +65,7 @@ constVariableReference:../library/trees/centroid_decomp_uncommon/count_paths_per
 constVariablePointer:../kactl/content/numerical/FastFourierTransform.h:39
 cstyleCast:../kactl/content/numerical/FastFourierTransform.h:39
 derefInvalidIterator:library_checker_aizu_tests/handmade_tests/n_choose_k.test.cpp:13
+derefInvalidIterator:../library/data_structures_[l,r]/linear_rmq.hpp:26
 unreadVariable:library_checker_aizu_tests/handmade_tests/permutation_tree_small.test.cpp:12
 uninitvar:library_checker_aizu_tests/handmade_tests/seg_tree_find_small.test.cpp:41
 uninitMemberVar:../library/data_structures_[l,r)/seg_tree_uncommon/persistent.hpp:21
@@ -80,3 +84,4 @@ mismatchingContainerExpression:library_checker_aizu_tests/data_structures/kth_sm
 mismatchingContainerExpression:library_checker_aizu_tests/data_structures/mode_query.test.cpp:13
 mismatchingContainerExpression:library_checker_aizu_tests/strings/sa_sort_pairs.test.cpp:13
 mismatchingContainerExpression:library_checker_aizu_tests/strings/single_matching_bs.test.cpp:73
+selfInitialization:../library/data_structures_[l,r)/seg_tree_uncommon/persistent.hpp:21

@@ -22,11 +22,12 @@ int main() {
         vector<bool>(n + 1, 1));
       for (int len = 0; len <= n; len++) {
         for (int l = 0; l + len <= n; l++) {
-          int r = l + len;
-          if (len >= 2)
+          if (len >= 2) {
+            int r = l + len;
             is_pal_naive[l][r] =
               (s[l] == s[r - 1] &&
                 is_pal_naive[l + 1][r - 1]);
+          }
         }
       }
       rep(i, 0, n) rep(j, i, n)
