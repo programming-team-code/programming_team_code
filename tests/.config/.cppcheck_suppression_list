@@ -84,3 +84,4 @@ mismatchingContainerExpression:library_checker_aizu_tests/data_structures/mode_q
 mismatchingContainerExpression:library_checker_aizu_tests/strings/sa_sort_pairs.test.cpp:13
 mismatchingContainerExpression:library_checker_aizu_tests/strings/single_matching_bs.test.cpp:73
 selfInitialization:../library/data_structures_[l,r)/seg_tree_uncommon/persistent.hpp:21
+selfInitialization:../library/data_structures_[l,r)/seg_tree_uncommon/persistent.hpp:22
