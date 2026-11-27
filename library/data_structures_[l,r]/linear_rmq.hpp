@@ -23,7 +23,7 @@ template<class T, class F> struct linear_rmq {
     rep(i, 0, n) {
       int prev = 0;
       while (sz(st) > 1 && !cmp(a[st.back()], a[i])) {
-        auto j = st.end()[-2] + 1u, k = bit_floor(i ^ j);
+        auto j = end(st)[-2] + 1u, k = bit_floor(i ^ j);
         head[prev = i & -k] = j - 1;
         asc[j] |= k, asc[st.back()] |= k;
         st.pop_back();
