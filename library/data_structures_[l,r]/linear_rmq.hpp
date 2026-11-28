@@ -18,7 +18,7 @@ template<class T, class F> struct linear_rmq {
   vi asc, head;
   linear_rmq(const vector<T>& a, F cmp):
     a(a), cmp(cmp), asc(sz(a)), head(asc) {
-    vi st({-1});
+    vi st{-1};
     rep(i, 0, sz(a)) {
       int prev = i;
       while (sz(st) > 1 && !cmp(a[st.back()], a[i])) {
