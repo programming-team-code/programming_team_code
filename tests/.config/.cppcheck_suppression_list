@@ -65,7 +65,7 @@ constVariableReference:../library/trees/centroid_decomp_uncommon/count_paths_per
 constVariablePointer:../kactl/content/numerical/FastFourierTransform.h:39
 cstyleCast:../kactl/content/numerical/FastFourierTransform.h:39
 derefInvalidIterator:library_checker_aizu_tests/handmade_tests/n_choose_k.test.cpp:13
-derefInvalidIterator:../library/data_structures_[l,r]/linear_rmq.hpp:26
+derefInvalidIterator:../library/data_structures_[l,r]/linear_rmq.hpp:25
 unreadVariable:library_checker_aizu_tests/handmade_tests/permutation_tree_small.test.cpp:12
 uninitvar:library_checker_aizu_tests/handmade_tests/seg_tree_find_small.test.cpp:41
 uninitMemberVar:../library/data_structures_[l,r)/seg_tree_uncommon/persistent.hpp:21
