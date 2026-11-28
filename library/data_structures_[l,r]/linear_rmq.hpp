@@ -23,7 +23,7 @@ template<class T, class F> struct linear_rmq {
       int prev = i;
       while (sz(st) > 1 && !cmp(a[st.back()], a[i])) {
         auto j = end(st)[-2] + 1u, k = bit_floor(i ^ j);
-        head[prev = j | (k - 1)] = j - 1;
+        head[prev = i & -k] = j - 1;
         asc[j] |= k, asc[st.back()] |= k;
         st.pop_back();
       }
@@ -32,11 +32,12 @@ template<class T, class F> struct linear_rmq {
     rep(i, 1, sz(a)) asc[i] |= asc[i - 1] & -asc[i];
   }
   int idx(int l, int r) {
-    auto j = asc[l] & asc[r] & -bit_floor((l ^ r) | 1u);
+    if (l == r) return l;
+    auto j = asc[l] & asc[r] & -bit_floor(l ^ r ^ 0u);
     if (int k = bit_floor(asc[l] ^ j))
-      l = head[(l & ~k) | (k - 1)];
+      l = head[(l & -k) | k];
     if (int k = bit_floor(asc[r] ^ j))
-      r = head[(r & ~k) | (k - 1)];
+      r = head[(r & -k) | k];
     return cmp(a[l], a[r]) ? l : r;
   }
   T query(int l, int r) { return a[idx(l, r)]; }
